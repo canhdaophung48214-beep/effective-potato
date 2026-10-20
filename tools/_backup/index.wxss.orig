@@ -1,0 +1,471 @@
+/* ===================================================================
+   首页样式
+   注意：本文件不使用 CSS 变量，颜色/圆角全部写成固定值。
+   原因：把「是不是变量没生效」这个可能性彻底排除掉，出问题时只看一处。
+   =================================================================== */
+
+.page {
+  padding: 0 32rpx 48rpx;
+}
+
+/* ==================== 页面标题 ==================== */
+.hero {
+  padding: 40rpx 8rpx 32rpx;
+}
+
+.hero-title {
+  font-size: 56rpx;
+  font-weight: 700;
+  color: #1F2329;
+  letter-spacing: 2rpx;
+  line-height: 1.3;
+}
+
+.hero-sub {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  color: #86909C;
+}
+
+.demo-badge {
+  display: inline-block;
+  margin-top: 20rpx;
+  padding: 6rpx 18rpx;
+  font-size: 22rpx;
+  color: #E85F26;
+  background: #FFF1EB;
+  border-radius: 20rpx;
+}
+
+/* ==================== 筛选面板 ==================== */
+.panel {
+  background: #FFFFFF;
+  border-radius: 28rpx;
+  padding: 32rpx;
+  box-shadow: 0 4rpx 24rpx rgba(31, 35, 41, 0.04);
+}
+
+.filter-group {
+  margin-bottom: 28rpx;
+}
+
+.filter-label {
+  font-size: 26rpx;
+  font-weight: 600;
+  color: #4E5969;
+  margin-bottom: 18rpx;
+}
+
+/* 未选区域时的地点分级说明 */
+.locate-tip {
+  margin-bottom: 28rpx;
+  padding: 20rpx 24rpx;
+  font-size: 24rpx;
+  color: #86909C;
+  background: #F7F8FA;
+  border-radius: 12rpx;
+  line-height: 1.6;
+}
+
+/* 楼层 / 窗口在上一级未选择时的提示 */
+.filter-hint {
+  margin-top: 6rpx;
+  font-size: 22rpx;
+  color: #A8AFB8;
+  line-height: 1.5;
+}
+
+/* 标题右侧的补充说明（如「横向滑动」） */
+.label-tip {
+  margin-left: 14rpx;
+  font-size: 22rpx;
+  font-weight: 400;
+  color: #A8AFB8;
+}
+
+/* 主食类型：横向滚动一行，避免 9 个选项把筛选区撑成三排 */
+.type-scroll {
+  width: 100%;
+  white-space: nowrap;
+  font-size: 0;
+}
+
+.type-scroll .chip {
+  margin-bottom: 0;
+}
+
+.chip-row {
+  margin-right: -16rpx;
+  font-size: 0;
+}
+
+.chip {
+  display: inline-block;
+  padding: 14rpx 26rpx;
+  margin: 0 16rpx 0 0;
+  font-size: 26rpx;
+  line-height: 1.4;
+  color: #4E5969;
+  background: #F5F6F8;
+  border: 1rpx solid #EDEFF2;
+  border-radius: 12rpx;
+}
+
+.chip-on {
+  color: #FFFFFF;
+  background: #FF7A45;
+  border-color: #FF7A45;
+  font-weight: 600;
+}
+
+/* 条件摘要 */
+.summary {
+  margin-top: 4rpx;
+  padding-top: 24rpx;
+  border-top: 1rpx solid #EDEFF2;
+}
+
+.summary-condition {
+  font-size: 26rpx;
+  color: #4E5969;
+}
+
+.summary-count {
+  margin-top: 8rpx;
+  font-size: 24rpx;
+  color: #86909C;
+}
+
+.count-num {
+  font-size: 28rpx;
+  font-weight: 700;
+  color: #FF7A45;
+}
+
+.reset-btn {
+  margin-top: 24rpx;
+  padding: 16rpx 0;
+  text-align: center;
+  font-size: 26rpx;
+  color: #86909C;
+  background: #F7F8FA;
+  border: 1rpx solid #EDEFF2;
+  border-radius: 12rpx;
+}
+
+/* ==================== 操作按钮 ==================== */
+.action-row {
+  display: flex;
+  margin-top: 32rpx;
+}
+
+.btn {
+  height: 96rpx;
+  line-height: 96rpx;
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: 600;
+  border-radius: 16rpx;
+}
+
+.action-row .btn {
+  flex: 1;
+}
+
+.action-row .btn + .btn {
+  margin-left: 20rpx;
+}
+
+.btn-primary {
+  color: #FFFFFF;
+  background: #FF7A45;
+}
+
+.btn-secondary {
+  color: #E85F26;
+  background: #FFF1EB;
+}
+
+.btn-ghost {
+  margin-top: 20rpx;
+  color: #1F2329;
+  background: #FFFFFF;
+  border: 1rpx solid #EDEFF2;
+}
+
+.tap-hover {
+  opacity: 0.82;
+}
+
+/* ==================== 结果区 ==================== */
+.section-title {
+  margin: 36rpx 0 16rpx 8rpx;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1F2329;
+}
+
+/* 菜品卡片 */
+.dish-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 20rpx;
+  padding: 28rpx 32rpx;
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  box-shadow: 0 4rpx 20rpx rgba(31, 35, 41, 0.04);
+}
+
+.dish-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.dish-name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1F2329;
+  line-height: 1.4;
+}
+
+.dish-shop {
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: #4E5969;
+}
+
+.dish-loc {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  color: #86909C;
+}
+
+.dish-tags {
+  margin-top: 16rpx;
+}
+
+.tag {
+  display: inline-block;
+  margin-right: 12rpx;
+  padding: 4rpx 14rpx;
+  font-size: 22rpx;
+  line-height: 1.5;
+  border-radius: 8rpx;
+}
+
+.tag-area {
+  color: #4E5969;
+  background: #F2F3F5;
+}
+
+.tag-taste {
+  color: #E85F26;
+  background: #FFF1EB;
+}
+
+/* 主食类型标签：用蓝色跟口味/区域区分开，三个标签并排也不容易混淆 */
+.tag-type {
+  color: #165DFF;
+  background: #E8F3FF;
+}
+
+.dish-right {
+  flex-shrink: 0;
+  margin-left: 20rpx;
+  padding-top: 4rpx;
+}
+
+.dish-price {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #FF7A45;
+  line-height: 1.2;
+}
+
+.price-unit {
+  font-size: 24rpx;
+  margin-right: 2rpx;
+}
+
+/* 随机选中的店铺 */
+.shop-card {
+  padding: 32rpx;
+  background: #FFFFFF;
+  border-radius: 24rpx;
+  border-left: 8rpx solid #FF7A45;
+  box-shadow: 0 4rpx 20rpx rgba(31, 35, 41, 0.04);
+}
+
+.shop-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.shop-name {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #1F2329;
+}
+
+.shop-area {
+  flex-shrink: 0;
+  margin-left: 16rpx;
+  padding: 4rpx 14rpx;
+  font-size: 22rpx;
+  color: #E85F26;
+  background: #FFF1EB;
+  border-radius: 8rpx;
+}
+
+.shop-loc {
+  margin-top: 14rpx;
+  font-size: 24rpx;
+  color: #86909C;
+}
+
+.shop-count {
+  margin-top: 12rpx;
+  font-size: 24rpx;
+  color: #4E5969;
+}
+
+/* 提示文案 */
+.tip-text {
+  margin-top: 20rpx;
+  padding: 0 8rpx;
+  font-size: 24rpx;
+  color: #86909C;
+  line-height: 1.6;
+}
+
+.tip-center {
+  padding: 56rpx 0;
+  text-align: center;
+}
+
+/* 空状态 */
+.empty {
+  margin-top: 32rpx;
+  padding: 64rpx 40rpx;
+  background: #FFFFFF;
+  border-radius: 28rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 24rpx rgba(31, 35, 41, 0.04);
+}
+
+.empty-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1F2329;
+}
+
+.empty-desc {
+  margin-top: 16rpx;
+  font-size: 26rpx;
+  color: #86909C;
+  line-height: 1.6;
+}
+
+.empty-btn {
+  display: inline-block;
+  margin-top: 32rpx;
+  padding: 18rpx 56rpx;
+  font-size: 28rpx;
+  color: #FFFFFF;
+  background: #FF7A45;
+  border-radius: 40rpx;
+}
+
+/* 页脚 */
+.footer-note {
+  margin: 56rpx 0 24rpx;
+  font-size: 22rpx;
+  color: #C9CDD4;
+  text-align: center;
+  line-height: 1.6;
+}
+
+/* ================================================================
+   本阶段新增：排序 / 结果条件摘要 / 二次操作 / 逐项演示标识
+   ================================================================ */
+
+/* 排序切换行（只在「查看全部」出现） */
+.sort-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 16rpx;
+}
+
+.sort-label {
+  flex: none;
+  font-size: 24rpx;
+  color: #86909C;
+  margin-right: 14rpx;
+  margin-bottom: 12rpx;
+}
+
+/* 结果区顶部的条件摘要：贴在结果上方，不用滚回面板也知道筛了什么 */
+.result-cond {
+  display: flex;
+  align-items: flex-start;
+  padding: 18rpx 24rpx;
+  margin-bottom: 20rpx;
+  background-color: #FFF3EC;
+  border-radius: 16rpx;
+}
+
+.result-cond-label {
+  flex: none;
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #FF7A45;
+  line-height: 34rpx;
+  margin-right: 14rpx;
+}
+
+.result-cond-text {
+  flex: 1;
+  font-size: 24rpx;
+  color: #8A5B3D;
+  line-height: 34rpx;
+}
+
+/* 「再抽一次 / 换一家 / 重置条件」这一行 */
+.again-row {
+  display: flex;
+  margin: 8rpx 0 20rpx;
+}
+
+.again-row .btn {
+  flex: 1;
+  margin: 0 8rpx;
+}
+
+.again-row .btn:first-child {
+  margin-left: 0;
+}
+
+.again-row .btn:last-child {
+  margin-right: 0;
+}
+
+.btn-small {
+  padding: 18rpx 0;
+  font-size: 26rpx;
+  border-radius: 14rpx;
+}
+
+/* 逐项演示标识：菜品卡、店铺卡上都能直接看到，不依赖页脚全局声明 */
+.tag-demo {
+  background-color: #FFF1F0;
+  color: #F53F3F;
+}
+
+.shop-demo {
+  margin-top: 8rpx;
+  font-size: 22rpx;
+  color: #F53F3F;
+}

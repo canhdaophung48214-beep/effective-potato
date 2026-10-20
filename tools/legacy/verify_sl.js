@@ -1,0 +1,228 @@
+const path = require('path');
+const fs = require('fs');
+
+const ROOT = path.resolve(__dirname, '..', '..');
+const { ALL_DISHES, ALL_SHOPS, AREA_LABEL, TASTE_LABEL } = require(path.join(ROOT, 'data/index.js'));
+const { filterDishes, collectShopIds } = require(path.join(ROOT, 'utils/matcher.js'));
+
+let fail = 0;
+function check(ok, label, extra) {
+  if (ok) {
+    console.log('  OK  ' + label + (extra ? '  → ' + extra : ''));
+  } else {
+    fail++;
+    console.log('  FAIL ' + label + (extra ? '  → ' + extra : ''));
+  }
+}
+
+console.log('=== 1. 数据基础 ===');
+check(ALL_SHOPS.length === 12, '店铺数 = 12', ALL_SHOPS.length);
+check(ALL_DISHES.length === 36, '菜品数 = 36', ALL_DISHES.length);
+
+const shopIdSet = new Set(ALL_SHOPS.map(function (s) { return s.id; }));
+const orphans = ALL_DISHES.filter(function (d) { return !shopIdSet.has(d.shopId); });
+check(orphans.length === 0, '没有孤儿菜品（shopId 全部能找到店铺）', orphans.length + ' 条');
+
+const dishesWithShop = new Set(ALL_DISHES.map(function (d) { return d.shopId; }));
+check(dishesWithShop.size === 12, '每家店至少 1 道菜', dishesWithShop.size + ' 家');
+
+const prices = ALL_DISHES.map(function (d) { return d.price; });
+const minP = Math.min.apply(null, prices), maxP = Math.max.apply(null, prices);
+check(minP === 5 && maxP === 26, '价格区间 5 ~ 26', '¥' + minP + ' ~ ¥' + maxP);
+
+const over20 = ALL_DISHES.filter(function (d) { return d.price > 20; });
+check(over20.length > 0, '存在 >20 元的菜（保证 20 元档真的在筛选）', over20.length + ' 道');
+
+const tasteCount = { light: 0, mild_spicy: 0, spicy: 0 };
+ALL_DISHES.forEach(function (d) {
+  d.tastes.forEach(function (t) { if (tasteCount[t] !== undefined) tasteCount[t]++; });
+});
+check(tasteCount.light > 0 && tasteCount.mild_spicy > 0 && tasteCount.spicy > 0,
+  '三种口味都有菜', JSON.stringify(tasteCount));
+
+const areaCount = { campus: 0, offsite: 0 };
+ALL_DISHES.forEach(function (d) { areaCount[d.area]++; });
+check(areaCount.campus > 0 && areaCount.offsite > 0, '校内/校外都有菜', JSON.stringify(areaCount));
+
+const multiTaste = ALL_DISHES.filter(function (d) { return d.tastes.length > 1; });
+check(multiTaste.length > 0, '存在多口味标签的菜（覆盖 tastes 数组匹配）', multiTaste.length + ' 道');
+
+console.log('\n=== 2. 48 种筛选组合逐一枚举 ===');
+const AREAS = ['all', 'campus', 'offsite'];
+const BUDGETS = [0, 10, 15, 20];
+const TASTES = ['all', 'light', 'mild_spicy', 'spicy'];
+
+const results = [];
+const emptyCombos = [];
+AREAS.forEach(function (a) {
+  BUDGETS.forEach(function (b) {
+    TASTES.forEach(function (t) {
+      const list = filterDishes(ALL_DISHES, a, b, t);
+      const shops = collectShopIds(list);
+      results.push({ a: a, b: b, t: t, n: list.length, s: shops.length });
+
+      // 独立交叉校验：列表里每一条都必须真的满足三个条件
+      let bad = 0;
+      list.forEach(function (d) {
+        if (a !== 'all' && d.area !== a) bad++;
+        if (b !== 0 && d.price > b) bad++;
+        if (t !== 'all' && d.tastes.indexOf(t) === -1) bad++;
+      });
+      // 反方向：不在列表里的菜，必须至少违反一个条件
+      ALL_DISHES.forEach(function (d) {
+        const inList = list.indexOf(d) !== -1;
+        const shouldIn = (a === 'all' || d.area === a)
+          && (b === 0 || d.price <= b)
+          && (t === 'all' || d.tastes.indexOf(t) !== -1);
+        if (inList !== shouldIn) bad++;
+      });
+      if (bad > 0) {
+        fail++;
+        console.log('  FAIL 组合 ' + a + '/' + b + '/' + t + ' 有 ' + bad + ' 条不一致');
+      }
+      if (list.length === 0) emptyCombos.push(a + ' + ' + (b === 0 ? '不限' : b + '元') + ' + ' + t);
+    });
+  });
+});
+
+check(results.length === 48, '共枚举 48 种组合', results.length);
+check(fail === 0, '48 种组合的双向交叉校验全部一致');
+
+console.log('  空结果组合（用于验证空态提示）：');
+emptyCombos.forEach(function (c) { console.log('    · ' + c); });
+check(emptyCombos.length > 0 && emptyCombos.length <= 6,
+  '空组合数量合理（有且不多）', emptyCombos.length + ' 种');
+
+const hasResult = results.filter(function (r) { return r.n > 0; }).length;
+check(hasResult >= 40, '绝大多数组合都有结果', hasResult + '/48');
+
+console.log('\n=== 3. 三个筛选维度确实影响结果 ===');
+const base = filterDishes(ALL_DISHES, 'all', 0, 'all').length;
+const byArea = {
+  campus: filterDishes(ALL_DISHES, 'campus', 0, 'all').length,
+  offsite: filterDishes(ALL_DISHES, 'offsite', 0, 'all').length
+};
+check(byArea.campus + byArea.offsite === base, '校内外相加 = 全部', byArea.campus + '+' + byArea.offsite + '=' + base);
+
+[10, 15, 20].forEach(function (b) {
+  const n = filterDishes(ALL_DISHES, 'all', b, 'all').length;
+  console.log('    预算 ' + b + ' 元以内 → ' + n + ' 道');
+});
+check(filterDishes(ALL_DISHES, 'all', 10, 'all').length <
+      filterDishes(ALL_DISHES, 'all', 15, 'all').length &&
+      filterDishes(ALL_DISHES, 'all', 15, 'all').length <
+      filterDishes(ALL_DISHES, 'all', 20, 'all').length,
+  '预算三档递增，结果数严格递增');
+
+['light', 'mild_spicy', 'spicy'].forEach(function (t) {
+  console.log('    口味 ' + TASTE_LABEL[t] + ' → ' + filterDishes(ALL_DISHES, 'all', 0, t).length + ' 道');
+});
+
+console.log('\n=== 4. 随机逻辑抽样（各跑 20000 次）===');
+function sampleShop(area, budget, taste, times) {
+  const pool = filterDishes(ALL_DISHES, area, budget, taste);
+  const ids = collectShopIds(pool);
+  const hit = {};
+  for (let i = 0; i < times; i++) {
+    const id = ids[Math.floor(Math.random() * ids.length)];
+    hit[id] = (hit[id] || 0) + 1;
+  }
+  return { ids: ids, hit: hit, pools: pool.length };
+}
+const s1 = sampleShop('campus', 15, 'all', 20000);
+check(s1.ids.length > 1, '校内+15元 命中多家店（随机有意义）', s1.ids.length + ' 家');
+const keys = Object.keys(s1.hit);
+check(keys.length === s1.ids.length, '每家在 2 万次抽样里都至少被抽到一次', keys.length + '/' + s1.ids.length);
+const cnts = keys.map(function (k) { return s1.hit[k]; });
+const spread = Math.max.apply(null, cnts) / Math.min.apply(null, cnts);
+check(spread < 3, '各店被抽中的次数分布均匀（最大/最小 < 3）', spread.toFixed(2));
+
+function sampleDish(area, budget, taste, times) {
+  const pool = filterDishes(ALL_DISHES, area, budget, taste);
+  const hit = {};
+  for (let i = 0; i < times; i++) {
+    const d = pool[Math.floor(Math.random() * pool.length)];
+    hit[d.id] = (hit[d.id] || 0) + 1;
+  }
+  return { pool: pool.length, hit: hit };
+}
+const s2 = sampleDish('all', 0, 'all', 36000);
+check(Object.keys(s2.hit).length === 36, '随机选一道菜：36 道全覆盖', Object.keys(s2.hit).length + '/36');
+check(Object.keys(s2.hit).length > 0, '随机选一道菜可执行');
+
+console.log('\n=== 5. 「避免连续两次相同」逻辑验证 ===');
+// 复刻页面里的写法，确认在池 >1 时不会连续出同一个
+let repeat = 0, prev = '';
+for (let i = 0; i < 5000; i++) {
+  const pool = filterDishes(ALL_DISHES, 'campus', 10, 'all'); // 池很小，最容易出重复
+  let idx = Math.floor(Math.random() * pool.length);
+  if (pool.length > 1 && pool[idx].id === prev) idx = (idx + 1) % pool.length;
+  if (pool[idx].id === prev) repeat++;
+  prev = pool[idx].id;
+}
+check(repeat === 0, '小池子（校内+10元）连续 5000 次也不重复出现同一道', '重复 ' + repeat + ' 次');
+
+console.log('\n=== 6. WXML 用到的 class 是否都在 WXSS 里定义 ===');
+const wxml = fs.readFileSync(path.join(ROOT, 'pages/index/index.wxml'), 'utf8');
+const wxss = fs.readFileSync(path.join(ROOT, 'pages/index/index.wxss'), 'utf8');
+
+const used = new Set();
+const attrs = wxml.match(/class="([^"]*)"/g) || [];
+attrs.forEach(function (a) {
+  let v = a.slice(7, -1);
+  // 把 {{ a === b ? 'chip-on' : '' }} 里的引号字符串提出来
+  v = v.replace(/\{\{([\s\S]*?)\}\}/g, function (_m, inner) {
+    const quoted = inner.match(/'([^']*)'/g) || [];
+    return ' ' + quoted.map(function (q) { return q.slice(1, -1); }).join(' ') + ' ';
+  });
+  v.split(/\s+/).forEach(function (t) { if (t) used.add(t); });
+});
+
+const defined = new Set();
+(wxss.match(/\.([a-zA-Z0-9_-]+)/g) || []).forEach(function (s) { defined.add(s.slice(1)); });
+
+const missing = Array.from(used).filter(function (c) { return !defined.has(c); });
+check(missing.length === 0, 'WXML 的 ' + used.size + ' 个 class 全部有样式定义',
+  missing.length ? '缺失: ' + missing.join(', ') : '无缺失');
+
+const unused = Array.from(defined).filter(function (c) { return !used.has(c); });
+if (unused.length) console.log('  提示：WXSS 里未被使用的 class: ' + unused.join(', '));
+else console.log('  OK  WXSS 没有多余死样式');
+
+console.log('\n=== 7. WXML 结构检查 ===');
+check((wxml.match(/<template name="dishCard">/g) || []).length === 1, '模板 dishCard 只定义 1 次');
+const uses = (wxml.match(/<template is="dishCard"/g) || []).length;
+check(uses === 3, '模板 dishCard 被复用 3 次', uses + ' 次');
+check(wxml.indexOf('wx:if="{{matchedCount === 0}}"') !== -1, '空态条件存在');
+check(wxml.indexOf('bindtap="onReset"') !== -1, '重置按钮已绑定');
+['onRandomShop', 'onRandomDish', 'onViewAll', 'onSelectArea', 'onSelectBudget', 'onSelectTaste'].forEach(function (fn) {
+  check(wxml.indexOf('bindtap="' + fn + '"') !== -1, '事件绑定存在: ' + fn);
+});
+
+const js = fs.readFileSync(path.join(ROOT, 'pages/index/index.js'), 'utf8');
+['onRandomShop', 'onRandomDish', 'onViewAll', 'onReset', 'onSelectArea', 'onSelectBudget', 'onSelectTaste', 'refresh', 'onFilterChanged'].forEach(function (fn) {
+  const re = new RegExp('\\n\\s{2}' + fn + '\\s*\\(');
+  check(re.test(js), '页面方法已定义: ' + fn);
+});
+
+console.log('\n=== 8. 页面方法与 WXML 一一对应 ===');
+const handlers = Array.from(new Set((wxml.match(/bindtap="([a-zA-Z]+)"/g) || []).map(function (s) {
+  return s.replace(/bindtap="|"/g, '');
+})));
+handlers.forEach(function (h) {
+  check(js.indexOf(h + '(') !== -1, 'WXML 调用的 ' + h + ' 在 JS 中存在');
+});
+
+console.log('\n=== 9. 数据里不含真实商家名（演示数据检查）===');
+const realNames = ['沙县', '肯德基', '麦当劳', '海底捞', '蜜雪冰城', '瑞幸', '华莱士', '正新', '绝味', '老四', '把子肉'];
+const shopsText = fs.readFileSync(path.join(ROOT, 'data/shops.js'), 'utf8');
+const leak = realNames.filter(function (n) { return shopsText.indexOf(n) !== -1; });
+check(leak.length === 0, '店铺名不含知名真实品牌', leak.length ? '命中: ' + leak.join(',') : '干净');
+
+console.log('\n================================');
+if (fail === 0) {
+  console.log('全部检查通过 ✅');
+} else {
+  console.log('有 ' + fail + ' 项未通过 ❌');
+  process.exitCode = 1;
+}

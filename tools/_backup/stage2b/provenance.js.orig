@@ -1,0 +1,311 @@
+/**
+ * 数据可信度：来源 / 核实状态 / 核实时间
+ *
+ * 这一层只做三件事，不负责页面展示：
+ *   1. 定义统一的状态枚举与文案
+ *   2. 给每条记录写入 `source` / `verifyStatus` / `verifiedAt` 三个字段
+ *   3. 把「一条记录 + 它所在的地点」合成一个用户能看到的状态（最弱一环）
+ *
+ * —— 为什么状态要「取最弱一环」——
+ *   一道菜的菜名可能是实地核实过的，但它挂的窗口还是待核实，
+ *   那么用户看到的这条信息整体就仍然不能被当成已核实。
+ *   所以卡片上显示的是「菜品 / 窗口 / 楼层 / 店铺」四层里最弱的那一层，
+ *   并且同时给出那一层的来源说明，方便追到到底是哪一环没核实。
+ *
+ * —— 三条硬规则（对应产品要求）——
+ *   · 演示数据一律 demo，且 verifiedAt 必须为空：演示不是核实。
+ *   · 标 verified 但拿不出核实时间 → 自动降级为 unverified，绝不编造时间。
+ *   · 缺字段 / 来源不明 → 按 unverified 处理，不按「真实」处理。
+ */
+
+/* 核实状态。顺序即「可信度从弱到强」，expired 是特殊态，不参与排序比较 */
+const VERIFY_STATUS = {
+  DEMO: 'demo',
+  UNVERIFIED: 'unverified',
+  VERIFIED: 'verified',
+  EXPIRED: 'expired'
+};
+
+/* 状态取值白名单。用值判断，别用 VERIFY_STATUS 的键（键是大写常量名） */
+const STATUS_VALUES = ['demo', 'unverified', 'verified', 'expired'];
+
+/* 状态 → 页面标签文案 */
+const VERIFY_LABEL = {
+  demo: '演示信息',
+  unverified: '待核实',
+  verified: '已核实',
+  expired: '核实已过期'
+};
+
+/* 状态 → 样式类后缀（wxss 里是 .tag-v.v-demo 这种写法） */
+const VERIFY_CLASS = {
+  demo: 'v-demo',
+  unverified: 'v-unverified',
+  verified: 'v-verified',
+  expired: 'v-expired'
+};
+
+/* 状态 → 一句话解释，鼠标/长按很难做，先留作文案与测试依据 */
+const VERIFY_TIP = {
+  demo: '课程演示数据，不对应任何真实商家',
+  unverified: '尚未取得可追溯的核实依据',
+  verified: '有核实依据，并记录了核实时间',
+  expired: '曾核实过，但已超过有效期，需要重新核实'
+};
+
+/* 前三种状态的强弱排序：数字越小越弱，合成时取最小值 */
+const STATUS_RANK = {
+  demo: 0,
+  unverified: 1,
+  verified: 2
+};
+
+/* 来源类型 */
+const SOURCE_KIND = {
+  DEMO: 'demo',           // 课程演示数据
+  OFFICIAL: 'official',   // 校方 / 后勤公示
+  MERCHANT: 'merchant',   // 商家提供
+  USER: 'user',           // 同学反馈
+  WEB: 'web',             // 网络来源（必须带 ref）
+  FIELD: 'field',         // 实地核实
+  UNKNOWN: 'unknown'      // 未标注（按待核实处理）
+};
+
+const SOURCE_KIND_LABEL = {
+  demo: '演示数据',
+  official: '校方公示',
+  merchant: '商家提供',
+  user: '同学反馈',
+  web: '网络来源',
+  field: '实地核实',
+  unknown: '来源未标注'
+};
+
+/* 演示记录共用的来源对象（每次 attach 都复制一份，避免多处共享同一个引用） */
+const DEMO_SOURCE = {
+  kind: SOURCE_KIND.DEMO,
+  detail: '非真实商家、楼层、窗口与菜品',
+  ref: ''
+};
+
+function copySource(source) {
+  return {
+    kind: source.kind,
+    detail: source.detail || '',
+    ref: source.ref || ''
+  };
+}
+
+/**
+ * 构造来源对象。
+ * @param {string} kind   SOURCE_KIND 之一
+ * @param {string} detail 来源说明，必须能说清「从哪来」
+ * @param {string} [ref]  可追溯凭证：公示链接、照片、聊天记录编号等，没有就留空
+ */
+function makeSource(kind, detail, ref) {
+  return {
+    kind: kind || SOURCE_KIND.UNKNOWN,
+    detail: detail || '',
+    ref: ref || ''
+  };
+}
+
+/**
+ * 规范化一条记录的元信息。任何缺字段、自相矛盾的写法都在这里被纠正。
+ * 返回 { verifyStatus, verifiedAt, source }
+ */
+function normalizeMeta(raw) {
+  const rec = raw || {};
+  let source = rec.source;
+
+  /* 来源：必须是对象且带 kind，否则按「来源未标注」处理 */
+  if (!source || typeof source !== 'object' || !source.kind) {
+    source = makeSource(SOURCE_KIND.UNKNOWN, '来源未标注', '');
+  } else {
+    source = copySource(source);
+  }
+
+  let status = rec.verifyStatus;
+  let verifiedAt = rec.verifiedAt || null;
+
+  /* 状态缺失或非法：按待核实处理，绝不按真实处理 */
+  if (STATUS_VALUES.indexOf(status) === -1) {
+    status = VERIFY_STATUS.UNVERIFIED;
+  }
+
+  if (status === VERIFY_STATUS.DEMO) {
+    /* 演示数据不是核实，任何核实时间都不成立 */
+    verifiedAt = null;
+  } else if (status === VERIFY_STATUS.VERIFIED && !verifiedAt) {
+    /* 声称已核实但给不出时间 → 降级 */
+    status = VERIFY_STATUS.UNVERIFIED;
+  } else if (status === VERIFY_STATUS.EXPIRED && !verifiedAt) {
+    /* 过期态允许没有时间，但来源说明里必须写清，页面会照实展示 */
+    verifiedAt = null;
+  }
+
+  return { verifyStatus: status, verifiedAt: verifiedAt, source: source };
+}
+
+/* 把一条元信息展开成页面能直接用的扁平字段 */
+function decorate(meta, level) {
+  const source = meta.source;
+  return {
+    metaLevel: level || '',
+    verifyStatus: meta.verifyStatus,
+    verifyText: VERIFY_LABEL[meta.verifyStatus] || '待核实',
+    verifyClass: VERIFY_CLASS[meta.verifyStatus] || VERIFY_CLASS.unverified,
+    verifyTip: VERIFY_TIP[meta.verifyStatus] || '',
+    verifiedAt: meta.verifiedAt,
+    sourceKind: source.kind,
+    sourceKindText: SOURCE_KIND_LABEL[source.kind] || SOURCE_KIND_LABEL.unknown,
+    sourceDetail: source.detail,
+    sourceRef: source.ref,
+    /* 原始来源对象也带上：合成「最弱一环」时要用 */
+    source: copySource(source)
+  };
+}
+
+/* 演示元信息（每次新建，不共享引用） */
+function demoMeta(level) {
+  return decorate(normalizeMeta({
+    verifyStatus: VERIFY_STATUS.DEMO,
+    verifiedAt: null,
+    source: DEMO_SOURCE
+  }), level);
+}
+
+/* 给一组同类记录打演示标：已有 verifyStatus 的保留原值（将来混入真实记录不会被覆盖） */
+function attachDemo(list, level) {
+  const out = [];
+  for (let i = 0; i < list.length; i++) {
+    const item = list[i];
+    if (item && item.verifyStatus) {
+      out.push(item);
+      continue;
+    }
+    out.push(Object.assign({}, item, demoMeta(level)));
+  }
+  return out;
+}
+
+/**
+ * 给店铺数组打演示标，并递归处理 floors / stalls。
+ * 店铺、楼层、窗口三层都拿到同一套字段，层级由 metaLevel 区分。
+ */
+function attachDemoShops(list) {
+  const shops = attachDemo(list, 'shop');
+  for (let i = 0; i < shops.length; i++) {
+    const shop = shops[i];
+    if (shop.floors && shop.floors.length) {
+      shop.floors = attachDemo(shop.floors, 'floor');
+      /* 楼层自身记下所属店铺，出问题时能直接定位到哪家店 */
+      for (let j = 0; j < shop.floors.length; j++) {
+        if (!shop.floors[j].shopId) shop.floors[j].shopId = shop.id;
+      }
+    }
+    if (shop.stalls && shop.stalls.length) {
+      shop.stalls = attachDemo(shop.stalls, 'stall');
+      /* 窗口同理：既能查到店铺，也能查到所属楼层 */
+      for (let k = 0; k < shop.stalls.length; k++) {
+        if (!shop.stalls[k].shopId) shop.stalls[k].shopId = shop.id;
+      }
+    }
+  }
+  return shops;
+}
+
+/**
+ * 合成一组层级的状态，取「最弱一环」。
+ * @param {Array} layers [{ level, id, verifyStatus, verifiedAt, source }]
+ * @returns {{ status, level, id, verifiedAt, source, note }}
+ *
+ * 规则：
+ *   · 任一层 expired → 整体 expired（过期比「待核实」更需要提醒重新核实）
+ *   · 否则取 rank 最小的那层
+ *   · 若最弱那一层不是自己，note 里写清是哪个层级拖累了状态
+ */
+function weakest(layers) {
+  const list = [];
+  for (let i = 0; i < layers.length; i++) {
+    if (layers[i]) list.push(layers[i]);
+  }
+  if (!list.length) {
+    return {
+      status: VERIFY_STATUS.UNVERIFIED,
+      level: '',
+      id: '',
+      verifiedAt: null,
+      source: makeSource(SOURCE_KIND.UNKNOWN, '来源未标注', ''),
+      note: ''
+    };
+  }
+
+  let expired = null;
+  for (let i = 0; i < list.length; i++) {
+    if (list[i].verifyStatus === VERIFY_STATUS.EXPIRED) { expired = list[i]; break; }
+  }
+  if (expired) {
+    return {
+      status: VERIFY_STATUS.EXPIRED,
+      level: expired.metaLevel || '',
+      id: expired.id || '',
+      verifiedAt: expired.verifiedAt || null,
+      source: copySource(expired.source),
+      note: ''
+    };
+  }
+
+  let best = list[0];
+  for (let i = 1; i < list.length; i++) {
+    const a = STATUS_RANK[list[i].verifyStatus];
+    const b = STATUS_RANK[best.verifyStatus];
+    if ((a === undefined ? 1 : a) < (b === undefined ? 1 : b)) best = list[i];
+  }
+
+  const LEVEL_NAME = { shop: '店铺信息', floor: '楼层信息', stall: '窗口信息', dish: '菜品信息' };
+  const selfLevel = list[0].metaLevel || '';
+  let note = '';
+  if (best.metaLevel && best.metaLevel !== selfLevel) {
+    note = '该菜品本身为' + (VERIFY_LABEL[list[0].verifyStatus] || '待核实') +
+      '，但' + (LEVEL_NAME[best.metaLevel] || '所属地点') + '为' +
+      (VERIFY_LABEL[best.verifyStatus] || '待核实');
+  }
+
+  return {
+    status: best.verifyStatus,
+    level: best.metaLevel || '',
+    id: best.id || '',
+    verifiedAt: best.verifiedAt || null,
+    source: copySource(best.source),
+    note: note
+  };
+}
+
+/* 统计一组记录各自的状态数量，用于页面上的「数据状态」一行 */
+function countByStatus(list) {
+  const out = { demo: 0, unverified: 0, verified: 0, expired: 0 };
+  for (let i = 0; i < list.length; i++) {
+    const s = (list[i] && list[i].verifyStatus) || VERIFY_STATUS.UNVERIFIED;
+    out[s] = (out[s] || 0) + 1;
+  }
+  return out;
+}
+
+module.exports = {
+  VERIFY_STATUS,
+  VERIFY_LABEL,
+  VERIFY_CLASS,
+  VERIFY_TIP,
+  SOURCE_KIND,
+  SOURCE_KIND_LABEL,
+  DEMO_SOURCE,
+  makeSource,
+  normalizeMeta,
+  decorate,
+  demoMeta,
+  attachDemo,
+  attachDemoShops,
+  weakest,
+  countByStatus
+};

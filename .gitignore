@@ -1,0 +1,13 @@
+# 依赖与构建产物（本项目零依赖，留着以防以后引入 npm）
+node_modules/
+miniprogram_npm/
+
+# 微信开发者工具的本机私有配置：含本机路径、编译模式等，属于个人环境
+project.private.config.json
+
+# 系统与编辑器
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/

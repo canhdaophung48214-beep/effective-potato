@@ -1,0 +1,376 @@
+/* 级联筛选 + 全组合回归测试
+   直接加载真实页面 JS，用一个假 Page() 捕获配置，再用假 setData 驱动它，
+   等于在 Node 里把「点筛选按钮」这件事真的跑一遍。 */
+const path = require('path');
+const fs = require('fs');
+
+const ROOT = path.resolve(__dirname, '..', '..');
+const { ALL_DISHES, ALL_SHOPS } = require(path.join(ROOT, 'data/index.js'));
+const { SHOPS } = require(path.join(ROOT, 'data/shops.js'));
+const { DISHES } = require(path.join(ROOT, 'data/dishes.js'));
+const { filterDishes, collectShopIds } = require(path.join(ROOT, 'utils/matcher.js'));
+
+let fail = 0;
+function check(ok, label, extra) {
+  if (ok) console.log('  OK  ' + label + (extra !== undefined ? '  → ' + extra : ''));
+  else { fail++; console.log('  FAIL ' + label + (extra !== undefined ? '  → ' + extra : '')); }
+}
+
+/* ================= 载入页面并造实例 ================= */
+let captured = null;
+global.Page = function (obj) { captured = obj; };
+global.wx = { showToast: function () {} };
+require(path.join(ROOT, 'pages/index/index.js'));
+
+function newPage() {
+  const p = Object.assign({}, captured);
+  p.data = JSON.parse(JSON.stringify(captured.data));
+  p.setData = function (patch, cb) {
+    Object.assign(this.data, patch);
+    if (typeof cb === 'function') cb();
+  };
+  p.onLoad();
+  return p;
+}
+function tap(fn, value) {
+  return function (page) { page[fn]({ currentTarget: { dataset: { value: value } } }); };
+}
+const RAW_SHOP_MAP = {};
+SHOPS.forEach(function (s) { RAW_SHOP_MAP[s.id] = s; });
+
+/* 独立实现：绕开 data/index.js 和 matcher.js，直接从原始数据算期望值 */
+function expected(cond) {
+  const out = [];
+  DISHES.forEach(function (d) {
+    const shop = RAW_SHOP_MAP[d.shopId];
+    if (!shop) return;
+    if (cond.area !== 'all' && shop.area !== cond.area) return;
+    if (cond.shopId !== 'all' && d.shopId !== cond.shopId) return;
+    let floorId = '';
+    (shop.stalls || []).forEach(function (st) {
+      if (st.id === d.stallId) floorId = st.floorId || '';
+    });
+    if (cond.floorId !== 'all' && floorId !== cond.floorId) return;
+    if (cond.stallId !== 'all' && d.stallId !== cond.stallId) return;
+    if (cond.budget !== 0 && d.price > cond.budget) return;
+    if (cond.taste !== 'all' && (d.tastes || []).indexOf(cond.taste) === -1) return;
+    out.push(d);
+  });
+  return out;
+}
+
+console.log('=== 1. 数据三级结构完整性 ===');
+check(ALL_SHOPS.length === 12 && ALL_DISHES.length === 36, '店铺 12 / 菜品 36',
+  ALL_SHOPS.length + ' / ' + ALL_DISHES.length);
+
+let badStall = [], emptyStall = [], badFloor = [];
+SHOPS.forEach(function (shop) {
+  const floorIds = (shop.floors || []).map(function (f) { return f.id; });
+  (shop.stalls || []).forEach(function (st) {
+    /* 有楼层划分的店，窗口必须挂在一个真实楼层上 */
+    if (floorIds.length && floorIds.indexOf(st.floorId) === -1) badFloor.push(shop.id + '/' + st.id);
+    /* 没有楼层划分的店，窗口的 floorId 必须为空 */
+    if (!floorIds.length && st.floorId) badFloor.push(shop.id + '/' + st.id + '(不该有楼层)');
+    const n = DISHES.filter(function (d) { return d.stallId === st.id; }).length;
+    if (n === 0) emptyStall.push(shop.id + '/' + st.name);
+  });
+});
+DISHES.forEach(function (d) {
+  const shop = RAW_SHOP_MAP[d.shopId];
+  if (!shop) { badStall.push(d.id + ' 找不到店铺'); return; }
+  const ok = (shop.stalls || []).some(function (st) { return st.id === d.stallId; });
+  if (!ok) badStall.push(d.id + ' → ' + d.stallId);
+});
+check(badFloor.length === 0, '每个窗口的楼层归属都合法', badFloor.join(',') || '0 问题');
+check(badStall.length === 0, '每道菜的 stallId 都能在所属店铺里找到', badStall.join(',') || '0 问题');
+check(emptyStall.length === 0, '不存在「没有任何菜」的空窗口', emptyStall.join(',') || '0 个空窗口');
+
+const joinedWrong = ALL_DISHES.filter(function (d) {
+  const shop = RAW_SHOP_MAP[d.shopId];
+  let st = null;
+  (shop.stalls || []).forEach(function (s) { if (s.id === d.stallId) st = s; });
+  return !st || d.stall !== st.name || d.shopName !== shop.name;
+});
+check(joinedWrong.length === 0, 'join 层窗口名 / 店名与原始数据一致', joinedWrong.length + ' 条不一致');
+
+const withFloor = ALL_DISHES.filter(function (d) { return d.floorId; });
+check(withFloor.length > 0 && withFloor.every(function (d) {
+  return d.location.indexOf(d.floorText) !== -1;
+}), '有楼层的菜品，location 里确实带了楼层文字', withFloor.length + ' 道');
+
+console.log('\n=== 2. 初始状态 ===');
+let p = newPage();
+check(p.data.area === 'all' && p.data.shopId === 'all' && p.data.stallId === 'all', '地点三级默认都是 all');
+check(p.data.matchedCount === 36, '默认命中 36 道', p.data.matchedCount);
+check(p.data.restaurantOptions.length === 0, '未选区域时不出餐厅候选', p.data.restaurantOptions.length);
+check(p.data.conditionText === '不限区域 · 不限预算 · 不限口味', '条件文案正确', p.data.conditionText);
+
+console.log('\n=== 3. 选「校内食堂」→ 餐厅出现，楼层窗口只留「不限」+ 提示 ===');
+p = newPage();
+tap('onSelectArea', 'campus')(p);
+check(p.data.restaurantOptions.length === 6, '餐厅候选 6 家', p.data.restaurantOptions.length);
+check(p.data.matchedCount === 18, '校内命中 18 道', p.data.matchedCount);
+check(p.data.floorOptions.length === 0, '未选餐厅时楼层无候选', p.data.floorOptions.length);
+check(p.data.floorHint.indexOf('先选具体餐厅') !== -1, '给出「先选餐厅」提示', p.data.floorHint);
+check(p.data.stallOptions.length === 0, '未选餐厅时窗口无候选');
+check(p.data.stallHint.indexOf('先选具体餐厅') !== -1, '给出窗口提示', p.data.stallHint);
+
+console.log('\n=== 4. 选「一号食堂」→ 楼层只出这家真实配置 ===');
+tap('onSelectShop', 's01')(p);
+check(p.data.floorOptions.length === 2, '楼层候选 = 2（1 楼 / 2 楼）',
+  p.data.floorOptions.map(function (f) { return f.label; }).join(','));
+check(p.data.floorOptions[0].label === '1 楼' && p.data.floorOptions[1].label === '2 楼', '楼层标签正确');
+check(p.data.stallOptions.length === 3, '不限楼层时窗口 = 该店全部 3 个',
+  p.data.stallOptions.map(function (s) { return s.name; }).join(','));
+check(p.data.matchedCount === 3, '一号食堂命中 3 道', p.data.matchedCount);
+check(p.data.conditionText.indexOf('一号食堂') !== -1, '条件文案含餐厅名', p.data.conditionText);
+
+console.log('\n=== 5. 选「2 楼」→ 窗口收敛到本层，且窗口选择被重置 ===');
+tap('onSelectFloor', 's01_f2')(p);
+check(p.data.stallOptions.length === 2, '2 楼窗口 = 2 个',
+  p.data.stallOptions.map(function (s) { return s.name; }).join(','));
+check(p.data.stallOptions.every(function (s) { return s.id === 's01_t2' || s.id === 's01_t3'; }),
+  '窗口 id 只来自 2 楼');
+check(p.data.matchedCount === 2, '一号食堂 2 楼命中 2 道', p.data.matchedCount);
+check(p.data.conditionText.indexOf('2 楼') !== -1, '条件文案含楼层', p.data.conditionText);
+
+console.log('\n=== 6. 选「2 号窗口」→ 只出这一道 ===');
+tap('onSelectStall', 's01_t2')(p);
+check(p.data.matchedCount === 1, '命中 1 道', p.data.matchedCount);
+check(p.data.conditionText.indexOf('2 号窗口') !== -1, '条件文案含窗口', p.data.conditionText);
+
+console.log('\n=== 7. 改上一级 → 下一级自动重置 ===');
+tap('onSelectFloor', 's01_f1')(p);
+check(p.data.stallId === 'all', '改楼层后窗口重置为「不限」', p.data.stallId);
+check(p.data.matchedCount === 1, '1 楼命中 1 道（番茄炒蛋）', p.data.matchedCount);
+tap('onSelectShop', 's03')(p);
+check(p.data.floorId === 'all' && p.data.stallId === 'all', '改餐厅后楼层+窗口都重置',
+  p.data.floorId + ' / ' + p.data.stallId);
+check(p.data.floorOptions.length === 2, '三号食堂楼层 = 2', p.data.floorOptions.length);
+tap('onSelectArea', 'offsite')(p);
+check(p.data.shopId === 'all' && p.data.floorId === 'all' && p.data.stallId === 'all',
+  '改区域后餐厅+楼层+窗口全重置');
+
+console.log('\n=== 8. 无楼层划分的餐厅（东区食堂）不能被逼着选楼层 ===');
+p = newPage();
+tap('onSelectArea', 'campus')(p);
+tap('onSelectShop', 's05')(p);
+check(p.data.floorOptions.length === 0, '楼层候选为空', p.data.floorOptions.length);
+check(p.data.floorHint.indexOf('没有楼层划分') !== -1, '提示「该餐厅没有楼层划分」', p.data.floorHint);
+check(p.data.stallOptions.length === 3, '窗口直接可选 3 个',
+  p.data.stallOptions.map(function (s) { return s.name; }).join(','));
+check(p.data.floorId === 'all' && p.data.matchedCount === 3, '不选楼层也能正常筛出 3 道',
+  p.data.matchedCount);
+
+console.log('\n=== 9. 校外：商家 / 档口，不出现楼层 ===');
+p = newPage();
+tap('onSelectArea', 'offsite')(p);
+check(p.data.restaurantOptions.length === 6, '商家候选 6 家', p.data.restaurantOptions.length);
+check(p.data.floorOptions.length === 0, '校外没有楼层候选');
+check(p.data.floorHint === '', '校外不显示楼层相关提示', JSON.stringify(p.data.floorHint));
+check(p.data.matchedCount === 18, '校外命中 18 道', p.data.matchedCount);
+tap('onSelectShop', 's07')(p);
+check(p.data.stallOptions.length === 2, '烧烤摊档口 = 2（烧烤区 / 主食区）',
+  p.data.stallOptions.map(function (s) { return s.name; }).join(','));
+tap('onSelectStall', 's07_t2')(p);
+check(p.data.matchedCount === 1, '主食区命中 1 道（小饼卷肉）', p.data.matchedCount);
+
+console.log('\n=== 10. 地点条件与预算 / 口味联动 ===');
+p = newPage();
+tap('onSelectArea', 'campus')(p);
+tap('onSelectShop', 's01')(p);
+tap('onSelectFloor', 's01_f2')(p);
+tap('onSelectTaste', 'mild_spicy')(p);
+check(p.data.matchedCount === 1, '一号食堂 2 楼 + 微辣 = 1 道', p.data.matchedCount);
+tap('onSelectBudget', 10)(p);
+check(p.data.matchedCount === 0, '再加 10 元以内 = 0 道（空态）', p.data.matchedCount);
+check(p.data.conditionText === '校内食堂 · 一号食堂 · 2 楼 · 10 元以内 · 微辣', '条件文案全链正确',
+  p.data.conditionText);
+
+console.log('\n=== 11. 空结果组合用页面真实点击路径复现 ===');
+const emptyCases = [
+  { steps: [['onSelectArea', 'campus'], ['onSelectShop', 's01'], ['onSelectFloor', 's01_f1'], ['onSelectTaste', 'spicy']], text: '校内 · 一号食堂 · 1 楼 · 麻辣' },
+  { steps: [['onSelectArea', 'offsite'], ['onSelectBudget', 10], ['onSelectTaste', 'spicy']], text: '校外 · 10 元以内 · 麻辣' },
+  { steps: [['onSelectArea', 'campus'], ['onSelectShop', 's03'], ['onSelectFloor', 's03_f2'], ['onSelectBudget', 10]], text: '校内 · 三号食堂 · 2 楼 · 10 元以内' },
+  { steps: [['onSelectArea', 'campus'], ['onSelectShop', 's05'], ['onSelectBudget', 10], ['onSelectTaste', 'mild_spicy']], text: '校内 · 东区食堂 · 10 元以内 · 微辣' }
+];
+emptyCases.forEach(function (c) {
+  const page = newPage();
+  c.steps.forEach(function (s) { tap(s[0], s[1])(page); });
+  check(page.data.matchedCount === 0, '空态可复现：' + c.text, page.data.matchedCount);
+  /* 空态下点按钮不能崩 */
+  page.onRandomDish();
+  page.onRandomShop();
+  check(page.data.mode === 'none', '  空态点随机按钮不改变展示状态', page.data.mode);
+});
+
+console.log('\n=== 12. 重置 ===');
+p = newPage();
+tap('onSelectArea', 'campus')(p);
+tap('onSelectShop', 's01')(p);
+tap('onSelectFloor', 's01_f2')(p);
+tap('onSelectStall', 's01_t2')(p);
+tap('onSelectTaste', 'spicy')(p);
+p.onReset();
+check(p.data.area === 'all' && p.data.shopId === 'all' && p.data.floorId === 'all' && p.data.stallId === 'all',
+  '地点三级全部归位');
+check(p.data.budget === 0 && p.data.taste === 'all', '预算口味归位');
+check(p.data.matchedCount === 36, '重置后回到 36 道', p.data.matchedCount);
+check(p.data.restaurantOptions.length === 0, '重置后餐厅候选清空');
+
+console.log('\n=== 13. 随机推荐只看符合条件的池子 ===');
+p = newPage();
+tap('onSelectArea', 'campus')(p);
+tap('onSelectShop', 's01')(p);
+tap('onSelectFloor', 's01_f2')(p);
+let shopSet = {}, dishSet = {};
+for (let i = 0; i < 3000; i++) {
+  p.onRandomShop();
+  shopSet[p.data.pickedShop.id] = (shopSet[p.data.pickedShop.id] || 0) + 1;
+  p.onRandomDish();
+  dishSet[p.data.pickedDish.id] = (dishSet[p.data.pickedDish.id] || 0) + 1;
+}
+check(Object.keys(shopSet).length === 1 && shopSet.s01 === 3000,
+  '限定「一号食堂 2 楼」时随机选一家只可能是 s01', JSON.stringify(shopSet));
+check(Object.keys(dishSet).sort().join(',') === 'd01,d03' && dishSet.d01 > 0 && dishSet.d03 > 0,
+  '随机选一道菜只出 2 楼的两道（d01 / d03）', JSON.stringify(dishSet));
+
+p = newPage();
+tap('onSelectArea', 'offsite')(p);
+let outShops = {};
+for (let i = 0; i < 20000; i++) {
+  p.onRandomShop();
+  outShops[p.data.pickedShop.id] = (outShops[p.data.pickedShop.id] || 0) + 1;
+}
+check(Object.keys(outShops).length === 6, '校外不限商家时 6 家都有机会被抽到',
+  Object.keys(outShops).length + '/6');
+const oc = Object.keys(outShops).map(function (k) { return outShops[k]; });
+const spread = Math.max.apply(null, oc) / Math.min.apply(null, oc);
+check(spread < 1.5, '「随机选一家」分布均匀（最大/最小 < 1.5）', spread.toFixed(2));
+
+console.log('\n=== 14. 全组合枚举 + 独立实现交叉校验 ===');
+function buildLegalCombos() {
+  const combos = [];
+  ['all', 'campus', 'offsite'].forEach(function (area) {
+    const shopsOfArea = area === 'all' ? [] : SHOPS.filter(function (s) { return s.area === area; });
+    const shopChoices = area === 'all' ? ['all'] : ['all'].concat(shopsOfArea.map(function (s) { return s.id; }));
+    shopChoices.forEach(function (shopId) {
+      const shop = shopId === 'all' ? null : RAW_SHOP_MAP[shopId];
+      const floors = shop ? (shop.floors || []) : [];
+      const floorChoices = shopId === 'all' ? ['all']
+        : ['all'].concat(floors.map(function (f) { return f.id; }));
+      floorChoices.forEach(function (floorId) {
+        const stalls = shop ? (shop.stalls || []) : [];
+        const stallPool = stalls.filter(function (st) {
+          return floorId === 'all' || st.floorId === floorId;
+        });
+        ['all'].concat(stallPool.map(function (st) { return st.id; })).forEach(function (stallId) {
+          [0, 10, 15, 20].forEach(function (budget) {
+            ['all', 'light', 'mild_spicy', 'spicy'].forEach(function (taste) {
+              combos.push({ area: area, shopId: shopId, floorId: floorId, stallId: stallId, budget: budget, taste: taste });
+            });
+          });
+        });
+      });
+    });
+  });
+  return combos;
+}
+
+const combos = buildLegalCombos();
+let mismatch = 0, sample = [];
+combos.forEach(function (c) {
+  const got = filterDishes(ALL_DISHES, c).length;
+  const exp = expected(c).length;
+  if (got !== exp) {
+    mismatch++;
+    if (sample.length < 5) sample.push(JSON.stringify(c) + ' got=' + got + ' exp=' + exp);
+  }
+});
+check(mismatch === 0, combos.length + ' 种地缘组合全部与独立实现一致',
+  mismatch ? sample.join(' | ') : '0 处不一致');
+
+/* 再挑一批组合，直接用页面点击复现，确认页面状态与内核一致 */
+let pageMismatch = 0;
+const pick = combos.filter(function (_, i) { return i % 37 === 0; }).slice(0, 60);
+pick.forEach(function (c) {
+  const page = newPage();
+  if (c.area !== 'all') tap('onSelectArea', c.area)(page);
+  if (c.shopId !== 'all') tap('onSelectShop', c.shopId)(page);
+  if (c.floorId !== 'all') tap('onSelectFloor', c.floorId)(page);
+  if (c.stallId !== 'all') tap('onSelectStall', c.stallId)(page);
+  if (c.budget !== 0) tap('onSelectBudget', c.budget)(page);
+  if (c.taste !== 'all') tap('onSelectTaste', c.taste)(page);
+  if (page.data.matchedCount !== expected(c).length) pageMismatch++;
+});
+check(pageMismatch === 0, '抽样 ' + pick.length + ' 组用「点按钮」路径复现结果一致', pageMismatch + ' 处不一致');
+
+const totalEmpty = combos.filter(function (c) { return expected(c).length === 0; }).length;
+console.log('  提示：' + combos.length + ' 种合法组合中，' + totalEmpty + ' 种是空结果（' +
+  (totalEmpty / combos.length * 100).toFixed(1) + '%），大多是「单一窗口 + 苛刻预算口味」这种极端组合');
+
+/* 只用一级条件（区域 × 预算 × 口味，不带餐厅楼层窗口）的 48 种常规组合 */
+const coarse = [];
+['all', 'campus', 'offsite'].forEach(function (area) {
+  [0, 10, 15, 20].forEach(function (budget) {
+    ['all', 'light', 'mild_spicy', 'spicy'].forEach(function (taste) {
+      coarse.push({ area: area, budget: budget, taste: taste, n: expected({ area: area, shopId: 'all', floorId: 'all', stallId: 'all', budget: budget, taste: taste }).length });
+    });
+  });
+});
+const coarseEmpty = coarse.filter(function (c) { return c.n === 0; });
+check(coarse.length === 48 && coarseEmpty.length === 2,
+  '只按区域+预算+口味时，48 种常规组合里只有 2 种无结果',
+  coarseEmpty.map(function (c) { return c.area + '/' + (c.budget || '不限') + '/' + c.taste; }).join(' , ') || '0 种');
+
+console.log('\n=== 15. 查看全部 / 随机选一家 的结果都属于当前池子 ===');
+p = newPage();
+tap('onSelectArea', 'campus')(p);
+tap('onSelectShop', 's03')(p);
+tap('onSelectFloor', 's03_f1')(p);
+p.onViewAll();
+check(p.data.listDishes.length === p.data.matchedCount,
+  '查看全部条数 = 当前命中数', p.data.listDishes.length + ' / ' + p.data.matchedCount);
+check(p.data.listDishes.every(function (d) { return d.shopId === 's03' && d.floorId === 's03_f1'; }),
+  '列表里每道菜都属于三号食堂 1 楼');
+p.onRandomShop();
+check(p.data.pickedShop.id === 's03', '随机选一家结果在池内', p.data.pickedShop.id);
+check(p.data.pickedShop.dishes.every(function (d) { return d.floorId === 's03_f1'; }),
+  '店铺卡里列出的菜也只来自 1 楼');
+
+console.log('\n=== 16. WXML / WXSS / JS 三方对齐 ===');
+const wxml = fs.readFileSync(path.join(ROOT, 'pages/index/index.wxml'), 'utf8');
+const wxss = fs.readFileSync(path.join(ROOT, 'pages/index/index.wxss'), 'utf8');
+const js = fs.readFileSync(path.join(ROOT, 'pages/index/index.js'), 'utf8');
+
+const used = new Set();
+(wxml.match(/class="([^"]*)"/g) || []).forEach(function (a) {
+  /* 只取三元表达式 ? 和 : 分支上的字符串（那才是 class），
+     不把 area === 'all' 里的比较值当成 class 名 */
+  let v = a.slice(7, -1).replace(/\{\{([\s\S]*?)\}\}/g, function (_m, inner) {
+    const q = inner.match(/[?:]\s*'([^']*)'/g) || [];
+    return ' ' + q.map(function (s) { return s.replace(/^[?:]\s*'/, '').replace(/'$/, ''); }).join(' ') + ' ';
+  });
+  v.split(/\s+/).forEach(function (t) { if (t && !/^[0-9.]+$/.test(t)) used.add(t); });
+});
+const defined = new Set();
+(wxss.match(/\.([a-zA-Z][a-zA-Z0-9_-]*)/g) || []).forEach(function (s) { defined.add(s.slice(1)); });
+const missing = Array.from(used).filter(function (c) { return !defined.has(c); });
+check(missing.length === 0, 'WXML 的 ' + used.size + ' 个 class 都有样式',
+  missing.length ? '缺失: ' + missing.join(',') : '无缺失');
+
+const handlers = Array.from(new Set((wxml.match(/bindtap="([a-zA-Z]+)"/g) || [])
+  .map(function (s) { return s.replace(/bindtap="|"/g, ''); })));
+handlers.forEach(function (h) {
+  check(js.indexOf(h + '(') !== -1, 'WXML 调用的 ' + h + ' 在 JS 中已实现');
+});
+check(handlers.length === 10, '共 10 个不同的点击处理函数', handlers.length);
+
+const tplUses = (wxml.match(/<template is="dishCard"/g) || []).length;
+check(tplUses === 3, 'dishCard 模板仍复用 3 次', tplUses);
+check(wxml.indexOf('wx:if="{{area === \'campus\'}}"') !== -1 &&
+      wxml.indexOf('wx:if="{{area === \'offsite\'}}"') !== -1, '校内 / 校外两套筛选分支都在');
+
+console.log('\n================================');
+if (fail === 0) console.log('全部检查通过 ✅');
+else { console.log('有 ' + fail + ' 项未通过 ❌'); process.exitCode = 1; }

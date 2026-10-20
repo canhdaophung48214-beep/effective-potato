@@ -1,0 +1,19 @@
+/* ===================================================================
+   全局样式
+   =================================================================== */
+
+page {
+  background: #F5F6F8;
+  color: #1F2329;
+  font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 28rpx;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+view,
+text,
+button,
+input {
+  box-sizing: border-box;
+}

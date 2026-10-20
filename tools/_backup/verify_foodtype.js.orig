@@ -1,0 +1,359 @@
+/* 主食类型筛选 —— 与全部既有条件的联动回归测试
+   加载真实 pages/index/index.js，用假 Page() 捕获、假 setData 驱动，
+   等于在 Node 里把「点筛选按钮」真跑一遍。 */
+const path = require('path');
+const fs = require('fs');
+
+const ROOT = 'C:\\Users\\25975\\Desktop\\文件all\\微信小程序';
+const { ALL_DISHES, ALL_SHOPS, FOOD_TYPE_LABEL } = require(path.join(ROOT, 'data/index.js'));
+const { SHOPS } = require(path.join(ROOT, 'data/shops.js'));
+const { DISHES } = require(path.join(ROOT, 'data/dishes.js'));
+const { filterDishes, collectShopIds } = require(path.join(ROOT, 'utils/matcher.js'));
+
+let fail = 0;
+function check(ok, label, extra) {
+  if (ok) console.log('  OK  ' + label + (extra !== undefined ? '  → ' + extra : ''));
+  else { fail++; console.log('  FAIL ' + label + (extra !== undefined ? '  → ' + extra : '')); }
+}
+
+/* ================= 载入页面并造实例 ================= */
+let captured = null;
+global.Page = function (obj) { captured = obj; };
+global.wx = { showToast: function () {} };
+require(path.join(ROOT, 'pages/index/index.js'));
+
+function newPage() {
+  const p = Object.assign({}, captured);
+  p.data = JSON.parse(JSON.stringify(captured.data));
+  p.setData = function (patch, cb) {
+    Object.assign(this.data, patch);
+    if (typeof cb === 'function') cb();
+  };
+  p.onLoad();
+  return p;
+}
+function tap(fn, value) {
+  return function (page) { page[fn]({ currentTarget: { dataset: { value: value } } }); };
+}
+const RAW_SHOP_MAP = {};
+SHOPS.forEach(function (s) { RAW_SHOP_MAP[s.id] = s; });
+
+/* 独立实现：绕开 data/index.js 和 matcher.js，直接从原始数据算期望值 */
+function expected(cond) {
+  const out = [];
+  DISHES.forEach(function (d) {
+    const shop = RAW_SHOP_MAP[d.shopId];
+    if (!shop) return;
+    if (cond.area !== 'all' && shop.area !== cond.area) return;
+    if (cond.shopId !== 'all' && d.shopId !== cond.shopId) return;
+    let floorId = '';
+    (shop.stalls || []).forEach(function (st) {
+      if (st.id === d.stallId) floorId = st.floorId || '';
+    });
+    if (cond.floorId !== 'all' && floorId !== cond.floorId) return;
+    if (cond.stallId !== 'all' && d.stallId !== cond.stallId) return;
+    if (cond.foodType !== 'all' && d.foodType !== cond.foodType) return;
+    if (cond.budget !== 0 && d.price > cond.budget) return;
+    if (cond.taste !== 'all' && (d.tastes || []).indexOf(cond.taste) === -1) return;
+    out.push(d);
+  });
+  return out;
+}
+
+console.log('=== 1. foodType 数据合法性 ===');
+check(ALL_DISHES.length === 44, '菜品共 44 道', ALL_DISHES.length);
+const ENUM = Object.keys(FOOD_TYPE_LABEL);
+check(ENUM.length === 8, '枚举 8 个具体类型（不含 all）', ENUM.join(','));
+check(ENUM.indexOf('all') === -1, "枚举里没有 'all'（'all' 只给筛选用）");
+
+const badType = DISHES.filter(function (d) { return ENUM.indexOf(d.foodType) === -1; });
+check(badType.length === 0, '每道菜的 foodType 都是合法具体类型',
+  badType.length ? badType.map(function (d) { return d.id + '=' + d.foodType; }).join(',') : '0 处非法');
+const noType = DISHES.filter(function (d) { return !d.foodType; });
+check(noType.length === 0, '没有漏填 foodType 的菜', noType.length + ' 道漏填');
+const isAll = DISHES.filter(function (d) { return d.foodType === 'all'; });
+check(isAll.length === 0, "没有任何菜品把 foodType 写成 'all'", isAll.length + ' 道');
+
+const typeCount = {};
+ALL_DISHES.forEach(function (d) { typeCount[d.foodType] = (typeCount[d.foodType] || 0) + 1; });
+const emptyType = ENUM.filter(function (t) { return !typeCount[t]; });
+check(emptyType.length === 0, '8 个分类每个都有菜，不存在「点了必然空」的死分类',
+  ENUM.map(function (t) { return FOOD_TYPE_LABEL[t] + ':' + (typeCount[t] || 0); }).join(' '));
+
+const badText = ALL_DISHES.filter(function (d) { return !d.foodTypeText; });
+check(badText.length === 0, '每道菜都拼出了中文类型文字', badText.length + ' 条为空');
+check(ALL_DISHES.filter(function (d) { return d.foodType === 'rice_noodle'; })[0].foodTypeText === '米线类',
+  '米线类文字正确');
+check(ALL_DISHES.filter(function (d) { return d.foodType === 'rice_vermicelli'; })[0].foodTypeText === '粉类',
+  '粉类文字正确');
+check(FOOD_TYPE_LABEL.rice_noodle !== FOOD_TYPE_LABEL.noodle &&
+      FOOD_TYPE_LABEL.rice_noodle !== FOOD_TYPE_LABEL.rice_vermicelli,
+  '米线类、面类、粉类是三个互不相同的分类');
+
+console.log('\n=== 2. 初始状态与重置基线 ===');
+let p = newPage();
+check(p.data.foodType === 'all', "食品类型默认 'all'", p.data.foodType);
+check(p.data.foodTypeOptions.length === 9, '筛选器 9 个选项（不限 + 8 类）', p.data.foodTypeOptions.length);
+check(p.data.foodTypeOptions[0].value === 'all' && p.data.foodTypeOptions[0].label === '不限类型',
+  '第一项是「不限类型」');
+check(p.data.matchedCount === 44, '不限类型时命中 44 道', p.data.matchedCount);
+check(p.data.conditionText === '不限区域 · 不限预算 · 不限类型 · 不限口味', '条件文案含「不限类型」',
+  p.data.conditionText);
+
+console.log('\n=== 3. 你点名要测的六项 ===');
+
+/* 3.1 只筛选米线类 */
+p = newPage();
+tap('onSelectFoodType', 'rice_noodle')(p);
+check(p.data.matchedCount === 4, '① 只筛米线类 = 4 道', p.data.matchedCount);
+check(p.data.listDishes.length === 0, '此时还没点按钮，列表未展开');
+p.onViewAll();
+check(p.data.listDishes.every(function (d) { return d.foodType === 'rice_noodle'; }),
+  '① 列表里每道都是米线类');
+check(p.data.listDishes.map(function (d) { return d.name; }).sort().join(',') ===
+  ['麻辣米线（小份）', '砂锅米线', '番茄鸡蛋米线', '牛肉米线'].sort().join(','),
+  '① 四道米线名单正确', p.data.listDishes.map(function (d) { return d.name; }).join(' / '));
+
+/* 3.2 米线类 + 15 元以内 */
+p = newPage();
+tap('onSelectFoodType', 'rice_noodle')(p);
+tap('onSelectBudget', 15)(p);
+check(p.data.matchedCount === 3, '② 米线类 + 15 元以内 = 3 道', p.data.matchedCount);
+p.onViewAll();
+check(p.data.listDishes.every(function (d) { return d.price <= 15; }),
+  '② 结果价格全部 ≤ 15');
+check(p.data.listDishes.map(function (d) { return d.price; }).sort().join(',') === '11,12,13',
+  '② 剩下 11 / 12 / 13 三档，16 元的牛肉米线被排除',
+  p.data.listDishes.map(function (d) { return d.name + d.price; }).join(' '));
+check(p.data.conditionText === '不限区域 · 15 元以内 · 米线类 · 不限口味', '② 条件文案正确',
+  p.data.conditionText);
+
+/* 3.3 米线类 + 微辣 + 校内食堂 */
+p = newPage();
+tap('onSelectArea', 'campus')(p);
+tap('onSelectFoodType', 'rice_noodle')(p);
+tap('onSelectTaste', 'mild_spicy')(p);
+check(p.data.matchedCount === 1, '③ 米线类 + 微辣 + 校内 = 1 道', p.data.matchedCount);
+p.onViewAll();
+check(p.data.listDishes[0].name === '砂锅米线' && p.data.listDishes[0].shopName === '东区食堂',
+  '③ 命中砂锅米线 @ 东区食堂',
+  p.data.listDishes[0].name + ' @ ' + p.data.listDishes[0].shopName);
+check(p.data.conditionText === '校内食堂 · 不限预算 · 米线类 · 微辣', '③ 条件文案正确',
+  p.data.conditionText);
+
+/* 3.4 改餐厅 / 楼层后其他条件仍然有效 */
+p = newPage();
+tap('onSelectArea', 'campus')(p);
+tap('onSelectFoodType', 'rice_noodle')(p);
+tap('onSelectBudget', 15)(p);
+tap('onSelectShop', 's01')(p);
+check(p.data.foodType === 'rice_noodle' && p.data.budget === 15,
+  '④ 改餐厅后：主食类型与预算都没被清掉',
+  p.data.foodType + ' / ' + p.data.budget);
+check(p.data.floorId === 'all' && p.data.stallId === 'all', '④ 只有楼层和窗口被重置（这是级联规则）');
+check(p.data.matchedCount === 1, '④ 校内 + 一号食堂 + 米线 + 15 元 = 1 道', p.data.matchedCount);
+p.onViewAll();
+check(p.data.listDishes[0].name === '番茄鸡蛋米线', '④ 命中番茄鸡蛋米线（11 元）',
+  p.data.listDishes[0].name);
+
+tap('onSelectFloor', 's01_f1')(p);
+check(p.data.foodType === 'rice_noodle' && p.data.budget === 15 && p.data.shopId === 's01',
+  '④ 改楼层后：主食类型 / 预算 / 餐厅都还在',
+  [p.data.foodType, p.data.budget, p.data.shopId].join(' / '));
+check(p.data.matchedCount === 1, '④ 一号食堂 1 楼 + 米线 + 15 元 = 1 道（番茄鸡蛋米线在 1 楼）',
+  p.data.matchedCount);
+
+tap('onSelectFloor', 's01_f2')(p);
+check(p.data.matchedCount === 0, '④ 换成 2 楼后为 0 道（2 楼没有米线）', p.data.matchedCount);
+check(p.data.foodType === 'rice_noodle', '④ 空结果时主食类型条件仍然保留');
+
+tap('onSelectArea', 'offsite')(p);
+check(p.data.foodType === 'rice_noodle' && p.data.budget === 15, '④ 切换区域后主食类型 / 预算仍在');
+check(p.data.matchedCount === 0, '④ 校外 + 米线 + 15 元 = 0 道（唯一的校外米线是 16 元牛肉米线）',
+  p.data.matchedCount);
+tap('onSelectBudget', 20)(p);
+check(p.data.matchedCount === 1, '④ 预算放宽到 20 元后出现 1 道（牛肉米线 16 元）', p.data.matchedCount);
+check(p.data.foodType === 'rice_noodle', '④ 改预算不会清掉主食类型', p.data.foodType);
+
+/* 3.5 重置恢复「不限类型」 */
+p = newPage();
+tap('onSelectArea', 'campus')(p);
+tap('onSelectFoodType', 'rice_noodle')(p);
+tap('onSelectBudget', 15)(p);
+tap('onSelectTaste', 'mild_spicy')(p);
+p.onReset();
+check(p.data.foodType === 'all', '⑤ 重置后食品类型回到 all', p.data.foodType);
+check(p.data.area === 'all' && p.data.shopId === 'all' && p.data.floorId === 'all' && p.data.stallId === 'all',
+  '⑤ 地点全部归位');
+check(p.data.budget === 0 && p.data.taste === 'all', '⑤ 预算口味归位');
+check(p.data.matchedCount === 44, '⑤ 重置后回到 44 道', p.data.matchedCount);
+check(p.data.conditionText === '不限区域 · 不限预算 · 不限类型 · 不限口味', '⑤ 条件文案回到初始',
+  p.data.conditionText);
+
+/* 3.6 无结果时友好提示、不报错 */
+/* 米线类最便宜 11 元，所以「米线类 + 10 元以内」天然无解 */
+p = newPage();
+tap('onSelectFoodType', 'rice_noodle')(p);
+tap('onSelectBudget', 10)(p);
+check(p.data.matchedCount === 0, '⑥ 米线类 + 10 元以内 = 0 道（空态）', p.data.matchedCount);
+let threw = null;
+try { p.onRandomDish(); p.onRandomShop(); p.onViewAll(); } catch (e) { threw = e.message; }
+check(threw === null, '⑥ 空态下点三个按钮都不抛异常', threw || '无异常');
+check(p.data.mode === 'none' && p.data.pickedDish === null && p.data.pickedShop === null,
+  '⑥ 空态下不产生假结果');
+p.onViewAll();
+check(p.data.listDishes.length === 0, '⑥ 空态下「查看全部」得到空列表而非报错', p.data.listDishes.length);
+
+console.log('\n=== 4. 随机推荐必须只看交集 ===');
+
+/* 随机选一道菜：限定米线类 + 15 元 */
+p = newPage();
+tap('onSelectFoodType', 'rice_noodle')(p);
+tap('onSelectBudget', 15)(p);
+const dishPool = {};
+for (let i = 0; i < 6000; i++) { p.onRandomDish(); dishPool[p.data.pickedDish.id] = 1; }
+check(Object.keys(dishPool).sort().join(',') === 'd37,d38,d39',
+  '随机选一道菜只出 3 道米线（d37/d38/d39）', Object.keys(dishPool).join(','));
+
+/* 随机选一家：限定米线类 → 店铺里列出的菜必须全是米线 */
+p = newPage();
+tap('onSelectFoodType', 'rice_noodle')(p);
+const shopPool = {};
+let leak = 0;
+for (let i = 0; i < 4000; i++) {
+  p.onRandomShop();
+  shopPool[p.data.pickedShop.id] = 1;
+  if (!p.data.pickedShop.dishes.every(function (d) { return d.foodType === 'rice_noodle'; })) leak++;
+}
+check(leak === 0, '随机选一家：选中的店里列出的菜 100% 都是米线类', leak + ' 次泄漏');
+check(Object.keys(shopPool).sort().join(',') === 's01,s02,s05,s10',
+  '米线类分布在 4 家店，随机都能抽到', Object.keys(shopPool).join(','));
+
+/* 随机选一家：米线 + 校内 → s10（校外）不得出现 */
+p = newPage();
+tap('onSelectArea', 'campus')(p);
+tap('onSelectFoodType', 'rice_noodle')(p);
+const campusShops = {};
+for (let i = 0; i < 4000; i++) { p.onRandomShop(); campusShops[p.data.pickedShop.id] = 1; }
+check(Object.keys(campusShops).sort().join(',') === 's01,s02,s05',
+  '校内 + 米线：只在 3 家校内食堂里抽', Object.keys(campusShops).join(','));
+
+console.log('\n=== 5. 全组合枚举（含主食类型）交叉校验 ===');
+function buildLegalCombos() {
+  const combos = [];
+  ['all', 'campus', 'offsite'].forEach(function (area) {
+    const shopsOfArea = area === 'all' ? [] : SHOPS.filter(function (s) { return s.area === area; });
+    const shopChoices = area === 'all' ? ['all'] : ['all'].concat(shopsOfArea.map(function (s) { return s.id; }));
+    shopChoices.forEach(function (shopId) {
+      const shop = shopId === 'all' ? null : RAW_SHOP_MAP[shopId];
+      const floors = shop ? (shop.floors || []) : [];
+      const floorChoices = shopId === 'all' ? ['all']
+        : ['all'].concat(floors.map(function (f) { return f.id; }));
+      floorChoices.forEach(function (floorId) {
+        const stalls = shop ? (shop.stalls || []) : [];
+        const stallPool = stalls.filter(function (st) {
+          return floorId === 'all' || st.floorId === floorId;
+        });
+        ['all'].concat(stallPool.map(function (st) { return st.id; })).forEach(function (stallId) {
+          [0, 10, 15, 20].forEach(function (budget) {
+            ['all', 'rice', 'noodle', 'rice_noodle', 'rice_vermicelli', 'dumpling', 'malatang', 'snack', 'other'].forEach(function (foodType) {
+              ['all', 'light', 'mild_spicy', 'spicy'].forEach(function (taste) {
+                combos.push({ area: area, shopId: shopId, floorId: floorId, stallId: stallId, budget: budget, foodType: foodType, taste: taste });
+              });
+            });
+          });
+        });
+      });
+    });
+  });
+  return combos;
+}
+
+const combos = buildLegalCombos();
+let mismatch = 0, sample = [];
+combos.forEach(function (c) {
+  const got = filterDishes(ALL_DISHES, c).length;
+  const exp = expected(c).length;
+  if (got !== exp) {
+    mismatch++;
+    if (sample.length < 4) sample.push(JSON.stringify(c) + ' got=' + got + ' exp=' + exp);
+  }
+});
+check(mismatch === 0, combos.length + ' 种全条件组合与独立实现完全一致',
+  mismatch ? sample.join(' | ') : '0 处不一致');
+
+/* 抽样用真实点击复现 */
+let pageMismatch = 0, used = 0;
+combos.filter(function (_, i) { return i % 211 === 0; }).slice(0, 40).forEach(function (c) {
+  used++;
+  const page = newPage();
+  if (c.area !== 'all') tap('onSelectArea', c.area)(page);
+  if (c.shopId !== 'all') tap('onSelectShop', c.shopId)(page);
+  if (c.floorId !== 'all') tap('onSelectFloor', c.floorId)(page);
+  if (c.stallId !== 'all') tap('onSelectStall', c.stallId)(page);
+  if (c.budget !== 0) tap('onSelectBudget', c.budget)(page);
+  if (c.foodType !== 'all') tap('onSelectFoodType', c.foodType)(page);
+  if (c.taste !== 'all') tap('onSelectTaste', c.taste)(page);
+  if (page.data.matchedCount !== expected(c).length) pageMismatch++;
+});
+check(pageMismatch === 0, '抽样 ' + used + ' 组用「点按钮」路径复现一致', pageMismatch + ' 处不一致');
+
+/* 只看地点三级 + 主食类型，不含预算口味的常规查询是否都有结果 */
+let deadCombo = 0;
+['all', 'campus', 'offsite'].forEach(function (area) {
+  ['all', 'rice', 'noodle', 'rice_noodle', 'rice_vermicelli', 'dumpling', 'malatang', 'snack', 'other'].forEach(function (ft) {
+    const n = expected({ area: area, shopId: 'all', floorId: 'all', stallId: 'all', budget: 0, foodType: ft, taste: 'all' }).length;
+    if (n === 0) deadCombo++;
+  });
+});
+check(deadCombo === 0, '「区域 × 主食类型」27 种组合全部有结果，不会出现死分类', deadCombo + ' 个空');
+
+console.log('\n=== 6. 三个推荐模式在米线条件下都只出米线 ===');
+p = newPage();
+tap('onSelectFoodType', 'rice_noodle')(p);
+p.onViewAll();
+check(p.data.listDishes.every(function (d) { return d.foodType === 'rice_noodle'; }), '查看全部：全是米线');
+p.onRandomDish();
+check(p.data.pickedDish.foodType === 'rice_noodle', '随机选一道菜：是米线',
+  p.data.pickedDish.name);
+p.onRandomShop();
+check(p.data.pickedShop.dishes.every(function (d) { return d.foodType === 'rice_noodle'; }),
+  '随机选一家：店内菜品全是米线');
+
+console.log('\n=== 7. WXML / WXSS / JS 三方对齐 ===');
+const wxml = fs.readFileSync(path.join(ROOT, 'pages/index/index.wxml'), 'utf8');
+const wxss = fs.readFileSync(path.join(ROOT, 'pages/index/index.wxss'), 'utf8');
+const js = fs.readFileSync(path.join(ROOT, 'pages/index/index.js'), 'utf8');
+
+const usedCls = new Set();
+(wxml.match(/class="([^"]*)"/g) || []).forEach(function (a) {
+  let v = a.slice(7, -1).replace(/\{\{([\s\S]*?)\}\}/g, function (_m, inner) {
+    const q = inner.match(/[?:]\s*'([^']*)'/g) || [];
+    return ' ' + q.map(function (s) { return s.replace(/^[?:]\s*'/, '').replace(/'$/, ''); }).join(' ') + ' ';
+  });
+  v.split(/\s+/).forEach(function (t) { if (t && !/^[0-9.]+$/.test(t)) usedCls.add(t); });
+});
+const definedCls = new Set();
+(wxss.match(/\.([a-zA-Z][a-zA-Z0-9_-]*)/g) || []).forEach(function (s) { definedCls.add(s.slice(1)); });
+const missing = Array.from(usedCls).filter(function (c) { return !definedCls.has(c); });
+check(missing.length === 0, 'WXML 的 ' + usedCls.size + ' 个 class 都有样式',
+  missing.length ? '缺失: ' + missing.join(',') : '无缺失');
+check(definedCls.has('type-scroll') && definedCls.has('tag-type') && definedCls.has('label-tip'),
+  '本次新增的 type-scroll / tag-type / label-tip 样式都在');
+
+const handlers = Array.from(new Set((wxml.match(/bindtap="([a-zA-Z]+)"/g) || [])
+  .map(function (s) { return s.replace(/bindtap="|"/g, ''); })));
+handlers.forEach(function (h) {
+  check(js.indexOf(h + '(') !== -1, 'WXML 调用的 ' + h + ' 在 JS 中已实现');
+});
+check(handlers.length === 11, '共 11 个不同的点击处理函数', handlers.length);
+check(handlers.indexOf('onSelectFoodType') !== -1, '主食类型有独立处理函数 onSelectFoodType');
+
+check(wxml.indexOf('scroll-view class="type-scroll"') !== -1, '主食类型用横向 scroll-view 承载');
+check((wxml.match(/<template is="dishCard"/g) || []).length === 3, 'dishCard 模板仍复用 3 次');
+check(wxml.indexOf('{{dish.foodTypeText}}') !== -1, '菜品卡展示了主食类型');
+check(wxml.indexOf('演示数据') !== -1 && wxml.indexOf('虚构演示数据') !== -1, '演示数据标记仍在');
+
+console.log('\n================================');
+if (fail === 0) console.log('全部检查通过 ✅');
+else { console.log('有 ' + fail + ' 项未通过 ❌'); process.exitCode = 1; }

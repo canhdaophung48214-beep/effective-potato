@@ -1,0 +1,3 @@
+# 全仓库统一用 LF：微信开发者工具与 Node 都按 LF 写文件，
+# 避免 Windows 上 autocrlf 把工作区改成 CRLF 后产生无意义的 diff
+* text=auto eol=lf
