@@ -355,8 +355,10 @@ function attachDemoShops(list) {
  * @param {Array} layers [{ level, id, verifyStatus, verifiedAt, source }]
  * @returns {{ status, level, id, verifiedAt, source, note }}
  *
- * 规则：
- *   · 任一层 expired → 整体 expired（过期比「待核实」更需要提醒重新核实）
+ * 规则（顺序即优先级）：
+ *   · 任一层 demo → 整体 demo（演示数据不对应真实对象，不能因为别的层过期就
+ *     显示成「核实已过期」；演示也不是「未核实」，它是更低一档的声明）
+ *   · 否则任一层 expired → 整体 expired（过期比「待核实」更需要提醒重新核实）
  *   · 否则取 rank 最小的那层
  *   · 若最弱那一层不是自己，note 里写清是哪个层级拖累了状态
  */
@@ -376,6 +378,23 @@ function weakest(layers) {
     };
   }
 
+  /* 第一优先级：演示。演示数据挂在过期窗口下也仍然是演示，不能升级成「已过期」 */
+  let demoLayer = null;
+  for (let i = 0; i < list.length; i++) {
+    if (list[i].verifyStatus === VERIFY_STATUS.DEMO) { demoLayer = list[i]; break; }
+  }
+  if (demoLayer) {
+    return {
+      status: VERIFY_STATUS.DEMO,
+      level: demoLayer.metaLevel || '',
+      id: demoLayer.id || '',
+      verifiedAt: null,
+      source: copySource(demoLayer.source),
+      note: ''
+    };
+  }
+
+  /* 第二优先级：过期 */
   let expired = null;
   for (let i = 0; i < list.length; i++) {
     if (list[i].verifyStatus === VERIFY_STATUS.EXPIRED) { expired = list[i]; break; }

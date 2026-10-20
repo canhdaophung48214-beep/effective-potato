@@ -10,14 +10,14 @@
 
 ## 当前有效的三套测试
 
-### 0. `verify_provenance.js` —— 阶段 2 数据可信度专项（64 项）
+### 0. `verify_provenance.js` —— 阶段 2 数据可信度专项（115 项）
 
 ```bash
 node tools/verify_provenance.js
 ```
 
-- 当前实测：**通过 64 项 / 失败 0 项**
-- 覆盖：字段完整性（45 菜 / 12 店 / 7 楼层 / 24 窗口 = 88 条，逐条 source·verifyStatus·verifiedAt）、标记规则（全 demo、无伪造时间）、四层关联透传、最弱一环合成（含 expired 优先）、7 组边界用例（verified 缺时间降级、非法状态、demo 带时间清空等）、统计与摘要一致、页面绑定（WXML/WXSS/JS）、业务护栏（加字段前后筛选排序结果一致）。
+- 当前实测：**通过 115 项 / 失败 0 项**
+- 覆盖：字段完整性（45 菜 / 12 店 / 7 楼层 / 24 窗口 = 88 条，逐条 source·verifyStatus·verifiedAt）、标记规则（全 demo、无伪造时间）、四层关联透传、合成优先级（**demo > expired > 最弱一环**，含打乱层级顺序结果不变）、14 组边界用例（verified 缺时间降级、非法状态、demo 带时间清空等）、统计与摘要一致、页面绑定（WXML/WXSS/JS）、业务护栏（加字段前后筛选排序结果一致）。
 
 ### 1. `regression.js` —— 唯一质量门禁
 
@@ -80,6 +80,10 @@ node tools/verify_stage2.js
 | `stage2\data-index.js.orig` | 阶段 2 修改前的 `data/index.js` |
 | `stage2\index.wxml.orig` | 阶段 2 修改前的 `pages/index/index.wxml`（含旧的 `tag-demo` / `shop-demo`） |
 | `stage2\index.wxss.orig` | 阶段 2 修改前的 `pages/index/index.wxss` |
+| `stage2b\provenance.js.orig` / `stage2b\verify_provenance.js.orig` 等 5 个 | 阶段 2「四个缺陷加固」修改前的版本 |
+| `stage2c\provenance.js.orig` | 阶段 2「演示优先于过期」修改前的 `data/provenance.js`（当时 expired 优先于 demo） |
+| `stage2c\verify_provenance.js.orig` | 该轮修改前的 `tools/verify_provenance.js`（102 项） |
+| `stage2c\README.md.orig` | 该轮修改前的本文件 |
 
 ## 回滚
 
@@ -97,6 +101,22 @@ Remove-Item "data\provenance.js" -Force
 Remove-Item "tools\verify_provenance.js" -Force
 # 注意：data/provenance.js 是新增文件，其余五个是覆盖；回滚后 regression.js 的
 # 「菜品全部带 source / verifyStatus / verifiedAt」一项会失败，这属于预期的越界检查
+```
+
+只回滚「演示优先于过期」这一条规则（保留四个缺陷的加固）：
+
+```powershell
+Copy-Item "tools\_backup\stage2c\provenance.js.orig"        "data\provenance.js"         -Force
+Copy-Item "tools\_backup\stage2c\verify_provenance.js.orig" "tools\verify_provenance.js" -Force
+Copy-Item "tools\_backup\stage2c\README.md.orig"            "tools\README.md"            -Force
+# 回滚后 verify_provenance.js 应回到 102 项，且不再有 G10 组
+```
+
+只回滚四个缺陷的加固（保留「演示优先于过期」需要手工合并，不推荐）：
+
+```powershell
+Copy-Item "tools\_backup\stage2b\provenance.js.orig"        "data\provenance.js"         -Force
+Copy-Item "tools\_backup\stage2b\verify_provenance.js.orig" "tools\verify_provenance.js" -Force
 ```
 
 ## 这套脚本覆盖不到什么

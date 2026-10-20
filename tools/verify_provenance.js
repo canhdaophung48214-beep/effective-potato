@@ -625,6 +625,92 @@ section('G9 当前数据与四层合成');
   ok('14e. 店铺已过期 → 整体 expired（优先于其它层）', weakest(shopExpired).status === 'expired', weakest(shopExpired).status);
 }
 
+/* ================================================================
+   G10 演示优先于过期（阶段 2 最终规则）
+   决策来源：演示数据不对应真实对象，不能因为挂靠在过期窗口下就显示成「核实已过期」
+   ================================================================ */
+section('G10 演示优先于过期');
+
+{
+  /* 场景 1：菜品 demo / 窗口 expired / 店铺 demo */
+  const s1 = [
+    layer('dish', 'demo'),
+    layer('stall', 'expired', '2025-06-01'),
+    layer('shop', 'demo')
+  ];
+  const r1 = weakest(s1);
+  ok('15. 菜品 demo + 窗口 expired + 店铺 demo → demo', r1.status === 'demo', r1.status);
+  ok('15b. 演示数据的展示时间为 null', r1.verifiedAt === null, String(r1.verifiedAt));
+  /* 产品现有标签文案是 VERIFY_LABEL.demo =「演示信息」，需求文档里写的「演示数据」与之同义；
+     标签文字属页面文案，本轮不动，这里断言的是「落在演示类标签、不是核实已过期」 */
+  ok('15c. 展示文案是演示类标签，不是「核实已过期」',
+    VERIFY_LABEL[r1.status] === VERIFY_LABEL.demo && VERIFY_LABEL[r1.status] !== VERIFY_LABEL.expired,
+    VERIFY_LABEL[r1.status]);
+  ok('15d. 拖累层级落在演示层（菜品）', r1.level === 'dish', r1.level);
+
+  /* 场景 2：菜品 verified / 窗口 expired / 店铺 verified */
+  const s2 = [
+    layer('dish', 'verified', '2026-10-01'),
+    layer('stall', 'expired', '2025-06-01'),
+    layer('shop', 'verified', '2026-09-01')
+  ];
+  const r2 = weakest(s2);
+  ok('16. 无演示层时，窗口 expired → 整体 expired', r2.status === 'expired', r2.status);
+  ok('16b. 过期状态保留过期层的核实时间', r2.verifiedAt === '2025-06-01', String(r2.verifiedAt));
+
+  /* 场景 3：菜品 verified / 窗口 unverified / 店铺 verified */
+  const r3 = weakest([
+    layer('dish', 'verified', '2026-10-01'),
+    layer('stall', 'unverified'),
+    layer('shop', 'verified', '2026-09-01')
+  ]);
+  ok('17. 无 demo / expired 时沿用最弱逻辑 → unverified', r3.status === 'unverified', r3.status);
+
+  /* 场景 4：全部 verified */
+  const r4 = weakest([
+    layer('dish', 'verified', '2026-10-01'),
+    layer('stall', 'verified', '2026-10-01'),
+    layer('shop', 'verified', '2026-09-01')
+  ]);
+  ok('18. 全部 verified → 仍为 verified', r4.status === 'verified', r4.status);
+
+  /* 场景 5：打乱输入顺序，结果必须不变 */
+  const s1Shuffled = [
+    layer('shop', 'demo'),
+    layer('stall', 'expired', '2025-06-01'),
+    layer('dish', 'demo')
+  ];
+  ok('19. 场景 1 打乱层级顺序 → 仍为 demo', weakest(s1Shuffled).status === 'demo',
+    weakest(s1Shuffled).status);
+
+  const s2Shuffled = [
+    layer('stall', 'expired', '2025-06-01'),
+    layer('shop', 'verified', '2026-09-01'),
+    layer('dish', 'verified', '2026-10-01')
+  ];
+  ok('19b. 场景 2 打乱层级顺序 → 仍为 expired', weakest(s2Shuffled).status === 'expired',
+    weakest(s2Shuffled).status);
+
+  /* 场景 6：单条记录的规范化同样演示优先 */
+  const n1 = normalizeMeta({
+    verifyStatus: 'expired',
+    verifiedAt: '2026-09-01',
+    source: { kind: 'demo', detail: '演示用说明' }
+  }, OPTS);
+  ok('20. source.kind=demo 且原状态 expired → demo', n1.verifyStatus === 'demo', n1.verifyStatus);
+  ok('20b. 降为演示后 verifiedAt 为 null', n1.verifiedAt === null, String(n1.verifiedAt));
+  ok('20c. 来源类型归一为 demo，原说明保留',
+    n1.source.kind === 'demo' && n1.source.detail === '演示用说明', n1.source.kind + ' / ' + n1.source.detail);
+
+  /* 演示优先发生在日期校验之前：日期非法也不会把演示数据降成「待核实」 */
+  const n2 = normalizeMeta({
+    verifyStatus: 'expired',
+    verifiedAt: '2030-01-01',
+    source: { kind: 'demo', detail: '演示用说明' }
+  }, OPTS);
+  ok('20d. 演示优先于日期校验（未来日期仍为 demo）', n2.verifyStatus === 'demo', n2.verifyStatus);
+}
+
 /* ---------------- 汇总 ---------------- */
 
 console.log('\n========================================');
