@@ -1,0 +1,161 @@
+{
+  "recordsTotal": 490,
+  "blockersTotal": 525,
+  "blockerCountField": 525,
+  "recordTopKeys": [
+    "_adapterKey",
+    "foodType",
+    "gen",
+    "id",
+    "name",
+    "note",
+    "price",
+    "shopId",
+    "source",
+    "stallId",
+    "tastes",
+    "verifiedAt",
+    "verifyStatus"
+  ],
+  "genKeys": [
+    "blockers",
+    "disambiguator",
+    "evidence_status",
+    "generation_status",
+    "groupKey",
+    "id",
+    "id_status",
+    "import_eligibility",
+    "rawGroupKey",
+    "rawRow",
+    "sourceLine",
+    "specLabel",
+    "tier"
+  ],
+  "sampleRecord": "{\n \"id\": \"c01_d040\",\n \"shopId\": \"c01\",\n \"stallId\": \"c01_t07\",\n \"name\": \"山城麻辣小面\",\n \"price\": 9,\n \"foodType\": null,\n \"tastes\": [],\n \"source\": {\n  \"kind\": \"field\",\n  \"detail\": \"\",\n  \"ref\": \"TRANSCRIPTION_2F.md#W2-01 第 71 行\"\n },\n \"verifyStatus\": \"unverified\",\n \"verifiedAt\": null,\n \"note\": \"\",\n \"gen\": {\n  \"tier\": \"A\",\n  \"groupKey\": \"f2/山城麻辣小面\",\n  \"rawGroupKey\": \"山城麻辣小面\",\n  \"specLabel\": \"小份\",\n  \"disambiguator\": \"\",\n  \"rawRow\": \"\",\n  \"sourceLine\": 71,\n  \"generation_status\": \"generated\",\n  \"evidence_status\": \"traceable\",\n  \"import_eligibility\": \"blocked\",\n  \"id_status\": \"planned_from_roster\",\n  \"blockers\": [],\n  \"id\": \"c01_d040\"\n },\n \"_adapterKey\": \"c01_t07|山城麻辣小面|小份|\"\n}",
+  "sampleBlocker": "{\n \"recordKey\": \"c01_t07|f2/山城麻辣小面|小份|\",\n \"stallId\": \"c01_t07\",\n \"name\": \"山城麻辣小面\",\n \"tier\": \"A\",\n \"sourceLine\": 71,\n \"rawRow\": \"\",\n \"kind\": \"blocked_by_decision\",\n \"reasons\": []\n}",
+  "sampleBlockerC": "{\n \"recordKey\": \"c01_t20|f2/手抓饼基础套餐（默认含鸡蛋）||\",\n \"stallId\": \"c01_t20\",\n \"name\": \"手抓饼基础套餐（默认含鸡蛋）\",\n \"tier\": \"C\",\n \"sourceLine\": 340,\n \"rawRow\": \"\",\n \"kind\": \"not_generated\",\n \"reasons\": [\n  \"NEW_KEY\",\n  \"TIER_C\",\n  \"ID_UNASSIGNED\",\n  \"EVIDENCE_GAP\"\n ]\n}",
+  "byTier": {
+    "A": 490
+  },
+  "byGen": {
+    "generated": 490
+  },
+  "byEvidence": {
+    "traceable": 490
+  },
+  "byElig": {
+    "blocked": 490
+  },
+  "byIdStatus": {
+    "planned_from_roster": 386,
+    "assigned_from_map": 104
+  },
+  "crossTierId": {
+    "A|planned_from_roster": 386,
+    "A|assigned_from_map": 104
+  },
+  "crossTierEvidence": {
+    "A|traceable": 490
+  },
+  "blockerKind": {
+    "blocked_by_decision": 490,
+    "not_generated": 35
+  },
+  "blockerTier": {
+    "A": 490,
+    "C": 35
+  },
+  "blockerReasonCodes": {
+    "(none)": 490,
+    "NEW_KEY+TIER_C+ID_UNASSIGNED+EVIDENCE_GAP": 35
+  },
+  "reasonCodeSingle": {
+    "NEW_KEY": 35,
+    "TIER_C": 35,
+    "ID_UNASSIGNED": 35,
+    "EVIDENCE_GAP": 35
+  },
+  "blockerStall": {
+    "c01_t07|A": 8,
+    "c01_t09|A": 4,
+    "c01_t11|A": 40,
+    "c01_t48|A": 77,
+    "c01_t49|A": 27,
+    "c01_t20|C": 6,
+    "c01_t28|A": 30,
+    "c01_t37|A": 22,
+    "c01_t32|A": 18,
+    "c01_t17|A": 20,
+    "c01_t16|A": 63,
+    "c01_t14|A": 10,
+    "c01_t15|A": 13,
+    "c01_t19|A": 12,
+    "c01_t35|A": 15,
+    "c01_t21|A": 17,
+    "c01_t38|A": 12,
+    "c01_t39|A": 13,
+    "c01_t40|C": 19,
+    "c01_t41|C": 10,
+    "c01_t42|A": 15,
+    "c01_t43|A": 10,
+    "c01_t44|A": 19,
+    "c01_t45|A": 21,
+    "c01_t46|A": 9,
+    "c01_t47|A": 15
+  },
+  "recordStall": {
+    "c01_t07|A": 8,
+    "c01_t09|A": 4,
+    "c01_t11|A": 40,
+    "c01_t48|A": 77,
+    "c01_t49|A": 27,
+    "c01_t28|A": 30,
+    "c01_t37|A": 22,
+    "c01_t32|A": 18,
+    "c01_t17|A": 20,
+    "c01_t16|A": 63,
+    "c01_t14|A": 10,
+    "c01_t15|A": 13,
+    "c01_t19|A": 12,
+    "c01_t35|A": 15,
+    "c01_t21|A": 17,
+    "c01_t38|A": 12,
+    "c01_t39|A": 13,
+    "c01_t42|A": 15,
+    "c01_t43|A": 10,
+    "c01_t44|A": 19,
+    "c01_t45|A": 21,
+    "c01_t46|A": 9,
+    "c01_t47|A": 15
+  },
+  "genBlockerTag": {},
+  "blockerKeyPrefix": {
+    "hasPipe": 525
+  },
+  "idsNull": 0,
+  "idRange": {
+    "n": 490,
+    "min": null,
+    "max": null,
+    "uniq": 490
+  },
+  "idmapKeys": [
+    "entries",
+    "generatedAt",
+    "initialization",
+    "keyFormat",
+    "orphans",
+    "schemaVersion"
+  ],
+  "idmapSample": "{\"entries\":[{\"approvedBy\":\"user:负责人审批 ip-20261025-01\",\"assignedAt\":\"2026-10-25T23:23:52+08:00\",\"disambiguator\":\"\",\"dishId\":\"c01_d515\",\"groupKey\":\"三鲜蛋炒面\",\"key\":\"c01_t48|三鲜蛋炒面|炒面|\",\"sourceRef\":\"TRANSCRIPTION_2F.md#W2-04 第 266 行\",\"specLabel\":\"炒面\",\"stallId\":\"c01_t48\",\"status\":\"active\"},{\"approvedBy\":\"user:负责人审批 ip-20261025-01\",\"assignedAt\":\"2026-10-25T23:23:52+08:00\",\"disambiguator\":\"\",\"dishId\":\"c01_d516\",\"groupKey\":\"三鲜蛋炒饭\",\"key\":\"c01_t48|三鲜蛋炒饭|炒饭|\",\"sourceRef\":\"TRANSCRIPTION_2F.md#W2-04 第 266 行\",\"specLabel\":\"炒饭\",\"stallId\":\"c01_t48\",\"status\":\"active\"},{\"approvedBy\":\"user:负责人审批 ip-20261025-01\",\"ass",
+  "idmapBytes": 42990,
+  "kenNames": {
+    "emptyName": 0
+  },
+  "priceShape": {
+    "number": 490
+  },
+  "dupeKeys": 0,
+  "blockersNotInRecords": 35
+}

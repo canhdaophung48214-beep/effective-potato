@@ -1,0 +1,90 @@
+[
+  {
+    "id": "EXP-1",
+    "desc": "现状：490 条记录原样送 assertContract(records, summarize(records))",
+    "violations": []
+  },
+  {
+    "id": "EXP-2",
+    "desc": "把 12 条建议准入样本的 import_eligibility 直接写成 candidate_only",
+    "violations": [
+      {
+        "code": "C18",
+        "message": "planned_from_roster 不得具备导入资格（名册规划 ≠ 正式分配 ≠ 可发布）",
+        "record": "山城麻辣小面",
+        "eligibility": "candidate_only"
+      },
+      {
+        "code": "C18",
+        "message": "planned_from_roster 不得具备导入资格（名册规划 ≠ 正式分配 ≠ 可发布）",
+        "record": "小米南瓜粥",
+        "eligibility": "candidate_only"
+      },
+      {
+        "code": "C18",
+        "message": "planned_from_roster 不得具备导入资格（名册规划 ≠ 正式分配 ≠ 可发布）",
+        "record": "纯素炒米粉",
+        "eligibility": "candidate_only"
+      },
+      {
+        "code": "C18",
+        "message": "planned_from_roster 不得具备导入资格（名册规划 ≠ 正式分配 ≠ 可发布）",
+        "record": "鸡汤砂锅米线",
+        "eligibility": "candidate_only"
+      },
+      {
+        "code": "C18",
+        "message": "planned_from_roster 不得具备导入资格（名册规划 ≠ 正式分配 ≠ 可发布）",
+        "record": "双拼饭（公瑾爆蛋 + 红烧鸡翅根）",
+        "eligibility": "candidate_only"
+      },
+      {
+        "code": "C18",
+        "message": "planned_from_roster 不得具备导入资格（名册规划 ≠ 正式分配 ≠ 可发布）",
+        "record": "超级酱大骨套餐",
+        "eligibility": "candidate_only"
+      },
+      {
+        "code": "C18",
+        "message": "planned_from_roster 不得具备导入资格（名册规划 ≠ 正式分配 ≠ 可发布）",
+        "record": "鸡块咖喱蛋包饭",
+        "eligibility": "candidate_only"
+      },
+      {
+        "code": "C18",
+        "message": "planned_from_roster 不得具备导入资格（名册规划 ≠ 正式分配 ≠ 可发布）",
+        "record": "招牌红烧肉",
+        "eligibility": "candidate_only"
+      },
+      {
+        "code": "C18",
+        "message": "planned_from_roster 不得具备导入资格（名册规划 ≠ 正式分配 ≠ 可发布）",
+        "record": "招牌牛肉面",
+        "eligibility": "candidate_only"
+      },
+      {
+        "code": "C18",
+        "message": "planned_from_roster 不得具备导入资格（名册规划 ≠ 正式分配 ≠ 可发布）",
+        "record": "铁板炸鸡培根拌饭",
+        "eligibility": "candidate_only"
+      },
+      {
+        "code": "E11_UNEXPECTED_ELIGIBLE",
+        "message": "candidate_only 条数应为 0，实际 12（放行须来自显式阻塞解除裁决）"
+      }
+    ]
+  },
+  {
+    "id": "EXP-3",
+    "desc": "谎报 id 状态：第 1 条 id_status='unassigned' 但 id 仍为 c01_d040",
+    "violations": [
+      {
+        "code": "C18",
+        "message": "id_status 与 id 不一致",
+        "record": "山城麻辣小面",
+        "id_status": "unassigned",
+        "id": "c01_d040"
+      }
+    ]
+  }
+]

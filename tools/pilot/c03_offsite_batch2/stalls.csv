@@ -1,0 +1,10 @@
+shop_id,floor_id,stall_id,stall_name,side,no_status,no,source_kind,source_detail,source_ref,collector,collect_date,evidence_file
+c03,,c03_t01,味爱特麻辣烫&拌,,unverified,,field,2026-10-27 现场拍摄招牌；档口名即招牌名；窗口编号现场未见故 no_status 保持 unverified 且 no 留空；本次无楼层记录故 floor_id 留空,,产品负责人,2026-10-27,img/c03_t01_menu.jpg
+c04,,c04_t01,味之源快餐,,unverified,,field,2026-10-27 现场拍摄招牌与价目牌；档口名即招牌名；未见窗口编号,,产品负责人,2026-10-27,img/c04_t01_menu.jpg
+c05,,c05_t01,单县羊汤·牛肉汤,,unverified,,field,2026-10-27 现场拍摄招牌与价目牌；档口名即招牌名；未见窗口编号,,产品负责人,2026-10-27,img/c05_t01_menu.jpg
+c06,,c06_t01,忆米嘉鲜汤鱼粉·新疆炒米粉,,unverified,,field,2026-10-27 现场拍摄招牌与价目牌；档口名即招牌名；未见窗口编号,,产品负责人,2026-10-27,img/c06_t01_menu.jpg
+c07,,c07_t01,南村记海南鸡饭,,unverified,,field,2026-10-27 现场拍摄招牌与灯箱；档口名即招牌名；未见窗口编号,,产品负责人,2026-10-27,img/c07_t01_menu.jpg
+c08,,c08_t01,南村记土耳其爆汁烤鸡饭,,unverified,,field,2026-10-27 现场拍摄招牌；档口名即招牌名；未见窗口编号,,产品负责人,2026-10-27,img/c08_t01_menu.jpg
+c09,,c09_t01,赣五爷爆汁炸鸡饭,,unverified,,field,2026-10-27 现场拍摄招牌与价目灯箱；档口名即招牌名；未见窗口编号,,产品负责人,2026-10-27,img/c09_t01_menu.jpg
+c10,,c10_t01,航语佳烤盘饭,,unverified,,field,2026-10-27 现场拍摄招牌与灯箱；档口名即招牌名；未见窗口编号,,产品负责人,2026-10-27,img/c10_t01_menu.jpg
+c11,,c11_t01,兰州牛肉面（兰州拉面）,,unverified,,field,2026-10-27 现场拍摄同一门面两块招牌与两块价目牌；档口名按两块招牌合并；未见窗口编号,,产品负责人,2026-10-27,img/c11_t01_menu.jpg

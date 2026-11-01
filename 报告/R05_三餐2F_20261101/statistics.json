@@ -1,0 +1,22 @@
+{
+  "physicalSourceLines": 39,
+  "dishTableRows": 36,
+  "auxiliaryPhysicalLines": 3,
+  "sourceGroups": 47,
+  "dishSourceGroups": 36,
+  "optionSourceGroups": 8,
+  "bundleSourceGroups": 3,
+  "explicitSpecificationVariants": 0,
+  "candidateRecords": 30,
+  "candidateSourceGroups": 30,
+  "unresolvedSourceGroups": 9,
+  "oldRecords": 35,
+  "oldActionCounts": {
+    "RETAIN": 30,
+    "PENDING": 5
+  },
+  "newSourceGroups": 12,
+  "optionRelations": 8,
+  "formalIdsAssigned": 0,
+  "formalImports": 0
+}

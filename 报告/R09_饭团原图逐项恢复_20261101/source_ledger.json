@@ -1,0 +1,222 @@
+[
+  {
+    "sourceRecordRef": "R09-2F18-RICEBALL-01",
+    "action": "NEW",
+    "priorDisposition": "R04_PENDING_SOURCE_GROUP",
+    "priorPendingSourceRef": "R04-W2-15-L0683-S344",
+    "oldRecordKeys": [
+      "c01_t35|f2/甜味红豆 / 玉米沙拉 / 泡菜（微辣）/ 金针菇（微辣）/ 辣条||"
+    ],
+    "candidateRefs": [
+      "R09-2F18-RICEBALL-01-V1"
+    ],
+    "optionRefs": [],
+    "name": "金针菇饭团",
+    "reason": "原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任"
+  },
+  {
+    "sourceRecordRef": "R09-2F18-RICEBALL-02",
+    "action": "NEW",
+    "priorDisposition": "R04_PENDING_SOURCE_GROUP",
+    "priorPendingSourceRef": "R04-W2-15-L0684-S345",
+    "oldRecordKeys": [
+      "c01_t35|f2/鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊||"
+    ],
+    "candidateRefs": [
+      "R09-2F18-RICEBALL-02-V1"
+    ],
+    "optionRefs": [],
+    "name": "鲜香卤蛋饭团",
+    "reason": "原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任"
+  },
+  {
+    "sourceRecordRef": "R09-2F18-RICEBALL-03",
+    "action": "NEW",
+    "priorDisposition": "R04_PENDING_SOURCE_GROUP",
+    "priorPendingSourceRef": "R04-W2-15-L0684-S345",
+    "oldRecordKeys": [
+      "c01_t35|f2/鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊||"
+    ],
+    "candidateRefs": [
+      "R09-2F18-RICEBALL-03-V1"
+    ],
+    "optionRefs": [],
+    "name": "和风蟹柳饭团",
+    "reason": "原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任"
+  },
+  {
+    "sourceRecordRef": "R09-2F18-RICEBALL-04",
+    "action": "NEW",
+    "priorDisposition": "R04_PENDING_SOURCE_GROUP",
+    "priorPendingSourceRef": "R04-W2-15-L0684-S345",
+    "oldRecordKeys": [
+      "c01_t35|f2/鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊||"
+    ],
+    "candidateRefs": [
+      "R09-2F18-RICEBALL-04-V1"
+    ],
+    "optionRefs": [],
+    "name": "咸蛋黄肉松饭团",
+    "reason": "原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任"
+  },
+  {
+    "sourceRecordRef": "R09-2F18-RICEBALL-05",
+    "action": "NEW",
+    "priorDisposition": "R04_PENDING_SOURCE_GROUP",
+    "priorPendingSourceRef": "R04-W2-15-L0685-S346",
+    "oldRecordKeys": [
+      "c01_t35|f2/拉丝芝士 / 纯肉烤肠||"
+    ],
+    "candidateRefs": [
+      "R09-2F18-RICEBALL-05-V1"
+    ],
+    "optionRefs": [],
+    "name": "拉丝芝士饭团",
+    "reason": "原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任"
+  },
+  {
+    "sourceRecordRef": "R09-2F18-RICEBALL-06",
+    "action": "NEW",
+    "priorDisposition": "R04_PENDING_SOURCE_GROUP",
+    "priorPendingSourceRef": "R04-W2-15-L0685-S346",
+    "oldRecordKeys": [
+      "c01_t35|f2/拉丝芝士 / 纯肉烤肠||"
+    ],
+    "candidateRefs": [
+      "R09-2F18-RICEBALL-06-V1"
+    ],
+    "optionRefs": [],
+    "name": "纯肉烤肠饭团",
+    "reason": "原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任"
+  },
+  {
+    "sourceRecordRef": "R09-2F18-RICEBALL-07",
+    "action": "NEW",
+    "priorDisposition": "R04_PENDING_SOURCE_GROUP",
+    "priorPendingSourceRef": "R04-W2-15-L0686-S347",
+    "oldRecordKeys": [
+      "c01_t35|f2/香酥鸡排||"
+    ],
+    "candidateRefs": [
+      "R09-2F18-RICEBALL-07-V1"
+    ],
+    "optionRefs": [],
+    "name": "香酥鸡排饭团",
+    "reason": "原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任"
+  },
+  {
+    "sourceRecordRef": "R09-2F18-RICEBALL-08",
+    "action": "NEW",
+    "priorDisposition": "R04_PENDING_SOURCE_GROUP",
+    "priorPendingSourceRef": "R04-W2-15-L0687-S348",
+    "oldRecordKeys": [
+      "c01_t35|f2/香煎猪排||"
+    ],
+    "candidateRefs": [
+      "R09-2F18-RICEBALL-08-V1"
+    ],
+    "optionRefs": [],
+    "name": "香煎猪排饭团",
+    "reason": "原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任"
+  },
+  {
+    "sourceRecordRef": "R09-2F18-RICEBALL-09",
+    "action": "NEW",
+    "priorDisposition": "R04_PENDING_SOURCE_GROUP",
+    "priorPendingSourceRef": "R04-W2-15-L0688-S349",
+    "oldRecordKeys": [
+      "c01_t35|f2/黑椒牛排||"
+    ],
+    "candidateRefs": [
+      "R09-2F18-RICEBALL-09-V1"
+    ],
+    "optionRefs": [],
+    "name": "黑椒牛排饭团",
+    "reason": "原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任"
+  },
+  {
+    "sourceRecordRef": "R09-2F18-RICEBALL-10",
+    "action": "NEW",
+    "priorDisposition": "R04_PENDING_SOURCE_GROUP",
+    "priorPendingSourceRef": "R04-W2-15-L0689-S350",
+    "oldRecordKeys": [
+      "c01_t35|f2/金枪鱼||"
+    ],
+    "candidateRefs": [
+      "R09-2F18-RICEBALL-10-V1"
+    ],
+    "optionRefs": [],
+    "name": "金枪鱼饭团",
+    "reason": "原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任"
+  },
+  {
+    "sourceRecordRef": "R09-2F18-RICEBALL-11",
+    "action": "NEW",
+    "priorDisposition": "R04_PENDING_SOURCE_GROUP",
+    "priorPendingSourceRef": "R04-W2-15-L0690-S351",
+    "oldRecordKeys": [
+      "c01_t35|f2/日式鳗鱼||"
+    ],
+    "candidateRefs": [
+      "R09-2F18-RICEBALL-11-V1"
+    ],
+    "optionRefs": [],
+    "name": "日式鳗鱼饭团",
+    "reason": "原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任"
+  },
+  {
+    "sourceRecordRef": "R09-2F18-UNRESOLVED-SUSHI",
+    "action": "PENDING",
+    "priorDisposition": "not individually admitted",
+    "priorPendingSourceRef": null,
+    "oldRecordKeys": [],
+    "candidateRefs": [],
+    "optionRefs": [],
+    "name": "寿司价格列组",
+    "reason": "原OCR将16菜名与价列分开，不按数组位置强配价"
+  },
+  {
+    "sourceRecordRef": "R09-2F18-UNRESOLVED-LOWER",
+    "action": "PENDING",
+    "priorDisposition": "not individually admitted",
+    "priorPendingSourceRef": null,
+    "oldRecordKeys": [],
+    "candidateRefs": [],
+    "optionRefs": [],
+    "name": "原味/红豆/玉米沙拉/泡菜饭团组",
+    "reason": "菜名与多个价位排列仍需局部位置确认"
+  },
+  {
+    "sourceRecordRef": "R09-2F18-UNRESOLVED-BACON",
+    "action": "PENDING",
+    "priorDisposition": "not individually admitted",
+    "priorPendingSourceRef": null,
+    "oldRecordKeys": [],
+    "candidateRefs": [],
+    "optionRefs": [],
+    "name": "培根饭团",
+    "reason": "OCR缺烟字与旧转录烟重/烟熏矛盾，名称不纠造"
+  },
+  {
+    "sourceRecordRef": "R09-2F18-UNRESOLVED-TWO",
+    "action": "PENDING",
+    "priorDisposition": "not individually admitted",
+    "priorPendingSourceRef": null,
+    "oldRecordKeys": [],
+    "candidateRefs": [],
+    "optionRefs": [],
+    "name": "辣条/铁板里脊饭团",
+    "reason": "同一行价签两项且OCR缺铁字，不推断纠字"
+  },
+  {
+    "sourceRecordRef": "R09-2F18-UNRESOLVED-EGGWAFFLE",
+    "action": "PENDING",
+    "priorDisposition": "not individually admitted",
+    "priorPendingSourceRef": null,
+    "oldRecordKeys": [],
+    "candidateRefs": [],
+    "optionRefs": [],
+    "name": "鸡蛋仔及口味",
+    "reason": "OCR为100份，原转录10元/份，不假装原图金额已确认"
+  }
+]

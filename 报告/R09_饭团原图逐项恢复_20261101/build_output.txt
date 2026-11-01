@@ -1,0 +1,16 @@
+{
+  "sourcePhotos": 1,
+  "extractedDishRows": 11,
+  "materialResponsibilityGroups": 16,
+  "independentDishCandidates": 11,
+  "mealComponents": 0,
+  "optionalSurcharges": 0,
+  "bundleRelations": 0,
+  "pendingMaterialGroups": 5,
+  "newChildResponsibilities": 11,
+  "oldRecordsRewritten": 0,
+  "oldRecordsVoided": 0,
+  "formalImports": 0,
+  "priorPendingParentGroups": 8
+}
+build exit=0

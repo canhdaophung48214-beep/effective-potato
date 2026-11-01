@@ -1,0 +1,4 @@
+﻿issue,scope,basis,impact,status,askMetadataNow
+门头照与正式签发仍缺,c01_t48 / 39条共享,DR-2F09-VERIFY第三/四节明确不覆盖门头、整体核验或正式签发,不否认已确认菜名/原价/档口归属；阻止宣称全项核验或正式发布,PENDING_EVIDENCE_AND_FORMAL_SIGNOFF,False
+档口名保留暂定、窗口方位/号码未知,c01_t48,现有契约与原CSV，side/no不猜,建模关联可用，不宣称真实门头名及窗口号已核实,UNKNOWN_PRESERVED,False
+现行售价/份量单位的现场新确认,39条,仅有历史菜单原价，不能自动宣称现行价；源表未独立写每份单位,预览展示历史来源价格，不补单位、不承诺现价,HISTORICAL_SOURCE_SUPPORTED_CURRENTNESS_UNVERIFIED,False

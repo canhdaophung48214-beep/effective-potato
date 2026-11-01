@@ -1,0 +1,22 @@
+COMMAND: ['python', '-X', 'utf8', 'C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\test_r03.py']
+test_133_candidates_one_per_local_key (__main__.R03Tests.test_133_candidates_one_per_local_key) ... ok
+test_actions_and_bidirectional_links (__main__.R03Tests.test_actions_and_bidirectional_links) ... ok
+test_every_source_group_candidate_or_pending (__main__.R03Tests.test_every_source_group_candidate_or_pending) ... ok
+test_independent_xiaolongbao_stall (__main__.R03Tests.test_independent_xiaolongbao_stall) ... ok
+test_negative_price_parent_id_composition (__main__.R03Tests.test_negative_price_parent_id_composition) ... ok
+test_ng03_existing_decisions_and_prices (__main__.R03Tests.test_ng03_existing_decisions_and_prices) ... ok
+test_no_duplicate_source_spec_or_fabricated_current_values (__main__.R03Tests.test_no_duplicate_source_spec_or_fabricated_current_values) ... ok
+test_old_all143_covered_exactly_once (__main__.R03Tests.test_old_all143_covered_exactly_once) ... ok
+test_project_and_git_protection (__main__.R03Tests.test_project_and_git_protection) ... ok
+test_source_groups_reconcile_293 (__main__.R03Tests.test_source_groups_reconcile_293) ... ok
+test_source_lines_and_photo_files_match (__main__.R03Tests.test_source_lines_and_photo_files_match) ... ok
+test_t04_inference_and_t19_uncertainty (__main__.R03Tests.test_t04_inference_and_t19_uncertainty) ... ok
+test_t20_exact12_scope (__main__.R03Tests.test_t20_exact12_scope) ... ok
+test_void_w01_w10_never_inherit_ids (__main__.R03Tests.test_void_w01_w10_never_inherit_ids) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.211s
+
+OK
+
+EXIT=0

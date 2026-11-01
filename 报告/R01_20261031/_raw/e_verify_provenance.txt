@@ -1,0 +1,147 @@
+
+G1 字段完整性
+  OK   原始店铺 12 家
+  OK   原始窗口 24 个
+  OK   原始楼层 7 个（5 家店有楼层：2+1+2+1+1）
+  OK   原始菜品 45 道
+  OK   菜品 全部具备 source / verifyStatus / verifiedAt
+  OK   店铺 全部具备 source / verifyStatus / verifiedAt
+  OK   楼层 全部具备 source / verifyStatus / verifiedAt
+  OK   窗口 全部具备 source / verifyStatus / verifiedAt
+  OK   source.kind 全部是白名单值
+  OK   source.detail 没有空说明
+  OK   楼层都记录了所属店铺
+  OK   窗口都记录了所属店铺
+
+G2 标记规则
+  OK   现有 88 条记录全部标记为 demo（45 菜 + 12 店 + 7 楼层 + 24 窗口）
+  OK   没有任何伪造的核实时间（demo 的 verifiedAt 一律 null）
+  OK   全部来源类型为 demo（没有声称真实的来源）
+  OK   verifyText / verifyClass 与状态一一对应
+
+G3 关联透传（菜品 → 店铺 / 楼层 / 窗口）
+  OK   每道菜的合成层都包含 dish / shop / stall
+  OK   层数为 3（无楼层店）或 4（有楼层店）
+  OK   有楼层店铺的菜品是 4 层，无楼层店铺的菜品是 3 层
+  OK   菜品卡可直接用的状态字段已透传
+  OK   店铺卡可直接用的状态字段已透传
+  OK   每一层都带 level / id / status / text
+
+G4 最弱一环合成
+  OK   全 verified → verified
+  OK   菜品 verified + 窗口 unverified → unverified（取最弱）
+  OK   菜品 verified + 店铺 demo → demo
+  OK   任一层 expired → 整体 expired（优先级最高）
+  OK   最弱环节不是菜品本身时，note 说明是哪一层拖低的
+  OK   全部已核实时 note 为空（不给用户多余噪音）
+
+G5 边界用例
+  OK   verified 但没有核实时间 → 降级 unverified（不伪造时间）
+  OK   降级后 verifiedAt 仍是 null
+  OK   verified 且日期合法 → 保留 verified
+  OK   非法状态 → unverified（不因写错字段就变可信）
+  OK   完全没有可信度字段 → unverified
+  OK   demo 即使写了时间也清空（演示数据不可能「已核实」）
+  OK   来源缺失 → source.kind 为 unknown
+  OK   expired 保留最后一次核实时间（用于判断过期多久）
+  OK   decorate 输出带 text/class/tip 三件套
+  OK   decorate 保留原始 source 对象（供最弱一环使用）
+  OK   metaLevel 记录层级
+
+G6 状态统计与摘要
+  OK   菜品状态统计与逐条重算一致
+  OK   摘要里的菜品总数等于真实菜品数
+  OK   摘要里的店铺总数等于真实店铺数
+  OK   当前 45 道菜全部是 demo
+  OK   当前 12 家店全部是 demo
+  OK   店铺统计与逐条重算一致
+
+G7 页面绑定
+  OK   菜品卡状态标签绑定 {{dish.verifyClass}}
+  OK   菜品卡状态文字绑定 {{dish.verifyText}}
+  OK   店铺卡状态标签绑定 {{pickedShop.verifyClass}}
+  OK   店铺卡展示来源说明 {{pickedShop.sourceDetail}}
+  OK   面板展示数据状态一行 {{dataStatusText}}
+  OK   页面 JS 计算 dataStatusText（不写死数字）
+  OK   页面 JS 从 data/index 取 DATA_STATUS_SUMMARY
+  OK   drawShop 透传了 verifyStatus
+  OK   drawShop 透传了 sourceDetail
+  OK   四种状态样式都在 wxss 里
+  OK   已删除旧的一次性标签 .tag-demo
+  OK   已删除旧的一次性提示 .shop-demo
+  OK   三个原有标签保留（类型 / 区域 / 口味）
+  OK   页脚全局演示声明保留
+  OK   状态文案格式由数据拼接（模板里出现拼接逻辑）
+
+G8 回归护栏
+  OK   筛选中途不读取可信度字段（加字段前后结果一致）
+  OK   不传条件时返回全部 45 道
+  OK   三档排序在带可信度字段的数据上仍然有序
+  OK   排序不污染原数组
+
+G9 反例：来源类型校验
+  OK   1. 白名单外的 source.kind + verified → 降级 unverified
+  OK   1b. 非法来源类型被改成 unknown（不保留为可信来源）
+  OK   1c. 降级后不保留核实时间
+  OK   2. unknown 来源 + verified → 降级 unverified
+  OK   3. demo 来源 + verified → 强制 demo
+  OK   3b. demo 来源的核实时间被清空
+  OK   3c. 只有来源、没有状态声明 → 不会自动升级为 verified
+
+G9 反例：核实日期校验
+  OK   4. verified + verifiedAt: not-a-date → 降级
+  OK   5. verified + 2026-02-30（不存在的日历日）→ 降级
+  OK   6. verified + 未来日期 → 降级
+  OK   7. expired + 缺日期 → 降级
+  OK   8. expired + 无效日期（13 月）→ 降级
+  OK   9. web 来源缺少 ref → 降级
+  OK   10. source.detail 为空串 → 降级
+  OK   10b. source.detail 全是空白 → 同样降级
+  OK   日期工具：2026-02-29 非法（非闰年）
+  OK   日期工具：2024-02-29 合法（闰年）
+  OK   日期工具：2026-04-31 非法（4 月没有 31 日）
+  OK   日期工具：2026-4-1 格式不合法（必须两位月日）
+  OK   日期工具：今天本身合法（不算未来）
+  OK   日期工具：todayString() 返回 YYYY-MM-DD
+
+G9 反例：已有字段的记录仍要校验
+  OK   11. attachDemo 不会因为已有 verifyStatus 就跳过校验
+  OK   11b. 降级后派生字段同步更新（verifyText 跟着变）
+  OK   11c. 原有的业务字段未被破坏（id 保持）
+  OK   12. 合法的真实来源与合法日期不会被误降级
+  OK   12b. 业务字段完整保留
+  OK   12c. 来源说明被保留
+  OK   12d. web + 有 ref + 有说明 → 保留 verified
+  OK   12e. expired + 合法历史日期 → 保留 expired
+  OK   12f. 反复规范化结果稳定（幂等）
+  OK   12g. 没有任何可信度字段的业务数据按 demo 处理
+  OK   12h. 演示数据没有核实时间
+
+G9 当前数据与四层合成
+  OK   13. 45 道菜 + 12 家店仍全部 demo 且 verifiedAt 为 null
+  OK   14. 四层全 verified → verified
+  OK   14b. 窗口待核实 → 整体 unverified
+  OK   14c. 说明里点名是窗口拖低的
+  OK   14d. 楼层是演示数据 → 整体 demo
+  OK   14e. 店铺已过期 → 整体 expired（优先于其它层）
+
+G10 演示优先于过期
+  OK   15. 菜品 demo + 窗口 expired + 店铺 demo → demo
+  OK   15b. 演示数据的展示时间为 null
+  OK   15c. 展示文案是演示类标签，不是「核实已过期」
+  OK   15d. 拖累层级落在演示层（菜品）
+  OK   16. 无演示层时，窗口 expired → 整体 expired
+  OK   16b. 过期状态保留过期层的核实时间
+  OK   17. 无 demo / expired 时沿用最弱逻辑 → unverified
+  OK   18. 全部 verified → 仍为 verified
+  OK   19. 场景 1 打乱层级顺序 → 仍为 demo
+  OK   19b. 场景 2 打乱层级顺序 → 仍为 expired
+  OK   20. source.kind=demo 且原状态 expired → demo
+  OK   20b. 降为演示后 verifiedAt 为 null
+  OK   20c. 来源类型归一为 demo，原说明保留
+  OK   20d. 演示优先于日期校验（未来日期仍为 demo）
+
+========================================
+通过 116 项，失败 0 项
+全部通过
+========================================

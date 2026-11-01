@@ -1,0 +1,23 @@
+{
+  "selectedFloor": "服务楼2F",
+  "oldRecords": 382,
+  "oldGenerated": 376,
+  "oldNotGenerated": 6,
+  "newSourceGroups": 383,
+  "oldActions": {
+    "PENDING": 271,
+    "RETAIN": 96,
+    "SPLIT": 9,
+    "REPLACE": 6
+  },
+  "candidateRecords": 113,
+  "candidateUnderlyingGroups": 105,
+  "candidateStalls": 3,
+  "prior39Reused": 39,
+  "additionalCandidatesBeyondPrior39": 74,
+  "surchargeGroups": 5,
+  "unresolvedItems": 273,
+  "restoredLargePortions": 8,
+  "formalIdsAssigned": 0,
+  "formallyImportable": 0
+}

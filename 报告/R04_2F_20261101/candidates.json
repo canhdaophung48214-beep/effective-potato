@@ -1,0 +1,5389 @@
+[
+  {
+    "candidateId": "R04-W2-04-L0186-S045-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0186-S045",
+    "name": "黄焖鸡盖方便面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 14.5,
+    "rawPriceExpression": "14.5 元",
+    "specification": null,
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 186,
+    "sourceQuote": "| 黄焖鸡盖方便面 | 14.5 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [],
+    "oldRecordKeys": [
+      "c01_t48|f2/黄焖鸡盖方便面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0187-S046-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0187-S046",
+    "name": "黄焖鸡米饭",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13.9,
+    "rawPriceExpression": "13.9 元",
+    "specification": null,
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 187,
+    "sourceQuote": "| 黄焖鸡米饭 | 13.9 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [],
+    "oldRecordKeys": [
+      "c01_t48|f2/黄焖鸡米饭||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0228-S047-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0228-S047",
+    "name": "经典过桥米线",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 9,
+    "rawPriceExpression": "9 元",
+    "specification": "米线",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 228,
+    "sourceQuote": "| 经典过桥 | 9 元 | 9 元 | 9 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/经典过桥米线|米线|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice_vermicelli",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0228-S048-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0228-S048",
+    "name": "经典过桥牛筋面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 9,
+    "rawPriceExpression": "9 元",
+    "specification": "牛筋面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 228,
+    "sourceQuote": "| 经典过桥 | 9 元 | 9 元 | 9 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/经典过桥牛筋面|牛筋面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0228-S049-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0228-S049",
+    "name": "经典过桥土豆粉",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 9,
+    "rawPriceExpression": "9 元",
+    "specification": "土豆粉",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 228,
+    "sourceQuote": "| 经典过桥 | 9 元 | 9 元 | 9 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/经典过桥土豆粉|土豆粉|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "other",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0229-S050-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0229-S050",
+    "name": "麻辣诱惑米线",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 10,
+    "rawPriceExpression": "10 元",
+    "specification": "米线",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 229,
+    "sourceQuote": "| 麻辣诱惑 | 10 元 | 10 元 | 10 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/麻辣诱惑米线|米线|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice_vermicelli",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0229-S051-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0229-S051",
+    "name": "麻辣诱惑牛筋面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 10,
+    "rawPriceExpression": "10 元",
+    "specification": "牛筋面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 229,
+    "sourceQuote": "| 麻辣诱惑 | 10 元 | 10 元 | 10 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/麻辣诱惑牛筋面|牛筋面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0229-S052-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0229-S052",
+    "name": "麻辣诱惑土豆粉",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 10,
+    "rawPriceExpression": "10 元",
+    "specification": "土豆粉",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 229,
+    "sourceQuote": "| 麻辣诱惑 | 10 元 | 10 元 | 10 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/麻辣诱惑土豆粉|土豆粉|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "other",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0230-S053-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0230-S053",
+    "name": "美味鸡汤米线",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 10,
+    "rawPriceExpression": "10 元",
+    "specification": "米线",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 230,
+    "sourceQuote": "| 美味鸡汤 | 10 元 | 10 元 | 10 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/美味鸡汤米线|米线|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice_vermicelli",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0230-S054-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0230-S054",
+    "name": "美味鸡汤牛筋面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 10,
+    "rawPriceExpression": "10 元",
+    "specification": "牛筋面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 230,
+    "sourceQuote": "| 美味鸡汤 | 10 元 | 10 元 | 10 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/美味鸡汤牛筋面|牛筋面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0230-S055-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0230-S055",
+    "name": "美味鸡汤土豆粉",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 10,
+    "rawPriceExpression": "10 元",
+    "specification": "土豆粉",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 230,
+    "sourceQuote": "| 美味鸡汤 | 10 元 | 10 元 | 10 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/美味鸡汤土豆粉|土豆粉|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "other",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0231-S056-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0231-S056",
+    "name": "开胃番茄米线",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12,
+    "rawPriceExpression": "12 元",
+    "specification": "米线",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 231,
+    "sourceQuote": "| 开胃番茄 | 12 元 | 12 元 | 12 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/开胃番茄米线|米线|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice_vermicelli",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0231-S057-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0231-S057",
+    "name": "开胃番茄牛筋面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12,
+    "rawPriceExpression": "12 元",
+    "specification": "牛筋面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 231,
+    "sourceQuote": "| 开胃番茄 | 12 元 | 12 元 | 12 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/开胃番茄牛筋面|牛筋面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0231-S058-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0231-S058",
+    "name": "开胃番茄土豆粉",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12,
+    "rawPriceExpression": "12 元",
+    "specification": "土豆粉",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 231,
+    "sourceQuote": "| 开胃番茄 | 12 元 | 12 元 | 12 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/开胃番茄土豆粉|土豆粉|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "other",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0232-S059-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0232-S059",
+    "name": "老坛酸菜米线",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12,
+    "rawPriceExpression": "12 元",
+    "specification": "米线",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 232,
+    "sourceQuote": "| 老坛酸菜 | 12 元 | 12 元 | 12 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/老坛酸菜米线|米线|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice_vermicelli",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0232-S060-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0232-S060",
+    "name": "老坛酸菜牛筋面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12,
+    "rawPriceExpression": "12 元",
+    "specification": "牛筋面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 232,
+    "sourceQuote": "| 老坛酸菜 | 12 元 | 12 元 | 12 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/老坛酸菜牛筋面|牛筋面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0232-S061-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0232-S061",
+    "name": "老坛酸菜土豆粉",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12,
+    "rawPriceExpression": "12 元",
+    "specification": "土豆粉",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 232,
+    "sourceQuote": "| 老坛酸菜 | 12 元 | 12 元 | 12 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/老坛酸菜土豆粉|土豆粉|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "other",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0233-S062-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0233-S062",
+    "name": "肉酱米线",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12,
+    "rawPriceExpression": "12 元",
+    "specification": "米线",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 233,
+    "sourceQuote": "| 肉酱 | 12 元 | 12 元 | 12 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/肉酱米线|米线|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice_vermicelli",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0233-S063-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0233-S063",
+    "name": "肉酱牛筋面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12,
+    "rawPriceExpression": "12 元",
+    "specification": "牛筋面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 233,
+    "sourceQuote": "| 肉酱 | 12 元 | 12 元 | 12 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/肉酱牛筋面|牛筋面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0233-S064-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0233-S064",
+    "name": "肉酱土豆粉",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12,
+    "rawPriceExpression": "12 元",
+    "specification": "土豆粉",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 233,
+    "sourceQuote": "| 肉酱 | 12 元 | 12 元 | 12 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/肉酱土豆粉|土豆粉|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "other",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0234-S065-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0234-S065",
+    "name": "金汤酸辣米线",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12,
+    "rawPriceExpression": "12 元",
+    "specification": "米线",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 234,
+    "sourceQuote": "| 金汤酸辣 | 12 元 | 12 元 | 12 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/金汤酸辣米线|米线|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice_vermicelli",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0234-S066-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0234-S066",
+    "name": "金汤酸辣牛筋面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12,
+    "rawPriceExpression": "12 元",
+    "specification": "牛筋面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 234,
+    "sourceQuote": "| 金汤酸辣 | 12 元 | 12 元 | 12 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/金汤酸辣牛筋面|牛筋面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0234-S067-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0234-S067",
+    "name": "金汤酸辣土豆粉",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12,
+    "rawPriceExpression": "12 元",
+    "specification": "土豆粉",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 234,
+    "sourceQuote": "| 金汤酸辣 | 12 元 | 12 元 | 12 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/金汤酸辣土豆粉|土豆粉|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "other",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0235-S068-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0235-S068",
+    "name": "激情椒麻米线",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12,
+    "rawPriceExpression": "12 元",
+    "specification": "米线",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 235,
+    "sourceQuote": "| 激情椒麻 | 12 元 | 12 元 | 12 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/激情椒麻米线|米线|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice_vermicelli",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0235-S069-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0235-S069",
+    "name": "激情椒麻牛筋面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12,
+    "rawPriceExpression": "12 元",
+    "specification": "牛筋面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 235,
+    "sourceQuote": "| 激情椒麻 | 12 元 | 12 元 | 12 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/激情椒麻牛筋面|牛筋面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0235-S070-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0235-S070",
+    "name": "激情椒麻土豆粉",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12,
+    "rawPriceExpression": "12 元",
+    "specification": "土豆粉",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 235,
+    "sourceQuote": "| 激情椒麻 | 12 元 | 12 元 | 12 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/激情椒麻土豆粉|土豆粉|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "other",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0236-S071-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0236-S071",
+    "name": "番茄麻辣米线",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "米线",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 236,
+    "sourceQuote": "| 番茄麻辣 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/番茄麻辣米线|米线|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice_vermicelli",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0236-S072-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0236-S072",
+    "name": "番茄麻辣牛筋面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "牛筋面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 236,
+    "sourceQuote": "| 番茄麻辣 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/番茄麻辣牛筋面|牛筋面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0236-S073-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0236-S073",
+    "name": "番茄麻辣土豆粉",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "土豆粉",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 236,
+    "sourceQuote": "| 番茄麻辣 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/番茄麻辣土豆粉|土豆粉|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "other",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0237-S074-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0237-S074",
+    "name": "麻辣肥牛米线",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 15,
+    "rawPriceExpression": "15 元",
+    "specification": "米线",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 237,
+    "sourceQuote": "| 麻辣肥牛 | 15 元 | 15 元 | 15 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/麻辣肥牛米线|米线|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice_vermicelli",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0237-S075-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0237-S075",
+    "name": "麻辣肥牛牛筋面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 15,
+    "rawPriceExpression": "15 元",
+    "specification": "牛筋面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 237,
+    "sourceQuote": "| 麻辣肥牛 | 15 元 | 15 元 | 15 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/麻辣肥牛牛筋面|牛筋面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0237-S076-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0237-S076",
+    "name": "麻辣肥牛土豆粉",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 15,
+    "rawPriceExpression": "15 元",
+    "specification": "土豆粉",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 237,
+    "sourceQuote": "| 麻辣肥牛 | 15 元 | 15 元 | 15 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/麻辣肥牛土豆粉|土豆粉|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "other",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0238-S077-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0238-S077",
+    "name": "番茄肥牛米线",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 16,
+    "rawPriceExpression": "16 元",
+    "specification": "米线",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 238,
+    "sourceQuote": "| 番茄肥牛 | 16 元 | 16 元 | 16 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/番茄肥牛米线|米线|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice_vermicelli",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0238-S078-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0238-S078",
+    "name": "番茄肥牛牛筋面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 16,
+    "rawPriceExpression": "16 元",
+    "specification": "牛筋面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 238,
+    "sourceQuote": "| 番茄肥牛 | 16 元 | 16 元 | 16 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/番茄肥牛牛筋面|牛筋面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0238-S079-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0238-S079",
+    "name": "番茄肥牛土豆粉",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 16,
+    "rawPriceExpression": "16 元",
+    "specification": "土豆粉",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 238,
+    "sourceQuote": "| 番茄肥牛 | 16 元 | 16 元 | 16 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/番茄肥牛土豆粉|土豆粉|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "other",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0239-S080-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0239-S080",
+    "name": "金汤肥牛米线",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 16,
+    "rawPriceExpression": "16 元",
+    "specification": "米线",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 239,
+    "sourceQuote": "| 金汤肥牛 | 16 元 | 16 元 | 16 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/金汤肥牛米线|米线|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice_vermicelli",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0239-S081-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0239-S081",
+    "name": "金汤肥牛牛筋面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 16,
+    "rawPriceExpression": "16 元",
+    "specification": "牛筋面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 239,
+    "sourceQuote": "| 金汤肥牛 | 16 元 | 16 元 | 16 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/金汤肥牛牛筋面|牛筋面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0239-S082-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0239-S082",
+    "name": "金汤肥牛土豆粉",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 16,
+    "rawPriceExpression": "16 元",
+    "specification": "土豆粉",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 239,
+    "sourceQuote": "| 金汤肥牛 | 16 元 | 16 元 | 16 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "originalPathSHA256": "37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043",
+      "photoId": "2F-05",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/金汤肥牛土豆粉|土豆粉|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "other",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-04-L0262-S083-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0262-S083",
+    "name": "青椒蛋炒饼",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 10,
+    "rawPriceExpression": "10 元",
+    "specification": "炒饼",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 262,
+    "sourceQuote": "| 青椒蛋 | 10 元 | 10 元 | 10 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/青椒蛋炒饼|炒饼|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "snack",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0262-S084-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0262-S084",
+    "name": "青椒蛋炒面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 10,
+    "rawPriceExpression": "10 元",
+    "specification": "炒面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 262,
+    "sourceQuote": "| 青椒蛋 | 10 元 | 10 元 | 10 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/青椒蛋炒面|炒面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0262-S085-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0262-S085",
+    "name": "青椒蛋炒饭",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 10,
+    "rawPriceExpression": "10 元",
+    "specification": "炒饭",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 262,
+    "sourceQuote": "| 青椒蛋 | 10 元 | 10 元 | 10 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/青椒蛋炒饭|炒饭|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0263-S086-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0263-S086",
+    "name": "火腿肠蛋炒饼",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12,
+    "rawPriceExpression": "12 元",
+    "specification": "炒饼",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 263,
+    "sourceQuote": "| 火腿肠蛋 | 12 元 | 12 元 | 12 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/火腿肠蛋炒饼|炒饼|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "snack",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0263-S087-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0263-S087",
+    "name": "火腿肠蛋炒面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12,
+    "rawPriceExpression": "12 元",
+    "specification": "炒面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 263,
+    "sourceQuote": "| 火腿肠蛋 | 12 元 | 12 元 | 12 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/火腿肠蛋炒面|炒面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0263-S088-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0263-S088",
+    "name": "火腿肠蛋炒饭",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12,
+    "rawPriceExpression": "12 元",
+    "specification": "炒饭",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 263,
+    "sourceQuote": "| 火腿肠蛋 | 12 元 | 12 元 | 12 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/火腿肠蛋炒饭|炒饭|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0264-S089-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0264-S089",
+    "name": "香菇鸡丁蛋炒饼",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒饼",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 264,
+    "sourceQuote": "| 香菇鸡丁蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/香菇鸡丁蛋炒饼|炒饼|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "snack",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0264-S090-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0264-S090",
+    "name": "香菇鸡丁蛋炒面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 264,
+    "sourceQuote": "| 香菇鸡丁蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/香菇鸡丁蛋炒面|炒面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0264-S091-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0264-S091",
+    "name": "香菇鸡丁蛋炒饭",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒饭",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 264,
+    "sourceQuote": "| 香菇鸡丁蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/香菇鸡丁蛋炒饭|炒饭|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0265-S092-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0265-S092",
+    "name": "广式腊肠蛋炒饼",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒饼",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 265,
+    "sourceQuote": "| 广式腊肠蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/广式腊肠蛋炒饼|炒饼|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "snack",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0265-S093-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0265-S093",
+    "name": "广式腊肠蛋炒面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 265,
+    "sourceQuote": "| 广式腊肠蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/广式腊肠蛋炒面|炒面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0265-S094-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0265-S094",
+    "name": "广式腊肠蛋炒饭",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒饭",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 265,
+    "sourceQuote": "| 广式腊肠蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/广式腊肠蛋炒饭|炒饭|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0266-S095-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0266-S095",
+    "name": "三鲜蛋炒饼",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒饼",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 266,
+    "sourceQuote": "| 三鲜蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/三鲜蛋炒饼|炒饼|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "snack",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0266-S096-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0266-S096",
+    "name": "三鲜蛋炒面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 266,
+    "sourceQuote": "| 三鲜蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/三鲜蛋炒面|炒面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0266-S097-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0266-S097",
+    "name": "三鲜蛋炒饭",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒饭",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 266,
+    "sourceQuote": "| 三鲜蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/三鲜蛋炒饭|炒饭|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0267-S098-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0267-S098",
+    "name": "土豆肉丝蛋炒饼",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒饼",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 267,
+    "sourceQuote": "| 土豆肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/土豆肉丝蛋炒饼|炒饼|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "snack",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0267-S099-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0267-S099",
+    "name": "土豆肉丝蛋炒面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 267,
+    "sourceQuote": "| 土豆肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/土豆肉丝蛋炒面|炒面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0267-S100-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0267-S100",
+    "name": "土豆肉丝蛋炒饭",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒饭",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 267,
+    "sourceQuote": "| 土豆肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/土豆肉丝蛋炒饭|炒饭|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0268-S101-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0268-S101",
+    "name": "青椒火腿蛋炒饼",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒饼",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 268,
+    "sourceQuote": "| 青椒火腿蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/青椒火腿蛋炒饼|炒饼|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "snack",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0268-S102-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0268-S102",
+    "name": "青椒火腿蛋炒面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 268,
+    "sourceQuote": "| 青椒火腿蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/青椒火腿蛋炒面|炒面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0268-S103-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0268-S103",
+    "name": "青椒火腿蛋炒饭",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒饭",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 268,
+    "sourceQuote": "| 青椒火腿蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/青椒火腿蛋炒饭|炒饭|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0269-S104-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0269-S104",
+    "name": "青椒肉丝蛋炒饼",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒饼",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 269,
+    "sourceQuote": "| 青椒肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/青椒肉丝蛋炒饼|炒饼|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "snack",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0269-S105-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0269-S105",
+    "name": "青椒肉丝蛋炒面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 269,
+    "sourceQuote": "| 青椒肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/青椒肉丝蛋炒面|炒面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0269-S106-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0269-S106",
+    "name": "青椒肉丝蛋炒饭",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒饭",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 269,
+    "sourceQuote": "| 青椒肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/青椒肉丝蛋炒饭|炒饭|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0270-S107-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0270-S107",
+    "name": "孜然鸡肉蛋炒饼",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒饼",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 270,
+    "sourceQuote": "| 孜然鸡肉蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/孜然鸡肉蛋炒饼|炒饼|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "snack",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0270-S108-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0270-S108",
+    "name": "孜然鸡肉蛋炒面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 270,
+    "sourceQuote": "| 孜然鸡肉蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/孜然鸡肉蛋炒面|炒面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0270-S109-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0270-S109",
+    "name": "孜然鸡肉蛋炒饭",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒饭",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 270,
+    "sourceQuote": "| 孜然鸡肉蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/孜然鸡肉蛋炒饭|炒饭|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0271-S110-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0271-S110",
+    "name": "老干妈肉丝蛋炒饼",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒饼",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 271,
+    "sourceQuote": "| 老干妈肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/老干妈肉丝蛋炒饼|炒饼|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "snack",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0271-S111-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0271-S111",
+    "name": "老干妈肉丝蛋炒面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 271,
+    "sourceQuote": "| 老干妈肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/老干妈肉丝蛋炒面|炒面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0271-S112-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0271-S112",
+    "name": "老干妈肉丝蛋炒饭",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒饭",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 271,
+    "sourceQuote": "| 老干妈肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/老干妈肉丝蛋炒饭|炒饭|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0272-S113-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0272-S113",
+    "name": "酸菜肉丝蛋炒饼",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒饼",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 272,
+    "sourceQuote": "| 酸菜肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/酸菜肉丝蛋炒饼|炒饼|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "snack",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0272-S114-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0272-S114",
+    "name": "酸菜肉丝蛋炒面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 272,
+    "sourceQuote": "| 酸菜肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/酸菜肉丝蛋炒面|炒面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0272-S115-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0272-S115",
+    "name": "酸菜肉丝蛋炒饭",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": "炒饭",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 272,
+    "sourceQuote": "| 酸菜肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/酸菜肉丝蛋炒饭|炒饭|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0273-S116-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0273-S116",
+    "name": "香辣猪头肉蛋炒饼",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 14,
+    "rawPriceExpression": "14 元",
+    "specification": "炒饼",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 273,
+    "sourceQuote": "| 香辣猪头肉蛋 | 14 元 | 14 元 | 14 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/香辣猪头肉蛋炒饼|炒饼|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "snack",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0273-S117-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0273-S117",
+    "name": "香辣猪头肉蛋炒面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 14,
+    "rawPriceExpression": "14 元",
+    "specification": "炒面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 273,
+    "sourceQuote": "| 香辣猪头肉蛋 | 14 元 | 14 元 | 14 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/香辣猪头肉蛋炒面|炒面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0273-S118-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0273-S118",
+    "name": "香辣猪头肉蛋炒饭",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 14,
+    "rawPriceExpression": "14 元",
+    "specification": "炒饭",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 273,
+    "sourceQuote": "| 香辣猪头肉蛋 | 14 元 | 14 元 | 14 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/香辣猪头肉蛋炒饭|炒饭|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0274-S119-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0274-S119",
+    "name": "红烧牛肉蛋炒饼",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 15,
+    "rawPriceExpression": "15 元",
+    "specification": "炒饼",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 274,
+    "sourceQuote": "| 红烧牛肉蛋 | 15 元 | 15 元 | 15 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/红烧牛肉蛋炒饼|炒饼|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "snack",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0274-S120-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0274-S120",
+    "name": "红烧牛肉蛋炒面",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 15,
+    "rawPriceExpression": "15 元",
+    "specification": "炒面",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 274,
+    "sourceQuote": "| 红烧牛肉蛋 | 15 元 | 15 元 | 15 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/红烧牛肉蛋炒面|炒面|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "noodle",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-04-L0274-S121-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-04-L0274-S121",
+    "name": "红烧牛肉蛋炒饭",
+    "stallRef": "W2-04",
+    "stallName": "小吕哥黄焖鸡（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 15,
+    "rawPriceExpression": "15 元",
+    "specification": "炒饭",
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 274,
+    "sourceQuote": "| 红烧牛肉蛋 | 15 元 | 15 元 | 15 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "originalPathSHA256": "914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915",
+      "photoId": "2F-09",
+      "mappingBasis": "PHOTO_MANIFEST confirmed mapping + source menu section",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t48|f2/红烧牛肉蛋炒饭|炒饭|"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": "rice",
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": true
+  },
+  {
+    "candidateId": "R04-W2-05-L0297-S122-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0297-S122",
+    "name": "鸡蛋火腿炒饼",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12.0,
+    "rawPriceExpression": "12 元",
+    "specification": "小份",
+    "specificationEvidence": "明确小份/大份表头及同一源行价签；恢复旧工具漏掉的大份价",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 297,
+    "sourceQuote": "| 鸡蛋火腿炒饼 | 12 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t49|f2/鸡蛋火腿炒饼||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0297-S122-V2",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0297-S122",
+    "name": "鸡蛋火腿炒饼",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13.0,
+    "rawPriceExpression": "13 元",
+    "specification": "大份",
+    "specificationEvidence": "明确小份/大份表头及同一源行价签；恢复旧工具漏掉的大份价",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 297,
+    "sourceQuote": "| 鸡蛋火腿炒饼 | 12 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t49|f2/鸡蛋火腿炒饼||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0298-S123-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0298-S123",
+    "name": "鸡蛋火腿炒面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12.0,
+    "rawPriceExpression": "12 元",
+    "specification": "小份",
+    "specificationEvidence": "明确小份/大份表头及同一源行价签；恢复旧工具漏掉的大份价",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 298,
+    "sourceQuote": "| 鸡蛋火腿炒面 | 12 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t49|f2/鸡蛋火腿炒面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0298-S123-V2",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0298-S123",
+    "name": "鸡蛋火腿炒面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13.0,
+    "rawPriceExpression": "13 元",
+    "specification": "大份",
+    "specificationEvidence": "明确小份/大份表头及同一源行价签；恢复旧工具漏掉的大份价",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 298,
+    "sourceQuote": "| 鸡蛋火腿炒面 | 12 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t49|f2/鸡蛋火腿炒面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0299-S124-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0299-S124",
+    "name": "鸡蛋火腿炒方便面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12.0,
+    "rawPriceExpression": "12 元",
+    "specification": "小份",
+    "specificationEvidence": "明确小份/大份表头及同一源行价签；恢复旧工具漏掉的大份价",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 299,
+    "sourceQuote": "| 鸡蛋火腿炒方便面 | 12 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t49|f2/鸡蛋火腿炒方便面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0299-S124-V2",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0299-S124",
+    "name": "鸡蛋火腿炒方便面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13.0,
+    "rawPriceExpression": "13 元",
+    "specification": "大份",
+    "specificationEvidence": "明确小份/大份表头及同一源行价签；恢复旧工具漏掉的大份价",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 299,
+    "sourceQuote": "| 鸡蛋火腿炒方便面 | 12 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t49|f2/鸡蛋火腿炒方便面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0300-S125-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0300-S125",
+    "name": "鸡蛋火腿炒刀削面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12.0,
+    "rawPriceExpression": "12 元",
+    "specification": "小份",
+    "specificationEvidence": "明确小份/大份表头及同一源行价签；恢复旧工具漏掉的大份价",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 300,
+    "sourceQuote": "| 鸡蛋火腿炒刀削面 | 12 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t49|f2/鸡蛋火腿炒刀削面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0300-S125-V2",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0300-S125",
+    "name": "鸡蛋火腿炒刀削面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13.0,
+    "rawPriceExpression": "13 元",
+    "specification": "大份",
+    "specificationEvidence": "明确小份/大份表头及同一源行价签；恢复旧工具漏掉的大份价",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 300,
+    "sourceQuote": "| 鸡蛋火腿炒刀削面 | 12 元 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t49|f2/鸡蛋火腿炒刀削面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0301-S126-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0301-S126",
+    "name": "鸡蛋火腿炒河粉",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13.0,
+    "rawPriceExpression": "13 元",
+    "specification": "小份",
+    "specificationEvidence": "明确小份/大份表头及同一源行价签；恢复旧工具漏掉的大份价",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 301,
+    "sourceQuote": "| 鸡蛋火腿炒河粉 | 13 元 | — |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t49|f2/鸡蛋火腿炒河粉||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0302-S127-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0302-S127",
+    "name": "鸡蛋火腿炒米粉",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13.0,
+    "rawPriceExpression": "13 元",
+    "specification": "小份",
+    "specificationEvidence": "明确小份/大份表头及同一源行价签；恢复旧工具漏掉的大份价",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 302,
+    "sourceQuote": "| 鸡蛋火腿炒米粉 | 13 元 | — |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t49|f2/鸡蛋火腿炒米粉||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0303-S128-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0303-S128",
+    "name": "鸡蛋肉肠炒饼",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13.0,
+    "rawPriceExpression": "13 元",
+    "specification": "小份",
+    "specificationEvidence": "明确小份/大份表头及同一源行价签；恢复旧工具漏掉的大份价",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 303,
+    "sourceQuote": "| 鸡蛋肉肠炒饼 | 13 元 | 14 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t49|f2/鸡蛋肉肠炒饼||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0303-S128-V2",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0303-S128",
+    "name": "鸡蛋肉肠炒饼",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 14.0,
+    "rawPriceExpression": "14 元",
+    "specification": "大份",
+    "specificationEvidence": "明确小份/大份表头及同一源行价签；恢复旧工具漏掉的大份价",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 303,
+    "sourceQuote": "| 鸡蛋肉肠炒饼 | 13 元 | 14 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t49|f2/鸡蛋肉肠炒饼||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0304-S129-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0304-S129",
+    "name": "鸡蛋肉肠炒面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13.0,
+    "rawPriceExpression": "13 元",
+    "specification": "小份",
+    "specificationEvidence": "明确小份/大份表头及同一源行价签；恢复旧工具漏掉的大份价",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 304,
+    "sourceQuote": "| 鸡蛋肉肠炒面 | 13 元 | 14 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t49|f2/鸡蛋肉肠炒面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0304-S129-V2",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0304-S129",
+    "name": "鸡蛋肉肠炒面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 14.0,
+    "rawPriceExpression": "14 元",
+    "specification": "大份",
+    "specificationEvidence": "明确小份/大份表头及同一源行价签；恢复旧工具漏掉的大份价",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 304,
+    "sourceQuote": "| 鸡蛋肉肠炒面 | 13 元 | 14 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t49|f2/鸡蛋肉肠炒面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0305-S130-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0305-S130",
+    "name": "鸡蛋肉肠炒方便面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13.0,
+    "rawPriceExpression": "13 元",
+    "specification": "小份",
+    "specificationEvidence": "明确小份/大份表头及同一源行价签；恢复旧工具漏掉的大份价",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 305,
+    "sourceQuote": "| 鸡蛋肉肠炒方便面 | 13 元 | 14 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t49|f2/鸡蛋肉肠炒方便面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0305-S130-V2",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0305-S130",
+    "name": "鸡蛋肉肠炒方便面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 14.0,
+    "rawPriceExpression": "14 元",
+    "specification": "大份",
+    "specificationEvidence": "明确小份/大份表头及同一源行价签；恢复旧工具漏掉的大份价",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 305,
+    "sourceQuote": "| 鸡蛋肉肠炒方便面 | 13 元 | 14 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t49|f2/鸡蛋肉肠炒方便面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0306-S131-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0306-S131",
+    "name": "鸡蛋肉肠炒刀削面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13.0,
+    "rawPriceExpression": "13 元",
+    "specification": "小份",
+    "specificationEvidence": "明确小份/大份表头及同一源行价签；恢复旧工具漏掉的大份价",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 306,
+    "sourceQuote": "| 鸡蛋肉肠炒刀削面 | 13 元 | 14 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t49|f2/鸡蛋肉肠炒刀削面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0306-S131-V2",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0306-S131",
+    "name": "鸡蛋肉肠炒刀削面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 14.0,
+    "rawPriceExpression": "14 元",
+    "specification": "大份",
+    "specificationEvidence": "明确小份/大份表头及同一源行价签；恢复旧工具漏掉的大份价",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 306,
+    "sourceQuote": "| 鸡蛋肉肠炒刀削面 | 13 元 | 14 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t49|f2/鸡蛋肉肠炒刀削面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0307-S132-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0307-S132",
+    "name": "鸡蛋肉肠炒河粉",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 14.0,
+    "rawPriceExpression": "14 元",
+    "specification": "小份",
+    "specificationEvidence": "明确小份/大份表头及同一源行价签；恢复旧工具漏掉的大份价",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 307,
+    "sourceQuote": "| 鸡蛋肉肠炒河粉 | 14 元 | — |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t49|f2/鸡蛋肉肠炒河粉||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0308-S133-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0308-S133",
+    "name": "鸡蛋肉肠炒米粉",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 14.0,
+    "rawPriceExpression": "14 元",
+    "specification": "小份",
+    "specificationEvidence": "明确小份/大份表头及同一源行价签；恢复旧工具漏掉的大份价",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 308,
+    "sourceQuote": "| 鸡蛋肉肠炒米粉 | 14 元 | — |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [
+      "source_assets/TRANSCRIPTION_2F.md已裁决三做法/三基底/双规格"
+    ],
+    "oldRecordKeys": [
+      "c01_t49|f2/鸡蛋肉肠炒米粉||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0316-S134-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0316-S134",
+    "name": "茄丁剁椒面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 10,
+    "rawPriceExpression": "10 元",
+    "specification": null,
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 316,
+    "sourceQuote": "| 茄丁剁椒面 | 10 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [],
+    "oldRecordKeys": [
+      "c01_t49|f2/茄丁剁椒面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0317-S135-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0317-S135",
+    "name": "酸豆角剁椒面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 10,
+    "rawPriceExpression": "10 元",
+    "specification": null,
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 317,
+    "sourceQuote": "| 酸豆角剁椒面 | 10 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [],
+    "oldRecordKeys": [
+      "c01_t49|f2/酸豆角剁椒面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0318-S136-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0318-S136",
+    "name": "肉酱剁椒面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 12,
+    "rawPriceExpression": "12 元",
+    "specification": null,
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 318,
+    "sourceQuote": "| 肉酱剁椒面 | 12 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [],
+    "oldRecordKeys": [
+      "c01_t49|f2/肉酱剁椒面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0319-S137-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0319-S137",
+    "name": "辣子鸡丁剁椒面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": null,
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 319,
+    "sourceQuote": "| 辣子鸡丁剁椒面 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [],
+    "oldRecordKeys": [
+      "c01_t49|f2/辣子鸡丁剁椒面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0320-S138-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0320-S138",
+    "name": "西红柿鸡蛋盖面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 13,
+    "rawPriceExpression": "13 元",
+    "specification": null,
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 320,
+    "sourceQuote": "| 西红柿鸡蛋盖面 | 13 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [],
+    "oldRecordKeys": [
+      "c01_t49|f2/西红柿鸡蛋盖面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0321-S139-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0321-S139",
+    "name": "招牌卤肉剁椒面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 15,
+    "rawPriceExpression": "15 元",
+    "specification": null,
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 321,
+    "sourceQuote": "| 招牌卤肉剁椒面 | 15 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [],
+    "oldRecordKeys": [
+      "c01_t49|f2/招牌卤肉剁椒面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0322-S140-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0322-S140",
+    "name": "爆炒鸡杂剁椒面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 15,
+    "rawPriceExpression": "15 元",
+    "specification": null,
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 322,
+    "sourceQuote": "| 爆炒鸡杂剁椒面 | 15 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [],
+    "oldRecordKeys": [
+      "c01_t49|f2/爆炒鸡杂剁椒面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0323-S141-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0323-S141",
+    "name": "小炒肉剁椒面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 15,
+    "rawPriceExpression": "15 元",
+    "specification": null,
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 323,
+    "sourceQuote": "| 小炒肉剁椒面 | 15 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [],
+    "oldRecordKeys": [
+      "c01_t49|f2/小炒肉剁椒面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0324-S142-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0324-S142",
+    "name": "全家福剁椒面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 18,
+    "rawPriceExpression": "18 元",
+    "specification": null,
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 324,
+    "sourceQuote": "| 全家福剁椒面 | 18 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [],
+    "oldRecordKeys": [
+      "c01_t49|f2/全家福剁椒面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0325-S143-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0325-S143",
+    "name": "红烧牛肉剁椒面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 18,
+    "rawPriceExpression": "18 元",
+    "specification": null,
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 325,
+    "sourceQuote": "| 红烧牛肉剁椒面 | 18 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [],
+    "oldRecordKeys": [
+      "c01_t49|f2/红烧牛肉剁椒面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0326-S144-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0326-S144",
+    "name": "香菇炸酱面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 9,
+    "rawPriceExpression": "9 元",
+    "specification": null,
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 326,
+    "sourceQuote": "| 香菇炸酱面 | 9 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [],
+    "oldRecordKeys": [
+      "c01_t49|f2/香菇炸酱面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0327-S145-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0327-S145",
+    "name": "番茄小面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 10,
+    "rawPriceExpression": "10 元",
+    "specification": null,
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 327,
+    "sourceQuote": "| 番茄小面 | 10 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [],
+    "oldRecordKeys": [
+      "c01_t49|f2/番茄小面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0328-S146-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0328-S146",
+    "name": "油泼面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 10,
+    "rawPriceExpression": "10 元",
+    "specification": null,
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 328,
+    "sourceQuote": "| 油泼面 | 10 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [],
+    "oldRecordKeys": [
+      "c01_t49|f2/油泼面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0329-S147-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0329-S147",
+    "name": "葱油拌面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 10,
+    "rawPriceExpression": "10 元",
+    "specification": null,
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 329,
+    "sourceQuote": "| 葱油拌面 | 10 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [],
+    "oldRecordKeys": [
+      "c01_t49|f2/葱油拌面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-W2-05-L0330-S148-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-W2-05-L0330-S148",
+    "name": "大骨头面",
+    "stallRef": "W2-05",
+    "stallName": "炒粉炒面炒饼（暂定）",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 11,
+    "rawPriceExpression": "11 元",
+    "specification": null,
+    "specificationEvidence": "既有解析结果回指原表；未改数值",
+    "currency": "CNY",
+    "unitRaw": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 330,
+    "sourceQuote": "| 大骨头面 | 11 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "originalPathSHA256": "f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782",
+      "photoId": "2F-07",
+      "mappingBasis": "PHOTO_MANIFEST confirmed W2-05 archive mapping",
+      "localCropRegion": null,
+      "fieldReaudit": "existing confirmed archive; no new full-image audit claim"
+    },
+    "businessDecisionRefs": [],
+    "oldRecordKeys": [
+      "c01_t49|f2/大骨头面||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "tastes": [],
+    "foodType": null,
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "正式ID/准入未授权",
+      "采集元数据延期",
+      "父级正式核验/当前时效未知"
+    ],
+    "reusedPrior39": false
+  },
+  {
+    "candidateId": "R04-NG01-L0340-V1",
+    "formalDishId": null,
+    "sourceRecordRef": "R04-NG01-L0340",
+    "name": "含蛋基础手抓饼",
+    "stallRef": "W2-06",
+    "stallName": "这里有个摊儿",
+    "shopRef": "c01_MODEL_ONLY",
+    "floorRef": "c01_f2_MODEL_ONLY",
+    "amount": 4,
+    "rawPriceExpression": "4 元",
+    "specification": null,
+    "currency": "CNY",
+    "unitRaw": "份",
+    "unitEvidence": "负责人NG01 D1；非从照片推断",
+    "eggIncluded": true,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 340,
+    "sourceQuote": "| 手抓饼基础套餐（默认含鸡蛋） | 4 元 |",
+    "photoEvidence": {
+      "originalPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_5a4feb479cd48e43c1ac30fab10800417d55dca87519f98119ae5624232d8fcf.jpg",
+      "originalPathSHA256": "5a4feb479cd48e43c1ac30fab10800417d55dca87519f98119ae5624232d8fcf",
+      "mappingBasis": "已批准NG01材料+既有OCR加料单价/基础含蛋文字，不提升整体核实"
+    },
+    "businessDecisionRefs": [
+      "source_assets/NG01_owner_material.md 当前D1/D2"
+    ],
+    "oldRecordKeys": [
+      "c01_t20|f2/手抓饼基础套餐（默认含鸡蛋）||"
+    ],
+    "currentPriceValidity": "UNKNOWN",
+    "captureDate": null,
+    "collector": null,
+    "foodType": null,
+    "tastes": [],
+    "verifyStatus": "unverified",
+    "verifiedAt": null,
+    "admissionStatus": "ISOLATED_HISTORICAL_CANDIDATE_NOT_FORMALLY_IMPORTABLE",
+    "transactionQuoteAllowed": false,
+    "blockers": [
+      "结构/正式ID及准入待审",
+      "采集元数据延期"
+    ],
+    "reusedPrior39": false
+  }
+]

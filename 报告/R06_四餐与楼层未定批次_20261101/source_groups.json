@@ -1,0 +1,2220 @@
+[
+  {
+    "sourceRecordRef": "R06-FOURTH-L0157",
+    "sourceBatch": "FOURTH_2F",
+    "name": "泰式榴莲鸡",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 157,
+    "sourceQuote": "| 泰式榴莲鸡 | 13 | rice |",
+    "oldRecordKeys": [
+      "batch1:c03_d075"
+    ]
+  },
+  {
+    "sourceRecordRef": "R06-FOURTH-L0158",
+    "sourceBatch": "FOURTH_2F",
+    "name": "招牌红烧肉",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 158,
+    "sourceQuote": "| 招牌红烧肉 | 14 | rice |",
+    "oldRecordKeys": [
+      "batch1:c03_d076"
+    ]
+  },
+  {
+    "sourceRecordRef": "R06-FOURTH-L0159",
+    "sourceBatch": "FOURTH_2F",
+    "name": "泰式咖喱鸡",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 159,
+    "sourceQuote": "| ⚠ 泰式咖喱鸡 | 14 | rice |",
+    "oldRecordKeys": []
+  },
+  {
+    "sourceRecordRef": "R06-FOURTH-L0160",
+    "sourceBatch": "FOURTH_2F",
+    "name": "黄金脆皮鸡",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 160,
+    "sourceQuote": "| 黄金脆皮鸡 | 18 | rice |",
+    "oldRecordKeys": [
+      "batch1:c03_d077"
+    ]
+  },
+  {
+    "sourceRecordRef": "R06-FOURTH-L0161",
+    "sourceBatch": "FOURTH_2F",
+    "name": "麻辣干锅鸡",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 161,
+    "sourceQuote": "| 麻辣干锅鸡 | 18 | rice |",
+    "oldRecordKeys": [
+      "batch1:c03_d078"
+    ]
+  },
+  {
+    "sourceRecordRef": "R06-FOURTH-L0162",
+    "sourceBatch": "FOURTH_2F",
+    "name": "春浓茄丁（\"春浓\"存疑）",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 162,
+    "sourceQuote": "| ⚠ 春浓茄丁（\"春浓\"存疑） | 13 | rice |",
+    "oldRecordKeys": []
+  },
+  {
+    "sourceRecordRef": "R06-FOURTH-L0163",
+    "sourceBatch": "FOURTH_2F",
+    "name": "青柠黑椒鸡丁",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 163,
+    "sourceQuote": "| 青柠黑椒鸡丁 | 18 | rice |",
+    "oldRecordKeys": [
+      "batch1:c03_d079"
+    ]
+  },
+  {
+    "sourceRecordRef": "R06-FOURTH-L0164",
+    "sourceBatch": "FOURTH_2F",
+    "name": "辣条鸡丁",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 164,
+    "sourceQuote": "| 辣条鸡丁 | 18 | rice |",
+    "oldRecordKeys": [
+      "batch1:c03_d080"
+    ]
+  },
+  {
+    "sourceRecordRef": "R06-FOURTH-L0165",
+    "sourceBatch": "FOURTH_2F",
+    "name": "贵妃荔枝鸡",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 165,
+    "sourceQuote": "| 贵妃荔枝鸡 | 18 | rice |",
+    "oldRecordKeys": [
+      "batch1:c03_d081"
+    ]
+  },
+  {
+    "sourceRecordRef": "R06-FOURTH-L0166",
+    "sourceBatch": "FOURTH_2F",
+    "name": "巴西烤肉饭",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 166,
+    "sourceQuote": "| 巴西烤肉饭 | 12 | rice |",
+    "oldRecordKeys": [
+      "batch1:c03_d082"
+    ]
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0002",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "糖醋里脊",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 2,
+    "sourceQuote": "c04_d001,糖醋里脊,菜品,c04,c04_t01,7,rice,choice,field,价目牌逐字转录；辣度按菜名字面判定、无字面依据者记 choice 待现场确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c04_d001"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度按菜名字面判定、无字面依据者记 choice 待现场确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0003",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "木须肉",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 3,
+    "sourceQuote": "c04_d002,木须肉,菜品,c04,c04_t01,5,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c04_d002"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度无字面依据记 choice 待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0004",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "西葫芦炒肉",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 4,
+    "sourceQuote": "c04_d003,西葫芦炒肉,菜品,c04,c04_t01,4,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c04_d003"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度无字面依据记 choice 待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0005",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "大盘鸡",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 5,
+    "sourceQuote": "c04_d004,大盘鸡,菜品,c04,c04_t01,6,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c04_d004"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度无字面依据记 choice 待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0006",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "水煮肉片",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 6,
+    "sourceQuote": "c04_d005,水煮肉片,菜品,c04,c04_t01,6,rice,spicy,field,价目牌逐字转录；辣度按菜名「水煮」字面判定为辣,,产品负责人,2026-10-27,img/c04_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c04_d005"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "spicy",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度按菜名「水煮」字面判定为辣"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0007",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "西红柿炒鸡蛋",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 7,
+    "sourceQuote": "c04_d006,西红柿炒鸡蛋,菜品,c04,c04_t01,4,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c04_d006"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度无字面依据记 choice 待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0008",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "手工大丸子",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 8,
+    "sourceQuote": "c04_d007,手工大丸子,菜品,c04,c04_t01,6,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c04_d007"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度无字面依据记 choice 待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0009",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "土豆鸡丁",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 9,
+    "sourceQuote": "c04_d008,土豆鸡丁,菜品,c04,c04_t01,6,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c04_d008"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度无字面依据记 choice 待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0010",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "蒜蓉金针菇",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 10,
+    "sourceQuote": "c04_d009,蒜蓉金针菇,菜品,c04,c04_t01,4,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c04_d009"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度无字面依据记 choice 待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0011",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "酥皮大鸡腿",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 11,
+    "sourceQuote": "c04_d010,酥皮大鸡腿,菜品,c04,c04_t01,6,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c04_d010"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度无字面依据记 choice 待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0012",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "鱼香肉丝",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 12,
+    "sourceQuote": "c04_d011,鱼香肉丝,菜品,c04,c04_t01,5,rice,choice,field,价目牌逐字转录；鱼香属调味风格未标辣度、记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c04_d011"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；鱼香属调味风格未标辣度、记 choice 待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0013",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "麻婆豆腐",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 13,
+    "sourceQuote": "c04_d012,麻婆豆腐,菜品,c04,c04_t01,3,rice,spicy,field,价目牌逐字转录；辣度按菜名「麻婆」字面判定为辣,,产品负责人,2026-10-27,img/c04_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c04_d012"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "spicy",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度按菜名「麻婆」字面判定为辣"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0014",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "香酥炸肉",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 14,
+    "sourceQuote": "c04_d013,香酥炸肉,菜品,c04,c04_t01,6,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c04_d013"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度无字面依据记 choice 待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0015",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "豆角炒肉",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 15,
+    "sourceQuote": "c04_d014,豆角炒肉,菜品,c04,c04_t01,5,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c04_d014"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度无字面依据记 choice 待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0016",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "包菜粉条",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 16,
+    "sourceQuote": "c04_d015,包菜粉条,菜品,c04,c04_t01,3,rice,choice,field,价目牌逐字转录；按快餐配菜归 rice；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c04_d015"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；按快餐配菜归 rice；辣度无字面依据记 choice 待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0017",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "孜然肉片",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 17,
+    "sourceQuote": "c04_d016,孜然肉片,菜品,c04,c04_t01,6,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c04_d016"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度无字面依据记 choice 待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0018",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "蒜苔炒肉",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 18,
+    "sourceQuote": "c04_d017,蒜苔炒肉,菜品,c04,c04_t01,5,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c04_d017"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度无字面依据记 choice 待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0019",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "酸辣白菜",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 19,
+    "sourceQuote": "c04_d018,酸辣白菜,菜品,c04,c04_t01,2,rice,mild_spicy,field,价目牌逐字转录；辣度按菜名「酸辣」字面判定为微辣,,产品负责人,2026-10-27,img/c04_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c04_d018"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "mild_spicy",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度按菜名「酸辣」字面判定为微辣"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0020",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "香辣鸭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 20,
+    "sourceQuote": "c04_d019,香辣鸭,菜品,c04,c04_t01,6,rice,spicy,field,价目牌逐字转录；辣度按菜名「香辣」字面判定为辣,,产品负责人,2026-10-27,img/c04_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c04_d019"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "spicy",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度按菜名「香辣」字面判定为辣"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0021",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "博山爆炒肉片",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 21,
+    "sourceQuote": "c04_d020,博山爆炒肉片,菜品,c04,c04_t01,5,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c04_d020"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度无字面依据记 choice 待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0022",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "酸辣土豆丝",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 22,
+    "sourceQuote": "c04_d021,酸辣土豆丝,菜品,c04,c04_t01,2,rice,mild_spicy,field,价目牌逐字转录；辣度按菜名「酸辣」字面判定为微辣,,产品负责人,2026-10-27,img/c04_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c04_d021"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "mild_spicy",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度按菜名「酸辣」字面判定为微辣"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0023",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "羊汤（方便面）",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 23,
+    "sourceQuote": "c05_d001,羊汤（方便面）,菜品,c05,c05_t01,6,noodle,choice,field,价目牌逐字转录；碗面系列按 noodle；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c05_d001"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；碗面系列按 noodle；辣度无字面依据记 choice 待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0024",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "牛肉汤（方便面）",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 24,
+    "sourceQuote": "c05_d002,牛肉汤（方便面）,菜品,c05,c05_t01,6,noodle,choice,field,价目牌逐字转录；碗面系列按 noodle；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c05_d002"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；碗面系列按 noodle；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0025",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "羊杂（方便面）",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 25,
+    "sourceQuote": "c05_d003,羊杂（方便面）,菜品,c05,c05_t01,8,noodle,choice,field,价目牌逐字转录；碗面系列按 noodle；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c05_d003"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；碗面系列按 noodle；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0026",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "牛杂（方便面）",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 26,
+    "sourceQuote": "c05_d004,牛杂（方便面）,菜品,c05,c05_t01,8,noodle,choice,field,价目牌逐字转录；碗面系列按 noodle；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c05_d004"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；碗面系列按 noodle；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0027",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "鸡肉丝（方便面）",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 27,
+    "sourceQuote": "c05_d005,鸡肉丝（方便面）,菜品,c05,c05_t01,8,noodle,choice,field,价目牌逐字转录；碗面系列按 noodle；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c05_d005"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；碗面系列按 noodle；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0028",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "鸭肉（方便面）",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 28,
+    "sourceQuote": "c05_d006,鸭肉（方便面）,菜品,c05,c05_t01,8,noodle,choice,field,价目牌逐字转录；碗面系列按 noodle；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c05_d006"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；碗面系列按 noodle；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0029",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "羊血（方便面）",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 29,
+    "sourceQuote": "c05_d007,羊血（方便面）,菜品,c05,c05_t01,8,noodle,choice,field,价目牌逐字转录；碗面系列按 noodle；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c05_d007"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；碗面系列按 noodle；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0030",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "加羊肉（方便面）",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 30,
+    "sourceQuote": "c05_d008,加羊肉（方便面）,菜品,c05,c05_t01,11,noodle,choice,field,价目牌逐字转录；碗面系列按 noodle；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c05_d008"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；碗面系列按 noodle；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0031",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "加牛肉（方便面）",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 31,
+    "sourceQuote": "c05_d009,加牛肉（方便面）,菜品,c05,c05_t01,10,noodle,choice,field,价目牌逐字转录；碗面系列按 noodle；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c05_d009"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；碗面系列按 noodle；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0032",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "加剔骨肉（方便面）",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 32,
+    "sourceQuote": "c05_d010,加剔骨肉（方便面）,菜品,c05,c05_t01,10,noodle,choice,field,价目牌逐字转录；碗面系列按 noodle；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c05_d010"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；碗面系列按 noodle；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0033",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "羊头肉汤",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 33,
+    "sourceQuote": "c05_d011,羊头肉汤,菜品,c05,c05_t01,13,other,choice,field,价目牌逐字转录；纯汤无主食归 other；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c05_d011"
+    ],
+    "originalFoodType": "other",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；纯汤无主食归 other；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0034",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "羊肉汤（羊肉+粉丝+豆皮+饼）",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 34,
+    "sourceQuote": "c05_d012,羊肉汤（羊肉+粉丝+豆皮+饼）,菜品,c05,c05_t01,14,rice_vermicelli,choice,field,价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c05_d012"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0035",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "牛肉汤（牛肉+粉丝+豆皮+饼）",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 35,
+    "sourceQuote": "c05_d013,牛肉汤（牛肉+粉丝+豆皮+饼）,菜品,c05,c05_t01,12,rice_vermicelli,choice,field,价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c05_d013"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0036",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "羊杂汤（羊杂肉+粉丝+豆皮+饼）",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 36,
+    "sourceQuote": "c05_d014,羊杂汤（羊杂肉+粉丝+豆皮+饼）,菜品,c05,c05_t01,12,rice_vermicelli,choice,field,价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c05_d014"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0037",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "剔骨汤（剔骨肉+粉丝+豆皮+饼）",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 37,
+    "sourceQuote": "c05_d015,剔骨汤（剔骨肉+粉丝+豆皮+饼）,菜品,c05,c05_t01,12,rice_vermicelli,choice,field,价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c05_d015"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0038",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "牛杂汤（牛杂肉+粉丝+豆皮+饼）",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 38,
+    "sourceQuote": "c05_d016,牛杂汤（牛杂肉+粉丝+豆皮+饼）,菜品,c05,c05_t01,12,rice_vermicelli,choice,field,价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c05_d016"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0039",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "鸡丝汤（鸡肉+粉丝+豆皮+煎蛋+饼）",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 39,
+    "sourceQuote": "c05_d017,鸡丝汤（鸡肉+粉丝+豆皮+煎蛋+饼）,菜品,c05,c05_t01,11,rice_vermicelli,choice,field,价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c05_d017"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0040",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "老鸭汤（鸭肉+粉丝+豆皮+豆泡+饼）",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 40,
+    "sourceQuote": "c05_d018,老鸭汤（鸭肉+粉丝+豆皮+豆泡+饼）,菜品,c05,c05_t01,11,rice_vermicelli,choice,field,价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c05_d018"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0041",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "羊血汤（羊血+粉丝+豆皮+豆泡+饼）",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 41,
+    "sourceQuote": "c05_d019,羊血汤（羊血+粉丝+豆皮+豆泡+饼）,菜品,c05,c05_t01,11,rice_vermicelli,choice,field,价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c05_d019"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0042",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "原味鱼粉",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 42,
+    "sourceQuote": "c06_d001,原味鱼粉,菜品,c06,c06_t01,10,rice_vermicelli,choice,field,价目牌逐字转录；鱼粉归 rice_vermicelli；店内标明口味可选故记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c06_d001"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；鱼粉归 rice_vermicelli；店内标明口味可选故记 choice"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0043",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "香辣鱼粉",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 43,
+    "sourceQuote": "c06_d002,香辣鱼粉,菜品,c06,c06_t01,11,rice_vermicelli,spicy,field,价目牌逐字转录；辣度按菜名「香辣」字面判定为辣,,产品负责人,2026-10-27,img/c06_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c06_d002"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "spicy",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度按菜名「香辣」字面判定为辣"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0044",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "酸辣鱼粉",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 44,
+    "sourceQuote": "c06_d003,酸辣鱼粉,菜品,c06,c06_t01,11,rice_vermicelli,mild_spicy,field,价目牌逐字转录；辣度按菜名「酸辣」字面判定为微辣,,产品负责人,2026-10-27,img/c06_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c06_d003"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "mild_spicy",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度按菜名「酸辣」字面判定为微辣"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0045",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "酸菜鱼粉",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 45,
+    "sourceQuote": "c06_d004,酸菜鱼粉,菜品,c06,c06_t01,12,rice_vermicelli,choice,field,价目牌逐字转录；酸菜未标辣度、店内口味可选故记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c06_d004"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；酸菜未标辣度、店内口味可选故记 choice"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0046",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "傣味辣番茄鱼粉",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 46,
+    "sourceQuote": "c06_d005,傣味辣番茄鱼粉,菜品,c06,c06_t01,12,rice_vermicelli,spicy,field,价目牌逐字转录；辣度按菜名含「辣」判定为辣,,产品负责人,2026-10-27,img/c06_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c06_d005"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "spicy",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度按菜名含「辣」判定为辣"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0047",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "金汤肥牛鱼粉",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 47,
+    "sourceQuote": "c06_d006,金汤肥牛鱼粉,菜品,c06,c06_t01,13,rice_vermicelli,choice,field,价目牌逐字转录；辣度无字面依据、店内口味可选故记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c06_d006"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度无字面依据、店内口味可选故记 choice"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0048",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "招牌鱼粉",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 48,
+    "sourceQuote": "c06_d007,招牌鱼粉,菜品,c06,c06_t01,12,rice_vermicelli,choice,field,价目牌逐字转录；辣度无字面依据、店内口味可选故记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c06_d007"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度无字面依据、店内口味可选故记 choice"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0049",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "藤椒鱼粉",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 49,
+    "sourceQuote": "c06_d008,藤椒鱼粉,菜品,c06,c06_t01,12,rice_vermicelli,spicy,field,价目牌逐字转录；辣度按菜名「藤椒」字面判定为辣,,产品负责人,2026-10-27,img/c06_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c06_d008"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "spicy",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度按菜名「藤椒」字面判定为辣"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0050",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "番茄鱼粉",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 50,
+    "sourceQuote": "c06_d009,番茄鱼粉,菜品,c06,c06_t01,12,rice_vermicelli,choice,field,价目牌逐字转录；辣度无字面依据、店内口味可选故记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c06_d009"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度无字面依据、店内口味可选故记 choice"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0051",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "金汤鱼粉",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 51,
+    "sourceQuote": "c06_d010,金汤鱼粉,菜品,c06,c06_t01,12,rice_vermicelli,choice,field,价目牌逐字转录；辣度无字面依据、店内口味可选故记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c06_d010"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度无字面依据、店内口味可选故记 choice"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0052",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "麻辣鱼粉",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 52,
+    "sourceQuote": "c06_d011,麻辣鱼粉,菜品,c06,c06_t01,11,rice_vermicelli,spicy,field,价目牌逐字转录；辣度按菜名「麻辣」字面判定为辣,,产品负责人,2026-10-27,img/c06_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c06_d011"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "spicy",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度按菜名「麻辣」字面判定为辣"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0053",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "素炒米粉",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 53,
+    "sourceQuote": "c06_d012,素炒米粉,菜品,c06,c06_t01,10,rice_vermicelli,choice,field,价目牌逐字转录；炒米粉归 rice_vermicelli；辣度按店内口味可选记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c06_d012"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；炒米粉归 rice_vermicelli；辣度按店内口味可选记 choice"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0054",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "鸡肉炒米粉",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 54,
+    "sourceQuote": "c06_d013,鸡肉炒米粉,菜品,c06,c06_t01,12,rice_vermicelli,choice,field,价目牌逐字转录；炒米粉归 rice_vermicelli；辣度按店内口味可选记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c06_d013"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；炒米粉归 rice_vermicelli；辣度按店内口味可选记 choice"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0055",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "火腿炒米粉",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 55,
+    "sourceQuote": "c06_d014,火腿炒米粉,菜品,c06,c06_t01,12,rice_vermicelli,choice,field,价目牌逐字转录；炒米粉归 rice_vermicelli；辣度按店内口味可选记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c06_d014"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；炒米粉归 rice_vermicelli；辣度按店内口味可选记 choice"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0056",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "馕炒米粉",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 56,
+    "sourceQuote": "c06_d015,馕炒米粉,菜品,c06,c06_t01,12,rice_vermicelli,choice,field,价目牌逐字转录；炒米粉归 rice_vermicelli；辣度按店内口味可选记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c06_d015"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；炒米粉归 rice_vermicelli；辣度按店内口味可选记 choice"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0057",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "小酥肉炒米粉",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 57,
+    "sourceQuote": "c06_d016,小酥肉炒米粉,菜品,c06,c06_t01,13,rice_vermicelli,choice,field,价目牌逐字转录；炒米粉归 rice_vermicelli；辣度按店内口味可选记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c06_d016"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；炒米粉归 rice_vermicelli；辣度按店内口味可选记 choice"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0058",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "肥牛炒米粉",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 58,
+    "sourceQuote": "c06_d017,肥牛炒米粉,菜品,c06,c06_t01,13,rice_vermicelli,choice,field,价目牌逐字转录；炒米粉归 rice_vermicelli；辣度按店内口味可选记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c06_d017"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；炒米粉归 rice_vermicelli；辣度按店内口味可选记 choice"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0059",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "红油口水鸡",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 59,
+    "sourceQuote": "c07_d001,红油口水鸡,菜品,c07,c07_t01,12.8,rice,spicy,field,灯箱逐字转录；按鸡饭套餐归 rice；辣度按「红油」字面判定为辣,,产品负责人,2026-10-27,img/c07_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c07_d001"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "spicy",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "灯箱逐字转录；按鸡饭套餐归 rice；辣度按「红油」字面判定为辣"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0060",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "鲜香柠檬鸡",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 60,
+    "sourceQuote": "c07_d002,鲜香柠檬鸡,菜品,c07,c07_t01,12.8,rice,choice,field,灯箱逐字转录；按鸡饭套餐归 rice；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c07_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c07_d002"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "灯箱逐字转录；按鸡饭套餐归 rice；辣度无字面依据记 choice 待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0061",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "酸辣泡椒鸡",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 61,
+    "sourceQuote": "c07_d003,酸辣泡椒鸡,菜品,c07,c07_t01,12.8,rice,spicy,field,灯箱逐字转录；辣度按「酸辣」「泡椒」字面判定为辣,,产品负责人,2026-10-27,img/c07_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c07_d003"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "spicy",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "灯箱逐字转录；辣度按「酸辣」「泡椒」字面判定为辣"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0062",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "鲜辣双椒鸡",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 62,
+    "sourceQuote": "c07_d004,鲜辣双椒鸡,菜品,c07,c07_t01,12.8,rice,spicy,field,灯箱逐字转录；辣度按「鲜辣」「双椒」字面判定为辣,,产品负责人,2026-10-27,img/c07_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c07_d004"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "spicy",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "灯箱逐字转录；辣度按「鲜辣」「双椒」字面判定为辣"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0063",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "无骨椒麻鸡",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 63,
+    "sourceQuote": "c07_d005,无骨椒麻鸡,菜品,c07,c07_t01,12.8,rice,spicy,field,灯箱逐字转录；辣度按「椒麻」字面判定为辣,,产品负责人,2026-10-27,img/c07_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c07_d005"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "spicy",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "灯箱逐字转录；辣度按「椒麻」字面判定为辣"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0064",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "经典葱油鸡",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 64,
+    "sourceQuote": "c07_d006,经典葱油鸡,菜品,c07,c07_t01,12.8,rice,choice,field,灯箱逐字转录；葱油未标辣度记 choice 待确认,,产品负责人,2026-10-27,img/c07_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c07_d006"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "灯箱逐字转录；葱油未标辣度记 choice 待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0065",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "炙烤鸡肉饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 65,
+    "sourceQuote": "c08_d001,炙烤鸡肉饭,菜品,c08,c08_t01,12.8,rice,choice,field,招牌逐字转录；镇店之宝 12.8 元/份；该店另 6 项招牌推荐因字小价签被遮挡未录；辣度待确认,,产品负责人,2026-10-27,img/c08_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c08_d001"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "招牌逐字转录；镇店之宝 12.8 元/份；该店另 6 项招牌推荐因字小价签被遮挡未录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0066",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "爆汁炸鸡饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 66,
+    "sourceQuote": "c09_d001,爆汁炸鸡饭,菜品,c09,c09_t01,12.8,rice,choice,field,价目灯箱逐字转录；镇店之宝 12.8 元/份；爆汁口味三选一（梅干菜/川味/东坡）；辣度按可选口味记 choice,,产品负责人,2026-10-27,img/c09_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c09_d001"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目灯箱逐字转录；镇店之宝 12.8 元/份；爆汁口味三选一（梅干菜/川味/东坡）；辣度按可选口味记 choice"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0067",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "爆汁炸茄子饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 67,
+    "sourceQuote": "c09_d002,爆汁炸茄子饭,菜品,c09,c09_t01,9.9,rice,choice,field,价目灯箱逐字转录；辣度按可选口味记 choice,,产品负责人,2026-10-27,img/c09_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c09_d002"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目灯箱逐字转录；辣度按可选口味记 choice"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0068",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "爆汁酥炸鸡腿饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 68,
+    "sourceQuote": "c09_d003,爆汁酥炸鸡腿饭,菜品,c09,c09_t01,12.8,rice,choice,field,价目灯箱逐字转录；辣度按可选口味记 choice,,产品负责人,2026-10-27,img/c09_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c09_d003"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目灯箱逐字转录；辣度按可选口味记 choice"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0069",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "爆汁卤牛肉饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 69,
+    "sourceQuote": "c09_d004,爆汁卤牛肉饭,菜品,c09,c09_t01,13.8,rice,choice,field,价目灯箱逐字转录；辣度按可选口味记 choice,,产品负责人,2026-10-27,img/c09_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c09_d004"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目灯箱逐字转录；辣度按可选口味记 choice"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0070",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "爆汁黑椒肉堡饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 70,
+    "sourceQuote": "c09_d005,爆汁黑椒肉堡饭,菜品,c09,c09_t01,11.8,rice,choice,field,价目灯箱逐字转录；辣度按可选口味记 choice,,产品负责人,2026-10-27,img/c09_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c09_d005"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目灯箱逐字转录；辣度按可选口味记 choice"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0071",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "武汉回味黑鸭饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 71,
+    "sourceQuote": "c09_d006,武汉回味黑鸭饭,菜品,c09,c09_t01,12.8,rice,choice,field,价目灯箱逐字转录；黑鸭未标辣度记 choice 待确认,,产品负责人,2026-10-27,img/c09_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c09_d006"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目灯箱逐字转录；黑鸭未标辣度记 choice 待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0072",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "爆汁番茄牛肉饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 72,
+    "sourceQuote": "c09_d007,爆汁番茄牛肉饭,菜品,c09,c09_t01,14.8,rice,choice,field,价目灯箱逐字转录；辣度按可选口味记 choice,,产品负责人,2026-10-27,img/c09_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c09_d007"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目灯箱逐字转录；辣度按可选口味记 choice"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0073",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "牛肉拉面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 73,
+    "sourceQuote": "c11_d001,牛肉拉面,菜品,c11,c11_t01,9,noodle,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d001"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度无字面依据记 choice 待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0074",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "加肉拉面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 74,
+    "sourceQuote": "c11_d002,加肉拉面,菜品,c11,c11_t01,20,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d002"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0075",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "牛肉刀削面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 75,
+    "sourceQuote": "c11_d003,牛肉刀削面,菜品,c11,c11_t01,9,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d003"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0076",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "鸡蛋拉面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 76,
+    "sourceQuote": "c11_d004,鸡蛋拉面,菜品,c11,c11_t01,9,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d004"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0077",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "葱油拌面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 77,
+    "sourceQuote": "c11_d005,葱油拌面,菜品,c11,c11_t01,12,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d005"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0078",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "红烧牛肉面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 78,
+    "sourceQuote": "c11_d006,红烧牛肉面,菜品,c11,c11_t01,18,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d006"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0079",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "牛肉凉面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 79,
+    "sourceQuote": "c11_d007,牛肉凉面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d007"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0080",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "牛肉烩面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 80,
+    "sourceQuote": "c11_d008,牛肉烩面,菜品,c11,c11_t01,15,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d008"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0081",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "牛肉烩面片",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 81,
+    "sourceQuote": "c11_d009,牛肉烩面片,菜品,c11,c11_t01,18,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d009"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0082",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "牛肉炒拉面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 82,
+    "sourceQuote": "c11_d010,牛肉炒拉面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌中栏该行重复出现两次、按一条录入；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d010"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌中栏该行重复出现两次、按一条录入；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0083",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "鸡蛋炒拉面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 83,
+    "sourceQuote": "c11_d011,鸡蛋炒拉面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d011"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0084",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "牛肉炒刀削面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 84,
+    "sourceQuote": "c11_d012,牛肉炒刀削面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d012"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0085",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "鸡蛋炒刀削面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 85,
+    "sourceQuote": "c11_d013,鸡蛋炒刀削面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d013"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0086",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "牛肉炒面片",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 86,
+    "sourceQuote": "c11_d014,牛肉炒面片,菜品,c11,c11_t01,18,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d014"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0087",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "牛肉干拌面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 87,
+    "sourceQuote": "c11_d015,牛肉干拌面,菜品,c11,c11_t01,15,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d015"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0088",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "牛肉炸酱面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 88,
+    "sourceQuote": "c11_d016,牛肉炸酱面,菜品,c11,c11_t01,12,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d016"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0089",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "牛肉泡馍",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 89,
+    "sourceQuote": "c11_d017,牛肉泡馍,菜品,c11,c11_t01,18,other,choice,field,价目牌逐字转录；泡馍非八类主食、归 other；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d017"
+    ],
+    "originalFoodType": "other",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；泡馍非八类主食、归 other；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0090",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "羊肉泡馍",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 90,
+    "sourceQuote": "c11_d018,羊肉泡馍,菜品,c11,c11_t01,18,other,choice,field,价目牌逐字转录；泡馍归 other；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d018"
+    ],
+    "originalFoodType": "other",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；泡馍归 other；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0091",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "新疆拌面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 91,
+    "sourceQuote": "c11_d019,新疆拌面,菜品,c11,c11_t01,18,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d019"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0092",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "牛肉水饺",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 92,
+    "sourceQuote": "c11_d020,牛肉水饺,菜品,c11,c11_t01,12,dumpling,choice,field,价目牌逐字转录；水饺归 dumpling；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d020"
+    ],
+    "originalFoodType": "dumpling",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；水饺归 dumpling；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0093",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "羊肉水饺",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 93,
+    "sourceQuote": "c11_d021,羊肉水饺,菜品,c11,c11_t01,12,dumpling,choice,field,价目牌逐字转录；水饺归 dumpling；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d021"
+    ],
+    "originalFoodType": "dumpling",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；水饺归 dumpling；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0094",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "韭菜水饺",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 94,
+    "sourceQuote": "c11_d022,韭菜水饺,菜品,c11,c11_t01,12,dumpling,choice,field,价目牌逐字转录；水饺归 dumpling；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d022"
+    ],
+    "originalFoodType": "dumpling",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；水饺归 dumpling；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0095",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "新疆抓饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 95,
+    "sourceQuote": "c11_d023,新疆抓饭,菜品,c11,c11_t01,13,rice,choice,field,价目牌逐字转录；抓饭归 rice；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d023"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；抓饭归 rice；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0096",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "兰州炒饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 96,
+    "sourceQuote": "c11_d024,兰州炒饭,菜品,c11,c11_t01,12,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d024"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0097",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "蛋炒饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 97,
+    "sourceQuote": "c11_d025,蛋炒饭,菜品,c11,c11_t01,10,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d025"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0098",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "土豆烧牛肉盖浇饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 98,
+    "sourceQuote": "c11_d026,土豆烧牛肉盖浇饭,菜品,c11,c11_t01,15,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d026"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0099",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "蘑菇炒牛肉盖浇饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 99,
+    "sourceQuote": "c11_d027,蘑菇炒牛肉盖浇饭,菜品,c11,c11_t01,13,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d027"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0100",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "蒜苔炒牛肉盖浇饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 100,
+    "sourceQuote": "c11_d028,蒜苔炒牛肉盖浇饭,菜品,c11,c11_t01,13,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d028"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0101",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "青椒炒牛肉盖浇饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 101,
+    "sourceQuote": "c11_d029,青椒炒牛肉盖浇饭,菜品,c11,c11_t01,13,rice,choice,field,价目牌逐字转录；青椒未标辣度记 choice 待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d029"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；青椒未标辣度记 choice 待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0102",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "木耳炒牛肉盖浇饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 102,
+    "sourceQuote": "c11_d030,木耳炒牛肉盖浇饭,菜品,c11,c11_t01,13,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d030"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0103",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "洋葱炒牛肉盖浇饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 103,
+    "sourceQuote": "c11_d031,洋葱炒牛肉盖浇饭,菜品,c11,c11_t01,13,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d031"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0104",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "西葫芦牛肉盖浇饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 104,
+    "sourceQuote": "c11_d032,西葫芦牛肉盖浇饭,菜品,c11,c11_t01,13,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d032"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0105",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "青椒炒鸡蛋盖浇饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 105,
+    "sourceQuote": "c11_d033,青椒炒鸡蛋盖浇饭,菜品,c11,c11_t01,13,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d033"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0106",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "西红柿炒蛋盖浇饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 106,
+    "sourceQuote": "c11_d034,西红柿炒蛋盖浇饭,菜品,c11,c11_t01,13,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d034"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0107",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "土豆丝盖浇饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 107,
+    "sourceQuote": "c11_d035,土豆丝盖浇饭,菜品,c11,c11_t01,12,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d035"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0108",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "酸辣白菜盖浇饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 108,
+    "sourceQuote": "c11_d036,酸辣白菜盖浇饭,菜品,c11,c11_t01,12,rice,mild_spicy,field,价目牌逐字转录；辣度按「酸辣」字面判定为微辣,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d036"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "mild_spicy",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度按「酸辣」字面判定为微辣"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0109",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "茄子炒肉盖浇饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 109,
+    "sourceQuote": "c11_d037,茄子炒肉盖浇饭,菜品,c11,c11_t01,14,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d037"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0110",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "葱爆牛肉盖浇饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 110,
+    "sourceQuote": "c11_d038,葱爆牛肉盖浇饭,菜品,c11,c11_t01,15,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d038"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0111",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "红烧鸡块盖浇饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 111,
+    "sourceQuote": "c11_d039,红烧鸡块盖浇饭,菜品,c11,c11_t01,15,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d039"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0112",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "红烧牛肉盖浇饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 112,
+    "sourceQuote": "c11_d040,红烧牛肉盖浇饭,菜品,c11,c11_t01,18,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d040"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0113",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "孜然牛肉盖浇饭",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 113,
+    "sourceQuote": "c11_d041,孜然牛肉盖浇饭,菜品,c11,c11_t01,18,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d041"
+    ],
+    "originalFoodType": "rice",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0114",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "鸡蛋凉面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 114,
+    "sourceQuote": "c11_d042,鸡蛋凉面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d042"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0115",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "麻汁凉面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 115,
+    "sourceQuote": "c11_d043,麻汁凉面,菜品,c11,c11_t01,10,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d043"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0116",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "土豆烧牛肉盖浇面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 116,
+    "sourceQuote": "c11_d044,土豆烧牛肉盖浇面,菜品,c11,c11_t01,15,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d044"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0117",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "蘑菇炒牛肉盖浇面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 117,
+    "sourceQuote": "c11_d045,蘑菇炒牛肉盖浇面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d045"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0118",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "蒜苔炒牛肉盖浇面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 118,
+    "sourceQuote": "c11_d046,蒜苔炒牛肉盖浇面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d046"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0119",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "青椒炒牛肉盖浇面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 119,
+    "sourceQuote": "c11_d047,青椒炒牛肉盖浇面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d047"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0120",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "木耳炒牛肉盖浇面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 120,
+    "sourceQuote": "c11_d048,木耳炒牛肉盖浇面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d048"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0121",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "洋葱炒牛肉盖浇面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 121,
+    "sourceQuote": "c11_d049,洋葱炒牛肉盖浇面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d049"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0122",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "西葫芦牛肉盖浇面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 122,
+    "sourceQuote": "c11_d050,西葫芦牛肉盖浇面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d050"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0123",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "青椒炒鸡蛋盖浇面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 123,
+    "sourceQuote": "c11_d051,青椒炒鸡蛋盖浇面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d051"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0124",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "西红柿炒蛋盖浇面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 124,
+    "sourceQuote": "c11_d052,西红柿炒蛋盖浇面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d052"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0125",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "土豆丝盖浇面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 125,
+    "sourceQuote": "c11_d053,土豆丝盖浇面,菜品,c11,c11_t01,12,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d053"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0126",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "酸辣白菜盖浇面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 126,
+    "sourceQuote": "c11_d054,酸辣白菜盖浇面,菜品,c11,c11_t01,12,noodle,mild_spicy,field,价目牌逐字转录；辣度按「酸辣」字面判定为微辣,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d054"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "mild_spicy",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度按「酸辣」字面判定为微辣"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0127",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "茄子炒肉盖浇面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 127,
+    "sourceQuote": "c11_d055,茄子炒肉盖浇面,菜品,c11,c11_t01,14,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d055"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0128",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "葱爆牛肉盖浇面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 128,
+    "sourceQuote": "c11_d056,葱爆牛肉盖浇面,菜品,c11,c11_t01,15,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d056"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0129",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "红烧鸡块盖浇面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 129,
+    "sourceQuote": "c11_d057,红烧鸡块盖浇面,菜品,c11,c11_t01,15,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d057"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0130",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "红烧牛肉盖浇面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 130,
+    "sourceQuote": "c11_d058,红烧牛肉盖浇面,菜品,c11,c11_t01,18,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d058"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0131",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "孜然牛肉盖浇面",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 131,
+    "sourceQuote": "c11_d059,孜然牛肉盖浇面,菜品,c11,c11_t01,18,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d059"
+    ],
+    "originalFoodType": "noodle",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0132",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "牛肉汤",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 132,
+    "sourceQuote": "c11_d060,牛肉汤,菜品,c11,c11_t01,12,other,choice,field,价目牌逐字转录；纯汤归 other；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d060"
+    ],
+    "originalFoodType": "other",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；纯汤归 other；辣度待确认"
+  },
+  {
+    "sourceRecordRef": "R06-UNLOCATED-R0133",
+    "sourceBatch": "UNLOCATED_COLLECTION",
+    "name": "牛肉粉丝汤",
+    "sourceFile": "source_assets/unlocated_dishes.csv",
+    "sourceLine": 133,
+    "sourceQuote": "c11_d061,牛肉粉丝汤,菜品,c11,c11_t01,15,rice_vermicelli,choice,field,价目牌逐字转录；以粉丝为主归 rice_vermicelli；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg",
+    "oldRecordKeys": [
+      "offsite_batch2:c11_d061"
+    ],
+    "originalFoodType": "rice_vermicelli",
+    "originalTastes": "choice",
+    "originalCollector": "产品负责人",
+    "originalCollectDate": "2026-10-27",
+    "originalSourceDetail": "价目牌逐字转录；以粉丝为主归 rice_vermicelli；辣度待确认"
+  }
+]

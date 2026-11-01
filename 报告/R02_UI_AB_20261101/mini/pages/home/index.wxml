@@ -1,0 +1,6 @@
+<view class="page"><view class="safe-top"></view><view class="topbar"><view><view class="brand">食神寻味</view><view class="subtitle">发现校园菜单里的每一份记录</view></view><view class="mark">食</view></view>
+<search-bar value="{{query}}" bindinput="onInput" bindconfirm="search" />
+<history-notice />
+<view class="hero" wx:if="{{featured}}"><view class="hero-copy"><view class="eyebrow">今天看看什么</view><view class="hero-name long-text">{{featured.name}}</view><view class="hero-history">{{featured.historicalPriceText}}</view><view class="hero-buttons"><button class="button primary" bindtap="shuffle">换一换</button><button class="button secondary" bindtap="openList">查看全部</button></view></view><view class="hero-visual">{{featured.preparation}}</view></view>
+<view class="section-head"><text class="section-title">历史菜单精选</text><text class="section-link" bindtap="openList">查看 39 道</text></view>
+<view class="home-grid"><dish-card wx:for="{{items}}" wx:key="id" item="{{item}}" compact="{{true}}" minimal="{{true}}" bindopen="open" /></view></view>

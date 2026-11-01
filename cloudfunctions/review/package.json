@@ -1,0 +1,10 @@
+{
+  "name": "review",
+  "version": "1.0.0",
+  "description": "UGC MVP 阶段 B：管理员审核（鉴权在服务端，审计只追加）",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

@@ -1,0 +1,66 @@
+=== mutation code ===
+MUTATION=code TEMP=C:\Users\25975\AppData\Local\Temp\r3-final-verification-zpjfJR
+PASS C1 正常 prepare/complete 同批闭合且成功口径兼容
+PASS C1b 只输出哈希引用，不回传原始批次 ID
+FAIL C2 恰好十分钟为疑似孤儿，异常码与分类一致
+PASS C3 未满十分钟仍是运行中
+PASS C4 complete 无 prepare 是异常
+PASS C5 重复 prepare 与重复 complete 分别发现
+PASS C6 计数不守恒或首尾选中数变化被发现
+PASS C7 无效 ID、日期、时间及必填关联字段计入异常
+PASS C8 多页扫描稳定推进，完整结果三批闭合
+PASS C8b 截断窗口内已配对也不冒充全局闭合
+PASS C9 截断窗口明确非成功且可继续，不误判孤儿
+PASS C10 续页为局部窗口，缺配对不能冒充全局结论
+PASS C11 第二页读取故障不返回假完整结论
+PASS C12 无令牌在读取日志前拒绝
+PASS C13 鉴权后对账只读，不更改投稿或审计日志
+PASS C14 返回值不含正文、身份、令牌
+PASS C15 R1 恢复批次沿用 prepare/complete，计数闭合
+PASS C16 恢复 prepare 失败时未处理业务记录
+PASS C17 T-2 恢复批次有准备和完成，正文仍为空
+PASS C17b 清理恢复批次可被同一对账入口识别
+PASS C19 系统身份字段和批次投稿 ID 不合规可检测且不回显
+PASS C20 恢复 complete 写入失败不得谎报闭合
+FAIL C21 PARTIAL 计数闭合仍不得报告正常成功
+FAIL C22 FAILED 计数闭合仍不得报告正常成功
+PASS C23 DEFERRED 与失败和正常成功分别表达
+FAIL C24 COMPLETE 与失败计数矛盾时归计数异常，不宣称 OK
+FAIL C25 T-2 清理部分失败也保留 PARTIAL 结果
+PASS C18 索引仅为本地草案且日志仍禁止更新/删除
+PASS 23 / FAIL 5
+EXIT_CODE=1
+
+=== mutation gate ===
+MUTATION=gate TEMP=C:\Users\25975\AppData\Local\Temp\r3-final-verification-e4Tvau
+PASS C1 正常 prepare/complete 同批闭合且成功口径兼容
+PASS C1b 只输出哈希引用，不回传原始批次 ID
+PASS C2 恰好十分钟为疑似孤儿，异常码与分类一致
+PASS C3 未满十分钟仍是运行中
+PASS C4 complete 无 prepare 是异常
+PASS C5 重复 prepare 与重复 complete 分别发现
+PASS C6 计数不守恒或首尾选中数变化被发现
+PASS C7 无效 ID、日期、时间及必填关联字段计入异常
+PASS C8 多页扫描稳定推进，完整结果三批闭合
+PASS C8b 截断窗口内已配对也不冒充全局闭合
+FAIL C9 截断窗口明确非成功且可继续，不误判孤儿
+PASS C10 续页为局部窗口，缺配对不能冒充全局结论
+PASS C11 第二页读取故障不返回假完整结论
+PASS C12 无令牌在读取日志前拒绝
+PASS C13 鉴权后对账只读，不更改投稿或审计日志
+PASS C14 返回值不含正文、身份、令牌
+PASS C15 R1 恢复批次沿用 prepare/complete，计数闭合
+PASS C16 恢复 prepare 失败时未处理业务记录
+PASS C17 T-2 恢复批次有准备和完成，正文仍为空
+PASS C17b 清理恢复批次可被同一对账入口识别
+PASS C19 系统身份字段和批次投稿 ID 不合规可检测且不回显
+PASS C20 恢复 complete 写入失败不得谎报闭合
+PASS C21 PARTIAL 计数闭合仍不得报告正常成功
+PASS C22 FAILED 计数闭合仍不得报告正常成功
+PASS C23 DEFERRED 与失败和正常成功分别表达
+PASS C24 COMPLETE 与失败计数矛盾时归计数异常，不宣称 OK
+PASS C25 T-2 清理部分失败也保留 PARTIAL 结果
+PASS C18 索引仅为本地草案且日志仍禁止更新/删除
+PASS 27 / FAIL 1
+EXIT_CODE=1
+

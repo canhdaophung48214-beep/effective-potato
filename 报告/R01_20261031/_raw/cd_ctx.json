@@ -1,0 +1,312 @@
+{
+ "samples": [
+  {
+   "sid": "c01_t07",
+   "cause": "A-基线：2F 小档口，8 条全部逐行命中转录稿，dishId 为名册规划值",
+   "recommend": "admit",
+   "conditions": [
+    "需负责人签发导入准入裁决",
+    "foodType 未确定，放行前必须补齐（否则 D1 直接判错）"
+   ],
+   "stableKey": "c01_t07|山城麻辣小面|小份|",
+   "dishId": "c01_d040",
+   "name": "山城麻辣小面"
+  },
+  {
+   "sid": "c01_t09",
+   "cause": "A-最小档口（4 条）：适合做首批放行试点，影响面最小",
+   "recommend": "admit",
+   "conditions": [
+    "需负责人签发导入准入裁决",
+    "foodType 未确定，放行前必须补齐"
+   ],
+   "stableKey": "c01_t09|小米南瓜粥||",
+   "dishId": "c01_d048",
+   "name": "小米南瓜粥"
+  },
+  {
+   "sid": "c01_t11",
+   "cause": "A-命名口径：菜名由「主料 + 规格」组合而成，转录稿该行只写主料（同类 44 条）",
+   "recommend": "admit",
+   "conditions": [
+    "需负责人签发导入准入裁决",
+    "菜名组合口径需在裁决中一并确认",
+    "foodType 未确定，放行前必须补齐"
+   ],
+   "stableKey": "c01_t11|双拼饭（公瑾爆蛋 + 红烧鸡翅根）||",
+   "dishId": "c01_d084",
+   "name": "双拼饭（公瑾爆蛋 + 红烧鸡翅根）"
+  },
+  {
+   "sid": "c01_t16",
+   "cause": "A-最大档口（63 条）：砂锅/面类多规格展开最复杂",
+   "recommend": "admit",
+   "conditions": [
+    "需负责人签发导入准入裁决",
+    "R3 多基底展开口径需在裁决中确认"
+   ],
+   "stableKey": "c01_t16|油泼面||",
+   "dishId": "c01_d122",
+   "name": "油泼面"
+  },
+  {
+   "sid": "c01_t48",
+   "cause": "A-已冻结 dishId（ap-20261025-01）+ 暂定店名（B8）",
+   "recommend": "admit",
+   "conditions": [
+    "需负责人签发导入准入裁决",
+    "B8 暂定店名须在放行前定名",
+    "foodType 未确定，放行前必须补齐"
+   ],
+   "stableKey": "c01_t48|黄焖鸡盖方便面||",
+   "dishId": "c01_d464",
+   "name": "黄焖鸡盖方便面"
+  },
+  {
+   "sid": "c01_t49",
+   "cause": "A-已冻结 dishId + 暂定店名 + W2-05 归属曾未定（B10）",
+   "recommend": "admit",
+   "conditions": [
+    "需负责人签发导入准入裁决",
+    "B8/B10 遗留须在放行前书面确认",
+    "foodType 未确定，放行前必须补齐"
+   ],
+   "stableKey": "c01_t49|鸡蛋火腿炒饼||",
+   "dishId": "c01_d437",
+   "name": "鸡蛋火腿炒饼"
+  },
+  {
+   "sid": "c01_t37",
+   "cause": "A-粉类档口（22 条）：覆盖 foodType=rice_vermicelli 取值面",
+   "recommend": "admit",
+   "conditions": [
+    "需负责人签发导入准入裁决",
+    "foodType 未确定，放行前必须补齐"
+   ],
+   "stableKey": "c01_t37|纯素炒米粉||",
+   "dishId": "c01_d297",
+   "name": "纯素炒米粉"
+  },
+  {
+   "sid": "c01_t38",
+   "cause": "A-3F 首档口：全局证据缺 B1/B2/B3 的主要承受方",
+   "recommend": "admit",
+   "conditions": [
+    "需负责人签发导入准入裁决",
+    "B1/B2/B3（3F 导览牌、门头照、楼层指引照）须补拍或书面豁免"
+   ],
+   "stableKey": "c01_t38|超级酱大骨套餐||",
+   "dishId": "c01_d319",
+   "name": "超级酱大骨套餐"
+  },
+  {
+   "sid": "c01_t39",
+   "cause": "A-名册条数漂移（名册 16 / 实测 13）",
+   "recommend": "admit",
+   "conditions": [
+    "需负责人签发导入准入裁决",
+    "名册条数 16≠13 须订正后再放行"
+   ],
+   "stableKey": "c01_t39|鸡块咖喱蛋包饭||",
+   "dishId": "c01_d331",
+   "name": "鸡块咖喱蛋包饭"
+  },
+  {
+   "sid": "c01_t43",
+   "cause": "A-名册条数漂移（名册 11 / 实测 10）",
+   "recommend": "admit",
+   "conditions": [
+    "需负责人签发导入准入裁决",
+    "名册条数 11≠10 须订正后再放行"
+   ],
+   "stableKey": "c01_t43|招牌红烧肉||",
+   "dishId": "c01_d362",
+   "name": "招牌红烧肉"
+  },
+  {
+   "sid": "c01_t44",
+   "cause": "A-3F 常规档口（19 条）",
+   "recommend": "admit",
+   "conditions": [
+    "需负责人签发导入准入裁决"
+   ],
+   "stableKey": "c01_t44|招牌牛肉面||",
+   "dishId": "c01_d373",
+   "name": "招牌牛肉面"
+  },
+  {
+   "sid": "c01_t46",
+   "cause": "A-3F 最小档口（9 条）",
+   "recommend": "admit",
+   "conditions": [
+    "需负责人签发导入准入裁决"
+   ],
+   "stableKey": "c01_t46|铁板炸鸡培根拌饭||",
+   "dishId": "c01_d413",
+   "name": "铁板炸鸡培根拌饭"
+  },
+  {
+   "sid": "c01_t15",
+   "cause": "A-一行多品项未拆分（「红烧土豆 / 清炒甘兰」）：名称不是单一菜品名",
+   "recommend": "hold",
+   "conditions": [
+    "一行多品项是否拆分未裁决（B13）",
+    "拆分前不得作为单一菜品名导入"
+   ],
+   "stableKey": "c01_t15|红烧土豆 / 清炒甘兰||",
+   "dishId": "c01_d109",
+   "name": "红烧土豆 / 清炒甘兰"
+  },
+  {
+   "sid": "c01_t32",
+   "cause": "A-一行 10 种水饺同名：D-5「暂不拆」派生出的命名问题",
+   "recommend": "hold",
+   "conditions": [
+    "D-5 暂不拆 → 该行名含 10 个口味，不能作为单一菜品名",
+    "拆分/命名口径须负责人裁决"
+   ],
+   "stableKey": "c01_t32|大葱猪肉 / 玉米猪肉 / 白菜猪肉 / 荠菜猪肉 / 香菇猪肉 / 酸菜猪肉 / 韭菜猪肉 / 莲藕猪肉 / 香辣鱿鱼 / 香辣鸡肉|小份|",
+   "dishId": "c01_d264",
+   "name": "大葱猪肉 / 玉米猪肉 / 白菜猪肉 / 荠菜猪肉 / 香菇猪肉 / 酸菜猪肉 / 韭菜猪肉 / 莲藕猪肉 / 香辣鱿鱼 / 香辣鸡肉"
+  },
+  {
+   "sid": "c01_t20",
+   "cause": "C-手抓饼计价口径未决（B5·2F-W2-06），负责人已裁定暂不录入",
+   "recommend": "hold",
+   "conditions": [
+    "D-6/B5：计价口径未决",
+    "C 档按契约不生成记录，不得进入任何 CSV"
+   ],
+   "stableKey": "c01_t20|手抓饼基础套餐（默认含鸡蛋）||",
+   "dishId": "（null，未分配）",
+   "name": "手抓饼基础套餐（默认含鸡蛋）"
+  },
+  {
+   "sid": "c01_t40",
+   "cause": "C-3F W03 双拼性质未裁决（B5·3F-W03）",
+   "recommend": "hold",
+   "conditions": [
+    "D-6/R6：自选组合「二荤二素任你选」性质未裁决",
+    "C 档不生成，不得猜双拼组件"
+   ],
+   "stableKey": "c01_t40|蜜汁茶泡饭||",
+   "dishId": "（null，未分配）",
+   "name": "蜜汁茶泡饭"
+  },
+  {
+   "sid": "c01_t41",
+   "cause": "C-3F W04「12 元/份」口径未定（B11）",
+   "recommend": "hold",
+   "conditions": [
+    "D-6/B11：整档 10 条阻塞，一份构成与价格范围未定",
+    "C 档不生成"
+   ],
+   "stableKey": "c01_t41|辣椒炒肉（招牌）||",
+   "dishId": "（null，未分配）",
+   "name": "辣椒炒肉（招牌）"
+  }
+ ],
+ "exp": [
+  {
+   "id": "EXP-1 现状",
+   "mut": "无（当前 490 条记录原样）",
+   "violations": [
+    {
+     "code": "E9_SUM",
+     "message": "汇总与记录不一致：summary.total=525 records=490"
+    }
+   ]
+  },
+  {
+   "id": "EXP-2 把建议准入直接写成 candidate_only",
+   "mut": "12 条建议准入样本的 gen.import_eligibility = candidate_only",
+   "violations": [
+    {
+     "code": "C18",
+     "message": "planned_from_roster 不得具备导入资格（名册规划 ≠ 正式分配 ≠ 可发布）",
+     "record": "山城麻辣小面",
+     "eligibility": "candidate_only"
+    },
+    {
+     "code": "C18",
+     "message": "planned_from_roster 不得具备导入资格（名册规划 ≠ 正式分配 ≠ 可发布）",
+     "record": "小米南瓜粥",
+     "eligibility": "candidate_only"
+    },
+    {
+     "code": "C18",
+     "message": "planned_from_roster 不得具备导入资格（名册规划 ≠ 正式分配 ≠ 可发布）",
+     "record": "纯素炒米粉",
+     "eligibility": "candidate_only"
+    },
+    {
+     "code": "C18",
+     "message": "planned_from_roster 不得具备导入资格（名册规划 ≠ 正式分配 ≠ 可发布）",
+     "record": "油泼面",
+     "eligibility": "candidate_only"
+    },
+    {
+     "code": "C18",
+     "message": "planned_from_roster 不得具备导入资格（名册规划 ≠ 正式分配 ≠ 可发布）",
+     "record": "双拼饭（公瑾爆蛋 + 红烧鸡翅根）",
+     "eligibility": "candidate_only"
+    },
+    {
+     "code": "C18",
+     "message": "planned_from_roster 不得具备导入资格（名册规划 ≠ 正式分配 ≠ 可发布）",
+     "record": "超级酱大骨套餐",
+     "eligibility": "candidate_only"
+    },
+    {
+     "code": "C18",
+     "message": "planned_from_roster 不得具备导入资格（名册规划 ≠ 正式分配 ≠ 可发布）",
+     "record": "鸡块咖喱蛋包饭",
+     "eligibility": "candidate_only"
+    },
+    {
+     "code": "C18",
+     "message": "planned_from_roster 不得具备导入资格（名册规划 ≠ 正式分配 ≠ 可发布）",
+     "record": "招牌红烧肉",
+     "eligibility": "candidate_only"
+    },
+    {
+     "code": "C18",
+     "message": "planned_from_roster 不得具备导入资格（名册规划 ≠ 正式分配 ≠ 可发布）",
+     "record": "招牌牛肉面",
+     "eligibility": "candidate_only"
+    },
+    {
+     "code": "C18",
+     "message": "planned_from_roster 不得具备导入资格（名册规划 ≠ 正式分配 ≠ 可发布）",
+     "record": "铁板炸鸡培根拌饭",
+     "eligibility": "candidate_only"
+    },
+    {
+     "code": "E11_UNEXPECTED_ELIGIBLE",
+     "message": "candidate_only 条数应为 0，实际 12（放行须来自显式阻塞解除裁决）"
+    },
+    {
+     "code": "E9_SUM",
+     "message": "汇总与记录不一致：summary.total=525 records=490"
+    }
+   ]
+  },
+  {
+   "id": "EXP-3 谎报 id 状态",
+   "mut": "第 1 条 id_status='unassigned' 但 id 仍为 c01_d040",
+   "violations": [
+    {
+     "code": "C18",
+     "message": "id_status 与 id 不一致",
+     "record": "山城麻辣小面",
+     "id_status": "unassigned",
+     "id": "c01_d040"
+    },
+    {
+     "code": "E9_SUM",
+     "message": "汇总与记录不一致：summary.total=525 records=490"
+    }
+   ]
+  }
+ ]
+}

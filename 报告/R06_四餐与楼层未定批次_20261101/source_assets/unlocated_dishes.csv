@@ -1,0 +1,133 @@
+dish_id,dish_name,record_type,shop_id,stall_id,price,food_type,tastes,source_kind,source_detail,source_ref,collector,collect_date,evidence_file
+c04_d001,糖醋里脊,菜品,c04,c04_t01,7,rice,choice,field,价目牌逐字转录；辣度按菜名字面判定、无字面依据者记 choice 待现场确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg
+c04_d002,木须肉,菜品,c04,c04_t01,5,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg
+c04_d003,西葫芦炒肉,菜品,c04,c04_t01,4,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg
+c04_d004,大盘鸡,菜品,c04,c04_t01,6,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg
+c04_d005,水煮肉片,菜品,c04,c04_t01,6,rice,spicy,field,价目牌逐字转录；辣度按菜名「水煮」字面判定为辣,,产品负责人,2026-10-27,img/c04_t01_menu.jpg
+c04_d006,西红柿炒鸡蛋,菜品,c04,c04_t01,4,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg
+c04_d007,手工大丸子,菜品,c04,c04_t01,6,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg
+c04_d008,土豆鸡丁,菜品,c04,c04_t01,6,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg
+c04_d009,蒜蓉金针菇,菜品,c04,c04_t01,4,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg
+c04_d010,酥皮大鸡腿,菜品,c04,c04_t01,6,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg
+c04_d011,鱼香肉丝,菜品,c04,c04_t01,5,rice,choice,field,价目牌逐字转录；鱼香属调味风格未标辣度、记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg
+c04_d012,麻婆豆腐,菜品,c04,c04_t01,3,rice,spicy,field,价目牌逐字转录；辣度按菜名「麻婆」字面判定为辣,,产品负责人,2026-10-27,img/c04_t01_menu.jpg
+c04_d013,香酥炸肉,菜品,c04,c04_t01,6,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg
+c04_d014,豆角炒肉,菜品,c04,c04_t01,5,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg
+c04_d015,包菜粉条,菜品,c04,c04_t01,3,rice,choice,field,价目牌逐字转录；按快餐配菜归 rice；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg
+c04_d016,孜然肉片,菜品,c04,c04_t01,6,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg
+c04_d017,蒜苔炒肉,菜品,c04,c04_t01,5,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg
+c04_d018,酸辣白菜,菜品,c04,c04_t01,2,rice,mild_spicy,field,价目牌逐字转录；辣度按菜名「酸辣」字面判定为微辣,,产品负责人,2026-10-27,img/c04_t01_menu.jpg
+c04_d019,香辣鸭,菜品,c04,c04_t01,6,rice,spicy,field,价目牌逐字转录；辣度按菜名「香辣」字面判定为辣,,产品负责人,2026-10-27,img/c04_t01_menu.jpg
+c04_d020,博山爆炒肉片,菜品,c04,c04_t01,5,rice,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c04_t01_menu.jpg
+c04_d021,酸辣土豆丝,菜品,c04,c04_t01,2,rice,mild_spicy,field,价目牌逐字转录；辣度按菜名「酸辣」字面判定为微辣,,产品负责人,2026-10-27,img/c04_t01_menu.jpg
+c05_d001,羊汤（方便面）,菜品,c05,c05_t01,6,noodle,choice,field,价目牌逐字转录；碗面系列按 noodle；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg
+c05_d002,牛肉汤（方便面）,菜品,c05,c05_t01,6,noodle,choice,field,价目牌逐字转录；碗面系列按 noodle；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg
+c05_d003,羊杂（方便面）,菜品,c05,c05_t01,8,noodle,choice,field,价目牌逐字转录；碗面系列按 noodle；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg
+c05_d004,牛杂（方便面）,菜品,c05,c05_t01,8,noodle,choice,field,价目牌逐字转录；碗面系列按 noodle；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg
+c05_d005,鸡肉丝（方便面）,菜品,c05,c05_t01,8,noodle,choice,field,价目牌逐字转录；碗面系列按 noodle；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg
+c05_d006,鸭肉（方便面）,菜品,c05,c05_t01,8,noodle,choice,field,价目牌逐字转录；碗面系列按 noodle；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg
+c05_d007,羊血（方便面）,菜品,c05,c05_t01,8,noodle,choice,field,价目牌逐字转录；碗面系列按 noodle；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg
+c05_d008,加羊肉（方便面）,菜品,c05,c05_t01,11,noodle,choice,field,价目牌逐字转录；碗面系列按 noodle；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg
+c05_d009,加牛肉（方便面）,菜品,c05,c05_t01,10,noodle,choice,field,价目牌逐字转录；碗面系列按 noodle；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg
+c05_d010,加剔骨肉（方便面）,菜品,c05,c05_t01,10,noodle,choice,field,价目牌逐字转录；碗面系列按 noodle；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg
+c05_d011,羊头肉汤,菜品,c05,c05_t01,13,other,choice,field,价目牌逐字转录；纯汤无主食归 other；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg
+c05_d012,羊肉汤（羊肉+粉丝+豆皮+饼）,菜品,c05,c05_t01,14,rice_vermicelli,choice,field,价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg
+c05_d013,牛肉汤（牛肉+粉丝+豆皮+饼）,菜品,c05,c05_t01,12,rice_vermicelli,choice,field,价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg
+c05_d014,羊杂汤（羊杂肉+粉丝+豆皮+饼）,菜品,c05,c05_t01,12,rice_vermicelli,choice,field,价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg
+c05_d015,剔骨汤（剔骨肉+粉丝+豆皮+饼）,菜品,c05,c05_t01,12,rice_vermicelli,choice,field,价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg
+c05_d016,牛杂汤（牛杂肉+粉丝+豆皮+饼）,菜品,c05,c05_t01,12,rice_vermicelli,choice,field,价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg
+c05_d017,鸡丝汤（鸡肉+粉丝+豆皮+煎蛋+饼）,菜品,c05,c05_t01,11,rice_vermicelli,choice,field,价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg
+c05_d018,老鸭汤（鸭肉+粉丝+豆皮+豆泡+饼）,菜品,c05,c05_t01,11,rice_vermicelli,choice,field,价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg
+c05_d019,羊血汤（羊血+粉丝+豆皮+豆泡+饼）,菜品,c05,c05_t01,11,rice_vermicelli,choice,field,价目牌逐字转录；套餐以粉丝为主归 rice_vermicelli；辣度待确认,,产品负责人,2026-10-27,img/c05_t01_menu.jpg
+c06_d001,原味鱼粉,菜品,c06,c06_t01,10,rice_vermicelli,choice,field,价目牌逐字转录；鱼粉归 rice_vermicelli；店内标明口味可选故记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg
+c06_d002,香辣鱼粉,菜品,c06,c06_t01,11,rice_vermicelli,spicy,field,价目牌逐字转录；辣度按菜名「香辣」字面判定为辣,,产品负责人,2026-10-27,img/c06_t01_menu.jpg
+c06_d003,酸辣鱼粉,菜品,c06,c06_t01,11,rice_vermicelli,mild_spicy,field,价目牌逐字转录；辣度按菜名「酸辣」字面判定为微辣,,产品负责人,2026-10-27,img/c06_t01_menu.jpg
+c06_d004,酸菜鱼粉,菜品,c06,c06_t01,12,rice_vermicelli,choice,field,价目牌逐字转录；酸菜未标辣度、店内口味可选故记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg
+c06_d005,傣味辣番茄鱼粉,菜品,c06,c06_t01,12,rice_vermicelli,spicy,field,价目牌逐字转录；辣度按菜名含「辣」判定为辣,,产品负责人,2026-10-27,img/c06_t01_menu.jpg
+c06_d006,金汤肥牛鱼粉,菜品,c06,c06_t01,13,rice_vermicelli,choice,field,价目牌逐字转录；辣度无字面依据、店内口味可选故记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg
+c06_d007,招牌鱼粉,菜品,c06,c06_t01,12,rice_vermicelli,choice,field,价目牌逐字转录；辣度无字面依据、店内口味可选故记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg
+c06_d008,藤椒鱼粉,菜品,c06,c06_t01,12,rice_vermicelli,spicy,field,价目牌逐字转录；辣度按菜名「藤椒」字面判定为辣,,产品负责人,2026-10-27,img/c06_t01_menu.jpg
+c06_d009,番茄鱼粉,菜品,c06,c06_t01,12,rice_vermicelli,choice,field,价目牌逐字转录；辣度无字面依据、店内口味可选故记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg
+c06_d010,金汤鱼粉,菜品,c06,c06_t01,12,rice_vermicelli,choice,field,价目牌逐字转录；辣度无字面依据、店内口味可选故记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg
+c06_d011,麻辣鱼粉,菜品,c06,c06_t01,11,rice_vermicelli,spicy,field,价目牌逐字转录；辣度按菜名「麻辣」字面判定为辣,,产品负责人,2026-10-27,img/c06_t01_menu.jpg
+c06_d012,素炒米粉,菜品,c06,c06_t01,10,rice_vermicelli,choice,field,价目牌逐字转录；炒米粉归 rice_vermicelli；辣度按店内口味可选记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg
+c06_d013,鸡肉炒米粉,菜品,c06,c06_t01,12,rice_vermicelli,choice,field,价目牌逐字转录；炒米粉归 rice_vermicelli；辣度按店内口味可选记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg
+c06_d014,火腿炒米粉,菜品,c06,c06_t01,12,rice_vermicelli,choice,field,价目牌逐字转录；炒米粉归 rice_vermicelli；辣度按店内口味可选记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg
+c06_d015,馕炒米粉,菜品,c06,c06_t01,12,rice_vermicelli,choice,field,价目牌逐字转录；炒米粉归 rice_vermicelli；辣度按店内口味可选记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg
+c06_d016,小酥肉炒米粉,菜品,c06,c06_t01,13,rice_vermicelli,choice,field,价目牌逐字转录；炒米粉归 rice_vermicelli；辣度按店内口味可选记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg
+c06_d017,肥牛炒米粉,菜品,c06,c06_t01,13,rice_vermicelli,choice,field,价目牌逐字转录；炒米粉归 rice_vermicelli；辣度按店内口味可选记 choice,,产品负责人,2026-10-27,img/c06_t01_menu.jpg
+c07_d001,红油口水鸡,菜品,c07,c07_t01,12.8,rice,spicy,field,灯箱逐字转录；按鸡饭套餐归 rice；辣度按「红油」字面判定为辣,,产品负责人,2026-10-27,img/c07_t01_menu.jpg
+c07_d002,鲜香柠檬鸡,菜品,c07,c07_t01,12.8,rice,choice,field,灯箱逐字转录；按鸡饭套餐归 rice；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c07_t01_menu.jpg
+c07_d003,酸辣泡椒鸡,菜品,c07,c07_t01,12.8,rice,spicy,field,灯箱逐字转录；辣度按「酸辣」「泡椒」字面判定为辣,,产品负责人,2026-10-27,img/c07_t01_menu.jpg
+c07_d004,鲜辣双椒鸡,菜品,c07,c07_t01,12.8,rice,spicy,field,灯箱逐字转录；辣度按「鲜辣」「双椒」字面判定为辣,,产品负责人,2026-10-27,img/c07_t01_menu.jpg
+c07_d005,无骨椒麻鸡,菜品,c07,c07_t01,12.8,rice,spicy,field,灯箱逐字转录；辣度按「椒麻」字面判定为辣,,产品负责人,2026-10-27,img/c07_t01_menu.jpg
+c07_d006,经典葱油鸡,菜品,c07,c07_t01,12.8,rice,choice,field,灯箱逐字转录；葱油未标辣度记 choice 待确认,,产品负责人,2026-10-27,img/c07_t01_menu.jpg
+c08_d001,炙烤鸡肉饭,菜品,c08,c08_t01,12.8,rice,choice,field,招牌逐字转录；镇店之宝 12.8 元/份；该店另 6 项招牌推荐因字小价签被遮挡未录；辣度待确认,,产品负责人,2026-10-27,img/c08_t01_menu.jpg
+c09_d001,爆汁炸鸡饭,菜品,c09,c09_t01,12.8,rice,choice,field,价目灯箱逐字转录；镇店之宝 12.8 元/份；爆汁口味三选一（梅干菜/川味/东坡）；辣度按可选口味记 choice,,产品负责人,2026-10-27,img/c09_t01_menu.jpg
+c09_d002,爆汁炸茄子饭,菜品,c09,c09_t01,9.9,rice,choice,field,价目灯箱逐字转录；辣度按可选口味记 choice,,产品负责人,2026-10-27,img/c09_t01_menu.jpg
+c09_d003,爆汁酥炸鸡腿饭,菜品,c09,c09_t01,12.8,rice,choice,field,价目灯箱逐字转录；辣度按可选口味记 choice,,产品负责人,2026-10-27,img/c09_t01_menu.jpg
+c09_d004,爆汁卤牛肉饭,菜品,c09,c09_t01,13.8,rice,choice,field,价目灯箱逐字转录；辣度按可选口味记 choice,,产品负责人,2026-10-27,img/c09_t01_menu.jpg
+c09_d005,爆汁黑椒肉堡饭,菜品,c09,c09_t01,11.8,rice,choice,field,价目灯箱逐字转录；辣度按可选口味记 choice,,产品负责人,2026-10-27,img/c09_t01_menu.jpg
+c09_d006,武汉回味黑鸭饭,菜品,c09,c09_t01,12.8,rice,choice,field,价目灯箱逐字转录；黑鸭未标辣度记 choice 待确认,,产品负责人,2026-10-27,img/c09_t01_menu.jpg
+c09_d007,爆汁番茄牛肉饭,菜品,c09,c09_t01,14.8,rice,choice,field,价目灯箱逐字转录；辣度按可选口味记 choice,,产品负责人,2026-10-27,img/c09_t01_menu.jpg
+c11_d001,牛肉拉面,菜品,c11,c11_t01,9,noodle,choice,field,价目牌逐字转录；辣度无字面依据记 choice 待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg
+c11_d002,加肉拉面,菜品,c11,c11_t01,20,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg
+c11_d003,牛肉刀削面,菜品,c11,c11_t01,9,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg
+c11_d004,鸡蛋拉面,菜品,c11,c11_t01,9,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg
+c11_d005,葱油拌面,菜品,c11,c11_t01,12,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg
+c11_d006,红烧牛肉面,菜品,c11,c11_t01,18,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg
+c11_d007,牛肉凉面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg
+c11_d008,牛肉烩面,菜品,c11,c11_t01,15,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg
+c11_d009,牛肉烩面片,菜品,c11,c11_t01,18,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg
+c11_d010,牛肉炒拉面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌中栏该行重复出现两次、按一条录入；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg
+c11_d011,鸡蛋炒拉面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg
+c11_d012,牛肉炒刀削面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg
+c11_d013,鸡蛋炒刀削面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg
+c11_d014,牛肉炒面片,菜品,c11,c11_t01,18,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg
+c11_d015,牛肉干拌面,菜品,c11,c11_t01,15,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg
+c11_d016,牛肉炸酱面,菜品,c11,c11_t01,12,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg
+c11_d017,牛肉泡馍,菜品,c11,c11_t01,18,other,choice,field,价目牌逐字转录；泡馍非八类主食、归 other；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg
+c11_d018,羊肉泡馍,菜品,c11,c11_t01,18,other,choice,field,价目牌逐字转录；泡馍归 other；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg
+c11_d019,新疆拌面,菜品,c11,c11_t01,18,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg
+c11_d020,牛肉水饺,菜品,c11,c11_t01,12,dumpling,choice,field,价目牌逐字转录；水饺归 dumpling；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg
+c11_d021,羊肉水饺,菜品,c11,c11_t01,12,dumpling,choice,field,价目牌逐字转录；水饺归 dumpling；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg
+c11_d022,韭菜水饺,菜品,c11,c11_t01,12,dumpling,choice,field,价目牌逐字转录；水饺归 dumpling；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu.jpg
+c11_d023,新疆抓饭,菜品,c11,c11_t01,13,rice,choice,field,价目牌逐字转录；抓饭归 rice；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d024,兰州炒饭,菜品,c11,c11_t01,12,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d025,蛋炒饭,菜品,c11,c11_t01,10,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d026,土豆烧牛肉盖浇饭,菜品,c11,c11_t01,15,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d027,蘑菇炒牛肉盖浇饭,菜品,c11,c11_t01,13,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d028,蒜苔炒牛肉盖浇饭,菜品,c11,c11_t01,13,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d029,青椒炒牛肉盖浇饭,菜品,c11,c11_t01,13,rice,choice,field,价目牌逐字转录；青椒未标辣度记 choice 待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d030,木耳炒牛肉盖浇饭,菜品,c11,c11_t01,13,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d031,洋葱炒牛肉盖浇饭,菜品,c11,c11_t01,13,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d032,西葫芦牛肉盖浇饭,菜品,c11,c11_t01,13,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d033,青椒炒鸡蛋盖浇饭,菜品,c11,c11_t01,13,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d034,西红柿炒蛋盖浇饭,菜品,c11,c11_t01,13,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d035,土豆丝盖浇饭,菜品,c11,c11_t01,12,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d036,酸辣白菜盖浇饭,菜品,c11,c11_t01,12,rice,mild_spicy,field,价目牌逐字转录；辣度按「酸辣」字面判定为微辣,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d037,茄子炒肉盖浇饭,菜品,c11,c11_t01,14,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d038,葱爆牛肉盖浇饭,菜品,c11,c11_t01,15,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d039,红烧鸡块盖浇饭,菜品,c11,c11_t01,15,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d040,红烧牛肉盖浇饭,菜品,c11,c11_t01,18,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d041,孜然牛肉盖浇饭,菜品,c11,c11_t01,18,rice,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d042,鸡蛋凉面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d043,麻汁凉面,菜品,c11,c11_t01,10,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d044,土豆烧牛肉盖浇面,菜品,c11,c11_t01,15,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d045,蘑菇炒牛肉盖浇面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d046,蒜苔炒牛肉盖浇面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d047,青椒炒牛肉盖浇面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d048,木耳炒牛肉盖浇面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d049,洋葱炒牛肉盖浇面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d050,西葫芦牛肉盖浇面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d051,青椒炒鸡蛋盖浇面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d052,西红柿炒蛋盖浇面,菜品,c11,c11_t01,13,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d053,土豆丝盖浇面,菜品,c11,c11_t01,12,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d054,酸辣白菜盖浇面,菜品,c11,c11_t01,12,noodle,mild_spicy,field,价目牌逐字转录；辣度按「酸辣」字面判定为微辣,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d055,茄子炒肉盖浇面,菜品,c11,c11_t01,14,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d056,葱爆牛肉盖浇面,菜品,c11,c11_t01,15,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d057,红烧鸡块盖浇面,菜品,c11,c11_t01,15,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d058,红烧牛肉盖浇面,菜品,c11,c11_t01,18,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d059,孜然牛肉盖浇面,菜品,c11,c11_t01,18,noodle,choice,field,价目牌逐字转录；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d060,牛肉汤,菜品,c11,c11_t01,12,other,choice,field,价目牌逐字转录；纯汤归 other；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg
+c11_d061,牛肉粉丝汤,菜品,c11,c11_t01,15,rice_vermicelli,choice,field,价目牌逐字转录；以粉丝为主归 rice_vermicelli；辣度待确认,,产品负责人,2026-10-27,img/c11_t01_menu2.jpg

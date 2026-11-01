@@ -1,0 +1,25 @@
+{
+  "approvalId": "ap-20261025-01",
+  "status": "draft-unsigned",
+  "notice": "未签署审批草案（2026-10-25）。本文件不是有效审批：runInit 预检要求 result==='approved' 且 approvedAt 非空，本草案两者均未满足——即使复制到 tools/pilot/approvals/ 也会被 E26_APPROVAL_INVALID 拒绝（T280 场景 2 实测）。签发人限产品负责人本人（契约 §5.6.5.8.2 A1）。",
+  "approvedRole": "项目负责人",
+  "approvedAt": null,
+  "planRef": "ip-20261025-01",
+  "planDigest": "4ed23cb4532aa564bc57490a83f4dfb2da6073bbe3487ccd2bad02841f9981ce",
+  "planDigest_note": "定稿计划的载荷摘要（2026-10-25 由 computePlanDigest 计算，可按计划「计划摘要」节算法复算）。签发时核对即可，无需重填。",
+  "scope": "仅初始化 tools/pilot/id-map.json（首版 104 条：t49=c01_d437–c01_d463×27、t48=c01_d464–c01_d540×77）；不生成记录产物、不导入 CSV、不写云端、不改变任何 verifyStatus",
+  "result": "draft-unsigned",
+  "mapVersion": "1#1",
+  "mapVersion_note": "取值按契约 §5.6.5.8.1 表（schemaVersion+生成序号）推导；正式确认仍列计划 T-5 待负责人批准。",
+  "frozenMapSha256": "40642870a2c5cb512e8b5dbc5725ac2754c13b39057a83978dce01c57e54e491",
+  "frozenMapBytes": 37741,
+  "frozenMapRef": "docs/decisions/ID_MAP_T48_T49_20261025.json",
+  "executionEnvironment": "A′：WSL2 Ubuntu ext4 项目副本（~/shishen-a-prime-copy）+ Node v22.22.1；/mnt/c（9p）与 Windows 正式路径不得执行（INIT_FSYNC_UNAVAILABLE fail-closed）",
+  "technicalDecisionRecord": "docs/decisions/TECH_DECISION_INIT_IMPLEMENTATION_20261025.md",
+  "signature": {
+    "signed": false,
+    "signer": null,
+    "signedAt": null,
+    "note": "产品负责人签发栏：签署时本人填写 signer（项目负责人）、signedAt（真实批准时间），并将 result 改为 \"approved\"、approvedAt 填入同一时间、planDigest 填入定稿计划的真实摘要，然后复制本文件为 tools/pilot/approvals/ap-20261025-01.json。"
+  }
+}

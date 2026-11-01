@@ -1,0 +1,39 @@
+[
+  {
+    "name": "wxml_compile",
+    "command": [
+      "D:\\微信开发\\微信web开发者工具\\resources\\app.asar.unpacked\\node_modules\\wcc-exec\\wcc.exe",
+      "pages/history/index.wxml",
+      "components/history-menu/index.wxml"
+    ],
+    "cwd": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\mini",
+    "exitCode": 0,
+    "stdoutBytes": 41638,
+    "stderrBytes": 0,
+    "evidenceScope": "bundled WeChat offline compiler only; NOT full IDE runtime rendering"
+  },
+  {
+    "name": "wxss_compile",
+    "command": [
+      "D:\\微信开发\\微信web开发者工具\\resources\\app.asar.unpacked\\node_modules\\wcc-exec\\wcsc.exe",
+      "pages/history/index.wxss",
+      "components/history-menu/index.wxss"
+    ],
+    "cwd": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\mini",
+    "exitCode": 0,
+    "stdoutBytes": 26,
+    "stderrBytes": 0,
+    "evidenceScope": "bundled WeChat offline compiler only; NOT full IDE runtime rendering"
+  },
+  {
+    "name": "wxss_component_compile",
+    "command": [
+      "D:/微信开发/微信web开发者工具/resources/app.asar.unpacked/node_modules/wcc-exec/wcsc.exe",
+      "components/history-menu/index.wxss"
+    ],
+    "exitCode": 0,
+    "stdoutBytes": 1365,
+    "stderrBytes": 0,
+    "evidenceScope": "single component WXSS bundled compiler"
+  }
+]

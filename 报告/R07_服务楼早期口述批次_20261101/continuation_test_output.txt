@@ -1,0 +1,4 @@
+PASS remaining pool 7 unique material responsibilities; all original line references exact
+PASS supplemental fried mushroom 1 yuan explicit source text; independentDish=false
+PASS no new dish candidate invented from weight pricing or incomplete lists
+RESULT 3 PASS / 0 FAIL; exit=0

@@ -1,0 +1,58 @@
+[
+  {
+    "environment": "Microsoft Edge HTML renderer; NOT WeChat WXML",
+    "width": 320,
+    "normal": {
+      "width": 320,
+      "cards": 39,
+      "scrollWidth": 305,
+      "scrollHeight": 16963,
+      "clientHeight": 740,
+      "overflow": false,
+      "contentComplete": true
+    },
+    "scroll": {
+      "scrollY": 16223,
+      "lastBottom": 697.921875,
+      "lastTop": 288.84375,
+      "height": 740
+    },
+    "longText": {
+      "scrollWidth": 305,
+      "cardHeight": 2131,
+      "nameHeight": 500,
+      "sourceHeight": 1415,
+      "contentFits": true,
+      "noOverlap": true
+    },
+    "status": "PASS"
+  },
+  {
+    "environment": "Microsoft Edge HTML renderer; NOT WeChat WXML",
+    "width": 375,
+    "normal": {
+      "width": 375,
+      "cards": 39,
+      "scrollWidth": 360,
+      "scrollHeight": 14137,
+      "clientHeight": 740,
+      "overflow": false,
+      "contentComplete": true
+    },
+    "scroll": {
+      "scrollY": 13397,
+      "lastBottom": 697.75,
+      "lastTop": 360.625,
+      "height": 740
+    },
+    "longText": {
+      "scrollWidth": 360,
+      "cardHeight": 1719,
+      "nameHeight": 400,
+      "sourceHeight": 1103,
+      "contentFits": true,
+      "noOverlap": true
+    },
+    "status": "PASS"
+  }
+]

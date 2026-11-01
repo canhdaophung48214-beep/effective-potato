@@ -1,0 +1,136 @@
+{
+  "algorithm": "SHA-256",
+  "excludesSelf": true,
+  "files": [
+    {
+      "path": "build_r04.py",
+      "bytes": 13674,
+      "sha256": "ec9ceaf4bc3241f4f6dfa8794d661264aa1f1497d68509fea1bce1fe59a6bac7"
+    },
+    {
+      "path": "candidates.json",
+      "bytes": 214718,
+      "sha256": "2ae8257c9d80f05c7d9ebf08eff8a3a8f1ed2f1008c1a3ef531a52803b511263"
+    },
+    {
+      "path": "capture_2f.js",
+      "bytes": 874,
+      "sha256": "48a1d82d27324e9d6dc9e0f7871d894312a9d9bc4fcef9bf8ffa384d975533a9"
+    },
+    {
+      "path": "current_2f_capture.json",
+      "bytes": 442940,
+      "sha256": "84462477ff87b5903b8cb921af0542171446f418eeeb9f37565a920eb8aba057"
+    },
+    {
+      "path": "finalize_r04.py",
+      "bytes": 7282,
+      "sha256": "e946271a932a5ab89e46cefc6934a5fc4d5907478e0f21d4ff73ceec80baebf5"
+    },
+    {
+      "path": "git_after.json",
+      "bytes": 17431,
+      "sha256": "6e4999a1b2fc30c30c52e10977b8b66552a6c356bca84f0a8b005963d1d8bca2"
+    },
+    {
+      "path": "git_before.json",
+      "bytes": 17431,
+      "sha256": "6e4999a1b2fc30c30c52e10977b8b66552a6c356bca84f0a8b005963d1d8bca2"
+    },
+    {
+      "path": "new_source_records.json",
+      "bytes": 286164,
+      "sha256": "1d1a32f68c22a1b4976157efd5c50a75a124ba31cc67676f054d40772d0a6d2d"
+    },
+    {
+      "path": "optional_surcharges.json",
+      "bytes": 3783,
+      "sha256": "0ab3aa066180ff6aaba489d2242d9d45832d0f0639989d3ef0e4a1ccabd579d9"
+    },
+    {
+      "path": "project_before.json",
+      "bytes": 82773,
+      "sha256": "6f60103f927374e541baa88793329bac1735e606ef69715a795374e131a3a4db"
+    },
+    {
+      "path": "R03_closed_fingerprint.json",
+      "bytes": 200,
+      "sha256": "da9c79256397af619d5c198de4c1b729d5e0aa4a168311871df5a6766d3f2720"
+    },
+    {
+      "path": "R04_执行报告.md",
+      "bytes": 6227,
+      "sha256": "c788bc7ab7144a777fb0e07d2fa9f5e69f0820f40af0603442c5da4fccd59ef9"
+    },
+    {
+      "path": "replacement_ledger.csv",
+      "bytes": 98316,
+      "sha256": "87d6edf55a60a61013f0eac3f9dc621acb115ea00a097144da325eef9c486d55"
+    },
+    {
+      "path": "replacement_ledger.json",
+      "bytes": 168912,
+      "sha256": "a38701c7258d3f4cc743410d4d90d383a8f723196952c7dcdffc2caa7b411563"
+    },
+    {
+      "path": "source_assets/DECISION_RECORD_SET_R2_20261024.md",
+      "bytes": 8497,
+      "sha256": "c739ca1d5d63f0cac1a4de02a00606263e81bf43c1ffa686362fb4a088824c20"
+    },
+    {
+      "path": "source_assets/EVIDENCE_INDEX_20261025.md",
+      "bytes": 7387,
+      "sha256": "b0ad05e8bbbce6ad289464e8023db8c51f5ad0e97f958262f6b4c98da4da49a5"
+    },
+    {
+      "path": "source_assets/NG01_approved_preview.json",
+      "bytes": 4693,
+      "sha256": "072d8e7b4066bbb302bb42e88fdc740c9d341a15b04d0d595c4f219635646b6e"
+    },
+    {
+      "path": "source_assets/NG01_owner_material.md",
+      "bytes": 6807,
+      "sha256": "cb24ec3af64aab408e3ac152f848609bcfc8325ed1317b05729830b18c68e9fd"
+    },
+    {
+      "path": "source_assets/PHOTO_MANIFEST_20261025.csv",
+      "bytes": 23389,
+      "sha256": "e0acb399fab5585ae7db6b1bd33cae576de3d3b9a4b3806d7d288f3ade7ce56c"
+    },
+    {
+      "path": "source_assets/TRANSCRIPTION_2F.md",
+      "bytes": 49530,
+      "sha256": "37516c5f7bb46c7fc387621fbefddbc6be98b5c27f6cf119399b5a2befc9e34c"
+    },
+    {
+      "path": "source_inputs.json",
+      "bytes": 1807,
+      "sha256": "ed3dea898cc28a7e8a59a9f14d5f094d8f1bd282d48872d85382759c58e0b9cc"
+    },
+    {
+      "path": "stall_crosswalk.csv",
+      "bytes": 1934,
+      "sha256": "0324a2dd3be3d341bbdb2eb756625c3e543d7a1163444acf01b016b683ef2cfc"
+    },
+    {
+      "path": "statistics.json",
+      "bytes": 534,
+      "sha256": "c66579c5b8f5c5fb3132e48f4def3bf9999edcfa76aba2670d4f8eb24a5adcff"
+    },
+    {
+      "path": "test_output.txt",
+      "bytes": 1044,
+      "sha256": "420a49ae34465144da076d346efb53b44ff3e30af9f92d1f95ce0abbabecf943"
+    },
+    {
+      "path": "test_r04.py",
+      "bytes": 5060,
+      "sha256": "90f3ba08823570bd74cd7c1923583fb66376e3ee79624de0a37495a53f847abf"
+    },
+    {
+      "path": "unresolved.csv",
+      "bytes": 96827,
+      "sha256": "e81dc09ab510397c5b79ea2746767c84b5f7c6da26ac8738dd8a06854f3bb85c"
+    }
+  ]
+}

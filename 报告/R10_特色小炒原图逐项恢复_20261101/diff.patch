@@ -1,0 +1,1538 @@
+--- /dev/null
++++ R10/build_r10.py
+@@ -0,0 +1,37 @@
++import pathlib,json,csv,re,hashlib,shutil,datetime,subprocess
++E=pathlib.Path(__file__).parent.resolve();R=E.parent.parent;P=R/'项目';B=R/'备份'/('R10_'+datetime.datetime.now().strftime('%Y%m%d_%H%M%S'));B.mkdir()
++def J(p):return json.loads(p.read_text(encoding='utf-8-sig'))
++def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
++def dump(n,v):(E/n).write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
++def wc(n,rs):
++ with (E/n).open('w',encoding='utf-8-sig',newline='') as f:
++  w=csv.DictWriter(f,fieldnames=list(rs[0]));w.writeheader();w.writerows({k:json.dumps(v,ensure_ascii=False) if isinstance(v,(dict,list)) else v for k,v in r.items()} for r in rs)
++closed=[p for p in (R/'报告').iterdir() if p.is_dir() and re.match(r'R0[3-9]_',p.name)];dump('closed_before.json',[{'path':str(p),'sha256':sha(p)} for d in closed for p in d.rglob('*') if p.is_file()])
++dump('project_before.json',[{'path':str(p),'sha256':sha(p)} for p in P.rglob('*') if p.is_file() and '.git' not in p.parts and 'node_modules' not in p.parts])
++def git(*a):
++ r=subprocess.run(['git','-c','core.quotepath=false',*a],cwd=P,capture_output=True,text=True,encoding='utf8');assert r.returncode==0;return r.stdout
++dump('git_before.json',{k:git(*a) for k,a in {'head':['rev-parse','HEAD'],'branch':['branch','--show-current'],'staged':['diff','--cached','--name-status'],'status':['status','--porcelain=v1','-uall']}.items()})
++photo=P/'evidence/ds-session-1e2717cc/sha256_6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f.jpg';inputs=[(photo,'photo_2F16.jpg'),(R/'报告/R01_E3_evidence/ocr_raw.json','prior_ocr_raw.json'),(P/'tools/pilot/TRANSCRIPTION_2F.md','TRANSCRIPTION_2F.md')];M=[]
++for p,n in inputs:
++ q=E/'source_assets'/n;b=B/n;shutil.copyfile(p,q);shutil.copyfile(p,b);assert p.read_bytes()==q.read_bytes()==b.read_bytes();M.append({'original':str(p),'snapshot':q.relative_to(E).as_posix(),'backup':str(b),'bytes':p.stat().st_size,'sha256':sha(p)})
++dump('backup_manifest.json',M);(B/'manifest.json').write_text(json.dumps(M,ensure_ascii=False,indent=2),encoding='utf8')
++ocr=next(x for x in J(E/'source_assets/prior_ocr_raw.json') if photo.name in x['path']);assert ocr['status']=='OCR_COMPLETED';dump('photo_ocr.json',ocr);lines=(E/'source_assets/TRANSCRIPTION_2F.md').read_text(encoding='utf-8-sig').splitlines();old=J(R/'报告/R04_2F_20261101/new_source_records.json');source={}
++for ln in range(613,626):
++ q=lines[ln-1]
++ if not q.startswith('|') or not re.search(r'\d+ 元',q):continue
++ cells=[x.strip() for x in q.strip('|').split('|')];price=int(re.search(r'\d+',cells[1])[0])
++ for name in cells[0].split(' / '):source[name]=(ln,price,q)
++C=[];G=[];L=[];U=[];seen=set()
++for ol,q in enumerate(ocr['lines'],1):
++ compact=re.sub(r'\s+','',q)
++ for m in re.finditer(r'([\u4e00-\u9fff]{2,20})(\d{1,2})元',compact):
++  name=m[1];price=int(m[2])
++  if name not in source or name in seen:continue
++  ln,expected,quote=source[name]
++  if price!=expected:continue
++  prior=next(x for x in old if x.get('oldStallIdForTrace')=='c01_t15' and x['sourceLine']==ln);ref=f'R10-2F16-D{len(C)+1:02d}';ev={'photoFile':'source_assets/photo_2F16.jpg','photoSHA256':sha(photo),'ocrLine':ol,'ocrQuote':q,'matchedText':m[0],'sourceFile':'source_assets/TRANSCRIPTION_2F.md','sourceLine':ln,'sourceQuote':quote,'evidenceLevel':'same-line OCR + exact source item and price; no human signoff'}
++  c={'candidateId':ref+'-V1','sourceRecordRef':ref,'name':name,'recordKind':'dish','independentDish':True,'formalDishId':None,'amount':price,'rawPriceExpression':m[2]+'元','unitRaw':None,'specification':None,'composition':None,'tastes':[],'foodType':None,'collector':None,'captureDate':None,'floorRef':None,'stallRef':'R10-PHOTO-2F16','currentPriceValidity':'UNKNOWN','transactionQuoteAllowed':False,'verifyStatus':'unverified','verifiedAt':None,'admissionStatus':'ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED','priorPendingSourceRef':prior['sourceRecordRef'],'oldRecordKeys':prior['oldRecordKeys'],'evidence':ev};C.append(c);seen.add(name);G.append({'sourceRecordRef':ref,'name':name,'blocked':False,'disposition':'CANDIDATE','evidence':ev});L.append({'sourceRecordRef':ref,'action':'NEW','priorPendingSourceRef':prior['sourceRecordRef'],'candidateRefs':[c['candidateId']],'name':name,'reason':'new child OCR evidence; frozen parent unchanged'})
++for name,(ln,price,quote) in source.items():
++ if name in seen:continue
++ ref=f'R10-PENDING-L{ln}-{len(U)+1:02d}';U.append({'sourceRecordRef':ref,'name':name,'reason':'未获得菜名同OCR行准确价格；不按价列位置/相似字纠正','sourceLine':ln,'sourceQuote':quote});G.append({'sourceRecordRef':ref,'name':name,'blocked':True,'disposition':'PENDING'});L.append({'sourceRecordRef':ref,'action':'PENDING','priorPendingSourceRef':None,'candidateRefs':[],'name':name,'reason':'source text retained; OCR inline evidence insufficient'})
++assert C;dump('candidates.json',C);dump('source_groups.json',G);dump('source_ledger.json',L);wc('source_ledger.csv',L);wc('unresolved.csv',U);dump('optional_surcharges.json',[]);dump('bundle_relations.json',[]);dump('statistics.json',{'sourcePhotos':1,'transcriptionDishItems':len(source),'independentDishCandidates':len(C),'mealComponents':0,'optionalSurcharges':0,'bundleRelations':0,'pendingDishItems':len(U),'sourceGroups':len(G),'oldRecordsChanged':0,'formalImports':0});print(json.dumps(J(E/'statistics.json'),ensure_ascii=False,indent=2));print('build exit=0')
+--- /dev/null
++++ R10/test_r10.py
+@@ -0,0 +1,41 @@
++import pathlib,json,re,hashlib,copy,subprocess
++E=pathlib.Path(__file__).parent.resolve();R=E.parent.parent;P=R/'项目'
++def J(n):return json.loads((E/n).read_text(encoding='utf-8-sig'))
++def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
++C=J('candidates.json');G=J('source_groups.json');L=J('source_ledger.json');ocr=J('photo_ocr.json');lines=(E/'source_assets/TRANSCRIPTION_2F.md').read_text(encoding='utf-8-sig').splitlines();N=0
++def ok(x):assert x
++def test(n,f):
++ global N
++ f();N+=1;print('PASS '+n)
++def validate(cs):
++ assert len(cs)==15 and len({c['candidateId'] for c in cs})==15 and len({c['name'] for c in cs})==15
++ for c in cs:
++  e=c['evidence'];q=ocr['lines'][e['ocrLine']-1];assert q==e['ocrQuote'] and e['matchedText'] in re.sub(r'\s+','',q) and e['matchedText']==c['name']+str(c['amount'])+'元'
++  assert e['sourceQuote']==lines[e['sourceLine']-1];cells=[v.strip() for v in e['sourceQuote'].strip('|').split('|')];assert c['name'] in cells[0].split(' / ') and cells[1]==str(c['amount'])+' 元'
++  assert sha(E/e['photoFile'])==e['photoSHA256']
++  assert c['formalDishId'] is None and c['collector'] is None and c['captureDate'] is None and c['floorRef'] is None and c['unitRaw'] is None and c['tastes']==[]
++  assert c['composition'] is None and c['specification'] is None and c['transactionQuoteAllowed'] is False and c['currentPriceValidity']=='UNKNOWN'
++  assert c['recordKind']=='dish' and c['independentDish'] is True
++test('15主菜源文精确成员与OCR同行价一致',lambda:validate(C))
++test('37展开源项=15候选+22待核验',lambda:ok(len(G)==37 and sum(g['blocked'] for g in G)==22 and len({g['sourceRecordRef'] for g in G})==37))
++test('37台账责任唯一完整',lambda:ok(len(L)==37 and {l['sourceRecordRef'] for l in L}=={g['sourceRecordRef'] for g in G}))
++expected=[]
++for ln in range(613,626):expected.extend([x.strip() for x in lines[ln-1].strip('|').split('|')[0].split(' / ')])
++test('主表13物理行37成员全覆盖无尾行漏项',lambda:ok({g['name'] for g in G}==set(expected) and len(expected)==37))
++test('0组件0加料0套餐',lambda:ok(J('optional_surcharges.json')==[] and J('bundle_relations.json')==[]))
++for n,mut in [('改价',lambda c:c[0].update(amount=99)),('改名',lambda c:c[0].update(name='无来源新菜')),('伪造日期',lambda c:c[0].update(captureDate='2026-10-23')),('正式ID',lambda c:c[0].update(formalDishId='c01_d001')),('猜辣',lambda c:c[0].update(tastes=['spicy'])),('报价',lambda c:c[0].update(transactionQuoteAllowed=True)),('重复',lambda c:c.__setitem__(1,copy.deepcopy(c[0]))),('猜组合',lambda c:c[0].update(composition=['米饭']))]:
++ def neg(mut=mut):
++  cs=copy.deepcopy(C);mut(cs)
++  try:validate(cs)
++  except AssertionError:return
++  raise AssertionError('变异未发现')
++ test('负向:'+n,neg)
++test('备份逐字节一致',lambda:ok(all(pathlib.Path(x['original']).read_bytes()==(E/x['snapshot']).read_bytes()==pathlib.Path(x['backup']).read_bytes() for x in J('backup_manifest.json'))))
++test('正式项目字节不变',lambda:ok(all(sha(x['path'])==x['sha256'] for x in J('project_before.json'))))
++test('R03-R09交付字节不变',lambda:ok(all(sha(x['path'])==x['sha256'] for x in J('closed_before.json'))))
++after={}
++for k,a in {'head':['rev-parse','HEAD'],'branch':['branch','--show-current'],'staged':['diff','--cached','--name-status'],'status':['status','--porcelain=v1','-uall']}.items():
++ r=subprocess.run(['git','-c','core.quotepath=false',*a],cwd=P,capture_output=True,text=True,encoding='utf8');assert r.returncode==0;after[k]=r.stdout
++(E/'git_after.json').write_text(json.dumps(after,ensure_ascii=False,indent=2),encoding='utf8');test('Git状态不变',lambda:ok(after==J('git_before.json')))
++r=subprocess.run(['git','diff','--check'],cwd=P,capture_output=True,text=True);print('git diff --check exit=',r.returncode);print(r.stdout+r.stderr);assert r.returncode==0
++print(f'RESULT {N} PASS / 0 FAIL / 0 SKIP; exit=0')
+--- /dev/null
++++ R10/candidates.json
+@@ -0,0 +1,587 @@
++[
++  {
++    "candidateId": "R10-2F16-D01-V1",
++    "sourceRecordRef": "R10-2F16-D01",
++    "name": "肉末茄子",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 11,
++    "rawPriceExpression": "11元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "floorRef": null,
++    "stallRef": "R10-PHOTO-2F16",
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-13-L0615-S314",
++    "oldRecordKeys": [
++      "c01_t15|f2/糖醋里脊 / 红烧里脊 / 鱼香茄子 / 肉末茄子 / 香辣火腿 / 西红柿炒鸡蛋||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 6,
++      "ocrQuote": "肉 末 茄 子 11 元",
++      "matchedText": "肉末茄子11元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 615,
++      "sourceQuote": "| 糖醋里脊 / 红烧里脊 / 鱼香茄子 / 肉末茄子 / 香辣火腿 / 西红柿炒鸡蛋 | 11 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "candidateId": "R10-2F16-D02-V1",
++    "sourceRecordRef": "R10-2F16-D02",
++    "name": "香辣火腿",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 11,
++    "rawPriceExpression": "11元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "floorRef": null,
++    "stallRef": "R10-PHOTO-2F16",
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-13-L0615-S314",
++    "oldRecordKeys": [
++      "c01_t15|f2/糖醋里脊 / 红烧里脊 / 鱼香茄子 / 肉末茄子 / 香辣火腿 / 西红柿炒鸡蛋||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 7,
++      "ocrQuote": "香 辣 火 腿 11 元",
++      "matchedText": "香辣火腿11元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 615,
++      "sourceQuote": "| 糖醋里脊 / 红烧里脊 / 鱼香茄子 / 肉末茄子 / 香辣火腿 / 西红柿炒鸡蛋 | 11 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "candidateId": "R10-2F16-D03-V1",
++    "sourceRecordRef": "R10-2F16-D03",
++    "name": "火腿鸡蛋",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 12,
++    "rawPriceExpression": "12元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "floorRef": null,
++    "stallRef": "R10-PHOTO-2F16",
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-13-L0616-S315",
++    "oldRecordKeys": [
++      "c01_t15|f2/火腿鸡蛋 / 酸菜肉丝 / 肉末豆角||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 8,
++      "ocrQuote": "火 腿 鸡 蛋 12 元",
++      "matchedText": "火腿鸡蛋12元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 616,
++      "sourceQuote": "| 火腿鸡蛋 / 酸菜肉丝 / 肉末豆角 | 12 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "candidateId": "R10-2F16-D04-V1",
++    "sourceRecordRef": "R10-2F16-D04",
++    "name": "鱼香茄子",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 11,
++    "rawPriceExpression": "11元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "floorRef": null,
++    "stallRef": "R10-PHOTO-2F16",
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-13-L0615-S314",
++    "oldRecordKeys": [
++      "c01_t15|f2/糖醋里脊 / 红烧里脊 / 鱼香茄子 / 肉末茄子 / 香辣火腿 / 西红柿炒鸡蛋||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 15,
++      "ocrQuote": "鱼 香 茄 子 1 1 元",
++      "matchedText": "鱼香茄子11元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 615,
++      "sourceQuote": "| 糖醋里脊 / 红烧里脊 / 鱼香茄子 / 肉末茄子 / 香辣火腿 / 西红柿炒鸡蛋 | 11 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "candidateId": "R10-2F16-D05-V1",
++    "sourceRecordRef": "R10-2F16-D05",
++    "name": "西红柿炒鸡蛋",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 11,
++    "rawPriceExpression": "11元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "floorRef": null,
++    "stallRef": "R10-PHOTO-2F16",
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-13-L0615-S314",
++    "oldRecordKeys": [
++      "c01_t15|f2/糖醋里脊 / 红烧里脊 / 鱼香茄子 / 肉末茄子 / 香辣火腿 / 西红柿炒鸡蛋||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 16,
++      "ocrQuote": "西 红 柿 炒 鸡 蛋 11 元",
++      "matchedText": "西红柿炒鸡蛋11元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 615,
++      "sourceQuote": "| 糖醋里脊 / 红烧里脊 / 鱼香茄子 / 肉末茄子 / 香辣火腿 / 西红柿炒鸡蛋 | 11 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "candidateId": "R10-2F16-D06-V1",
++    "sourceRecordRef": "R10-2F16-D06",
++    "name": "酸菜肉丝",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 12,
++    "rawPriceExpression": "12元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "floorRef": null,
++    "stallRef": "R10-PHOTO-2F16",
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-13-L0616-S315",
++    "oldRecordKeys": [
++      "c01_t15|f2/火腿鸡蛋 / 酸菜肉丝 / 肉末豆角||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 17,
++      "ocrQuote": "酸 菜 肉 丝 12 元",
++      "matchedText": "酸菜肉丝12元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 616,
++      "sourceQuote": "| 火腿鸡蛋 / 酸菜肉丝 / 肉末豆角 | 12 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "candidateId": "R10-2F16-D07-V1",
++    "sourceRecordRef": "R10-2F16-D07",
++    "name": "肉末豆角",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 12,
++    "rawPriceExpression": "12元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "floorRef": null,
++    "stallRef": "R10-PHOTO-2F16",
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-13-L0616-S315",
++    "oldRecordKeys": [
++      "c01_t15|f2/火腿鸡蛋 / 酸菜肉丝 / 肉末豆角||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 18,
++      "ocrQuote": "肉 末 豆 角 12 元",
++      "matchedText": "肉末豆角12元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 616,
++      "sourceQuote": "| 火腿鸡蛋 / 酸菜肉丝 / 肉末豆角 | 12 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "candidateId": "R10-2F16-D08-V1",
++    "sourceRecordRef": "R10-2F16-D08",
++    "name": "土豆鸡丁",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 13,
++    "rawPriceExpression": "13元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "floorRef": null,
++    "stallRef": "R10-PHOTO-2F16",
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-13-L0617-S316",
++    "oldRecordKeys": [
++      "c01_t15|f2/土豆鸡丁 / 宫保鸡丁 / 辣子鸡丁 / 泡椒猪肝||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 19,
++      "ocrQuote": "土 豆 鸡 丁 13 元",
++      "matchedText": "土豆鸡丁13元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 617,
++      "sourceQuote": "| 土豆鸡丁 / 宫保鸡丁 / 辣子鸡丁 / 泡椒猪肝 | 13 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "candidateId": "R10-2F16-D09-V1",
++    "sourceRecordRef": "R10-2F16-D09",
++    "name": "辣子鸡丁",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 13,
++    "rawPriceExpression": "13元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "floorRef": null,
++    "stallRef": "R10-PHOTO-2F16",
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-13-L0617-S316",
++    "oldRecordKeys": [
++      "c01_t15|f2/土豆鸡丁 / 宫保鸡丁 / 辣子鸡丁 / 泡椒猪肝||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 21,
++      "ocrQuote": "辣 子 鸡 丁 13 元",
++      "matchedText": "辣子鸡丁13元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 617,
++      "sourceQuote": "| 土豆鸡丁 / 宫保鸡丁 / 辣子鸡丁 / 泡椒猪肝 | 13 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "candidateId": "R10-2F16-D10-V1",
++    "sourceRecordRef": "R10-2F16-D10",
++    "name": "辣椒炒肉",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 14,
++    "rawPriceExpression": "14元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "floorRef": null,
++    "stallRef": "R10-PHOTO-2F16",
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-13-L0618-S317",
++    "oldRecordKeys": [
++      "c01_t15|f2/辣椒炒肉||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 22,
++      "ocrQuote": "辣 椒 炒 肉 14 元",
++      "matchedText": "辣椒炒肉14元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 618,
++      "sourceQuote": "| 辣椒炒肉 | 14 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "candidateId": "R10-2F16-D11-V1",
++    "sourceRecordRef": "R10-2F16-D11",
++    "name": "泡椒猪肝",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 13,
++    "rawPriceExpression": "13元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "floorRef": null,
++    "stallRef": "R10-PHOTO-2F16",
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-13-L0617-S316",
++    "oldRecordKeys": [
++      "c01_t15|f2/土豆鸡丁 / 宫保鸡丁 / 辣子鸡丁 / 泡椒猪肝||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 23,
++      "ocrQuote": "泡 椒 猪 肝 13 元",
++      "matchedText": "泡椒猪肝13元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 617,
++      "sourceQuote": "| 土豆鸡丁 / 宫保鸡丁 / 辣子鸡丁 / 泡椒猪肝 | 13 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "candidateId": "R10-2F16-D12-V1",
++    "sourceRecordRef": "R10-2F16-D12",
++    "name": "红烧牛肉",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 18,
++    "rawPriceExpression": "18元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "floorRef": null,
++    "stallRef": "R10-PHOTO-2F16",
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-13-L0619-S318",
++    "oldRecordKeys": [
++      "c01_t15|f2/红烧牛肉||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 24,
++      "ocrQuote": "红 烧 牛 肉 18 元",
++      "matchedText": "红烧牛肉18元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 619,
++      "sourceQuote": "| 红烧牛肉 | 18 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "candidateId": "R10-2F16-D13-V1",
++    "sourceRecordRef": "R10-2F16-D13",
++    "name": "鱼香肉丝",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 15,
++    "rawPriceExpression": "15元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "floorRef": null,
++    "stallRef": "R10-PHOTO-2F16",
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-13-L0620-S319",
++    "oldRecordKeys": [
++      "c01_t15|f2/香辣肉丝 / 葱爆肉片 / 甘兰回锅肉 / 木须肉 / 孜然鱿鱼 / 孜然肉片 / 鱼香肉丝||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 25,
++      "ocrQuote": "鱼 香 肉 丝 1 5 元",
++      "matchedText": "鱼香肉丝15元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 620,
++      "sourceQuote": "| 香辣肉丝 / 葱爆肉片 / 甘兰回锅肉 / 木须肉 / 孜然鱿鱼 / 孜然肉片 / 鱼香肉丝 | 15 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "candidateId": "R10-2F16-D14-V1",
++    "sourceRecordRef": "R10-2F16-D14",
++    "name": "甘兰回锅肉",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 15,
++    "rawPriceExpression": "15元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "floorRef": null,
++    "stallRef": "R10-PHOTO-2F16",
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-13-L0620-S319",
++    "oldRecordKeys": [
++      "c01_t15|f2/香辣肉丝 / 葱爆肉片 / 甘兰回锅肉 / 木须肉 / 孜然鱿鱼 / 孜然肉片 / 鱼香肉丝||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 30,
++      "ocrQuote": "甘 兰 回 锅 肉 15 元 孜 然 土 豆 11 元",
++      "matchedText": "甘兰回锅肉15元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 620,
++      "sourceQuote": "| 香辣肉丝 / 葱爆肉片 / 甘兰回锅肉 / 木须肉 / 孜然鱿鱼 / 孜然肉片 / 鱼香肉丝 | 15 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "candidateId": "R10-2F16-D15-V1",
++    "sourceRecordRef": "R10-2F16-D15",
++    "name": "孜然土豆",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 11,
++    "rawPriceExpression": "11元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "floorRef": null,
++    "stallRef": "R10-PHOTO-2F16",
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-13-L0625-S324",
++    "oldRecordKeys": [
++      "c01_t15|f2/孜然土豆||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 30,
++      "ocrQuote": "甘 兰 回 锅 肉 15 元 孜 然 土 豆 11 元",
++      "matchedText": "孜然土豆11元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 625,
++      "sourceQuote": "| 孜然土豆 | 11 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  }
++]
+--- /dev/null
++++ R10/source_groups.json
+@@ -0,0 +1,389 @@
++[
++  {
++    "sourceRecordRef": "R10-2F16-D01",
++    "name": "肉末茄子",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 6,
++      "ocrQuote": "肉 末 茄 子 11 元",
++      "matchedText": "肉末茄子11元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 615,
++      "sourceQuote": "| 糖醋里脊 / 红烧里脊 / 鱼香茄子 / 肉末茄子 / 香辣火腿 / 西红柿炒鸡蛋 | 11 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D02",
++    "name": "香辣火腿",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 7,
++      "ocrQuote": "香 辣 火 腿 11 元",
++      "matchedText": "香辣火腿11元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 615,
++      "sourceQuote": "| 糖醋里脊 / 红烧里脊 / 鱼香茄子 / 肉末茄子 / 香辣火腿 / 西红柿炒鸡蛋 | 11 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D03",
++    "name": "火腿鸡蛋",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 8,
++      "ocrQuote": "火 腿 鸡 蛋 12 元",
++      "matchedText": "火腿鸡蛋12元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 616,
++      "sourceQuote": "| 火腿鸡蛋 / 酸菜肉丝 / 肉末豆角 | 12 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D04",
++    "name": "鱼香茄子",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 15,
++      "ocrQuote": "鱼 香 茄 子 1 1 元",
++      "matchedText": "鱼香茄子11元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 615,
++      "sourceQuote": "| 糖醋里脊 / 红烧里脊 / 鱼香茄子 / 肉末茄子 / 香辣火腿 / 西红柿炒鸡蛋 | 11 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D05",
++    "name": "西红柿炒鸡蛋",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 16,
++      "ocrQuote": "西 红 柿 炒 鸡 蛋 11 元",
++      "matchedText": "西红柿炒鸡蛋11元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 615,
++      "sourceQuote": "| 糖醋里脊 / 红烧里脊 / 鱼香茄子 / 肉末茄子 / 香辣火腿 / 西红柿炒鸡蛋 | 11 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D06",
++    "name": "酸菜肉丝",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 17,
++      "ocrQuote": "酸 菜 肉 丝 12 元",
++      "matchedText": "酸菜肉丝12元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 616,
++      "sourceQuote": "| 火腿鸡蛋 / 酸菜肉丝 / 肉末豆角 | 12 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D07",
++    "name": "肉末豆角",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 18,
++      "ocrQuote": "肉 末 豆 角 12 元",
++      "matchedText": "肉末豆角12元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 616,
++      "sourceQuote": "| 火腿鸡蛋 / 酸菜肉丝 / 肉末豆角 | 12 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D08",
++    "name": "土豆鸡丁",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 19,
++      "ocrQuote": "土 豆 鸡 丁 13 元",
++      "matchedText": "土豆鸡丁13元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 617,
++      "sourceQuote": "| 土豆鸡丁 / 宫保鸡丁 / 辣子鸡丁 / 泡椒猪肝 | 13 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D09",
++    "name": "辣子鸡丁",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 21,
++      "ocrQuote": "辣 子 鸡 丁 13 元",
++      "matchedText": "辣子鸡丁13元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 617,
++      "sourceQuote": "| 土豆鸡丁 / 宫保鸡丁 / 辣子鸡丁 / 泡椒猪肝 | 13 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D10",
++    "name": "辣椒炒肉",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 22,
++      "ocrQuote": "辣 椒 炒 肉 14 元",
++      "matchedText": "辣椒炒肉14元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 618,
++      "sourceQuote": "| 辣椒炒肉 | 14 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D11",
++    "name": "泡椒猪肝",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 23,
++      "ocrQuote": "泡 椒 猪 肝 13 元",
++      "matchedText": "泡椒猪肝13元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 617,
++      "sourceQuote": "| 土豆鸡丁 / 宫保鸡丁 / 辣子鸡丁 / 泡椒猪肝 | 13 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D12",
++    "name": "红烧牛肉",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 24,
++      "ocrQuote": "红 烧 牛 肉 18 元",
++      "matchedText": "红烧牛肉18元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 619,
++      "sourceQuote": "| 红烧牛肉 | 18 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D13",
++    "name": "鱼香肉丝",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 25,
++      "ocrQuote": "鱼 香 肉 丝 1 5 元",
++      "matchedText": "鱼香肉丝15元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 620,
++      "sourceQuote": "| 香辣肉丝 / 葱爆肉片 / 甘兰回锅肉 / 木须肉 / 孜然鱿鱼 / 孜然肉片 / 鱼香肉丝 | 15 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D14",
++    "name": "甘兰回锅肉",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 30,
++      "ocrQuote": "甘 兰 回 锅 肉 15 元 孜 然 土 豆 11 元",
++      "matchedText": "甘兰回锅肉15元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 620,
++      "sourceQuote": "| 香辣肉丝 / 葱爆肉片 / 甘兰回锅肉 / 木须肉 / 孜然鱿鱼 / 孜然肉片 / 鱼香肉丝 | 15 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D15",
++    "name": "孜然土豆",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "evidence": {
++      "photoFile": "source_assets/photo_2F16.jpg",
++      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
++      "ocrLine": 30,
++      "ocrQuote": "甘 兰 回 锅 肉 15 元 孜 然 土 豆 11 元",
++      "matchedText": "孜然土豆11元",
++      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 625,
++      "sourceQuote": "| 孜然土豆 | 11 元 |",
++      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L613-01",
++    "name": "红烧土豆",
++    "blocked": true,
++    "disposition": "PENDING"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L613-02",
++    "name": "清炒甘兰",
++    "blocked": true,
++    "disposition": "PENDING"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L614-03",
++    "name": "地三鲜",
++    "blocked": true,
++    "disposition": "PENDING"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L615-04",
++    "name": "糖醋里脊",
++    "blocked": true,
++    "disposition": "PENDING"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L615-05",
++    "name": "红烧里脊",
++    "blocked": true,
++    "disposition": "PENDING"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L617-06",
++    "name": "宫保鸡丁",
++    "blocked": true,
++    "disposition": "PENDING"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L620-07",
++    "name": "香辣肉丝",
++    "blocked": true,
++    "disposition": "PENDING"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L620-08",
++    "name": "葱爆肉片",
++    "blocked": true,
++    "disposition": "PENDING"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L620-09",
++    "name": "木须肉",
++    "blocked": true,
++    "disposition": "PENDING"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L620-10",
++    "name": "孜然鱿鱼",
++    "blocked": true,
++    "disposition": "PENDING"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L620-11",
++    "name": "孜然肉片",
++    "blocked": true,
++    "disposition": "PENDING"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L621-12",
++    "name": "红烧肉",
++    "blocked": true,
++    "disposition": "PENDING"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L621-13",
++    "name": "四川腊肉",
++    "blocked": true,
++    "disposition": "PENDING"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L621-14",
++    "name": "孜然五花肉",
++    "blocked": true,
++    "disposition": "PENDING"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L622-15",
++    "name": "葱爆牛肉",
++    "blocked": true,
++    "disposition": "PENDING"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L622-16",
++    "name": "土豆肥肠",
++    "blocked": true,
++    "disposition": "PENDING"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L622-17",
++    "name": "香辣肥肠",
++    "blocked": true,
++    "disposition": "PENDING"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L622-18",
++    "name": "孜然牛肉",
++    "blocked": true,
++    "disposition": "PENDING"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L622-19",
++    "name": "孜然羊肉",
++    "blocked": true,
++    "disposition": "PENDING"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L623-20",
++    "name": "蛋炒饭",
++    "blocked": true,
++    "disposition": "PENDING"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L624-21",
++    "name": "肉丝炒饭",
++    "blocked": true,
++    "disposition": "PENDING"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L624-22",
++    "name": "孜然猪肝",
++    "blocked": true,
++    "disposition": "PENDING"
++  }
++]
+--- /dev/null
++++ R10/source_ledger.csv
+@@ -0,0 +1,38 @@
++sourceRecordRef,action,priorPendingSourceRef,candidateRefs,name,reason
++R10-2F16-D01,NEW,R04-W2-13-L0615-S314,"[""R10-2F16-D01-V1""]",肉末茄子,new child OCR evidence; frozen parent unchanged
++R10-2F16-D02,NEW,R04-W2-13-L0615-S314,"[""R10-2F16-D02-V1""]",香辣火腿,new child OCR evidence; frozen parent unchanged
++R10-2F16-D03,NEW,R04-W2-13-L0616-S315,"[""R10-2F16-D03-V1""]",火腿鸡蛋,new child OCR evidence; frozen parent unchanged
++R10-2F16-D04,NEW,R04-W2-13-L0615-S314,"[""R10-2F16-D04-V1""]",鱼香茄子,new child OCR evidence; frozen parent unchanged
++R10-2F16-D05,NEW,R04-W2-13-L0615-S314,"[""R10-2F16-D05-V1""]",西红柿炒鸡蛋,new child OCR evidence; frozen parent unchanged
++R10-2F16-D06,NEW,R04-W2-13-L0616-S315,"[""R10-2F16-D06-V1""]",酸菜肉丝,new child OCR evidence; frozen parent unchanged
++R10-2F16-D07,NEW,R04-W2-13-L0616-S315,"[""R10-2F16-D07-V1""]",肉末豆角,new child OCR evidence; frozen parent unchanged
++R10-2F16-D08,NEW,R04-W2-13-L0617-S316,"[""R10-2F16-D08-V1""]",土豆鸡丁,new child OCR evidence; frozen parent unchanged
++R10-2F16-D09,NEW,R04-W2-13-L0617-S316,"[""R10-2F16-D09-V1""]",辣子鸡丁,new child OCR evidence; frozen parent unchanged
++R10-2F16-D10,NEW,R04-W2-13-L0618-S317,"[""R10-2F16-D10-V1""]",辣椒炒肉,new child OCR evidence; frozen parent unchanged
++R10-2F16-D11,NEW,R04-W2-13-L0617-S316,"[""R10-2F16-D11-V1""]",泡椒猪肝,new child OCR evidence; frozen parent unchanged
++R10-2F16-D12,NEW,R04-W2-13-L0619-S318,"[""R10-2F16-D12-V1""]",红烧牛肉,new child OCR evidence; frozen parent unchanged
++R10-2F16-D13,NEW,R04-W2-13-L0620-S319,"[""R10-2F16-D13-V1""]",鱼香肉丝,new child OCR evidence; frozen parent unchanged
++R10-2F16-D14,NEW,R04-W2-13-L0620-S319,"[""R10-2F16-D14-V1""]",甘兰回锅肉,new child OCR evidence; frozen parent unchanged
++R10-2F16-D15,NEW,R04-W2-13-L0625-S324,"[""R10-2F16-D15-V1""]",孜然土豆,new child OCR evidence; frozen parent unchanged
++R10-PENDING-L613-01,PENDING,,[],红烧土豆,source text retained; OCR inline evidence insufficient
++R10-PENDING-L613-02,PENDING,,[],清炒甘兰,source text retained; OCR inline evidence insufficient
++R10-PENDING-L614-03,PENDING,,[],地三鲜,source text retained; OCR inline evidence insufficient
++R10-PENDING-L615-04,PENDING,,[],糖醋里脊,source text retained; OCR inline evidence insufficient
++R10-PENDING-L615-05,PENDING,,[],红烧里脊,source text retained; OCR inline evidence insufficient
++R10-PENDING-L617-06,PENDING,,[],宫保鸡丁,source text retained; OCR inline evidence insufficient
++R10-PENDING-L620-07,PENDING,,[],香辣肉丝,source text retained; OCR inline evidence insufficient
++R10-PENDING-L620-08,PENDING,,[],葱爆肉片,source text retained; OCR inline evidence insufficient
++R10-PENDING-L620-09,PENDING,,[],木须肉,source text retained; OCR inline evidence insufficient
++R10-PENDING-L620-10,PENDING,,[],孜然鱿鱼,source text retained; OCR inline evidence insufficient
++R10-PENDING-L620-11,PENDING,,[],孜然肉片,source text retained; OCR inline evidence insufficient
++R10-PENDING-L621-12,PENDING,,[],红烧肉,source text retained; OCR inline evidence insufficient
++R10-PENDING-L621-13,PENDING,,[],四川腊肉,source text retained; OCR inline evidence insufficient
++R10-PENDING-L621-14,PENDING,,[],孜然五花肉,source text retained; OCR inline evidence insufficient
++R10-PENDING-L622-15,PENDING,,[],葱爆牛肉,source text retained; OCR inline evidence insufficient
++R10-PENDING-L622-16,PENDING,,[],土豆肥肠,source text retained; OCR inline evidence insufficient
++R10-PENDING-L622-17,PENDING,,[],香辣肥肠,source text retained; OCR inline evidence insufficient
++R10-PENDING-L622-18,PENDING,,[],孜然牛肉,source text retained; OCR inline evidence insufficient
++R10-PENDING-L622-19,PENDING,,[],孜然羊肉,source text retained; OCR inline evidence insufficient
++R10-PENDING-L623-20,PENDING,,[],蛋炒饭,source text retained; OCR inline evidence insufficient
++R10-PENDING-L624-21,PENDING,,[],肉丝炒饭,source text retained; OCR inline evidence insufficient
++R10-PENDING-L624-22,PENDING,,[],孜然猪肝,source text retained; OCR inline evidence insufficient
+--- /dev/null
++++ R10/source_ledger.json
+@@ -0,0 +1,328 @@
++[
++  {
++    "sourceRecordRef": "R10-2F16-D01",
++    "action": "NEW",
++    "priorPendingSourceRef": "R04-W2-13-L0615-S314",
++    "candidateRefs": [
++      "R10-2F16-D01-V1"
++    ],
++    "name": "肉末茄子",
++    "reason": "new child OCR evidence; frozen parent unchanged"
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D02",
++    "action": "NEW",
++    "priorPendingSourceRef": "R04-W2-13-L0615-S314",
++    "candidateRefs": [
++      "R10-2F16-D02-V1"
++    ],
++    "name": "香辣火腿",
++    "reason": "new child OCR evidence; frozen parent unchanged"
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D03",
++    "action": "NEW",
++    "priorPendingSourceRef": "R04-W2-13-L0616-S315",
++    "candidateRefs": [
++      "R10-2F16-D03-V1"
++    ],
++    "name": "火腿鸡蛋",
++    "reason": "new child OCR evidence; frozen parent unchanged"
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D04",
++    "action": "NEW",
++    "priorPendingSourceRef": "R04-W2-13-L0615-S314",
++    "candidateRefs": [
++      "R10-2F16-D04-V1"
++    ],
++    "name": "鱼香茄子",
++    "reason": "new child OCR evidence; frozen parent unchanged"
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D05",
++    "action": "NEW",
++    "priorPendingSourceRef": "R04-W2-13-L0615-S314",
++    "candidateRefs": [
++      "R10-2F16-D05-V1"
++    ],
++    "name": "西红柿炒鸡蛋",
++    "reason": "new child OCR evidence; frozen parent unchanged"
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D06",
++    "action": "NEW",
++    "priorPendingSourceRef": "R04-W2-13-L0616-S315",
++    "candidateRefs": [
++      "R10-2F16-D06-V1"
++    ],
++    "name": "酸菜肉丝",
++    "reason": "new child OCR evidence; frozen parent unchanged"
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D07",
++    "action": "NEW",
++    "priorPendingSourceRef": "R04-W2-13-L0616-S315",
++    "candidateRefs": [
++      "R10-2F16-D07-V1"
++    ],
++    "name": "肉末豆角",
++    "reason": "new child OCR evidence; frozen parent unchanged"
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D08",
++    "action": "NEW",
++    "priorPendingSourceRef": "R04-W2-13-L0617-S316",
++    "candidateRefs": [
++      "R10-2F16-D08-V1"
++    ],
++    "name": "土豆鸡丁",
++    "reason": "new child OCR evidence; frozen parent unchanged"
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D09",
++    "action": "NEW",
++    "priorPendingSourceRef": "R04-W2-13-L0617-S316",
++    "candidateRefs": [
++      "R10-2F16-D09-V1"
++    ],
++    "name": "辣子鸡丁",
++    "reason": "new child OCR evidence; frozen parent unchanged"
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D10",
++    "action": "NEW",
++    "priorPendingSourceRef": "R04-W2-13-L0618-S317",
++    "candidateRefs": [
++      "R10-2F16-D10-V1"
++    ],
++    "name": "辣椒炒肉",
++    "reason": "new child OCR evidence; frozen parent unchanged"
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D11",
++    "action": "NEW",
++    "priorPendingSourceRef": "R04-W2-13-L0617-S316",
++    "candidateRefs": [
++      "R10-2F16-D11-V1"
++    ],
++    "name": "泡椒猪肝",
++    "reason": "new child OCR evidence; frozen parent unchanged"
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D12",
++    "action": "NEW",
++    "priorPendingSourceRef": "R04-W2-13-L0619-S318",
++    "candidateRefs": [
++      "R10-2F16-D12-V1"
++    ],
++    "name": "红烧牛肉",
++    "reason": "new child OCR evidence; frozen parent unchanged"
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D13",
++    "action": "NEW",
++    "priorPendingSourceRef": "R04-W2-13-L0620-S319",
++    "candidateRefs": [
++      "R10-2F16-D13-V1"
++    ],
++    "name": "鱼香肉丝",
++    "reason": "new child OCR evidence; frozen parent unchanged"
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D14",
++    "action": "NEW",
++    "priorPendingSourceRef": "R04-W2-13-L0620-S319",
++    "candidateRefs": [
++      "R10-2F16-D14-V1"
++    ],
++    "name": "甘兰回锅肉",
++    "reason": "new child OCR evidence; frozen parent unchanged"
++  },
++  {
++    "sourceRecordRef": "R10-2F16-D15",
++    "action": "NEW",
++    "priorPendingSourceRef": "R04-W2-13-L0625-S324",
++    "candidateRefs": [
++      "R10-2F16-D15-V1"
++    ],
++    "name": "孜然土豆",
++    "reason": "new child OCR evidence; frozen parent unchanged"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L613-01",
++    "action": "PENDING",
++    "priorPendingSourceRef": null,
++    "candidateRefs": [],
++    "name": "红烧土豆",
++    "reason": "source text retained; OCR inline evidence insufficient"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L613-02",
++    "action": "PENDING",
++    "priorPendingSourceRef": null,
++    "candidateRefs": [],
++    "name": "清炒甘兰",
++    "reason": "source text retained; OCR inline evidence insufficient"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L614-03",
++    "action": "PENDING",
++    "priorPendingSourceRef": null,
++    "candidateRefs": [],
++    "name": "地三鲜",
++    "reason": "source text retained; OCR inline evidence insufficient"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L615-04",
++    "action": "PENDING",
++    "priorPendingSourceRef": null,
++    "candidateRefs": [],
++    "name": "糖醋里脊",
++    "reason": "source text retained; OCR inline evidence insufficient"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L615-05",
++    "action": "PENDING",
++    "priorPendingSourceRef": null,
++    "candidateRefs": [],
++    "name": "红烧里脊",
++    "reason": "source text retained; OCR inline evidence insufficient"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L617-06",
++    "action": "PENDING",
++    "priorPendingSourceRef": null,
++    "candidateRefs": [],
++    "name": "宫保鸡丁",
++    "reason": "source text retained; OCR inline evidence insufficient"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L620-07",
++    "action": "PENDING",
++    "priorPendingSourceRef": null,
++    "candidateRefs": [],
++    "name": "香辣肉丝",
++    "reason": "source text retained; OCR inline evidence insufficient"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L620-08",
++    "action": "PENDING",
++    "priorPendingSourceRef": null,
++    "candidateRefs": [],
++    "name": "葱爆肉片",
++    "reason": "source text retained; OCR inline evidence insufficient"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L620-09",
++    "action": "PENDING",
++    "priorPendingSourceRef": null,
++    "candidateRefs": [],
++    "name": "木须肉",
++    "reason": "source text retained; OCR inline evidence insufficient"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L620-10",
++    "action": "PENDING",
++    "priorPendingSourceRef": null,
++    "candidateRefs": [],
++    "name": "孜然鱿鱼",
++    "reason": "source text retained; OCR inline evidence insufficient"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L620-11",
++    "action": "PENDING",
++    "priorPendingSourceRef": null,
++    "candidateRefs": [],
++    "name": "孜然肉片",
++    "reason": "source text retained; OCR inline evidence insufficient"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L621-12",
++    "action": "PENDING",
++    "priorPendingSourceRef": null,
++    "candidateRefs": [],
++    "name": "红烧肉",
++    "reason": "source text retained; OCR inline evidence insufficient"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L621-13",
++    "action": "PENDING",
++    "priorPendingSourceRef": null,
++    "candidateRefs": [],
++    "name": "四川腊肉",
++    "reason": "source text retained; OCR inline evidence insufficient"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L621-14",
++    "action": "PENDING",
++    "priorPendingSourceRef": null,
++    "candidateRefs": [],
++    "name": "孜然五花肉",
++    "reason": "source text retained; OCR inline evidence insufficient"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L622-15",
++    "action": "PENDING",
++    "priorPendingSourceRef": null,
++    "candidateRefs": [],
++    "name": "葱爆牛肉",
++    "reason": "source text retained; OCR inline evidence insufficient"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L622-16",
++    "action": "PENDING",
++    "priorPendingSourceRef": null,
++    "candidateRefs": [],
++    "name": "土豆肥肠",
++    "reason": "source text retained; OCR inline evidence insufficient"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L622-17",
++    "action": "PENDING",
++    "priorPendingSourceRef": null,
++    "candidateRefs": [],
++    "name": "香辣肥肠",
++    "reason": "source text retained; OCR inline evidence insufficient"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L622-18",
++    "action": "PENDING",
++    "priorPendingSourceRef": null,
++    "candidateRefs": [],
++    "name": "孜然牛肉",
++    "reason": "source text retained; OCR inline evidence insufficient"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L622-19",
++    "action": "PENDING",
++    "priorPendingSourceRef": null,
++    "candidateRefs": [],
++    "name": "孜然羊肉",
++    "reason": "source text retained; OCR inline evidence insufficient"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L623-20",
++    "action": "PENDING",
++    "priorPendingSourceRef": null,
++    "candidateRefs": [],
++    "name": "蛋炒饭",
++    "reason": "source text retained; OCR inline evidence insufficient"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L624-21",
++    "action": "PENDING",
++    "priorPendingSourceRef": null,
++    "candidateRefs": [],
++    "name": "肉丝炒饭",
++    "reason": "source text retained; OCR inline evidence insufficient"
++  },
++  {
++    "sourceRecordRef": "R10-PENDING-L624-22",
++    "action": "PENDING",
++    "priorPendingSourceRef": null,
++    "candidateRefs": [],
++    "name": "孜然猪肝",
++    "reason": "source text retained; OCR inline evidence insufficient"
++  }
++]
+--- /dev/null
++++ R10/unresolved.csv
+@@ -0,0 +1,23 @@
++sourceRecordRef,name,reason,sourceLine,sourceQuote
++R10-PENDING-L613-01,红烧土豆,未获得菜名同OCR行准确价格；不按价列位置/相似字纠正,613,| 红烧土豆 / 清炒甘兰 | 9 元 |
++R10-PENDING-L613-02,清炒甘兰,未获得菜名同OCR行准确价格；不按价列位置/相似字纠正,613,| 红烧土豆 / 清炒甘兰 | 9 元 |
++R10-PENDING-L614-03,地三鲜,未获得菜名同OCR行准确价格；不按价列位置/相似字纠正,614,| 地三鲜 | 10 元 |
++R10-PENDING-L615-04,糖醋里脊,未获得菜名同OCR行准确价格；不按价列位置/相似字纠正,615,| 糖醋里脊 / 红烧里脊 / 鱼香茄子 / 肉末茄子 / 香辣火腿 / 西红柿炒鸡蛋 | 11 元 |
++R10-PENDING-L615-05,红烧里脊,未获得菜名同OCR行准确价格；不按价列位置/相似字纠正,615,| 糖醋里脊 / 红烧里脊 / 鱼香茄子 / 肉末茄子 / 香辣火腿 / 西红柿炒鸡蛋 | 11 元 |
++R10-PENDING-L617-06,宫保鸡丁,未获得菜名同OCR行准确价格；不按价列位置/相似字纠正,617,| 土豆鸡丁 / 宫保鸡丁 / 辣子鸡丁 / 泡椒猪肝 | 13 元 |
++R10-PENDING-L620-07,香辣肉丝,未获得菜名同OCR行准确价格；不按价列位置/相似字纠正,620,| 香辣肉丝 / 葱爆肉片 / 甘兰回锅肉 / 木须肉 / 孜然鱿鱼 / 孜然肉片 / 鱼香肉丝 | 15 元 |
++R10-PENDING-L620-08,葱爆肉片,未获得菜名同OCR行准确价格；不按价列位置/相似字纠正,620,| 香辣肉丝 / 葱爆肉片 / 甘兰回锅肉 / 木须肉 / 孜然鱿鱼 / 孜然肉片 / 鱼香肉丝 | 15 元 |
++R10-PENDING-L620-09,木须肉,未获得菜名同OCR行准确价格；不按价列位置/相似字纠正,620,| 香辣肉丝 / 葱爆肉片 / 甘兰回锅肉 / 木须肉 / 孜然鱿鱼 / 孜然肉片 / 鱼香肉丝 | 15 元 |
++R10-PENDING-L620-10,孜然鱿鱼,未获得菜名同OCR行准确价格；不按价列位置/相似字纠正,620,| 香辣肉丝 / 葱爆肉片 / 甘兰回锅肉 / 木须肉 / 孜然鱿鱼 / 孜然肉片 / 鱼香肉丝 | 15 元 |
++R10-PENDING-L620-11,孜然肉片,未获得菜名同OCR行准确价格；不按价列位置/相似字纠正,620,| 香辣肉丝 / 葱爆肉片 / 甘兰回锅肉 / 木须肉 / 孜然鱿鱼 / 孜然肉片 / 鱼香肉丝 | 15 元 |
++R10-PENDING-L621-12,红烧肉,未获得菜名同OCR行准确价格；不按价列位置/相似字纠正,621,| 红烧肉 / 四川腊肉 / 孜然五花肉 | 16 元 |
++R10-PENDING-L621-13,四川腊肉,未获得菜名同OCR行准确价格；不按价列位置/相似字纠正,621,| 红烧肉 / 四川腊肉 / 孜然五花肉 | 16 元 |
++R10-PENDING-L621-14,孜然五花肉,未获得菜名同OCR行准确价格；不按价列位置/相似字纠正,621,| 红烧肉 / 四川腊肉 / 孜然五花肉 | 16 元 |
++R10-PENDING-L622-15,葱爆牛肉,未获得菜名同OCR行准确价格；不按价列位置/相似字纠正,622,| 葱爆牛肉 / 土豆肥肠 / 香辣肥肠 / 孜然牛肉 / 孜然羊肉 | 18 元 |
++R10-PENDING-L622-16,土豆肥肠,未获得菜名同OCR行准确价格；不按价列位置/相似字纠正,622,| 葱爆牛肉 / 土豆肥肠 / 香辣肥肠 / 孜然牛肉 / 孜然羊肉 | 18 元 |
++R10-PENDING-L622-17,香辣肥肠,未获得菜名同OCR行准确价格；不按价列位置/相似字纠正,622,| 葱爆牛肉 / 土豆肥肠 / 香辣肥肠 / 孜然牛肉 / 孜然羊肉 | 18 元 |
++R10-PENDING-L622-18,孜然牛肉,未获得菜名同OCR行准确价格；不按价列位置/相似字纠正,622,| 葱爆牛肉 / 土豆肥肠 / 香辣肥肠 / 孜然牛肉 / 孜然羊肉 | 18 元 |
++R10-PENDING-L622-19,孜然羊肉,未获得菜名同OCR行准确价格；不按价列位置/相似字纠正,622,| 葱爆牛肉 / 土豆肥肠 / 香辣肥肠 / 孜然牛肉 / 孜然羊肉 | 18 元 |
++R10-PENDING-L623-20,蛋炒饭,未获得菜名同OCR行准确价格；不按价列位置/相似字纠正,623,| 蛋炒饭 | 11 元 |
++R10-PENDING-L624-21,肉丝炒饭,未获得菜名同OCR行准确价格；不按价列位置/相似字纠正,624,| 肉丝炒饭 / 孜然猪肝 | 12 元 |
++R10-PENDING-L624-22,孜然猪肝,未获得菜名同OCR行准确价格；不按价列位置/相似字纠正,624,| 肉丝炒饭 / 孜然猪肝 | 12 元 |
+--- /dev/null
++++ R10/optional_surcharges.json
+@@ -0,0 +1 @@
++[]
+--- /dev/null
++++ R10/bundle_relations.json
+@@ -0,0 +1 @@
++[]
+--- /dev/null
++++ R10/statistics.json
+@@ -0,0 +1,12 @@
++{
++  "sourcePhotos": 1,
++  "transcriptionDishItems": 37,
++  "independentDishCandidates": 15,
++  "mealComponents": 0,
++  "optionalSurcharges": 0,
++  "bundleRelations": 0,
++  "pendingDishItems": 22,
++  "sourceGroups": 37,
++  "oldRecordsChanged": 0,
++  "formalImports": 0
++}
+--- /dev/null
++++ R10/execution_report.md
+@@ -0,0 +1,21 @@
++# R10 连续执行：特色小炒原图逐项恢复
++
++由R09工单“完成后继续检查下一批”的授权连续执行。本地独立菜品生成PASS，待DSH复核，正式准入PENDING。
++
++来源：PHOTO_MANIFEST 2F-16原图sha256_6c425a9d…26c9f.jpg、既有Windows本地OCR、TRANSCRIPTION_2F.md 613—625主表。源档口历史称W2-13重庆名小吃，但不继承旧正式档口ID，使用R10-PHOTO-2F16。对未生成的待核验聚合组增添新逐菜证据，不改写R04。
++
++13个物理菜单表行明确列37个成员，本轮15个成员有菜名和价格同一OCR行且与原文精确同价，形成15条独立菜品候选；其余22项进入unresolved。源组/台账37，不把价列顺序推定为同价证据。新增子项15、PENDING22，旧记录替换/作废/写入0；组件0、加料0、套餐0，正式ID分配/导入0。
++
++15条实际记录：肉末茄子11、香辣火腿11、火腿鸡蛋12、鱼香茄子11、西红柿炒鸡蛋11、酸菜肉丝12、肉末豆角12、土豆鸡丁13、辣子鸡丁13、辣椒炒肉14、泡椒猪肝13、红烧牛肉18、鱼香肉丝15、甘兰回锅肉15、孜然土豆11。名称按源文与OCR一致保留，不自动加“饭”或确定份量，不猜口味。它们是原菜单特色小炒项，不是从加料或套餐拆出。
++
++同名跨批次检查保存same_name_crosscheck.json；没有同照片同名已生成记录，其他照片同名不证明同店，身份未知不合并。父级正式名称、楼层未知，采集日期/人延期。当前价格UNKNOWN且不准交易。正式dishId=null、verifyStatus=unverified。原图/既有OCR/源转录字节快照及外部before备份一致，未宣称新人工视觉验真。
++
++主表之外627小牌、629价挡疑问未混入本轮37分母，仍为原材料后续核验范围；未通过遗漏辅助材料冒充“全菜单恢复”。本批不重做既有判定或改变区域。
++
++实际python -X utf8 build_r10.py：exit0；python -X utf8 test_r10.py：17 PASS / 0 FAIL / 0 SKIP，exit0，见test_output.txt。8项负向：改价、改名、伪造日期、正式ID、猜辣、报价、重复、猜组合。13行37成员覆盖、OCR同行精确匹配、原图SHA、before、项目/已关闭交付不变均通过。git diff --check exit0，既有project.config.json CRLF提示不修改。
++
++相同照片同名的跨批检查在finalize_r10.py中再次实际执行通过。Git分支/HEAD/暂存/工作区状态前后一致。R03-R09全部字节未变（R09为本轮先行交付，亦不在R10中修改）。没有正式数据/审批/契约/ID映射/Git写操作，也无云端/部署/索引。
++
++PASS：15独立候选、37责任完整、17测试、备份/哈希、边界保护。PENDING：22项未获同行精确OCR证据、辅助小牌、父级身份、元数据与正式准入。累计独立候选480=454已验收+R09 11+R10 15；后26待DSH，正式导入0。R08组件2、加料5绝不加入480。
++
++完整文件清单见file_manifest.json/manifest.sha256；diff.patch为明确工作文本的新建差异，不含证据二进制，也不声称可git apply。项目进度另存batch_progress.md不覆盖历史。下一材料核对见next_material_status.md，不声称全部原图像素已经穷尽识别。
+--- /dev/null
++++ R10/batch_progress.md
+@@ -0,0 +1,14 @@
++# 全项目批次进度：连续执行快照
++
++| 批次 | 独立菜品候选 | 其他 | 状态 |
++|---|---:|---|---|
++| R03 |133|来源关系见原冻结报告|已验收冻结|
++| R04 |113|5加料组|已验收冻结|
++| R05 |30|8加料/3待适配套餐|已验收冻结|
++| R06 |140|楼层未定132不强挂|已验收冻结，沿用负责人统计口径|
++| R07 |38|24加料+1补充；5阻断|已验收冻结|
++| R08 |0|2组件、5加料、8待核验组|已验收冻结|
++| R09 |11|5待核验材料组|本地通过，待DSH|
++| R10 |15|22待核验逐菜源项|本地通过，待DSH|
++
++独立菜品累计480。正式准入依然PENDING，正式导入0。候选数是来源记录口径，不是全校不同物理商品的已签署唯一性结论。后26条是从原待核验父源组新增逐菜证据，不重复既有候选，也不把原父组改为PASS。
+--- /dev/null
++++ R10/next_material_status.md
+@@ -0,0 +1,7 @@
++# 继续核对下一批
++
++已实际继续R09→R10，新增独立菜品11+15，而非停在推荐报告。
++
++剩余原图2F-02粥/饼、2F-13猪肚鸡/小炒、2F-15拌饭/小锅等仍有可能补充独立菜品，但其部分名称或价列OCR错字/分离，不能直接按数组顺序配价。它们已有R04原文责任，但尚非新独立候选；后续应逐项原图定位，不重写冻结批次。R09本图剩余5材料组、R10主表22项及辅助小牌也继续保留。
++
++本轮未宣称全部现有材料已经完成语义核验。明确来源转录与照片均已有责任去向，但“材料有去向”不等于“全部菜品已恢复”。照片内容无法确认不因区域划分/延期采集人而停摆；无需重新裁决已批准NG01/NG03。

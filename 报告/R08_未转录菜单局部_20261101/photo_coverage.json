@@ -1,0 +1,72 @@
+[
+  {
+    "photoFile": "source_assets/c03_t01_menu.jpg",
+    "sha256": "9b18a285ca9beead686f57c0848e4001714a527fa867f5c2c4152cd6a842b150",
+    "ocrStatus": "OCR_COMPLETED",
+    "ocrLines": 28,
+    "disposition": "R06 old CSV preserved; only new price-bearing components extracted in R08; uncertain fragments pending"
+  },
+  {
+    "photoFile": "source_assets/c04_t01_menu.jpg",
+    "sha256": "acbe584c11a70485651d0d851eab7b519f3ef7df4a4e45f0e0d92ccf62771484",
+    "ocrStatus": "OCR_COMPLETED",
+    "ocrLines": 33,
+    "disposition": "R06 old CSV preserved; only new price-bearing components extracted in R08; uncertain fragments pending"
+  },
+  {
+    "photoFile": "source_assets/c05_t01_menu.jpg",
+    "sha256": "24de847459276407577c44d31f6779f33dcd51d3e7c9408a74bc1e910a33aa60",
+    "ocrStatus": "OCR_COMPLETED",
+    "ocrLines": 33,
+    "disposition": "R06 old CSV preserved; only new price-bearing components extracted in R08; uncertain fragments pending"
+  },
+  {
+    "photoFile": "source_assets/c06_t01_menu.jpg",
+    "sha256": "4ee5f6689dfe9495e1b3d97b6c2b066d56b842142a796928daa2d16b806d5ce1",
+    "ocrStatus": "OCR_COMPLETED",
+    "ocrLines": 31,
+    "disposition": "R06 old CSV preserved; only new price-bearing components extracted in R08; uncertain fragments pending"
+  },
+  {
+    "photoFile": "source_assets/c07_t01_menu.jpg",
+    "sha256": "72f7e0df0c6de28d629f0052fb734789a0ad3f899ccd4392bf2446dcfbb5ae26",
+    "ocrStatus": "OCR_COMPLETED",
+    "ocrLines": 8,
+    "disposition": "R06 old CSV preserved; only new price-bearing components extracted in R08; uncertain fragments pending"
+  },
+  {
+    "photoFile": "source_assets/c08_t01_menu.jpg",
+    "sha256": "47c3770e2a5e623dcd9fe776d6ce1158350adffd1017bee5f93368f236325880",
+    "ocrStatus": "OCR_COMPLETED",
+    "ocrLines": 10,
+    "disposition": "R06 old CSV preserved; only new price-bearing components extracted in R08; uncertain fragments pending"
+  },
+  {
+    "photoFile": "source_assets/c09_t01_menu.jpg",
+    "sha256": "97c29767a2ee17bcf4e37dd0e4ce2b0336de57ee9ba49de20e8d15d6c455663e",
+    "ocrStatus": "OCR_COMPLETED",
+    "ocrLines": 12,
+    "disposition": "R06 old CSV preserved; only new price-bearing components extracted in R08; uncertain fragments pending"
+  },
+  {
+    "photoFile": "source_assets/c10_t01_menu.jpg",
+    "sha256": "39a0b8922f5f00b25b01ee49917e9fa92543acc91245cdcdec5397289a8ab117",
+    "ocrStatus": "OCR_COMPLETED",
+    "ocrLines": 15,
+    "disposition": "R06 old CSV preserved; only new price-bearing components extracted in R08; uncertain fragments pending"
+  },
+  {
+    "photoFile": "source_assets/c11_t01_menu.jpg",
+    "sha256": "b67838596e7fd601485330151332c563d9df5706539c759dda806e791604a544",
+    "ocrStatus": "OCR_COMPLETED",
+    "ocrLines": 47,
+    "disposition": "R06 old CSV preserved; only new price-bearing components extracted in R08; uncertain fragments pending"
+  },
+  {
+    "photoFile": "source_assets/c11_t01_menu2.jpg",
+    "sha256": "53a68e408d2393014126598a32ff2780a4dfac004e4109c548962c083e34bdad",
+    "ocrStatus": "OCR_COMPLETED",
+    "ocrLines": 23,
+    "disposition": "R06 old CSV preserved; only new price-bearing components extracted in R08; uncertain fragments pending"
+  }
+]

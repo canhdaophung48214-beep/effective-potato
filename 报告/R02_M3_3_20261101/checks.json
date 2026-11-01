@@ -1,0 +1,19 @@
+{
+  "commands": [
+    {
+      "script": "price_adapter.py",
+      "exitCode": 0
+    },
+    {
+      "script": "test_price_adapter.py",
+      "exitCode": 0
+    }
+  ],
+  "testsPassed": 8,
+  "layeredRecords": 39,
+  "historicalPreviews": 39,
+  "currentPriceVerified": 0,
+  "formalAdmission": 0,
+  "projectFilesUnchanged": 377,
+  "exitCode": 0
+}

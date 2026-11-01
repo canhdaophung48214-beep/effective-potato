@@ -1,0 +1,18 @@
+{
+  "adapted": 39,
+  "testsPass": 10,
+  "testsFail": 0,
+  "testExitCode": 0,
+  "originalImporterCompatibilityExitCode": 1,
+  "compatibilityResult": "EXPECTED_REJECTION",
+  "projectFilesUnchanged": 377,
+  "gitUnchanged": true,
+  "realWeChatRender": "PENDING",
+  "realWeChatBasicRender": "PASS_390PX",
+  "realRuntimeRecords": 39,
+  "realTopBottomScreenshots": true,
+  "weChatNarrow320375": "PENDING",
+  "weChatLongText": "PENDING",
+  "weChatDOMAutomation": "PENDING",
+  "realDevice": "PENDING"
+}

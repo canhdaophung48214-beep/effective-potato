@@ -1,0 +1,1 @@
+BUILD: 2 meal components / 0 standalone dishes / 5 options / 8 pending material groups; exit=0

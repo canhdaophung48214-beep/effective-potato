@@ -1,0 +1,10 @@
+{
+  "name": "healthCheck",
+  "version": "1.0.0",
+  "description": "最小连通性测试云函数：只返回状态、环境信息与时间戳，不读写数据库",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

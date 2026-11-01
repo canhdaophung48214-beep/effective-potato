@@ -1,0 +1,322 @@
+[
+  {
+    "command": "node tools/test_retention_t365_skipped_recovery.js",
+    "exitCode": 0,
+    "pass": null,
+    "fail": null,
+    "summary": []
+  },
+  {
+    "command": "node tools/test_retention_t365_unrecoverable.js",
+    "exitCode": 0,
+    "pass": null,
+    "fail": null,
+    "summary": []
+  },
+  {
+    "command": "node tools/test_retention_t365_repair_regression.js",
+    "exitCode": 0,
+    "pass": null,
+    "fail": null,
+    "summary": []
+  },
+  {
+    "command": "node tools/test_retention_t363_deferred_resolution.js",
+    "exitCode": 0,
+    "pass": 8,
+    "fail": 0,
+    "summary": [
+      "T3.6.3 deferred resolution: 8 PASS / 0 FAIL"
+    ]
+  },
+  {
+    "command": "node tools/test_retention_t363_audit_recovery.js",
+    "exitCode": 0,
+    "pass": 8,
+    "fail": 0,
+    "summary": [
+      "T3.6.3 audit recovery: 8 PASS / 0 FAIL"
+    ]
+  },
+  {
+    "command": "node tools/test_retention_t363_batch_integrity.js",
+    "exitCode": 0,
+    "pass": 10,
+    "fail": 0,
+    "summary": [
+      "T3.6.3 batch integrity: 10 PASS / 0 FAIL"
+    ]
+  },
+  {
+    "command": "node tools/test_retention_mark.js",
+    "exitCode": 0,
+    "pass": 71,
+    "fail": 0,
+    "summary": [
+      "[PASS] D17 逐条审计失败如实返回 LOG_FAILED",
+      "[PASS] D20 complete 审计失败如实返回 LOG_FAILED",
+      "---- 汇总 ----",
+      "PASS 71 / FAIL 0",
+      "RESULT: OK（本地模拟，未验证云端真实行为）"
+    ]
+  },
+  {
+    "command": "node tools/test_retention_recover_pending.js",
+    "exitCode": 0,
+    "pass": 13,
+    "fail": 0,
+    "summary": [
+      "PASS 13 / FAIL 0"
+    ]
+  },
+  {
+    "command": "node tools/test_retention_purge.js",
+    "exitCode": 0,
+    "pass": 18,
+    "fail": 0,
+    "summary": [
+      "PASS 18 / FAIL 0"
+    ]
+  },
+  {
+    "command": "node tools/test_retention_reconcile.js",
+    "exitCode": 0,
+    "pass": 30,
+    "fail": 0,
+    "summary": [
+      "PASS C22 FAILED 计数闭合仍不得报告正常成功",
+      "PASS 30 / FAIL 0"
+    ]
+  },
+  {
+    "command": "node tools/test_retention_audit_gate.js",
+    "exitCode": 0,
+    "pass": 16,
+    "fail": 0,
+    "summary": [
+      "PASS G-C FAILED 即使 closed=1 也拦截且不写虚假 complete",
+      "PASS 16 / FAIL 0"
+    ]
+  },
+  {
+    "command": "node tools/test_retention_t34_resume.js",
+    "exitCode": 0,
+    "pass": 21,
+    "fail": 0,
+    "summary": [
+      "PASS 499 条跨页汇总且最终闭合",
+      "PASS 500 条跨页汇总且最终闭合",
+      "PASS 501 条跨页汇总且最终闭合",
+      "PASS 1001 条跨页汇总且最终闭合",
+      "T3.4 resume: 21 PASS, 0 FAIL"
+    ]
+  },
+  {
+    "command": "node tools/test_retention_t36_concurrency.js",
+    "exitCode": 0,
+    "pass": 15,
+    "fail": 0,
+    "summary": [
+      "T3.6 concurrency: 15 PASS / 0 FAIL"
+    ]
+  },
+  {
+    "command": "node tools/test_retention_t36_repair.js",
+    "exitCode": 0,
+    "pass": 7,
+    "fail": 0,
+    "summary": [
+      "PASS H1 无逐条关联证据的历史 FAILED 仍为异常",
+      "T3.6 repair: 7 PASS / 0 FAIL; positive historical repair PENDING"
+    ]
+  },
+  {
+    "command": "node tools/test_retention_t36_resume.js",
+    "exitCode": 0,
+    "pass": 15,
+    "fail": 0,
+    "summary": [
+      "T3.6 resume: 15 PASS / 0 FAIL"
+    ]
+  },
+  {
+    "command": "node tools/test_retention_t361_deferred.js",
+    "exitCode": 0,
+    "pass": 9,
+    "fail": 0,
+    "summary": [
+      "T3.6.1 deferred: 9 PASS / 0 FAIL"
+    ]
+  },
+  {
+    "command": "node tools/test_retention_t361_repair.js",
+    "exitCode": 0,
+    "pass": 12,
+    "fail": 0,
+    "summary": [
+      "PASS H5 证据完整的 FAILED 历史样例可追加修复，原 FAILED 仍保留",
+      "T3.6.1 repair: 12 PASS / 0 FAIL"
+    ]
+  },
+  {
+    "command": "node tools/test_retention_t361_lock_recovery.js",
+    "exitCode": 0,
+    "pass": 8,
+    "fail": 0,
+    "summary": [
+      "T3.6.1 lock recovery: 8 PASS / 0 FAIL"
+    ]
+  },
+  {
+    "command": "node tools/test_retention_t362_deferred.js",
+    "exitCode": 0,
+    "pass": 7,
+    "fail": 0,
+    "summary": [
+      "T3.6.2 deferred: 7 PASS / 0 FAIL"
+    ]
+  },
+  {
+    "command": "node tools/test_retention_t362_repair.js",
+    "exitCode": 0,
+    "pass": 4,
+    "fail": 0,
+    "summary": [
+      "T3.6.2 repair: 4 PASS / 0 FAIL"
+    ]
+  },
+  {
+    "command": "node tools/test_retention_t362_discovery.js",
+    "exitCode": 0,
+    "pass": 5,
+    "fail": 0,
+    "summary": [
+      "T3.6.2 discovery: 5 PASS / 0 FAIL"
+    ]
+  },
+  {
+    "command": "node tools/test_retention_t362_scan_queue.js",
+    "exitCode": 0,
+    "pass": 4,
+    "fail": 0,
+    "summary": [
+      "T3.6.2 scan queue: 4 PASS / 0 FAIL"
+    ]
+  },
+  {
+    "command": "node tools/test_ugc_review.js",
+    "exitCode": 0,
+    "pass": 86,
+    "fail": 0,
+    "summary": [
+      "[PASS] H1 日志失败返回 LOG_FAILED",
+      "---- 汇总 ----",
+      "PASS 86 / FAIL 0",
+      "RESULT: OK（本地模拟，未验证云端真实行为）"
+    ]
+  },
+  {
+    "command": "node tools/test_ugc_submit.js",
+    "exitCode": 0,
+    "pass": 110,
+    "fail": 0,
+    "summary": [
+      "[PASS] L1 日志失败返回 LOG_FAILED",
+      "---- 汇总 ----",
+      "PASS 110 / FAIL 0",
+      "RESULT: OK（本地模拟，未验证云端真实行为）"
+    ]
+  },
+  {
+    "command": "node tools/test_ugc_client_contract.js",
+    "exitCode": 0,
+    "pass": 90,
+    "fail": 0,
+    "summary": [
+      "  PASS A. 处理 LOG_FAILED 且提示勿重复提交",
+      "  PASS D. 有中文文案: LOG_FAILED",
+      "PASS 90 / FAIL 0 / TOTAL 90",
+      "RESULT: OK"
+    ]
+  },
+  {
+    "command": "node tools/test_index_state.js",
+    "exitCode": 0,
+    "pass": 205,
+    "fail": 0,
+    "summary": [
+      "通过 205 项，失败 0 项"
+    ]
+  },
+  {
+    "command": "node tools/test_pages.js",
+    "exitCode": 0,
+    "pass": 106,
+    "fail": 0,
+    "summary": [
+      "通过 106 项，失败 0 项"
+    ]
+  },
+  {
+    "command": "node tools/check_eol.js",
+    "exitCode": 0,
+    "pass": null,
+    "fail": null,
+    "summary": [
+      "合计：文件 67 个，违规记录 0（源规则 0 / 规范化 0 / 扫描 0）"
+    ]
+  },
+  {
+    "command": "node tools/test_check_doc_refs.js",
+    "exitCode": 0,
+    "pass": 51,
+    "fail": 0,
+    "summary": [
+      "通过 51，失败 0",
+      "RESULT: OK"
+    ]
+  },
+  {
+    "command": "node tools/test_records_spec.js",
+    "exitCode": 0,
+    "pass": 290,
+    "fail": 0,
+    "summary": [
+      "PASS    [T76] E2-2/E2-3：PENDING 名单 11 条齐全（含 T75、T84、T113、T114b；T45b 已转 PASS 故不在名单内）且成功文案时点条款仍在",
+      "PASS    [T8] 账目总量：2F 419（A347/B39/C33）、3F 145（A116/C29）、合计 564（A463/B39/C62），三处文档一致",
+      "汇总：通过 290 / 失败 0 / 待实现 11",
+      "说明：待实现项依赖尚未生成的正式产物（records.json 等），属预期失败，不计入失败。",
+      "RESULT: OK"
+    ]
+  },
+  {
+    "command": "node tools/test_verify_data.js",
+    "exitCode": 0,
+    "pass": 122,
+    "fail": 0,
+    "summary": [
+      "通过 122 项，失败 0 项"
+    ]
+  },
+  {
+    "command": "node tools/verify_data.js",
+    "exitCode": 0,
+    "pass": null,
+    "fail": null,
+    "summary": []
+  },
+  {
+    "command": "schema JSON parse",
+    "exitCode": 0,
+    "pass": null,
+    "fail": null,
+    "summary": []
+  },
+  {
+    "command": "git diff --check",
+    "exitCode": 0,
+    "pass": null,
+    "fail": null,
+    "summary": []
+  }
+]

@@ -1,0 +1,17 @@
+﻿sourceRecordRef,action,priorDisposition,priorPendingSourceRef,oldRecordKeys,candidateRefs,optionRefs,name,reason
+R09-2F18-RICEBALL-01,NEW,R04_PENDING_SOURCE_GROUP,R04-W2-15-L0683-S344,"[""c01_t35|f2/甜味红豆 / 玉米沙拉 / 泡菜（微辣）/ 金针菇（微辣）/ 辣条||""]","[""R09-2F18-RICEBALL-01-V1""]",[],金针菇饭团,原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任
+R09-2F18-RICEBALL-02,NEW,R04_PENDING_SOURCE_GROUP,R04-W2-15-L0684-S345,"[""c01_t35|f2/鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊||""]","[""R09-2F18-RICEBALL-02-V1""]",[],鲜香卤蛋饭团,原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任
+R09-2F18-RICEBALL-03,NEW,R04_PENDING_SOURCE_GROUP,R04-W2-15-L0684-S345,"[""c01_t35|f2/鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊||""]","[""R09-2F18-RICEBALL-03-V1""]",[],和风蟹柳饭团,原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任
+R09-2F18-RICEBALL-04,NEW,R04_PENDING_SOURCE_GROUP,R04-W2-15-L0684-S345,"[""c01_t35|f2/鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊||""]","[""R09-2F18-RICEBALL-04-V1""]",[],咸蛋黄肉松饭团,原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任
+R09-2F18-RICEBALL-05,NEW,R04_PENDING_SOURCE_GROUP,R04-W2-15-L0685-S346,"[""c01_t35|f2/拉丝芝士 / 纯肉烤肠||""]","[""R09-2F18-RICEBALL-05-V1""]",[],拉丝芝士饭团,原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任
+R09-2F18-RICEBALL-06,NEW,R04_PENDING_SOURCE_GROUP,R04-W2-15-L0685-S346,"[""c01_t35|f2/拉丝芝士 / 纯肉烤肠||""]","[""R09-2F18-RICEBALL-06-V1""]",[],纯肉烤肠饭团,原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任
+R09-2F18-RICEBALL-07,NEW,R04_PENDING_SOURCE_GROUP,R04-W2-15-L0686-S347,"[""c01_t35|f2/香酥鸡排||""]","[""R09-2F18-RICEBALL-07-V1""]",[],香酥鸡排饭团,原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任
+R09-2F18-RICEBALL-08,NEW,R04_PENDING_SOURCE_GROUP,R04-W2-15-L0687-S348,"[""c01_t35|f2/香煎猪排||""]","[""R09-2F18-RICEBALL-08-V1""]",[],香煎猪排饭团,原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任
+R09-2F18-RICEBALL-09,NEW,R04_PENDING_SOURCE_GROUP,R04-W2-15-L0688-S349,"[""c01_t35|f2/黑椒牛排||""]","[""R09-2F18-RICEBALL-09-V1""]",[],黑椒牛排饭团,原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任
+R09-2F18-RICEBALL-10,NEW,R04_PENDING_SOURCE_GROUP,R04-W2-15-L0689-S350,"[""c01_t35|f2/金枪鱼||""]","[""R09-2F18-RICEBALL-10-V1""]",[],金枪鱼饭团,原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任
+R09-2F18-RICEBALL-11,NEW,R04_PENDING_SOURCE_GROUP,R04-W2-15-L0690-S351,"[""c01_t35|f2/日式鳗鱼||""]","[""R09-2F18-RICEBALL-11-V1""]",[],日式鳗鱼饭团,原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任
+R09-2F18-UNRESOLVED-SUSHI,PENDING,not individually admitted,,[],[],[],寿司价格列组,原OCR将16菜名与价列分开，不按数组位置强配价
+R09-2F18-UNRESOLVED-LOWER,PENDING,not individually admitted,,[],[],[],原味/红豆/玉米沙拉/泡菜饭团组,菜名与多个价位排列仍需局部位置确认
+R09-2F18-UNRESOLVED-BACON,PENDING,not individually admitted,,[],[],[],培根饭团,OCR缺烟字与旧转录烟重/烟熏矛盾，名称不纠造
+R09-2F18-UNRESOLVED-TWO,PENDING,not individually admitted,,[],[],[],辣条/铁板里脊饭团,同一行价签两项且OCR缺铁字，不推断纠字
+R09-2F18-UNRESOLVED-EGGWAFFLE,PENDING,not individually admitted,,[],[],[],鸡蛋仔及口味,OCR为100份，原转录10元/份，不假装原图金额已确认

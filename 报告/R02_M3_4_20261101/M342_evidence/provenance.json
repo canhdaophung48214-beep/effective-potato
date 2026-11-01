@@ -1,0 +1,19 @@
+{
+  "baselineAdapter": {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\adapter.js",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\adapter.js",
+    "bytes": 1452,
+    "sha256": "eabe349bbc06473d38b22e4f26aad7db7f45cbeba7d069475418767be96ef887",
+    "modifiedAt": "2026-11-01T15:34:03.177588"
+  },
+  "searchedLocations": [
+    "workspace recursively excluding node_modules/.git",
+    "备份",
+    "R02_M3_4 directory and DSH report",
+    "Desktop targeted filenames"
+  ],
+  "claimed6932AdapterFound": false,
+  "claimedExtraArchitectureFound": false,
+  "conclusion": "现有基线1452B适配器已复用；此前6932B及lib/menu-data/pages/home/prototype/demo描述与查得磁盘文件不符；没有伪造历史交付。",
+  "reusedArchitecture": "adapter.js + mini/pages/history + mini/components/history-menu"
+}

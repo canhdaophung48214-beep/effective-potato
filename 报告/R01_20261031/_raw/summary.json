@@ -1,0 +1,56 @@
+{
+  "capturedAt": "2026-10-31T10:17:54.603Z",
+  "summary": {
+    "status": "L8_IN_MEMORY_ONLY",
+    "mode": "dry-run",
+    "outDir": null,
+    "mapPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\pilot\\id-map.json",
+    "mapPathInjected": false,
+    "mapLoaded": true,
+    "records": 490,
+    "blockers": 525,
+    "counts": {
+      "records": 490,
+      "blockers": 525,
+      "A": 490,
+      "B": 0,
+      "C": 35
+    },
+    "note": "L8 只在内存中构建并序列化三份产物；未写盘、未发布（P1 未授权）"
+  },
+  "exitCode": 0,
+  "violations": [],
+  "blockerCount": 525,
+  "counts": {
+    "records": 490,
+    "blockers": 525,
+    "A": 490,
+    "B": 0,
+    "C": 35
+  },
+  "recordCount": 490,
+  "recordsMeta": {
+    "generatedBy": "gen_records",
+    "contractVersion": "2026-10-23",
+    "sources": {},
+    "counts": {
+      "total": 525,
+      "A": 490,
+      "B": 0,
+      "C": 35
+    }
+  },
+  "manifest": {
+    "schemaVersion": 1,
+    "counts": {
+      "records": 490,
+      "blockers": 525,
+      "A": 490,
+      "B": 0,
+      "C": 35
+    },
+    "recordsSha256": "3d1934288e7dddff5f499bc67af7b41a49b0b56ebf6ea4561ad313ebd9ac2156",
+    "blockersSha256": "21564d282c91d1ffa62603567c311b9acb0e2c5f76ee3b4b882c985dc21eb6bc",
+    "publishedAt": null
+  }
+}

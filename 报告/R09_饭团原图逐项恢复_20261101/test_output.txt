@@ -1,0 +1,24 @@
+PASS 11独立饭团名称/金额/同行或相邻行/原图SHA核验
+PASS 源组16=候选11+待核验材料组5
+PASS 源台账完整且唯一，不把原父组数量当子项数
+PASS 11子项全部追溯R04待核验父组，不冒充旧正式ID
+PASS 不生成组件/加料/套餐
+PASS 无猜测的培根/铁板里脊/鸡蛋仔价
+PASS 原始OCR快照逐项相同
+PASS 负向:改价
+PASS 负向:改名
+PASS 负向:误配价行
+PASS 负向:伪造采集日期
+PASS 负向:复制正式ID
+PASS 负向:推断口味
+PASS 负向:开放报价
+PASS 负向:候选重复
+PASS 负向:假定套餐成分
+PASS 所有原始来源/备份/快照逐字节一致
+PASS 正式项目字节未变
+PASS R03-R08全部冻结成果字节未变
+PASS Git HEAD/分支/暂存/工作区一致
+git diff --check exit= 0
+warning: in the working copy of 'project.config.json', CRLF will be replaced by LF the next time Git touches it
+
+RESULT 20 PASS / 0 FAIL / 0 SKIP; exit=0

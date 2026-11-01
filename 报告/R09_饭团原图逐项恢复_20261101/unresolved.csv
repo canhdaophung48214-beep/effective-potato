@@ -1,0 +1,6 @@
+﻿sourceRecordRef,name,reason,photoFile,ocrLine,nextAction
+R09-2F18-UNRESOLVED-SUSHI,寿司价格列组,原OCR将16菜名与价列分开，不按数组位置强配价,source_assets/photo_2F18.jpg,1,原图局部定位或清晰材料；不要求延期元数据/区域裁决
+R09-2F18-UNRESOLVED-LOWER,原味/红豆/玉米沙拉/泡菜饭团组,菜名与多个价位排列仍需局部位置确认,source_assets/photo_2F18.jpg,35,原图局部定位或清晰材料；不要求延期元数据/区域裁决
+R09-2F18-UNRESOLVED-BACON,培根饭团,OCR缺烟字与旧转录烟重/烟熏矛盾，名称不纠造,source_assets/photo_2F18.jpg,47,原图局部定位或清晰材料；不要求延期元数据/区域裁决
+R09-2F18-UNRESOLVED-TWO,辣条/铁板里脊饭团,同一行价签两项且OCR缺铁字，不推断纠字,source_assets/photo_2F18.jpg,65,原图局部定位或清晰材料；不要求延期元数据/区域裁决
+R09-2F18-UNRESOLVED-EGGWAFFLE,鸡蛋仔及口味,OCR为100份，原转录10元/份，不假装原图金额已确认,source_assets/photo_2F18.jpg,17,原图局部定位或清晰材料；不要求延期元数据/区域裁决

@@ -1,0 +1,32 @@
+[
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\adapter.js",
+    "bytes": 1743,
+    "sha256": "475c7563474dbd97d0f005cdafea46fd5eba9dd2997ca726c3f0f380c2ae9dfb",
+    "modifiedAt": "2026-11-01T15:47:36.903548"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\adapted_records_39.json",
+    "bytes": 81950,
+    "sha256": "486ee33bc403a64921143962bc72a75c31149e37f8bf03b711a48d3c95908908",
+    "modifiedAt": "2026-11-01T15:34:03.179595"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\mini\\components\\history-menu\\index.wxml",
+    "bytes": 580,
+    "sha256": "11c8bfc466b2f36526365dd31352ff1eb548a94e496f5fc9e6a5a1a672e1631a",
+    "modifiedAt": "2026-11-01T15:34:03.181594"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\mini\\components\\history-menu\\index.wxss",
+    "bytes": 992,
+    "sha256": "511f9c435c94f811414e9ae3595d4f26ed6b51c6cf54ce01125e1f2af623572c",
+    "modifiedAt": "2026-11-01T15:47:36.904556"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\mini\\pages\\history\\index.js",
+    "bytes": 79,
+    "sha256": "5410ffec43fdc829cccb8c7287a8d7243ac59defabc31e9570ea984f5492efe8",
+    "modifiedAt": "2026-11-01T15:34:03.185371"
+  }
+]

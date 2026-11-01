@@ -1,0 +1,12 @@
+'use strict';
+const fs = require('fs'); const path = require('path');
+const PROJ = "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目";
+const c = fs.readFileSync(path.join(PROJ, 'docs/RECORD_GENERATOR_CONTRACT_20261023.md'), 'utf8').split(/\r?\n/);
+const g = (n, lim) => c.map((l, i) => [i + 1, l]).filter(([i, l]) => l.indexOf(n) >= 0).slice(0, lim || 5).forEach(([i, l]) => console.log(i + '| ' + l.trim().slice(0, 200)));
+console.log('== B5·3F-W03 / W03 =='); g('3F-W03', 4); g('二荤二素', 3);
+console.log('== W2-06 / 手抓饼 =='); g('W2-06', 5);
+console.log('== W04 12元 =='); g('12 元/份', 3); g('B11', 4);
+console.log('== W2-05 归属 =='); g('W2-05', 4);
+console.log('== shops 结构 ==');
+const shops = fs.readFileSync(path.join(PROJ, 'data/shops.js'), 'utf8').split(/\r?\n/);
+for (let i = 0; i < 40 && i < shops.length; i++) console.log((i + 1) + '| ' + shops[i].slice(0, 150));

@@ -1,0 +1,181 @@
+=== node tools/test_retention_reconcile.js ===
+PASS C1 正常 prepare/complete 同批闭合且成功口径兼容
+PASS C1b 只输出哈希引用，不回传原始批次 ID
+PASS C2 恰好十分钟为疑似孤儿，异常码与分类一致
+PASS C3 未满十分钟仍是运行中
+PASS C4 complete 无 prepare 是异常
+PASS C5 重复 prepare 与重复 complete 分别发现
+PASS C6 计数不守恒或首尾选中数变化被发现
+PASS C7 无效 ID、日期、时间及必填关联字段计入异常
+PASS C7b 日志时间恰等于对账时间允许进入批次
+PASS C7c 未来日志拒绝并计入 invalidLogs
+PASS C8 多页扫描稳定推进，完整结果三批闭合
+PASS C8b 截断窗口内已配对也不冒充全局闭合
+PASS C9 截断窗口明确非成功且可继续，不误判孤儿
+PASS C10 续页为局部窗口，缺配对不能冒充全局结论
+PASS C11 第二页读取故障不返回假完整结论
+PASS C12 无令牌在读取日志前拒绝
+PASS C13 鉴权后对账只读，不更改投稿或审计日志
+PASS C14 返回值不含正文、身份、令牌
+PASS C15 R1 恢复批次沿用 prepare/complete，计数闭合
+PASS C16 恢复 prepare 失败时未处理业务记录
+PASS C17 T-2 恢复批次有准备和完成，正文仍为空
+PASS C17b 清理恢复批次可被同一对账入口识别
+PASS C19 系统身份字段和批次投稿 ID 不合规可检测且不回显
+PASS C20 恢复 complete 写入失败不得谎报闭合
+PASS C21 PARTIAL 计数闭合仍不得报告正常成功
+PASS C22 FAILED 计数闭合仍不得报告正常成功
+PASS C23 DEFERRED 与失败和正常成功分别表达
+PASS C24 COMPLETE 与失败计数矛盾时归计数异常，不宣称 OK
+PASS C25 T-2 清理部分失败也保留 PARTIAL 结果
+PASS C18 索引仅为本地草案且日志仍禁止更新/删除
+PASS 30 / FAIL 0
+
+EXIT_CODE=0
+
+=== node tools/test_retention_mark.js ===
+== A. 配置门禁 ==
+[PASS] A1 缺少确认状态时拒绝执行
+[PASS] A2 配置未确认时不访问投稿集合
+[PASS] A3 待确认状态拒绝执行
+[PASS] A4 非法天数拒绝执行
+[PASS] A4b 已裁决 29 天不能被配置覆盖
+[PASS] A5 非法批次上限拒绝执行
+[PASS] A6 缺少确认人拒绝执行
+== A2. 维护入口门禁 ==
+[PASS] A7 非 mark 动作拒绝
+[PASS] A8 缺少维护令牌拒绝
+[PASS] A9 正确维护令牌可调用
+== B. 到期标记 ==
+[PASS] B1 已确认配置可执行
+[PASS] B2 空正文也计入，到期标记两条
+[PASS] B3 状态改为 expired
+[PASS] B4 rev 递增
+[PASS] B5 标记任务不清除投稿正文
+[PASS] B6 刚好第 29 天不提前标记
+[PASS] B7 已处理状态不被覆盖
+[PASS] B8 空 payload 的 pending 仍标记 expired
+[PASS] B9 写入最小化运行审计行
+[PASS] B10 运行审计行不含投稿人 openid
+[PASS] B11 批次 prepare 与 complete 都留痕
+[PASS] B11b prepare/complete 共享非空批次 ID
+[PASS] B12 每条成功状态更新有独立事件
+[PASS] B13 系统审计明确使用空 openidHash
+[PASS] B14 逐条运行日志含可倒查字段，长期摘要投影仍为八个逻辑字段
+== C. 可重跑与失败关闭 ==
+[PASS] C1 重跑不重复标记
+[PASS] C2 重跑不再次递增 rev
+[PASS] C2b 重跑后仍有 prepare/complete 两条批次事件
+[PASS] C3 状态写入失败如实返回数据库错误
+[PASS] C4 写入失败不谎报已标记数
+[PASS] C5 写入失败保留原状态
+[PASS] C6 完整失败批次有 FAILED 终态
+== D. 查询、批次与并发 ==
+[PASS] D1 已审核记录不占两条批次名额
+[PASS] D2 同一创建时间按 _id 升序，a 先处理
+[PASS] D3 同一创建时间按 _id 升序，z 也处理
+[PASS] D4 第三条 pending 留到下一批
+[PASS] D5 下批继续处理，不被已审核旧记录饿死
+[PASS] D5a 同时刻跨批按 _id 稳定排序
+[PASS] D5b 同时刻另一条留待下一批
+[PASS] D6 并发审核获胜时版本条件阻止覆盖
+[PASS] D7 并发变更按冲突计数
+[PASS] D8 并发冲突不伪造逐条标记事件
+[PASS] D9 单条写失败不阻断下一条
+[PASS] D10 部分成功明确返回错误
+[PASS] D11 部分成功统计为 1/1
+[PASS] D12 部分成功批次审计为 PARTIAL
+[PASS] D13 查询失败返回数据库错误
+[PASS] D14 查询失败零状态写入
+[PASS] D15 prepare 审计失败时不更新状态
+[PASS] D16 prepare 审计失败返回 LOG_FAILED
+[PASS] D17 逐条审计失败如实返回 LOG_FAILED
+[PASS] D18 逐条审计失败不能伪称状态未更新
+[PASS] D19 逐条审计失败标明已更新数量
+[PASS] D19b 逐条审计失败仍写 PARTIAL 批次尾
+[PASS] D20 complete 审计失败如实返回 LOG_FAILED
+[PASS] D21 complete 审计失败保留成功计数
+== E. 缺陷回归与失败后续跑 ==
+[PASS] E1 空正文单独到期仍标记且只记一次逐条事件
+[PASS] E2 查询先过滤 pending 再限批
+[PASS] E3 并发版本变化后重跑只标记一次
+[PASS] E4 单条更新失败后重跑只补未完成记录
+== F. 审计待补与计数守恒 ==
+[PASS] F1 审计中断时选中记录分到互斥结果
+[PASS] F2 待补标记与状态同次写入，后续记录仍 pending
+[PASS] F3 逐条审计可按 ID 恢复且重复调用不重写日志
+[PASS] F4 日志已落库但回执丢失时按稳定 ID 确认，不重复追加
+[PASS] F5 两个独立实例交错执行仅一次状态转换和逐条日志
+[PASS] F6 连续触发不重复转换或补写已完成审计
+[PASS] F7 日志存在但待补标记清除失败，重试不产生第二条日志
+[PASS] F7b 两个独立恢复实例并发时只产生一条逐条日志
+[PASS] F7c 后续状态和 rev 已变化时仍能补记原标记事件
+[PASS] F8 系统日志符合 at/rev 与空哈希契约
+[PASS] F9 待补审计入口仍须维护令牌
+
+---- 汇总 ----
+PASS 71 / FAIL 0
+RESULT: OK（本地模拟，未验证云端真实行为）
+
+EXIT_CODE=0
+
+=== node tools/test_retention_purge.js ===
+PASS P1 严格 30 天边界：整点与未到期不清，超时才清
+PASS P2 保留外壳、审核状态、来源和准入状态
+PASS P3 重跑已清正文不重复转换或写逐条日志
+PASS P4 清理日志不含正文或身份字段
+PASS P5 超期 pending 只报告需标记，不清正文
+PASS P6 经既有状态转换和审计完成后才清正文
+PASS P7 T-1 审计待补时绝不清正文
+PASS P8 标记审计恢复完成且退避结束后可清正文
+PASS P9 并发状态和 rev 变化不被覆盖，重读后的下次运行可继续
+PASS P10 写入失败退避，后续记录跨批推进
+PASS P11 逐条审计失败后标记留存，重启实例自动补记且不重复清正文
+PASS P12 批次 prepare 日志失败零正文写入
+PASS P13 prepare 失败后重试可完成
+PASS P14 两函数实例共享假 DB 时单次有效清理
+PASS P15 无维护令牌被拒绝
+PASS P16 本地索引与事件草案已声明且未冒充云端生效
+PASS P17 批次 complete 日志失败不谎报成功，重跑不重复逐条事件
+PASS P18 异常版本记录退避，不永久挤占后续名额
+PASS 18 / FAIL 0
+
+EXIT_CODE=0
+
+=== node tools/test_retention_recover_pending.js ===
+PASS R1 空队列正常完成
+PASS R2 有界批次跨三次调用持续推进
+PASS R3 连续运行不重复写逐条事件
+PASS R4 日志失败延后重试，后续记录不饥饿
+PASS R5 rev 冲突后重试不重复日志或覆盖新版本
+PASS R6 日志已写但状态确认中断后可续跑
+PASS R7 两个函数实例共享假 DB 时单条日志
+PASS R8 恢复不清正文或更改准入状态
+PASS R8b 延后排程写入也失败时，原待补标记仍可在下次发现
+PASS R11 旧待补标记缺 retryAfter 仍能自动发现
+PASS R12 本地索引草案覆盖状态筛选与稳定排序
+PASS R9 未授权自动恢复被拒绝
+PASS R10 授权入口可调用且空队列正常返回
+PASS 13 / FAIL 0
+
+EXIT_CODE=0
+
+=== node tools/check_eol.js ===
+检查范围：[强制] docs/**/*.md　[报告] tools/**/*.md
+排除：tools/_backup/**、node_modules/**、.git/**、miniprogram_npm/**；不跟随符号链接；目录深度上限 8 层
+
+[强制] docs/**/*.md：文件 47 个，合规 47，违规 0（源规则 0 / 规范化 0 / 扫描 0）
+
+[报告] tools/**/*.md：文件 14 个，合规 14，违规 0（源规则 0 / 规范化 0 / 扫描 0）（报告模式，不影响退出码）
+
+合计：文件 61 个，违规记录 0（源规则 0 / 规范化 0 / 扫描 0）
+说明：本工具只做检测。把 CRLF 改成 LF 只是修复动作，不视为通过；不提供 --fix。
+
+EXIT_CODE=0
+
+=== git diff --check (safe.directory per-command) ===
+
+STDERR:
+warning: in the working copy of 'project.config.json', CRLF will be replaced by LF the next time Git touches it
+
+EXIT_CODE=0

@@ -1,0 +1,15 @@
+[
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T13",
+    "newSourceRefs": [
+      "R03-T13-L0368-103"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  }
+]

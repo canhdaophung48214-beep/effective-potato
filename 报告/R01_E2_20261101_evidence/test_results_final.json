@@ -1,0 +1,44 @@
+[
+  {
+    "command": "node C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E2_20261101_evidence\\test_inventory.js",
+    "cwd": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发",
+    "exitCode": 0,
+    "error": null,
+    "log": "test_1_final.log"
+  },
+  {
+    "command": "node tools/test_verify_data.js",
+    "cwd": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目",
+    "exitCode": 0,
+    "error": null,
+    "log": "test_2.log"
+  },
+  {
+    "command": "node tools/test_import_data.js",
+    "cwd": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目",
+    "exitCode": 0,
+    "error": null,
+    "log": "test_3.log"
+  },
+  {
+    "command": "node tools/verify_data.js",
+    "cwd": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目",
+    "exitCode": 0,
+    "error": null,
+    "log": "test_4.log"
+  },
+  {
+    "command": "node tools/verify_provenance.js",
+    "cwd": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目",
+    "exitCode": 0,
+    "error": null,
+    "log": "test_5.log"
+  },
+  {
+    "command": "git -c safe.directory=C:/Users/25975/Desktop/食神寻味小程序开发/项目 diff --check",
+    "cwd": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目",
+    "exitCode": 0,
+    "error": null,
+    "log": "test_6.log"
+  }
+]

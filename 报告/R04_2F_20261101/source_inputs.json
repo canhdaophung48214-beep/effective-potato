@@ -1,0 +1,38 @@
+[
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\pilot\\TRANSCRIPTION_2F.md",
+    "snapshot": "source_assets/TRANSCRIPTION_2F.md",
+    "bytes": 49530,
+    "sha256": "37516c5f7bb46c7fc387621fbefddbc6be98b5c27f6cf119399b5a2befc9e34c"
+  },
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\PHOTO_MANIFEST_20261025.csv",
+    "snapshot": "source_assets/PHOTO_MANIFEST_20261025.csv",
+    "bytes": 23389,
+    "sha256": "e0acb399fab5585ae7db6b1bd33cae576de3d3b9a4b3806d7d288f3ade7ce56c"
+  },
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\EVIDENCE_INDEX_20261025.md",
+    "snapshot": "source_assets/EVIDENCE_INDEX_20261025.md",
+    "bytes": 7387,
+    "sha256": "b0ad05e8bbbce6ad289464e8023db8c51f5ad0e97f958262f6b4c98da4da49a5"
+  },
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\docs\\decisions\\DECISION_RECORD_SET_R2_20261024.md",
+    "snapshot": "source_assets/DECISION_RECORD_SET_R2_20261024.md",
+    "bytes": 8497,
+    "sha256": "c739ca1d5d63f0cac1a4de02a00606263e81bf43c1ffa686362fb4a088824c20"
+  },
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E4_NG01_手抓饼业务裁决材料.md",
+    "snapshot": "source_assets/NG01_owner_material.md",
+    "bytes": 6807,
+    "sha256": "cb24ec3af64aab408e3ac152f848609bcfc8325ed1317b05729830b18c68e9fd"
+  },
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E4_NG01_20261101\\NG01_candidate_preview.json",
+    "snapshot": "source_assets/NG01_approved_preview.json",
+    "bytes": 4693,
+    "sha256": "072d8e7b4066bbb302bb42e88fdc740c9d341a15b04d0d595c4f219635646b6e"
+  }
+]

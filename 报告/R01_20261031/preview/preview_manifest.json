@@ -1,0 +1,872 @@
+{
+  "schemaVersion": "R01-preview-1",
+  "role": "只读预览：不写 data/、不写 id-map、不改审批状态、不构成正式批准",
+  "sourceRun": {
+    "status": "L8_IN_MEMORY_ONLY",
+    "records": 490,
+    "blockers": 525,
+    "counts": {
+      "total": 525,
+      "A": 490,
+      "B": 0,
+      "C": 35
+    },
+    "violations": 0
+  },
+  "selection": {
+    "total": 17,
+    "admittedForPreview": 12,
+    "keptBlocked": 5,
+    "policy": "预览只收 A 档（generated + traceable）记录；35 条 C 档（not_generated）按契约 §4.2 不得进入 records.json 与任何 CSV，全部排除",
+    "excludedTiers": {
+      "C": 35,
+      "note": "c01_t20 6 条 / c01_t40 19 条 / c01_t41 10 条"
+    }
+  },
+  "admission": {
+    "decisionStatus": "未裁决（0 份显式准入裁决）",
+    "approvalRefs": {
+      "c01_t48": "ap-20261025-01（仅 id 初始化）",
+      "c01_t49": "ap-20261025-01（仅 id 初始化）"
+    },
+    "note": "ap-20261025-01 的 scope 只授权 tools/pilot/id-map.json 初始化 104 条，明文排除记录产物与 CSV 导入；本预览不改变任何 import_eligibility 字段"
+  },
+  "validation": {
+    "contractSim": [
+      {
+        "id": "EXP-1",
+        "desc": "现状：490 条记录原样送 assertContract(records, summarize(records))",
+        "violations": 0
+      },
+      {
+        "id": "EXP-2",
+        "desc": "把 12 条建议准入样本的 import_eligibility 直接写成 candidate_only",
+        "violations": 11
+      },
+      {
+        "id": "EXP-3",
+        "desc": "谎报 id 状态：第 1 条 id_status='unassigned' 但 id 仍为 c01_d040",
+        "violations": 1
+      }
+    ],
+    "note": "明细见 R01_首批数据预览.md"
+  },
+  "rows": [
+    {
+      "dishId": "c01_d040",
+      "dishName": "山城麻辣小面",
+      "specLabel": "小份",
+      "price": 9,
+      "shopId": "c01",
+      "shopName": "服务楼",
+      "floor": "2 楼",
+      "floorId": "c01_f2",
+      "stallId": "c01_t07",
+      "stallName": "见面就好",
+      "roster": "东⑦",
+      "shot": "W2-01",
+      "stableKey": "c01_t07|山城麻辣小面|小份|",
+      "recordKey": "c01_t07|f2/山城麻辣小面|小份|",
+      "blocker": {
+        "kind": "blocked_by_decision",
+        "reasons": "（空）",
+        "tier": "A",
+        "docRef": "§4.2 A 候选行（:290）；§5.6.4 四条硬约束；C19（:315）"
+      },
+      "state": {
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "planned_from_roster"
+      },
+      "provenance": {
+        "file": "TRANSCRIPTION_2F.md",
+        "line": 71,
+        "quote": "| 山城麻辣小面 | 9 元（小份） |",
+        "quoteMatched": true,
+        "sourceKind": "field",
+        "sourceDetail": "",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-01 第 71 行"
+      },
+      "approval": {
+        "ref": null,
+        "scopeKind": "无：dishId 取自名册区间规划值"
+      },
+      "diff": [
+        {
+          "field": "import_eligibility",
+          "before": "blocked",
+          "after": "blocked（预览不写资格列；候选资格须由显式裁决产生，见 EXP-2）"
+        },
+        {
+          "field": "food_type",
+          "before": "null",
+          "after": "空单元格（未补造）"
+        },
+        {
+          "field": "tastes",
+          "before": "[]",
+          "after": "空单元格（未补造）"
+        },
+        {
+          "field": "collector / collect_date / evidence_file",
+          "before": "未采集",
+          "after": "空（不虚构采集人与日期）"
+        },
+        {
+          "field": "verifyStatus",
+          "before": "unverified",
+          "after": "不可写入 CSV（import_data.js:114 FORBIDDEN_COLUMNS），由程序判定"
+        }
+      ]
+    },
+    {
+      "dishId": "c01_d048",
+      "dishName": "小米南瓜粥",
+      "specLabel": "",
+      "price": 2,
+      "shopId": "c01",
+      "shopName": "服务楼",
+      "floor": "2 楼",
+      "floorId": "c01_f2",
+      "stallId": "c01_t09",
+      "stallName": "元气补给粥",
+      "roster": "东⑨",
+      "shot": "W2-02",
+      "stableKey": "c01_t09|小米南瓜粥||",
+      "recordKey": "c01_t09|f2/小米南瓜粥||",
+      "blocker": {
+        "kind": "blocked_by_decision",
+        "reasons": "（空）",
+        "tier": "A",
+        "docRef": "§4.2 A 候选行（:290）；§5.6.4 四条硬约束；C19（:315）"
+      },
+      "state": {
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "planned_from_roster"
+      },
+      "provenance": {
+        "file": "TRANSCRIPTION_2F.md",
+        "line": 95,
+        "quote": "| 小米南瓜粥 | 2 元 |",
+        "quoteMatched": true,
+        "sourceKind": "field",
+        "sourceDetail": "",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-02 第 95 行"
+      },
+      "approval": {
+        "ref": null,
+        "scopeKind": "无：dishId 取自名册区间规划值"
+      },
+      "diff": [
+        {
+          "field": "import_eligibility",
+          "before": "blocked",
+          "after": "blocked（预览不写资格列；候选资格须由显式裁决产生，见 EXP-2）"
+        },
+        {
+          "field": "food_type",
+          "before": "null",
+          "after": "空单元格（未补造）"
+        },
+        {
+          "field": "tastes",
+          "before": "[]",
+          "after": "空单元格（未补造）"
+        },
+        {
+          "field": "collector / collect_date / evidence_file",
+          "before": "未采集",
+          "after": "空（不虚构采集人与日期）"
+        },
+        {
+          "field": "verifyStatus",
+          "before": "unverified",
+          "after": "不可写入 CSV（import_data.js:114 FORBIDDEN_COLUMNS），由程序判定"
+        }
+      ]
+    },
+    {
+      "dishId": "c01_d084",
+      "dishName": "双拼饭（公瑾爆蛋 + 红烧鸡翅根）",
+      "specLabel": "",
+      "price": 13,
+      "shopId": "c01",
+      "shopName": "服务楼",
+      "floor": "2 楼",
+      "floorId": "c01_f2",
+      "stallId": "c01_t11",
+      "stallName": "来一碗肉肉饭",
+      "roster": "东⑪",
+      "shot": "W2-03",
+      "stableKey": "c01_t11|双拼饭（公瑾爆蛋 + 红烧鸡翅根）||",
+      "recordKey": "c01_t11|f2/双拼饭（公瑾爆蛋 + 红烧鸡翅根）||",
+      "blocker": {
+        "kind": "blocked_by_decision",
+        "reasons": "（空）",
+        "tier": "A",
+        "docRef": "§4.2 A 候选行（:290）；§5.6.4 四条硬约束；C19（:315）"
+      },
+      "state": {
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "planned_from_roster"
+      },
+      "provenance": {
+        "file": "TRANSCRIPTION_2F.md",
+        "line": 757,
+        "quote": "（行号未命中菜名，需人工核对）| 1 | 公瑾爆蛋 + 红烧鸡翅根 | **13 元** | 13 元档 |",
+        "quoteMatched": false,
+        "sourceKind": "field",
+        "sourceDetail": "",
+        "sourceRef": "TRANSCRIPTION_2F.md#4.1 W 第 757 行"
+      },
+      "approval": {
+        "ref": null,
+        "scopeKind": "无：dishId 取自名册区间规划值"
+      },
+      "diff": [
+        {
+          "field": "import_eligibility",
+          "before": "blocked",
+          "after": "blocked（预览不写资格列；候选资格须由显式裁决产生，见 EXP-2）"
+        },
+        {
+          "field": "food_type",
+          "before": "rice",
+          "after": "rice"
+        },
+        {
+          "field": "tastes",
+          "before": "[]",
+          "after": "空单元格（未补造）"
+        },
+        {
+          "field": "collector / collect_date / evidence_file",
+          "before": "未采集",
+          "after": "空（不虚构采集人与日期）"
+        },
+        {
+          "field": "verifyStatus",
+          "before": "unverified",
+          "after": "不可写入 CSV（import_data.js:114 FORBIDDEN_COLUMNS），由程序判定"
+        }
+      ]
+    },
+    {
+      "dishId": "c01_d140",
+      "dishName": "鸡汤砂锅米线",
+      "specLabel": "砂锅米线",
+      "price": 9,
+      "shopId": "c01",
+      "shopName": "服务楼",
+      "floor": "2 楼",
+      "floorId": "c01_f2",
+      "stallId": "c01_t16",
+      "stallName": "板面砂锅米线",
+      "roster": "西④",
+      "shot": "W2-11",
+      "stableKey": "c01_t16|鸡汤砂锅米线|砂锅米线|",
+      "recordKey": "c01_t16|f2/鸡汤砂锅米线|砂锅米线|",
+      "blocker": {
+        "kind": "blocked_by_decision",
+        "reasons": "（空）",
+        "tier": "A",
+        "docRef": "§4.2 A 候选行（:290）；§5.6.4 四条硬约束；C19（:315）"
+      },
+      "state": {
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "planned_from_roster"
+      },
+      "provenance": {
+        "file": "TRANSCRIPTION_2F.md",
+        "line": 535,
+        "quote": "（行号未命中菜名，需人工核对）| 鸡汤 | 9 元 | 9 元 | 9 元 |",
+        "quoteMatched": false,
+        "sourceKind": "field",
+        "sourceDetail": "",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-11 第 535 行"
+      },
+      "approval": {
+        "ref": null,
+        "scopeKind": "无：dishId 取自名册区间规划值"
+      },
+      "diff": [
+        {
+          "field": "import_eligibility",
+          "before": "blocked",
+          "after": "blocked（预览不写资格列；候选资格须由显式裁决产生，见 EXP-2）"
+        },
+        {
+          "field": "food_type",
+          "before": "rice_vermicelli",
+          "after": "rice_vermicelli"
+        },
+        {
+          "field": "tastes",
+          "before": "[]",
+          "after": "空单元格（未补造）"
+        },
+        {
+          "field": "collector / collect_date / evidence_file",
+          "before": "未采集",
+          "after": "空（不虚构采集人与日期）"
+        },
+        {
+          "field": "verifyStatus",
+          "before": "unverified",
+          "after": "不可写入 CSV（import_data.js:114 FORBIDDEN_COLUMNS），由程序判定"
+        }
+      ]
+    },
+    {
+      "dishId": "c01_d464",
+      "dishName": "黄焖鸡盖方便面",
+      "specLabel": "",
+      "price": 14.5,
+      "shopId": "c01",
+      "shopName": "服务楼",
+      "floor": "2 楼",
+      "floorId": "c01_f2",
+      "stallId": "c01_t48",
+      "stallName": "小吕哥黄焖鸡（暂定）",
+      "roster": "—（名册外）",
+      "shot": "W2-04",
+      "stableKey": "c01_t48|黄焖鸡盖方便面||",
+      "recordKey": "c01_t48|f2/黄焖鸡盖方便面||",
+      "blocker": {
+        "kind": "blocked_by_decision",
+        "reasons": "（空）",
+        "tier": "A",
+        "docRef": "§4.2 A 候选行（:290）；§5.6.4 四条硬约束；C19（:315）"
+      },
+      "state": {
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map"
+      },
+      "provenance": {
+        "file": "TRANSCRIPTION_2F.md",
+        "line": 186,
+        "quote": "| 黄焖鸡盖方便面 | 14.5 元 |",
+        "quoteMatched": true,
+        "sourceKind": "field",
+        "sourceDetail": "",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 186 行"
+      },
+      "approval": {
+        "ref": "ap-20261025-01",
+        "scopeKind": "id 初始化（非导入准入）"
+      },
+      "diff": [
+        {
+          "field": "import_eligibility",
+          "before": "blocked",
+          "after": "blocked（预览不写资格列；候选资格须由显式裁决产生，见 EXP-2）"
+        },
+        {
+          "field": "food_type",
+          "before": "null",
+          "after": "空单元格（未补造）"
+        },
+        {
+          "field": "tastes",
+          "before": "[]",
+          "after": "空单元格（未补造）"
+        },
+        {
+          "field": "collector / collect_date / evidence_file",
+          "before": "未采集",
+          "after": "空（不虚构采集人与日期）"
+        },
+        {
+          "field": "verifyStatus",
+          "before": "unverified",
+          "after": "不可写入 CSV（import_data.js:114 FORBIDDEN_COLUMNS），由程序判定"
+        }
+      ]
+    },
+    {
+      "dishId": "c01_d437",
+      "dishName": "鸡蛋火腿炒饼",
+      "specLabel": "",
+      "price": 12,
+      "shopId": "c01",
+      "shopName": "服务楼",
+      "floor": "2 楼",
+      "floorId": "c01_f2",
+      "stallId": "c01_t49",
+      "stallName": "炒粉炒面炒饼（暂定）",
+      "roster": "—（名册外）",
+      "shot": "W2-05",
+      "stableKey": "c01_t49|鸡蛋火腿炒饼||",
+      "recordKey": "c01_t49|f2/鸡蛋火腿炒饼||",
+      "blocker": {
+        "kind": "blocked_by_decision",
+        "reasons": "（空）",
+        "tier": "A",
+        "docRef": "§4.2 A 候选行（:290）；§5.6.4 四条硬约束；C19（:315）"
+      },
+      "state": {
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map"
+      },
+      "provenance": {
+        "file": "TRANSCRIPTION_2F.md",
+        "line": 297,
+        "quote": "| 鸡蛋火腿炒饼 | 12 元 | 13 元 |",
+        "quoteMatched": true,
+        "sourceKind": "field",
+        "sourceDetail": "",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-05 第 297 行"
+      },
+      "approval": {
+        "ref": "ap-20261025-01",
+        "scopeKind": "id 初始化（非导入准入）"
+      },
+      "diff": [
+        {
+          "field": "import_eligibility",
+          "before": "blocked",
+          "after": "blocked（预览不写资格列；候选资格须由显式裁决产生，见 EXP-2）"
+        },
+        {
+          "field": "food_type",
+          "before": "null",
+          "after": "空单元格（未补造）"
+        },
+        {
+          "field": "tastes",
+          "before": "[]",
+          "after": "空单元格（未补造）"
+        },
+        {
+          "field": "collector / collect_date / evidence_file",
+          "before": "未采集",
+          "after": "空（不虚构采集人与日期）"
+        },
+        {
+          "field": "verifyStatus",
+          "before": "unverified",
+          "after": "不可写入 CSV（import_data.js:114 FORBIDDEN_COLUMNS），由程序判定"
+        }
+      ]
+    },
+    {
+      "dishId": "c01_d297",
+      "dishName": "纯素炒米粉",
+      "specLabel": "",
+      "price": 10,
+      "shopId": "c01",
+      "shopName": "服务楼",
+      "floor": "2 楼",
+      "floorId": "c01_f2",
+      "stallId": "c01_t37",
+      "stallName": "西雅苏新疆炒米粉",
+      "roster": "西㉕",
+      "shot": "W2-08",
+      "stableKey": "c01_t37|纯素炒米粉||",
+      "recordKey": "c01_t37|f2/纯素炒米粉||",
+      "blocker": {
+        "kind": "blocked_by_decision",
+        "reasons": "（空）",
+        "tier": "A",
+        "docRef": "§4.2 A 候选行（:290）；§5.6.4 四条硬约束；C19（:315）"
+      },
+      "state": {
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "planned_from_roster"
+      },
+      "provenance": {
+        "file": "TRANSCRIPTION_2F.md",
+        "line": 389,
+        "quote": "| 纯素炒米粉 | 10 元 |",
+        "quoteMatched": true,
+        "sourceKind": "field",
+        "sourceDetail": "",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-08 第 389 行"
+      },
+      "approval": {
+        "ref": null,
+        "scopeKind": "无：dishId 取自名册区间规划值"
+      },
+      "diff": [
+        {
+          "field": "import_eligibility",
+          "before": "blocked",
+          "after": "blocked（预览不写资格列；候选资格须由显式裁决产生，见 EXP-2）"
+        },
+        {
+          "field": "food_type",
+          "before": "null",
+          "after": "空单元格（未补造）"
+        },
+        {
+          "field": "tastes",
+          "before": "[]",
+          "after": "空单元格（未补造）"
+        },
+        {
+          "field": "collector / collect_date / evidence_file",
+          "before": "未采集",
+          "after": "空（不虚构采集人与日期）"
+        },
+        {
+          "field": "verifyStatus",
+          "before": "unverified",
+          "after": "不可写入 CSV（import_data.js:114 FORBIDDEN_COLUMNS），由程序判定"
+        }
+      ]
+    },
+    {
+      "dishId": "c01_d319",
+      "dishName": "超级酱大骨套餐",
+      "specLabel": "",
+      "price": 16,
+      "shopId": "c01",
+      "shopName": "服务楼",
+      "floor": "3 楼",
+      "floorId": "c01_f3",
+      "stallId": "c01_t38",
+      "stallName": "犟福 · 超级酱骨饭",
+      "roster": "W01",
+      "shot": "W01",
+      "stableKey": "c01_t38|超级酱大骨套餐||",
+      "recordKey": "c01_t38|f3/超级酱大骨套餐||",
+      "blocker": {
+        "kind": "blocked_by_decision",
+        "reasons": "（空）",
+        "tier": "A",
+        "docRef": "§4.2 A 候选行（:290）；§5.6.4 四条硬约束；C19（:315）"
+      },
+      "state": {
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "planned_from_roster"
+      },
+      "provenance": {
+        "file": "TRANSCRIPTION_3F.md",
+        "line": 66,
+        "quote": "| 超级酱大骨套餐 | 16 元 |",
+        "quoteMatched": true,
+        "sourceKind": "field",
+        "sourceDetail": "",
+        "sourceRef": "TRANSCRIPTION_3F.md#W01 犟 第 66 行"
+      },
+      "approval": {
+        "ref": null,
+        "scopeKind": "无：dishId 取自名册区间规划值"
+      },
+      "diff": [
+        {
+          "field": "import_eligibility",
+          "before": "blocked",
+          "after": "blocked（预览不写资格列；候选资格须由显式裁决产生，见 EXP-2）"
+        },
+        {
+          "field": "food_type",
+          "before": "null",
+          "after": "空单元格（未补造）"
+        },
+        {
+          "field": "tastes",
+          "before": "[]",
+          "after": "空单元格（未补造）"
+        },
+        {
+          "field": "collector / collect_date / evidence_file",
+          "before": "未采集",
+          "after": "空（不虚构采集人与日期）"
+        },
+        {
+          "field": "verifyStatus",
+          "before": "unverified",
+          "after": "不可写入 CSV（import_data.js:114 FORBIDDEN_COLUMNS），由程序判定"
+        }
+      ]
+    },
+    {
+      "dishId": "c01_d331",
+      "dishName": "鸡块咖喱蛋包饭",
+      "specLabel": "",
+      "price": 16,
+      "shopId": "c01",
+      "shopName": "服务楼",
+      "floor": "3 楼",
+      "floorId": "c01_f3",
+      "stallId": "c01_t39",
+      "stallName": "咖喱 Gigi 蛋包饭",
+      "roster": "W02",
+      "shot": "W02",
+      "stableKey": "c01_t39|鸡块咖喱蛋包饭||",
+      "recordKey": "c01_t39|f3/鸡块咖喱蛋包饭||",
+      "blocker": {
+        "kind": "blocked_by_decision",
+        "reasons": "（空）",
+        "tier": "A",
+        "docRef": "§4.2 A 候选行（:290）；§5.6.4 四条硬约束；C19（:315）"
+      },
+      "state": {
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "planned_from_roster"
+      },
+      "provenance": {
+        "file": "TRANSCRIPTION_3F.md",
+        "line": 101,
+        "quote": "| 鸡块咖喱蛋包饭 | 16 元 |",
+        "quoteMatched": true,
+        "sourceKind": "field",
+        "sourceDetail": "",
+        "sourceRef": "TRANSCRIPTION_3F.md#W02 咖 第 101 行"
+      },
+      "approval": {
+        "ref": null,
+        "scopeKind": "无：dishId 取自名册区间规划值"
+      },
+      "diff": [
+        {
+          "field": "import_eligibility",
+          "before": "blocked",
+          "after": "blocked（预览不写资格列；候选资格须由显式裁决产生，见 EXP-2）"
+        },
+        {
+          "field": "food_type",
+          "before": "null",
+          "after": "空单元格（未补造）"
+        },
+        {
+          "field": "tastes",
+          "before": "[]",
+          "after": "空单元格（未补造）"
+        },
+        {
+          "field": "collector / collect_date / evidence_file",
+          "before": "未采集",
+          "after": "空（不虚构采集人与日期）"
+        },
+        {
+          "field": "verifyStatus",
+          "before": "unverified",
+          "after": "不可写入 CSV（import_data.js:114 FORBIDDEN_COLUMNS），由程序判定"
+        }
+      ]
+    },
+    {
+      "dishId": "c01_d362",
+      "dishName": "招牌红烧肉",
+      "specLabel": "",
+      "price": 14,
+      "shopId": "c01",
+      "shopName": "服务楼",
+      "floor": "3 楼",
+      "floorId": "c01_f3",
+      "stallId": "c01_t43",
+      "stallName": "大姨烧肉饭",
+      "roster": "W06",
+      "shot": "W06",
+      "stableKey": "c01_t43|招牌红烧肉||",
+      "recordKey": "c01_t43|f3/招牌红烧肉||",
+      "blocker": {
+        "kind": "blocked_by_decision",
+        "reasons": "（空）",
+        "tier": "A",
+        "docRef": "§4.2 A 候选行（:290）；§5.6.4 四条硬约束；C19（:315）"
+      },
+      "state": {
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "planned_from_roster"
+      },
+      "provenance": {
+        "file": "TRANSCRIPTION_3F.md",
+        "line": 243,
+        "quote": "| 招牌红烧肉 | 14 元 |",
+        "quoteMatched": true,
+        "sourceKind": "field",
+        "sourceDetail": "",
+        "sourceRef": "TRANSCRIPTION_3F.md#W06 大 第 243 行"
+      },
+      "approval": {
+        "ref": null,
+        "scopeKind": "无：dishId 取自名册区间规划值"
+      },
+      "diff": [
+        {
+          "field": "import_eligibility",
+          "before": "blocked",
+          "after": "blocked（预览不写资格列；候选资格须由显式裁决产生，见 EXP-2）"
+        },
+        {
+          "field": "food_type",
+          "before": "null",
+          "after": "空单元格（未补造）"
+        },
+        {
+          "field": "tastes",
+          "before": "[]",
+          "after": "空单元格（未补造）"
+        },
+        {
+          "field": "collector / collect_date / evidence_file",
+          "before": "未采集",
+          "after": "空（不虚构采集人与日期）"
+        },
+        {
+          "field": "verifyStatus",
+          "before": "unverified",
+          "after": "不可写入 CSV（import_data.js:114 FORBIDDEN_COLUMNS），由程序判定"
+        }
+      ]
+    },
+    {
+      "dishId": "c01_d373",
+      "dishName": "招牌牛肉面",
+      "specLabel": "",
+      "price": 14,
+      "shopId": "c01",
+      "shopName": "服务楼",
+      "floor": "3 楼",
+      "floorId": "c01_f3",
+      "stallId": "c01_t44",
+      "stallName": "辣肉面",
+      "roster": "W07",
+      "shot": "W07",
+      "stableKey": "c01_t44|招牌牛肉面||",
+      "recordKey": "c01_t44|f3/招牌牛肉面||",
+      "blocker": {
+        "kind": "blocked_by_decision",
+        "reasons": "（空）",
+        "tier": "A",
+        "docRef": "§4.2 A 候选行（:290）；§5.6.4 四条硬约束；C19（:315）"
+      },
+      "state": {
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "planned_from_roster"
+      },
+      "provenance": {
+        "file": "TRANSCRIPTION_3F.md",
+        "line": 267,
+        "quote": "| 招牌牛肉面 | 14 元 |",
+        "quoteMatched": true,
+        "sourceKind": "field",
+        "sourceDetail": "",
+        "sourceRef": "TRANSCRIPTION_3F.md#W07 辣 第 267 行"
+      },
+      "approval": {
+        "ref": null,
+        "scopeKind": "无：dishId 取自名册区间规划值"
+      },
+      "diff": [
+        {
+          "field": "import_eligibility",
+          "before": "blocked",
+          "after": "blocked（预览不写资格列；候选资格须由显式裁决产生，见 EXP-2）"
+        },
+        {
+          "field": "food_type",
+          "before": "null",
+          "after": "空单元格（未补造）"
+        },
+        {
+          "field": "tastes",
+          "before": "[]",
+          "after": "空单元格（未补造）"
+        },
+        {
+          "field": "collector / collect_date / evidence_file",
+          "before": "未采集",
+          "after": "空（不虚构采集人与日期）"
+        },
+        {
+          "field": "verifyStatus",
+          "before": "unverified",
+          "after": "不可写入 CSV（import_data.js:114 FORBIDDEN_COLUMNS），由程序判定"
+        }
+      ]
+    },
+    {
+      "dishId": "c01_d413",
+      "dishName": "铁板炸鸡培根拌饭",
+      "specLabel": "",
+      "price": 13.9,
+      "shopId": "c01",
+      "shopName": "服务楼",
+      "floor": "3 楼",
+      "floorId": "c01_f3",
+      "stallId": "c01_t46",
+      "stallName": "梨泰院烧肉饭",
+      "roster": "W09",
+      "shot": "W09",
+      "stableKey": "c01_t46|铁板炸鸡培根拌饭||",
+      "recordKey": "c01_t46|f3/铁板炸鸡培根拌饭||",
+      "blocker": {
+        "kind": "blocked_by_decision",
+        "reasons": "（空）",
+        "tier": "A",
+        "docRef": "§4.2 A 候选行（:290）；§5.6.4 四条硬约束；C19（:315）"
+      },
+      "state": {
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "planned_from_roster"
+      },
+      "provenance": {
+        "file": "TRANSCRIPTION_3F.md",
+        "line": 356,
+        "quote": "| 铁板炸鸡培根拌饭 | 13.9 元 |",
+        "quoteMatched": true,
+        "sourceKind": "field",
+        "sourceDetail": "",
+        "sourceRef": "TRANSCRIPTION_3F.md#W09 梨 第 356 行"
+      },
+      "approval": {
+        "ref": null,
+        "scopeKind": "无：dishId 取自名册区间规划值"
+      },
+      "diff": [
+        {
+          "field": "import_eligibility",
+          "before": "blocked",
+          "after": "blocked（预览不写资格列；候选资格须由显式裁决产生，见 EXP-2）"
+        },
+        {
+          "field": "food_type",
+          "before": "null",
+          "after": "空单元格（未补造）"
+        },
+        {
+          "field": "tastes",
+          "before": "[]",
+          "after": "空单元格（未补造）"
+        },
+        {
+          "field": "collector / collect_date / evidence_file",
+          "before": "未采集",
+          "after": "空（不虚构采集人与日期）"
+        },
+        {
+          "field": "verifyStatus",
+          "before": "unverified",
+          "after": "不可写入 CSV（import_data.js:114 FORBIDDEN_COLUMNS），由程序判定"
+        }
+      ]
+    }
+  ]
+}

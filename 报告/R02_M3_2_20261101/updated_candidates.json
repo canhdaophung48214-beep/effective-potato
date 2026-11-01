@@ -1,0 +1,2574 @@
+{
+  "baseline": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_1_20261101\\updated_candidates.json",
+  "baselineSHA256": "55992f4c264dc7236d5c277a96ea7f5fa6f2edb24fe7c0675b17a48840119b01",
+  "records": [
+    {
+      "id": "c01_d502",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "青椒蛋炒饼",
+      "price": 10,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：青椒蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 262 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/青椒蛋炒饼",
+        "rawGroupKey": "青椒蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 262,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d502"
+      },
+      "_adapterKey": "c01_t48|青椒蛋炒饼|炒饼|"
+    },
+    {
+      "id": "c01_d503",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "青椒蛋炒面",
+      "price": 10,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：青椒蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 262 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/青椒蛋炒面",
+        "rawGroupKey": "青椒蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 262,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d503"
+      },
+      "_adapterKey": "c01_t48|青椒蛋炒面|炒面|"
+    },
+    {
+      "id": "c01_d504",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "青椒蛋炒饭",
+      "price": 10,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：青椒蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 262 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/青椒蛋炒饭",
+        "rawGroupKey": "青椒蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 262,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d504"
+      },
+      "_adapterKey": "c01_t48|青椒蛋炒饭|炒饭|"
+    },
+    {
+      "id": "c01_d505",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "火腿肠蛋炒饼",
+      "price": 12,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：火腿肠蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 263 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/火腿肠蛋炒饼",
+        "rawGroupKey": "火腿肠蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 263,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d505"
+      },
+      "_adapterKey": "c01_t48|火腿肠蛋炒饼|炒饼|"
+    },
+    {
+      "id": "c01_d506",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "火腿肠蛋炒面",
+      "price": 12,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：火腿肠蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 263 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/火腿肠蛋炒面",
+        "rawGroupKey": "火腿肠蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 263,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d506"
+      },
+      "_adapterKey": "c01_t48|火腿肠蛋炒面|炒面|"
+    },
+    {
+      "id": "c01_d507",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "火腿肠蛋炒饭",
+      "price": 12,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：火腿肠蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 263 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/火腿肠蛋炒饭",
+        "rawGroupKey": "火腿肠蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 263,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d507"
+      },
+      "_adapterKey": "c01_t48|火腿肠蛋炒饭|炒饭|"
+    },
+    {
+      "id": "c01_d508",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "香菇鸡丁蛋炒饼",
+      "price": 13,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：香菇鸡丁蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 264 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/香菇鸡丁蛋炒饼",
+        "rawGroupKey": "香菇鸡丁蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 264,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d508"
+      },
+      "_adapterKey": "c01_t48|香菇鸡丁蛋炒饼|炒饼|"
+    },
+    {
+      "id": "c01_d509",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "香菇鸡丁蛋炒面",
+      "price": 13,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：香菇鸡丁蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 264 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/香菇鸡丁蛋炒面",
+        "rawGroupKey": "香菇鸡丁蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 264,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d509"
+      },
+      "_adapterKey": "c01_t48|香菇鸡丁蛋炒面|炒面|"
+    },
+    {
+      "id": "c01_d510",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "香菇鸡丁蛋炒饭",
+      "price": 13,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：香菇鸡丁蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 264 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/香菇鸡丁蛋炒饭",
+        "rawGroupKey": "香菇鸡丁蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 264,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d510"
+      },
+      "_adapterKey": "c01_t48|香菇鸡丁蛋炒饭|炒饭|"
+    },
+    {
+      "id": "c01_d511",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "广式腊肠蛋炒饼",
+      "price": 13,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：广式腊肠蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 265 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/广式腊肠蛋炒饼",
+        "rawGroupKey": "广式腊肠蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 265,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d511"
+      },
+      "_adapterKey": "c01_t48|广式腊肠蛋炒饼|炒饼|"
+    },
+    {
+      "id": "c01_d512",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "广式腊肠蛋炒面",
+      "price": 13,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：广式腊肠蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 265 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/广式腊肠蛋炒面",
+        "rawGroupKey": "广式腊肠蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 265,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d512"
+      },
+      "_adapterKey": "c01_t48|广式腊肠蛋炒面|炒面|"
+    },
+    {
+      "id": "c01_d513",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "广式腊肠蛋炒饭",
+      "price": 13,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：广式腊肠蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 265 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/广式腊肠蛋炒饭",
+        "rawGroupKey": "广式腊肠蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 265,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d513"
+      },
+      "_adapterKey": "c01_t48|广式腊肠蛋炒饭|炒饭|"
+    },
+    {
+      "id": "c01_d514",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "三鲜蛋炒饼",
+      "price": 13,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：三鲜蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 266 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/三鲜蛋炒饼",
+        "rawGroupKey": "三鲜蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 266,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d514"
+      },
+      "_adapterKey": "c01_t48|三鲜蛋炒饼|炒饼|"
+    },
+    {
+      "id": "c01_d515",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "三鲜蛋炒面",
+      "price": 13,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：三鲜蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 266 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/三鲜蛋炒面",
+        "rawGroupKey": "三鲜蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 266,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d515"
+      },
+      "_adapterKey": "c01_t48|三鲜蛋炒面|炒面|"
+    },
+    {
+      "id": "c01_d516",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "三鲜蛋炒饭",
+      "price": 13,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：三鲜蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 266 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/三鲜蛋炒饭",
+        "rawGroupKey": "三鲜蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 266,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d516"
+      },
+      "_adapterKey": "c01_t48|三鲜蛋炒饭|炒饭|"
+    },
+    {
+      "id": "c01_d517",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "土豆肉丝蛋炒饼",
+      "price": 13,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：土豆肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 267 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/土豆肉丝蛋炒饼",
+        "rawGroupKey": "土豆肉丝蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 267,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d517"
+      },
+      "_adapterKey": "c01_t48|土豆肉丝蛋炒饼|炒饼|"
+    },
+    {
+      "id": "c01_d518",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "土豆肉丝蛋炒面",
+      "price": 13,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：土豆肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 267 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/土豆肉丝蛋炒面",
+        "rawGroupKey": "土豆肉丝蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 267,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d518"
+      },
+      "_adapterKey": "c01_t48|土豆肉丝蛋炒面|炒面|"
+    },
+    {
+      "id": "c01_d519",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "土豆肉丝蛋炒饭",
+      "price": 13,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：土豆肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 267 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/土豆肉丝蛋炒饭",
+        "rawGroupKey": "土豆肉丝蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 267,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d519"
+      },
+      "_adapterKey": "c01_t48|土豆肉丝蛋炒饭|炒饭|"
+    },
+    {
+      "id": "c01_d520",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "青椒火腿蛋炒饼",
+      "price": 13,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：青椒火腿蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 268 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/青椒火腿蛋炒饼",
+        "rawGroupKey": "青椒火腿蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 268,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d520"
+      },
+      "_adapterKey": "c01_t48|青椒火腿蛋炒饼|炒饼|"
+    },
+    {
+      "id": "c01_d521",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "青椒火腿蛋炒面",
+      "price": 13,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：青椒火腿蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 268 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/青椒火腿蛋炒面",
+        "rawGroupKey": "青椒火腿蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 268,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d521"
+      },
+      "_adapterKey": "c01_t48|青椒火腿蛋炒面|炒面|"
+    },
+    {
+      "id": "c01_d522",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "青椒火腿蛋炒饭",
+      "price": 13,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：青椒火腿蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 268 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/青椒火腿蛋炒饭",
+        "rawGroupKey": "青椒火腿蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 268,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d522"
+      },
+      "_adapterKey": "c01_t48|青椒火腿蛋炒饭|炒饭|"
+    },
+    {
+      "id": "c01_d523",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "青椒肉丝蛋炒饼",
+      "price": 13,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：青椒肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 269 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/青椒肉丝蛋炒饼",
+        "rawGroupKey": "青椒肉丝蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 269,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d523"
+      },
+      "_adapterKey": "c01_t48|青椒肉丝蛋炒饼|炒饼|"
+    },
+    {
+      "id": "c01_d524",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "青椒肉丝蛋炒面",
+      "price": 13,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：青椒肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 269 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/青椒肉丝蛋炒面",
+        "rawGroupKey": "青椒肉丝蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 269,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d524"
+      },
+      "_adapterKey": "c01_t48|青椒肉丝蛋炒面|炒面|"
+    },
+    {
+      "id": "c01_d525",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "青椒肉丝蛋炒饭",
+      "price": 13,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：青椒肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 269 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/青椒肉丝蛋炒饭",
+        "rawGroupKey": "青椒肉丝蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 269,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d525"
+      },
+      "_adapterKey": "c01_t48|青椒肉丝蛋炒饭|炒饭|"
+    },
+    {
+      "id": "c01_d526",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "孜然鸡肉蛋炒饼",
+      "price": 13,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：孜然鸡肉蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 270 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/孜然鸡肉蛋炒饼",
+        "rawGroupKey": "孜然鸡肉蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 270,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d526"
+      },
+      "_adapterKey": "c01_t48|孜然鸡肉蛋炒饼|炒饼|"
+    },
+    {
+      "id": "c01_d527",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "孜然鸡肉蛋炒面",
+      "price": 13,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：孜然鸡肉蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 270 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/孜然鸡肉蛋炒面",
+        "rawGroupKey": "孜然鸡肉蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 270,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d527"
+      },
+      "_adapterKey": "c01_t48|孜然鸡肉蛋炒面|炒面|"
+    },
+    {
+      "id": "c01_d528",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "孜然鸡肉蛋炒饭",
+      "price": 13,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：孜然鸡肉蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 270 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/孜然鸡肉蛋炒饭",
+        "rawGroupKey": "孜然鸡肉蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 270,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d528"
+      },
+      "_adapterKey": "c01_t48|孜然鸡肉蛋炒饭|炒饭|"
+    },
+    {
+      "id": "c01_d529",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "老干妈肉丝蛋炒饼",
+      "price": 13,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：老干妈肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 271 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/老干妈肉丝蛋炒饼",
+        "rawGroupKey": "老干妈肉丝蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 271,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d529"
+      },
+      "_adapterKey": "c01_t48|老干妈肉丝蛋炒饼|炒饼|"
+    },
+    {
+      "id": "c01_d530",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "老干妈肉丝蛋炒面",
+      "price": 13,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：老干妈肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 271 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/老干妈肉丝蛋炒面",
+        "rawGroupKey": "老干妈肉丝蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 271,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d530"
+      },
+      "_adapterKey": "c01_t48|老干妈肉丝蛋炒面|炒面|"
+    },
+    {
+      "id": "c01_d531",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "老干妈肉丝蛋炒饭",
+      "price": 13,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：老干妈肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 271 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/老干妈肉丝蛋炒饭",
+        "rawGroupKey": "老干妈肉丝蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 271,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d531"
+      },
+      "_adapterKey": "c01_t48|老干妈肉丝蛋炒饭|炒饭|"
+    },
+    {
+      "id": "c01_d532",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "酸菜肉丝蛋炒饼",
+      "price": 13,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：酸菜肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 272 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/酸菜肉丝蛋炒饼",
+        "rawGroupKey": "酸菜肉丝蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 272,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d532"
+      },
+      "_adapterKey": "c01_t48|酸菜肉丝蛋炒饼|炒饼|"
+    },
+    {
+      "id": "c01_d533",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "酸菜肉丝蛋炒面",
+      "price": 13,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：酸菜肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 272 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/酸菜肉丝蛋炒面",
+        "rawGroupKey": "酸菜肉丝蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 272,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d533"
+      },
+      "_adapterKey": "c01_t48|酸菜肉丝蛋炒面|炒面|"
+    },
+    {
+      "id": "c01_d534",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "酸菜肉丝蛋炒饭",
+      "price": 13,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：酸菜肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 272 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/酸菜肉丝蛋炒饭",
+        "rawGroupKey": "酸菜肉丝蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 272,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d534"
+      },
+      "_adapterKey": "c01_t48|酸菜肉丝蛋炒饭|炒饭|"
+    },
+    {
+      "id": "c01_d535",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "香辣猪头肉蛋炒饼",
+      "price": 14,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：香辣猪头肉蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 273 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/香辣猪头肉蛋炒饼",
+        "rawGroupKey": "香辣猪头肉蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 273,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d535"
+      },
+      "_adapterKey": "c01_t48|香辣猪头肉蛋炒饼|炒饼|"
+    },
+    {
+      "id": "c01_d536",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "香辣猪头肉蛋炒面",
+      "price": 14,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：香辣猪头肉蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 273 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/香辣猪头肉蛋炒面",
+        "rawGroupKey": "香辣猪头肉蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 273,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d536"
+      },
+      "_adapterKey": "c01_t48|香辣猪头肉蛋炒面|炒面|"
+    },
+    {
+      "id": "c01_d537",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "香辣猪头肉蛋炒饭",
+      "price": 14,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：香辣猪头肉蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 273 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/香辣猪头肉蛋炒饭",
+        "rawGroupKey": "香辣猪头肉蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 273,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d537"
+      },
+      "_adapterKey": "c01_t48|香辣猪头肉蛋炒饭|炒饭|"
+    },
+    {
+      "id": "c01_d538",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "红烧牛肉蛋炒饼",
+      "price": 15,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：红烧牛肉蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 274 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/红烧牛肉蛋炒饼",
+        "rawGroupKey": "红烧牛肉蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 274,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d538"
+      },
+      "_adapterKey": "c01_t48|红烧牛肉蛋炒饼|炒饼|"
+    },
+    {
+      "id": "c01_d539",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "红烧牛肉蛋炒面",
+      "price": 15,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：红烧牛肉蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 274 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/红烧牛肉蛋炒面",
+        "rawGroupKey": "红烧牛肉蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 274,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d539"
+      },
+      "_adapterKey": "c01_t48|红烧牛肉蛋炒面|炒面|"
+    },
+    {
+      "id": "c01_d540",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "红烧牛肉蛋炒饭",
+      "price": 15,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：红烧牛肉蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 274 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/红烧牛肉蛋炒饭",
+        "rawGroupKey": "红烧牛肉蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 274,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d540"
+      },
+      "_adapterKey": "c01_t48|红烧牛肉蛋炒饭|炒饭|"
+    }
+  ],
+  "parentEvidenceLayer": {
+    "shop": {
+      "id": "c01",
+      "name": "服务楼",
+      "location": "服务楼",
+      "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+      "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+      "fieldVerified": false
+    },
+    "floor": {
+      "id": "c01_f2",
+      "label": "2 楼",
+      "status": "KNOWN_MODEL_ASSOCIATION",
+      "evidence": "existing contract and archived floor guide",
+      "fieldVerified": false
+    },
+    "stall": {
+      "id": "c01_t48",
+      "name": "小吕哥黄焖鸡（暂定）",
+      "imageToStallRelation": "CONFIRMED_BY_OWNER",
+      "evidence": "DR-2F09-VERIFY-20261025 section2",
+      "side": null,
+      "windowNumber": null,
+      "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+      "formalSignoff": "PENDING",
+      "overallVerification": "NOT_GRANTED"
+    }
+  },
+  "businessAdmissionLayers": [
+    {
+      "dishId": "c01_d502",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 10,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 262 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d503",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 10,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 262 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d504",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 10,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 262 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d505",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 12,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 263 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d506",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 12,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 263 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d507",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 12,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 263 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d508",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 264 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d509",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 264 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d510",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 264 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d511",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 265 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d512",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 265 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d513",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 265 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d514",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 266 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d515",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 266 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d516",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 266 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d517",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 267 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d518",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 267 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d519",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 267 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d520",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 268 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d521",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 268 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d522",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 268 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d523",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 269 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d524",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 269 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d525",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 269 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d526",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 270 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d527",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 270 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d528",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 270 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d529",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 271 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d530",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 271 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d531",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 271 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d532",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 272 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d533",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 272 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d534",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 13,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 272 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d535",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 14,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 273 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d536",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 14,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 273 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d537",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 14,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 273 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d538",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 15,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 274 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d539",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 15,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 274 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    },
+    {
+      "dishId": "c01_d540",
+      "primaryClass": "C",
+      "secondaryFlags": [
+        "B_PARENT_SIGNOFF_PENDING"
+      ],
+      "dishCoreStatus": "SOURCE_SUPPORTED",
+      "price": {
+        "amount": 15,
+        "currency": "CNY",
+        "status": "HISTORICAL_MENU_VALUE",
+        "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 274 行",
+        "currentValidity": "UNKNOWN",
+        "captureDate": null,
+        "unit": null,
+        "unitStatus": "NOT_EXPLICIT_IN_TABLE",
+        "conflictFound": false
+      },
+      "serving": {
+        "size": null,
+        "quantity": null,
+        "status": "UNKNOWN",
+        "specificCompetingUnitsFound": false
+      },
+      "parentRef": "c01_t48",
+      "metadataStatus": "DEFERRED_BY_OWNER",
+      "businessPreviewAllowed": true,
+      "readinessForNextReview": true,
+      "formalAdmissionAuthorized": false,
+      "strictEvidencePassed": false,
+      "transactionQuoteAllowed": false
+    }
+  ],
+  "classificationPriority": "E actual unexplained conflict > D concrete competing unit/serving meanings > C historical currentness unknown > B parent pending only > A complete; missing unit alone is not proof of a conflict",
+  "metadataPolicy": "collector/captureDate deferred; do not ask or inherit; strict validation unchanged",
+  "formalImportCompleted": false
+}

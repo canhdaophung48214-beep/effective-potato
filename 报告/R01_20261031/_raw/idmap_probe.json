@@ -1,0 +1,12 @@
+{
+  "bytes": 42990,
+  "topKeys": [
+    "entries",
+    "generatedAt",
+    "initialization",
+    "keyFormat",
+    "orphans",
+    "schemaVersion"
+  ],
+  "sample": "{\"entries\":[{\"approvedBy\":\"user:负责人审批 ip-20261025-01\",\"assignedAt\":\"2026-10-25T23:23:52+08:00\",\"disambiguator\":\"\",\"dishId\":\"c01_d515\",\"groupKey\":\"三鲜蛋炒面\",\"key\":\"c01_t48|三鲜蛋炒面|炒面|\",\"sourceRef\":\"TRANSCRIPTION_2F.md#W2-04 第 266 行\",\"specLabel\":\"炒面\",\"stallId\":\"c01_t48\",\"status\":\"active\"},{\"approvedBy\":\"user:负责人审批 ip-20261025-01\",\"assignedAt\":\"2026-10-25T23:23:52+08:00\",\"disambiguator\":\"\",\"dishId\":\"c01_d516\",\"groupKey\":\"三鲜蛋炒饭\",\"key\":\"c01_t48|三鲜蛋炒饭|炒饭|\",\"sourceRef\":\"TRANSCRIPTION_2F.md#W2-04 第 266 行\",\"specLabel\":\"炒饭\",\"stallId\":\"c01_t48\",\"status\":\"active\"},{\"approvedBy\":\"user:负责人审批 ip-20261025-01\",\"ass"
+}

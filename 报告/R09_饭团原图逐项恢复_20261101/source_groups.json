@@ -1,0 +1,326 @@
+[
+  {
+    "sourceRecordRef": "R09-2F18-RICEBALL-01",
+    "name": "金针菇饭团",
+    "kind": "dish",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "priorPendingSourceRef": "R04-W2-15-L0683-S344",
+    "oldRecordKeys": [
+      "c01_t35|f2/甜味红豆 / 玉米沙拉 / 泡菜（微辣）/ 金针菇（微辣）/ 辣条||"
+    ],
+    "evidence": {
+      "photoFile": "source_assets/photo_2F18.jpg",
+      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
+      "ocrFile": "photo_ocr.json",
+      "ocrNameLine": 42,
+      "ocrPriceLine": 42,
+      "ocrNameQuote": "金 针 菇 饭 团 （ 微 辣 ） 7 元",
+      "ocrPriceQuote": "金 针 菇 饭 团 （ 微 辣 ） 7 元",
+      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 683,
+      "sourceQuote": "| 甜味红豆 / 玉米沙拉 / 泡菜（微辣）/ 金针菇（微辣）/ 辣条 | 7 元 |",
+      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R09-2F18-RICEBALL-02",
+    "name": "鲜香卤蛋饭团",
+    "kind": "dish",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "priorPendingSourceRef": "R04-W2-15-L0684-S345",
+    "oldRecordKeys": [
+      "c01_t35|f2/鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊||"
+    ],
+    "evidence": {
+      "photoFile": "source_assets/photo_2F18.jpg",
+      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
+      "ocrFile": "photo_ocr.json",
+      "ocrNameLine": 43,
+      "ocrPriceLine": 44,
+      "ocrNameQuote": "鲜 香 卤 蛋 饭 团",
+      "ocrPriceQuote": "8 元",
+      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 684,
+      "sourceQuote": "| 鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊 | 8 元 |",
+      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R09-2F18-RICEBALL-03",
+    "name": "和风蟹柳饭团",
+    "kind": "dish",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "priorPendingSourceRef": "R04-W2-15-L0684-S345",
+    "oldRecordKeys": [
+      "c01_t35|f2/鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊||"
+    ],
+    "evidence": {
+      "photoFile": "source_assets/photo_2F18.jpg",
+      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
+      "ocrFile": "photo_ocr.json",
+      "ocrNameLine": 45,
+      "ocrPriceLine": 46,
+      "ocrNameQuote": "' 和 风 蟹 柳 饭 团",
+      "ocrPriceQuote": "8 元",
+      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 684,
+      "sourceQuote": "| 鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊 | 8 元 |",
+      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R09-2F18-RICEBALL-04",
+    "name": "咸蛋黄肉松饭团",
+    "kind": "dish",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "priorPendingSourceRef": "R04-W2-15-L0684-S345",
+    "oldRecordKeys": [
+      "c01_t35|f2/鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊||"
+    ],
+    "evidence": {
+      "photoFile": "source_assets/photo_2F18.jpg",
+      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
+      "ocrFile": "photo_ocr.json",
+      "ocrNameLine": 49,
+      "ocrPriceLine": 50,
+      "ocrNameQuote": "《 咸 蛋 黄 肉 松 饭 团",
+      "ocrPriceQuote": "8 元",
+      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 684,
+      "sourceQuote": "| 鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊 | 8 元 |",
+      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R09-2F18-RICEBALL-05",
+    "name": "拉丝芝士饭团",
+    "kind": "dish",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "priorPendingSourceRef": "R04-W2-15-L0685-S346",
+    "oldRecordKeys": [
+      "c01_t35|f2/拉丝芝士 / 纯肉烤肠||"
+    ],
+    "evidence": {
+      "photoFile": "source_assets/photo_2F18.jpg",
+      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
+      "ocrFile": "photo_ocr.json",
+      "ocrNameLine": 51,
+      "ocrPriceLine": 52,
+      "ocrNameQuote": "拉 丝 芝 士 饭 团",
+      "ocrPriceQuote": "10 元",
+      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 685,
+      "sourceQuote": "| 拉丝芝士 / 纯肉烤肠 | 10 元 |",
+      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R09-2F18-RICEBALL-06",
+    "name": "纯肉烤肠饭团",
+    "kind": "dish",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "priorPendingSourceRef": "R04-W2-15-L0685-S346",
+    "oldRecordKeys": [
+      "c01_t35|f2/拉丝芝士 / 纯肉烤肠||"
+    ],
+    "evidence": {
+      "photoFile": "source_assets/photo_2F18.jpg",
+      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
+      "ocrFile": "photo_ocr.json",
+      "ocrNameLine": 53,
+      "ocrPriceLine": 54,
+      "ocrNameQuote": "' 纯 肉 烤 肠 饭 团",
+      "ocrPriceQuote": "10 元",
+      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 685,
+      "sourceQuote": "| 拉丝芝士 / 纯肉烤肠 | 10 元 |",
+      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R09-2F18-RICEBALL-07",
+    "name": "香酥鸡排饭团",
+    "kind": "dish",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "priorPendingSourceRef": "R04-W2-15-L0686-S347",
+    "oldRecordKeys": [
+      "c01_t35|f2/香酥鸡排||"
+    ],
+    "evidence": {
+      "photoFile": "source_assets/photo_2F18.jpg",
+      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
+      "ocrFile": "photo_ocr.json",
+      "ocrNameLine": 55,
+      "ocrPriceLine": 56,
+      "ocrNameQuote": "香 酥 鸡 排 饭 团",
+      "ocrPriceQuote": "11 元",
+      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 686,
+      "sourceQuote": "| 香酥鸡排 | 11 元 |",
+      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R09-2F18-RICEBALL-08",
+    "name": "香煎猪排饭团",
+    "kind": "dish",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "priorPendingSourceRef": "R04-W2-15-L0687-S348",
+    "oldRecordKeys": [
+      "c01_t35|f2/香煎猪排||"
+    ],
+    "evidence": {
+      "photoFile": "source_assets/photo_2F18.jpg",
+      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
+      "ocrFile": "photo_ocr.json",
+      "ocrNameLine": 57,
+      "ocrPriceLine": 58,
+      "ocrNameQuote": "香 煎 猪 排 饭 团",
+      "ocrPriceQuote": "12 元",
+      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 687,
+      "sourceQuote": "| 香煎猪排 | 12 元 |",
+      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R09-2F18-RICEBALL-09",
+    "name": "黑椒牛排饭团",
+    "kind": "dish",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "priorPendingSourceRef": "R04-W2-15-L0688-S349",
+    "oldRecordKeys": [
+      "c01_t35|f2/黑椒牛排||"
+    ],
+    "evidence": {
+      "photoFile": "source_assets/photo_2F18.jpg",
+      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
+      "ocrFile": "photo_ocr.json",
+      "ocrNameLine": 59,
+      "ocrPriceLine": 60,
+      "ocrNameQuote": "黑 椒 牛 排 饭 团",
+      "ocrPriceQuote": "13 元",
+      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 688,
+      "sourceQuote": "| 黑椒牛排 | 13 元 |",
+      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R09-2F18-RICEBALL-10",
+    "name": "金枪鱼饭团",
+    "kind": "dish",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "priorPendingSourceRef": "R04-W2-15-L0689-S350",
+    "oldRecordKeys": [
+      "c01_t35|f2/金枪鱼||"
+    ],
+    "evidence": {
+      "photoFile": "source_assets/photo_2F18.jpg",
+      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
+      "ocrFile": "photo_ocr.json",
+      "ocrNameLine": 61,
+      "ocrPriceLine": 62,
+      "ocrNameQuote": "金 枪 鱼 饭 团",
+      "ocrPriceQuote": "14 元",
+      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 689,
+      "sourceQuote": "| 金枪鱼 | 14 元 |",
+      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R09-2F18-RICEBALL-11",
+    "name": "日式鳗鱼饭团",
+    "kind": "dish",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "priorPendingSourceRef": "R04-W2-15-L0690-S351",
+    "oldRecordKeys": [
+      "c01_t35|f2/日式鳗鱼||"
+    ],
+    "evidence": {
+      "photoFile": "source_assets/photo_2F18.jpg",
+      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
+      "ocrFile": "photo_ocr.json",
+      "ocrNameLine": 63,
+      "ocrPriceLine": 64,
+      "ocrNameQuote": "日 式 鳗 鱼 饭 团",
+      "ocrPriceQuote": "15 元",
+      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 690,
+      "sourceQuote": "| 日式鳗鱼 | 15 元 |",
+      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R09-2F18-UNRESOLVED-SUSHI",
+    "name": "寿司价格列组",
+    "kind": "unresolved_material_group",
+    "blocked": true,
+    "disposition": "PENDING",
+    "evidence": {
+      "photoFile": "source_assets/photo_2F18.jpg",
+      "ocrLine": 1,
+      "ocrQuote": "肉 松 沙 拉 寿 司"
+    }
+  },
+  {
+    "sourceRecordRef": "R09-2F18-UNRESOLVED-LOWER",
+    "name": "原味/红豆/玉米沙拉/泡菜饭团组",
+    "kind": "unresolved_material_group",
+    "blocked": true,
+    "disposition": "PENDING",
+    "evidence": {
+      "photoFile": "source_assets/photo_2F18.jpg",
+      "ocrLine": 35,
+      "ocrQuote": "0 专 统 原 味 饭 团"
+    }
+  },
+  {
+    "sourceRecordRef": "R09-2F18-UNRESOLVED-BACON",
+    "name": "培根饭团",
+    "kind": "unresolved_material_group",
+    "blocked": true,
+    "disposition": "PENDING",
+    "evidence": {
+      "photoFile": "source_assets/photo_2F18.jpg",
+      "ocrLine": 47,
+      "ocrQuote": "' 熏 培 根 饭 团"
+    }
+  },
+  {
+    "sourceRecordRef": "R09-2F18-UNRESOLVED-TWO",
+    "name": "辣条/铁板里脊饭团",
+    "kind": "unresolved_material_group",
+    "blocked": true,
+    "disposition": "PENDING",
+    "evidence": {
+      "photoFile": "source_assets/photo_2F18.jpg",
+      "ocrLine": 65,
+      "ocrQuote": "辣 条 饭 团 7 元 板 里 脊 饭 团 8 元"
+    }
+  },
+  {
+    "sourceRecordRef": "R09-2F18-UNRESOLVED-EGGWAFFLE",
+    "name": "鸡蛋仔及口味",
+    "kind": "unresolved_material_group",
+    "blocked": true,
+    "disposition": "PENDING",
+    "evidence": {
+      "photoFile": "source_assets/photo_2F18.jpg",
+      "ocrLine": 17,
+      "ocrQuote": "巪 鸡 蛋 仔 100 份"
+    }
+  }
+]

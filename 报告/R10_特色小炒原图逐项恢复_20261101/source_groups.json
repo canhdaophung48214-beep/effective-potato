@@ -1,0 +1,389 @@
+[
+  {
+    "sourceRecordRef": "R10-2F16-D01",
+    "name": "肉末茄子",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "evidence": {
+      "photoFile": "source_assets/photo_2F16.jpg",
+      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
+      "ocrLine": 6,
+      "ocrQuote": "肉 末 茄 子 11 元",
+      "matchedText": "肉末茄子11元",
+      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 615,
+      "sourceQuote": "| 糖醋里脊 / 红烧里脊 / 鱼香茄子 / 肉末茄子 / 香辣火腿 / 西红柿炒鸡蛋 | 11 元 |",
+      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D02",
+    "name": "香辣火腿",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "evidence": {
+      "photoFile": "source_assets/photo_2F16.jpg",
+      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
+      "ocrLine": 7,
+      "ocrQuote": "香 辣 火 腿 11 元",
+      "matchedText": "香辣火腿11元",
+      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 615,
+      "sourceQuote": "| 糖醋里脊 / 红烧里脊 / 鱼香茄子 / 肉末茄子 / 香辣火腿 / 西红柿炒鸡蛋 | 11 元 |",
+      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D03",
+    "name": "火腿鸡蛋",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "evidence": {
+      "photoFile": "source_assets/photo_2F16.jpg",
+      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
+      "ocrLine": 8,
+      "ocrQuote": "火 腿 鸡 蛋 12 元",
+      "matchedText": "火腿鸡蛋12元",
+      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 616,
+      "sourceQuote": "| 火腿鸡蛋 / 酸菜肉丝 / 肉末豆角 | 12 元 |",
+      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D04",
+    "name": "鱼香茄子",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "evidence": {
+      "photoFile": "source_assets/photo_2F16.jpg",
+      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
+      "ocrLine": 15,
+      "ocrQuote": "鱼 香 茄 子 1 1 元",
+      "matchedText": "鱼香茄子11元",
+      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 615,
+      "sourceQuote": "| 糖醋里脊 / 红烧里脊 / 鱼香茄子 / 肉末茄子 / 香辣火腿 / 西红柿炒鸡蛋 | 11 元 |",
+      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D05",
+    "name": "西红柿炒鸡蛋",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "evidence": {
+      "photoFile": "source_assets/photo_2F16.jpg",
+      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
+      "ocrLine": 16,
+      "ocrQuote": "西 红 柿 炒 鸡 蛋 11 元",
+      "matchedText": "西红柿炒鸡蛋11元",
+      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 615,
+      "sourceQuote": "| 糖醋里脊 / 红烧里脊 / 鱼香茄子 / 肉末茄子 / 香辣火腿 / 西红柿炒鸡蛋 | 11 元 |",
+      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D06",
+    "name": "酸菜肉丝",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "evidence": {
+      "photoFile": "source_assets/photo_2F16.jpg",
+      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
+      "ocrLine": 17,
+      "ocrQuote": "酸 菜 肉 丝 12 元",
+      "matchedText": "酸菜肉丝12元",
+      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 616,
+      "sourceQuote": "| 火腿鸡蛋 / 酸菜肉丝 / 肉末豆角 | 12 元 |",
+      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D07",
+    "name": "肉末豆角",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "evidence": {
+      "photoFile": "source_assets/photo_2F16.jpg",
+      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
+      "ocrLine": 18,
+      "ocrQuote": "肉 末 豆 角 12 元",
+      "matchedText": "肉末豆角12元",
+      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 616,
+      "sourceQuote": "| 火腿鸡蛋 / 酸菜肉丝 / 肉末豆角 | 12 元 |",
+      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D08",
+    "name": "土豆鸡丁",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "evidence": {
+      "photoFile": "source_assets/photo_2F16.jpg",
+      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
+      "ocrLine": 19,
+      "ocrQuote": "土 豆 鸡 丁 13 元",
+      "matchedText": "土豆鸡丁13元",
+      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 617,
+      "sourceQuote": "| 土豆鸡丁 / 宫保鸡丁 / 辣子鸡丁 / 泡椒猪肝 | 13 元 |",
+      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D09",
+    "name": "辣子鸡丁",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "evidence": {
+      "photoFile": "source_assets/photo_2F16.jpg",
+      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
+      "ocrLine": 21,
+      "ocrQuote": "辣 子 鸡 丁 13 元",
+      "matchedText": "辣子鸡丁13元",
+      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 617,
+      "sourceQuote": "| 土豆鸡丁 / 宫保鸡丁 / 辣子鸡丁 / 泡椒猪肝 | 13 元 |",
+      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D10",
+    "name": "辣椒炒肉",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "evidence": {
+      "photoFile": "source_assets/photo_2F16.jpg",
+      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
+      "ocrLine": 22,
+      "ocrQuote": "辣 椒 炒 肉 14 元",
+      "matchedText": "辣椒炒肉14元",
+      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 618,
+      "sourceQuote": "| 辣椒炒肉 | 14 元 |",
+      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D11",
+    "name": "泡椒猪肝",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "evidence": {
+      "photoFile": "source_assets/photo_2F16.jpg",
+      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
+      "ocrLine": 23,
+      "ocrQuote": "泡 椒 猪 肝 13 元",
+      "matchedText": "泡椒猪肝13元",
+      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 617,
+      "sourceQuote": "| 土豆鸡丁 / 宫保鸡丁 / 辣子鸡丁 / 泡椒猪肝 | 13 元 |",
+      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D12",
+    "name": "红烧牛肉",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "evidence": {
+      "photoFile": "source_assets/photo_2F16.jpg",
+      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
+      "ocrLine": 24,
+      "ocrQuote": "红 烧 牛 肉 18 元",
+      "matchedText": "红烧牛肉18元",
+      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 619,
+      "sourceQuote": "| 红烧牛肉 | 18 元 |",
+      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D13",
+    "name": "鱼香肉丝",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "evidence": {
+      "photoFile": "source_assets/photo_2F16.jpg",
+      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
+      "ocrLine": 25,
+      "ocrQuote": "鱼 香 肉 丝 1 5 元",
+      "matchedText": "鱼香肉丝15元",
+      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 620,
+      "sourceQuote": "| 香辣肉丝 / 葱爆肉片 / 甘兰回锅肉 / 木须肉 / 孜然鱿鱼 / 孜然肉片 / 鱼香肉丝 | 15 元 |",
+      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D14",
+    "name": "甘兰回锅肉",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "evidence": {
+      "photoFile": "source_assets/photo_2F16.jpg",
+      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
+      "ocrLine": 30,
+      "ocrQuote": "甘 兰 回 锅 肉 15 元 孜 然 土 豆 11 元",
+      "matchedText": "甘兰回锅肉15元",
+      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 620,
+      "sourceQuote": "| 香辣肉丝 / 葱爆肉片 / 甘兰回锅肉 / 木须肉 / 孜然鱿鱼 / 孜然肉片 / 鱼香肉丝 | 15 元 |",
+      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D15",
+    "name": "孜然土豆",
+    "blocked": false,
+    "disposition": "CANDIDATE",
+    "evidence": {
+      "photoFile": "source_assets/photo_2F16.jpg",
+      "photoSHA256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f",
+      "ocrLine": 30,
+      "ocrQuote": "甘 兰 回 锅 肉 15 元 孜 然 土 豆 11 元",
+      "matchedText": "孜然土豆11元",
+      "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+      "sourceLine": 625,
+      "sourceQuote": "| 孜然土豆 | 11 元 |",
+      "evidenceLevel": "same-line OCR + exact source item and price; no human signoff"
+    }
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L613-01",
+    "name": "红烧土豆",
+    "blocked": true,
+    "disposition": "PENDING"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L613-02",
+    "name": "清炒甘兰",
+    "blocked": true,
+    "disposition": "PENDING"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L614-03",
+    "name": "地三鲜",
+    "blocked": true,
+    "disposition": "PENDING"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L615-04",
+    "name": "糖醋里脊",
+    "blocked": true,
+    "disposition": "PENDING"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L615-05",
+    "name": "红烧里脊",
+    "blocked": true,
+    "disposition": "PENDING"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L617-06",
+    "name": "宫保鸡丁",
+    "blocked": true,
+    "disposition": "PENDING"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L620-07",
+    "name": "香辣肉丝",
+    "blocked": true,
+    "disposition": "PENDING"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L620-08",
+    "name": "葱爆肉片",
+    "blocked": true,
+    "disposition": "PENDING"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L620-09",
+    "name": "木须肉",
+    "blocked": true,
+    "disposition": "PENDING"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L620-10",
+    "name": "孜然鱿鱼",
+    "blocked": true,
+    "disposition": "PENDING"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L620-11",
+    "name": "孜然肉片",
+    "blocked": true,
+    "disposition": "PENDING"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L621-12",
+    "name": "红烧肉",
+    "blocked": true,
+    "disposition": "PENDING"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L621-13",
+    "name": "四川腊肉",
+    "blocked": true,
+    "disposition": "PENDING"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L621-14",
+    "name": "孜然五花肉",
+    "blocked": true,
+    "disposition": "PENDING"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L622-15",
+    "name": "葱爆牛肉",
+    "blocked": true,
+    "disposition": "PENDING"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L622-16",
+    "name": "土豆肥肠",
+    "blocked": true,
+    "disposition": "PENDING"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L622-17",
+    "name": "香辣肥肠",
+    "blocked": true,
+    "disposition": "PENDING"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L622-18",
+    "name": "孜然牛肉",
+    "blocked": true,
+    "disposition": "PENDING"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L622-19",
+    "name": "孜然羊肉",
+    "blocked": true,
+    "disposition": "PENDING"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L623-20",
+    "name": "蛋炒饭",
+    "blocked": true,
+    "disposition": "PENDING"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L624-21",
+    "name": "肉丝炒饭",
+    "blocked": true,
+    "disposition": "PENDING"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L624-22",
+    "name": "孜然猪肝",
+    "blocked": true,
+    "disposition": "PENDING"
+  }
+]

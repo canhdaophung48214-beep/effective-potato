@@ -1,0 +1,23 @@
+PASS 7项新增组件/关系逐条OCR行及照片哈希可复核
+PASS 10图实际离线OCR成功
+PASS 主食组件2不冒充独立菜品
+PASS 加料5不独立菜、不假定基础菜
+PASS 15材料责任唯一完整
+PASS 2候选+5关系+8待核验守恒
+PASS 不重新生成R07金针菇关系
+PASS 负向:伪造价格
+PASS 负向:改为独立菜品
+PASS 负向:未知楼层填充
+PASS 负向:上传日期冒充采集
+PASS 负向:当前报价
+PASS 负向:伪造OCR引文
+PASS 负向:加料强绑基础菜
+PASS 负向:未知单位填份
+PASS 原图快照与before备份逐字节一致
+PASS 正式项目字节未改
+PASS R03-R07冻结成果全部字节不变
+PASS Git状态未变
+git diff --check exit= 0
+warning: in the working copy of 'project.config.json', CRLF will be replaced by LF the next time Git touches it
+
+RESULT 19 PASS / 0 FAIL / 0 SKIP; exit=0

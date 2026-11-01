@@ -1,0 +1,1 @@
+const fs=require('fs'),path=require('path');const g=require(path.resolve('项目/tools/pilot/gen_records.js'));fs.writeFileSync(path.join(__dirname,'parsed_source.json'),JSON.stringify(g.__test__.parseDoc(fs.readFileSync('项目/tools/pilot/TRANSCRIPTION_DRAFT.md','utf8'),{file:'TRANSCRIPTION_DRAFT.md'}),null,2));console.log('parseDoc capture exit=0');

@@ -1,0 +1,152 @@
+[
+  {
+    "stallRef": "T01",
+    "sourceLine": 71,
+    "sourceQuote": "**无固定价单品。** 按 A3 规则「按重量计价不录为固定价菜品」，本档 **0 条**。",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T02",
+    "sourceLine": 105,
+    "sourceQuote": "加料：加鸡丁 4 元（不录）",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T04",
+    "sourceLine": 153,
+    "sourceQuote": "加料区（不录）：烤肠 1/2/3 元、辣条 1 元、卤蛋 1.5 元、多加一份肉 5 元、多加一份鸡排 4 元、打包盒 +0.5 元",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T04",
+    "sourceLine": 154,
+    "sourceQuote": "粥类饮品（不属主食，暂不录）：黑米粥 3 元、燕麦粥 3 元；椰奶系列 3.5 元；芒果椰奶 / 西米椰奶 4 元",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T04",
+    "sourceLine": 156,
+    "sourceQuote": "> 小计：**4 条**。第四项「鲜椒鸡拌饭」价签被遮挡，按招牌同款价 14.9 记 —— **标待补证**。",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T05",
+    "sourceLine": 180,
+    "sourceQuote": "另有「牛肉汤套餐」「羊汤套餐」两块立牌（套餐，按规则不录）。",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T05",
+    "sourceLine": 182,
+    "sourceQuote": "> 小计：**12 个品类**。三档价格差异大，属**多规格同品**，入库时按首轮 W05 阶梯价裁决同例处理（拆 3 条并注明规格），或只取主档 —— **待裁决**。",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T06",
+    "sourceLine": 190,
+    "sourceQuote": "**计价为「25 元自选」组合制，无单品价。本档 0 条。**",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T07",
+    "sourceLine": 196,
+    "sourceQuote": "招牌：双拼茶泡饭；副文：道道可拼 餐餐美味 米饭、菜无限续；立牌：新式滑蛋饭 9.9 元起",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T07",
+    "sourceLine": 232,
+    "sourceQuote": "> 「二荤二菜任你选」属自选组合，沿用首轮裁决：**不录**。",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T08",
+    "sourceLine": 258,
+    "sourceQuote": "立牌：虾仁滑蛋饭 **9.9 元起**",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T09",
+    "sourceLine": 272,
+    "sourceQuote": "| 鲜猪肉水饺等 9 种馅 | 12 / 15 元多档 | **馅 ↔ 价 对应关系不明** |",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T11",
+    "sourceLine": 329,
+    "sourceQuote": "另有：饭团 7 元起、拉丝芝士热狗棒 5 元",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T11",
+    "sourceLine": 332,
+    "sourceQuote": "> 6 个「拌饭套餐」按 A3 规则（套餐不录）**应剔除**，剔除后 **22 条**。",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T12",
+    "sourceLine": 352,
+    "sourceQuote": "加料（不录）：卤蛋 1.5 元、卷煎 3 元、酱柳腐卷 3 元",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T14",
+    "sourceLine": 437,
+    "sourceQuote": "加料区（不录）：1 元区 珍珠/琥珀珍珠/椰果/仙草；2 元区 薯圆/多肉/红豆/西米/胶原冻",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T15",
+    "sourceLine": 480,
+    "sourceQuote": "加点小吃（不录）：精选肥牛卷 5、鲜虾滑 5、卤鹌鹑蛋 3、午餐肉 3、香菇贡丸 3、鱼豆腐 3、V 蟹柳 3、旋涡炸蛋 3、现炸小酥肉 3、响铃卷 2、海带丝 2、地耳丝 2、银耳 2、甘蓝 2",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T16",
+    "sourceLine": 504,
+    "sourceQuote": "卤味（不录）：招牌把子肉 7、蛋黄狮子头 7、卤鸡腿 5、溏心蛋 2、虎皮蛋 2、糖醋辣椒 2、糖醋茄子 2、爽口黄瓜 2、金针菇 2、青菜 2、蛋卷 2、兰花豆干 1、烤肠 1、豆干 1、海带 1、豆皮结 1",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T17",
+    "sourceLine": 529,
+    "sourceQuote": "套餐（不录）：套餐一 10 元 / 套餐二 12 元 / 套餐三 14 元",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T18",
+    "sourceLine": 540,
+    "sourceQuote": "副文：米饭免费续 · 饮料免费喝；加料更丰富",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T18",
+    "sourceLine": 552,
+    "sourceQuote": "加料（不录）：酱大骨 6、大块卤肉 6、卤鸡腿 5、卤鸭腿 4、橙汁 2、橙汁瓶 2、卤蛋 2、烤肠 2",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T19",
+    "sourceLine": 561,
+    "sourceQuote": "招牌：咖喱 Gigi 蛋包饭（Gigi Curry）；加料：芝士片 +3 元",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T20",
+    "sourceLine": 620,
+    "sourceQuote": "卤味（不录）：卤蛋 1.5、煎蛋 2、烤肠 1.5、豆干 2、豆皮叶 1.5",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T21",
+    "sourceLine": 668,
+    "sourceQuote": "另加菜品（不录）：炸蛋 3、加肉丝 3、甜不辣 2 元/5 个、大肉肠 2、加粗粮面 3 元/份、卤蛋 2、烤鸡腿肉 4、鸡柳 3、鱼籽烧 3",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  },
+  {
+    "stallRef": "T22",
+    "sourceLine": 696,
+    "sourceQuote": "红纸套餐（不录）：锅包肉 12.9、鱼香肉丝 12.9、椒麻香甜鸭 13.9、椒麻香甜鸡 14.9（均含煎蛋+2 素+米饭）",
+    "disposition": "PRESERVE_AS_AUXILIARY_OR_UNRESOLVED_NOT_AUTO_DISH"
+  }
+]

@@ -1,0 +1,3 @@
+shop_id,floor_id,stall_id,stall_name,side,no_status,no,source_kind,source_detail,source_ref
+ex_s01,ex_s01_f1,ex_s01_t1,示例窗口（仅格式示例）,east,has,3,field,示例：窗口挂牌与菜单牌同框,ex_menu.jpg
+ex_s02,,ex_s02_t1,示例档口（仅格式示例）,,unverified,,field,示例：暂未核到编号,ex_menu.jpg

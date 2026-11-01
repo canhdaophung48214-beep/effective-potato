@@ -1,0 +1,13 @@
+shop_id,floor_id,stall_id,stall_name,side,no_status,no,source_kind,source_detail,source_ref,collector,collect_date,evidence_file
+c01,c01_f2,c01_t07,见面就好,east,unverified,,field,2F 名册位次 东⑦（契约 §5.7：2F 分 east/west，3F 无方位证据留空）；记录来源 TRANSCRIPTION_2F.md 第 71 行,,,,
+c01,c01_f2,c01_t09,元气补给粥,east,unverified,,field,2F 名册位次 东⑨（契约 §5.7：2F 分 east/west，3F 无方位证据留空）；记录来源 TRANSCRIPTION_2F.md 第 95 行,,,,
+c01,c01_f2,c01_t11,来一碗肉肉饭,east,unverified,,field,2F 名册位次 东⑪（契约 §5.7：2F 分 east/west，3F 无方位证据留空）；记录来源 TRANSCRIPTION_2F.md 第 757 行,,,,
+c01,c01_f2,c01_t16,板面砂锅米线,west,unverified,,field,2F 名册位次 西④（契约 §5.7：2F 分 east/west，3F 无方位证据留空）；记录来源 TRANSCRIPTION_2F.md 第 535 行,,,,
+c01,c01_f2,c01_t48,小吕哥黄焖鸡（暂定）,,unverified,,field,2F 名册位次 —（名册外）（契约 §5.7：2F 分 east/west，3F 无方位证据留空）；记录来源 TRANSCRIPTION_2F.md 第 186 行,,,,
+c01,c01_f2,c01_t49,炒粉炒面炒饼（暂定）,,unverified,,field,2F 名册位次 —（名册外）（契约 §5.7：2F 分 east/west，3F 无方位证据留空）；记录来源 TRANSCRIPTION_2F.md 第 297 行,,,,
+c01,c01_f2,c01_t37,西雅苏新疆炒米粉,west,unverified,,field,2F 名册位次 西㉕（契约 §5.7：2F 分 east/west，3F 无方位证据留空）；记录来源 TRANSCRIPTION_2F.md 第 389 行,,,,
+c01,c01_f3,c01_t38,犟福 · 超级酱骨饭,,unverified,,field,2F 名册位次 W01（契约 §5.7：2F 分 east/west，3F 无方位证据留空）；记录来源 TRANSCRIPTION_3F.md 第 66 行,,,,
+c01,c01_f3,c01_t39,咖喱 Gigi 蛋包饭,,unverified,,field,2F 名册位次 W02（契约 §5.7：2F 分 east/west，3F 无方位证据留空）；记录来源 TRANSCRIPTION_3F.md 第 101 行,,,,
+c01,c01_f3,c01_t43,大姨烧肉饭,,unverified,,field,2F 名册位次 W06（契约 §5.7：2F 分 east/west，3F 无方位证据留空）；记录来源 TRANSCRIPTION_3F.md 第 243 行,,,,
+c01,c01_f3,c01_t44,辣肉面,,unverified,,field,2F 名册位次 W07（契约 §5.7：2F 分 east/west，3F 无方位证据留空）；记录来源 TRANSCRIPTION_3F.md 第 267 行,,,,
+c01,c01_f3,c01_t46,梨泰院烧肉饭,,unverified,,field,2F 名册位次 W09（契约 §5.7：2F 分 east/west，3F 无方位证据留空）；记录来源 TRANSCRIPTION_3F.md 第 356 行,,,,

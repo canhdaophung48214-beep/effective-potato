@@ -1,13 +1,50 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/rating/rating",
+    "pages/community/community",
+    "pages/profile/profile",
+    "pages/submit/submit",
+    "pages/review/review"
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "backgroundColor": "#F5F6F8",
-    "navigationBarBackgroundColor": "#FF7A45",
-    "navigationBarTitleText": "山理吃什么",
+    "backgroundColor": "#FAF6F0",
+    "navigationBarBackgroundColor": "#D9412B",
+    "navigationBarTitleText": "食神寻味",
     "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#9C9289",
+    "selectedColor": "#D9412B",
+    "backgroundColor": "#FFFFFF",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "assets/tabbar/home.png",
+        "selectedIconPath": "assets/tabbar/home-on.png"
+      },
+      {
+        "pagePath": "pages/rating/rating",
+        "text": "评分",
+        "iconPath": "assets/tabbar/rating.png",
+        "selectedIconPath": "assets/tabbar/rating-on.png"
+      },
+      {
+        "pagePath": "pages/community/community",
+        "text": "社区",
+        "iconPath": "assets/tabbar/community.png",
+        "selectedIconPath": "assets/tabbar/community-on.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "assets/tabbar/profile.png",
+        "selectedIconPath": "assets/tabbar/profile-on.png"
+      }
+    ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

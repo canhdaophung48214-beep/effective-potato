@@ -1,0 +1,10 @@
+﻿sourceRecordRef,name,sourceFile,sourceLine,sourceQuote,stallRef,kind,oldRecordKeys,reasons,classification,nextAction
+R05-SC2F-L0097,小苏肉汤面,source_assets/TRANSCRIPTION_DRAFT.md,97,| 小苏肉汤面 | 11 | noodle | 汤面 |,R05-SC2F-S01,dish,"[""c02_d042""]","[""转录稿待确认清单第6项保留小苏/小酥字义疑问""]",BUSINESS_EVIDENCE_NEEDS_VERIFICATION,只核对疑字/括号，不推测；其他候选继续
+R05-SC2F-L0101,豇豆肉碎面,source_assets/TRANSCRIPTION_DRAFT.md,101,| ⚠ 豇豆肉碎面 | 9 | noodle | 汤面（第 7 项，字迹待确认） |,R05-SC2F-S01,dish,[],"[""转录稿明确标注疑字或括号语义待确认""]",BUSINESS_EVIDENCE_NEEDS_VERIFICATION,只核对疑字/括号，不推测；其他候选继续
+R05-SC2F-L0104,小苏肉拌面,source_assets/TRANSCRIPTION_DRAFT.md,104,| 小苏肉拌面 | 11 | noodle | 拌面 |,R05-SC2F-S01,dish,"[""c02_d048""]","[""转录稿待确认清单第6项保留小苏/小酥字义疑问""]",BUSINESS_EVIDENCE_NEEDS_VERIFICATION,只核对疑字/括号，不推测；其他候选继续
+R05-SC2F-L0131,清汤小面,source_assets/TRANSCRIPTION_DRAFT.md,131,| ⚠ 清汤小面 | 7 | noodle | 清汤（括号内疑为「可拌」） |,R05-SC2F-S02,dish,"[""c02_d068""]","[""转录稿明确标注疑字或括号语义待确认""]",BUSINESS_EVIDENCE_NEEDS_VERIFICATION,只核对疑字/括号，不推测；其他候选继续
+R05-SC2F-L0132,清汤杂酱面,source_assets/TRANSCRIPTION_DRAFT.md,132,| ⚠ 清汤杂酱面 | 9 | noodle | 清汤（同上） |,R05-SC2F-S02,dish,"[""c02_d069""]","[""转录稿明确标注疑字或括号语义待确认""]",BUSINESS_EVIDENCE_NEEDS_VERIFICATION,只核对疑字/括号，不推测；其他候选继续
+R05-SC2F-L0133,清汤豌杂面,source_assets/TRANSCRIPTION_DRAFT.md,133,| ⚠ 清汤豌杂面 | 11 | noodle | 清汤（同上） |,R05-SC2F-S02,dish,"[""c02_d070""]","[""转录稿明确标注疑字或括号语义待确认""]",BUSINESS_EVIDENCE_NEEDS_VERIFICATION,只核对疑字/括号，不推测；其他候选继续
+R05-SC2F-L0147-B1,西冷牛排套餐,source_assets/TRANSCRIPTION_DRAFT.md,147,套餐（不录）：西冷牛排套餐 17.8 / 黑椒牛排套餐 14.8 / 鸡排套餐 12.8（含意面、煎蛋、西蓝花）。,R05-SC2F-S03,bundle,[],"[""原文明确套餐不录；当前批次无套餐准入授权，组合成分只保留原句""]",BUSINESS_EVIDENCE_TECHNICAL_ADMISSION_PENDING,复用组合关系做后续隔离适配；不生成正式菜品
+R05-SC2F-L0147-B2,黑椒牛排套餐,source_assets/TRANSCRIPTION_DRAFT.md,147,套餐（不录）：西冷牛排套餐 17.8 / 黑椒牛排套餐 14.8 / 鸡排套餐 12.8（含意面、煎蛋、西蓝花）。,R05-SC2F-S03,bundle,[],"[""原文明确套餐不录；当前批次无套餐准入授权，组合成分只保留原句""]",BUSINESS_EVIDENCE_TECHNICAL_ADMISSION_PENDING,复用组合关系做后续隔离适配；不生成正式菜品
+R05-SC2F-L0147-B3,鸡排套餐,source_assets/TRANSCRIPTION_DRAFT.md,147,套餐（不录）：西冷牛排套餐 17.8 / 黑椒牛排套餐 14.8 / 鸡排套餐 12.8（含意面、煎蛋、西蓝花）。,R05-SC2F-S03,bundle,[],"[""原文明确套餐不录；当前批次无套餐准入授权，组合成分只保留原句""]",BUSINESS_EVIDENCE_TECHNICAL_ADMISSION_PENDING,复用组合关系做后续隔离适配；不生成正式菜品

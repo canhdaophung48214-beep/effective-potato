@@ -1,0 +1,24 @@
+'use strict';
+const fs = require('fs'); const path = require('path');
+const RAW = path.join(__dirname, '_raw');
+const records = JSON.parse(fs.readFileSync(path.join(RAW, 'records.json'), 'utf8')).records;
+const ents = JSON.parse(fs.readFileSync(path.join(RAW, 'blockers.json'), 'utf8')).entries;
+console.log('--- 3 A entries ---');
+for (const e of ents.filter(x => x.kind === 'blocked_by_decision').slice(0, 3)) console.log(JSON.stringify(e));
+console.log('--- 2 C entries ---');
+for (const e of ents.filter(x => x.kind === 'not_generated').slice(0, 2)) console.log(JSON.stringify(e));
+console.log('--- 3 records (trim raw) ---');
+for (const r of records.slice(0, 3)) console.log(JSON.stringify(Object.assign({}, r, { gen: Object.assign({}, r.gen, { rawRow: String(r.gen.rawRow).slice(0, 60) }) })));
+// join feasibility
+const keys = new Set(records.map(r => r._adapterKey));
+console.log('adapterKey sample:', JSON.stringify(records.slice(0, 3).map(r => r._adapterKey)));
+const bk = ents.filter(e => e.kind === 'blocked_by_decision');
+console.log('blocked entries with adapterKey match:', bk.filter(e => keys.has(e.recordKey)).length, '/', bk.length);
+const nameJoin = new Set(records.map(r => r.stallId + '|' + r.name));
+console.log('name join:', bk.filter(e => nameJoin.has(e.stallId + '|' + e.name)).length);
+console.log('--- distinct source.kind/detail sample ---');
+console.log(JSON.stringify(records.slice(0, 2).map(r => r.source)));
+console.log('--- dishes w/ empty tastes ---', records.filter(r => (r.tastes || []).length === 0).length);
+console.log('--- verifyStatus set ---', JSON.stringify([...new Set(records.map(r => r.verifyStatus))]));
+console.log('--- price min/max ---', Math.min(...records.map(r => r.price)), Math.max(...records.map(r => r.price)));
+console.log('--- foodType set ---', JSON.stringify([...new Set(records.map(r => r.foodType))]));

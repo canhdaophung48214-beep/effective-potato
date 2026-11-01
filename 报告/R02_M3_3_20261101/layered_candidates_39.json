@@ -1,0 +1,3941 @@
+[
+  {
+    "id": "c01_d502",
+    "name": "青椒蛋炒饼",
+    "legacyRecord": {
+      "id": "c01_d502",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "青椒蛋炒饼",
+      "price": 10,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：青椒蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 262 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/青椒蛋炒饼",
+        "rawGroupKey": "青椒蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 262,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d502"
+      },
+      "_adapterKey": "c01_t48|青椒蛋炒饼|炒饼|"
+    },
+    "sourceMenuPrice": {
+      "amount": 10,
+      "rawExpression": "10 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 262 行",
+      "sourceRawRow": "| 青椒蛋 | 10 元 | 10 元 | 10 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d503",
+    "name": "青椒蛋炒面",
+    "legacyRecord": {
+      "id": "c01_d503",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "青椒蛋炒面",
+      "price": 10,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：青椒蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 262 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/青椒蛋炒面",
+        "rawGroupKey": "青椒蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 262,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d503"
+      },
+      "_adapterKey": "c01_t48|青椒蛋炒面|炒面|"
+    },
+    "sourceMenuPrice": {
+      "amount": 10,
+      "rawExpression": "10 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 262 行",
+      "sourceRawRow": "| 青椒蛋 | 10 元 | 10 元 | 10 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d504",
+    "name": "青椒蛋炒饭",
+    "legacyRecord": {
+      "id": "c01_d504",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "青椒蛋炒饭",
+      "price": 10,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：青椒蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 262 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/青椒蛋炒饭",
+        "rawGroupKey": "青椒蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 262,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d504"
+      },
+      "_adapterKey": "c01_t48|青椒蛋炒饭|炒饭|"
+    },
+    "sourceMenuPrice": {
+      "amount": 10,
+      "rawExpression": "10 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 262 行",
+      "sourceRawRow": "| 青椒蛋 | 10 元 | 10 元 | 10 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d505",
+    "name": "火腿肠蛋炒饼",
+    "legacyRecord": {
+      "id": "c01_d505",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "火腿肠蛋炒饼",
+      "price": 12,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：火腿肠蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 263 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/火腿肠蛋炒饼",
+        "rawGroupKey": "火腿肠蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 263,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d505"
+      },
+      "_adapterKey": "c01_t48|火腿肠蛋炒饼|炒饼|"
+    },
+    "sourceMenuPrice": {
+      "amount": 12,
+      "rawExpression": "12 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 263 行",
+      "sourceRawRow": "| 火腿肠蛋 | 12 元 | 12 元 | 12 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d506",
+    "name": "火腿肠蛋炒面",
+    "legacyRecord": {
+      "id": "c01_d506",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "火腿肠蛋炒面",
+      "price": 12,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：火腿肠蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 263 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/火腿肠蛋炒面",
+        "rawGroupKey": "火腿肠蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 263,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d506"
+      },
+      "_adapterKey": "c01_t48|火腿肠蛋炒面|炒面|"
+    },
+    "sourceMenuPrice": {
+      "amount": 12,
+      "rawExpression": "12 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 263 行",
+      "sourceRawRow": "| 火腿肠蛋 | 12 元 | 12 元 | 12 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d507",
+    "name": "火腿肠蛋炒饭",
+    "legacyRecord": {
+      "id": "c01_d507",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "火腿肠蛋炒饭",
+      "price": 12,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：火腿肠蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 263 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/火腿肠蛋炒饭",
+        "rawGroupKey": "火腿肠蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 263,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d507"
+      },
+      "_adapterKey": "c01_t48|火腿肠蛋炒饭|炒饭|"
+    },
+    "sourceMenuPrice": {
+      "amount": 12,
+      "rawExpression": "12 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 263 行",
+      "sourceRawRow": "| 火腿肠蛋 | 12 元 | 12 元 | 12 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d508",
+    "name": "香菇鸡丁蛋炒饼",
+    "legacyRecord": {
+      "id": "c01_d508",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "香菇鸡丁蛋炒饼",
+      "price": 13,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：香菇鸡丁蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 264 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/香菇鸡丁蛋炒饼",
+        "rawGroupKey": "香菇鸡丁蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 264,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d508"
+      },
+      "_adapterKey": "c01_t48|香菇鸡丁蛋炒饼|炒饼|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 264 行",
+      "sourceRawRow": "| 香菇鸡丁蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d509",
+    "name": "香菇鸡丁蛋炒面",
+    "legacyRecord": {
+      "id": "c01_d509",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "香菇鸡丁蛋炒面",
+      "price": 13,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：香菇鸡丁蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 264 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/香菇鸡丁蛋炒面",
+        "rawGroupKey": "香菇鸡丁蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 264,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d509"
+      },
+      "_adapterKey": "c01_t48|香菇鸡丁蛋炒面|炒面|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 264 行",
+      "sourceRawRow": "| 香菇鸡丁蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d510",
+    "name": "香菇鸡丁蛋炒饭",
+    "legacyRecord": {
+      "id": "c01_d510",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "香菇鸡丁蛋炒饭",
+      "price": 13,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：香菇鸡丁蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 264 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/香菇鸡丁蛋炒饭",
+        "rawGroupKey": "香菇鸡丁蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 264,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d510"
+      },
+      "_adapterKey": "c01_t48|香菇鸡丁蛋炒饭|炒饭|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 264 行",
+      "sourceRawRow": "| 香菇鸡丁蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d511",
+    "name": "广式腊肠蛋炒饼",
+    "legacyRecord": {
+      "id": "c01_d511",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "广式腊肠蛋炒饼",
+      "price": 13,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：广式腊肠蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 265 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/广式腊肠蛋炒饼",
+        "rawGroupKey": "广式腊肠蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 265,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d511"
+      },
+      "_adapterKey": "c01_t48|广式腊肠蛋炒饼|炒饼|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 265 行",
+      "sourceRawRow": "| 广式腊肠蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d512",
+    "name": "广式腊肠蛋炒面",
+    "legacyRecord": {
+      "id": "c01_d512",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "广式腊肠蛋炒面",
+      "price": 13,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：广式腊肠蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 265 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/广式腊肠蛋炒面",
+        "rawGroupKey": "广式腊肠蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 265,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d512"
+      },
+      "_adapterKey": "c01_t48|广式腊肠蛋炒面|炒面|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 265 行",
+      "sourceRawRow": "| 广式腊肠蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d513",
+    "name": "广式腊肠蛋炒饭",
+    "legacyRecord": {
+      "id": "c01_d513",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "广式腊肠蛋炒饭",
+      "price": 13,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：广式腊肠蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 265 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/广式腊肠蛋炒饭",
+        "rawGroupKey": "广式腊肠蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 265,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d513"
+      },
+      "_adapterKey": "c01_t48|广式腊肠蛋炒饭|炒饭|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 265 行",
+      "sourceRawRow": "| 广式腊肠蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d514",
+    "name": "三鲜蛋炒饼",
+    "legacyRecord": {
+      "id": "c01_d514",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "三鲜蛋炒饼",
+      "price": 13,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：三鲜蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 266 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/三鲜蛋炒饼",
+        "rawGroupKey": "三鲜蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 266,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d514"
+      },
+      "_adapterKey": "c01_t48|三鲜蛋炒饼|炒饼|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 266 行",
+      "sourceRawRow": "| 三鲜蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d515",
+    "name": "三鲜蛋炒面",
+    "legacyRecord": {
+      "id": "c01_d515",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "三鲜蛋炒面",
+      "price": 13,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：三鲜蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 266 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/三鲜蛋炒面",
+        "rawGroupKey": "三鲜蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 266,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d515"
+      },
+      "_adapterKey": "c01_t48|三鲜蛋炒面|炒面|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 266 行",
+      "sourceRawRow": "| 三鲜蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d516",
+    "name": "三鲜蛋炒饭",
+    "legacyRecord": {
+      "id": "c01_d516",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "三鲜蛋炒饭",
+      "price": 13,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：三鲜蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 266 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/三鲜蛋炒饭",
+        "rawGroupKey": "三鲜蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 266,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d516"
+      },
+      "_adapterKey": "c01_t48|三鲜蛋炒饭|炒饭|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 266 行",
+      "sourceRawRow": "| 三鲜蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d517",
+    "name": "土豆肉丝蛋炒饼",
+    "legacyRecord": {
+      "id": "c01_d517",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "土豆肉丝蛋炒饼",
+      "price": 13,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：土豆肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 267 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/土豆肉丝蛋炒饼",
+        "rawGroupKey": "土豆肉丝蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 267,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d517"
+      },
+      "_adapterKey": "c01_t48|土豆肉丝蛋炒饼|炒饼|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 267 行",
+      "sourceRawRow": "| 土豆肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d518",
+    "name": "土豆肉丝蛋炒面",
+    "legacyRecord": {
+      "id": "c01_d518",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "土豆肉丝蛋炒面",
+      "price": 13,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：土豆肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 267 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/土豆肉丝蛋炒面",
+        "rawGroupKey": "土豆肉丝蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 267,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d518"
+      },
+      "_adapterKey": "c01_t48|土豆肉丝蛋炒面|炒面|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 267 行",
+      "sourceRawRow": "| 土豆肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d519",
+    "name": "土豆肉丝蛋炒饭",
+    "legacyRecord": {
+      "id": "c01_d519",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "土豆肉丝蛋炒饭",
+      "price": 13,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：土豆肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 267 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/土豆肉丝蛋炒饭",
+        "rawGroupKey": "土豆肉丝蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 267,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d519"
+      },
+      "_adapterKey": "c01_t48|土豆肉丝蛋炒饭|炒饭|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 267 行",
+      "sourceRawRow": "| 土豆肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d520",
+    "name": "青椒火腿蛋炒饼",
+    "legacyRecord": {
+      "id": "c01_d520",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "青椒火腿蛋炒饼",
+      "price": 13,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：青椒火腿蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 268 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/青椒火腿蛋炒饼",
+        "rawGroupKey": "青椒火腿蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 268,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d520"
+      },
+      "_adapterKey": "c01_t48|青椒火腿蛋炒饼|炒饼|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 268 行",
+      "sourceRawRow": "| 青椒火腿蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d521",
+    "name": "青椒火腿蛋炒面",
+    "legacyRecord": {
+      "id": "c01_d521",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "青椒火腿蛋炒面",
+      "price": 13,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：青椒火腿蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 268 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/青椒火腿蛋炒面",
+        "rawGroupKey": "青椒火腿蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 268,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d521"
+      },
+      "_adapterKey": "c01_t48|青椒火腿蛋炒面|炒面|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 268 行",
+      "sourceRawRow": "| 青椒火腿蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d522",
+    "name": "青椒火腿蛋炒饭",
+    "legacyRecord": {
+      "id": "c01_d522",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "青椒火腿蛋炒饭",
+      "price": 13,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：青椒火腿蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 268 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/青椒火腿蛋炒饭",
+        "rawGroupKey": "青椒火腿蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 268,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d522"
+      },
+      "_adapterKey": "c01_t48|青椒火腿蛋炒饭|炒饭|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 268 行",
+      "sourceRawRow": "| 青椒火腿蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d523",
+    "name": "青椒肉丝蛋炒饼",
+    "legacyRecord": {
+      "id": "c01_d523",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "青椒肉丝蛋炒饼",
+      "price": 13,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：青椒肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 269 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/青椒肉丝蛋炒饼",
+        "rawGroupKey": "青椒肉丝蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 269,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d523"
+      },
+      "_adapterKey": "c01_t48|青椒肉丝蛋炒饼|炒饼|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 269 行",
+      "sourceRawRow": "| 青椒肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d524",
+    "name": "青椒肉丝蛋炒面",
+    "legacyRecord": {
+      "id": "c01_d524",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "青椒肉丝蛋炒面",
+      "price": 13,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：青椒肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 269 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/青椒肉丝蛋炒面",
+        "rawGroupKey": "青椒肉丝蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 269,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d524"
+      },
+      "_adapterKey": "c01_t48|青椒肉丝蛋炒面|炒面|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 269 行",
+      "sourceRawRow": "| 青椒肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d525",
+    "name": "青椒肉丝蛋炒饭",
+    "legacyRecord": {
+      "id": "c01_d525",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "青椒肉丝蛋炒饭",
+      "price": 13,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：青椒肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 269 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/青椒肉丝蛋炒饭",
+        "rawGroupKey": "青椒肉丝蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 269,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d525"
+      },
+      "_adapterKey": "c01_t48|青椒肉丝蛋炒饭|炒饭|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 269 行",
+      "sourceRawRow": "| 青椒肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d526",
+    "name": "孜然鸡肉蛋炒饼",
+    "legacyRecord": {
+      "id": "c01_d526",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "孜然鸡肉蛋炒饼",
+      "price": 13,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：孜然鸡肉蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 270 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/孜然鸡肉蛋炒饼",
+        "rawGroupKey": "孜然鸡肉蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 270,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d526"
+      },
+      "_adapterKey": "c01_t48|孜然鸡肉蛋炒饼|炒饼|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 270 行",
+      "sourceRawRow": "| 孜然鸡肉蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d527",
+    "name": "孜然鸡肉蛋炒面",
+    "legacyRecord": {
+      "id": "c01_d527",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "孜然鸡肉蛋炒面",
+      "price": 13,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：孜然鸡肉蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 270 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/孜然鸡肉蛋炒面",
+        "rawGroupKey": "孜然鸡肉蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 270,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d527"
+      },
+      "_adapterKey": "c01_t48|孜然鸡肉蛋炒面|炒面|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 270 行",
+      "sourceRawRow": "| 孜然鸡肉蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d528",
+    "name": "孜然鸡肉蛋炒饭",
+    "legacyRecord": {
+      "id": "c01_d528",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "孜然鸡肉蛋炒饭",
+      "price": 13,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：孜然鸡肉蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 270 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/孜然鸡肉蛋炒饭",
+        "rawGroupKey": "孜然鸡肉蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 270,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d528"
+      },
+      "_adapterKey": "c01_t48|孜然鸡肉蛋炒饭|炒饭|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 270 行",
+      "sourceRawRow": "| 孜然鸡肉蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d529",
+    "name": "老干妈肉丝蛋炒饼",
+    "legacyRecord": {
+      "id": "c01_d529",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "老干妈肉丝蛋炒饼",
+      "price": 13,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：老干妈肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 271 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/老干妈肉丝蛋炒饼",
+        "rawGroupKey": "老干妈肉丝蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 271,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d529"
+      },
+      "_adapterKey": "c01_t48|老干妈肉丝蛋炒饼|炒饼|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 271 行",
+      "sourceRawRow": "| 老干妈肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d530",
+    "name": "老干妈肉丝蛋炒面",
+    "legacyRecord": {
+      "id": "c01_d530",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "老干妈肉丝蛋炒面",
+      "price": 13,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：老干妈肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 271 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/老干妈肉丝蛋炒面",
+        "rawGroupKey": "老干妈肉丝蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 271,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d530"
+      },
+      "_adapterKey": "c01_t48|老干妈肉丝蛋炒面|炒面|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 271 行",
+      "sourceRawRow": "| 老干妈肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d531",
+    "name": "老干妈肉丝蛋炒饭",
+    "legacyRecord": {
+      "id": "c01_d531",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "老干妈肉丝蛋炒饭",
+      "price": 13,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：老干妈肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 271 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/老干妈肉丝蛋炒饭",
+        "rawGroupKey": "老干妈肉丝蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 271,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d531"
+      },
+      "_adapterKey": "c01_t48|老干妈肉丝蛋炒饭|炒饭|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 271 行",
+      "sourceRawRow": "| 老干妈肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d532",
+    "name": "酸菜肉丝蛋炒饼",
+    "legacyRecord": {
+      "id": "c01_d532",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "酸菜肉丝蛋炒饼",
+      "price": 13,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：酸菜肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 272 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/酸菜肉丝蛋炒饼",
+        "rawGroupKey": "酸菜肉丝蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 272,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d532"
+      },
+      "_adapterKey": "c01_t48|酸菜肉丝蛋炒饼|炒饼|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 272 行",
+      "sourceRawRow": "| 酸菜肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d533",
+    "name": "酸菜肉丝蛋炒面",
+    "legacyRecord": {
+      "id": "c01_d533",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "酸菜肉丝蛋炒面",
+      "price": 13,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：酸菜肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 272 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/酸菜肉丝蛋炒面",
+        "rawGroupKey": "酸菜肉丝蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 272,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d533"
+      },
+      "_adapterKey": "c01_t48|酸菜肉丝蛋炒面|炒面|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 272 行",
+      "sourceRawRow": "| 酸菜肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d534",
+    "name": "酸菜肉丝蛋炒饭",
+    "legacyRecord": {
+      "id": "c01_d534",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "酸菜肉丝蛋炒饭",
+      "price": 13,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：酸菜肉丝蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 272 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/酸菜肉丝蛋炒饭",
+        "rawGroupKey": "酸菜肉丝蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 272,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d534"
+      },
+      "_adapterKey": "c01_t48|酸菜肉丝蛋炒饭|炒饭|"
+    },
+    "sourceMenuPrice": {
+      "amount": 13,
+      "rawExpression": "13 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 272 行",
+      "sourceRawRow": "| 酸菜肉丝蛋 | 13 元 | 13 元 | 13 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d535",
+    "name": "香辣猪头肉蛋炒饼",
+    "legacyRecord": {
+      "id": "c01_d535",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "香辣猪头肉蛋炒饼",
+      "price": 14,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：香辣猪头肉蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 273 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/香辣猪头肉蛋炒饼",
+        "rawGroupKey": "香辣猪头肉蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 273,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d535"
+      },
+      "_adapterKey": "c01_t48|香辣猪头肉蛋炒饼|炒饼|"
+    },
+    "sourceMenuPrice": {
+      "amount": 14,
+      "rawExpression": "14 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 273 行",
+      "sourceRawRow": "| 香辣猪头肉蛋 | 14 元 | 14 元 | 14 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d536",
+    "name": "香辣猪头肉蛋炒面",
+    "legacyRecord": {
+      "id": "c01_d536",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "香辣猪头肉蛋炒面",
+      "price": 14,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：香辣猪头肉蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 273 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/香辣猪头肉蛋炒面",
+        "rawGroupKey": "香辣猪头肉蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 273,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d536"
+      },
+      "_adapterKey": "c01_t48|香辣猪头肉蛋炒面|炒面|"
+    },
+    "sourceMenuPrice": {
+      "amount": 14,
+      "rawExpression": "14 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 273 行",
+      "sourceRawRow": "| 香辣猪头肉蛋 | 14 元 | 14 元 | 14 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d537",
+    "name": "香辣猪头肉蛋炒饭",
+    "legacyRecord": {
+      "id": "c01_d537",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "香辣猪头肉蛋炒饭",
+      "price": 14,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：香辣猪头肉蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 273 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/香辣猪头肉蛋炒饭",
+        "rawGroupKey": "香辣猪头肉蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 273,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d537"
+      },
+      "_adapterKey": "c01_t48|香辣猪头肉蛋炒饭|炒饭|"
+    },
+    "sourceMenuPrice": {
+      "amount": 14,
+      "rawExpression": "14 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 273 行",
+      "sourceRawRow": "| 香辣猪头肉蛋 | 14 元 | 14 元 | 14 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d538",
+    "name": "红烧牛肉蛋炒饼",
+    "legacyRecord": {
+      "id": "c01_d538",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "红烧牛肉蛋炒饼",
+      "price": 15,
+      "foodType": "snack",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：红烧牛肉蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 274 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/红烧牛肉蛋炒饼",
+        "rawGroupKey": "红烧牛肉蛋炒饼",
+        "specLabel": "炒饼",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 274,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d538"
+      },
+      "_adapterKey": "c01_t48|红烧牛肉蛋炒饼|炒饼|"
+    },
+    "sourceMenuPrice": {
+      "amount": 15,
+      "rawExpression": "15 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 274 行",
+      "sourceRawRow": "| 红烧牛肉蛋 | 15 元 | 15 元 | 15 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d539",
+    "name": "红烧牛肉蛋炒面",
+    "legacyRecord": {
+      "id": "c01_d539",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "红烧牛肉蛋炒面",
+      "price": 15,
+      "foodType": "noodle",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：红烧牛肉蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 274 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/红烧牛肉蛋炒面",
+        "rawGroupKey": "红烧牛肉蛋炒面",
+        "specLabel": "炒面",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 274,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d539"
+      },
+      "_adapterKey": "c01_t48|红烧牛肉蛋炒面|炒面|"
+    },
+    "sourceMenuPrice": {
+      "amount": 15,
+      "rawExpression": "15 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 274 行",
+      "sourceRawRow": "| 红烧牛肉蛋 | 15 元 | 15 元 | 15 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  },
+  {
+    "id": "c01_d540",
+    "name": "红烧牛肉蛋炒饭",
+    "legacyRecord": {
+      "id": "c01_d540",
+      "shopId": "c01",
+      "stallId": "c01_t48",
+      "name": "红烧牛肉蛋炒饭",
+      "price": 15,
+      "foodType": "rice",
+      "tastes": [],
+      "source": {
+        "kind": "field",
+        "detail": "现场拍摄价目表（第 9 张）：红烧牛肉蛋炒饼/炒面/炒饭　三做法同价",
+        "ref": "TRANSCRIPTION_2F.md#W2-04 第 274 行"
+      },
+      "verifyStatus": "unverified",
+      "verifiedAt": null,
+      "note": "",
+      "gen": {
+        "tier": "A",
+        "groupKey": "f2/红烧牛肉蛋炒饭",
+        "rawGroupKey": "红烧牛肉蛋炒饭",
+        "specLabel": "炒饭",
+        "disambiguator": "",
+        "rawRow": "",
+        "sourceLine": 274,
+        "generation_status": "generated",
+        "evidence_status": "traceable",
+        "import_eligibility": "blocked",
+        "id_status": "assigned_from_map",
+        "blockers": [],
+        "id": "c01_d540"
+      },
+      "_adapterKey": "c01_t48|红烧牛肉蛋炒饭|炒饭|"
+    },
+    "sourceMenuPrice": {
+      "amount": 15,
+      "rawExpression": "15 元",
+      "currency": "CNY",
+      "unit": null,
+      "unitStatus": "UNKNOWN",
+      "sourceDate": null,
+      "sourceDateStatus": "UNKNOWN",
+      "sourceRef": "TRANSCRIPTION_2F.md#W2-04 第 274 行",
+      "sourceRawRow": "| 红烧牛肉蛋 | 15 元 | 15 元 | 15 元 |",
+      "evidenceStatus": "SOURCE_SUPPORTED_NOT_CURRENT_VERIFIED"
+    },
+    "currentEffectivePrice": {
+      "amount": null,
+      "currency": "CNY",
+      "unit": null,
+      "validity": "UNKNOWN",
+      "verifiedAt": null,
+      "verificationEvidence": null
+    },
+    "parentRefs": {
+      "shopId": "c01",
+      "stallId": "c01_t48"
+    },
+    "parentEvidence": {
+      "shop": {
+        "id": "c01",
+        "name": "服务楼",
+        "location": "服务楼",
+        "identityStatus": "KNOWN_BY_OWNER_MODEL_DECISION",
+        "evidence": "RECORD_GENERATOR_CONTRACT_20261023.md:1023-1028",
+        "fieldVerified": false
+      },
+      "floor": {
+        "id": "c01_f2",
+        "label": "2 楼",
+        "status": "KNOWN_MODEL_ASSOCIATION",
+        "evidence": "existing contract and archived floor guide",
+        "fieldVerified": false
+      },
+      "stall": {
+        "id": "c01_t48",
+        "name": "小吕哥黄焖鸡（暂定）",
+        "imageToStallRelation": "CONFIRMED_BY_OWNER",
+        "evidence": "DR-2F09-VERIFY-20261025 section2",
+        "side": null,
+        "windowNumber": null,
+        "formalNameStatus": "PENDING_HEAD_SIGN_EVIDENCE",
+        "formalSignoff": "PENDING",
+        "overallVerification": "NOT_GRANTED"
+      }
+    },
+    "permissions": {
+      "isolatedHistoricalPreview": true,
+      "formalPublication": false,
+      "transactionQuote": false,
+      "formalAdmission": false
+    },
+    "usability": {
+      "historicalMenu": "READY_FOR_ISOLATED_NON_TRANSACTION_PREVIEW",
+      "currentPrice": "UNKNOWN",
+      "parentSignoff": "PENDING",
+      "collectorAndCaptureDate": "DEFERRED"
+    }
+  }
+]

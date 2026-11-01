@@ -1,0 +1,20 @@
+[
+  {
+    "name": "西红柿炒鸡蛋",
+    "otherBatch": "R06_四餐与楼层未定批次_20261101",
+    "otherCandidateId": "R06-UNLOCATED-R0007-V1",
+    "disposition": "same name different source; no identity merge"
+  },
+  {
+    "name": "土豆鸡丁",
+    "otherBatch": "R06_四餐与楼层未定批次_20261101",
+    "otherCandidateId": "R06-UNLOCATED-R0009-V1",
+    "disposition": "same name different source; no identity merge"
+  },
+  {
+    "name": "鱼香肉丝",
+    "otherBatch": "R06_四餐与楼层未定批次_20261101",
+    "otherCandidateId": "R06-UNLOCATED-R0012-V1",
+    "disposition": "same name different source; no identity merge"
+  }
+]

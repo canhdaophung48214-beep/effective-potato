@@ -1,0 +1,1847 @@
+T3.6.5 actual local execution 2026-10-31T06:52:18.194Z
+
+COMMAND: node tools/test_retention_t365_skipped_recovery.js
+PASS T365 real skipped 0→1, strict resolve, immutable outcome, retry and invalid versions
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_retention_t365_unrecoverable.js
+PASS T365 terminal dispositions, authenticated retry, pending reentry, uncertainty, forged attempt and drift
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_retention_t365_repair_regression.js
+PASS T365 audit proof, absent attempt, forged resolution, uncertain writes, missing manifest, guarded retry
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_retention_t363_deferred_resolution.js
+PASS D1 历史 skipped 清单逐条复读后追加恢复凭证
+PASS D2 对账保留原 DEFERRED 并派生 RESOLVED_DEFERRED
+PASS D3 原始 prepare/complete 字节保持不变
+PASS D4 重复恢复不重复追加
+PASS D5 新批次使用不同 ID 并正常清理
+PASS D6 未清记录 rev 漂移拒绝追加并保持正文
+PASS D7 生产 purge 仍失败关闭
+PASS D8 混合批次已清记录逐条日志与 rev 均须核验
+T3.6.3 deferred resolution: 8 PASS / 0 FAIL
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_retention_t363_audit_recovery.js
+PASS A1 audit.pending 产生 DEFERRED 且正文不变
+PASS A2 补记前不能解除阻断
+PASS A3 recoverPending 写入逐条审计且清除 pending
+PASS A4 追加凭证经完整对账变为 RESOLVED_DEFERRED
+PASS A5 原 DEFERRED 日志逐字节保持不变
+PASS A6 重复恢复幂等
+PASS A7 新批次可清正文且原批次 ID 未复用
+PASS A8 审计补记后 rev 漂移拒绝恢复并保持正文
+T3.6.3 audit recovery: 8 PASS / 0 FAIL
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_retention_t363_batch_integrity.js
+PASS I1 原批次清单缺失拒绝自动恢复
+PASS I2 不确定写入或失败计数不能解除旧批次
+PASS I3 伪造凭证密封校验失败并维持全局阻断
+PASS I4 阻断不写虚假成功批次
+PASS I5 unresolvedCount 非零不能被派生为已解决
+PASS I6 恢复日志写入失败后重试可继续且不重复
+PASS I7 无维护令牌在审计查询前拒绝
+PASS I8 不能只信任 ok=true 而绕过完整对账结构
+PASS I9 逐条审计角色被篡改时不能补写延期恢复凭证
+PASS I10 两独立实例并发只追加一条稳定凭证且都可复核
+T3.6.3 batch integrity: 10 PASS / 0 FAIL
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_retention_mark.js
+== A. 配置门禁 ==
+[PASS] A1 缺少确认状态时拒绝执行
+[PASS] A2 配置未确认时不访问投稿集合
+[PASS] A3 待确认状态拒绝执行
+[PASS] A4 非法天数拒绝执行
+[PASS] A4b 已裁决 29 天不能被配置覆盖
+[PASS] A5 非法批次上限拒绝执行
+[PASS] A6 缺少确认人拒绝执行
+== A2. 维护入口门禁 ==
+[PASS] A7 非 mark 动作拒绝
+[PASS] A8 缺少维护令牌拒绝
+[PASS] A9 正确维护令牌可调用
+== B. 到期标记 ==
+[PASS] B1 已确认配置可执行
+[PASS] B2 空正文也计入，到期标记两条
+[PASS] B3 状态改为 expired
+[PASS] B4 标记与审计确认各递增一次 rev
+[PASS] B5 标记任务不清除投稿正文
+[PASS] B6 刚好第 29 天不提前标记
+[PASS] B7 已处理状态不被覆盖
+[PASS] B8 空 payload 的 pending 仍标记 expired
+[PASS] B9 写入最小化运行审计行
+[PASS] B10 运行审计行不含投稿人 openid
+[PASS] B11 批次 prepare 与 complete 都留痕
+[PASS] B11b prepare/complete 共享非空批次 ID
+[PASS] B12 每条成功状态更新有独立事件
+[PASS] B13 系统审计明确使用空 openidHash
+[PASS] B14 逐条运行日志含可倒查字段，长期摘要投影仍为八个逻辑字段
+== C. 可重跑与失败关闭 ==
+[PASS] C1 重跑不重复标记
+[PASS] C2 重跑不再次递增 rev
+[PASS] C2b 重跑后仍有 prepare/complete 两条批次事件
+[PASS] C3 状态写入失败如实返回数据库错误
+[PASS] C4 写入失败不谎报已标记数
+[PASS] C5 写入失败保留原状态
+[PASS] C6 完整失败批次有 FAILED 终态
+== D. 查询、批次与并发 ==
+[PASS] D1 已审核记录不占两条批次名额
+[PASS] D2 同一创建时间按 _id 升序，a 先处理
+[PASS] D3 同一创建时间按 _id 升序，z 也处理
+[PASS] D4 第三条 pending 留到下一批
+[PASS] D5 下批继续处理，不被已审核旧记录饿死
+[PASS] D5a 同时刻跨批按 _id 稳定排序
+[PASS] D5b 同时刻另一条留待下一批
+[PASS] D6 并发审核获胜时版本条件阻止覆盖
+[PASS] D7 并发变更按冲突计数
+[PASS] D8 并发冲突不伪造逐条标记事件
+[PASS] D9 单条写失败不阻断下一条
+[PASS] D10 部分成功明确返回错误
+[PASS] D11 部分成功统计为 1/1
+[PASS] D12 部分成功批次审计为 PARTIAL
+[PASS] D13 查询失败返回数据库错误
+[PASS] D14 查询失败零状态写入
+[PASS] D15 prepare 审计失败时不更新状态
+[PASS] D16 prepare 审计失败返回 LOG_FAILED
+[PASS] D17 逐条审计失败如实返回 LOG_FAILED
+[PASS] D18 逐条审计失败不能伪称状态未更新
+[PASS] D19 逐条审计失败标明已更新数量
+[PASS] D19b 逐条审计失败仍写 PARTIAL 批次尾
+[PASS] D20 complete 审计失败如实返回 LOG_FAILED
+[PASS] D21 complete 审计失败保留成功计数
+== E. 缺陷回归与失败后续跑 ==
+[PASS] E1 空正文单独到期仍标记且只记一次逐条事件
+[PASS] E2 查询先过滤 pending 再限批
+[PASS] E3 并发版本变化后重跑只标记一次
+[PASS] E4 单条更新失败后重跑只补未完成记录
+== F. 审计待补与计数守恒 ==
+[PASS] F1 审计中断时选中记录分到互斥结果
+[PASS] F2 待补标记与状态同次写入，后续记录仍 pending
+[PASS] F3 逐条审计可按 ID 恢复且重复调用不重写日志
+[PASS] F4 日志已落库但回执丢失时按稳定 ID 确认，不重复追加
+[PASS] F5 两个独立实例交错执行仅一次状态转换和逐条日志
+[PASS] F6 连续触发不重复转换或补写已完成审计
+[PASS] F7 日志存在但待补标记清除失败，重试不产生第二条日志
+[PASS] F7b 两个独立恢复实例并发时只产生一条逐条日志
+[PASS] F7c 后续状态和 rev 已变化时仍能补记原标记事件
+[PASS] F8 系统日志符合 at/rev 与空哈希契约
+[PASS] F9 待补审计入口仍须维护令牌
+
+---- 汇总 ----
+PASS 71 / FAIL 0
+RESULT: OK（本地模拟，未验证云端真实行为）
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_retention_recover_pending.js
+PASS R1 空队列正常完成
+PASS R2 有界批次跨三次调用持续推进
+PASS R3 连续运行不重复写逐条事件
+PASS R4 日志失败延后重试，后续记录不饥饿
+PASS R5 rev 冲突后重试不重复日志或覆盖新版本
+PASS R6 日志已写但状态确认中断后可续跑
+PASS R7 两个函数实例共享假 DB 时单条日志
+PASS R8 恢复不清正文或更改准入状态
+PASS R8b 延后排程写入也失败时，原待补标记仍可在下次发现
+PASS R11 旧待补标记缺 retryAfter 仍能自动发现
+PASS R12 本地索引草案覆盖状态筛选与稳定排序
+PASS R9 未授权自动恢复被拒绝
+PASS R10 授权入口可调用且空队列正常返回
+PASS 13 / FAIL 0
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_retention_purge.js
+PASS P1 严格 30 天边界：整点与未到期不清，超时才清
+PASS P2 保留外壳、审核状态、来源和准入状态
+PASS P3 重跑已清正文不重复转换或写逐条日志
+PASS P4 清理日志不含正文或身份字段
+PASS P5 超期 pending 只报告需标记，不清正文
+PASS P6 经既有状态转换和审计完成后才清正文
+PASS P7 T-1 失败批次和待补审计阻断正文清理
+PASS P8 逐条审计已恢复但历史 PARTIAL 批次仍禁止清理
+PASS P9 并发状态和 rev 变化不被覆盖，冲突批次未审清前继续阻断
+PASS P10 写入失败留退避标记，PARTIAL 批次阻断后续正文清理
+PASS P11 逐条审计失败后标记留存，重启实例自动补记且不重复清正文
+PASS P12 批次 prepare 日志失败零正文写入
+PASS P13 prepare 失败后重试可完成
+PASS P14 两函数实例共享假 DB 时单次有效清理
+PASS P15 无维护令牌被拒绝
+PASS P16 本地索引与事件草案已声明且未冒充云端生效
+PASS P17 批次 complete 日志失败后孤儿 prepare 阻断重跑，逐条事件不重复
+PASS P18 异常版本记录退避，DEFERRED 批次未审清前阻断后续正文清理
+PASS 18 / FAIL 0
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_retention_reconcile.js
+PASS C1 正常 prepare/complete 同批闭合且成功口径兼容
+PASS C1b 只输出哈希引用，不回传原始批次 ID
+PASS C2 恰好十分钟为疑似孤儿，异常码与分类一致
+PASS C3 未满十分钟仍是运行中
+PASS C4 complete 无 prepare 是异常
+PASS C5 重复 prepare 与重复 complete 分别发现
+PASS C6 计数不守恒或首尾选中数变化被发现
+PASS C7 无效 ID、日期、时间及必填关联字段计入异常
+PASS C7b 日志时间恰等于对账时间允许进入批次
+PASS C7c 未来日志拒绝并计入 invalidLogs
+PASS C8 多页扫描稳定推进，完整结果三批闭合
+PASS C8b 截断窗口内已配对也不冒充全局闭合
+PASS C9 截断窗口明确非成功且可继续，不误判孤儿
+PASS C10 续页为局部窗口，缺配对不能冒充全局结论
+PASS C11 第二页读取故障不返回假完整结论
+PASS C12 无令牌在读取日志前拒绝
+PASS C13 鉴权后对账只读，不更改投稿或审计日志
+PASS C14 返回值不含正文、身份、令牌
+PASS C15 R1 恢复批次沿用 prepare/complete，计数闭合
+PASS C16 恢复 prepare 失败时未处理业务记录
+PASS C17 T-2 恢复批次有准备和完成，正文仍为空
+PASS C17b 清理恢复批次可被同一对账入口识别
+PASS C19 系统身份字段和批次投稿 ID 不合规可检测且不回显
+PASS C20 恢复 complete 写入失败不得谎报闭合
+PASS C21 PARTIAL 计数闭合仍不得报告正常成功
+PASS C22 FAILED 计数闭合仍不得报告正常成功
+PASS C23 DEFERRED 与失败和正常成功分别表达
+PASS C24 COMPLETE 与失败计数矛盾时归计数异常，不宣称 OK
+PASS C25 T-2 清理部分失败也保留 PARTIAL 结果
+PASS C18 索引仅为本地草案且日志仍禁止更新/删除
+PASS 30 / FAIL 0
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_retention_audit_gate.js
+PASS G-A 完整 OK 对账允许清正文
+PASS G-B PARTIAL 即使 closed=1 也拦截且正文逐字节不变
+PASS G-C FAILED 即使 closed=1 也拦截且不写虚假 complete
+PASS G-D RECONCILE_ANOMALIES / 疑似孤儿 prepare 拦截
+PASS G-D2 未超阈值的运行中 prepare 即使对账 ok=true 也拦截
+PASS G-E completeScan=false 即使 ok=true 也拦截
+PASS G-F 截断结果即使 ok=true 也拦截
+PASS G-F2 实际 501 条只读扫描截断阻断正文清理
+PASS G-G 对账超时拦截
+PASS G-H 对账结果缺失拦截
+PASS G-H2 对账计数结构不完整拦截
+PASS G-I 返回码伪装 OK 仍检查 outcomes 中 PARTIAL
+PASS G-J 短暂对账故障后重试成功才清正文
+PASS G-K 数据库对账响应缺失不按空日志放行
+PASS G-L 维护入口在全局屏障未验证时失败关闭
+PASS G-M 无令牌拒绝且不查询或更新正文
+PASS 16 / FAIL 0
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_retention_t34_resume.js
+PASS 499 条跨页汇总且最终闭合
+PASS 500 条跨页汇总且最终闭合
+PASS 501 条跨页汇总且最终闭合
+PASS 501 条未扫完时保持失败关闭
+PASS 501 条续扫凭据不含原始批次或身份
+PASS 501 条重复续扫幂等
+PASS 501 条损坏游标在读取前拒绝
+PASS 1001 条跨页汇总且最终闭合
+PASS 1001 条未扫完时保持失败关闭
+PASS 1001 条续扫凭据不含原始批次或身份
+PASS 1001 条重复续扫幂等
+PASS 1001 条损坏游标在读取前拒绝
+PASS 查询中断可从原凭据重试
+PASS 新函数实例使用同一凭据继续扫描
+PASS 两实例只读续扫得到相同结果
+PASS 扫描中插入水位内日志使原扫描作废
+PASS 高水位之外的新日志也使原扫描作废
+PASS 未授权调用不访问审计集合
+PASS 鉴权入口可跨次续扫
+PASS 续扫全程只读
+PASS 空日志窗口正常闭合且不伪造批次
+T3.4 resume: 21 PASS, 0 FAIL
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_retention_t36_concurrency.js
+PASS C1 外部清理入口因全局屏障未验证而在读写前关闭
+PASS C2 无令牌仍先被拒绝
+PASS C3 行锁持久、活租约拒绝第二实例、过期可接管且世代递增
+PASS C4 旧实例复活无法续租或释放新实例行锁
+PASS C5 续租和条件释放分别递增 rev，释放保留 fencingToken
+PASS C6 行锁操作不写正文或逐条审计
+PASS C7 其他流程改 rev 后旧实例不能清正文
+PASS C8 新实例接管后旧实例条件更新失败且正文逐字节不变
+PASS C9 本地无异常路径仍可清正文，锁释放且重跑幂等
+PASS C10 两个独立实例共享假库时最多一次正文清理
+PASS C11 标记审计退避更新旧 rev 条件并递增新 rev
+PASS C12 单条 audit.pending 只退避该记录并递增 rev，不清正文
+PASS C13 清理审计确认递增 rev 且保持正文为空
+PASS C14 获取锁后中断不清正文、不写虚假成功日志并释放锁
+PASS C15 fencingToken 变化即使 rev 未变也阻断旧写入
+T3.6 concurrency: 15 PASS / 0 FAIL
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_retention_t36_repair.js
+PASS H1 无逐条关联证据的历史 FAILED 仍为异常
+PASS H2 无 force/ignore-history 绕过入口且原始日志不变
+PASS H3 待补逐条审计能恢复且稳定事件 ID 不重复
+PASS H4 逐条恢复不伪造历史 PARTIAL 已修复
+PASS H5 修复尝试仍不清正文或改写原始批次
+PASS H6 缺失原始关联证据的记录不能凭 batchId 人工补成功
+PASS H7 逐条补记日志失败后可重试且不重复写原批次
+T3.6 repair: 7 PASS / 0 FAIL; positive historical repair PENDING
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_retention_t36_resume.js
+PASS S499 原范围完整续扫且准确计数
+PASS S500 原范围完整续扫且准确计数
+PASS S501 原范围完整续扫且准确计数
+PASS S501 中间页绝不称完整
+PASS S501 同一断点重复执行不重复计数
+PASS S1001 原范围完整续扫且准确计数
+PASS S1001 中间页绝不称完整
+PASS S1001 同一断点重复执行不重复计数
+PASS S1 中途新增更小 _id 被基数复核发现，禁止完整结论
+PASS S2 中途新增更大 _id 同样作废扫描
+PASS S3 新实例使用原 scanId/水位/时间而非从头重扫
+PASS S4 损坏凭据读库前拒绝
+PASS S5 末尾复核中断不能成功，原断点可重试
+PASS S6 原范围内日志消失会失败关闭
+PASS S7 全部续扫均未写入业务或审计集合
+T3.6 resume: 15 PASS / 0 FAIL
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_retention_t361_deferred.js
+PASS D1 LOCK_BUSY 仅追加准备与未开始回执，不写业务正文或 rev
+PASS D2 明确事件保留原因和零写入证据，不伪装 COMPLETE
+PASS D3 完整对账保留未开始结果，且不把它当作历史失败
+PASS D4 释放后重试可清理，旧未开始事件仍留存
+PASS D5 重复执行不再清正文或重复逐条日志
+PASS D6 部分清理后遇 LOCK_BUSY 保留阻断，不能冒充零写入
+PASS D7 有业务写入的 DEFERRED 即使锁释放也继续阻断
+PASS D8 零写入证据与实际计数矛盾则阻断
+PASS D9 对账只读，历史日志未被更新或删除
+T3.6.1 deferred: 9 PASS / 0 FAIL
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_retention_t361_repair.js
+PASS H1 缺少逐条审计时不得追加修复事件，原 PARTIAL 仍阻断
+PASS H2 PARTIAL 逐条审计补齐后追加稳定修复事件，重新完整对账成功
+PASS H2b 已证实修复并重新对账后，新候选可进入本地清理路径
+PASS H2c 修复批次跨页续扫完整，续扫凭据不含选中投稿 ID
+PASS H3 原 PARTIAL 日志保持原样，修复事件不含正文与令牌
+PASS H4 重复修复幂等，不改投稿版本，不重复追加事件
+PASS H4b 修复后投稿出现新版本，重复调用仍只确认原追加事件
+PASS H5 证据完整的 FAILED 历史样例可追加修复，原 FAILED 仍保留
+PASS H6 修复事件写入失败不谎报成功，重跑使用同一稳定 eventId
+PASS H6b 修复事件已落库但回执丢失时按稳定 ID 确认，仅有一条事件
+PASS H7 缺少稳定准备/结束日志的旧批次保持阻断，不能伪造成功
+PASS H8 无令牌修复在读库前拒绝
+T3.6.1 repair: 12 PASS / 0 FAIL
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_retention_t361_lock_recovery.js
+PASS L1 正常释放后重复确认幂等，rev 不再递增
+PASS L2 未到期不释放；到期条件释放；再次恢复幂等
+PASS L3 新持有者接管后旧 token 既不能恢复释放也不能写入
+PASS L4 清正文成功、释放失败：保留 PARTIAL、pending 依据与持有锁
+PASS L5 租约过期确认释放后有证据修复批次，正文不重复清理
+PASS L6 修复后重跑不重复写正文或逐条日志，旧 PARTIAL 原样保留
+PASS L6b 释放已落库但回执丢失时重新点读确认，不重复更新或谎报失败
+PASS L7 取得锁后进程中断，到期恢复不清正文且只递增释放 rev
+T3.6.1 lock recovery: 8 PASS / 0 FAIL
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_retention_t362_deferred.js
+PASS D1 needsMark 独立统计，pending 不清且不阻断已审记录
+PASS D2 未到 retryAfter 的记录零写入、批次可观测但暂阻断
+PASS D3 到期后追加修复并完整对账，历史 DEFERRED_RETRYABLE 保留
+PASS D4 CAS 明确未匹配且复读版本/正文未变可列为可重试
+PASS D5 CAS 冲突证据经复核后可重试
+PASS D6 audit.pending 引起实际退避更新，保持全局阻断
+PASS D7 写入回执不确定不能归为可重试 DEFERRED
+T3.6.2 deferred: 7 PASS / 0 FAIL
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_retention_t362_repair.js
+PASS R1 未清记录 rev 漂移拒绝自动修复
+PASS R2 状态变化不能用旧清单冒充恢复
+PASS R3 清单被改动后 HMAC 摘要不符，不追加修复事件
+PASS R4 到期修复事件幂等，原始 DEFERRED_RETRYABLE 保留
+T3.6.2 repair: 4 PASS / 0 FAIL
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_retention_t362_discovery.js
+PASS F1 无令牌在查询前拒绝
+PASS F2 对账 batchRef 定位原 batchId 和可修复状态
+PASS F3 返回不含正文、投稿 ID、令牌
+PASS F4 有界 _id 游标分页可继续发现
+PASS F5 发现过程不修改审计或正文
+T3.6.2 discovery: 5 PASS / 0 FAIL
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_retention_t362_scan_queue.js
+PASS Q1 空扫描闭合且无伪造批次
+PASS Q2 501 条首段截断，第二段原水位准确续扫
+PASS Q3 扫描期间插入水位内日志作废原扫描
+PASS Q4 损坏续扫凭据在读库前拒绝
+T3.6.2 scan queue: 4 PASS / 0 FAIL
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_ugc_review.js
+== A. 静态边界（源码扫描） ==
+[PASS] A1 只声明两个集合
+[PASS] A2 只按冻结常量访问两个集合
+[PASS] A2b 只依赖 crypto 与 wx-server-sdk
+[PASS] A2c 不读写生成器产物或冻结映射
+[PASS] A3 不读取客户端身份字段
+[PASS] A4 不写 verified 状态
+[PASS] A5 日志只 add（源码内仅一处 collection(COL.LOGS)）
+[PASS] A6 无 collection(COL.LOGS) 上的 update/remove
+[PASS] A7 app.json 注册了投稿页与审核页
+[PASS] A8 tabBar 不含审核页与投稿页
+[PASS] A9 sitemap 显式 disallow 审核页
+[PASS] A10 disallow 规则位于 allow * 之前
+[PASS] A11 sitemap 也排除投稿页
+[PASS] A12 sitemap 无命中审核页的 allow 规则
+[PASS] A13 审核页不缓存身份/列表
+[PASS] A14 审核页不本地判定管理员
+[PASS] A15 审核页无分享入口
+== B. 鉴权闸门（fail-closed） ==
+[PASS] B1 未配置管理员时拒绝
+[PASS] B1b 拒绝原因可审计
+[PASS] B1c 拒绝时零数据库调用
+[PASS] B2 非管理员拒绝
+[PASS] B2b 非管理员原因
+[PASS] B2c 非管理员零数据库调用
+[PASS] B3 空 openid 拒绝
+[PASS] B4 普通用户改状态被拒（403 而非动作错误）
+[PASS] B5 管理员名单解析去重
+[PASS] B6 解析保留顺序
+== C. 动作白名单与 session ==
+[PASS] C1 管理员未知动作拒绝
+[PASS] C2 管理员 session 通过
+[PASS] C3 session 返回角色
+[PASS] C4 session 不读数据库
+== D. 队列与详情 ==
+[PASS] D1 list 成功
+[PASS] D2 只返回 pending
+[PASS] D3 最多 20 条
+[PASS] D4 按 createdAt 升序
+[PASS] D5 列表不含 submitter/openid
+[PASS] D6 管理员可查看任意投稿
+[PASS] D7 detail 返回 submissionId
+[PASS] D8 缺 id 拒绝
+[PASS] D9 不存在统一 404
+== E. approve 状态迁移 ==
+[PASS] E1 缺 expectedRev 拒绝
+[PASS] E2 rev 不一致拒绝
+[PASS] E3 内容安全故障不许通过
+[PASS] E3b 返回具体安全状态
+[PASS] E4 明确风险不许通过
+[PASS] E5 需复核允许通过
+[PASS] E5b rev 递增
+[PASS] E6 正常通过
+[PASS] E7 状态为 approved
+[PASS] E8 落库状态 approved
+[PASS] E9 review.decision
+[PASS] E10 管理员身份只存摘要
+[PASS] E11 通过不改 verifyStatus
+[PASS] E12 通过不改 importEligibility
+[PASS] E13 通过不写菜品库
+[PASS] E14 审计日志 event=review_approve
+[PASS] E15 审计日志角色 admin
+[PASS] E16 审计日志无 openid 明文
+[PASS] E17 重复通过被拒
+[PASS] E18 并发更新 0 行视为冲突
+== F. reject ==
+[PASS] F1 非法理由码拒绝
+[PASS] F1b 人工 reject 不可冒充系统 expire
+[PASS] F1c 人工接口没有 expire 动作
+[PASS] F2 理由超 100 字拒绝
+[PASS] F3 正常驳回
+[PASS] F4 落库 rejected
+[PASS] F5 理由码落库
+[PASS] F6 理由文本归一
+[PASS] F7 审计日志带理由码
+== G. delete（用户数据删除请求） ==
+[PASS] G1 不存在返回 404
+[PASS] G2 删除成功
+[PASS] G3 正文被清空
+[PASS] G4 身份被匿名化
+[PASS] G5 状态置 rejected
+[PASS] G6 理由码 user_deleted
+[PASS] G7 审计日志 event=delete_request
+[PASS] G8 重复删除幂等
+== H. 日志失败与实际状态一致性 ==
+[PASS] H1 日志失败返回 LOG_FAILED
+[PASS] H2 明确告知状态已变更
+[PASS] H3 返回真实新状态
+[PASS] H4 记录确实已变更
+[PASS] H5 尝试写 alarm 行
+== I. 只追加与副作用 ==
+[PASS] I1 全程无 remove 调用
+[PASS] I2 upload_logs 无 update/remove
+[PASS] I3 审核不写菜品库
+[PASS] I4 审计日志含 schemaVersion/event/day
+
+---- 汇总 ----
+PASS 86 / FAIL 0
+RESULT: OK（本地模拟，未验证云端真实行为）
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_ugc_submit.js
+== A. 静态边界（源码扫描） ==
+[PASS] A1 不引用生成器产物或冻结映射
+[PASS] A2 不读取本地演示数据源
+[PASS] A3 只声明两个写入集合
+[PASS] A4 落库字段写死 unverified
+[PASS] A5 不提供数据库 update/remove 调用路径
+[PASS] A6 投稿页不调用身份/定位/相册接口
+[PASS] A7 投稿页不写本地缓存
+[PASS] A8 保留期限未写死（配置项待确认）
+== B. 入口与身份 ==
+[PASS] B1 非 submit 动作拒绝
+[PASS] B2 缺 openid 拒绝
+[PASS] B3 审计盐未配置时拒绝
+[PASS] B3b 拒绝时不落库
+== C. 保留字段（客户端不能指定身份/状态） ==
+[PASS] C1 顶层 status 被拒
+[PASS] C2 顶层 reviewerOpenid 被拒
+[PASS] C3 顶层 verifyStatus 被拒
+[PASS] C4 顶层 role 被拒
+[PASS] C5 顶层 openid 被拒
+[PASS] C6 顶层 isAdmin 被拒
+[PASS] C7 顶层 dishId 被拒
+[PASS] C8 顶层 review 被拒
+[PASS] C9 payload 非白名单键被拒
+[PASS] C10 target 非白名单键被拒
+== D. 请求体校验 ==
+[PASS] D1 kind 非法
+[PASS] D2 clientToken 非 32 hex
+[PASS] D3 缺 clientToken
+[PASS] D4 shopId 形状不符
+[PASS] D5 stallId 形状不符
+[PASS] D6 dishId 形状不符
+[PASS] D7 price 两位小数
+[PASS] D8 price 非正数
+[PASS] D9 price 为字符串
+[PASS] D10 note 空白
+[PASS] D11 note 超 100 字
+[PASS] D12 note 含零宽字符
+[PASS] D13 nameSuggestion 超 20 字
+[PASS] D14 price_fix 缺 price
+[PASS] D15 info_fix 无任何内容
+== E. 请求体大小与图片 ==
+[PASS] E1 超大请求体拒绝
+[PASS] E2 任何图片都拒绝
+[PASS] E3 空图片数组允许
+== F. 目标校验 ==
+[PASS] F1 演示数据不可投稿
+[PASS] F2 目标不存在
+[PASS] F3 档口不一致
+[PASS] F4 非待核实数据不可投稿
+[PASS] F4b 非待核实数据原因可区分
+== F2. P3：field_unverified 但 verifyStatus 已离开待核实 ==
+[PASS] F5 已核实记录不可投稿
+[PASS] F6 已核实记录 422
+[PASS] F7 原因标注 VERIFYSTATUS_NOT_UNVERIFIED
+[PASS] F8 回传当前 verifyStatus 供排查
+[PASS] F9 被拒时不落库
+[PASS] F10 已过期记录不可投稿
+[PASS] F11 已过期记录原因一致
+[PASS] F12 显式 unverified 允许投稿
+[PASS] F13 档口级目标同样按 verifyStatus 拒绝
+[PASS] F14 档口级拒绝原因一致
+[PASS] F15 正常目标通过
+== G. 落库字段与“不自动赋 dishId” ==
+[PASS] G1 无 dishId 也允许（档口级纠错）
+[PASS] G2 dishId 保持 null
+[PASS] G3 状态恒 pending
+[PASS] G4 dataClass 固定
+[PASS] G5 verifyStatus 固定 unverified
+[PASS] G6 verifiedAt 为 null
+[PASS] G7 importEligibility 固定 blocked
+[PASS] G8 rev 初始为 1
+[PASS] G9 photos 恒为空数组
+[PASS] G10 存储 submitter.openid 为服务端身份
+[PASS] G11 不写 openid 明文到日志
+[PASS] G12 日志不写正文全文
+[PASS] G13 只写入两个集合
+[PASS] G14 其它集合只读不写
+== H. 幂等与去重 ==
+[PASS] H1 同令牌第一次创建
+[PASS] H2 同令牌重试幂等
+[PASS] H3 幂等不新增记录
+[PASS] H4 同内容待审去重
+[PASS] H5 去重返回 dupOf
+[PASS] H6 去重不新增记录
+== I. 限流 ==
+[PASS] I1 五分钟内第 4 条被限流
+[PASS] I2 返回 retryAfter
+[PASS] I3 24 小时内第 11 条被限流
+== J. 内容安全四种结果 ==
+[PASS] J1 pass 落库状态
+[PASS] J2 review 落库状态
+[PASS] J3 risk 落库状态
+[PASS] J4 errcode 落库状态
+[PASS] J4b 接口故障仍为 pending
+[PASS] J4c 故障写安全日志
+[PASS] J5 抛异常判 error（不当通过）
+[PASS] J5b 调用挂起按超时判 error
+[PASS] J5c 挂起重试次数为 2
+[PASS] J5d 超时后仍为 pending
+[PASS] J5e 超时未阻塞过久
+[PASS] J6 无文本时跳过检测
+[PASS] J7 跳过仍记 pass 且降级标注
+== K. 数据库失败不谎报成功 ==
+[PASS] K1 落库失败返回 DATABASE_ERROR
+[PASS] K2 落库失败不返回成功
+[PASS] K3 目标读取失败返回 DATABASE_ERROR
+[PASS] K4 限流计数失败返回 DATABASE_ERROR
+== L. 审计日志失败如实上报 ==
+[PASS] L1 日志失败返回 LOG_FAILED
+[PASS] L2 已落库记录仍存在（不谎报）
+[PASS] L3 返回中说明记录已写入
+== M. 幂等性不因日志失败丢失 ==
+[PASS] M1 首次成功
+[PASS] M2 重试幂等返回同一条
+[PASS] M3 不重复落库
+== N. 校验顺序：形状先于查库（P2 与源码一致） ==
+[PASS] N1 旧命名 dishId 返回 INVALID_FIELD
+[PASS] N2 指出是 dishId（message=DISH_ID）
+[PASS] N3 形状不符时一次数据库都没读
+[PASS] N4 旧命名 shopId 返回 INVALID_FIELD
+[PASS] N5 形状不符时同样不读库
+[PASS] N6 形状合法但不存在才查库并报 TARGET_NOT_FOUND
+[PASS] N7 此时确实读过 dishes
+[PASS] N8 注释已改为与真实顺序一致
+
+---- 汇总 ----
+PASS 110 / FAIL 0
+RESULT: OK（本地模拟，未验证云端真实行为）
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_ugc_client_contract.js
+
+== A. 投稿页 ↔ submit 契约 ==
+  PASS A. handler 存在: onKindChange
+  PASS A. handler 存在: onInput
+  PASS A. handler 存在: onSubmit
+  PASS A. handler 存在: onSubmitAgain
+  PASS A. 调用名取自 config.ugc.FUNCTIONS.SUBMIT
+  PASS A. 页面使用 FUNCTIONS.SUBMIT 调用
+  PASS A. 页面发送 action=submit
+  PASS A. 页面发送 clientToken
+  PASS A. 页面发送 target 三个键
+  PASS A. 页面发送 payload
+  PASS A. 无保留字段: status
+  PASS A. 无保留字段: review
+  PASS A. 无保留字段: reviewerOpenid
+  PASS A. 无保留字段: verifyStatus
+  PASS A. 无保留字段: verifiedAt
+  PASS A. 无保留字段: importEligibility
+  PASS A. 无保留字段: dataClass
+  PASS A. 无保留字段: submitter
+  PASS A. 无保留字段: dedupe
+  PASS A. 无保留字段: security
+  PASS A. 无保留字段: createdAt
+  PASS A. 无保留字段: updatedAt
+  PASS A. 无保留字段: rev
+  PASS A. 无保留字段: openid
+  PASS A. 无保留字段: openId
+  PASS A. 无保留字段: role
+  PASS A. 无保留字段: isAdmin
+  PASS A. 无保留字段: schemaVersion
+  PASS A. 无保留字段: reopenOf
+  PASS A. 无保留字段: _id
+  PASS A. 无保留字段: _openid
+  PASS A. 无保留字段: updatedBy
+  PASS A. 客户端生成 32 位十六进制 token
+  PASS A. 服务端校验 clientToken 形状
+  PASS A. note 上限一致
+  PASS A. name 上限一致
+  PASS A. textarea maxlength 与 NOTE_MAX 一致
+  PASS A. 客户端价格规则为最多一位小数
+  PASS A. 服务端校验价格小数位
+  PASS A. 处理 RATE_LIMITED retryAfter
+  PASS A. 处理 DUPLICATE
+  PASS A. 处理 LOG_FAILED 且提示勿重复提交
+  PASS A. 区分 securityState risk/review
+  PASS A. 无 wx.setStorage/setStorageSync 调用
+  PASS A. onLoad 校验链接参数形状
+  PASS A. 坏参数丢弃并提示
+  PASS A. 演示数据给出明确提示而非格式错误
+  PASS A. 演示编号正则存在
+
+== B. 审核页 ↔ review 契约 ==
+  PASS B. handler 存在: onApprove
+  PASS B. handler 存在: onReject
+  PASS B. 动作在服务端白名单: session
+  PASS B. 动作在服务端白名单: list
+  PASS B. 动作在服务端白名单: approve
+  PASS B. 动作在服务端白名单: reject
+  PASS B. 页面先调 session 再 list
+  PASS B. approve 携带 expectedRev
+  PASS B. reject 携带 expectedRev 与 reasonCode
+  PASS B. 页面使用的驳回原因在服务端白名单: inaccurate
+  PASS B. STATE_CONFLICT 后自动刷新
+  PASS B. SECURITY_UNAVAILABLE 提示不能通过
+  PASS B. 审核页未定义 onShareAppMessage
+  PASS B. 审核页不写 storage
+
+== C. 页面注册与入口边界 ==
+  PASS C. submit 页已在 app.json 注册
+  PASS C. review 页已在 app.json 注册
+  PASS C. 审核页不在 tabBar
+  PASS C. 投稿页不在 tabBar
+  PASS C. 审核页无分享（wxml 无 button open-type=share）
+  PASS C. 首页存在投稿入口 navigateTo
+  PASS C. 入口带 shopId/stallId 参数
+  PASS C. 入口可选带 dishId
+  PASS C. 入口前校验 shopId 与 stallId
+  PASS C. 卡片暴露真实编号 data 属性
+  PASS C. 卡片绑定 onSubmitDish
+  PASS C. 审核页仍为零入口（navigateTo=0）
+
+== D. 错误码文案覆盖 ==
+  PASS D. 有中文文案: INVALID_ACTION
+  PASS D. 有中文文案: NO_OPENID
+  PASS D. 有中文文案: INTERNAL
+  PASS D. 有中文文案: PAYLOAD_TOO_LARGE
+  PASS D. 有中文文案: PHOTO_NOT_SUPPORTED
+  PASS D. 有中文文案: RESERVED_FIELD
+  PASS D. 有中文文案: DATABASE_ERROR
+  PASS D. 有中文文案: DUPLICATE
+  PASS D. 有中文文案: RATE_LIMITED
+  PASS D. 有中文文案: LOG_FAILED
+  PASS D. 有中文文案: INVALID_FIELD
+  PASS D. 有中文文案: NOT_FOUND
+  PASS D. 有中文文案: STATE_CONFLICT
+  PASS D. 有中文文案: SECURITY_UNAVAILABLE
+  PASS D. 有中文文案: FORBIDDEN
+  PASS D. textOf 回退存在
+
+----------------------------------------
+PASS 90 / FAIL 0 / TOTAL 90
+RESULT: OK
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_index_state.js
+首页加载状态机测试（pages/index/index.js）
+
+── S1 初始状态（尚未 onLoad） ─────────────────────────
+  PASS  S1 dataState 初始为 loading
+  PASS  S1 加载前来源未知
+  PASS  S1 dataErrorText 初始为空串
+  PASS  S1 raw 尚未准备好
+  PASS  S1 数据未就绪时 refresh() 不抛错
+  PASS  S1 数据未就绪时 matchedCount 保持 0
+
+── S2 本地初始化成功 ─────────────────────────────────
+  PASS  S2 onLoad 期间状态轨迹先 loading
+  PASS  S2 onLoad 返回时已是 ready（同步路径）
+  PASS  S2 加载完成进入 ready
+  PASS  S2 数据源仍为 local
+  PASS  S2 错误文案清空
+  PASS  S2 店铺 12 家
+  PASS  S2 窗口 24 个
+  PASS  S2 菜品 45 道
+  PASS  S2 shopMap 建了 12 个 key
+  PASS  S2 默认条件下命中 45 道
+  PASS  S2 状态变化轨迹 loading → ready
+  PASS  S2 dataSource 从未出现 cloud
+
+── S3 初始化失败进入 error ───────────────────────────
+  PASS  S3 前置：已处于 ready
+  PASS  S3 进入 error
+  PASS  S3 给出了中性错误文案  → 数据暂时无法加载，请点「重试」再试一次
+  PASS  S3 文案不出现"云端"字样
+  PASS  S3 原始错误留在实例上便于排查
+  PASS  S3 失败后已有数据保留（45 道）
+  PASS  S3 失败后命中数保留
+  PASS  S3 失败后 shopMap 保留
+
+── S4 重试后恢复 ready ───────────────────────────────
+  PASS  S4 前置：error
+  PASS  S4 重试确实重新走了一遍 loading → ready
+  PASS  S4 重试后回到 ready
+  PASS  S4 重试后错误文案清空
+  PASS  S4 重试后数据仍是 45 道
+  PASS  S4 重试后数据源仍是 local
+
+── S5 并发重试只跑一次 ───────────────────────────────
+  PASS  S5 加载中连点两次 → 只执行 1 次初始化
+  PASS  S5 最终仍是 ready
+  PASS  S5 加载结束后再点重试才允许再跑一次
+
+── S6 旧结果不能覆盖新状态 ───────────────────────────
+  PASS  S6 第二轮先完成：进入 ready
+  PASS  S6 当前数据来自第二轮
+  PASS  S6 当前数据来自第二轮（店名）
+  PASS  S6 过期结果被丢弃：仍是 1 家店
+  PASS  S6 过期结果被丢弃：店名没被改回
+  PASS  S6 状态没被旧加载改成 error
+
+── S7 页面卸载后不 setData ───────────────────────────
+  PASS  S7 卸载后 beginLoad 不再调用 setData
+  PASS  S7 卸载后 dataState 停在上次的值
+
+── S8 状态字段确实被逻辑使用 ─────────────────────────
+  PASS  S8 WXML 引用了 dataState
+  PASS  S8 WXML 有 loading 分支
+  PASS  S8 WXML 有 error 分支
+  PASS  S8 WXML 有 ready 分支
+  PASS  S8 WXML 的重试按钮绑定了 onRetry
+  PASS  S8 JS 里 dataSource 由 raw.source 赋值
+  PASS  S8 JS 里没有把 dataSource 写死成 cloud
+  PASS  S8 首页通过统一只读入口加载云端数据
+  PASS  S8 首页没有直接写数据库
+  PASS  S8 onRetry 真的重新执行了初始化
+
+── S9 异步 reject 分支 ───────────────────────────────
+  PASS  S9 先有一轮成功数据
+  PASS  S9 reject 后进入 error
+  PASS  S9 error 文案含「重试」  → 数据暂时无法加载，请点「重试」再试一次
+  PASS  S9 error 文案不含「云端」
+  PASS  S9 锁已释放
+  PASS  S9 原始错误被记录  → 模拟网络中断
+  PASS  S9 失败时不清空已有数据（店）
+  PASS  S9 失败时不清空已有数据（菜）
+  PASS  S9 状态文案没被改动
+  PASS  S9 状态轨迹 loading→error
+
+── S10 挂起超时后放锁并允许重试 ──────────────────────
+  PASS  S10 超时常量是正数  → 8000
+  PASS  S10 挂起时停在 loading
+  PASS  S10 挂起时锁是占用的
+  PASS  S10 挂起期间定时器在跑
+  PASS  S10 挂起期间连点重试不叠加
+  PASS  S10 超时后进入 error
+  PASS  S10 超时文案说明停止等待  → 加载等待时间过长，已停止等待，请点「重试」再试一次
+  PASS  S10 超时文案含「重试」
+  PASS  S10 超时后锁被释放
+  PASS  S10 超时后定时器已清空
+  PASS  S10 超时后重试能启动新请求
+  PASS  S10 重试后恢复 ready
+  PASS  S10 重试后错误文案被清空
+
+── S11 超时后重试，旧请求迟到不覆盖 ──────────────────
+  PASS  S11 超时进入 error
+  PASS  S11 重试成功
+  PASS  S11 重试后数据是新的
+  PASS  S11 重试后菜品数 3
+  PASS  S11 旧 resolve 不覆盖状态
+  PASS  S11 旧 resolve 不覆盖店铺
+  PASS  S11 旧 resolve 不覆盖店名
+  PASS  S11 旧 resolve 不覆盖菜品
+  PASS  S11 迟到的 reject 不改变状态
+  PASS  S11 迟到的 reject 不写入错误文案
+  PASS  S11 迟到的 reject 不影响数据
+
+── S12 同步请求顶掉异步请求 ──────────────────────────
+  PASS  S12 A 挂起中
+  PASS  S12 A 占着锁
+  PASS  S12 B 完成后 ready
+  PASS  S12 数据来自 B
+  PASS  S12 店名来自 B
+  PASS  S12 锁归最新一轮，已释放
+  PASS  S12 A 迟到后店名仍是 B
+  PASS  S12 A 迟到后菜品仍是 B 的 5 道
+  PASS  S12 A 迟到后状态仍 ready
+  PASS  S12 A 的定时器不把页面改成 error
+  PASS  S12 A 定时器触发后没有残留
+
+── S13 来源缺失落到 unknown ──────────────────────────
+  PASS  S13 来源缺失时 dataSource = unknown
+  PASS  S13 没有被标成 local
+  PASS  S13 没有被标成 demo
+  PASS  S13 raw.source 也是 unknown
+  PASS  S13 空串/空白/null/数字/对象一律 unknown
+  PASS  S13 WXML 仅 local 显示演示横幅
+  PASS  S13 WXML 真实来源有独立横幅
+  PASS  S13 WXML 有来源未知的告示
+
+── S14 明确 local 来源仍然照常加载 ───────────────────
+  PASS  S14 状态 ready
+  PASS  S14 来源 local
+  PASS  S14 12 家店
+  PASS  S14 24 个窗口
+  PASS  S14 45 道菜
+  PASS  S14 命中 45 道
+  PASS  S14 没有残留的加载锁
+  PASS  S14 同步路径不留定时器
+
+── S15 卸载后超时不 setData ──────────────────────────
+  PASS  S15 卸载后超时不调用 setData
+  PASS  S15 卸载后状态不变成 error（停在上次值）
+  PASS  S15 卸载后锁已收敛
+  PASS  S15 卸载后迟到 resolve 也不 setData
+  PASS  S15 卸载后不会把数据装进去
+
+── S16 定时器清理：不再二次改变状态 ──────────────────
+  PASS  S16a 异步加载中有一个定时器
+  PASS  S16a 成功后进入 ready
+  PASS  S16a 成功后定时器已清空
+  PASS  S16a 事后 tick 不改状态
+  PASS  S16b 同步路径全程没有定时器
+  PASS  S16c 失败后锁已释放
+  PASS  S16c 失败后定时器已清空
+  PASS  S16c 事后 tick 不改失败文案
+  PASS  S16c 事后 tick 不改状态
+
+── S17 shops 不是数组 ────────────────────────────────
+  PASS  S17 前置：本地数据已就绪
+  PASS  S17 进入 error，不停在 loading
+  PASS  S17 文案可读且带「重试」  → 数据暂时无法加载，请点「重试」再试一次
+  PASS  S17 旧菜品没被覆盖
+  PASS  S17 旧店铺没被覆盖
+  PASS  S17 锁已释放
+  PASS  S17 原始原因记在 _loadError  → 数据集被拒绝：dataset.shops 必须是数组
+  PASS  S17 定时器已清
+
+── S18 dishes 不是数组 ───────────────────────────────
+  PASS  S18 进入 error
+  PASS  S18 旧菜品数量不变
+  PASS  S18 旧店铺数量不变
+  PASS  S18 命中数不变（列表没被清空）
+  PASS  S18 原因点名 dishes  → 数据集被拒绝：dataset.dishes 必须是数组
+
+── S19 单条记录字段类型错误 ───────────────────────────
+  PASS  S19 price 是字符串 → 拒绝应用并进 error  → error
+  PASS  S19 price 是字符串 → 旧数据保留
+  PASS  S19 price 是字符串 → 错误点名 price  → 数据集被拒绝：dishes[0].price 必须是不小于 0 的有限数字
+  PASS  S19 tastes 是字符串 → 拒绝应用并进 error  → error
+  PASS  S19 tastes 是字符串 → 旧数据保留
+  PASS  S19 tastes 是字符串 → 错误点名 tastes  → 数据集被拒绝：dishes[0].tastes 必须是数组
+  PASS  S19 shopId 缺失 → 拒绝应用并进 error  → error
+  PASS  S19 shopId 缺失 → 旧数据保留
+  PASS  S19 shopId 缺失 → 错误点名 shopId  → 数据集被拒绝：dishes[0].shopId 必须是非空字符串
+  PASS  S19 foodType 是数字 → 拒绝应用并进 error  → error
+  PASS  S19 foodType 是数字 → 旧数据保留
+  PASS  S19 foodType 是数字 → 错误点名 foodType  → 数据集被拒绝：dishes[0].foodType 必须是非空字符串
+  PASS  S19 顶层非对象一律 error
+
+── S20 刷新步骤抛错 ──────────────────────────────────
+  PASS  S20 前置：ready
+  PASS  S20 处理步骤抛错也收敛到 error
+  PASS  S20 锁已释放
+  PASS  S20 定时器已清
+  PASS  S20 原始原因（刷新）被保留  → 模拟刷新炸了
+  PASS  S20 处理错误另记一份  → 模拟刷新炸了
+  PASS  S20 重试后可恢复 ready
+
+── S21 失败态 setData 自己抛错 ───────────────────────
+  PASS  S21 beginLoad 返回 Promise
+  PASS  S21 没有把异常抛给调用方
+  PASS  S21 没有产生未处理 rejection
+  PASS  S21 锁仍然释放了
+  PASS  S21 原始加载错误没有被 setData 的错误覆盖  → 数据源原始错误
+  PASS  S21 setData 的失败单独记下  → setData 也被销毁了
+
+── S22 在途请求上限 ──────────────────────────────────
+  PASS  S22 首个请求在途计数 = 1
+  PASS  S22 第一次超时进 error
+  PASS  S22 超时释放了加载锁
+  PASS  S22 超时不减在途计数（请求还在跑）
+  PASS  S22 第二次请求在途计数 = 2
+  PASS  S22 第二次超时仍进 error
+  PASS  S22 第三次重试被上限挡下（没有开新轮次）
+  PASS  S22 在途计数停在 2，没有继续累积
+  PASS  S22 上限就是 LOAD_INFLIGHT_MAX=2 的语义
+  PASS  S22 真正结束后配额还回 1
+  PASS  S22 配额恢复后重试能开新轮次
+  PASS  S22 重试后回到 ready
+
+── S23 达到上限的反馈与恢复 ──────────────────────────
+  PASS  S23 前置：两个请求都超时、都还在途
+  PASS  S23 达到上限时给出一次 toast
+  PASS  S23 toast 文案说明还在等待  → 上一次加载还在等待，请稍后再试
+  PASS  S23 提示不把页面推成 loading
+  PASS  S23 提示不动在途计数
+  PASS  S23 恢复后重试真的启动
+  PASS  S23 恢复后状态 ready
+
+── S24 迟到结果不覆盖新数据 ──────────────────────────
+  PASS  S24 新请求已生效
+  PASS  S24 旧结果没有覆盖店铺
+  PASS  S24 旧结果没有覆盖菜品数
+  PASS  S24 状态仍是 ready（没被旧轮次改成 error/loading）
+
+── S25 卸载后的定时器与在途状态 ──────────────────────
+  PASS  S25 前置：在途 1 个
+  PASS  S25 标了卸载
+  PASS  S25 卸载后超时不 setData
+  PASS  S25 卸载后定时器已清
+  PASS  S25 不假装请求已结束
+  PASS  S25 迟到结束时配额归还
+  PASS  S25 仍然没有 setData
+
+── S26 本地数据通过结构校验 ──────────────────────────
+  PASS  S26 12 店 / 45 菜全部通过校验
+  PASS  S26 校验不改数据量
+  PASS  S26 店铺 floors/stalls 原样
+  PASS  S26 local 仍是 12 家店
+  PASS  S26 local 仍是 24 个窗口
+  PASS  S26 local 仍是 45 道菜
+  PASS  S26 local 来源仍是 local
+  PASS  S26 缺 source 仍算结构合法
+
+────────────────────────────────────────────────
+通过 205 项，失败 0 项
+全部通过
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_pages.js
+
+四栏导航与页面静态校验（tools/test_pages.js）
+--------------------------------------------------
+  全部通过：106 项 ✅
+--------------------------------------------------
+通过 106 项，失败 0 项
+
+EXIT_CODE: 0
+
+COMMAND: node tools/check_eol.js
+检查范围：[强制] docs/**/*.md　[报告] tools/**/*.md
+排除：tools/_backup/**、node_modules/**、.git/**、miniprogram_npm/**；不跟随符号链接；目录深度上限 8 层
+
+[强制] docs/**/*.md：文件 53 个，合规 53，违规 0（源规则 0 / 规范化 0 / 扫描 0）
+
+[报告] tools/**/*.md：文件 14 个，合规 14，违规 0（源规则 0 / 规范化 0 / 扫描 0）（报告模式，不影响退出码）
+
+合计：文件 67 个，违规记录 0（源规则 0 / 规范化 0 / 扫描 0）
+说明：本工具只做检测。把 CRLF 改成 LF 只是修复动作，不视为通过；不提供 --fix。
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_check_doc_refs.js
+===== A. 自检模式 =====
+  PASS  A1 --self-test 退出码为 0（夹具内锚点/行号/历史/误报各就位）   ← 实际 0 / 期望 0
+  PASS  A2 自检输出含 SELF-TEST PASS   ← SELF-TEST PASS {"counts":{"LINE_OK_UNVERIFIED":1,"LINE_SEMANTIC_REVIEW":1,"LINE_OK":2,"UNRESOLVED":1,"HISTORICAL":1,"IGNORED":2},"anchorCounts":{"ANCHOR_AMBIGUOUS":1,"ANCHOR_OK":2}}
+
+===== B. 分类器小样本（临时夹具，确定性） =====
+  PASS  B1 输出为可解析 JSON
+  PASS  B2a 无结构声称的普通行号不再直接判 LINE_OK（避免「行存在＝引用正确」）   ← 实际 0 / 期望 0
+  PASS  B2b 无结构声称的有效行号计为 LINE_OK_UNVERIFIED   ← 实际 1 / 期望 1
+  PASS  B3 标注历史的引用计为 HISTORICAL   ← 实际 1 / 期望 1
+  PASS  B4 时间与非 Markdown 行号计为 IGNORED   ← 实际 2 / 期望 2
+  PASS  B5 越界行、空行、检查集外文件计为 UNRESOLVED   ← 实际 3 / 期望 3
+  PASS  B6 有效章节锚点计为 ANCHOR_OK   ← 实际 1 / 期望 1
+  PASS  B7 无显式缺失锚点时退出码 0（UNRESOLVED 不致死）   ← 实际 0 / 期望 0
+  PASS  B8 历史引用仍解析到目标文件而不是丢进 IGNORED   ← DOC.md
+
+===== B1b. 行号范围边界（:N-M） =====
+  PASS  B9 范围夹具输出为可解析 JSON
+  PASS  B10 三条范围引用都被解析   ← 实际 3 / 期望 3
+  PASS  B11 上界越界与倒序范围判为 UNRESOLVED（不能只校验起始行）   ← 实际 2 / 期望 2
+  PASS  B12 正常范围（起止都在界内）仍判 LINE_OK_UNVERIFIED   ← 实际 1 / 期望 1
+
+===== B2. 语义核验层（结构声称 vs 目标结构） =====
+  PASS  S1 声称「表头」但目标为标题行 → LINE_SEMANTIC_REVIEW   ← 实际 1 / 期望 1
+  PASS  S2 复核项携带 claim=TABLE_HEADER、targetKind=heading   ← ["TABLE_HEADER","heading"]
+  PASS  S3 表头命中、小节命中、表格行命中各判 LINE_OK（共 3 条）   ← 实际 3 / 期望 3
+  PASS  S4 结构声称可核验时不产生 UNVERIFIED   ← 实际 0 / 期望 0
+  PASS  S5 LINE_OK 的 claim 覆盖 TABLE_HEADER / TABLE / HEADING   ← 实际 "HEADING,TABLE,TABLE_HEADER" / 期望 "HEADING,TABLE,TABLE_HEADER"
+
+===== C. 真实文档：判定与文件内容自洽 =====
+  PASS  C1 真实文档可解析为 JSON
+  PASS  C2 至少扫描到 5 份文档   ← 9
+  PASS  C3 所有 ANCHOR_MISSING 的目标文档确实缺该标题（无假阳性）   ← 实际 0 / 期望 0
+  PASS  C4 4 处 §5.6.5.10.1 引用裁决后，真实文档不再有 ANCHOR_MISSING   ← 实际 0 / 期望 0
+  PASS  C11 真实文档中 TARGET_MISMATCH 为 0（行号引用里的文件名不得被误当章节归属）   ← 实际 0 / 期望 0
+  PASS  C12 剩余歧义全部是「白名单内多候选」（WHITELIST_MULTI），不含启发式猜测   ← 实际 0 / 期望 0
+  PASS  C5 §5.6.5.10 存在而 §5.6.5.10.1 不存在 → 该缺失锚点判定与文件一致
+  PASS  C6 行号引用（LINE_OK + LINE_OK_UNVERIFIED）至少 40 条（检查器确实在解析）   ← 52
+  PASS  C6b 裸行号不再默认归属当前文件：LINE_TARGET_UNCERTAIN 超过 200 条（错归属被降级为待核实）   ← 266
+  PASS  C7 IGNORED / UNRESOLVED / HISTORICAL 三类均有命中（说明分类在真实文档上生效）   ← {"IGNORED":62,"LINE_OK_UNVERIFIED":51,"LINE_TARGET_UNCERTAIN":266,"UNRESOLVED":27,"LINE_OK":1,"LINE_SEMANTIC_REVIEW":3,"HISTORICAL":4}
+  PASS  C7b 真实文档存在「行存在但语义未核验」的引用（LINE_OK_UNVERIFIED）   ← 51
+  PASS  C8 无缺失锚点后退出码为 0（语义复核与失效行号不致死）   ← 实际 0 / 期望 0
+  PASS  C9 已无任何引用指向 §5.6.5.10.1（4 处已改为 §5.6.5.5.4.3）   ← 实际 0 / 期望 0
+  PASS  C10 §5.6.5.5.4.3（键一致性诊断）存在，且至少 4 处引用指向它   ← 15
+
+===== E. 归属白名单、限定词与裸行号（临时夹具） =====
+  PASS  E1 夹具输出为可解析 JSON
+  PASS  E2 白名单允许：§2.1 解析为 1 条锚点   ← 实际 1 / 期望 1
+  PASS  E3 白名单允许：判为 ANCHOR_OK   ← 实际 "ANCHOR_OK" / 期望 "ANCHOR_OK"
+  PASS  E4 白名单允许：目标取白名单内唯一候选 DOC.md   ← 实际 "DOC.md" / 期望 "DOC.md"
+  PASS  E5 白名单允许：依据标记 WHITELIST   ← 实际 "WHITELIST" / 期望 "WHITELIST"
+  PASS  E6 白名单不含候选目标：保持 ANCHOR_AMBIGUOUS，不猜   ← 实际 "ANCHOR_AMBIGUOUS" / 期望 "ANCHOR_AMBIGUOUS"
+  PASS  E7 行文写出 CONTRACT.md：解析到该文件   ← 实际 "ANCHOR_OK" / 期望 "ANCHOR_OK"
+  PASS  E8 显式文件名的依据标记 EXPLICIT   ← 实际 "EXPLICIT" / 期望 "EXPLICIT"
+  PASS  E9 点名 CONTRACT.md 但该节只在别处：判 TARGET_MISMATCH，不静默换目标   ← 实际 "TARGET_MISMATCH" / 期望 "TARGET_MISMATCH"
+  PASS  E13 自引用：本文档自己有该节时判 ANCHOR_OK   ← 实际 "ANCHOR_OK" / 期望 "ANCHOR_OK"
+  PASS  E14 自引用的依据标记 SELF   ← 实际 "SELF" / 期望 "SELF"
+  PASS  E15 行号引用里的文件名不参与章节归属（1 条 §4.4）   ← 实际 1 / 期望 1
+  PASS  E16 「DOC.md:3 与 §4.4 无关」保持歧义，不误判 TARGET_MISMATCH   ← 实际 "ANCHOR_AMBIGUOUS" / 期望 "ANCHOR_AMBIGUOUS"
+  PASS  E10 裸行号（无文件线索）：1 条 LINE_TARGET_UNCERTAIN   ← 实际 1 / 期望 1
+  PASS  E11 显式文件行号仍可解析（DOC.md:3 出现两处，均为单行号）   ← 实际 2 / 期望 2
+  PASS  E12 行号范围 :3-5 被识别（n=3,n2=5）   ← {"file":"C:\\Users\\25975\\AppData\\Local\\Temp\\docref-wl-91lg0M\\REF_MISC.md","line":9,"cls":"LINE_OK_UNVERIFIED","reason":"目标行存在，语义未核验","n":3,"n2":5,"raw":":3-5","target":"DOC.md","claim":"NONE","targetKind":"text","targetText":"文档内容"}
+
+===== D. 只读性 =====
+  PASS  D1 运行检查器前后 5 个被检查文件哈希不变（只读）   ← 实际 "{\"docs/RECORD_GENERATOR_CONTRACT_20261023.md\":\"ca18c91e2ebe3d00819bf7f96a9c904df2c1a96e521151a32151009e63850b6f\",\"docs/RECORD_GENERATOR_PLAN_20261023.md\":\"319255a0df024ba9ca3d32ab5be1a05549845b01770907e6501c44ea7939577f\",\"docs/RAW_DATA_BLOCKERS_20261023.md\":\"28cf46b1f8ca839ac4c0920608327ef2a04515b0d9d4516743cc714da39b9a26\",\"docs/decisions/ADAPTER_MAP_C_TO_L8_20261025.md\":\"5b4ab77dded133edf99ae1d1e999145d4b319613300f13d5123801748dab06d4\",\"tools/test_records_spec.js\":\"0cb19a1324fd456148c6c251dba76c513c3b53de1ebbfa18bf183d3f460930d8\"}" / 期望 "{\"docs/RECORD_GENERATOR_CONTRACT_20261023.md\":\"ca18c91e2ebe3d00819bf7f96a9c904df2c1a96e521151a32151009e63850b6f\",\"docs/RECORD_GENERATOR_PLAN_20261023.md\":\"319255a0df024ba9ca3d32ab5be1a05549845b01770907e6501c44ea7939577f\",\"docs/RAW_DATA_BLOCKERS_20261023.md\":\"28cf46b1f8ca839ac4c0920608327ef2a04515b0d9d4516743cc714da39b9a26\",\"docs/decisions/ADAPTER_MAP_C_TO_L8_20261025.md\":\"5b4ab77dded133edf99ae1d1e999145d4b319613300f13d5123801748dab06d4\",\"tools/test_records_spec.js\":\"0cb19a1324fd456148c6c251dba76c513c3b53de1ebbfa18bf183d3f460930d8\"}"
+
+===== 结果 =====
+通过 51，失败 0
+RESULT: OK
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_records_spec.js
+    T100 案例表（逐案独立）：
+      ① 未知子命令 | 输入 ["bogus"] | 预期 E27_CLI_USAGE·第1步·退出2 | 实际 E27_CLI_USAGE·第1步·退出2 | OK
+      ② 未知选项 | 输入 ["--outdir","x"] | 预期 E27_CLI_USAGE·第2步·退出2 | 实际 E27_CLI_USAGE·第2步·退出2 | OK
+      ③a 选项缺值 | 输入 ["--write","--out"] | 预期 E27_CLI_USAGE·第3步·退出2 | 实际 E27_CLI_USAGE·第3步·退出2 | OK
+      ③b 选项空值 | 输入 ["--write","--out",""] | 预期 E27_CLI_USAGE·第3步·退出2 | 实际 E27_CLI_USAGE·第3步·退出2 | OK
+      ④ 互斥冲突 | 输入 ["--write","--dry-run","--out","C:\\Users\\25975\\AppData\\Local\\Temp\\sl-t100-qJd1x0\\out"] | 预期 E27_CLI_USAGE·第4步·退出2 | 实际 E27_CLI_USAGE·第4步·退出2 | OK
+      ⑤ 多余位置参数 | 输入 ["gen","foo.json"] | 预期 E27_CLI_USAGE·第5步·退出2 | 实际 E27_CLI_USAGE·第5步·退出2 | OK
+      ⑥ 多错取首（子命令先于选项） | 输入 ["bogus","--outdir","x"] | 预期 E27_CLI_USAGE·第1步·退出2 | 实际 E27_CLI_USAGE·第1步·退出2 | OK
+      ⑦ 路径问题不得早于语法错误 | 输入 ["--write","--outdir","x","--out","data/"] | 预期 E27_CLI_USAGE·第2步·退出2 | 实际 E27_CLI_USAGE·第2步·退出2 | OK
+      ⑧ 语法通过后完成发布（PUBLISH_OK/0） | 输入 ["--write","--out","data/"] | 预期 PUBLISH_OK·第—步·退出0 | 实际 PUBLISH_OK·第—步·退出0 | OK
+— 发布诊断（清理前）—
+  阶段 S3
+  错误码 E9_SUM
+  原因 分项基准不一致（S3 第 6 项 2F/3F）：f2 实得 418/346/39/33，基准 419/347/39/33（不一致项：total,A）；f3 实得 146/117/0/29，基准 145/116/0/29（不一致项：total,A）
+  本次临时目录 C:\Users\25975\AppData\Local\Temp\p1-layer-IgLQjW\gen-18288-1793429542902
+  已写出的部分产物 records.json, records_blockers.json, gen-manifest.json, PUBLISHING
+— 发布诊断（清理前）—
+  阶段 S3
+  错误码 E9_SUM
+  原因 分项基准不一致（S3 第 6 项 2F/3F）：f2 实得 420/347/39/34，基准 419/347/39/33（不一致项：total,C）；f3 实得 144/116/0/28，基准 145/116/0/29（不一致项：total,C）
+  本次临时目录 C:\Users\25975\AppData\Local\Temp\p1-layer-NstgA3\gen-18288-1793429542912
+  已写出的部分产物 records.json, records_blockers.json, gen-manifest.json, PUBLISHING
+— 发布诊断（清理前）—
+  阶段 S3
+  错误码 E9_SUM
+  原因 与基准不一致（S3 第 6 项）：实得 564/462/39/63，基准 564/463/39/62（测试注入基准）
+  本次临时目录 C:\Users\25975\AppData\Local\Temp\p1-layer-JPNUTg\gen-18288-1793429542922
+  已写出的部分产物 records.json, records_blockers.json, gen-manifest.json, PUBLISHING
+— 发布诊断（清理前）—
+  阶段 S3
+  错误码 E9_SUM
+  原因 缺少分层数据：1 条记录的 gen.groupKey 无 f2/f3 前缀，分项基准无法校验
+  本次临时目录 C:\Users\25975\AppData\Local\Temp\p1-layer-RcxfLE\gen-18288-1793429542929
+  已写出的部分产物 records.json, records_blockers.json, gen-manifest.json, PUBLISHING
+— 发布诊断（清理前）—
+  阶段 S3
+  错误码 E9_SUM
+  原因 分项基准不一致（S3 第 6 项 2F/3F）：f2 实得 1/1/0/0，基准 2/2/0/0（不一致项：total,A）；f3 实得 1/1/0/0，基准 0/0/0/0（不一致项：total,A）
+  本次临时目录 C:\Users\25975\AppData\Local\Temp\p1-layer-Vj4AFc\gen-18288-1793429542932
+  已写出的部分产物 records.json, records_blockers.json, gen-manifest.json, PUBLISHING
+— 发布诊断（清理前）—
+  阶段 S2
+  错误码 E13_DUP_ID
+  原因 重复 dishId：c01_d001
+  本次临时目录 C:\Users\25975\AppData\Local\Temp\p1-test-X8t74J\gen-18288-1793429543389
+  已写出的部分产物 records.json, records_blockers.json, gen-manifest.json, PUBLISHING
+— 发布诊断（清理前）—
+  阶段 S4
+  错误码 C18_ID_STATUS_MISMATCH
+  原因 id 非空但 id_status=
+  本次临时目录 C:\Users\25975\AppData\Local\Temp\p1-test-u60QAY\gen-18288-1793429543395
+  已写出的部分产物 records.json, records_blockers.json, gen-manifest.json, PUBLISHING
+— 发布诊断（清理前）—
+  阶段 S5
+  错误码 E11_UNEXPECTED_ELIGIBLE
+  原因 C 档进入 records
+  本次临时目录 C:\Users\25975\AppData\Local\Temp\p1-test-8dqgBy\gen-18288-1793429543399
+  已写出的部分产物 records.json, records_blockers.json, gen-manifest.json, PUBLISHING
+— 发布诊断（清理前）—
+  阶段 S5
+  错误码 E11_UNEXPECTED_ELIGIBLE
+  原因 出现 candidate_only
+  本次临时目录 C:\Users\25975\AppData\Local\Temp\p1-test-hrTRgt\gen-18288-1793429543404
+  已写出的部分产物 records.json, records_blockers.json, gen-manifest.json, PUBLISHING
+— 发布诊断（清理前）—
+  阶段 S3
+  错误码 E9_SUM
+  原因 与基准不一致（S3 第 6 项）：实得 1/1/0/0，基准 525/490/0/35（契约固定规划基准）
+  本次临时目录 C:\Users\25975\AppData\Local\Temp\p1-test-Vqn8x5\gen-18288-1793429543409
+  已写出的部分产物 records.json, records_blockers.json, gen-manifest.json, PUBLISHING
+— 发布诊断（清理前）—
+  阶段 S3
+  错误码 E9_SUM
+  原因 与基准不一致（S3 第 6 项）：实得 1/1/0/0，基准 564/463/39/62（测试注入基准）
+  本次临时目录 C:\Users\25975\AppData\Local\Temp\p1-test-GrgG8C\gen-18288-1793429543424
+  已写出的部分产物 records.json, records_blockers.json, gen-manifest.json, PUBLISHING
+— 发布诊断（清理前）—
+  阶段 S1
+  错误码 E1_INPUT_UNREADABLE
+  原因 测试注入 writeTemp=fail
+  本次临时目录 C:\Users\25975\AppData\Local\Temp\write-t283-4NooTz\gen-18288-1793429543891
+  已写出的部分产物 （无）
+— 发布诊断（清理前）—
+  阶段 S3
+  错误码 E23_S10_COUNT_MISMATCH
+  原因 manifest.counts.records≠records.length
+  本次临时目录 C:\Users\25975\AppData\Local\Temp\write-t283-4NooTz\gen-18288-1793429543908
+  已写出的部分产物 records.json, records_blockers.json, gen-manifest.json, PUBLISHING
+记录级生成规格断言（不实现生成器）
+依据：2F/3F 转述稿、生成方案、审计报告
+
+PENDING [G2] 产物层断言：records.json 三类判定与 A/B/C 过滤（待生成器实现后启用）
+        源：tools/pilot/records.json｜文件不存在
+PENDING [T113] 第九个未经批准的组合不得自动加入组合清单（运行时）
+        源：tools/pilot/records.json；docs/decisions/DECISION_RECORD_SET_R2_20261024.md｜正式产物未生成，无法核对运行时行为
+PENDING [T114b] 八款组合的计数不误伤其他经独立裁决允许建档的售卖单元（运行时隔离检查）
+        源：tools/pilot/records.json｜正式产物未生成，无法核对隔离性
+PENDING [T12c] R6/R7/B13 阻塞过滤：B 档（待补证）不得进 CSV 候选，C 档（口径/归属未决）不得生成；source_detail 必须含「第 N 张」+ 牌面原文（产物层）
+        源：tools/pilot/records.json｜正式产物未生成（records.json），无法核对每条记录是否带 source_detail 与阻塞标记
+PENDING [T39b] PUBLISHING 标记与 E17_INCOMPLETE_PUBLISH 的运行时行为（需真实写出实现）
+        源：契约 §7.2.3｜缺少正式发布产物（需另行授权生成并发布后才能核对运行时行为）
+PENDING [T63b] Q6-1=A 运行时：清除后目标目录不再含标记
+        源：tools/pilot/gen_records.js｜缺少正式发布产物（清除动作需真实发布链路）
+PENDING [T64b] Q6-2=A 运行时：清除失败时不产生成功结果
+        源：tools/pilot/gen_records.js｜缺少正式发布产物（清除失败分支需真实发布链路）
+PENDING [T68b] Q6-5=C 运行时：产物 manifest 恰含 5 字段且拒绝额外字段
+        源：tools/pilot/records.json｜缺少正式产物 gen-manifest.json
+PENDING [T75] S10 运行时：标记/可读性/五字段三项复核与失败行为
+        源：tools/pilot/gen_records.js｜缺少正式发布产物（S10 运行时复核）
+PENDING [T84] 运行时：两个数据文件的 sha256 与 counts 与 manifest 一致（§7.2.8 第 5/6 条 + S10 ④⑤）
+        源：tools/pilot/gen_records.js｜缺少正式发布产物
+PENDING [T9b] 全部生成记录的元数据必须 verifyStatus=unverified、verifiedAt=null（不得因裁决升级为已核实）（产物层）
+        源：tools/pilot/records.json｜正式产物未生成（records.json），无法核对每条记录
+PASS    [G1] 生成器导出生产入口 run()（导出面完整集合见 T108）
+        源：tools/pilot/gen_records.js
+PASS    [T1] R1 一菜一价 / 行数口径：2F 逐档菜品表合计 316 行
+        源：tools/pilot/TRANSCRIPTION_2F.md §三 逐家抄录｜实测 316 行（40 张表，按档口章节归集）
+PASS    [T10] B5 楼层建模：3F = 服务楼三楼，与 2F 同属店铺 c01，楼层 id c01_f3，不新建第三个店
+        源：tools/pilot/TRANSCRIPTION_3F.md §四 #13 + §八｜c01_f3 + 同店 + 建模裁决说明齐备
+PASS    [T100] 九案逐案独立：五步顺序只报首错、码与退出码符合 2/1 映射；路径问题未早于语法错误；语法通过后仅做语法侧放行且零写入（E28 路径安全已实现，见 T164；⑧ 只断言零写入）
+        源：tools/pilot/gen_records.js（真实子进程）
+PASS    [T101] G-4=C：写侧严（初始化缺审批即失败）/ 读侧宽（仅警告并继续）
+        源：§10.6.4
+PASS    [T102] G-5=A：一次审批只覆盖其 planDigest，扩展需新计划+新审批，同 ID 配不同 digest 判 E25
+        源：§10.6.4
+PASS    [T103] G-6=B：碰撞键写 null + reasons 保留 KEY_COLLISION，其余键正常写、不整体失败、null 期间不可发布
+        源：§10.6.4
+PASS    [T104] G-6 附加三条：null 不承载原因 / 部分映射≠部分发布 / 不得静默消歧
+        源：§10.6.4
+PASS    [T105] G-7=O-1：生产导出面仅 run；__test__ 恰含 9 个冻结名字；readSource/writeOutputs 不导出
+        源：§10.6.4
+PASS    [T106] G-8=A：计划载体 init-plans/ip-YYYYMMDD-NN.md，与 approvals/ap-… 一对一
+        源：§10.6.4
+PASS    [T107] G-8 不可变：审批后计划不得原地修改，修订须新建 -r2 并重新审批
+        源：§10.6.4
+PASS    [T108] 导出面恰 run + runInit + __test__（2026-10-25 实施轮更新）；__test__ 恰 9 个冻结函数（逐名比对、无 readSource/writeOutputs、改写失败）
+        源：tools/pilot/gen_records.js（真实 require）
+PASS    [T109] 裁决记录存在，含编号/日期/角色/范围/决定/未决/依据/历史状态/审批要求，且声明不追溯伪装
+        源：docs/decisions/DECISION_RECORD_SET_R2_20261024.md｜10 项必填字段齐；角色=项目负责人
+PASS    [T11] B8 三个暂定店名必须保留「暂定」标记，不得写成已核实正式名
+        源：tools/pilot/TRANSCRIPTION_2F.md 名册/逐家抄录｜三处暂定名均带「暂定」标记
+PASS    [T110] 八款双拼饭（13/13/14/16/16/15/15/16）与裁决记录逐条一致，且均能回溯到 2F §4.1
+        源：docs/decisions/DECISION_RECORD_SET_R2_20261024.md；tools/pilot/TRANSCRIPTION_2F.md §4.1｜2F 8 条 / 记录 8 条，序号·菜名·价格三元全等
+PASS    [T111] U-4 改写到位：范围限定 + 不得新增第 9 条 + 其他单元单独裁决 + 依据标记 + 记录引用；绝对句已消失
+        源：契约（RECORD_GENERATOR_CONTRACT_20261023.md）§6.1 :766｜正向 5/5，负向「不得单独出现」= 0
+PASS    [T112] 记录明确「同一组合在不同版面重复展示仍计 1 条」，不因重复展示重复生成
+        源：docs/decisions/DECISION_RECORD_SET_R2_20261024.md
+PASS    [T114] 边界句齐备：其他含「公瑾爆蛋」字样的单元不自动禁止也不自动允许，按实际售卖形态单独裁决
+        源：docs/decisions/DECISION_RECORD_SET_R2_20261024.md §三 D3｜3/3 命中
+PASS    [T115] PK-1 乙：pending_review 进入映射但不分配 ID，返回 PENDING_REVIEW 阻塞
+        源：契约 §5.6.5.5.2（L-B 参考语义）
+PASS    [T116] PK-1 乙：pending_review 携带非 null dishId 亦不得赋号（阻塞可观察）
+        源：契约 §5.6.5.5.2
+PASS    [T117] PK-1 R1：pending_review ⇒ dishId 必须显式 null，缺省/空串/有效 ID 均不符合
+        源：契约 §5.6.5.5.2
+PASS    [T118] PK-1 R2/R3：不得隐式继承审批、不得静默升级/赋号/进可发布集
+        源：契约 §5.6.5.5.2
+PASS    [T119] orphans[].status 独立枚举：固定 "orphan"，不并入 entries[].status
+        源：契约 §5.6.5.5
+PASS    [T12] R6/R7/B13 阻塞过滤：B 档（待补证）不得进 CSV 候选，C 档（口径/归属未决）不得生成；source_detail 必须含「第 N 张」+ 牌面原文（文档规则层）
+        源：方案文档 §四 三档定义 + §五 字段约束 + 2F §7.4｜B 档「❌ 不可」、C 档「❌ 不得生成」均写明
+PASS    [T120] §3.4.1 注册表覆盖 B1–B13 与四个诊断标识，状态取值受控，B4 标保留未使用
+        源：契约 §3.4.1
+PASS    [T121] §3.4.1 引用一致：引用即登记、登记即引用、B4 无引用、旧引用改指、待定义项不推测语义
+        源：契约 §3.4.1、§3.4
+PASS    [T122] B5 复用裁决：两处限定语齐全、业务引用无裸写
+        源：§3.4.1、§6.3、§6.4
+PASS    [T123] NEW_KEY / PENDING_REVIEW：登记状态、NK-R1–R4、reasons 置位与禁止性措辞齐备
+        源：§3.4.1、§5.6.5.5.3
+PASS    [T124] NK-R1 互斥：映射缺失 ⇒ E12_NO_ID_MAP 且不产出 NEW_KEY；映射存在且键未登记 ⇒ NEW_KEY
+        源：契约 §5.6.5.5.3 NK-R1 + REF.resolve
+PASS    [T125] NK-R1–NK-R4 逐行归集：四条核心约束各自完整、顺序无关、无缺行重复（仅证明文字存在，不证明运行时行为）
+        源：契约 §5.6.5.5.3
+PASS    [T126] GAP-B7 防退化：缺口仍登记、B7 标「无断言覆盖」、§10.7 记为缺口（不证明 B7 运行时行为）
+        源：§3.4.1、§10.7
+PASS    [T127] R2/R3 差异：groupKey 折叠空白并去首尾标点（得「红烧 肉盖饭」），specLabel 仅 trim+NFKC（得「小 碗」）
+        源：契约 §5.6.5.5.4.1 R2–R3
+PASS    [T128] 顺序敏感：全角空格经 NFKC 变空格、折叠后再 trim、最后去「。；」；specLabel 保留标点与内部空白
+        源：契约 §5.6.5.5.4.1 R2–R3
+PASS    [T128b] R2 顺序：连续首尾标点全部剥离（「。；鼎」→「鼎」）；先 trim 再去标点，故「。。、 鼎」保留分隔空格（→「 鼎」）；纯空白 specLabel → 空串
+        源：契约 §5.6.5.5.4.1 R2–R3
+PASS    [T129] R5：空字段一律空字符串（缺失值与 null 等价），不使用字面量占位
+        源：契约 §5.6.5.5.4.1 R5
+PASS    [T12b] source_detail 生成规则要求含照片序号
+        源：方案文档 §四 三档定义 + §五 字段约束 + 2F §7.4
+PASS    [T13] D-1 名册顺序映射：东①→t01 … 西㉕→t37 连续且首尾正确；t48/t49 规划目标行已登记（规划目标≠正式分配）
+        源：契约 §5.6.1 + TRANSCRIPTION_2F.md:30/33｜39 行，c01_t01–c01_t37 + t48/t49
+PASS    [T130] R8：非空非字符串键段被拒（E15_BAD_MAP），该记录不分配 ID
+        源：契约（RECORD_GENERATOR_CONTRACT_20261023.md）§5.6.5.5.4.1 R8、§7.4 E15
+PASS    [T131] R7：四段值含「|」即拒绝（不转义、不修复），且不进入分组、不产生 NEW_KEY
+        源：契约 §5.6.5.5.4.1 R7
+PASS    [T132] 阶段 B-1：映射键必须恰好四段（三个分隔符）；五段键报 E15_BAD_MAP 且不注册；格式失败先于重复 dishId
+        源：契约 §5.6.5.5.4 第 3 步
+PASS    [T133] 唯一键规范 R1–R8、两阶段检查位置、旧表述作废声明均已写入契约
+        源：契约 §5.6.5.5.4.1
+PASS    [T134] 措辞统一：「正式产物」有定义、旧「不写任何文件」清零；T61 改为五类禁止产物 + 已授权骨架
+        源：契约 §7.1.1、§9.1 T61
+PASS    [T135] 阶段 B-1：候选违规诊断含 stage=candidate 与 field/reason；不进分组、不产生 NEW_KEY、不误报为映射加载 fatal
+        源：§5.6.5.5.4.1 R7(b)/R8
+PASS    [T136] Q-MAP-IO：父级为普通文件 → 退出码 3、MAP_IO_ERROR、无 E12、诊断含「路径不可达」
+        源：§7.4.1 第 1 条
+PASS    [T137] Q-MAP-IO：祖父级为普通文件 → 退出码 3、MAP_IO_ERROR、无 E12、诊断含「路径不可达」
+        源：§7.4.1 第 1 条
+PASS    [T138] Q-MAP-IO：目标确实缺失且父目录存在 → E12_NO_ID_MAP、退出码 1（回归）
+        源：§7.4.1 第 1 条
+PASS    [T139] Q-MAP-IO：路径指向目录 → 退出码 3、MAP_IO_ERROR、无 E12
+        源：§7.4.1 第 1 条
+PASS    [T14] D-1 三家人工确认（西⑩→t22 / 西⑪→t23 / 西⑬→t25）且不再是「待确认」
+        源：契约 §5.6.1 + batch1/stalls.csv
+PASS    [T140] Q-MAP-IO：中间组件为悬空联接点 → 退出码 3、MAP_IO_ERROR、无 E12、诊断指出链接不可解析
+        源：§7.4.1 第 2 条第 1、3 款
+PASS    [T141] L1 parseDoc：切段+表格识别+跳过段计数+未知表进 unparsable+行号单调+同输入确定性
+        源：tools/pilot/gen_records.js __test__（P2 纯函数层）｜tables=7 sections=8 skipped=1 unparsable=1
+PASS    [T142] L2 classifyTable：S1/S2（小碗大碗、小份大份）/S3/S4/EXCL 全对，未知形态抛 E2_UNKNOWN_TABLE
+        源：tools/pilot/gen_records.js __test__（P2 纯函数层）｜七例全中 + 未知表抛错
+PASS    [T143] L3 expandTable：R1 一行一条、R2 阶梯价 3 条、R5 规格拆条仅授权档口生效（c01_t28 拆 2 条 / 未授权档口只 1 条且记 R5_SPEC_NOT_AUTHORIZED）、R4 多做法 3 条（foodType 分流）、R3 多基底 3 条、R6/R7/R8 拦截进 blockers、EXCL 不产出、不可解析价格进 E4
+        源：tools/pilot/gen_records.js __test__（P2 纯函数层）｜S1=4 S2=2 S2off=1 S3=3 S4=3 blockers=E4_PRICE_UNPARSABLE/R6_SELF_SELECT/R7_FREE_OPTION/R8_ADD_ON
+PASS    [T144] L4 buildSourceDetail：有图/无原图两条模板、缺照片序号且未声明无原图 → E6_EVIDENCE、同输入同输出
+        源：tools/pilot/gen_records.js __test__（P2 纯函数层）｜现场拍摄价目表（第 9 张）：| 红烧肉盖饭…
+PASS    [T145] L5 三判定：缺省值固定、三枚举各自校验、非法值一律 E3_ENUM（互不推导）
+        源：tools/pilot/gen_records.js __test__（P2 纯函数层）｜default=generated,traceable,blocked
+PASS    [T146] L6 summarize：A/B/C 与 perStall 计数正确、tier 缺失 → E3、汇总与记录不一致 → L7 报 E9_SUM
+        源：tools/pilot/gen_records.js __test__（P2 纯函数层）｜{"s1":2,"s2":2}
+PASS    [T147] L7 assertContract：干净项 0 违规；C17 非法资格、C18 id 与 id_status 不一致/ null 却非 blocked、C19 candidate_only → E11 均被捕获
+        源：tools/pilot/gen_records.js __test__（P2 纯函数层）｜clean=0 C17/C18/E11 命中
+PASS    [T148] L8 正常构建：三份产物内存生成、manifest 恰 5 字段、哈希小写 64 位、UTF-8 无 BOM 且保留末尾换行
+        源：§3.3/§3.4/§7.2.2/§7.2.8
+PASS    [T149] L8 counts：meta.counts 保留完整候选集，manifest.counts 与之 A/B/C 相等且 records 为 C 过滤后条数
+        源：§6.2.1/§7.2.2 第 8 条/§7.2.8
+PASS    [T15] D-1 烽盛面馆：名称确认不等于照片位置确认，仍保留位置阻塞
+        源：契约 §5.6.1 + §10.3
+PASS    [T150] C 档不进入 records.json，但作为一条 not_generated 阻塞记录进入 blockers（reasons 含 TIER_C）
+        源：§4.2/§3.4
+PASS    [T151] tier 非法（"D"）时显式失败（exit 1、L8_BUILD_FAILED、violation 带 E3），不静默归入 C
+        源：§4.1/§6.2.1
+PASS    [T152] C20：id 非空不会改写 import_eligibility（仍 blocked），导出不产生 candidate_only
+        源：§4.3 C20
+PASS    [T153] blockers：一条待阻塞记录一条 entry，多原因合并进 reasons，kind 按「C→无 ID→证据缺口→待裁决」归类，count===entries.length 且无时间字段
+        源：§3.4
+PASS    [T154] 序列化：JSON 往返一致、哈希对最终 UTF-8 字节重算相等、无 CR（LF 口径）
+        源：§7.2.8 H-1
+PASS    [T155] 空记录集产出空产物（exit 0）；id 非空而 id_status=unassigned 触发 C18 违规（exit 1）
+        源：§4.3 C18/§3.3
+PASS    [T156] manifest 缺少必需字段（删除 counts）→ 结构校验明确拒绝（exit 1、L8_MANIFEST_FIELDS）
+        源：§7.2.2 第 6 条
+PASS    [T157] manifest 出现额外字段（debugInfo）→ 明确拒绝（等价 additionalProperties=false）
+        源：§7.2.2 第 6 条（Q6-5=C 严格档）
+PASS    [T158] counts 键集合错误（缺少 C）→ 明确拒绝（L8_MANIFEST_COUNTS_FIELDS）
+        源：§7.2.2 第 8 条/§7.2.8
+PASS    [T159] blockers 的 count 与 entries.length 不一致 → 明确拒绝（L8_BLOCKERS_COUNT）
+        源：§3.4
+PASS    [T16] D-2 菜品 ID 按店连续、正式 ID 永不重编、C 档与无 stallId 不占号、草稿重编需单独批准
+        源：契约 §5.6.2
+PASS    [T160] manifest.counts.A 与 records.meta.counts.A 不一致 → 明确拒绝（L8_COUNTS_MISMATCH）
+        源：§7.2.2 第 8 条/§7.2.8
+PASS    [T161] C20：非空 ID 不赋资格、导出不改写 import_eligibility（前后一致）、candidate_only 被判 E11 拒绝
+        源：§4.3 C20
+PASS    [T162] P1 成功发布：三文件齐全、无 PUBLISHING 残留、manifest 五字段且 publishedAt 为 ISO 字符串、两哈希与字节一致、counts 与产物内容对账
+        源：§7.2.1 S1–S10/§7.2.2/§7.2.8
+PASS    [T163] S6 目标已存在（含空目录/非空目录）→ 拒绝覆盖与合并（exit 3），临时目录按 §7.2.5 保留
+        源：§7.2.1 S6/§7.2.5
+PASS    [T164] §7.2.6 --out 指向受保护目录/项目根 → E28_OUT_REFUSED（exit 3），且不创建任何目录
+        源：§7.2.6
+PASS    [T165] 发布失败路径：目标父目录不存在 → 前置检查（stage=PRE）即失败（exit 3），不创建目标、不降级为逐文件写入
+        源：§7.2.4/§7.2.5
+PASS    [T166] 读侧识别：仅「有 manifest ∧ 无 PUBLISHING ∧ 有 COMMITTED」才接受；缺 manifest／含标记／缺完成标记（S10 未通过）均 → E17_INCOMPLETE_PUBLISH
+        源：§7.2.3
+PASS    [T167] 重跑同一目标：S6 拒绝（exit 3），已发布内容零改动（不覆盖、不合并）
+        源：§7.2.1 S6/§7.2.3
+PASS    [T168] applyFaults 边界：CLI 传 --faults → E27_CLI_USAGE/2（不可达）；不传时 manifest 仍恰 5 字段
+        源：§7.2.2 第 6 条/§3.5
+PASS    [T169] S2 结构校验：records 内重复 dishId → E13_DUP_ID（exit 1、stage=S2），目标目录未被创建
+        源：§7.2.1 S2
+PASS    [T17] D-3 3F：W01–W10 → c01_t38–t47 顺序一致，且写明「候选≠已分配」
+        源：契约 §5.6.3
+PASS    [T170] inspectDir 与 mode=write/outDir 同时出现 → E29_PARAM_CONFLICT（exit 2），零写入、不静默优先读侧
+        源：§3.5/§7.4
+PASS    [T171] S4 映射一致性：id 非空但 id_status=unassigned → C18_ID_STATUS_MISMATCH（exit 1、stage=S4、零发布）
+        源：§7.2.1 S4（测试注入）
+PASS    [T172] S5：C 档记录进入待发布集合 → E11_UNEXPECTED_ELIGIBLE（exit 1、stage=S5）
+        源：§7.2.1 S5（测试注入）
+PASS    [T173] S5：candidate_only 出现在待发布集合 → E11（exit 1、stage=S5）
+        源：§7.2.1 S5（测试注入）
+PASS    [T174] 正式路径强制契约基准：未注入测试基准时 1 条记录 → S3 / E9_SUM（exit 1、零发布、note 标明固定基准）
+        源：§7.2.1 S3 第 6 项
+PASS    [T175] 注入匹配的测试基准 → PUBLISH_OK 且写 COMMITTED
+        源：§7.2.1 S3（测试注入）
+PASS    [T176] 注入不匹配的测试基准 → S3 / E9_SUM（exit 1、零发布）
+        源：§7.2.1 S3（测试注入）
+PASS    [T177] testBaseline 未与 records 注入同时使用 → E29_PARAM_CONFLICT（exit 2，测试通道隔离）
+        源：§3.5/§7.4
+PASS    [T178] CLI 不识别 --test-baseline → E27_CLI_USAGE（exit 2，正式路径无法关闭基准校验）
+        源：§3.5
+PASS    [T179] 读侧完整性：缺 records.json → E17_INCOMPLETE_PUBLISH（exit 1，给出 reasons）
+        源：§7.2.3
+PASS    [T18] D-3 分配候选档口 ID 不解除证据/CSV 阻塞（W03、W04 仍 C 档）
+        源：契约 §5.6.3 + §5.8 + TRANSCRIPTION_3F.md:420-421
+PASS    [T180] 读侧完整性：缺 records_blockers.json → E17_INCOMPLETE_PUBLISH（exit 1，给出 reasons）
+        源：§7.2.3
+PASS    [T181] 读侧完整性：records.json JSON 损坏 → E17_INCOMPLETE_PUBLISH（exit 1，给出 reasons）
+        源：§7.2.3
+PASS    [T182] 读侧完整性：manifest 缺字段 → E17_INCOMPLETE_PUBLISH（exit 1，给出 reasons）
+        源：§7.2.3
+PASS    [T183] 读侧完整性：PUBLISHING 与 COMMITTED 共存 → E17_INCOMPLETE_PUBLISH（exit 1，给出 reasons）
+        源：§7.2.3
+PASS    [T184] COMMITTED 写入失败 → E30_COMMITTED_WRITE_FAILED（exit 4），读侧拒绝该目录
+        源：§7.2.1 S10
+PASS    [T185] rename 后中断（测试模拟，非真实 OS 故障）→ exit 4、目标含 PUBLISHING 且无 COMMITTED、读侧拒绝
+        源：§7.2.5
+PASS    [T186] 并发创建目标（测试注入）→ S7 rename 失败（exit 3）、不降级写入、外部目录未被覆盖
+        源：§7.2.4/§7.2.5
+PASS    [T187] 故障注入项封闭：未登记项 → L8 构建失败并点名（不静默忽略）
+        源：§7.2.5
+PASS    [T188] S1 失败诊断包含阶段/错误码/原因/临时目录绝对路径/部分产物清单（自动化断言）
+        源：§7.2.5
+PASS    [T189] 2F/3F 分项与总数基准全部匹配（419/145/564）→ PUBLISH_OK
+        源：§7.2.1 S3 第 6 项
+PASS    [T19] D-4 位置分三层（店铺=服务楼 / 楼层 / 档口方位），禁止 3F 挂 2F 方位
+        源：契约 §5.7
+PASS    [T190] 总数正确但 2F 分项错误 → S3/E9 且点名 f2 与实得/基准
+        源：§7.2.1 S3 第 6 项
+PASS    [T191] 总数正确但 3F 分项错误 → S3/E9 且点名 f3
+        源：§7.2.1 S3 第 6 项
+PASS    [T192] 分层内 A/B/C 分布错误（总数不变）→ S3/E9 失败
+        源：§7.2.1 S3 第 6 项
+PASS    [T193] 分层字段缺失 → S3/E9 明确失败（不默认通过）
+        源：§7.2.1 S3 第 6 项
+PASS    [T194] 测试注入基准也必须满足 f2/f3（不能只对总数绕过）→ S3/E9
+        源：§7.2.1 S3 第 6 项
+PASS    [T195] S2 诊断：重复 dishId → 进程 exit 1，输出含阶段/错误码/原因/临时目录/部分产物
+        源：§7.2.5 / §7.2.1 S2
+PASS    [T196] S3 诊断：基准不一致 → 进程 exit 1，输出含实得值与基准值
+        源：§7.2.5 / §7.2.1 S3
+PASS    [T197] S4 诊断：id 与 id_status 不一致 → 进程 exit 1，输出含阶段/码/原因/路径/部分产物
+        源：§7.2.5 / §7.2.1 S4（注入）
+PASS    [T198] S5 诊断：C 档进入待发布集合 → 进程 exit 1，输出含阶段/码/原因/路径/部分产物
+        源：§7.2.5 / §7.2.1 S5（注入）
+PASS    [T199] 第 2 步：schemaVersion ≠ 1 → E15_BAD_MAP/1，报文含步号且不误报 E12
+        源：§5.6.5.5.4 第 2 步
+PASS    [T2] 行数口径：3F 逐档菜品表合计 145 行
+        源：tools/pilot/TRANSCRIPTION_3F.md §二 逐档口抄录｜实测 145 行（20 张表，按档口章节归集）
+PASS    [T20] D-5 B13 暂不拆（1 条候选且不进 CSV）/ D-6 W03 双拼与 W04「12 元/份」继续 C 档不生成
+        源：契约 §5.8 + TRANSCRIPTION_3F.md:420-421/444
+PASS    [T200] 第 2 步：entries 非数组 → E15_BAD_MAP/1，报文含步号且不误报 E12
+        源：§5.6.5.5.4 第 2 步
+PASS    [T201] 第 2 步：条目缺 key → E15_BAD_MAP/1，报文含步号且不误报 E12
+        源：§5.6.5.5.4 第 2 步
+PASS    [T202] 第 2 步：status 非法 → E15_BAD_MAP/1，报文含步号且不误报 E12
+        源：§5.6.5.5.4 第 2 步
+PASS    [T203] 第 2 步：dishId:null + active（E-4） → E15_BAD_MAP/1，报文含步号且不误报 E12
+        源：§5.6.5.5.4 第 2 步
+PASS    [T204] 第 2 步：pending_review 带非空 dishId（PK1-R1） → E15_BAD_MAP/1，报文含步号且不误报 E12
+        源：§5.6.5.5.4 第 2 步
+PASS    [T205] 第 2 步：approvedBy = auto → E15_BAD_MAP/1，报文含步号且不误报 E12
+        源：§5.6.5.5.4 第 2 步
+PASS    [T206] 第 3 步：keyFormat 声明变体 → E15/1
+        源：§5.6.5.5.4 第 3 步 / §5.6.5.5.4.1
+PASS    [T207] 第 3 步：key 仅三段 → E15/1 且报文给出实际段数
+        源：§5.6.5.5.4 第 3 步
+PASS    [T208] 第 4 步：重复 dishId → E13/1
+        源：§5.6.5.5.4 第 4 步
+PASS    [T209] 第 5 步：重复 key → E14/1
+        源：§5.6.5.5.4 第 5 步
+PASS    [T21] perShop 已写入显式定义：按 shopId、跨楼层连续、否定「按楼层从 001 起算」，且声明 C16 幂等 ≠ 抗行序变化
+        源：契约 §5.6.2 定义块；审计 A
+PASS    [T210] 首错即停：第 3 步与第 4 步错误同存 → 只报第 3 步（不聚合）
+        源：§5.6.5.5.4「首错即停」
+PASS    [T211] makeKey 与 REF.makeKey 三例逐键一致（全角/标点/空段），且含 | 与非字符串被拒
+        源：§5.6.5.5.4.1 R1–R8
+PASS    [T212] resolve：active 命中 → 复用 dishId、id_status=assigned_from_map
+        源：§5.6.5.6 情形②
+PASS    [T213] resolve：pending_review → PENDING_REVIEW + id:null + unassigned（不自动升级）
+        源：§5.6.5.5.2 / §5.6.5.6
+PASS    [T214] resolve：同一键对应两条当前记录 → 两条均 KEY_COLLISION，不分配任一 ID
+        源：§5.6.5.6 情形⑥
+PASS    [T215] resolve：未命中 → NEW_KEY，不生成新 ID
+        源：§5.6.5.5.3 / 情形①
+PASS    [T216] resolve：map 中多余键 → ORPHAN_IN_MAP 诊断，不阻断当前记录命中
+        源：§5.6.5.6 情形⑤
+PASS    [T217] 映射文件只读：运行前后 sha256 一致，目录未新增文件
+        源：§5.6.5.7「生成器对 map 只有读权限」
+PASS    [T218] M5C-1：rawGroupKey 保留原文（不含前缀），groupKey 仍为「层前缀+原文」
+        源：§3.1 L3 / §5.6.5.5.4.2
+PASS    [T219] M5C-1：rawGroupKey 保留全角空格，键构造时才折叠（两种值并存）
+        源：§5.6.5.5.4.2 / §5.6.5.5.4.1 R2
+PASS    [T22] 稳定映射已写入：sourceLine 不作键、K1 会碰撞、采用 id-map.json、orphan 不静默删、无 map 不得编号
+        源：契约 §5.6.5；审计 B
+PASS    [T220] M5C-1：原文为空 → RAW_SOURCE_MISSING 阻塞、零记录（不静默填充）
+        源：§5.6.5.5.4.2
+PASS    [T221] M5C-1：每条记录都带非空 rawGroupKey（记录形状完整性）
+        源：§3.1 L3 / C17
+PASS    [T222] M5C-2：键与四字段一致 → 无 W_KEY_MISMATCH
+        源：§5.6.5.5.4.3
+PASS    [T223] M5C-2：键文本不一致 → W_KEY_MISMATCH（含重算值），不阻断、退出码与一致情形相同
+        源：§5.6.5.5.4.3
+PASS    [T224] M5C-2：字段缺失/类型错误 → NOT_STRING（不猜测、不补空串）
+        源：§5.6.5.5.4.3
+PASS    [T225] M5C-2：段内含 "|" → CONTAINS_PIPE（R7 拒绝，不静默转义）
+        源：§5.6.5.5.4.1 R7
+PASS    [T226] M5C-3：规范化载荷 → SHA-256（64 位小写十六进制），可复核一致
+        源：§5.6.5.8.3
+PASS    [T227] M5C-3：载荷未按规范化形式书写 → E_PLAN_PAYLOAD_NOT_CANONICAL
+        源：§5.6.5.8.3
+PASS    [T228] M5C-3：载荷内出现 planDigest → E_PLAN_PAYLOAD_SELF_REF（禁止自引用）
+        源：§5.6.5.8.3
+PASS    [T229] M5C-3：缺载荷标题 → MISSING；围栏未闭合 → UNCLOSED（均 fail-closed）
+        源：§5.6.5.8.3
+PASS    [T23] null 例外已写入：仅无名册对应项的档口可 stallId=null、仅无 stallId 可 id=null、两者恒 blocked、不得拒绝生成
+        源：契约 §5.6.4；审计 C
+PASS    [T230] M5C-1 A：正常附件通过；缺失→E_ATTACH_MISSING、字节数→E_ATTACH_SIZE、SHA→E_ATTACH_DIGEST、目录冒充文件→E_ATTACH_NOT_FILE
+        源：§5.6.5.8.3 :895-899
+PASS    [T231] M5C-1 A：`..`→E_ATTACH_TRAVERSAL、盘符/UNC→E_ATTACH_ABSOLUTE、反斜杠→E_ATTACH_PATH、旧式 path/size 字段→E_ATTACH_SHAPE
+        源：§5.6.5.8.3 :898
+PASS    [T232] M5C-1 A：清单未按 UTF-8 字节序升序→E_ATTACH_ORDER；大小写变体重复→E_ATTACH_DUPLICATE（不静默去重）
+        源：§5.6.5.8.3 :899
+PASS    [T233] M5C-4：目录 fsync 不可用（本机 EPERM）→ INIT_FSYNC_UNAVAILABLE/3、零写入、不降级
+        源：§7.5
+PASS    [T234] M5C-4：目标已存在 → INIT_TARGET_EXISTS/3，拒绝覆盖且原内容不变
+        源：§7.5
+PASS    [T235] M5C-3：摘要不匹配 → E_PLAN_DIGEST_MISMATCH（fail-closed，目标零写入）
+        源：§5.6.5.8.3 / §7.5
+PASS    [T236] init CLI 调用路径与失败门控：gen 域三开关仍不可达（E27/2）且 gen 拒收 --approval；init 域参数校验（缺参/缺值/格式/空值/白名单外/位置参数均 E27/2）；合法参数在写入前被门控拒绝（状态自适应：INIT_FSYNC_UNAVAILABLE/3｜APPROVAL_MISSING/1｜INIT_TARGET_EXISTS/3 防覆盖）；既有 id-map.json 内容未被改动
+        源：§3.5 / §5.6.5.10 / §10.6.4 G-4=C
+PASS    [T237] M5C-4：生成器目录内无初始化临时文件残留（合成测试均在 %TEMP%）
+        源：§7.5
+PASS    [T238] M5C-1 A：真实目录联接指向根外→E_ATTACH_SYMLINK_ESCAPE（realpath 边界判定，非字符串前缀）
+        源：§5.6.5.8.3 :898
+PASS    [T239] M5C-1 B：九个必需键逐个删除均报 E_PLAN_PAYLOAD_INCOMPLETE 且点名该键；齐全则通过
+        源：§5.6.5.8.3 :882-893
+PASS    [T24] 资格断言已写入：无乐观值、candidate_only 当前 = 0 且 >0 即失败、四态含 id_status、id 非空 ≠ 可导入
+        源：契约 §4.3（C17–C20）；审计 D
+PASS    [T240] M5C-1 B：类型错→E_PLAN_PAYLOAD_TYPE；基准不符→E_PLAN_BASELINE_MISMATCH；额外键仅登记 unknownKeys；字段变更→摘要变化
+        源：§5.6.5.8.3 :884-893
+PASS    [T241] M5C-1 C：真实 linkSync 原子创建→内容一致；再建同名→EEXIST 且原内容不变；删临时→目标存活
+        源：§7.5 / Q-MAP-IO 写入候选
+PASS    [T242] M5C-1 C【受控替身测试】：探测+目录同步替身注入后走通 wx→写入→linkSync→目录 fsync(afterLink)→unlink→目录 fsync(afterUnlink)→读回；无临时残留；二次初始化→INIT_TARGET_EXISTS 且不覆盖（不代表本机目录持久性）
+        源：§7.5 / §5.6.5.10
+PASS    [T242b] A′ 持久性补丁场景矩阵：afterLink 失败→DURABILITY_UNCONFIRMED(保留目标+tmp)/afterUnlink 失败→DURABILITY_UNCONFIRMED(目标保留、tmp 已删)/文件级 fsync 失败→IO_ERROR 零残留/目标已存在→TARGET_EXISTS/link 不支持→LINK_UNSUPPORTED 零残留/读回不一致→RECHECK_MISMATCH 保留目标；失败分支均不报 INIT_OK；全链成功（T242）含两次目录 fsync；普通生成器路径仍不调用 initIdMap（T243）；全部隔离目录测试
+        源：§5.6.5.10 / §7.5｜afterLink失败→DURABILITY/保留目标与tmp=OK；afterUnlink失败→DURABILITY/目标保留tmp已删=OK；文件级fsync失败→IO_ERROR/零目标零残留=OK；目标已存在→TARGET_EXISTS/原内容不变=OK；link不支持→LINK_UNSUPPORTED/零目标零残留=OK；读回不一致→RECHECK_MISMATCH/目标保留=OK；失败场景无INIT_OK泄漏=OK
+PASS    [T243] 生产链路冻结（2026-10-25 更新）：run/main/publishOutputs 零引用 initIdMap/verifyPlanDigest（无隐式初始化）；runInit 为二者唯一生产调用点（各恰 1 处）；导出面 run+runInit+__test__ 三键；__test__ 仍 9 名
+        源：§7.1 / G-7=O-1
+PASS    [T244] C 段函数可在内存载入（不改导出面、不落地文件）
+        源：gen_records.js
+PASS    [T245] 样本档口 c01_t07=8、c01_t38=12 与 roster 一致（2F/3F 各一）
+        源：契约 §5.6.5.5 名册表
+PASS    [T246] 每条记录四段键/stallId/sourceRef/sourceLine 齐备
+        源：gen_records.buildInitPlanRecords
+PASS    [T247] 两次运行输出逐字节一致（确定性）
+        源：gen_records
+PASS    [T248] 重复候选 ID 与重复键均为 0（6 组碰撞按 2026-10-25 裁决以 disambiguator=系列-公瑾爆蛋 · 新品暴击 消歧，恰为牌面 8 行 :133–140，其余记录空值）
+        源：契约 §5.6.5.2 / §5.6.5.5 R4 + DR-W2-03-DISAMBIG-20261025
+PASS    [T249] 三项契约歧义已显式登记、未擅自猜测（A1/A2/A3）
+        源：契约 §5.6.5.3 / §5.6.5.5
+PASS    [T25] 派生统计六数齐全（564/502/107/395/62/0），395 标注为计算值，且 502−107=395、564−62=502、419+145=564 自洽
+        源：契约 §6.2.1；审计 E
+PASS    [T250] 候选 ID 为 null 的记录均落在 C 档/无区间档口
+        源：契约 §5.6.5.5 E-4
+PASS    [T251] 只读输出落到 %TEMP% 供人工核对
+        源：C:\Users\25975\AppData\Local\Temp\m5-c-plan-records.json
+PASS    [T252] 键用菜名原文、剥离层前缀（f2/ 不出现在键中）
+        源：契约 §5.6.5.2
+PASS    [T253] 与契约 §5.6.3 示例键形状一致（四段、半角竖线）
+        源：契约 §5.6.3
+PASS    [T254] 同名同规格不同价 → 键相同（可被 E14 检出为冲突）
+        源：契约 §5.6.5.5 entries[].key
+PASS    [T255] 无 rawGroupKey 时按层前缀剥离兜底（f3/）
+        源：契约 §5.6.5.2
+PASS    [T256] 白名单仅按「文件 + 档口编号 + 表头精确匹配」识别，其它表与其它文件一律不放行
+        源：契约 §6.1.1
+PASS    [T257] 西雅苏 7 条套餐按牌面名称与整份单价进入记录流
+        源：契约 §6.1.1
+PASS    [T258] 炒米粉组合映射 rice_vermicelli；「全家福套餐」不赋类型并记 BLOCKED_NO_FOODTYPE
+        源：契约 §6.1.1
+PASS    [T259] W2-04 入册 c01_t48 共 77 条（退役零残留、展开 36 + 蛋炒 39 + 黄焖鸡 2），正式 ID 覆盖 c01_d464–c01_d540 无重复，tier=A，4 条套餐仍整表排除
+        源：契约 §5.6.1 / R6 / ID_MAP_T48_T49_20261025
+PASS    [T26] 契约（RECORD_GENERATOR_CONTRACT_20261023.md）§5.1 两行的「见 §5.6（待决）」与 JSON 示例里的「ID 策略待决」均已清理为已冻结表述
+        源：契约（RECORD_GENERATOR_CONTRACT_20261023.md）§5.1 + §3.2 示例；审计 F
+PASS    [T260] 3F 记录数仍 143，R6 例外不外溢到 3F
+        源：契约 §6.1.1
+PASS    [T261] 总量 525、withId 490、nullId 35（C 档）、2F 382、3F 143、c01_t37 22 条、dupKeys 0 与实测一致，且 PROD_BASELINE / PLAN_BASELINE_EXPECTED 已重锁 525/490/0/35 + 382/143（t48/t49 正式分配 104 条）
+        源：契约（RECORD_GENERATOR_CONTRACT_20261023.md）§6.1 / §6.1.2 / §5.6.1
+PASS    [T262] c01_t37 编号 c01_d297–c01_d318 用满且连续，无 RANGE_OVERFLOW
+        源：契约 §6.1.1
+PASS    [T263] 双拼表识别为 S5_COMBO 并展开为 8 条独立商品，价格 13/13/14/16/16/15/15/16；「公瑾爆蛋」只保留菜单本身 1 条，双拼表不另生成组件条目
+        源：契约 §6.1.1 类约定
+PASS    [T264] 特色小吃 8 项进入 addons[]（无 dishId、appliesTo=null、appliesToStatus=unknown），字段形态符合最小结构
+        源：契约（RECORD_GENERATOR_CONTRACT_20261023.md）§6.1 R8
+PASS    [T265] 「特色把子肉」「黑椒鸡排」仍作为独立商品记录存在（黑椒鸡排在菜单与特色小吃各 1 条属合法），且未被并入 addons
+        源：用户裁决
+PASS    [T266] collisions 为数组且与 RANGE_OVERFLOW 互斥；ok 与「重复键/重复 ID/冲突」三者一致
+        源：契约（RECORD_GENERATOR_CONTRACT_20261023.md）§6.1
+PASS    [T267] W2-03 全部候选编号落在 c01_d052–c01_d098 内；c01_d099 属 c01_t14（契约 :409），W2-03 未占用；addons 不占编号
+        源：契约（RECORD_GENERATOR_CONTRACT_20261023.md）§6.1 编号容量
+PASS    [T268] 生成器静态包含 S5_COMBO / ADDON_NAMES / RANGE_COLLISION 三类 kind，规则已落地
+        源：gen_records.js
+PASS    [T269] 契约 §6.1.0 三类 kind 齐备，并写明与 RANGE_OVERFLOW 互斥、合法空洞不阻断、按 shopId 命名空间
+        源：契约 §6.1.0
+PASS    [T27] 身份域/可变域表已写入：price/sourceLine/下标明确禁止作为身份
+        源：契约 §5.6.5.1
+PASS    [T270] 冲突阻断初始化：契约明文禁止进入正式初始化，生成器 ok 与 collisions 联动
+        源：契约 §6.1.0 / gen_records.js
+PASS    [T271] W2-03 40 条占 c01_d052–c01_d091，d092–c01_d098 为合法空洞且不产生 RANGE_COLLISION（空洞不阻断）
+        源：契约 §6.1.0
+PASS    [T272] 跨店数字后缀可复用：契约以 shopId 为命名空间并举例 c01_d040/c02_d040，生成器重复检测按同店口径
+        源：契约 §6.1.0
+PASS    [T273] addons 不占编号：无 dishId/id 字段，且 counts.total 等于 records.length（不含 addons）
+        源：契约 §3.3.1
+PASS    [T274] 契约 §3.3.1 定义 addons 九字段与口径（不分配 dishId、不计入 counts）
+        源：契约 §3.3.1
+PASS    [T275] R5 收紧：W2-05 计 27 条且无 specLabel（12 炒类 + 15 剁椒面）、入册 c01_t49 A 类候选、正式 ID 覆盖 c01_d437–c01_d463 无重复、授权档口 c01_t28=30 / c01_t32=18 仍各拆 2 条、R5_SPEC_NOT_AUTHORIZED=8、总量 525 / nullId 35
+        源：契约（RECORD_GENERATOR_CONTRACT_20261023.md）§6.1 R5 / §6.1.2 / §5.6.1
+PASS    [T276] 39 条蛋炒记录 source_detail 逐条等于「现场拍摄价目表（第 9 张）：<口味>炒饼/炒面/炒饭　三做法同价」（含第 9 张/牌面原文/三做法同价）
+        源：契约（RECORD_GENERATOR_CONTRACT_20261023.md）§5.4 / 2F（TRANSCRIPTION_2F.md）§8.2
+PASS    [T277] 其余 486 条 source_detail 为 null（不编造来源细节）；已生成文案零禁词（§5.4 硬约束）
+        源：契约（RECORD_GENERATOR_CONTRACT_20261023.md）§5.4 / 2F（TRANSCRIPTION_2F.md）§8.2
+PASS    [T278] source_detail 同一输入产出同一文案（39 条两次构建逐条一致），更正后口味名已反映（香菇鸡丁蛋）
+        源：契约（RECORD_GENERATOR_CONTRACT_20261023.md）§5.4 硬约束 4 / 2F（TRANSCRIPTION_2F.md）§8.2
+PASS    [T279] 映射存在 + write → 加载成功（无 E12）+ P1 十阶段发布成功（PUBLISH_OK/0）：三产物+COMMITTED 齐备、PUBLISHING 已清除；E12 语义仍由 T33/T45b/T100⑧（映射不存在路径）覆盖
+        源：契约 §7.2.1 S1–S10 / §5.6.5.5.4
+PASS    [T28] 价格 12→13 时复用原 dishId 且标记 priceChanged=true（键唯一时）
+        源：契约 §5.6.5.1 + 测试侧参考语义
+PASS    [T280] runInit 预检链矩阵：审批缺失→APPROVAL_MISSING/1（G-4=C）｜草案result≠approved→E26｜字段缺失→E26｜planDigest不匹配→E25｜冻结映射哈希不符→FROZEN_MAP_MISMATCH｜105条/C档误纳入/重复dishId/伪键→RECONCILE（orphan 证明 fail-closed）｜基线不符→BASELINE_MISMATCH｜目标已存在→TARGET_EXISTS/3｜环境不可用→FSYNC_UNAVAILABLE/3｜afterLink失败透传→DURABILITY/3（目标+tmp保留）｜全链成功→INIT_OK+104条/status全active/approvedBy规则/initialization三元组/orphans空｜35条C档无一键进入payload。全部隔离目录+合成材料，正式映射与审批目录零触碰
+        源：契约 §5.6.5.8 / §5.6.5.10 / §10.6.4 G-4｜审批缺失→APPROVAL_MISSING/1=OK；草案result≠approved→E26/1=OK；审批缺approvedAt→E26/1=OK；planDigest不匹配→E25/1=OK；冻结映射哈希不符→FROZEN_MAP_MISMATCH/1=OK；冻结映射105条→RECONCILE/1=OK；C档误纳入→RECONCILE/1=OK；重复dishId→RECONCILE/1=OK；键集不匹配(缺)→RECONCILE/1=OK；基线不符(524)→BASELINE_MISMATCH/1=OK；目标已存在→INIT_TARGET_EXISTS/3=OK；环境不可用→INIT_FSYNC_UNAVAILABLE/3=OK；afterLink失败透传→DURABILITY/3=OK；全链成功→INIT_OK+payload语义=OK；35条C档保护(无t20/t40/t41键)=OK
+PASS    [T281] 适配器+tastes 方案 A：dry-run 源构建闭环成功（L8_IN_MEMORY_ONLY/0，零 C18）；全部记录 verifyStatus=unverified/verifiedAt=null（不提升）；tastes 全部 []（≤1 且零 choice 默认——空数组=口味信息未提供，非口味）；零写盘
+        源：契约（RECORD_GENERATOR_CONTRACT_20261023.md）§3.3 修订 / ADAPTER_MAP_C_TO_L8_20261025.md
+PASS    [T282] C18 三类 ID 身份分离（2026-10-25 修订）：映射分配 104 条逐条与获批映射一致｜契约名册规划 386 条（区间证据）不与映射号段冲突｜区间外→id null+blocker（不放行）｜非法口味→E3｜篡改→C18 fail-closed｜未命中键不静默赋号｜35 条 C 档排除｜映射零扩容｜verify 未提升｜tastes 全空｜dry-run 零写盘
+        源：契约 §4.3 C18（三分） / §5.6.1 §5.6.3 名册区间｜正常dry-run→L8_IN_MEMORY_ONLY/0违规=OK；三类分布=104映射+386名册+0未分配=OK；映射分配ID与获批映射逐条一致=OK；名册规划ID不与映射号段冲突=OK；35条C档仍排除=OK；verify 未提升+tastes 全空=OK；区间内→planned_from_roster=OK；区间外→id null+blocker=OK；非法口味→E3 拒绝=OK；已知口味值仍合法=OK；篡改→fail-closed(C18/非零)=OK；未命中键不静默赋号=OK；映射未扩容/未改动=OK；dry-run 零写盘=OK
+PASS    [T283] P1 正式写出链路（临时目录）：正常写出 PUBLISH_OK/0 + 三产物与 COMMITTED、PUBLISHING 已清；counts 490/525/A490B0C35 与基准一致；manifest sha256 回读一致；无重复 dishId/recordKey；verifyStatus 未提升；重复运行 S6/3 不覆盖；S1 失败零目标零残留；S3 统计不符 E9_SUM/1 不发布；COMMITTED 失败 E30/4 产物保留；项目正式文件零影响
+        源：契约 §7.2.1 S1–S10 / §7.2.2 / §7.2.8｜正常写出→PUBLISH_OK/0+四件套=OK；counts 与基准一致 490/525/A490B0C35=OK；manifest sha256 与回读一致=OK；records 无重复 dishId / blockers 无重复 recordKey=OK；verifyStatus/verifiedAt 未被提升=OK；PUBLISHING 已清除且 COMMITTED 存在=OK；重复运行→S6/3 且目标未被覆盖=OK；S1 失败→退出3/零目标/本次临时零残留=OK；S3 统计不符→E9_SUM/1 不发布=OK；COMMITTED 写失败→E30/4 产物保留=OK；正式数据/映射未受影响=OK；项目内不产出 records 三件套=OK
+PASS    [T29] 三种输入行序（ABC / CAB）得到完全相同的 键→ID 映射
+        源：契约 §5.6.5.6 情形④
+PASS    [T3] R2/B6 双拼饭按 8 条独立记录计，价格序列 13,13,14,16,16,15,15,16
+        源：tools/pilot/TRANSCRIPTION_2F.md §4.1 双拼饭清单｜8 款菜名与价格全部命中
+PASS    [T30] 同键两条记录（秘制红烧肉 15/16，无 disambiguator）→ KEY_COLLISION，不分配任何 ID
+        源：契约 §5.6.5.4 + RECORD_AUDIT_PRECHECK:89
+PASS    [T31] 当前输入缺失的键进入 orphans 且 map 条目未被删除、ID 未被复用
+        源：契约 §5.6.5.5 + 情形⑤
+PASS    [T32] 未命中键 → NEW_KEY 阻塞、无 ID（不自动追加末尾号）
+        源：契约 §5.6.5.6 情形①
+PASS    [T33] 缺少 id-map.json ⇒ E12_NO_ID_MAP（拒绝开始编号，不生成）
+        源：契约 §5.6.5.7 + 情形⑧
+PASS    [T34] 重复 ID→E13_DUP_ID、重复键→E14_DUP_KEY、版本/结构非法→E15_BAD_MAP，均显式失败
+        源：契约 §5.6.5.6 情形⑨
+PASS    [T35] id 非空不等于可导入（C20 不退让，490 条有 id 仍 blocked）
+        源：契约 §4.3 C20
+PASS    [T36] generatedAt 不参与身份；语义确定性（被断言）与文件字节确定性（需剔除时间戳并排序）分开表述
+        源：契约 §5.6.5.5
+PASS    [T37] D1 落地：gen 块随 records.json 输出 + CSV 白名单恰 14 列、内部字段明令禁出
+        源：契约 §5.3 / §5.3.1
+PASS    [T38] D2 落地：写出分 S1–S10 十阶段（含 Q6-1 的 S9/S10），并显式否认「多文件整体事务原子性」
+        源：契约 §7.2.1 / §7.2.2
+PASS    [T39] D2 落地：EXDEV 直接失败不降级；用 PUBLISHING 标记 + E17 识别不完整发布（静态）
+        源：契约 §7.2.3 / §7.2.4
+PASS    [T4] B7 辣椒炒肉 14.9 与辣椒炒肥肠 17.9 是两道独立菜，不得合并
+        源：tools/pilot/TRANSCRIPTION_2F.md §三 W2-10 + §四 #8｜牌面两档 + 裁决「14.9=辣椒炒肉、17.9=辣椒炒肥肠」均在
+PASS    [T40] D3 落地：首版不读 3F 名册；候选 ID ≠ 位置已核实 ≠ 可导入（三态分离）
+        源：契约 §2.1 / §5.6.5.9
+PASS    [T41] D4 落地：初始化计划九项齐全、计划不得创建 id-map.json、批准初始化≠批准导入/写云
+        源：契约 §5.6.5.8
+PASS    [T42] A 落地：审批留痕七字段齐全，且仍声明当前不存在任何审批系统与既存审批记录
+        源：契约 §5.6.5.8
+PASS    [T43] B 落地：仅凭价格不得建立身份，W2-03 三组继续 KEY_COLLISION 阻塞
+        源：契约 §5.6.5.9
+PASS    [T44] C 已更正：3F 酸菜肉丝面 9/12 属跨档口，撤销阻塞并指向 §5.6.5.9.1
+        源：契约 §5.6.5.9
+PASS    [T45] D 落地：缺失(E12)与损坏(E15)诊断不同；条目顺序与 generatedAt 不影响语义映射
+        源：契约 §5.6.5.5 / §5.6.5.6 + REF
+PASS    [T45b] E12（映射缺失）与 E15（映射不可解析）在真实加载路径上分支正确；结构校验第 2–5 步未实现，未在此断言
+        源：契约 §5.6.5.5.4 第 1 步 / RECORD_GENERATOR_CONTRACT_20261023.md §7.4｜缺失→E12/1=OK；语法损坏→E15/1=OK；schemaVersion≠1→非零且不误报E12=OK；entries非数组→非零且不误报E12=OK；合法最小映射→加载成功且完成L8内存闭环=OK
+PASS    [T46] 测试三层分类已在契约 §9.2 声明，且本轮未新增 PENDING 以求绿
+        源：契约 §9.2
+PASS    [T47] A 冻结：旁路审批记录规则齐全；approvals/ 已存在（2026-10-25 正式签发）：恰含 ap-20261025-01 且已签署（result=approved/approvedAt/signature 齐全）
+        源：契约 §5.6.5.8.1 / ap-20261025-01
+PASS    [T48] B 冻结：规范化策略不变、rawGroupKey 永久保留、四条禁令齐全
+        源：契约 §5.6.5.2
+PASS    [T49] C 冻结：lastSeenAt 只作审计；一致性只比较规范化视图，禁止称原始字节一致
+        源：契约 §5.6.5.5.1
+PASS    [T4b] B7 方案文档明确 17.9 属辣椒炒肥肠
+        源：docs/RECORD_LEVEL_GENERATION_PLAN_20261023.md §4.1
+PASS    [T5] R5 按规格拆条：W2-07 15 行 → 30 条、W2-09 9 行 → 18 条（仅双价行拆，一行多口味不拆）
+        源：tools/pilot/TRANSCRIPTION_2F.md §7.5 + 方案文档 §二｜2F 与方案文档一致（30 / 18）
+PASS    [T50] D 冻结：P1 唯一、失败即报告停止；文档不含任何允许降级的表述
+        源：契约 §7.2.2 / §10.2
+PASS    [T51] E 冻结：W2-03 需四项核实，证据不足继续 KEY_COLLISION，禁止凭价格/顺序/推断消歧
+        源：契约 §5.6.5.9
+PASS    [T52] F 冻结：酸菜肉丝面 9/12 已更正为跨档口非碰撞，且未虚构系列键
+        源：契约 §5.6.5.9.1
+PASS    [T53] A1 冻结：唯一批准人是项目负责人本人，approvedRole 唯一允许值 `项目负责人`
+        源：契约 §5.6.5.8.2 A1 / §5.6.5.8.1
+PASS    [T54] A1 冻结：DS 只能执行、ChatGPT 只能审查、无代理批准人、禁止推定批准
+        源：契约 §5.6.5.8.2 A1
+PASS    [T55] A2 冻结：授权范围仅 id-map.json 初始化，且禁止扩大解释
+        源：契约 §5.6.5.8.2 A2
+PASS    [T56] A2 冻结：初始化批准不含生成器/产物/正式 ID/CSV/业务代码/云端/部署/Git 写（七项齐全）
+        源：契约 §5.6.5.8.2 A2
+PASS    [T57] A3 冻结：审批绑定 planDigest、实质变更须重新审批、一般性表述不构成批准
+        源：契约 §5.6.5.8.2 A3
+PASS    [T58] A4 冻结：审批记录缺失只报 W_APPROVAL_REF_MISSING，不改变映射有效性
+        源：契约 §5.6.5.8.2 A4 / §5.6.5.8.1
+PASS    [T59] A4 冻结：禁止伪造审批记录、补造时间、推定已批准或声称已有审批系统
+        源：契约 §5.6.5.8.2 A4 / §5.6.5.8.1
+PASS    [T6] R3 多基底同价拆条：W2-04 米线区 12→36、W2-11 砂锅区 11→33；foodType = rice_vermicelli / noodle / other
+        源：tools/pilot/TRANSCRIPTION_2F.md §7.1 + §6.1 + 方案文档 §二｜36 / 33 与三个枚举均命中
+PASS    [T60] A5 冻结：已存在即停止、候选≠核实≠可导入、不解除证据阻塞、失败不降级（P1 唯一）
+        源：契约 §5.6.5.8.2 A5
+PASS    [T61] A4/A5 边界（2026-10-25 执行轮更新）：已授权存在=approvals/ap-20261025-01.json、id-map.json；records/records_blockers/gen-manifest 三类产物仍不存在（生成能力边界未变）
+        源：磁盘实测（fs.existsSync，绝对精确路径）
+PASS    [T62] Q6-1/Q6-3：新增 S9 清除、S10 复核，阶段总数为十
+        源：§7.2.1
+PASS    [T63] Q6-1=A：清除动作绑定在 S8 通过之后，删除对象为目标目录内标记
+        源：§7.2.3
+PASS    [T64] Q6-2=A：清除失败归整体失败，诊断标识 E18 存在
+        源：§7.2.3 / §7.2.5
+PASS    [T65] Q6-3=A：S10 复核失败归整体失败，诊断标识 E19 存在
+        源：§7.2.1 / §7.2.5
+PASS    [T66] Q6-6=A：读侧不增加来源/批次校验，并声明为有意接受的边界
+        源：§7.2.3
+PASS    [T67] Q6-7=D：修复路径按失败类型分列，且覆盖 PUBLISHING 残留（P-3=(b)）
+        源：§7.2.7
+PASS    [T68] Q6-5=C：第 6 条解析出恰 5 个字段（blockersSha256、counts、publishedAt、recordsSha256、schemaVersion）+ 额外字段判错 + additionalProperties = false
+        源：§7.2.2 第 6 条
+PASS    [T69] Q6-4=D：S7 失败拆两条，且不断言目标一定不存在
+        源：§7.2.5
+PASS    [T6b] 土豆粉锁 other + 标记待复核分类（不并入粉类）
+        源：tools/pilot/TRANSCRIPTION_2F.md §7.1
+PASS    [T7] R4/R7 同菜多做法拆条：蛋炒区 13 口味 × 3 做法 = 39 条；foodType = snack(饼) / noodle(面) / rice(饭)
+        源：tools/pilot/TRANSCRIPTION_2F.md §7.2｜13→39 与三条 foodType 映射均命中
+PASS    [T70] D-EXIT：阶段表 S5=1、S7=3、S8/S9/S10=4 逐行写明，表内无「未定义／待决」残留，且 2 已引入、旧句已消失
+        源：§7.2.1
+PASS    [T71] Q-HASH/Q-COUNTS/Q-S10-CODE 落盘：S10 五项复核全部纳入并绑定 E19–E23 与退出码 4
+        源：§7.2.1
+PASS    [T72] E2-6：S10 失败禁止自动修复/重建/改 manifest/降级，且修复指向 §7.2.7
+        源：§7.2.5
+PASS    [T73] E2-7：E17 读侧独立修复入口 + 禁止人工补齐伪造完整目录 + 非事务回滚
+        源：§7.2.7
+PASS    [T74] Q-HASH/Q-COUNTS/Q-S10-CODE 已裁决并落盘，且旧「待决」表述已失效
+        源：§10.6.2
+PASS    [T76] E2-2/E2-3：PENDING 名单 11 条齐全（含 T75、T84、T113、T114b；T45b 已转 PASS 故不在名单内）且成功文案时点条款仍在
+        源：§9.2 / §7.2.2
+PASS    [T77] C-1=A：blockers 顶层三键 + count=entries.length + 禁时间字段 + 一条记录一条 entry
+        源：§3.4
+PASS    [T78] C-2=A：counts 恰五字段 + 两处 A/B/C 必须相等 + 不新增 counts.blocked
+        源：§7.2.8 / §7.2.2
+PASS    [T79] C-3=A：total≠records.length，records/blockers/blocked 三者互不推算
+        源：§7.2.8 / §3.3
+PASS    [T8] 账目总量：2F 419（A347/B39/C33）、3F 145（A116/C29）、合计 564（A463/B39/C62），三处文档一致
+        源：方案文档 §二/§八、2F §7.4 更正块、docs/RAW_DATA_BLOCKERS_20261023.md｜7 处锚点全部一致
+PASS    [T80] D-EXIT 映射表：六行码值齐全、两维度分离、且无「未定义／待决／旧集合句」残留
+        源：§10.6.1
+PASS    [T81] S-1/S-2：§7.4 唯一登记处 + E20/E21/E22/E23 语义唯一 + E19 专指 + E16 标空缺
+        源：§7.4
+PASS    [T82] H-1/H-2：字节哈希八条齐全，且读侧不新增校验（保持 Q6-6/E17/T66 边界）
+        源：§7.2.8
+PASS    [T83] §10.6.1/§10.6.2 均标「已裁决 2026-10-24」，旧「待决/维持未定义」表述已清除
+        源：§10.6.1 / §10.6.2
+PASS    [T85] D-1/O1：395 来源引用 §5.6.2 的 279+116，仍标「计算值」，旧「任何文档均未记载」已删除
+        源：§6.2.1
+PASS    [T86] D-2：`write=true` 且缺 `--out` 时，必须在任何文件系统写入之前失败
+        源：§3.2
+PASS    [T87] D-2：缺参时不创建任何文件/目录（含临时目录），且不提供默认输出目录
+        源：§3.2
+PASS    [T88] D-2/G-2：缺参 ≠ 路径执行失败，且不得沿用退出码 3
+        源：§3.2 / §7.2.6
+PASS    [T89] D-2：§7.2.6 明确「缺 --out」不属于路径拒绝清单情形
+        源：§7.2.6
+PASS    [T8b] A+B+C 与两层相加闭合
+        源：arithmetic｜347+39+33=419；463+39+62=564
+PASS    [T9] 全部生成记录的元数据必须 verifyStatus=unverified、verifiedAt=null（不得因裁决升级为已核实）（文档规则层）
+        源：2F §7.4/§8、3F §八 前置条件 + 审计报告 §五 契约｜转述稿已写明该约束
+PASS    [T90] D-3/G-3：planDigest 不匹配必须拒绝继续（fail-closed），不得警告后继续
+        源：§5.6.5.8.2 A3
+PASS    [T91] D-3/Q8-B：内容不匹配必须拒绝，且不得降级为「记录缺失」警告
+        源：§5.6.5.8.2 A4
+PASS    [T92] D-3：A（planDigest）与 B（记录内容）在同一判别表中分别成行，缺失单列为对照
+        源：§5.6.5.8.2 A4
+PASS    [T93] E24–E30 已在本表登记（E29/E30 为任务 A/C 新增）、E16 仍空缺、且未预占 E31+ 编号
+        源：§7.4
+PASS    [T94a] G-1/G-2/G-3：类别与码值已一并登记，矛盾注已改为「已消除」
+        源：§10.6.3 段内
+PASS    [T94b] 全文「矛盾已消除」出现 2 次（上限 2）
+        源：全文
+PASS    [T94c] 段内「矛盾已消除」出现 1 次（至少 1 次）
+        源：§10.6.3 段内
+PASS    [T95] `--write` 缺 `--out`：退出码 2、报 E24_MISSING_OUT、临时目录前后清单全等（零写入、无临时文件、无新建父目录）
+        源：tools/pilot/gen_records.js（真实子进程）
+PASS    [T96] 第二批 G-1/G-2：E24–E28 各有唯一定义与退出码 2/1/1/2/3，E10 原义未改且已写明与 E28 的分界
+        源：§7.4
+PASS    [T97] 第二批 G-3：A3/A4 判别表已填入 E25／E26 与退出码 1，且不再出现「待裁决」
+        源：§5.6.5.8.2 A3·A4
+PASS    [T98] 第二批 G-1：2 已引入（专指 CLI 用法错误），旧句已消失，且文档留痕「已撤销／仅作历史记录保留」并注明背景（第二批裁决 G-1=A）
+        源：§10.6.1
+PASS    [T99] 第二批 G-1：§3.5 冻结五步检查顺序、遇错即停、不聚合多错，并声明「契约规定 ≠ 运行时已验证」
+        源：§3.5
+
+汇总：通过 290 / 失败 0 / 待实现 11
+说明：待实现项依赖尚未生成的正式产物（records.json 等），属预期失败，不计入失败。
+RESULT: OK
+
+EXIT_CODE: 0
+
+COMMAND: node tools/test_verify_data.js
+
+── A0 合法数据 ──
+
+── A1 店铺 ──
+
+── A2 楼层 / 窗口 ──
+
+── A3 菜品 ──
+
+── A4 可信度 ──
+
+── A5 当前仓库真实数据 ──
+
+── B 只读性 ──
+
+========================================
+通过 122 项，失败 0 项
+✅ 全部通过
+
+EXIT_CODE: 0
+
+COMMAND: node tools/verify_data.js
+===== 只读数据校验 · tools/verify_data.js =====
+数据集：12 店铺 / 7 楼层 / 24 窗口 / 45 菜品（已核对 join 结果 45 条）
+
+✅ 无错误，数据符合现有约束
+
+EXIT_CODE: 0
+
+COMMAND: schema JSON parse
+PASS config/cloud/schema.submissions.json
+PASS config/cloud/schema.upload_logs.json
+
+EXIT_CODE: 0
+
+COMMAND: git diff --check
+warning: in the working copy of 'project.config.json', CRLF will be replaced by LF the next time Git touches it
+
+EXIT_CODE: 0

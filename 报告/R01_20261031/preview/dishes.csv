@@ -1,0 +1,13 @@
+dish_id,dish_name,record_type,shop_id,stall_id,price,food_type,tastes,source_kind,source_detail,source_ref,collector,collect_date,evidence_file
+c01_d040,山城麻辣小面,菜品,c01,c01_t07,9,,,field,,TRANSCRIPTION_2F.md#W2-01 第 71 行,,,
+c01_d048,小米南瓜粥,菜品,c01,c01_t09,2,,,field,,TRANSCRIPTION_2F.md#W2-02 第 95 行,,,
+c01_d084,双拼饭（公瑾爆蛋 + 红烧鸡翅根）,菜品,c01,c01_t11,13,rice,,field,,TRANSCRIPTION_2F.md#4.1 W 第 757 行,,,
+c01_d140,鸡汤砂锅米线,菜品,c01,c01_t16,9,rice_vermicelli,,field,,TRANSCRIPTION_2F.md#W2-11 第 535 行,,,
+c01_d464,黄焖鸡盖方便面,菜品,c01,c01_t48,14.5,,,field,,TRANSCRIPTION_2F.md#W2-04 第 186 行,,,
+c01_d437,鸡蛋火腿炒饼,菜品,c01,c01_t49,12,,,field,,TRANSCRIPTION_2F.md#W2-05 第 297 行,,,
+c01_d297,纯素炒米粉,菜品,c01,c01_t37,10,,,field,,TRANSCRIPTION_2F.md#W2-08 第 389 行,,,
+c01_d319,超级酱大骨套餐,菜品,c01,c01_t38,16,,,field,,TRANSCRIPTION_3F.md#W01 犟 第 66 行,,,
+c01_d331,鸡块咖喱蛋包饭,菜品,c01,c01_t39,16,,,field,,TRANSCRIPTION_3F.md#W02 咖 第 101 行,,,
+c01_d362,招牌红烧肉,菜品,c01,c01_t43,14,,,field,,TRANSCRIPTION_3F.md#W06 大 第 243 行,,,
+c01_d373,招牌牛肉面,菜品,c01,c01_t44,14,,,field,,TRANSCRIPTION_3F.md#W07 辣 第 267 行,,,
+c01_d413,铁板炸鸡培根拌饭,菜品,c01,c01_t46,13.9,,,field,,TRANSCRIPTION_3F.md#W09 梨 第 356 行,,,

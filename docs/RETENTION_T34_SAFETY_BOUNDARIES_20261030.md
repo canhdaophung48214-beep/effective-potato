@@ -1,0 +1,27 @@
+# Retention T3.4 本地安全边界（2026-10-30）
+
+本文件记录本地实现的能力边界，不表示云端已部署或已验收。冻结设计稿的单次 50 条分页、500 条上限保持不变。
+
+## 调用与写入入口
+
+`main` 先验维护令牌，再分派 `mark` → `markExpired`、`recover` → `recoverAudit`、`recoverPending` → `recoverPending`、`purge` → `purgePayload`、`reconcile` → `reconcileBatches`。`markExpired` 和 `recoverPending` 写 `retention_mark` 批次日志；`recoverAudit` 补逐条日志；`purgePayload` 先调用 `recoverPurgePending` 和两种事件的 `reconcileBatches`，再选候选、写 prepare、条件清正文、调用 `recoverPurgeAudit`、写 complete。`recoverPurgePending`、`recoverPurgeAudit`、`deferAudit`、`deferPurge` 分别更新对应待补和重试元数据。`reconcileBatches` 只读取日志。其他人工删除入口属于 `review`，不由本流程执行。
+
+## T3.4-C 只读诊断续扫
+
+维护令牌保护的 `reconcile` 接受 `resumable: true` 开始诊断扫描。每次最多读取 500 条、每页最多 50 条，返回 `nextContinuation`；下一次传入该值继续。续扫凭据由维护令牌派生密钥签名，签名无效在读库前拒绝。凭据保存上次 `_id`、起始时看到的最大 `_id`、固定的 `now`、仅含哈希批次引用的分组投影和累计计数；不保存原始批次 ID、投稿 ID、正文或维护令牌。同一凭据重复使用只重复只读计算。所有页结束前 `completeScan=false`。凭据超过 2 MiB 时不能继续，结果仍保持不完整。
+
+`scanScope.consistency=KEYSPACE_WATERMARK_NOT_ATOMIC` 明示这是 `_id` 范围的诊断扫描。起始后写入且 `_id` 高于水位的日志不属于本次范围；如果数据库允许后写入更小 `_id`，也不能把该范围当成一致性快照。续扫返回的 `completeScan=true` 只表示该范围读完，不证明扫描结束时没有新日志。正文清理闸门不接受外部续扫凭据，仍用自身实时对账；超过单次上限时继续失败关闭。
+
+## T3.4-A：跨实例原子性仍 PENDING
+
+当前对账查询与 `submissions` 条件更新分开执行；状态及 `rev` 条件只保护单条投稿，不能保护全局 `upload_logs`。维护令牌限制调用者，不串行化两个函数实例。任何锁方案都必须让所有相关日志写入者和正文清理者共同遵守持久 fencing token，并明确原子获取、续租、过期、条件释放与旧实例失效。当前代码没有这些条件，不能把本地双实例模拟当成云端安全证明。
+
+CloudBase 官方事务文档说明事务仅服务端支持，事务内仅支持 `doc`，不支持 `where`，最多 100 次操作、30 秒；本函数实际依赖 `wx-server-sdk ~2.6.3`，尚未验证目标环境中相同语义、跨集合写入和查询与屏障的组合。参考：[官方事务文档](https://docs.cloudbase.net/database/transaction)。在得到可验证的事务或串行执行方案之前，TOCTOU 不关闭。
+
+## T3.4-B：历史失败批次仍 PENDING
+
+原始 prepare/complete 只保存 `batchId` 与汇总数；逐条事件只有 `submissionId` 和稳定事件 ID，没有原批次关联。仅凭汇总数不能证明某个历史 FAILED/PARTIAL 批次所缺的具体审计已补齐。原日志保持只追加，旧批次仍阻断。后续需要可审查的每批选中记录清单或等价的持久证据，再设计稳定修复事件 ID、原批次引用、修复类型/时间/操作者、逐条证据核对、幂等续修及修复后重新对账。证据无法重建的批次继续阻断；不提供 `force`、`ignore`、`skip-history` 参数。
+
+## 上线前验收
+
+需在身份已证实的隔离环境验证真实索引、`_id` 排序与游标、多实例与超时后旧实例、事务或分布式屏障、历史修复证据及完整扫描。任何未完成扫描、异常、FAILED/PARTIAL/DEFERRED 或待补审计均不得被当成正文清理许可。

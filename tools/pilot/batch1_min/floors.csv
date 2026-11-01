@@ -1,0 +1,2 @@
+shop_id,floor_id,floor_label,source_kind,source_detail,source_ref,collector,collect_date,evidence_file
+c02,c02_f2,2 楼,field,楼层「2 楼」来自项目负责人 2026-10-26 提供的现场信息，非餐厅负责人签字，照片未独立证明（现有照片为门头与价目表，不含楼层指引牌）；floor_id c02_f2 为结构占位,,产品负责人,2026-10-22,img/c02_t02_menu.jpg

@@ -1,0 +1,4100 @@
+--- /dev/null
++++ R07/capture.js
+@@ -0,0 +1 @@
++const fs=require('fs'),path=require('path'),g=require(path.resolve('项目/tools/pilot/gen_records.js'));fs.writeFileSync(path.join(__dirname,'parsed_source.json'),JSON.stringify(g.__test__.parseDoc(fs.readFileSync('项目/tools/pilot/TRANSCRIPTION_DRAFT.md','utf8'),{file:'TRANSCRIPTION_DRAFT.md'}),null,2));console.log('parseDoc exit=0');
+--- /dev/null
++++ R07/build_r07.py
+@@ -0,0 +1,56 @@
++import pathlib,json,csv,hashlib,shutil,subprocess,datetime,re,collections
++E=pathlib.Path(__file__).parent.resolve();R=E.parent.parent;P=R/'项目';B=R/'备份'/('R07_'+datetime.datetime.now().strftime('%Y%m%d_%H%M%S'));B.mkdir()
++def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
++def J(p):return json.loads(p.read_text(encoding='utf-8-sig'))
++def dump(n,v):(E/n).write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
++def read(p):
++ with p.open(encoding='utf-8-sig',newline='') as f:return list(csv.DictReader(f))
++def wc(n,rs):
++ with (E/n).open('w',encoding='utf-8-sig',newline='') as f:
++  w=csv.DictWriter(f,fieldnames=list(rs[0]));w.writeheader();w.writerows({k:json.dumps(v,ensure_ascii=False) if isinstance(v,(dict,list)) else v for k,v in r.items()} for r in rs)
++def git(*a):
++ r=subprocess.run(['git','-c','core.quotepath=false',*a],cwd=P,capture_output=True,text=True,encoding='utf8');assert r.returncode==0;return r.stdout
++dump('git_before.json',{k:git(*a) for k,a in {'head':['rev-parse','HEAD'],'branch':['branch','--show-current'],'staged':['diff','--cached','--name-status'],'status':['status','--porcelain=v1','-uall']}.items()})
++dump('project_before.json',[{'path':str(p),'sha256':sha(p)} for p in P.rglob('*') if p.is_file() and '.git' not in p.parts and 'node_modules' not in p.parts])
++batches=['R03_3F_R2_20261101','R04_2F_20261101','R05_三餐2F_20261101','R06_四餐与楼层未定批次_20261101'];dump('closed_before.json',[{'path':str(p),'sha256':sha(p)} for d in batches for p in (R/'报告'/d).rglob('*') if p.is_file()])
++inputs=[(P/'tools/pilot/TRANSCRIPTION_DRAFT.md','TRANSCRIPTION_DRAFT.md'),(P/'tools/pilot/batch1/dishes.csv','old_dishes.csv'),(P/'tools/pilot/batch1/stalls.csv','old_stalls.csv'),(P/'tools/pilot/batch1/shops.csv','old_shops.csv'),(P/'tools/pilot/batch1/待补照片清单.md','old_photo_status.md'),(P/'tools/pilot/c01_service_2f/采集卡.md','blank_collection_card.md'),(P/'tools/pilot/c03_offsite_batch2/采集说明.md','remaining_collection_notes.md')];M=[]
++for p,n in inputs:
++ q=E/'source_assets'/n;b=B/n;shutil.copyfile(p,q);shutil.copyfile(p,b);assert p.read_bytes()==q.read_bytes()==b.read_bytes();M.append({'original':str(p),'snapshot':q.relative_to(E).as_posix(),'backup':str(b),'bytes':p.stat().st_size,'sha256':sha(p)})
++dump('backup_manifest.json',M);(B/'manifest.json').write_text(json.dumps(M,ensure_ascii=False,indent=2),encoding='utf8')
++lines=(E/'source_assets/TRANSCRIPTION_DRAFT.md').read_text(encoding='utf-8-sig').splitlines();old=[o for o in read(E/'source_assets/old_dishes.csv') if o['shop_id']=='c01'];assert len(old)==39
++C=[];G=[];L=[];U=[];O=[];cross=[];collisions=[];previous=[(b,c) for b in batches for c in J(R/'报告'/b/'candidates.json')]
++for t in J(E/'parsed_source.json')['tables']:
++ m=re.match(r'1\.([123]) 窗口',t['section'])
++ if not m or t['header'][0]!='菜名':continue
++ no=int(m[1]);sid=f'c01_t0{no}';stall=f'R07-EARLY-S{no:02d}'
++ for row in t['rows']:
++  cells=row['cells'];name=cells[0];ln=row['line'];ref=f'R07-EARLY-L{ln:04d}';o=next(o for o in old if o['stall_id']==sid and o['dish_name'].replace('加','').replace('+','')==name.replace('加','').replace('+',''));assert float(o['price'])==float(cells[1]);blocked=name=='月亮馍（+辣条）'
++  g={'sourceRecordRef':ref,'kind':'dish','name':name,'stallRef':stall,'sourceFile':'source_assets/TRANSCRIPTION_DRAFT.md','sourceLine':ln,'sourceQuote':lines[ln-1],'oldRecordKeys':['early_batch1:'+o['dish_id']],'sourceEvidenceType':'USER_ORAL_TRANSCRIPT','originalTastes':o['tastes']};G.append(g)
++  if blocked:U.append({'sourceRecordRef':ref,'name':name,'blocksCandidate':True,'reason':'原转录待确认清单第9项明确质疑该窗口是否有辣条选项','nextAction':'业务证据核验；不按同类商品推断'})
++  else:C.append({**g,'candidateId':ref+'-V1','formalDishId':None,'amount':float(cells[1]),'rawPriceExpression':cells[1],'currency':'CNY','unitRaw':None,'specification':None,'composition':None,'foodType':cells[2],'tastes':[],'photoEvidence':None,'photoStatus':'NOT_ARCHIVED_FOR_THIS_STALL','parentVerificationStatus':'ORAL_SOURCE_NOT_FORMALLY_SIGNED','collector':None,'captureDate':None,'currentPriceValidity':'UNKNOWN','transactionQuoteAllowed':False,'verifyStatus':'unverified','verifiedAt':None,'admissionStatus':'ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED'})
++  L.append({'sourceRecordRef':ref,'oldRecordKeys':g['oldRecordKeys'],'action':'PENDING' if blocked else 'RETAIN','newSourceRefs':[ref],'optionRefs':[],'candidateRefs':[] if blocked else [ref+'-V1'],'name':name,'sourceLine':ln})
++  for b,c in previous:
++   if c.get('name',c.get('dishName'))==name:collisions.append({'sourceRecordRef':ref,'name':name,'otherBatch':b,'otherCandidateId':c['candidateId'],'decision':'KEEP_SEPARATE_SOURCE_IDENTITY_UNKNOWN; matching name is not same dish/stall'})
++  if not blocked:U.append({'sourceRecordRef':ref,'name':name,'blocksCandidate':False,'reason':'口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知','nextAction':'保留隔离候选，未来补菜单证据，不重复询问延期元数据'})
++# Itemized relation extraction from explicitly priced oral source lines only.
++def option(no,ln,name,price,unit=None):
++ i=sum(o['sourceLine']==ln for o in O)+1;ref=f'R07-EARLY-L{ln:04d}-O{i}';o={'sourceRecordRef':ref,'optionRef':ref,'name':name,'additionalPriceYuan':price,'unitRaw':unit,'stallRef':f'R07-EARLY-S{no:02d}','baseCandidateRef':None,'associationScope':'stall_only_unknown_specific_base','selectionConstraints':None,'independentDish':False,'sourceFile':'source_assets/TRANSCRIPTION_DRAFT.md','sourceLine':ln,'sourceQuote':lines[ln-1],'sourceEvidenceType':'USER_ORAL_TRANSCRIPT'};O.append(o);G.append({**o,'kind':'optional_surcharge','oldRecordKeys':[]});L.append({'sourceRecordRef':ref,'oldRecordKeys':[],'action':'NEW','newSourceRefs':[],'optionRefs':[ref],'candidateRefs':[],'name':name,'sourceLine':ln})
++ln=next(i+1 for i,l in enumerate(lines) if l.startswith('加料（不录）：卤蛋 1.5'))
++for p in lines[ln-1].split('：',1)[1].split('。')[0].split(' / '):
++ m=re.fullmatch(r'(.+?)\s+(\d+(?:\.\d+)?)',p);assert m;option(1,ln,m[1],float(m[2]))
++ln=next(i+1 for i,l in enumerate(lines) if l.startswith('另加（不录）：'))
++for p in lines[ln-1].split('：',1)[1].rstrip('。').split('；'):
++ m=re.fullmatch(r'(.+?)\s+(?:各\s+)?(\d+(?:\.\d+)?)',p);assert m
++ for name in m[1].split('/'):option(2,ln,name,float(m[2]))
++ln=next(i+1 for i,l in enumerate(lines) if l.startswith('卤味/加料（不录）：'))
++for p in lines[ln-1].split('：',1)[1].rstrip('。').split(' / '):
++ m=re.fullmatch(r'(.+?)\s+(\d+(?:\.\d+)?)(?:/(个|片))?',p);assert m;option(3,ln,m[1],float(m[2]),m[3])
++ln=next(i+1 for i,l in enumerate(lines) if '筋头巴脑、卤鸡腿、兰花干、卤干豆腐' in l)
++for i,name in enumerate(['筋头巴脑','卤鸡腿','兰花干','卤干豆腐'],1):
++ ref=f'R07-EARLY-L{ln:04d}-UNPRICED{i}';G.append({'sourceRecordRef':ref,'kind':'unpriced_item','name':name,'sourceFile':'source_assets/TRANSCRIPTION_DRAFT.md','sourceLine':ln,'sourceQuote':lines[ln-1],'oldRecordKeys':[]});U.append({'sourceRecordRef':ref,'name':name,'blocksCandidate':True,'reason':'原文明确未标清价格；不与含同名片段的面品混淆','nextAction':'补充直接价格证据，金额保持UNKNOWN'});L.append({'sourceRecordRef':ref,'oldRecordKeys':[],'action':'NEW','newSourceRefs':[ref],'optionRefs':[],'candidateRefs':[],'name':name,'sourceLine':ln})
++assert len(C)==38 and len(O)==24 and len(G)==67 and len(L)==67
++for no in range(1,4):
++ o=next(o for o in read(E/'source_assets/old_stalls.csv') if o['stall_id']==f'c01_t0{no}');cross.append({'stallRef':f'R07-EARLY-S{no:02d}','oldStallIdForTrace':'early_batch1:'+o['stall_id'],'name':o['stall_name'],'formalStallIdAssigned':False,'photoStatus':'NOT_ARCHIVED','identityStatus':'early oral source only; no merge with later W2/T namespaces'})
++dump('candidates.json',C);dump('source_groups.json',G);dump('source_ledger.json',L);wc('source_ledger.csv',L);wc('unresolved.csv',U);dump('optional_surcharges.json',O);wc('stall_crosswalk.csv',cross);wc('same_name_crosscheck.csv',collisions)
++dump('statistics.json',{'sourceGroups':67,'physicalSourceLines':len({g['sourceLine'] for g in G}),'dishTableRows':39,'candidateRecords':38,'candidateSourceGroups':38,'optionSourceGroups':24,'unpricedSourceGroups':4,'blockingUnresolved':5,'nonblockingCandidateEvidenceIssues':38,'unresolvedRows':43,'oldRecords':39,'oldRetained':38,'oldPending':1,'newResponsibilities':28,'explicitSpecifications':0,'formalImports':0,'formalIdsAssigned':0,'candidateStallDistribution':dict(collections.Counter(c['stallRef'] for c in C))})
++print(json.dumps(J(E/'statistics.json'),ensure_ascii=False,indent=2));print('build exit=0')
+--- /dev/null
++++ R07/test_r07.py
+@@ -0,0 +1,55 @@
++import pathlib,json,csv,hashlib,copy,re,subprocess
++E=pathlib.Path(__file__).parent.resolve();R=E.parent.parent;P=R/'项目'
++def J(n):return json.loads((E/n).read_text(encoding='utf-8-sig'))
++def read(n):
++ with (E/n).open(encoding='utf-8-sig',newline='') as f:return list(csv.DictReader(f))
++def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
++C=J('candidates.json');G=J('source_groups.json');L=J('source_ledger.json');O=J('optional_surcharges.json');U=read('unresolved.csv');old={o['dish_id']:o for o in read('source_assets/old_dishes.csv') if o['shop_id']=='c01'};lines=(E/'source_assets/TRANSCRIPTION_DRAFT.md').read_text(encoding='utf-8-sig').splitlines();N=0
++
++def ok(x):assert x
++def test(n,f):
++ global N
++ f();N+=1;print('PASS '+n)
++def norm(s):return s.replace('加','').replace('+','')
++def validate(cs,os):
++ assert len(cs)==38 and len({c['candidateId'] for c in cs})==38
++ assert len({(c['stallRef'],c['name']) for c in cs})==38
++ for c in cs:
++  assert c['sourceQuote']==lines[c['sourceLine']-1]
++  cells=[v.strip() for v in c['sourceQuote'].strip('|').split('|')];assert c['name']==cells[0] and c['amount']==float(cells[1]) and c['rawPriceExpression']==cells[1]
++  o=old[c['oldRecordKeys'][0].split(':')[1]];assert norm(o['dish_name'])==norm(c['name']) and float(o['price'])==c['amount']
++  assert c['stallRef']=='R07-EARLY-S'+o['stall_id'][-2:]
++  assert c['formalDishId'] is None and c['collector'] is None and c['captureDate'] is None and c['unitRaw'] is None
++  assert c['specification'] is None and c['composition'] is None and c['tastes']==[] and c['currentPriceValidity']=='UNKNOWN' and c['transactionQuoteAllowed'] is False
++  assert c['photoEvidence'] is None and c['sourceEvidenceType']=='USER_ORAL_TRANSCRIPT' and c['photoStatus']=='NOT_ARCHIVED_FOR_THIS_STALL'
++  assert c['name']!='月亮馍（+辣条）'
++ for o in os:
++  assert o['sourceQuote']==lines[o['sourceLine']-1] and o['independentDish'] is False and o['baseCandidateRef'] is None and o['selectionConstraints'] is None
++  assert o['name'] in o['sourceQuote'] and str(o['additionalPriceYuan']).removesuffix('.0') in o['sourceQuote']
++  assert o['unitRaw'] in [None,'个','片']
++test('38候选原名原价原行及口述证据不伪装照片',lambda:validate(C,O))
++test('39旧责任唯一完整',lambda:ok(len([l for l in L if l['oldRecordKeys']])==39 and {k for l in L for k in l['oldRecordKeys']}=={'early_batch1:'+k for k in old}))
++test('43物理行/67源组独立统计',lambda:ok(len({g['sourceLine'] for g in G})==43 and len(G)==67 and len({g['sourceRecordRef'] for g in G})==67))
++test('候选38+加料24+阻断5互斥覆盖',lambda:ok(len(C)+len(O)+sum(u['blocksCandidate']=='True' for u in U)==67 and {c['sourceRecordRef'] for c in C}|{o['sourceRecordRef'] for o in O}|{u['sourceRecordRef'] for u in U if u['blocksCandidate']=='True'}=={g['sourceRecordRef'] for g in G}))
++test('台账包含optionRefs不遗漏24加料',lambda:ok({r for l in L for r in l['newSourceRefs']+l['optionRefs']}=={g['sourceRecordRef'] for g in G}))
++test('加料分布5/12/7，按各字与价格组展开',lambda:ok([sum(o['stallRef']==f'R07-EARLY-S{i:02d}' for o in O) for i in [1,2,3]]==[5,12,7]))
++test('月亮馍辣条疑问留待核验',lambda:ok(any(u['name']=='月亮馍（+辣条）' and u['blocksCandidate']=='True' for u in U)))
++test('四项无价不生成候选',lambda:ok(sum(g['kind']=='unpriced_item' for g in G)==4 and not any(c['sourceRecordRef'].find('UNPRICED')>=0 for c in C)))
++test('同名不同档口不自动合并',lambda:ok(len(read('same_name_crosscheck.csv'))>0 and len({c['candidateId'] for c in C})==38))
++test('38照片缺口不伪装成38条完全无证据',lambda:ok(sum(u['blocksCandidate']=='False' for u in U)==38 and all(c['sourceQuote'] for c in C)))
++for name,mut in [('改价',lambda c,o:c[0].update(amount=999)),('旧ID继承',lambda c,o:c[0].update(formalDishId='c01_d001')),('伪造日期',lambda c,o:c[0].update(captureDate='2026-10-22')),('伪造照片',lambda c,o:c[0].update(photoEvidence={'file':'other.jpg'})),('推断口味',lambda c,o:c[0].update(tastes=['light'])),('交易报价',lambda c,o:c[0].update(transactionQuoteAllowed=True)),('重复记录',lambda c,o:c.__setitem__(1,copy.deepcopy(c[0]))),('加料独立菜',lambda c,o:o[0].update(independentDish=True)),('猜组合',lambda c,o:c[0].update(composition=['肉卷'])),('跨档口映射',lambda c,o:c[0].update(stallRef='R07-EARLY-S02'))]:
++ def neg(mut=mut):
++  cs=copy.deepcopy(C);os=copy.deepcopy(O);mut(cs,os)
++  try:validate(cs,os)
++  except AssertionError:return
++  raise AssertionError('变异未被检测')
++ test('负向:'+name,neg)
++test('before备份与快照逐字节一致',lambda:ok(all(pathlib.Path(x['original']).read_bytes()==(E/x['snapshot']).read_bytes()==pathlib.Path(x['backup']).read_bytes() for x in J('backup_manifest.json'))))
++test('正式项目所有字节不变',lambda:ok(all(sha(x['path'])==x['sha256'] for x in J('project_before.json'))))
++test('R03-R06所有成果字节不变',lambda:ok(all(sha(x['path'])==x['sha256'] for x in J('closed_before.json'))))
++after={}
++for k,a in {'head':['rev-parse','HEAD'],'branch':['branch','--show-current'],'staged':['diff','--cached','--name-status'],'status':['status','--porcelain=v1','-uall']}.items():
++ r=subprocess.run(['git','-c','core.quotepath=false',*a],cwd=P,capture_output=True,text=True,encoding='utf8');assert r.returncode==0;after[k]=r.stdout
++(E/'git_after.json').write_text(json.dumps(after,ensure_ascii=False,indent=2),encoding='utf8');test('Git状态及暂存HEAD保持一致',lambda:ok(after==J('git_before.json')))
++r=subprocess.run(['git','diff','--check'],cwd=P,capture_output=True,text=True);print('git diff --check exit=',r.returncode);print(r.stdout+r.stderr);assert r.returncode==0
++print(f'RESULT {N} PASS / 0 FAIL / 0 SKIP; exit=0')
+--- /dev/null
++++ R07/candidates.json
+@@ -0,0 +1,1294 @@
++[
++  {
++    "sourceRecordRef": "R07-EARLY-L0027",
++    "kind": "dish",
++    "name": "招牌猪脚饭",
++    "stallRef": "R07-EARLY-S01",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 27,
++    "sourceQuote": "| 招牌猪脚饭 | 15 | rice | 猪脚(肘子)+肉卷+时蔬+小菜+卤蛋 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d001"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0027-V1",
++    "formalDishId": null,
++    "amount": 15.0,
++    "rawPriceExpression": "15",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "rice",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0028",
++    "kind": "dish",
++    "name": "红烧肉盖饭",
++    "stallRef": "R07-EARLY-S01",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 28,
++    "sourceQuote": "| 红烧肉盖饭 | 15 | rice | 红烧肉+肉卷+时蔬+小菜+卤蛋 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d002"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0028-V1",
++    "formalDishId": null,
++    "amount": 15.0,
++    "rawPriceExpression": "15",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "rice",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0029",
++    "kind": "dish",
++    "name": "台式卤肉饭",
++    "stallRef": "R07-EARLY-S01",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 29,
++    "sourceQuote": "| 台式卤肉饭 | 13 | rice | 卤肉+肉卷+时蔬+小菜+卤蛋 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d003"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0029-V1",
++    "formalDishId": null,
++    "amount": 13.0,
++    "rawPriceExpression": "13",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "rice",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0030",
++    "kind": "dish",
++    "name": "辣子鸡盖饭",
++    "stallRef": "R07-EARLY-S01",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 30,
++    "sourceQuote": "| 辣子鸡盖饭 | 13 | rice | 辣子鸡+肉卷+时蔬+小菜+卤蛋 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d004"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "mild_spicy",
++    "candidateId": "R07-EARLY-L0030-V1",
++    "formalDishId": null,
++    "amount": 13.0,
++    "rawPriceExpression": "13",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "rice",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0031",
++    "kind": "dish",
++    "name": "蜜汁叉烧饭",
++    "stallRef": "R07-EARLY-S01",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 31,
++    "sourceQuote": "| 蜜汁叉烧饭 | 13 | rice | 叉烧+肉卷+时蔬+小菜+卤蛋 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d005"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0031-V1",
++    "formalDishId": null,
++    "amount": 13.0,
++    "rawPriceExpression": "13",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "rice",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0032",
++    "kind": "dish",
++    "name": "香辣鸡杂饭",
++    "stallRef": "R07-EARLY-S01",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 32,
++    "sourceQuote": "| 香辣鸡杂饭 | 13 | rice | 鸡杂+肉卷+时蔬+小菜+卤蛋 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d006"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "mild_spicy",
++    "candidateId": "R07-EARLY-L0032-V1",
++    "formalDishId": null,
++    "amount": 13.0,
++    "rawPriceExpression": "13",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "rice",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0033",
++    "kind": "dish",
++    "name": "卤肉面",
++    "stallRef": "R07-EARLY-S01",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 33,
++    "sourceQuote": "| 卤肉面 | 12 | noodle | — |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d007"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0033-V1",
++    "formalDishId": null,
++    "amount": 12.0,
++    "rawPriceExpression": "12",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0034",
++    "kind": "dish",
++    "name": "肉酱拌面",
++    "stallRef": "R07-EARLY-S01",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 34,
++    "sourceQuote": "| 肉酱拌面 | 12 | noodle | — |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d008"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0034-V1",
++    "formalDishId": null,
++    "amount": 12.0,
++    "rawPriceExpression": "12",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0044",
++    "kind": "dish",
++    "name": "月亮馍（+烤肠）",
++    "stallRef": "R07-EARLY-S02",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 44,
++    "sourceQuote": "| 月亮馍（+烤肠） | 5 | snack |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d009"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0044-V1",
++    "formalDishId": null,
++    "amount": 5.0,
++    "rawPriceExpression": "5",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "snack",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0045",
++    "kind": "dish",
++    "name": "月亮馍（+煎蛋）",
++    "stallRef": "R07-EARLY-S02",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 45,
++    "sourceQuote": "| 月亮馍（+煎蛋） | 5 | snack |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d010"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0045-V1",
++    "formalDishId": null,
++    "amount": 5.0,
++    "rawPriceExpression": "5",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "snack",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0047",
++    "kind": "dish",
++    "name": "月亮馍（+鸡柳）",
++    "stallRef": "R07-EARLY-S02",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 47,
++    "sourceQuote": "| 月亮馍（+鸡柳） | 6.5 | snack |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d012"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0047-V1",
++    "formalDishId": null,
++    "amount": 6.5,
++    "rawPriceExpression": "6.5",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "snack",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0048",
++    "kind": "dish",
++    "name": "月亮馍（+里脊）",
++    "stallRef": "R07-EARLY-S02",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 48,
++    "sourceQuote": "| 月亮馍（+里脊） | 6.5 | snack |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d013"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0048-V1",
++    "formalDishId": null,
++    "amount": 6.5,
++    "rawPriceExpression": "6.5",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "snack",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0049",
++    "kind": "dish",
++    "name": "月亮馍（+肉松）",
++    "stallRef": "R07-EARLY-S02",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 49,
++    "sourceQuote": "| 月亮馍（+肉松） | 6.5 | snack |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d014"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0049-V1",
++    "formalDishId": null,
++    "amount": 6.5,
++    "rawPriceExpression": "6.5",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "snack",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0050",
++    "kind": "dish",
++    "name": "杂粮煎饼（+鸡蛋+脆饼）",
++    "stallRef": "R07-EARLY-S02",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 50,
++    "sourceQuote": "| 杂粮煎饼（+鸡蛋+脆饼） | 5 | snack |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d015"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0050-V1",
++    "formalDishId": null,
++    "amount": 5.0,
++    "rawPriceExpression": "5",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "snack",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0051",
++    "kind": "dish",
++    "name": "杂粮煎饼（+鸡蛋+油条）",
++    "stallRef": "R07-EARLY-S02",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 51,
++    "sourceQuote": "| 杂粮煎饼（+鸡蛋+油条） | 5 | snack |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d016"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0051-V1",
++    "formalDishId": null,
++    "amount": 5.0,
++    "rawPriceExpression": "5",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "snack",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0059",
++    "kind": "dish",
++    "name": "特色羊杂面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 59,
++    "sourceQuote": "| 特色羊杂面 | 11 | noodle | 汤面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d017"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0059-V1",
++    "formalDishId": null,
++    "amount": 11.0,
++    "rawPriceExpression": "11",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0060",
++    "kind": "dish",
++    "name": "辣肉面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 60,
++    "sourceQuote": "| 辣肉面 | 11 | noodle | 汤面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d018"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "mild_spicy",
++    "candidateId": "R07-EARLY-L0060-V1",
++    "formalDishId": null,
++    "amount": 11.0,
++    "rawPriceExpression": "11",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0061",
++    "kind": "dish",
++    "name": "鸡柳面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 61,
++    "sourceQuote": "| 鸡柳面 | 12 | noodle | 汤面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d019"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0061-V1",
++    "formalDishId": null,
++    "amount": 12.0,
++    "rawPriceExpression": "12",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0062",
++    "kind": "dish",
++    "name": "猪排面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 62,
++    "sourceQuote": "| 猪排面 | 13 | noodle | 汤面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d020"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0062-V1",
++    "formalDishId": null,
++    "amount": 13.0,
++    "rawPriceExpression": "13",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0063",
++    "kind": "dish",
++    "name": "卤肉面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 63,
++    "sourceQuote": "| 卤肉面 | 14 | noodle | 汤面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d021"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0063-V1",
++    "formalDishId": null,
++    "amount": 14.0,
++    "rawPriceExpression": "14",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0064",
++    "kind": "dish",
++    "name": "筋头巴脑牛肉面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 64,
++    "sourceQuote": "| 筋头巴脑牛肉面 | 14 | noodle | 汤面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d022"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0064-V1",
++    "formalDishId": null,
++    "amount": 14.0,
++    "rawPriceExpression": "14",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0065",
++    "kind": "dish",
++    "name": "肉燥汤面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 65,
++    "sourceQuote": "| 肉燥汤面 | 9 | noodle | 汤面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d023"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0065-V1",
++    "formalDishId": null,
++    "amount": 9.0,
++    "rawPriceExpression": "9",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0066",
++    "kind": "dish",
++    "name": "酸豆角汤面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 66,
++    "sourceQuote": "| 酸豆角汤面 | 9 | noodle | 汤面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d024"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0066-V1",
++    "formalDishId": null,
++    "amount": 9.0,
++    "rawPriceExpression": "9",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0067",
++    "kind": "dish",
++    "name": "酸菜汤面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 67,
++    "sourceQuote": "| 酸菜汤面 | 9 | noodle | 汤面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d025"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0067-V1",
++    "formalDishId": null,
++    "amount": 9.0,
++    "rawPriceExpression": "9",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0068",
++    "kind": "dish",
++    "name": "清汤面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 68,
++    "sourceQuote": "| 清汤面 | 7 | noodle | 汤面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d026"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0068-V1",
++    "formalDishId": null,
++    "amount": 7.0,
++    "rawPriceExpression": "7",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0069",
++    "kind": "dish",
++    "name": "辣肉拌面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 69,
++    "sourceQuote": "| 辣肉拌面 | 11 | noodle | 拌面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d027"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "mild_spicy",
++    "candidateId": "R07-EARLY-L0069-V1",
++    "formalDishId": null,
++    "amount": 11.0,
++    "rawPriceExpression": "11",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0070",
++    "kind": "dish",
++    "name": "鸡柳麻辣拌面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 70,
++    "sourceQuote": "| 鸡柳麻辣拌面 | 12 | noodle | 拌面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d028"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "spicy",
++    "candidateId": "R07-EARLY-L0070-V1",
++    "formalDishId": null,
++    "amount": 12.0,
++    "rawPriceExpression": "12",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0071",
++    "kind": "dish",
++    "name": "猪排麻酱面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 71,
++    "sourceQuote": "| 猪排麻酱面 | 13 | noodle | 麻酱 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d029"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0071-V1",
++    "formalDishId": null,
++    "amount": 13.0,
++    "rawPriceExpression": "13",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0072",
++    "kind": "dish",
++    "name": "麻酱鸡丝面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 72,
++    "sourceQuote": "| 麻酱鸡丝面 | 10 | noodle | 麻酱 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d030"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0072-V1",
++    "formalDishId": null,
++    "amount": 10.0,
++    "rawPriceExpression": "10",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0073",
++    "kind": "dish",
++    "name": "麻酱肉燥面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 73,
++    "sourceQuote": "| 麻酱肉燥面 | 10 | noodle | 麻酱 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d031"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0073-V1",
++    "formalDishId": null,
++    "amount": 10.0,
++    "rawPriceExpression": "10",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0074",
++    "kind": "dish",
++    "name": "麻酱酸豆角面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 74,
++    "sourceQuote": "| 麻酱酸豆角面 | 10 | noodle | 麻酱 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d032"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0074-V1",
++    "formalDishId": null,
++    "amount": 10.0,
++    "rawPriceExpression": "10",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0075",
++    "kind": "dish",
++    "name": "麻酱酸菜面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 75,
++    "sourceQuote": "| 麻酱酸菜面 | 10 | noodle | 麻酱 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d033"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0075-V1",
++    "formalDishId": null,
++    "amount": 10.0,
++    "rawPriceExpression": "10",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0076",
++    "kind": "dish",
++    "name": "猪排麻辣面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 76,
++    "sourceQuote": "| 猪排麻辣面 | 13 | noodle | 麻辣 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d034"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "spicy",
++    "candidateId": "R07-EARLY-L0076-V1",
++    "formalDishId": null,
++    "amount": 13.0,
++    "rawPriceExpression": "13",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0077",
++    "kind": "dish",
++    "name": "麻辣拌面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 77,
++    "sourceQuote": "| 麻辣拌面 | 9 | noodle | 麻辣 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d035"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "spicy",
++    "candidateId": "R07-EARLY-L0077-V1",
++    "formalDishId": null,
++    "amount": 9.0,
++    "rawPriceExpression": "9",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0078",
++    "kind": "dish",
++    "name": "混合炸酱面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 78,
++    "sourceQuote": "| 混合炸酱面 | 10 | noodle | 炸酱 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d036"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0078-V1",
++    "formalDishId": null,
++    "amount": 10.0,
++    "rawPriceExpression": "10",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0079",
++    "kind": "dish",
++    "name": "鸡蛋炸酱面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 79,
++    "sourceQuote": "| 鸡蛋炸酱面 | 9 | noodle | 炸酱 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d037"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0079-V1",
++    "formalDishId": null,
++    "amount": 9.0,
++    "rawPriceExpression": "9",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0080",
++    "kind": "dish",
++    "name": "招牌炸酱面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 80,
++    "sourceQuote": "| 招牌炸酱面 | 10 | noodle | 炸酱 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d038"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice",
++    "candidateId": "R07-EARLY-L0080-V1",
++    "formalDishId": null,
++    "amount": 10.0,
++    "rawPriceExpression": "10",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0081",
++    "kind": "dish",
++    "name": "辣番茄鸡蛋拌面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 81,
++    "sourceQuote": "| 辣番茄鸡蛋拌面 | 10 | noodle | 炸酱 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d039"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "mild_spicy",
++    "candidateId": "R07-EARLY-L0081-V1",
++    "formalDishId": null,
++    "amount": 10.0,
++    "rawPriceExpression": "10",
++    "currency": "CNY",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "photoEvidence": null,
++    "photoStatus": "NOT_ARCHIVED_FOR_THIS_STALL",
++    "parentVerificationStatus": "ORAL_SOURCE_NOT_FORMALLY_SIGNED",
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_ORAL_HISTORY_NOT_FORMALLY_AUTHORIZED"
++  }
++]
+--- /dev/null
++++ R07/source_groups.json
+@@ -0,0 +1,1016 @@
++[
++  {
++    "sourceRecordRef": "R07-EARLY-L0027",
++    "kind": "dish",
++    "name": "招牌猪脚饭",
++    "stallRef": "R07-EARLY-S01",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 27,
++    "sourceQuote": "| 招牌猪脚饭 | 15 | rice | 猪脚(肘子)+肉卷+时蔬+小菜+卤蛋 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d001"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0028",
++    "kind": "dish",
++    "name": "红烧肉盖饭",
++    "stallRef": "R07-EARLY-S01",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 28,
++    "sourceQuote": "| 红烧肉盖饭 | 15 | rice | 红烧肉+肉卷+时蔬+小菜+卤蛋 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d002"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0029",
++    "kind": "dish",
++    "name": "台式卤肉饭",
++    "stallRef": "R07-EARLY-S01",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 29,
++    "sourceQuote": "| 台式卤肉饭 | 13 | rice | 卤肉+肉卷+时蔬+小菜+卤蛋 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d003"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0030",
++    "kind": "dish",
++    "name": "辣子鸡盖饭",
++    "stallRef": "R07-EARLY-S01",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 30,
++    "sourceQuote": "| 辣子鸡盖饭 | 13 | rice | 辣子鸡+肉卷+时蔬+小菜+卤蛋 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d004"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "mild_spicy"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0031",
++    "kind": "dish",
++    "name": "蜜汁叉烧饭",
++    "stallRef": "R07-EARLY-S01",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 31,
++    "sourceQuote": "| 蜜汁叉烧饭 | 13 | rice | 叉烧+肉卷+时蔬+小菜+卤蛋 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d005"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0032",
++    "kind": "dish",
++    "name": "香辣鸡杂饭",
++    "stallRef": "R07-EARLY-S01",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 32,
++    "sourceQuote": "| 香辣鸡杂饭 | 13 | rice | 鸡杂+肉卷+时蔬+小菜+卤蛋 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d006"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "mild_spicy"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0033",
++    "kind": "dish",
++    "name": "卤肉面",
++    "stallRef": "R07-EARLY-S01",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 33,
++    "sourceQuote": "| 卤肉面 | 12 | noodle | — |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d007"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0034",
++    "kind": "dish",
++    "name": "肉酱拌面",
++    "stallRef": "R07-EARLY-S01",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 34,
++    "sourceQuote": "| 肉酱拌面 | 12 | noodle | — |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d008"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0044",
++    "kind": "dish",
++    "name": "月亮馍（+烤肠）",
++    "stallRef": "R07-EARLY-S02",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 44,
++    "sourceQuote": "| 月亮馍（+烤肠） | 5 | snack |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d009"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0045",
++    "kind": "dish",
++    "name": "月亮馍（+煎蛋）",
++    "stallRef": "R07-EARLY-S02",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 45,
++    "sourceQuote": "| 月亮馍（+煎蛋） | 5 | snack |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d010"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0046",
++    "kind": "dish",
++    "name": "月亮馍（+辣条）",
++    "stallRef": "R07-EARLY-S02",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 46,
++    "sourceQuote": "| 月亮馍（+辣条） | 5 | snack |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d011"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "mild_spicy"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0047",
++    "kind": "dish",
++    "name": "月亮馍（+鸡柳）",
++    "stallRef": "R07-EARLY-S02",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 47,
++    "sourceQuote": "| 月亮馍（+鸡柳） | 6.5 | snack |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d012"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0048",
++    "kind": "dish",
++    "name": "月亮馍（+里脊）",
++    "stallRef": "R07-EARLY-S02",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 48,
++    "sourceQuote": "| 月亮馍（+里脊） | 6.5 | snack |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d013"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0049",
++    "kind": "dish",
++    "name": "月亮馍（+肉松）",
++    "stallRef": "R07-EARLY-S02",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 49,
++    "sourceQuote": "| 月亮馍（+肉松） | 6.5 | snack |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d014"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0050",
++    "kind": "dish",
++    "name": "杂粮煎饼（+鸡蛋+脆饼）",
++    "stallRef": "R07-EARLY-S02",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 50,
++    "sourceQuote": "| 杂粮煎饼（+鸡蛋+脆饼） | 5 | snack |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d015"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0051",
++    "kind": "dish",
++    "name": "杂粮煎饼（+鸡蛋+油条）",
++    "stallRef": "R07-EARLY-S02",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 51,
++    "sourceQuote": "| 杂粮煎饼（+鸡蛋+油条） | 5 | snack |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d016"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0059",
++    "kind": "dish",
++    "name": "特色羊杂面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 59,
++    "sourceQuote": "| 特色羊杂面 | 11 | noodle | 汤面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d017"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0060",
++    "kind": "dish",
++    "name": "辣肉面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 60,
++    "sourceQuote": "| 辣肉面 | 11 | noodle | 汤面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d018"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "mild_spicy"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0061",
++    "kind": "dish",
++    "name": "鸡柳面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 61,
++    "sourceQuote": "| 鸡柳面 | 12 | noodle | 汤面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d019"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0062",
++    "kind": "dish",
++    "name": "猪排面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 62,
++    "sourceQuote": "| 猪排面 | 13 | noodle | 汤面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d020"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0063",
++    "kind": "dish",
++    "name": "卤肉面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 63,
++    "sourceQuote": "| 卤肉面 | 14 | noodle | 汤面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d021"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0064",
++    "kind": "dish",
++    "name": "筋头巴脑牛肉面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 64,
++    "sourceQuote": "| 筋头巴脑牛肉面 | 14 | noodle | 汤面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d022"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0065",
++    "kind": "dish",
++    "name": "肉燥汤面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 65,
++    "sourceQuote": "| 肉燥汤面 | 9 | noodle | 汤面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d023"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0066",
++    "kind": "dish",
++    "name": "酸豆角汤面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 66,
++    "sourceQuote": "| 酸豆角汤面 | 9 | noodle | 汤面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d024"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0067",
++    "kind": "dish",
++    "name": "酸菜汤面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 67,
++    "sourceQuote": "| 酸菜汤面 | 9 | noodle | 汤面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d025"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0068",
++    "kind": "dish",
++    "name": "清汤面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 68,
++    "sourceQuote": "| 清汤面 | 7 | noodle | 汤面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d026"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0069",
++    "kind": "dish",
++    "name": "辣肉拌面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 69,
++    "sourceQuote": "| 辣肉拌面 | 11 | noodle | 拌面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d027"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "mild_spicy"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0070",
++    "kind": "dish",
++    "name": "鸡柳麻辣拌面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 70,
++    "sourceQuote": "| 鸡柳麻辣拌面 | 12 | noodle | 拌面 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d028"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "spicy"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0071",
++    "kind": "dish",
++    "name": "猪排麻酱面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 71,
++    "sourceQuote": "| 猪排麻酱面 | 13 | noodle | 麻酱 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d029"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0072",
++    "kind": "dish",
++    "name": "麻酱鸡丝面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 72,
++    "sourceQuote": "| 麻酱鸡丝面 | 10 | noodle | 麻酱 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d030"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0073",
++    "kind": "dish",
++    "name": "麻酱肉燥面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 73,
++    "sourceQuote": "| 麻酱肉燥面 | 10 | noodle | 麻酱 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d031"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0074",
++    "kind": "dish",
++    "name": "麻酱酸豆角面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 74,
++    "sourceQuote": "| 麻酱酸豆角面 | 10 | noodle | 麻酱 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d032"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0075",
++    "kind": "dish",
++    "name": "麻酱酸菜面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 75,
++    "sourceQuote": "| 麻酱酸菜面 | 10 | noodle | 麻酱 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d033"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0076",
++    "kind": "dish",
++    "name": "猪排麻辣面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 76,
++    "sourceQuote": "| 猪排麻辣面 | 13 | noodle | 麻辣 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d034"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "spicy"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0077",
++    "kind": "dish",
++    "name": "麻辣拌面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 77,
++    "sourceQuote": "| 麻辣拌面 | 9 | noodle | 麻辣 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d035"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "spicy"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0078",
++    "kind": "dish",
++    "name": "混合炸酱面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 78,
++    "sourceQuote": "| 混合炸酱面 | 10 | noodle | 炸酱 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d036"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0079",
++    "kind": "dish",
++    "name": "鸡蛋炸酱面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 79,
++    "sourceQuote": "| 鸡蛋炸酱面 | 9 | noodle | 炸酱 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d037"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0080",
++    "kind": "dish",
++    "name": "招牌炸酱面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 80,
++    "sourceQuote": "| 招牌炸酱面 | 10 | noodle | 炸酱 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d038"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "choice"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0081",
++    "kind": "dish",
++    "name": "辣番茄鸡蛋拌面",
++    "stallRef": "R07-EARLY-S03",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 81,
++    "sourceQuote": "| 辣番茄鸡蛋拌面 | 10 | noodle | 炸酱 |",
++    "oldRecordKeys": [
++      "early_batch1:c01_d039"
++    ],
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "originalTastes": "mild_spicy"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0036-O1",
++    "optionRef": "R07-EARLY-L0036-O1",
++    "name": "卤蛋",
++    "additionalPriceYuan": 1.5,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S01",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 36,
++    "sourceQuote": "加料（不录）：卤蛋 1.5 / 热狗肠 2 / 把子肉 5 / 叉烧 6 / 猪肘 8。店铺备注：米饭免费续加。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0036-O2",
++    "optionRef": "R07-EARLY-L0036-O2",
++    "name": "热狗肠",
++    "additionalPriceYuan": 2.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S01",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 36,
++    "sourceQuote": "加料（不录）：卤蛋 1.5 / 热狗肠 2 / 把子肉 5 / 叉烧 6 / 猪肘 8。店铺备注：米饭免费续加。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0036-O3",
++    "optionRef": "R07-EARLY-L0036-O3",
++    "name": "把子肉",
++    "additionalPriceYuan": 5.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S01",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 36,
++    "sourceQuote": "加料（不录）：卤蛋 1.5 / 热狗肠 2 / 把子肉 5 / 叉烧 6 / 猪肘 8。店铺备注：米饭免费续加。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0036-O4",
++    "optionRef": "R07-EARLY-L0036-O4",
++    "name": "叉烧",
++    "additionalPriceYuan": 6.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S01",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 36,
++    "sourceQuote": "加料（不录）：卤蛋 1.5 / 热狗肠 2 / 把子肉 5 / 叉烧 6 / 猪肘 8。店铺备注：米饭免费续加。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0036-O5",
++    "optionRef": "R07-EARLY-L0036-O5",
++    "name": "猪肘",
++    "additionalPriceYuan": 8.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S01",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 36,
++    "sourceQuote": "加料（不录）：卤蛋 1.5 / 热狗肠 2 / 把子肉 5 / 叉烧 6 / 猪肘 8。店铺备注：米饭免费续加。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O1",
++    "optionRef": "R07-EARLY-L0053-O1",
++    "name": "烤肠",
++    "additionalPriceYuan": 1.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O2",
++    "optionRef": "R07-EARLY-L0053-O2",
++    "name": "辣条",
++    "additionalPriceYuan": 1.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O3",
++    "optionRef": "R07-EARLY-L0053-O3",
++    "name": "小火腿",
++    "additionalPriceYuan": 1.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O4",
++    "optionRef": "R07-EARLY-L0053-O4",
++    "name": "豆皮",
++    "additionalPriceYuan": 1.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O5",
++    "optionRef": "R07-EARLY-L0053-O5",
++    "name": "土豆丝",
++    "additionalPriceYuan": 1.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O6",
++    "optionRef": "R07-EARLY-L0053-O6",
++    "name": "王中王火腿肠",
++    "additionalPriceYuan": 3.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O7",
++    "optionRef": "R07-EARLY-L0053-O7",
++    "name": "鸡柳",
++    "additionalPriceYuan": 2.5,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O8",
++    "optionRef": "R07-EARLY-L0053-O8",
++    "name": "鸡排",
++    "additionalPriceYuan": 2.5,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O9",
++    "optionRef": "R07-EARLY-L0053-O9",
++    "name": "里脊",
++    "additionalPriceYuan": 2.5,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O10",
++    "optionRef": "R07-EARLY-L0053-O10",
++    "name": "肉松",
++    "additionalPriceYuan": 2.5,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O11",
++    "optionRef": "R07-EARLY-L0053-O11",
++    "name": "培根",
++    "additionalPriceYuan": 1.5,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O12",
++    "optionRef": "R07-EARLY-L0053-O12",
++    "name": "煎蛋",
++    "additionalPriceYuan": 1.5,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0083-O1",
++    "optionRef": "R07-EARLY-L0083-O1",
++    "name": "加羊杂",
++    "additionalPriceYuan": 6.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S03",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 83,
++    "sourceQuote": "卤味/加料（不录）：加羊杂 6 / 加辣肉 5 / 加鸡丝 4 / 原味肠 2/个 / 日式猪排 7/片 / 卤五花肉 7/片 / 卤蛋 1.5/个。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0083-O2",
++    "optionRef": "R07-EARLY-L0083-O2",
++    "name": "加辣肉",
++    "additionalPriceYuan": 5.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S03",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 83,
++    "sourceQuote": "卤味/加料（不录）：加羊杂 6 / 加辣肉 5 / 加鸡丝 4 / 原味肠 2/个 / 日式猪排 7/片 / 卤五花肉 7/片 / 卤蛋 1.5/个。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0083-O3",
++    "optionRef": "R07-EARLY-L0083-O3",
++    "name": "加鸡丝",
++    "additionalPriceYuan": 4.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S03",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 83,
++    "sourceQuote": "卤味/加料（不录）：加羊杂 6 / 加辣肉 5 / 加鸡丝 4 / 原味肠 2/个 / 日式猪排 7/片 / 卤五花肉 7/片 / 卤蛋 1.5/个。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0083-O4",
++    "optionRef": "R07-EARLY-L0083-O4",
++    "name": "原味肠",
++    "additionalPriceYuan": 2.0,
++    "unitRaw": "个",
++    "stallRef": "R07-EARLY-S03",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 83,
++    "sourceQuote": "卤味/加料（不录）：加羊杂 6 / 加辣肉 5 / 加鸡丝 4 / 原味肠 2/个 / 日式猪排 7/片 / 卤五花肉 7/片 / 卤蛋 1.5/个。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0083-O5",
++    "optionRef": "R07-EARLY-L0083-O5",
++    "name": "日式猪排",
++    "additionalPriceYuan": 7.0,
++    "unitRaw": "片",
++    "stallRef": "R07-EARLY-S03",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 83,
++    "sourceQuote": "卤味/加料（不录）：加羊杂 6 / 加辣肉 5 / 加鸡丝 4 / 原味肠 2/个 / 日式猪排 7/片 / 卤五花肉 7/片 / 卤蛋 1.5/个。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0083-O6",
++    "optionRef": "R07-EARLY-L0083-O6",
++    "name": "卤五花肉",
++    "additionalPriceYuan": 7.0,
++    "unitRaw": "片",
++    "stallRef": "R07-EARLY-S03",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 83,
++    "sourceQuote": "卤味/加料（不录）：加羊杂 6 / 加辣肉 5 / 加鸡丝 4 / 原味肠 2/个 / 日式猪排 7/片 / 卤五花肉 7/片 / 卤蛋 1.5/个。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0083-O7",
++    "optionRef": "R07-EARLY-L0083-O7",
++    "name": "卤蛋",
++    "additionalPriceYuan": 1.5,
++    "unitRaw": "个",
++    "stallRef": "R07-EARLY-S03",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 83,
++    "sourceQuote": "卤味/加料（不录）：加羊杂 6 / 加辣肉 5 / 加鸡丝 4 / 原味肠 2/个 / 日式猪排 7/片 / 卤五花肉 7/片 / 卤蛋 1.5/个。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0084-UNPRICED1",
++    "kind": "unpriced_item",
++    "name": "筋头巴脑",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 84,
++    "sourceQuote": "⚠ 图上还有 **筋头巴脑、卤鸡腿、兰花干、卤干豆腐** 四项，价格未标清 → 不录，等补拍。",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0084-UNPRICED2",
++    "kind": "unpriced_item",
++    "name": "卤鸡腿",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 84,
++    "sourceQuote": "⚠ 图上还有 **筋头巴脑、卤鸡腿、兰花干、卤干豆腐** 四项，价格未标清 → 不录，等补拍。",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0084-UNPRICED3",
++    "kind": "unpriced_item",
++    "name": "兰花干",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 84,
++    "sourceQuote": "⚠ 图上还有 **筋头巴脑、卤鸡腿、兰花干、卤干豆腐** 四项，价格未标清 → 不录，等补拍。",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0084-UNPRICED4",
++    "kind": "unpriced_item",
++    "name": "卤干豆腐",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 84,
++    "sourceQuote": "⚠ 图上还有 **筋头巴脑、卤鸡腿、兰花干、卤干豆腐** 四项，价格未标清 → 不录，等补拍。",
++    "oldRecordKeys": []
++  }
++]
+--- /dev/null
++++ R07/source_ledger.csv
+@@ -0,0 +1,68 @@
++sourceRecordRef,oldRecordKeys,action,newSourceRefs,optionRefs,candidateRefs,name,sourceLine
++R07-EARLY-L0027,"[""early_batch1:c01_d001""]",RETAIN,"[""R07-EARLY-L0027""]",[],"[""R07-EARLY-L0027-V1""]",招牌猪脚饭,27
++R07-EARLY-L0028,"[""early_batch1:c01_d002""]",RETAIN,"[""R07-EARLY-L0028""]",[],"[""R07-EARLY-L0028-V1""]",红烧肉盖饭,28
++R07-EARLY-L0029,"[""early_batch1:c01_d003""]",RETAIN,"[""R07-EARLY-L0029""]",[],"[""R07-EARLY-L0029-V1""]",台式卤肉饭,29
++R07-EARLY-L0030,"[""early_batch1:c01_d004""]",RETAIN,"[""R07-EARLY-L0030""]",[],"[""R07-EARLY-L0030-V1""]",辣子鸡盖饭,30
++R07-EARLY-L0031,"[""early_batch1:c01_d005""]",RETAIN,"[""R07-EARLY-L0031""]",[],"[""R07-EARLY-L0031-V1""]",蜜汁叉烧饭,31
++R07-EARLY-L0032,"[""early_batch1:c01_d006""]",RETAIN,"[""R07-EARLY-L0032""]",[],"[""R07-EARLY-L0032-V1""]",香辣鸡杂饭,32
++R07-EARLY-L0033,"[""early_batch1:c01_d007""]",RETAIN,"[""R07-EARLY-L0033""]",[],"[""R07-EARLY-L0033-V1""]",卤肉面,33
++R07-EARLY-L0034,"[""early_batch1:c01_d008""]",RETAIN,"[""R07-EARLY-L0034""]",[],"[""R07-EARLY-L0034-V1""]",肉酱拌面,34
++R07-EARLY-L0044,"[""early_batch1:c01_d009""]",RETAIN,"[""R07-EARLY-L0044""]",[],"[""R07-EARLY-L0044-V1""]",月亮馍（+烤肠）,44
++R07-EARLY-L0045,"[""early_batch1:c01_d010""]",RETAIN,"[""R07-EARLY-L0045""]",[],"[""R07-EARLY-L0045-V1""]",月亮馍（+煎蛋）,45
++R07-EARLY-L0046,"[""early_batch1:c01_d011""]",PENDING,"[""R07-EARLY-L0046""]",[],[],月亮馍（+辣条）,46
++R07-EARLY-L0047,"[""early_batch1:c01_d012""]",RETAIN,"[""R07-EARLY-L0047""]",[],"[""R07-EARLY-L0047-V1""]",月亮馍（+鸡柳）,47
++R07-EARLY-L0048,"[""early_batch1:c01_d013""]",RETAIN,"[""R07-EARLY-L0048""]",[],"[""R07-EARLY-L0048-V1""]",月亮馍（+里脊）,48
++R07-EARLY-L0049,"[""early_batch1:c01_d014""]",RETAIN,"[""R07-EARLY-L0049""]",[],"[""R07-EARLY-L0049-V1""]",月亮馍（+肉松）,49
++R07-EARLY-L0050,"[""early_batch1:c01_d015""]",RETAIN,"[""R07-EARLY-L0050""]",[],"[""R07-EARLY-L0050-V1""]",杂粮煎饼（+鸡蛋+脆饼）,50
++R07-EARLY-L0051,"[""early_batch1:c01_d016""]",RETAIN,"[""R07-EARLY-L0051""]",[],"[""R07-EARLY-L0051-V1""]",杂粮煎饼（+鸡蛋+油条）,51
++R07-EARLY-L0059,"[""early_batch1:c01_d017""]",RETAIN,"[""R07-EARLY-L0059""]",[],"[""R07-EARLY-L0059-V1""]",特色羊杂面,59
++R07-EARLY-L0060,"[""early_batch1:c01_d018""]",RETAIN,"[""R07-EARLY-L0060""]",[],"[""R07-EARLY-L0060-V1""]",辣肉面,60
++R07-EARLY-L0061,"[""early_batch1:c01_d019""]",RETAIN,"[""R07-EARLY-L0061""]",[],"[""R07-EARLY-L0061-V1""]",鸡柳面,61
++R07-EARLY-L0062,"[""early_batch1:c01_d020""]",RETAIN,"[""R07-EARLY-L0062""]",[],"[""R07-EARLY-L0062-V1""]",猪排面,62
++R07-EARLY-L0063,"[""early_batch1:c01_d021""]",RETAIN,"[""R07-EARLY-L0063""]",[],"[""R07-EARLY-L0063-V1""]",卤肉面,63
++R07-EARLY-L0064,"[""early_batch1:c01_d022""]",RETAIN,"[""R07-EARLY-L0064""]",[],"[""R07-EARLY-L0064-V1""]",筋头巴脑牛肉面,64
++R07-EARLY-L0065,"[""early_batch1:c01_d023""]",RETAIN,"[""R07-EARLY-L0065""]",[],"[""R07-EARLY-L0065-V1""]",肉燥汤面,65
++R07-EARLY-L0066,"[""early_batch1:c01_d024""]",RETAIN,"[""R07-EARLY-L0066""]",[],"[""R07-EARLY-L0066-V1""]",酸豆角汤面,66
++R07-EARLY-L0067,"[""early_batch1:c01_d025""]",RETAIN,"[""R07-EARLY-L0067""]",[],"[""R07-EARLY-L0067-V1""]",酸菜汤面,67
++R07-EARLY-L0068,"[""early_batch1:c01_d026""]",RETAIN,"[""R07-EARLY-L0068""]",[],"[""R07-EARLY-L0068-V1""]",清汤面,68
++R07-EARLY-L0069,"[""early_batch1:c01_d027""]",RETAIN,"[""R07-EARLY-L0069""]",[],"[""R07-EARLY-L0069-V1""]",辣肉拌面,69
++R07-EARLY-L0070,"[""early_batch1:c01_d028""]",RETAIN,"[""R07-EARLY-L0070""]",[],"[""R07-EARLY-L0070-V1""]",鸡柳麻辣拌面,70
++R07-EARLY-L0071,"[""early_batch1:c01_d029""]",RETAIN,"[""R07-EARLY-L0071""]",[],"[""R07-EARLY-L0071-V1""]",猪排麻酱面,71
++R07-EARLY-L0072,"[""early_batch1:c01_d030""]",RETAIN,"[""R07-EARLY-L0072""]",[],"[""R07-EARLY-L0072-V1""]",麻酱鸡丝面,72
++R07-EARLY-L0073,"[""early_batch1:c01_d031""]",RETAIN,"[""R07-EARLY-L0073""]",[],"[""R07-EARLY-L0073-V1""]",麻酱肉燥面,73
++R07-EARLY-L0074,"[""early_batch1:c01_d032""]",RETAIN,"[""R07-EARLY-L0074""]",[],"[""R07-EARLY-L0074-V1""]",麻酱酸豆角面,74
++R07-EARLY-L0075,"[""early_batch1:c01_d033""]",RETAIN,"[""R07-EARLY-L0075""]",[],"[""R07-EARLY-L0075-V1""]",麻酱酸菜面,75
++R07-EARLY-L0076,"[""early_batch1:c01_d034""]",RETAIN,"[""R07-EARLY-L0076""]",[],"[""R07-EARLY-L0076-V1""]",猪排麻辣面,76
++R07-EARLY-L0077,"[""early_batch1:c01_d035""]",RETAIN,"[""R07-EARLY-L0077""]",[],"[""R07-EARLY-L0077-V1""]",麻辣拌面,77
++R07-EARLY-L0078,"[""early_batch1:c01_d036""]",RETAIN,"[""R07-EARLY-L0078""]",[],"[""R07-EARLY-L0078-V1""]",混合炸酱面,78
++R07-EARLY-L0079,"[""early_batch1:c01_d037""]",RETAIN,"[""R07-EARLY-L0079""]",[],"[""R07-EARLY-L0079-V1""]",鸡蛋炸酱面,79
++R07-EARLY-L0080,"[""early_batch1:c01_d038""]",RETAIN,"[""R07-EARLY-L0080""]",[],"[""R07-EARLY-L0080-V1""]",招牌炸酱面,80
++R07-EARLY-L0081,"[""early_batch1:c01_d039""]",RETAIN,"[""R07-EARLY-L0081""]",[],"[""R07-EARLY-L0081-V1""]",辣番茄鸡蛋拌面,81
++R07-EARLY-L0036-O1,[],NEW,[],"[""R07-EARLY-L0036-O1""]",[],卤蛋,36
++R07-EARLY-L0036-O2,[],NEW,[],"[""R07-EARLY-L0036-O2""]",[],热狗肠,36
++R07-EARLY-L0036-O3,[],NEW,[],"[""R07-EARLY-L0036-O3""]",[],把子肉,36
++R07-EARLY-L0036-O4,[],NEW,[],"[""R07-EARLY-L0036-O4""]",[],叉烧,36
++R07-EARLY-L0036-O5,[],NEW,[],"[""R07-EARLY-L0036-O5""]",[],猪肘,36
++R07-EARLY-L0053-O1,[],NEW,[],"[""R07-EARLY-L0053-O1""]",[],烤肠,53
++R07-EARLY-L0053-O2,[],NEW,[],"[""R07-EARLY-L0053-O2""]",[],辣条,53
++R07-EARLY-L0053-O3,[],NEW,[],"[""R07-EARLY-L0053-O3""]",[],小火腿,53
++R07-EARLY-L0053-O4,[],NEW,[],"[""R07-EARLY-L0053-O4""]",[],豆皮,53
++R07-EARLY-L0053-O5,[],NEW,[],"[""R07-EARLY-L0053-O5""]",[],土豆丝,53
++R07-EARLY-L0053-O6,[],NEW,[],"[""R07-EARLY-L0053-O6""]",[],王中王火腿肠,53
++R07-EARLY-L0053-O7,[],NEW,[],"[""R07-EARLY-L0053-O7""]",[],鸡柳,53
++R07-EARLY-L0053-O8,[],NEW,[],"[""R07-EARLY-L0053-O8""]",[],鸡排,53
++R07-EARLY-L0053-O9,[],NEW,[],"[""R07-EARLY-L0053-O9""]",[],里脊,53
++R07-EARLY-L0053-O10,[],NEW,[],"[""R07-EARLY-L0053-O10""]",[],肉松,53
++R07-EARLY-L0053-O11,[],NEW,[],"[""R07-EARLY-L0053-O11""]",[],培根,53
++R07-EARLY-L0053-O12,[],NEW,[],"[""R07-EARLY-L0053-O12""]",[],煎蛋,53
++R07-EARLY-L0083-O1,[],NEW,[],"[""R07-EARLY-L0083-O1""]",[],加羊杂,83
++R07-EARLY-L0083-O2,[],NEW,[],"[""R07-EARLY-L0083-O2""]",[],加辣肉,83
++R07-EARLY-L0083-O3,[],NEW,[],"[""R07-EARLY-L0083-O3""]",[],加鸡丝,83
++R07-EARLY-L0083-O4,[],NEW,[],"[""R07-EARLY-L0083-O4""]",[],原味肠,83
++R07-EARLY-L0083-O5,[],NEW,[],"[""R07-EARLY-L0083-O5""]",[],日式猪排,83
++R07-EARLY-L0083-O6,[],NEW,[],"[""R07-EARLY-L0083-O6""]",[],卤五花肉,83
++R07-EARLY-L0083-O7,[],NEW,[],"[""R07-EARLY-L0083-O7""]",[],卤蛋,83
++R07-EARLY-L0084-UNPRICED1,[],NEW,"[""R07-EARLY-L0084-UNPRICED1""]",[],[],筋头巴脑,84
++R07-EARLY-L0084-UNPRICED2,[],NEW,"[""R07-EARLY-L0084-UNPRICED2""]",[],[],卤鸡腿,84
++R07-EARLY-L0084-UNPRICED3,[],NEW,"[""R07-EARLY-L0084-UNPRICED3""]",[],[],兰花干,84
++R07-EARLY-L0084-UNPRICED4,[],NEW,"[""R07-EARLY-L0084-UNPRICED4""]",[],[],卤干豆腐,84
+--- /dev/null
++++ R07/source_ledger.json
+@@ -0,0 +1,960 @@
++[
++  {
++    "sourceRecordRef": "R07-EARLY-L0027",
++    "oldRecordKeys": [
++      "early_batch1:c01_d001"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0027"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0027-V1"
++    ],
++    "name": "招牌猪脚饭",
++    "sourceLine": 27
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0028",
++    "oldRecordKeys": [
++      "early_batch1:c01_d002"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0028"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0028-V1"
++    ],
++    "name": "红烧肉盖饭",
++    "sourceLine": 28
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0029",
++    "oldRecordKeys": [
++      "early_batch1:c01_d003"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0029"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0029-V1"
++    ],
++    "name": "台式卤肉饭",
++    "sourceLine": 29
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0030",
++    "oldRecordKeys": [
++      "early_batch1:c01_d004"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0030"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0030-V1"
++    ],
++    "name": "辣子鸡盖饭",
++    "sourceLine": 30
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0031",
++    "oldRecordKeys": [
++      "early_batch1:c01_d005"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0031"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0031-V1"
++    ],
++    "name": "蜜汁叉烧饭",
++    "sourceLine": 31
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0032",
++    "oldRecordKeys": [
++      "early_batch1:c01_d006"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0032"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0032-V1"
++    ],
++    "name": "香辣鸡杂饭",
++    "sourceLine": 32
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0033",
++    "oldRecordKeys": [
++      "early_batch1:c01_d007"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0033"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0033-V1"
++    ],
++    "name": "卤肉面",
++    "sourceLine": 33
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0034",
++    "oldRecordKeys": [
++      "early_batch1:c01_d008"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0034"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0034-V1"
++    ],
++    "name": "肉酱拌面",
++    "sourceLine": 34
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0044",
++    "oldRecordKeys": [
++      "early_batch1:c01_d009"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0044"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0044-V1"
++    ],
++    "name": "月亮馍（+烤肠）",
++    "sourceLine": 44
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0045",
++    "oldRecordKeys": [
++      "early_batch1:c01_d010"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0045"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0045-V1"
++    ],
++    "name": "月亮馍（+煎蛋）",
++    "sourceLine": 45
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0046",
++    "oldRecordKeys": [
++      "early_batch1:c01_d011"
++    ],
++    "action": "PENDING",
++    "newSourceRefs": [
++      "R07-EARLY-L0046"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [],
++    "name": "月亮馍（+辣条）",
++    "sourceLine": 46
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0047",
++    "oldRecordKeys": [
++      "early_batch1:c01_d012"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0047"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0047-V1"
++    ],
++    "name": "月亮馍（+鸡柳）",
++    "sourceLine": 47
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0048",
++    "oldRecordKeys": [
++      "early_batch1:c01_d013"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0048"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0048-V1"
++    ],
++    "name": "月亮馍（+里脊）",
++    "sourceLine": 48
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0049",
++    "oldRecordKeys": [
++      "early_batch1:c01_d014"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0049"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0049-V1"
++    ],
++    "name": "月亮馍（+肉松）",
++    "sourceLine": 49
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0050",
++    "oldRecordKeys": [
++      "early_batch1:c01_d015"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0050"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0050-V1"
++    ],
++    "name": "杂粮煎饼（+鸡蛋+脆饼）",
++    "sourceLine": 50
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0051",
++    "oldRecordKeys": [
++      "early_batch1:c01_d016"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0051"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0051-V1"
++    ],
++    "name": "杂粮煎饼（+鸡蛋+油条）",
++    "sourceLine": 51
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0059",
++    "oldRecordKeys": [
++      "early_batch1:c01_d017"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0059"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0059-V1"
++    ],
++    "name": "特色羊杂面",
++    "sourceLine": 59
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0060",
++    "oldRecordKeys": [
++      "early_batch1:c01_d018"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0060"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0060-V1"
++    ],
++    "name": "辣肉面",
++    "sourceLine": 60
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0061",
++    "oldRecordKeys": [
++      "early_batch1:c01_d019"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0061"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0061-V1"
++    ],
++    "name": "鸡柳面",
++    "sourceLine": 61
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0062",
++    "oldRecordKeys": [
++      "early_batch1:c01_d020"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0062"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0062-V1"
++    ],
++    "name": "猪排面",
++    "sourceLine": 62
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0063",
++    "oldRecordKeys": [
++      "early_batch1:c01_d021"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0063"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0063-V1"
++    ],
++    "name": "卤肉面",
++    "sourceLine": 63
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0064",
++    "oldRecordKeys": [
++      "early_batch1:c01_d022"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0064"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0064-V1"
++    ],
++    "name": "筋头巴脑牛肉面",
++    "sourceLine": 64
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0065",
++    "oldRecordKeys": [
++      "early_batch1:c01_d023"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0065"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0065-V1"
++    ],
++    "name": "肉燥汤面",
++    "sourceLine": 65
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0066",
++    "oldRecordKeys": [
++      "early_batch1:c01_d024"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0066"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0066-V1"
++    ],
++    "name": "酸豆角汤面",
++    "sourceLine": 66
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0067",
++    "oldRecordKeys": [
++      "early_batch1:c01_d025"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0067"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0067-V1"
++    ],
++    "name": "酸菜汤面",
++    "sourceLine": 67
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0068",
++    "oldRecordKeys": [
++      "early_batch1:c01_d026"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0068"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0068-V1"
++    ],
++    "name": "清汤面",
++    "sourceLine": 68
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0069",
++    "oldRecordKeys": [
++      "early_batch1:c01_d027"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0069"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0069-V1"
++    ],
++    "name": "辣肉拌面",
++    "sourceLine": 69
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0070",
++    "oldRecordKeys": [
++      "early_batch1:c01_d028"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0070"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0070-V1"
++    ],
++    "name": "鸡柳麻辣拌面",
++    "sourceLine": 70
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0071",
++    "oldRecordKeys": [
++      "early_batch1:c01_d029"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0071"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0071-V1"
++    ],
++    "name": "猪排麻酱面",
++    "sourceLine": 71
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0072",
++    "oldRecordKeys": [
++      "early_batch1:c01_d030"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0072"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0072-V1"
++    ],
++    "name": "麻酱鸡丝面",
++    "sourceLine": 72
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0073",
++    "oldRecordKeys": [
++      "early_batch1:c01_d031"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0073"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0073-V1"
++    ],
++    "name": "麻酱肉燥面",
++    "sourceLine": 73
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0074",
++    "oldRecordKeys": [
++      "early_batch1:c01_d032"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0074"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0074-V1"
++    ],
++    "name": "麻酱酸豆角面",
++    "sourceLine": 74
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0075",
++    "oldRecordKeys": [
++      "early_batch1:c01_d033"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0075"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0075-V1"
++    ],
++    "name": "麻酱酸菜面",
++    "sourceLine": 75
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0076",
++    "oldRecordKeys": [
++      "early_batch1:c01_d034"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0076"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0076-V1"
++    ],
++    "name": "猪排麻辣面",
++    "sourceLine": 76
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0077",
++    "oldRecordKeys": [
++      "early_batch1:c01_d035"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0077"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0077-V1"
++    ],
++    "name": "麻辣拌面",
++    "sourceLine": 77
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0078",
++    "oldRecordKeys": [
++      "early_batch1:c01_d036"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0078"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0078-V1"
++    ],
++    "name": "混合炸酱面",
++    "sourceLine": 78
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0079",
++    "oldRecordKeys": [
++      "early_batch1:c01_d037"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0079"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0079-V1"
++    ],
++    "name": "鸡蛋炸酱面",
++    "sourceLine": 79
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0080",
++    "oldRecordKeys": [
++      "early_batch1:c01_d038"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0080"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0080-V1"
++    ],
++    "name": "招牌炸酱面",
++    "sourceLine": 80
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0081",
++    "oldRecordKeys": [
++      "early_batch1:c01_d039"
++    ],
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R07-EARLY-L0081"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R07-EARLY-L0081-V1"
++    ],
++    "name": "辣番茄鸡蛋拌面",
++    "sourceLine": 81
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0036-O1",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0036-O1"
++    ],
++    "candidateRefs": [],
++    "name": "卤蛋",
++    "sourceLine": 36
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0036-O2",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0036-O2"
++    ],
++    "candidateRefs": [],
++    "name": "热狗肠",
++    "sourceLine": 36
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0036-O3",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0036-O3"
++    ],
++    "candidateRefs": [],
++    "name": "把子肉",
++    "sourceLine": 36
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0036-O4",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0036-O4"
++    ],
++    "candidateRefs": [],
++    "name": "叉烧",
++    "sourceLine": 36
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0036-O5",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0036-O5"
++    ],
++    "candidateRefs": [],
++    "name": "猪肘",
++    "sourceLine": 36
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O1",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0053-O1"
++    ],
++    "candidateRefs": [],
++    "name": "烤肠",
++    "sourceLine": 53
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O2",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0053-O2"
++    ],
++    "candidateRefs": [],
++    "name": "辣条",
++    "sourceLine": 53
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O3",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0053-O3"
++    ],
++    "candidateRefs": [],
++    "name": "小火腿",
++    "sourceLine": 53
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O4",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0053-O4"
++    ],
++    "candidateRefs": [],
++    "name": "豆皮",
++    "sourceLine": 53
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O5",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0053-O5"
++    ],
++    "candidateRefs": [],
++    "name": "土豆丝",
++    "sourceLine": 53
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O6",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0053-O6"
++    ],
++    "candidateRefs": [],
++    "name": "王中王火腿肠",
++    "sourceLine": 53
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O7",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0053-O7"
++    ],
++    "candidateRefs": [],
++    "name": "鸡柳",
++    "sourceLine": 53
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O8",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0053-O8"
++    ],
++    "candidateRefs": [],
++    "name": "鸡排",
++    "sourceLine": 53
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O9",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0053-O9"
++    ],
++    "candidateRefs": [],
++    "name": "里脊",
++    "sourceLine": 53
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O10",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0053-O10"
++    ],
++    "candidateRefs": [],
++    "name": "肉松",
++    "sourceLine": 53
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O11",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0053-O11"
++    ],
++    "candidateRefs": [],
++    "name": "培根",
++    "sourceLine": 53
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O12",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0053-O12"
++    ],
++    "candidateRefs": [],
++    "name": "煎蛋",
++    "sourceLine": 53
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0083-O1",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0083-O1"
++    ],
++    "candidateRefs": [],
++    "name": "加羊杂",
++    "sourceLine": 83
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0083-O2",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0083-O2"
++    ],
++    "candidateRefs": [],
++    "name": "加辣肉",
++    "sourceLine": 83
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0083-O3",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0083-O3"
++    ],
++    "candidateRefs": [],
++    "name": "加鸡丝",
++    "sourceLine": 83
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0083-O4",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0083-O4"
++    ],
++    "candidateRefs": [],
++    "name": "原味肠",
++    "sourceLine": 83
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0083-O5",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0083-O5"
++    ],
++    "candidateRefs": [],
++    "name": "日式猪排",
++    "sourceLine": 83
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0083-O6",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0083-O6"
++    ],
++    "candidateRefs": [],
++    "name": "卤五花肉",
++    "sourceLine": 83
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0083-O7",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R07-EARLY-L0083-O7"
++    ],
++    "candidateRefs": [],
++    "name": "卤蛋",
++    "sourceLine": 83
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0084-UNPRICED1",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [
++      "R07-EARLY-L0084-UNPRICED1"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [],
++    "name": "筋头巴脑",
++    "sourceLine": 84
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0084-UNPRICED2",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [
++      "R07-EARLY-L0084-UNPRICED2"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [],
++    "name": "卤鸡腿",
++    "sourceLine": 84
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0084-UNPRICED3",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [
++      "R07-EARLY-L0084-UNPRICED3"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [],
++    "name": "兰花干",
++    "sourceLine": 84
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0084-UNPRICED4",
++    "oldRecordKeys": [],
++    "action": "NEW",
++    "newSourceRefs": [
++      "R07-EARLY-L0084-UNPRICED4"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [],
++    "name": "卤干豆腐",
++    "sourceLine": 84
++  }
++]
+--- /dev/null
++++ R07/unresolved.csv
+@@ -0,0 +1,44 @@
++sourceRecordRef,name,blocksCandidate,reason,nextAction
++R07-EARLY-L0027,招牌猪脚饭,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0028,红烧肉盖饭,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0029,台式卤肉饭,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0030,辣子鸡盖饭,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0031,蜜汁叉烧饭,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0032,香辣鸡杂饭,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0033,卤肉面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0034,肉酱拌面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0044,月亮馍（+烤肠）,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0045,月亮馍（+煎蛋）,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0046,月亮馍（+辣条）,True,原转录待确认清单第9项明确质疑该窗口是否有辣条选项,业务证据核验；不按同类商品推断
++R07-EARLY-L0047,月亮馍（+鸡柳）,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0048,月亮馍（+里脊）,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0049,月亮馍（+肉松）,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0050,杂粮煎饼（+鸡蛋+脆饼）,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0051,杂粮煎饼（+鸡蛋+油条）,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0059,特色羊杂面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0060,辣肉面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0061,鸡柳面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0062,猪排面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0063,卤肉面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0064,筋头巴脑牛肉面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0065,肉燥汤面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0066,酸豆角汤面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0067,酸菜汤面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0068,清汤面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0069,辣肉拌面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0070,鸡柳麻辣拌面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0071,猪排麻酱面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0072,麻酱鸡丝面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0073,麻酱肉燥面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0074,麻酱酸豆角面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0075,麻酱酸菜面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0076,猪排麻辣面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0077,麻辣拌面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0078,混合炸酱面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0079,鸡蛋炸酱面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0080,招牌炸酱面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0081,辣番茄鸡蛋拌面,False,口述历史证据已保存，独立照片尚缺；采集元数据延期/当前售价未知,保留隔离候选，未来补菜单证据，不重复询问延期元数据
++R07-EARLY-L0084-UNPRICED1,筋头巴脑,True,原文明确未标清价格；不与含同名片段的面品混淆,补充直接价格证据，金额保持UNKNOWN
++R07-EARLY-L0084-UNPRICED2,卤鸡腿,True,原文明确未标清价格；不与含同名片段的面品混淆,补充直接价格证据，金额保持UNKNOWN
++R07-EARLY-L0084-UNPRICED3,兰花干,True,原文明确未标清价格；不与含同名片段的面品混淆,补充直接价格证据，金额保持UNKNOWN
++R07-EARLY-L0084-UNPRICED4,卤干豆腐,True,原文明确未标清价格；不与含同名片段的面品混淆,补充直接价格证据，金额保持UNKNOWN
+--- /dev/null
++++ R07/optional_surcharges.json
+@@ -0,0 +1,386 @@
++[
++  {
++    "sourceRecordRef": "R07-EARLY-L0036-O1",
++    "optionRef": "R07-EARLY-L0036-O1",
++    "name": "卤蛋",
++    "additionalPriceYuan": 1.5,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S01",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 36,
++    "sourceQuote": "加料（不录）：卤蛋 1.5 / 热狗肠 2 / 把子肉 5 / 叉烧 6 / 猪肘 8。店铺备注：米饭免费续加。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0036-O2",
++    "optionRef": "R07-EARLY-L0036-O2",
++    "name": "热狗肠",
++    "additionalPriceYuan": 2.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S01",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 36,
++    "sourceQuote": "加料（不录）：卤蛋 1.5 / 热狗肠 2 / 把子肉 5 / 叉烧 6 / 猪肘 8。店铺备注：米饭免费续加。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0036-O3",
++    "optionRef": "R07-EARLY-L0036-O3",
++    "name": "把子肉",
++    "additionalPriceYuan": 5.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S01",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 36,
++    "sourceQuote": "加料（不录）：卤蛋 1.5 / 热狗肠 2 / 把子肉 5 / 叉烧 6 / 猪肘 8。店铺备注：米饭免费续加。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0036-O4",
++    "optionRef": "R07-EARLY-L0036-O4",
++    "name": "叉烧",
++    "additionalPriceYuan": 6.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S01",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 36,
++    "sourceQuote": "加料（不录）：卤蛋 1.5 / 热狗肠 2 / 把子肉 5 / 叉烧 6 / 猪肘 8。店铺备注：米饭免费续加。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0036-O5",
++    "optionRef": "R07-EARLY-L0036-O5",
++    "name": "猪肘",
++    "additionalPriceYuan": 8.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S01",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 36,
++    "sourceQuote": "加料（不录）：卤蛋 1.5 / 热狗肠 2 / 把子肉 5 / 叉烧 6 / 猪肘 8。店铺备注：米饭免费续加。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O1",
++    "optionRef": "R07-EARLY-L0053-O1",
++    "name": "烤肠",
++    "additionalPriceYuan": 1.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O2",
++    "optionRef": "R07-EARLY-L0053-O2",
++    "name": "辣条",
++    "additionalPriceYuan": 1.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O3",
++    "optionRef": "R07-EARLY-L0053-O3",
++    "name": "小火腿",
++    "additionalPriceYuan": 1.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O4",
++    "optionRef": "R07-EARLY-L0053-O4",
++    "name": "豆皮",
++    "additionalPriceYuan": 1.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O5",
++    "optionRef": "R07-EARLY-L0053-O5",
++    "name": "土豆丝",
++    "additionalPriceYuan": 1.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O6",
++    "optionRef": "R07-EARLY-L0053-O6",
++    "name": "王中王火腿肠",
++    "additionalPriceYuan": 3.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O7",
++    "optionRef": "R07-EARLY-L0053-O7",
++    "name": "鸡柳",
++    "additionalPriceYuan": 2.5,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O8",
++    "optionRef": "R07-EARLY-L0053-O8",
++    "name": "鸡排",
++    "additionalPriceYuan": 2.5,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O9",
++    "optionRef": "R07-EARLY-L0053-O9",
++    "name": "里脊",
++    "additionalPriceYuan": 2.5,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O10",
++    "optionRef": "R07-EARLY-L0053-O10",
++    "name": "肉松",
++    "additionalPriceYuan": 2.5,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O11",
++    "optionRef": "R07-EARLY-L0053-O11",
++    "name": "培根",
++    "additionalPriceYuan": 1.5,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0053-O12",
++    "optionRef": "R07-EARLY-L0053-O12",
++    "name": "煎蛋",
++    "additionalPriceYuan": 1.5,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 53,
++    "sourceQuote": "另加（不录）：烤肠/辣条/小火腿/豆皮/土豆丝 各 1；王中王火腿肠 3；鸡柳/鸡排/里脊/肉松 各 2.5；培根 1.5；煎蛋 1.5。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0083-O1",
++    "optionRef": "R07-EARLY-L0083-O1",
++    "name": "加羊杂",
++    "additionalPriceYuan": 6.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S03",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 83,
++    "sourceQuote": "卤味/加料（不录）：加羊杂 6 / 加辣肉 5 / 加鸡丝 4 / 原味肠 2/个 / 日式猪排 7/片 / 卤五花肉 7/片 / 卤蛋 1.5/个。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0083-O2",
++    "optionRef": "R07-EARLY-L0083-O2",
++    "name": "加辣肉",
++    "additionalPriceYuan": 5.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S03",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 83,
++    "sourceQuote": "卤味/加料（不录）：加羊杂 6 / 加辣肉 5 / 加鸡丝 4 / 原味肠 2/个 / 日式猪排 7/片 / 卤五花肉 7/片 / 卤蛋 1.5/个。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0083-O3",
++    "optionRef": "R07-EARLY-L0083-O3",
++    "name": "加鸡丝",
++    "additionalPriceYuan": 4.0,
++    "unitRaw": null,
++    "stallRef": "R07-EARLY-S03",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 83,
++    "sourceQuote": "卤味/加料（不录）：加羊杂 6 / 加辣肉 5 / 加鸡丝 4 / 原味肠 2/个 / 日式猪排 7/片 / 卤五花肉 7/片 / 卤蛋 1.5/个。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0083-O4",
++    "optionRef": "R07-EARLY-L0083-O4",
++    "name": "原味肠",
++    "additionalPriceYuan": 2.0,
++    "unitRaw": "个",
++    "stallRef": "R07-EARLY-S03",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 83,
++    "sourceQuote": "卤味/加料（不录）：加羊杂 6 / 加辣肉 5 / 加鸡丝 4 / 原味肠 2/个 / 日式猪排 7/片 / 卤五花肉 7/片 / 卤蛋 1.5/个。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0083-O5",
++    "optionRef": "R07-EARLY-L0083-O5",
++    "name": "日式猪排",
++    "additionalPriceYuan": 7.0,
++    "unitRaw": "片",
++    "stallRef": "R07-EARLY-S03",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 83,
++    "sourceQuote": "卤味/加料（不录）：加羊杂 6 / 加辣肉 5 / 加鸡丝 4 / 原味肠 2/个 / 日式猪排 7/片 / 卤五花肉 7/片 / 卤蛋 1.5/个。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0083-O6",
++    "optionRef": "R07-EARLY-L0083-O6",
++    "name": "卤五花肉",
++    "additionalPriceYuan": 7.0,
++    "unitRaw": "片",
++    "stallRef": "R07-EARLY-S03",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 83,
++    "sourceQuote": "卤味/加料（不录）：加羊杂 6 / 加辣肉 5 / 加鸡丝 4 / 原味肠 2/个 / 日式猪排 7/片 / 卤五花肉 7/片 / 卤蛋 1.5/个。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  },
++  {
++    "sourceRecordRef": "R07-EARLY-L0083-O7",
++    "optionRef": "R07-EARLY-L0083-O7",
++    "name": "卤蛋",
++    "additionalPriceYuan": 1.5,
++    "unitRaw": "个",
++    "stallRef": "R07-EARLY-S03",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_unknown_specific_base",
++    "selectionConstraints": null,
++    "independentDish": false,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 83,
++    "sourceQuote": "卤味/加料（不录）：加羊杂 6 / 加辣肉 5 / 加鸡丝 4 / 原味肠 2/个 / 日式猪排 7/片 / 卤五花肉 7/片 / 卤蛋 1.5/个。",
++    "sourceEvidenceType": "USER_ORAL_TRANSCRIPT"
++  }
++]
+--- /dev/null
++++ R07/statistics.json
+@@ -0,0 +1,24 @@
++{
++  "sourceGroups": 67,
++  "physicalSourceLines": 43,
++  "dishTableRows": 39,
++  "candidateRecords": 38,
++  "candidateSourceGroups": 38,
++  "optionSourceGroups": 24,
++  "unpricedSourceGroups": 4,
++  "blockingUnresolved": 5,
++  "nonblockingCandidateEvidenceIssues": 38,
++  "unresolvedRows": 43,
++  "oldRecords": 39,
++  "oldRetained": 38,
++  "oldPending": 1,
++  "newResponsibilities": 28,
++  "explicitSpecifications": 0,
++  "formalImports": 0,
++  "formalIdsAssigned": 0,
++  "candidateStallDistribution": {
++    "R07-EARLY-S01": 8,
++    "R07-EARLY-S02": 7,
++    "R07-EARLY-S03": 23
++  }
++}
+--- /dev/null
++++ R07/execution_report.md
+@@ -0,0 +1,65 @@
++# R07 服务楼早期口述批次执行报告
++
++本地隔离整理 PASS；正式准入 PENDING；本轮待DSH独立验收。证据等级明确为口述历史候选，不能等同照片直接核验。
++
++## 实际来源与范围
++
++没有找到既有R07执行计划，采用真实文件TRANSCRIPTION_DRAFT.md §1.1—1.3的服务楼三个窗口，batch1/dishes.csv交叉核对39条旧记录。源稿明确服务楼为“用户口述整理”；三张对应菜单照在既有待补照片清单中尚缺，本轮不借用其他档口照片。c01_service_2f只有空CSV与采集模板，不是新实采数据。
++
++复用gen_records.js __test__.parseDoc只读解析器。新建隔离生成脚本，不改正式生成器/数据/契约。source_assets保留原始字节及可定位行，before备份位于项目外，详见backup_manifest.json。
++
++## 数量复算
++
++| 指标 | 数量 |
++|---|---:|
++| 物理源行 |43|
++| 菜品表格源行 |39|
++| 加料物理源行 / 展开选项 |3 / 24|
++| 未标价物理行 / 展开项 |1 / 4|
++| 主批源组 |67|
++| 菜品候选 / 候选源组 |38 / 38|
++| 加料关系 |24|
++| 阻断源组 |5|
++| 已生成候选的非阻断证据缺口 |38|
++| unresolved.csv行数 |43|
++| 旧责任：保留 / 待核验 |38 / 1|
++| 旧记录替换 / 作废 |0 / 0|
++| 新增责任源组 |28|
++| 显式规格变体 |0|
++| 正式ID分配 / 正式导入 |0 / 0|
++
++67=38候选源组+24加料源组+5阻断源组。新增28责任是24加料+4无价项，不是28道新菜。43物理行不是43道菜。台账必须合并newSourceRefs与optionRefs，后者覆盖24选项。月亮馍的加蛋白名称是源文本既有整份商品表达，不是推导新规格；没有生成虚构基础价或选择组。
++
++候选按三档口分布8/7/23。1条“月亮馍（+辣条）”在源稿待确认清单被明确质疑，未生成；朱家小馆筋头巴脑/卤鸡腿/兰花干/卤干豆腐4条无价，不以同名面品价格补齐。
++
++## 数据与身份保护
++
++每条候选保留USER_ORAL_TRANSCRIPT、sourceQuote、sourceLine、oldRecordKeys；photoEvidence=null且photoStatus=NOT_ARCHIVED_FOR_THIS_STALL。价格是来源口述历史标价，不是当前报价；currentPriceValidity=UNKNOWN，transactionQuoteAllowed=false。tastes=[]，collector/captureDate/unitRaw/specification/composition未知为null。
++
++正式ID不继承。早期c01_t01/t02/t03仅追溯，不按后来W2/T编号直接嫁接。新旧名称只在同一旧档口及同价前提下对照“加”和“+”书写差异，源名不改，旧CSV原字节不改。same_name_crosscheck.csv记录其他已关闭批次同名碰撞，名称相同不等于同一物理档口。38是新增来源责任候选数，不能称为38道已证明与全校绝对不同的独立菜。
++
++加料按源“各1/各2.5”等明确价组展开24项，保留源行；仅关联档口，baseCandidateRef=null，组合选择规则未知，不生成24道独立菜。卤蛋/猪排等元/个或元/片只在源文明确时保留，其他单位未知。
++
++## 连续推进与材料去向
++
++完成R07主批后继续整理剩余采集说明7项材料责任，见remaining_source_pool.json、remaining_materials.md。额外保存1条“炸金针菇1元”加料文本关系预览于supplemental_relationships.json；这是另一来源的补充关系，不混入主批67源组或38菜品。2类称重规则、遮挡推荐区、不完整加料清单不能直接生成固定价菜品。兰州重复牌行已由旧采集去重，不重复生成。
++
++R03—R06已有416条与本轮38条来源候选合计454条；其中R07尚待独立验收，454不是正式准入数，也不是跨全校物理菜品去重承诺。现有明确转录/CSV输入均已标明批次去向；尚不能宣称照片全部像素中的潜在未转录条目已经穷尽。剩余问题是具体证据缺口，不通过空建R08冒充进展。区域划分冻结，已延期元数据不再询问。
++
++## 实际测试与技术修复
++
++node capture.js：exit0。首次build_r07.py因旧CSV“加”与源“+”书写不同出现StopIteration，未产生候选；修正仅限同档口、价格一致的名称对照后重跑exit0，完整成功输出见build_output.txt。失败未改变正式项目；失败时的来源副本另存项目外，未覆旧备份。
++
++python -X utf8 test_r07.py：24 PASS / 0 FAIL / 0 SKIP，exit0，完整test_output.txt。包含10种负向变异：改价、旧ID继承、伪造日期、伪造照片、猜口味、开放报价、重复、加料独立菜、猜组成、跨档口。其余检查源行、数量守恒、加料统计、未标价隔离、同名不合并。连续整理补充3项断言通过，continuation_test_output.txt保存结果（来源行7项、补充关系价义、称重/残缺不虚构菜品）。
++
++git diff --check exit0，仅既有project.config.json CRLF提示。未重跑无关历史测试。project_before/closed_before逐文件核对正式项目与R03-R06字节未变；git_before==git_after，分支/HEAD/暂存/工作区状态一致。没有正式导入器或严格准入PASS主张。
++
++## 交付与边界
++
++candidates.json、source_groups.json、source_ledger.csv/json、unresolved.csv、optional_surcharges.json、stall_crosswalk.csv、same_name_crosscheck.csv、补充材料池、工具、原始输出、before备份索引与SHA清单均落盘。diff.patch只覆盖明确列出的新建文本产物，不含源证据副本、也不作为git apply补丁；完整file_manifest与manifest.sha256覆盖交付。没有被改写的生产文件，不伪造“修改前生产差异”。
++
++PASS：38候选实际生成；39旧责任完整；24关系不冒充菜；5阻断不造价；正文源可定位；已验收批次及正式项目未改。
++
++PENDING：口述候选独立菜单照片、1条既有业务疑问、4条无价项、剩余照片局部/不完整列表、正式准入。采集元数据继续延期。已正式导入=0。
++
++未触云、未部署、未建索引、未Git写操作、未修改区域字段/正式ID/审批/契约。请DSH重点审口述证据等级、同档口名称对照、24选项各价映射及累计454的来源口径。
+--- /dev/null
++++ R07/remaining_materials.md
+@@ -0,0 +1,9 @@
++# 剩余材料连续整理结果
++
++现有独立转录稿：3F_R2→R03冻结；2F→R04冻结；DRAFT §2→R05、§3→R06、§1→本R07。第二批132条采集CSV→R06；早期batch1的39条服务楼记录→R07，三餐/四餐责任已在R05/R06。batch1_min是已有三餐子集，不重复出新菜。c01_service_2f四张CSV只有表头，采集卡为未填写模板，不能当新增真实数据。init-plans/templates/演示数据不是新增实采来源。
++
++本轮继续逐项隔离未录入的采集说明，见remaining_source_pool.json：2类称重经营信息、1类遮挡价格推荐区、3类加料、1类旧重复牌行。数量描述6/16/6不是完整具名清单，不能虚构展开到每项。赣五爷示例“炸金针菇1元”作为独立文本关系证据存supplemental_relationships.json，其余价格未知；这个补充不是R07主源67组的一部分，也不计菜品候选。
++
++现有清晰、已逐行转录的新增源数据已得到本轮去向；不能据此宣称所有照片像素中的菜品已穷尽提取。尚未逐字转录的照片局部仍需离线复核或清晰材料；不擅自安装环境、不触云。已冻结批次的待核验池保持原样，不通过重复生成伪装进展。
++
++下一轮直接可执行的是剩余加料/称重经营规则的证据提取，不是凭空指定新楼层；需逐项价目证据后才能增添菜品或加价选项。区域仍整体冻结，采集元数据继续延期。
+--- /dev/null
++++ R07/remaining_source_pool.json
+@@ -0,0 +1,65 @@
++[
++  {
++    "material": "味爱特称重",
++    "sourceFile": "source_assets/remaining_collection_notes.md",
++    "sourceLine": 67,
++    "sourceQuote": "| c03 味爱特全部菜品 | 称重计价（荤素统一 1.77 元/50g），没有固定单价 | 第 2 节第 5 条、第 11 节 |",
++    "classification": "BUSINESS_RULE",
++    "disposition": "按1.77元/50g保留经营信息，不造固定价菜品",
++    "dishCandidateCreated": false
++  },
++  {
++    "material": "航语佳称重",
++    "sourceFile": "source_assets/remaining_collection_notes.md",
++    "sourceLine": 68,
++    "sourceQuote": "| c10 航语佳全部菜品 | 称重 + 人均 9–15 元计价，价目牌上无单品价 | 同上 |",
++    "classification": "BUSINESS_RULE",
++    "disposition": "称重/人均价格不是单菜价格，不造固定价菜品",
++    "dishCandidateCreated": false
++  },
++  {
++    "material": "土耳其烤鸡推荐区",
++    "sourceFile": "source_assets/remaining_collection_notes.md",
++    "sourceLine": 69,
++    "sourceQuote": "| c08 招牌推荐区 6 项（鸡肉咖喱土豆饭等） | 灯箱小图字号过小、价签被黑条遮挡，价格看不清 | 第 11 节「价格看不清 → 不录」 |",
++    "classification": "PHOTO_PRICE_OCCLUDED",
++    "disposition": "6项未完整命名/价格不可辨，不自动造候选",
++    "dishCandidateCreated": false
++  },
++  {
++    "material": "单县加料",
++    "sourceFile": "source_assets/remaining_collection_notes.md",
++    "sourceLine": 70,
++    "sourceQuote": "| c05 加料 6 项（加面/煎蛋/卤蛋/火腿片/酥油饼/葱花酥油饼） | 属加料，`record_type` 不支持 | 第 1 节、第 4.4 节 |",
++    "classification": "ADDONS_UNKNOWN_PRICE",
++    "disposition": "六项名称有文本，价目未逐项转录；列待补价而不是独立菜",
++    "dishCandidateCreated": false
++  },
++  {
++    "material": "忆米嘉加料",
++    "sourceFile": "source_assets/remaining_collection_notes.md",
++    "sourceLine": 71,
++    "sourceQuote": "| c06 加料 16 项（煎蛋/鱼丸/肥牛卷/馕/火腿片等） | 同上 | 同上 |",
++    "classification": "ADDONS_INCOMPLETE_LIST",
++    "disposition": "16项仅列部分示例，不能补造余项名称/价格",
++    "dishCandidateCreated": false
++  },
++  {
++    "material": "赣五爷炸货",
++    "sourceFile": "source_assets/remaining_collection_notes.md",
++    "sourceLine": 72,
++    "sourceQuote": "| c09 自选炸货 6 项（炸金针菇 1 元等） | 属「饭里加料」小食，录进去会让随机抽菜抽出 1 元的配菜 | 同上 |",
++    "classification": "ADDONS_PARTIAL_EVIDENCE",
++    "disposition": "只有炸金针菇1元这一示例具明确文本；其余不得补造",
++    "dishCandidateCreated": false
++  },
++  {
++    "material": "兰州重复牌行",
++    "sourceFile": "source_assets/remaining_collection_notes.md",
++    "sourceLine": 73,
++    "sourceQuote": "| c11 牌面重复行「牛肉炒拉面 13 元」 | 同一菜名同价出现两次，D8 自然键会判重复 | 第 4.4 节 D8 |",
++    "classification": "DUPLICATE_ALREADY_EXCLUDED",
++    "disposition": "牛肉炒拉面13元重复牌行，旧采集已去重，不重复生成",
++    "dishCandidateCreated": false
++  }
++]--- /dev/null
++++ R07/supplemental_relationships.json
+@@ -0,0 +1,16 @@
++[
++  {
++    "optionRef": "R07-SUPPLEMENT-C09-FRIED-MUSHROOM",
++    "name": "炸金针菇",
++    "additionalPriceYuan": 1,
++    "stallRef": "offsite_batch2:c09_t01_TRACE_ONLY",
++    "baseCandidateRef": null,
++    "independentDish": false,
++    "selectionConstraints": null,
++    "evidenceType": "COLLECTION_NOTE_EXAMPLE_NOT_FRESH_PHOTO_REVIEW",
++    "sourceFile": "source_assets/remaining_collection_notes.md",
++    "sourceLine": 72,
++    "sourceQuote": "| c09 自选炸货 6 项（炸金针菇 1 元等） | 属「饭里加料」小食，录进去会让随机抽菜抽出 1 元的配菜 | 同上 |",
++    "admissionStatus": "RELATION_PREVIEW_ONLY"
++  }
++]

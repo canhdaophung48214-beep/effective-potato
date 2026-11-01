@@ -1,0 +1,205 @@
+[
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\adapted_records_39.json",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\adapted_records_39.json",
+    "bytes": 81950,
+    "sha256": "486ee33bc403a64921143962bc72a75c31149e37f8bf03b711a48d3c95908908",
+    "modifiedAt": "2026-11-01T15:34:03.179595"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\adapter.js",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\adapter.js",
+    "bytes": 1452,
+    "sha256": "eabe349bbc06473d38b22e4f26aad7db7f45cbeba7d069475418767be96ef887",
+    "modifiedAt": "2026-11-01T15:34:03.177588"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\build_and_verify.js",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\build_and_verify.js",
+    "bytes": 14694,
+    "sha256": "85fd59563f5415e0bae7c5030436264b10200673e1ab9d08a5d8771747759f47",
+    "modifiedAt": "2026-11-01T15:34:02.906629"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\checks.json",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\checks.json",
+    "bytes": 259,
+    "sha256": "6f369149f10d61546b36a6375d6e3a90cde1896e9dad99dfeaf4edd381871cff",
+    "modifiedAt": "2026-11-01T15:34:03.402803"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\delivery_manifest.json",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\delivery_manifest.json",
+    "bytes": 6278,
+    "sha256": "10eedaa5c3ae79e33d9f79dc92836435383de002c285ba7a54ee043c9314621d",
+    "modifiedAt": "2026-11-01T15:34:03.405803"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\git_before.json",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\git_before.json",
+    "bytes": 17424,
+    "sha256": "7acb9b66934fc5c3c9721d43b8e773f17b0cbacaa4916d82a57b3e474da37e71",
+    "modifiedAt": "2026-11-01T15:34:03.177588"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\historical_menu_preview.html",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\historical_menu_preview.html",
+    "bytes": 18309,
+    "sha256": "844f4e01051588f784deb0136161f73aaa4c5156360ec8c684fd7783d8ac268c",
+    "modifiedAt": "2026-11-01T15:34:03.187380"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\original_importer_compatibility.log",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\original_importer_compatibility.log",
+    "bytes": 156,
+    "sha256": "dde70321d2b30edd8fb1638aa7b65a3f641c10e86d513b126465950631b14eca",
+    "modifiedAt": "2026-11-01T15:34:03.315152"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\project_before.json",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\project_before.json",
+    "bytes": 88662,
+    "sha256": "5f06eaa3f49f2fdd8f0a0d15e8a326423c1b78aa3184964f6f39db42ddb969e7",
+    "modifiedAt": "2026-11-01T15:34:03.176030"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\repair_m342.py",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\repair_m342.py",
+    "bytes": 4153,
+    "sha256": "5e2fa590cc96610a7820c3a099354a585605ecf8a97705592b89a5fe9086e867",
+    "modifiedAt": "2026-11-01T15:47:32.316008"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\test_adapter.js",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\test_adapter.js",
+    "bytes": 2978,
+    "sha256": "96ef0faee30d7b7a5604b12d5af2c640add243128cb656d78353d8a1c806a070",
+    "modifiedAt": "2026-11-01T15:34:03.187380"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\test_adapter.log",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\test_adapter.log",
+    "bytes": 511,
+    "sha256": "80ceef893bd3cf40373351f717646f5b0926efe743c6d1cb2b34a817ac40f3a3",
+    "modifiedAt": "2026-11-01T15:34:03.248126"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\执行报告.md",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\执行报告.md",
+    "bytes": 1488,
+    "sha256": "64f1e3a8c0ce8299197d4de1e2ad9cad6f4d42c7831be1ec5d7dfc4ded506e5c",
+    "modifiedAt": "2026-11-01T15:34:03.316744"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\新旧结构兼容性报告.md",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\新旧结构兼容性报告.md",
+    "bytes": 1496,
+    "sha256": "04d0757b760a693876ab82655841cb1318a60f33f45b647e94ade43dbd30edb9",
+    "modifiedAt": "2026-11-01T15:34:03.316152"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\compat_input\\dishes.csv",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\compat_input\\dishes.csv",
+    "bytes": 9625,
+    "sha256": "f97872b217ae6785408a2c5f7ec35fec9650d3387990a18f346bf68fed95b7c5",
+    "modifiedAt": "2026-11-01T15:34:03.251640"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\compat_input\\floors.csv",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\compat_input\\floors.csv",
+    "bytes": 334,
+    "sha256": "cc6fa31a8138c5dd967d7059ca61a952e758b20bef8299bb810f67424e5e65c1",
+    "modifiedAt": "2026-11-01T15:21:20.725867"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\compat_input\\shops.csv",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\compat_input\\shops.csv",
+    "bytes": 337,
+    "sha256": "fa8d3995553943dcfdbde6f44dc91f750db6446938cf05c96de6b1f4d248fdb8",
+    "modifiedAt": "2026-11-01T15:21:20.726869"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\compat_input\\stalls.csv",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\compat_input\\stalls.csv",
+    "bytes": 515,
+    "sha256": "97c1c0b6df9555fe635875c63f8c2d4baee19cf0a3306a6e11aade1b2e55d2c7",
+    "modifiedAt": "2026-11-01T15:21:20.726869"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\mini\\adapted_records_39.json",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\mini\\adapted_records_39.json",
+    "bytes": 81950,
+    "sha256": "486ee33bc403a64921143962bc72a75c31149e37f8bf03b711a48d3c95908908",
+    "modifiedAt": "2026-11-01T15:34:03.183865"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\mini\\app.js",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\mini\\app.js",
+    "bytes": 9,
+    "sha256": "1ab645c73bcea61604f9cc4805a752ab9ba8fb66813d8c57cad34328c0ce4109",
+    "modifiedAt": "2026-11-01T15:34:03.186378"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\mini\\app.json",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\mini\\app.json",
+    "bytes": 46,
+    "sha256": "63388076da5bac68685a2f0df6ce5d66020b7170aee47e87ac9b3c8d3dcf08b7",
+    "modifiedAt": "2026-11-01T15:34:03.186378"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\mini\\pages\\history\\index.js",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\mini\\pages\\history\\index.js",
+    "bytes": 79,
+    "sha256": "5410ffec43fdc829cccb8c7287a8d7243ac59defabc31e9570ea984f5492efe8",
+    "modifiedAt": "2026-11-01T15:34:03.185371"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\mini\\pages\\history\\index.json",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\mini\\pages\\history\\index.json",
+    "bytes": 132,
+    "sha256": "d931b9ff733a55e9059f74b58d9096a8e3abcd51201af477718d1a39eec46078",
+    "modifiedAt": "2026-11-01T15:34:03.185371"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\mini\\pages\\history\\index.wxml",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\mini\\pages\\history\\index.wxml",
+    "bytes": 39,
+    "sha256": "c3ee3ff079578b23413df127ec4b1cde1bdb3e59b53fa2aa4c39fa4d030bbe7c",
+    "modifiedAt": "2026-11-01T15:34:03.185371"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\mini\\pages\\history\\index.wxss",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\mini\\pages\\history\\index.wxss",
+    "bytes": 25,
+    "sha256": "ac5dcc338eeb8ee5a30c9b0624b2b2d70af1ed4d5ea0b3d269b9d69bd6fcc323",
+    "modifiedAt": "2026-11-01T15:34:03.186378"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\mini\\components\\history-menu\\index.js",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\mini\\components\\history-menu\\index.js",
+    "bytes": 57,
+    "sha256": "821f49b7036744528549be848d867f52737e117cda01e6c07b395c759ef6dd5f",
+    "modifiedAt": "2026-11-01T15:34:03.180593"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\mini\\components\\history-menu\\index.json",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\mini\\components\\history-menu\\index.json",
+    "bytes": 23,
+    "sha256": "4a0976b08df9b20d33c41e43ee32d12c91774a0148d55232ad070b1944333646",
+    "modifiedAt": "2026-11-01T15:34:03.180593"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\mini\\components\\history-menu\\index.wxml",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\mini\\components\\history-menu\\index.wxml",
+    "bytes": 580,
+    "sha256": "11c8bfc466b2f36526365dd31352ff1eb548a94e496f5fc9e6a5a1a672e1631a",
+    "modifiedAt": "2026-11-01T15:34:03.181594"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\mini\\components\\history-menu\\index.wxss",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_20261101_154732\\delivery_before\\mini\\components\\history-menu\\index.wxss",
+    "bytes": 584,
+    "sha256": "e1a18d761d42ee7fe3244a41db36d6c2cfffde087f349195b1070ee98cad6642",
+    "modifiedAt": "2026-11-01T15:34:03.181594"
+  }
+]

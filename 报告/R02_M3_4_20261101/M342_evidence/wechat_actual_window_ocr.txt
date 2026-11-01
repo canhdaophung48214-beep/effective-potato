@@ -1,0 +1,42 @@
+﻿0 笔 开 发 者 工 具
+项 目
+文 件
+蝙 辑
+工 具
+WxmI
+微 信 开 发 者 工 具 Stable 2 ． 02 ． 2 8080
+- WeChat Web
+小 程 序 模 式 ·
+O 览
+《 〖 真 调 试
+0 上 传
+i vor 12/13
+0
+历 史 菜 单
+能 components
+· 生 pages
+{ ． } adapted records 39.json
+appjs
+{ ． } app.JS0n
+{ ． } p@ect.config.json
+显 示 所 有 命 令
+GO tO File
+在 文 件 中 查 找
+始 调 试
+] 换 终 端
+Ctrl + S + Alt + P
+Ctrl + P
+Ctrl + S + F
+F5
+Ctrl +
+@． 问 出 训 试 隉 制 台
+ConsoIe Sources Network
+代 猖 质 塗
+@ 4 2
+0
+Dataset
+Component Data
+filter
+Computed
+ConsoIe
+页 面 路 径 · p 四 巾 ist 。 掣 d 亡

@@ -1,0 +1,12 @@
+{
+  "candidateFiles": 1158,
+  "totalBytes": 98732885,
+  "excludedFiles": 240,
+  "secretPatternFindings": 0,
+  "over100MiB": [],
+  "targetRepository": "UNKNOWN; git remote empty",
+  "githubAuth": "FAILED: invalid credentials; no accessible connector repositories",
+  "uploadedFiles": 0,
+  "gitWrites": 0,
+  "scope": "project and reports plus root working docs; excludes local private config/cache/backups; no original modifications"
+}

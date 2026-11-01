@@ -1,0 +1,39 @@
+<!-- 隐藏审核页：权限只由服务端判定；无权限时不渲染任何数据 -->
+<view class="page">
+
+  <view class="loading" wx:if="{{loading && !denied}}">正在校验权限…</view>
+
+  <view class="card denied" wx:if="{{denied}}">
+    <view class="denied-title">无权限</view>
+    <view class="denied-desc">该页面仅对管理员开放。如需复核内容，请联系运营负责人。</view>
+  </view>
+
+  <block wx:if="{{authorized && !denied}}">
+    <view class="hero">
+      <view class="hero-title">纠错审核</view>
+      <view class="hero-sub">通过只代表采纳建议，不公开、不标记为已核实</view>
+    </view>
+
+    <view class="empty" wx:if="{{!loading && items.length === 0}}">暂无待审核记录</view>
+
+    <view class="card item" wx:for="{{items}}" wx:key="id">
+      <view class="item-head">
+        <text class="kind">{{item.kindLabel}}</text>
+        <text class="rev">rev {{item.rev}}</text>
+        <text class="security security-{{item.securityState}}">内容安全：{{item.securityState}}</text>
+      </view>
+      <view class="target">{{item.targetText || '（未指定档口）'}}</view>
+      <view class="line" wx:if="{{item.price !== ''}}">价格：{{item.price}} 元</view>
+      <view class="line" wx:if="{{item.nameSuggestion}}">菜名建议：{{item.nameSuggestion}}</view>
+      <view class="note">{{item.note || '（无说明）'}}</view>
+
+      <view class="actions">
+        <button class="btn approve" data-id="{{item.id}}" data-rev="{{item.rev}}" bindtap="onApprove" disabled="{{acting === item.id}}">通过</button>
+        <button class="btn reject" data-id="{{item.id}}" data-rev="{{item.rev}}" bindtap="onReject" disabled="{{acting === item.id}}">驳回</button>
+      </view>
+    </view>
+  </block>
+
+  <view class="message" wx:if="{{message}}">{{message}}</view>
+
+</view>

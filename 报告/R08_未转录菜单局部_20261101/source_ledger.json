@@ -1,0 +1,151 @@
+[
+  {
+    "sourceRecordRef": "R08-C03-RICE",
+    "action": "NEW",
+    "oldRecordRefs": [],
+    "candidateRefs": [
+      "R08-C03-RICE-V1"
+    ],
+    "optionRefs": [],
+    "disposition": "CANDIDATE",
+    "name": "米饭"
+  },
+  {
+    "sourceRecordRef": "R08-C10-RICE",
+    "action": "NEW",
+    "oldRecordRefs": [],
+    "candidateRefs": [
+      "R08-C10-RICE-V1"
+    ],
+    "optionRefs": [],
+    "disposition": "CANDIDATE",
+    "name": "米饭"
+  },
+  {
+    "sourceRecordRef": "R08-C05-NOODLE-ADD",
+    "action": "NEW",
+    "oldRecordRefs": [],
+    "candidateRefs": [],
+    "optionRefs": [
+      "R08-C05-NOODLE-ADD"
+    ],
+    "disposition": "OPTION_RELATION",
+    "name": "加面"
+  },
+  {
+    "sourceRecordRef": "R08-C05-HAM-ADD",
+    "action": "NEW",
+    "oldRecordRefs": [],
+    "candidateRefs": [],
+    "optionRefs": [
+      "R08-C05-HAM-ADD"
+    ],
+    "disposition": "OPTION_RELATION",
+    "name": "火腿片"
+  },
+  {
+    "sourceRecordRef": "R08-C05-CAKE-ADD",
+    "action": "NEW",
+    "oldRecordRefs": [],
+    "candidateRefs": [],
+    "optionRefs": [
+      "R08-C05-CAKE-ADD"
+    ],
+    "disposition": "OPTION_RELATION",
+    "name": "酥油饼"
+  },
+  {
+    "sourceRecordRef": "R08-C06-HAM-ADD",
+    "action": "NEW",
+    "oldRecordRefs": [],
+    "candidateRefs": [],
+    "optionRefs": [
+      "R08-C06-HAM-ADD"
+    ],
+    "disposition": "OPTION_RELATION",
+    "name": "火腿片"
+  },
+  {
+    "sourceRecordRef": "R08-C06-BEEF-ADD",
+    "action": "NEW",
+    "oldRecordRefs": [],
+    "candidateRefs": [],
+    "optionRefs": [
+      "R08-C06-BEEF-ADD"
+    ],
+    "disposition": "OPTION_RELATION",
+    "name": "肥牛卷"
+  },
+  {
+    "sourceRecordRef": "R08-C05-EGGS",
+    "action": "PENDING",
+    "oldRecordRefs": [],
+    "candidateRefs": [],
+    "optionRefs": [],
+    "disposition": "PENDING",
+    "name": "煎蛋/卤蛋两项"
+  },
+  {
+    "sourceRecordRef": "R08-C05-ONION-CAKE",
+    "action": "PENDING",
+    "oldRecordRefs": [],
+    "candidateRefs": [],
+    "optionRefs": [],
+    "disposition": "PENDING",
+    "name": "葱花酥油饼"
+  },
+  {
+    "sourceRecordRef": "R08-C06-REMAINING",
+    "action": "PENDING",
+    "oldRecordRefs": [],
+    "candidateRefs": [],
+    "optionRefs": [],
+    "disposition": "PENDING",
+    "name": "忆米嘉其余加料组"
+  },
+  {
+    "sourceRecordRef": "R08-C09-FRIED",
+    "action": "PENDING",
+    "oldRecordRefs": [],
+    "candidateRefs": [],
+    "optionRefs": [],
+    "disposition": "PENDING",
+    "name": "赣五爷其余炸货组"
+  },
+  {
+    "sourceRecordRef": "R08-C08-RECOMMEND",
+    "action": "PENDING",
+    "oldRecordRefs": [],
+    "candidateRefs": [],
+    "optionRefs": [],
+    "disposition": "PENDING",
+    "name": "土耳其烤鸡推荐区6项"
+  },
+  {
+    "sourceRecordRef": "R08-C03-WEIGHT",
+    "action": "PENDING",
+    "oldRecordRefs": [],
+    "candidateRefs": [],
+    "optionRefs": [],
+    "disposition": "PENDING",
+    "name": "味爱特称重计价"
+  },
+  {
+    "sourceRecordRef": "R08-C10-WEIGHT",
+    "action": "PENDING",
+    "oldRecordRefs": [],
+    "candidateRefs": [],
+    "optionRefs": [],
+    "disposition": "PENDING",
+    "name": "航语佳称重计价"
+  },
+  {
+    "sourceRecordRef": "R08-PHOTO-TAIL",
+    "action": "PENDING",
+    "oldRecordRefs": [],
+    "candidateRefs": [],
+    "optionRefs": [],
+    "disposition": "PENDING",
+    "name": "其他照片未收录碎片"
+  }
+]

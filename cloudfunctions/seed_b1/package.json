@@ -1,0 +1,10 @@
+{
+  "name": "seed_b1",
+  "version": "1.0.0",
+  "description": "B1 并行试点部署（与 seed 同源，仅名称不同）",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

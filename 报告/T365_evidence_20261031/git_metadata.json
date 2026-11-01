@@ -1,0 +1,6 @@
+{
+  "head": "274ebd6bc35da21394e5e04b0abd7e02b4ce0fad",
+  "branch": "main",
+  "staged": "",
+  "stat": " app.js                 |   25 +-\n app.json               |   45 +-\n app.wxss               |    5 +-\n data/dishes.js         |    9 +-\n data/index.js          |  458 ++++++++++++++------\n pages/index/index.js   | 1084 +++++++++++++++++++++++++++++++++++++++++-------\n pages/index/index.json |    2 +-\n pages/index/index.wxml |  235 +++++++----\n pages/index/index.wxss |  213 +++++++++-\n project.config.json    |   42 +-\n sitemap.json           |    8 +\n tools/README.md        |  214 +++++++++-\n tools/regression.js    |  181 ++++++--\n tools/verify_stage2.js |   76 ++--\n utils/matcher.js       |  212 ++++++++--\n 15 files changed, 2314 insertions(+), 495 deletions(-)\n"
+}

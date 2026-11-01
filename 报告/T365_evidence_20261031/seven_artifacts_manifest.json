@@ -1,0 +1,44 @@
+[
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\Codex_T3.6.5_Retention_最终闭环_20261031.md",
+    "bytes": 10275,
+    "SHA256": "379cdb469d02bc2efbc230ab60ac4acd46e140d89cf290f423c67c287a656e76",
+    "createdAt": "2026-10-31T06:54:33.810Z"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\Codex_T3.6.5_精确差异_20261031.patch",
+    "bytes": 41071,
+    "SHA256": "e8f3fe02550c07d4cfbf34bc05f30a3d734a5ec2ab152bf50997452cef3c6a2a",
+    "createdAt": "2026-10-31T06:52:47.246Z"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\Codex_T3.6.5_最终回归原始输出_20261031.txt",
+    "bytes": 112869,
+    "SHA256": "0de03015f7a4aad447e5f8445e2e47de0db943b8af6c56b423557c19c44ebe10",
+    "createdAt": "2026-10-31T06:50:24.568Z"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_t365_skipped_recovery.js",
+    "bytes": 2075,
+    "SHA256": "7a67f6b6c77658de2ef2faf6d0774ae9885d0be6884576184857a1d478f6e68a",
+    "createdAt": "2026-10-31T06:47:04.130Z"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_t365_unrecoverable.js",
+    "bytes": 4746,
+    "SHA256": "5b864048393fda5a24ff1b52d7709b385c93a724d7ceafe67f0a38d9e572fba9",
+    "createdAt": "2026-10-31T06:47:04.133Z"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_t365_repair_regression.js",
+    "bytes": 3224,
+    "SHA256": "2a419299566934d3776be76cb3c45d175c2efc735f4308d9074b4339af38da1b",
+    "createdAt": "2026-10-31T06:48:30.168Z"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\docs\\RETENTION_T365_DESIGN_20261031.md",
+    "bytes": 4013,
+    "SHA256": "759413b6a6630829b488b61058a03db5397b352801a691686406cc2b932cc35a",
+    "createdAt": "2026-10-31T06:49:50.155Z"
+  }
+]

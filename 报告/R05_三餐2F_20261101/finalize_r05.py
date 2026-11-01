@@ -1,0 +1,106 @@
+import pathlib,json,hashlib,difflib,datetime
+E=pathlib.Path(__file__).parent.resolve();R=E.parent.parent;P=R/'项目'
+def J(n):return json.loads((E/n).read_text(encoding='utf-8-sig'))
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+(E/'R06_推荐目标.md').write_text('''# R06 推荐：四餐二楼南门
+
+只读准备，未生成或修改R06数据。
+
+| 可选范围 | 现有材料 | 缺口 | 建议 |
+|---|---|---|---|
+| 四餐二楼南门·卤大姨 | TRANSCRIPTION_DRAFT.md §3.1的10条菜单，batch1中c03历史行与c03_t01_menu.jpg明确关联；PHOTO_MANIFEST样张S-03有位置候选；原价与套餐/续添文字可定位 | 泰式咖喱鸡、春浓茄丁名称有疑问；门头/楼层正式签发待补；不要与offsite批次c03味爱特混用命名空间 | R06优先；可先恢复不含疑字的源项，不承诺最终候选数 |
+| 未定位采集批次c03_offsite_batch2 | 9商家、132旧菜品、10菜单照片，采集说明有逐照映射 | floors.csv空表，建筑/楼层未知；两品牌与双牌关系待核验；旧口味多为占位推断 | 证据数量更多但无法作为确定楼层；后续可建独立“位置未知批次”，不能擅自归楼 |
+| 一楼/四楼等其他楼层 | 本轮检索未找到独立明确命名转录稿 | 没有足够可定位菜单来源 | 暂不以正式演示数据充当真实菜单 |
+
+R06建议步骤：截取四餐§3.1；按照片索引和旧CSV核对；疑字项隔离；保留历史价格和双拼组成未知；区分店铺c03历史命名空间冲突；生成本地新标识。不得继承旧正式ID或当前交易资格。本轮仅形成推荐，不提前建R06候选。
+''',encoding='utf8')
+report='''# R05 三餐二楼历史菜单恢复与候选生成
+
+本地隔离生成 PASS；正式准入及实质疑义 PENDING。交付等待DSH独立验收，未正式导入。
+
+## 选择与证据范围
+
+选择三餐二楼最西侧。TRANSCRIPTION_DRAFT.md §2.1—2.3有36条菜单表行和三个档口；旧batch1有35条三餐记录、三张真实菜单文件与明确档口对应。比四餐二楼10条的可恢复数量多；另有c03_offsite_batch2的132条旧菜品但其采集说明明确楼层不明，不能强行归楼。详见R06_推荐目标.md。
+
+复用正式生成器gen_records.js的__test__.parseDoc，只读捕获源表到parsed_source.json。capture.js没有调用正式生成器--write。本轮build_r05.py只消费该解析结果，构建与R03/R04一致的来源/关系/本地候选包，不改生产生成器。
+
+原始转录的85条汇总不适合作本批分母：它混合服务楼、三餐、四餐。这里只统计三餐段落。R03、R04全部文件预先指纹并逐项验证，未重新审计其内容或修改任何字节。
+
+## 数量与口径
+
+| 指标 | 数量 |
+|---|---:|
+| 菜品原始表格行 |36|
+| 加料/卤味物理行 |2|
+| 套餐物理行 |1|
+| 物理源行合计 |39|
+| 展开源组 |47|
+| 菜品源组 |36|
+| 加料源组 |8|
+| 套餐源组 |3|
+| 显式规格变体数 |0|
+| 隔离候选数 / 候选源组 |30 / 30|
+| 加料关系 |8|
+| 待核验源组 |9|
+| 旧菜品责任数 |35|
+| 旧RETAIN / PENDING |30 / 5|
+| 新增责任源组 |12|
+| 正式分配ID / 正式导入 |0 / 0|
+
+47源组=30候选源组+8关系源组+9待核验源组。12个新增责任是旧CSV未生成的1条疑字菜单+8加料+3套餐，不等于新增12道合格菜品。台账47行：35条旧责任+12条新增责任。没有证据支持旧记录作废、档口合并或规格SPLIT，本轮VOID/REPLACE/MERGE/SPLIT均0，不为套用旧模板制造动作。
+
+**独立复算必须取newSourceRefs与optionRefs的并集**：8条加料只在optionRefs，不可仅数newSourceRefs。候选数、源组数、显式规格数分别统计。本批一源组恰有一候选，不把这一巧合推广到其他批次。
+
+## 实际候选与隔离结果
+
+30候选保留菜名、源价格表达、逐行引用和明确档口照片关联；新的R05-SC2F局部标识，formalDishId为null。旧c02 ID仅追溯，不继承正式资格。历史原价currentPriceValidity=UNKNOWN，禁止交易报价。单位、采集人、实际拍摄日期继续未知，未把CSV整理人/日期无条件当真实拍摄事实。
+
+三档口分别保留，不因“羊杂面”等同名与服务楼记录合并；父级位置采用历史负责人陈述，未宣称门头与楼层已签发。
+
+待核验9源组：1条豇豆肉碎面疑字、3条韩小面清汤括号语义、2条“小苏/小酥”疑字、3条原文明确“套餐不录”的牛排/鸡排套餐。后三条已有价格和“含意面、煎蛋、西蓝花”原句，单独保留bundle_relations，未绕过旧套餐准入边界当普通菜生成。双拼炸酱面菜名保持原文，composition=null，不从名称猜组成，也不套用NG03规则。
+
+8条加料为面發發3条卤味与韩小面5条加料。只关联档口，不编造对应某一道基础菜、数量或多选限制。NG01、NG03不在本批，原成果不动。
+
+## 证据等级与既有业务信息
+
+来源采用转录稿行级文本、batch1旧CSV独立同价同名交叉核对、旧stalls.csv明确照片文件名关联。图片快照与原档逐字节相同、SHA有效。PHOTO_MANIFEST早期样张映射仍有unresolved，本轮没有把它改成confirmed；所用证据强度是既有采集批次显式映射，而非本轮新完成视觉验真。未调用外部视觉API，也未伪造OCR。
+
+batch1_min已记录韩小面辣度及父级位置来自2026-10-26负责人现场信息、非餐厅签字。该来源保存在source_assets/batch1_min_dishes.csv和batch1_min_shops.csv，不删除、不要求重复裁决。本轮不把旧按菜名推断和choice占位批量当作直接照片口味证据，候选tastes=[]合法未知；该现场陈述留作后续字段级证据核验。照片未上传，也不要求上传。
+
+c02的有条件命名空间审批保存在c02_conditional_approval.json，只授权试点候选存在、不代表生产准入。未修改原审批，不申请新正式ID。
+
+## 测试及原始输出
+
+实际运行：node 报告/R05_三餐2F_20261101/capture.js，退出0；python -X utf8 报告/R05_三餐2F_20261101/build_r05.py，退出0；python -X utf8 报告/R05_三餐2F_20261101/test_r05.py，26 PASS / 0 FAIL / 0 SKIP，退出0。
+
+test_output.txt为本轮真实测试输出。含10种负向变异：改价、旧ID继承、伪造日期/单位、开启报价、重复、错误照片关联、加料独立菜、编造口味、编造双拼组成，均被同一校验拒绝。验证47源组责任覆盖、加料optionRefs统计、未知状态、来源存在与哈希、旧菜同价对应。
+
+git diff --check退出0，打印既有project.config.json CRLF转换提示；不为消提示修改文件。没有运行无关全套测试，没有声称正式导入器或严格采集证据模式通过。
+
+## 备份、差异、Git及边界
+
+backup_manifest.json记录项目外新备份目录、逐文件字节数、SHA与源快照。备份是原始输入字节，不是伪造改前版本；本轮所有代码与候选均新建，没有改写需恢复的原生产文件。图像原档保留，另做字节一致快照。diff.patch是本轮新建工作产物相对空文件的精确unified diff，不混入既有项目脏改动。
+
+project_before.json包含正式项目既有文件指纹，所有复核一致；closed_batches_before.json包含R03/R04全部指纹，所有复核一致。git_before.json/git_after.json记录真实HEAD、分支、暂存、完整工作区状态，二者一致。Git未发生写操作。baton task/handoff/protocol在根目录/项目未找到，不新建冒充交接；本执行报告承担交接证据。
+
+manifest.sha256与file_manifest.json覆盖本交付，清单自身不循环哈希。正式data、ID映射、审批、契约、原材料未改；无正式导入、云端调用、部署、建索引。
+
+## 自审与后续
+
+PASS：候选真实生成30条；35旧责任闭合；8加料不作菜品；47源组守恒；26项针对性测试；正式项目/R03/R04字节不变；候选重复与错误来源负向检查。
+
+PENDING：6条疑义菜品、3条套餐准入与关系适配；父级正式证据、当前价格、延期元数据与正式准入。没有以旧报告或本地模拟代替真实证据。
+
+R05交DSH；恢复计划继续保留R06四餐二楼的推荐目标和材料缺口清单，本轮不提前修改R06数据。优先复核源文疑字隔离、加料范围、套餐边界和照片映射的证据强度。
+'''
+(E/'R05_执行报告.md').write_text(report,encoding='utf8')
+textnames=['capture.js','build_r05.py','test_r05.py','replacement_ledger.csv','replacement_ledger.json','candidates.json','source_groups.json','optional_surcharges.json','bundle_relations.json','unresolved.csv','stall_crosswalk.csv','statistics.json','R05_执行报告.md','R06_推荐目标.md']
+(E/'diff.patch').write_text(''.join(''.join(difflib.unified_diff([], (E/n).read_text(encoding='utf-8-sig').splitlines(True),fromfile='/dev/null',tofile='R05/'+n)) for n in textnames),encoding='utf8')
+files=[p for p in E.rglob('*') if p.is_file() and p.name not in ['manifest.sha256','file_manifest.json']]
+entries=[{'path':p.relative_to(E).as_posix(),'bytes':p.stat().st_size,'sha256':sha(p)} for p in sorted(files)]
+(E/'file_manifest.json').write_text(json.dumps({'files':entries,'selfExclusion':'manifest.sha256 and file_manifest.json do not circularly hash themselves'},ensure_ascii=False,indent=2)+'\n',encoding='utf8')
+entries.append({'path':'file_manifest.json','bytes':(E/'file_manifest.json').stat().st_size,'sha256':sha(E/'file_manifest.json')})
+(E/'manifest.sha256').write_text(''.join(x['sha256']+'  '+x['path']+'\n' for x in entries),encoding='utf8')
+assert all(sha(E/x['path'])==x['sha256'] for x in entries)
+print('Final manifest verification PASS:',len(entries),'files')
+print('R05 candidates:',len(J('candidates.json')),'; R06 recommendation exists; production untouched')

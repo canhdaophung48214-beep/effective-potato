@@ -1,0 +1,30 @@
+PASS 140候选逐项价格/来源/证据哈希/未知字段校验
+PASS 142源记录唯一且台账全覆盖
+PASS 10四餐+132楼层未定分开
+PASS 候选140+阻断2=源记录142
+PASS 未知楼层132记录仍生成候选
+PASS 2疑字源行不得作为候选
+PASS 132字段缺口非整条阻断，134待核验行不误报134丢失记录
+PASS 140旧记录唯一责任，新源责任2
+PASS c03同名空间不同批次不混档口
+PASS 称重店没有伪造固定价候选
+PASS 未知组成不猜，未把加料新增成独立菜
+PASS 显式规格0与候选140分开
+PASS 负向:改价
+PASS 负向:菜名伪造
+PASS 负向:正式ID继承
+PASS 负向:伪造日期
+PASS 负向:猜口味
+PASS 负向:当前报价开放
+PASS 负向:重复候选
+PASS 负向:楼层强挂
+PASS 负向:旧c03批次混用
+PASS 负向:套餐组成猜测
+PASS 来源快照与项目外备份字节一致
+PASS 正式项目字节未变
+PASS R03/R04/R05所有交付字节未变
+PASS Git HEAD/分支/暂存/工作区一致
+git diff --check exit= 0
+warning: in the working copy of 'project.config.json', CRLF will be replaced by LF the next time Git touches it
+
+RESULT 26 PASS / 0 FAIL / 0 SKIP; exit=0

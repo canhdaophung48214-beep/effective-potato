@@ -1,0 +1,48 @@
+{
+  "_meta": {
+    "purpose": "UGC MVP 阶段 B 建议权限配置（本地草稿，未应用到云端）",
+    "status": "pending_admin_console_verification",
+    "summary": "submissions 与 upload_logs 均不对普通客户端开放读写；所有敏感操作只经云函数以服务端身份完成",
+    "mustVerifyInConsole": [
+      "集合权限模板选择「仅管理端可读写」，并截图留存",
+      "自定义安全规则（若使用）必须与本文档意图一致：客户端 read/write 均为 false",
+      "云函数运行身份具备上述集合读写权限；客户端直连必须被拒绝",
+      "任何一条都不得以「前端隐藏入口」代替权限配置"
+    ],
+    "warning": "现有业务集合 restaurants / stalls / dishes 的历史状态是「所有用户可读」（见 docs/COLLECTION_STATUS_REPORT_20261023.md:51），本文件不复制该状态，也不改动既有集合"
+  },
+  "collections": {
+    "submissions": {
+      "clientRead": false,
+      "clientWrite": false,
+      "cloudFunctionRead": true,
+      "cloudFunctionWrite": true,
+      "rules": {
+        "read": false,
+        "write": false
+      },
+      "rationale": "投稿正文含用户填写内容与 openid，必须默认私有；读取只用于管理员审核"
+    },
+    "upload_logs": {
+      "clientRead": false,
+      "clientWrite": false,
+      "cloudFunctionRead": false,
+      "cloudFunctionWrite": true,
+      "rules": {
+        "read": false,
+        "write": false
+      },
+      "rationale": "审计日志只追加、不对任何客户端开放读写；云函数只 add，不 update/remove"
+    }
+  },
+  "notGranted": [
+    "客户端对 submissions 的任何读写",
+    "客户端对 upload_logs 的任何读写",
+    "管理员通过客户端直连数据库",
+    "前端可见的审核入口清单或状态机"
+  ],
+  "pending": [
+    "若平台要求集合必须先建后配权限，创建动作属于阶段 C（需单独授权）",
+    "索引与权限配置需在后台逐项核对后，把本文件 status 改为 applied（本轮不改）"
+  ]
+}

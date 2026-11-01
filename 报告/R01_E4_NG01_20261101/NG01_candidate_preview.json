@@ -1,0 +1,134 @@
+{
+  "status": "REPORT_PREVIEW_ONLY_NOT_IMPORTABLE",
+  "decisionSource": "负责人2026-11-01本轮指令D1/D2",
+  "baseDish": {
+    "previewRef": "NG01-base",
+    "dishId": null,
+    "sourceRecordKey": "c01_t20|f2/手抓饼基础套餐（默认含鸡蛋）||",
+    "shopId": "c01",
+    "stallId": "c01_t20",
+    "name": "含蛋基础手抓饼",
+    "description": "含蛋基础手抓饼套餐",
+    "priceYuan": 4,
+    "priceUnit": "份",
+    "eggIncluded": true,
+    "businessNature": "基础菜品",
+    "tastes": [],
+    "foodType": null,
+    "sourceLine": 340,
+    "priceUnitEvidence": "负责人D1，不是OCR推断"
+  },
+  "optionalSurchargeRows": [
+    {
+      "previewRef": "NG01-option-1",
+      "basePreviewRef": "NG01-base",
+      "sourceRecordKey": "c01_t20|f2/油条 / 薄脆 / 鸡蛋 / 培根 / 辣条 / 双汇火腿肠 / 双汇鸡肉肠||",
+      "name": "油条 / 薄脆 / 鸡蛋 / 培根 / 辣条 / 双汇火腿肠 / 双汇鸡肉肠",
+      "members": [
+        "油条",
+        "薄脆",
+        "鸡蛋",
+        "培根",
+        "辣条",
+        "双汇火腿肠",
+        "双汇鸡肉肠"
+      ],
+      "additionalPriceYuan": 1,
+      "priceAppliesTo": "each_named_item_not_entire_slash_group",
+      "unit": null,
+      "selectionMode": null,
+      "repeatQuantityAllowed": null,
+      "independentDish": false,
+      "sourceFile": "项目/tools/pilot/TRANSCRIPTION_2F.md",
+      "sourceLine": 341,
+      "rawRow": "| 油条 / 薄脆 / 鸡蛋 / 培根 / 辣条 / 双汇火腿肠 / 双汇鸡肉肠 | 各 1 元 |"
+    },
+    {
+      "previewRef": "NG01-option-2",
+      "basePreviewRef": "NG01-base",
+      "sourceRecordKey": "c01_t20|f2/大鸡蛋（双黄）||",
+      "name": "大鸡蛋（双黄）",
+      "members": [
+        "大鸡蛋（双黄）"
+      ],
+      "additionalPriceYuan": 1.5,
+      "priceAppliesTo": "each_named_item_not_entire_slash_group",
+      "unit": null,
+      "selectionMode": null,
+      "repeatQuantityAllowed": null,
+      "independentDish": false,
+      "sourceFile": "项目/tools/pilot/TRANSCRIPTION_2F.md",
+      "sourceLine": 342,
+      "rawRow": "| 大鸡蛋（双黄） | 1.5 元 |"
+    },
+    {
+      "previewRef": "NG01-option-3",
+      "basePreviewRef": "NG01-base",
+      "sourceRecordKey": "c01_t20|f2/鸡柳 / 里脊 / 肉松 / 脆骨肠 / 台式烤肠||",
+      "name": "鸡柳 / 里脊 / 肉松 / 脆骨肠 / 台式烤肠",
+      "members": [
+        "鸡柳",
+        "里脊",
+        "肉松",
+        "脆骨肠",
+        "台式烤肠"
+      ],
+      "additionalPriceYuan": 2,
+      "priceAppliesTo": "each_named_item_not_entire_slash_group",
+      "unit": null,
+      "selectionMode": null,
+      "repeatQuantityAllowed": null,
+      "independentDish": false,
+      "sourceFile": "项目/tools/pilot/TRANSCRIPTION_2F.md",
+      "sourceLine": 343,
+      "rawRow": "| 鸡柳 / 里脊 / 肉松 / 脆骨肠 / 台式烤肠 | 各 2 元 |"
+    },
+    {
+      "previewRef": "NG01-option-4",
+      "basePreviewRef": "NG01-base",
+      "sourceRecordKey": "c01_t20|f2/黑椒纯肉肠 / 原味纯肉肠||",
+      "name": "黑椒纯肉肠 / 原味纯肉肠",
+      "members": [
+        "黑椒纯肉肠",
+        "原味纯肉肠"
+      ],
+      "additionalPriceYuan": 3,
+      "priceAppliesTo": "each_named_item_not_entire_slash_group",
+      "unit": null,
+      "selectionMode": null,
+      "repeatQuantityAllowed": null,
+      "independentDish": false,
+      "sourceFile": "项目/tools/pilot/TRANSCRIPTION_2F.md",
+      "sourceLine": 344,
+      "rawRow": "| 黑椒纯肉肠 / 原味纯肉肠 | 各 3 元 |"
+    },
+    {
+      "previewRef": "NG01-option-5",
+      "basePreviewRef": "NG01-base",
+      "sourceRecordKey": "c01_t20|f2/土豆丝||",
+      "name": "土豆丝",
+      "members": [
+        "土豆丝"
+      ],
+      "additionalPriceYuan": 1,
+      "priceAppliesTo": "each_named_item_not_entire_slash_group",
+      "unit": "份",
+      "selectionMode": null,
+      "repeatQuantityAllowed": null,
+      "independentDish": false,
+      "sourceFile": "项目/tools/pilot/TRANSCRIPTION_2F.md",
+      "sourceLine": 345,
+      "rawRow": "| 土豆丝 | 1 元/份（新品） |"
+    }
+  ],
+  "pricing": {
+    "formula": "4 + sum(已确认所选具体配料单价 × 已确认数量)",
+    "executable": false,
+    "selectionCombinationRules": null,
+    "quantityRules": null,
+    "roundingRules": null,
+    "unknownHandling": "任何选择规则/数量/价格未确认则返回无法报价，不能默认零加价或默认数量1",
+    "baseOnly": 4
+  },
+  "formalImportAuthorized": false
+}

@@ -1,0 +1,1 @@
+<view class="search"><text class="icon">⌕</text><input value="{{value}}" placeholder="{{placeholder}}" confirm-type="search" bindinput="onInput" bindconfirm="onConfirm" /></view>

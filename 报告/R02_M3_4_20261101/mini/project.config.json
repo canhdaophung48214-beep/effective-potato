@@ -1,0 +1,13 @@
+{
+  "description": "Isolated historical menu verification only",
+  "compileType": "miniprogram",
+  "appid": "wxcc28587e4d0254ad",
+  "projectname": "shishen-history-m342",
+  "miniprogramRoot": "./",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "postcss": true,
+    "minified": false
+  }
+}

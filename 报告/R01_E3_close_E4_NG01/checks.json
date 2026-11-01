@@ -1,0 +1,32 @@
+{
+  "descriptionReplacements": 1,
+  "NG01": 6,
+  "triageCSVUnchanged": true,
+  "businessCSVUnchanged": true,
+  "E2ProtectedFiles": {
+    "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E2_evidence_manifest.json": "39dc794249fe92b945503f51bb3a58c111421783b806ee6f816be60b14a55c26",
+    "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E2_foodType_inventory.csv": "2a675fcb1b9485bc2675019440375519850433076414c3c9335409b388a4f05b",
+    "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E2_recovery_candidates.csv": "1e504a4c89057d4212e7c86e963db9ee9c41a203958bc4bd47b07326ee226b21",
+    "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E2_tastes_inventory.csv": "12b803cdf8550555ef294c3f8f0c10c5b18926c6c74643a1f1769c737e391ab4",
+    "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E2_unresolved.csv": "afaa67eb3997ff46f569d3e037a543073127e9fa02aa1593696317d9c270ee7b",
+    "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E3_not_generated_triage.csv": "50ed0947ab2f5be30c972e47a5600ca0997096ecd651864d04e884daaa2fda47",
+    "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E3_business_decisions.csv": "cb5890d33e1399d2df6093468e45dcab6221f9dfa5deef60e2cd91dc563302db"
+  },
+  "projectFilesUnchanged": 376,
+  "allManifestHashesValid": true,
+  "exitCode": 0,
+  "backups": [
+    {
+      "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\Codex_R01_E3_执行报告.md",
+      "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R01_E3_close_20261101_142552\\Codex_R01_E3_执行报告.md",
+      "bytes": 3135,
+      "sha256": "ec87422b7643f691881c4a7354ab1487c24831686eca00d26eab75674ccc40ec"
+    },
+    {
+      "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E3_accelerated\\artifacts_manifest.json",
+      "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R01_E3_close_20261101_142552\\artifacts_manifest.json",
+      "bytes": 3501,
+      "sha256": "906f9127e1bd1fdbd99ca325a0c21b5cc7d40e74c1f6c82984bf5170cf3091cd"
+    }
+  ]
+}

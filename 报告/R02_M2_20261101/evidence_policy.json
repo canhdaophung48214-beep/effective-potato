@@ -1,0 +1,13 @@
+{
+  "photoPurpose": "internal_evidence_only",
+  "uploadRequired": false,
+  "displayImageRequired": false,
+  "formalImageUrlRequired": false,
+  "fileIDRequired": false,
+  "localEvidencePathRequired": true,
+  "collectorRequired": true,
+  "actualCaptureDateRequired": true,
+  "sourceAuthenticityRequired": true,
+  "policySource": "负责人本轮R02-M2裁决",
+  "formalRuleChange": "NONE; current importer already checks local files only"
+}

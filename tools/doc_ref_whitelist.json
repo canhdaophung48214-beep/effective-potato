@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "note": "文档引用归属白名单。只收录在源文档正文里【显式出现文件名】的目标文档（最小必要集），不按文件名相似或章节号相邻推断。未列入白名单的目标：该源文档的 §X.Y 引用一律保持 ANCHOR_AMBIGUOUS。",
+  "sources": {
+    "RECORD_GENERATOR_CONTRACT_20261023.md": {
+      "allowed": [
+        "RECORD_GENERATOR_PLAN_20261023.md",
+        "RECORD_AUDIT_PRECHECK_20261023.md",
+        "RAW_DATA_BLOCKERS_20261023.md",
+        "TRANSCRIPTION_2F.md",
+        "REAL_DATA_COLLECTION_SPEC.md",
+        "ADAPTER_MAP_C_TO_L8_20261025.md",
+        "RECORD_LEVEL_GENERATION_PLAN_20261023.md"
+      ],
+      "basis": "契约正文显式写出这些 .md 路径：计划文档（§7.1 前置）、审计预检（§5.6.5.9）、阻塞清单（§6.2）、2F 转录稿（§6.2 S2 双规格）、采集规范（§6.2）、适配表（§7.5）、记录级计划（§3.1 依据）。TRANSCRIPTION_3F / decisions/* / ip-* 也被提及，但不在当前扫描集内。"
+    },
+    "RECORD_GENERATOR_PLAN_20261023.md": {
+      "allowed": ["RECORD_GENERATOR_CONTRACT_20261023.md"],
+      "basis": "计划正文显式引用契约（§3.1/§6.1/§7.2 等条款出处）。"
+    },
+    "RAW_DATA_BLOCKERS_20261023.md": {
+      "allowed": [
+        "RECORD_GENERATOR_CONTRACT_20261023.md",
+        "RECORD_LEVEL_GENERATION_PLAN_20261023.md",
+        "TRANSCRIPTION_2F.md"
+      ],
+      "basis": "阻塞清单正文显式引用契约（计数口径）、记录级计划（拆分）、2F 转录稿（原文行号）。"
+    },
+    "ADAPTER_MAP_C_TO_L8_20261025.md": {
+      "allowed": ["TRANSCRIPTION_2F.md", "RECORD_GENERATOR_CONTRACT_20261023.md"],
+      "basis": "文件头第 3 行写明「目标域=契约 §3.3 L8 记录结构」，且逐字段表有一列专名「契约依据」（2026-10-28 补：该声明是文件级声明，不是按章节号相邻推断）；另显式引用 2F 转录稿行号作为菜品名来源。"
+    },
+    "test_records_spec.js": {
+      "allowed": [
+        "TRANSCRIPTION_2F.md",
+        "RECORD_LEVEL_GENERATION_PLAN_20261023.md",
+        "RECORD_AUDIT_PRECHECK_20261023.md",
+        "RECORD_GENERATOR_CONTRACT_20261023.md",
+        "RAW_DATA_BLOCKERS_20261023.md",
+        "ADAPTER_MAP_C_TO_L8_20261025.md"
+      ],
+      "basis": "测试文件正文显式引用这些文档作为断言依据（注释与用例名中均出现文件名）。"
+    },
+    "REAL_DATA_COLLECTION_SPEC.md": {
+      "allowed": [],
+      "basis": "只显式提到 COMBO_SET_MODEL_PROPOSAL.md（不在扫描集内）；本文件对 §X.Y 的引用无可归属目标，保持歧义。"
+    },
+    "TRANSCRIPTION_2F.md": {
+      "allowed": [
+        "RAW_DATA_BLOCKERS_20261023.md",
+        "RECORD_LEVEL_GENERATION_PLAN_20261023.md"
+      ],
+      "basis": "转录稿正文显式引用阻塞清单（计数差异）与记录级计划（拆分口径）。"
+    },
+    "RECORD_AUDIT_PRECHECK_20261023.md": {
+      "allowed": [
+        "RECORD_LEVEL_GENERATION_PLAN_20261023.md",
+        "TRANSCRIPTION_2F.md"
+      ],
+      "basis": "预检正文显式引用记录级计划与 2F 转录稿；SERVICE_2F_3F_REVIEW 虽被提及但不在扫描集内。"
+    },
+    "RECORD_LEVEL_GENERATION_PLAN_20261023.md": {
+      "allowed": ["TRANSCRIPTION_2F.md"],
+      "basis": "记录级计划正文显式引用 2F 转录稿（行号）；3F 与 COLLECTION_STATUS 提及但不在扫描集内。"
+    }
+  }
+}

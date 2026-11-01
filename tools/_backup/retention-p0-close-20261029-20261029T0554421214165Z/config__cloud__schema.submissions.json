@@ -1,0 +1,122 @@
+{
+  "_meta": {
+    "purpose": "UGC MVP 阶段 B 本地建议 schema，未应用到任何云端环境",
+    "status": "pending_admin_console_verification",
+    "rules": "本文件只是本地草稿；集合创建、索引与权限必须在微信云开发后台逐项配置并留存截图，才能标记为已生效",
+    "collection": "submissions",
+    "readBy": "无（普通客户端不可直读；仅 review 云函数以服务端身份读取）",
+    "writtenBy": "仅 submit 云函数（创建）与 review 云函数（状态变更）；客户端不可直写",
+    "retention": "待负责人确认，默认不承诺 90 天；删除请求见 review.delete"
+  },
+  "fields": {
+    "_id": { "type": "string", "note": "系统生成" },
+    "schemaVersion": { "type": "integer", "value": 1 },
+    "clientToken": { "type": "string", "note": "客户端生成的 32 位十六进制幂等令牌，服务端用于防重复提交" },
+    "kind": { "type": "string", "enum": ["price_fix", "info_fix"] },
+    "target": {
+      "type": "object",
+      "required": ["shopId", "stallId"],
+      "properties": {
+        "shopId": { "type": "string", "pattern": "^c\\d{2}$" },
+        "stallId": { "type": "string", "pattern": "^c\\d{2}_t\\d{2}$" },
+        "dishId": { "type": "string|null", "pattern": "^c\\d{2}_d\\d{3}$" }
+      }
+    },
+    "payload": {
+      "type": "object|null",
+      "properties": {
+        "price": { "type": "number|null", "note": "有限正数，≤1 位小数；>100 仅记录警告" },
+        "nameSuggestion": { "type": "string|null", "note": "≤20 字" },
+        "note": { "type": "string|null", "note": "≤100 字，服务端已做 NFKC 与不可见字符清理" }
+      }
+    },
+    "photos": { "type": "array", "note": "阶段 B 恒为空数组；图片能力未开放" },
+    "security": {
+      "type": "object",
+      "properties": {
+        "state": { "type": "string", "enum": ["pass", "review", "risk", "error"] },
+        "labels": { "type": "string" },
+        "provider": { "type": "string", "value": "msg_sec_check" },
+        "version": { "type": "integer", "value": 2 },
+        "checkedAt": { "type": "date|null" },
+        "rid": { "type": "string" },
+        "attempts": { "type": "integer" },
+        "latencyMs": { "type": "integer" },
+        "skipped": { "type": "boolean" }
+      },
+      "note": "error 只表示未能完成检测，绝不能当作通过；approve 仅接受 pass/review"
+    },
+    "status": { "type": "string", "enum": ["pending", "approved", "rejected", "expired"], "value": "pending" },
+    "review": {
+      "type": "object|null",
+      "properties": {
+        "decision": { "type": "string", "enum": ["approve", "reject", "expire"], "note": "expire 仅由系统保留期流程写入；人工接口不可选择" },
+        "byOpenidHash": { "type": "string", "note": "管理员 openid 的 HMAC 摘要，不存原文" },
+        "at": { "type": "date" },
+        "reasonCode": { "type": "string" },
+        "reasonText": { "type": "string", "note": "≤100 字" },
+        "edits": { "type": "object|null" }
+      }
+    },
+    "submitter": {
+      "type": "object",
+      "note": "仅存 openid；删除请求时置为 deleted",
+      "properties": { "openid": { "type": "string" } }
+    },
+    "dedupe": {
+      "type": "object",
+      "properties": {
+        "key": { "type": "string", "note": "dishId|note|price" },
+        "dupOf": { "type": "string|null" }
+      }
+    },
+    "dataClass": { "type": "string", "value": "user_submission" },
+    "verifyStatus": { "type": "string", "value": "unverified", "note": "投稿通过也不会自动变成 verified" },
+    "verifiedAt": { "type": "date|null", "value": null },
+    "importEligibility": { "type": "string", "value": "blocked" },
+    "reopenOf": { "type": "string|null" },
+    "payloadRedactedAt": { "type": "date|null" },
+    "updatedBy": { "type": "string|null" },
+    "createdAt": { "type": "date" },
+    "updatedAt": { "type": "date" },
+    "rev": { "type": "integer", "value": 1, "note": "比对更新用，避免并发覆盖" }
+  },
+  "indexes": [
+    {
+      "name": "uk_submitter_clienttoken",
+      "keys": [{ "field": "submitter.openid", "order": "asc" }, { "field": "clientToken", "order": "asc" }],
+      "unique": true,
+      "purpose": "幂等：同一用户同一令牌只落一条"
+    },
+    {
+      "name": "ix_dedupe_status",
+      "keys": [{ "field": "dedupe.key", "order": "asc" }, { "field": "status", "order": "asc" }],
+      "unique": false,
+      "purpose": "去重：同内容 pending 只允许一条"
+    },
+    {
+      "name": "ix_status_created",
+      "keys": [{ "field": "status", "order": "asc" }, { "field": "createdAt", "order": "asc" }],
+      "unique": false,
+      "purpose": "审核队列按提交时间先后"
+    },
+    {
+      "name": "ix_retention_mark_order",
+      "keys": [{ "field": "status", "order": "asc" }, { "field": "createdAt", "order": "asc" }, { "field": "_id", "order": "asc" }],
+      "unique": false,
+      "purpose": "T-1 到期标记先筛 pending，再按创建时间与 ID 稳定分批；仅本地建议，云端未建"
+    },
+    {
+      "name": "ix_submitter_created",
+      "keys": [{ "field": "submitter.openid", "order": "asc" }, { "field": "createdAt", "order": "desc" }],
+      "unique": false,
+      "purpose": "限流窗口统计"
+    },
+    {
+      "name": "ix_security_status",
+      "keys": [{ "field": "security.state", "order": "asc" }, { "field": "status", "order": "asc" }],
+      "unique": false,
+      "purpose": "故障复检与 needsReview 视图"
+    }
+  ]
+}

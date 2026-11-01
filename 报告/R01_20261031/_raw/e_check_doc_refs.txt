@@ -1,0 +1,65 @@
+=== 文档引用锚点检查（只读）===
+  - C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_GENERATOR_CONTRACT_20261023.md（2102 行，锚点 95 个）
+  - C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_GENERATOR_PLAN_20261023.md（340 行，锚点 0 个）
+  - C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RAW_DATA_BLOCKERS_20261023.md（348 行，锚点 0 个）
+  - C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\decisions\ADAPTER_MAP_C_TO_L8_20261025.md（65 行，锚点 0 个）
+  - C:\Users\25975\Desktop\食神寻味小程序开发\项目\tools\test_records_spec.js（4947 行，锚点 0 个）
+  - C:\Users\25975\Desktop\食神寻味小程序开发\项目\tools\REAL_DATA_COLLECTION_SPEC.md（341 行，锚点 24 个）
+  - C:\Users\25975\Desktop\食神寻味小程序开发\项目\tools\pilot\TRANSCRIPTION_2F.md（974 行，锚点 15 个）
+  - C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_AUDIT_PRECHECK_20261023.md（140 行，锚点 0 个）
+  - C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_LEVEL_GENERATION_PLAN_20261023.md（311 行，锚点 7 个）
+
+章节锚点：{"ANCHOR_OK":1642,"ANCHOR_AMBIGUOUS":77}
+行号引用：{"IGNORED":62,"LINE_OK_UNVERIFIED":51,"LINE_TARGET_UNCERTAIN":266,"UNRESOLVED":27,"LINE_OK":1,"LINE_SEMANTIC_REVIEW":3,"HISTORICAL":4}
+
+说明：LINE_OK 仅表示结构可验证（标题/表头/表格行/字段名）；LINE_OK_UNVERIFIED 表示行存在但语义未核验；LINE_SEMANTIC_REVIEW 表示结构与其上下文声称相矛盾，需人工复核。
+
+ambiguous 章节锚点（77 条，不判失败，列前 12 条）：
+  RAW_DATA_BLOCKERS_20261023.md:331  §3.1 → 无法唯一确定目标文档（候选 RECORD_GENERATOR_CONTRACT_20261023.md|RECORD_LEVEL_GENERATION_PLAN_20261023.md），不猜测
+  RAW_DATA_BLOCKERS_20261023.md:331  §3.1 → 无法唯一确定目标文档（候选 RECORD_GENERATOR_CONTRACT_20261023.md|RECORD_LEVEL_GENERATION_PLAN_20261023.md），不猜测
+  ADAPTER_MAP_C_TO_L8_20261025.md:22  §4.1 → 无法唯一确定目标文档（候选 RECORD_GENERATOR_CONTRACT_20261023.md|TRANSCRIPTION_2F.md），不猜测
+  ADAPTER_MAP_C_TO_L8_20261025.md:28  §4.1 → 无法唯一确定目标文档（候选 RECORD_GENERATOR_CONTRACT_20261023.md|TRANSCRIPTION_2F.md），不猜测
+  ADAPTER_MAP_C_TO_L8_20261025.md:32  §6.3 → 无法唯一确定目标文档（候选 RECORD_GENERATOR_CONTRACT_20261023.md|TRANSCRIPTION_2F.md），不猜测
+  test_records_spec.js:220  §7.4 → 无法唯一确定目标文档（候选 RECORD_GENERATOR_CONTRACT_20261023.md|TRANSCRIPTION_2F.md），不猜测
+  test_records_spec.js:244  §7.4 → 无法唯一确定目标文档（候选 RECORD_GENERATOR_CONTRACT_20261023.md|TRANSCRIPTION_2F.md），不猜测
+  test_records_spec.js:244  §8 → 无法唯一确定目标文档（候选 RECORD_GENERATOR_CONTRACT_20261023.md|TRANSCRIPTION_2F.md），不猜测
+  test_records_spec.js:281  §7.4 → 无法唯一确定目标文档（候选 RECORD_GENERATOR_CONTRACT_20261023.md|TRANSCRIPTION_2F.md），不猜测
+  test_records_spec.js:474  §5.1 → 无法唯一确定目标文档（候选 RECORD_GENERATOR_CONTRACT_20261023.md|RECORD_LEVEL_GENERATION_PLAN_20261023.md），不猜测
+  test_records_spec.js:1341  §3.3 → 无法唯一确定目标文档（候选 RECORD_GENERATOR_CONTRACT_20261023.md|RECORD_LEVEL_GENERATION_PLAN_20261023.md），不猜测
+  test_records_spec.js:1343  §3.3 → 无法唯一确定目标文档（候选 RECORD_GENERATOR_CONTRACT_20261023.md|RECORD_LEVEL_GENERATION_PLAN_20261023.md），不猜测
+
+语义复核（3 条，列前 20 条）：
+  RECORD_GENERATOR_CONTRACT_20261023.md:1095  :90 → 上下文声称表格行，但目标为标题行
+  RECORD_GENERATOR_CONTRACT_20261023.md:1095  :94 → 上下文声称表格行，但目标为普通文本行
+  RECORD_AUDIT_PRECHECK_20261023.md:62  :65 → 上下文声称表格行，但目标为标题行
+
+失效行号（27 条，列前 40 条）：
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_GENERATOR_CONTRACT_20261023.md:69  :70 → 目标行为空行/表格分隔行，无唯一证据可恢复
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_GENERATOR_CONTRACT_20261023.md:71  :210 → 引用的 Markdown 文件不在检查集内（TRANSCRIPTION_3F.md）
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_GENERATOR_CONTRACT_20261023.md:408  :41-52 → 引用的 Markdown 文件不在检查集内（TRANSCRIPTION_3F.md）
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_GENERATOR_CONTRACT_20261023.md:493  :41-52 → 引用的 Markdown 文件不在检查集内（TRANSCRIPTION_3F.md）
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_GENERATOR_CONTRACT_20261023.md:575  :89 → 目标行为空行/表格分隔行，无唯一证据可恢复
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_GENERATOR_CONTRACT_20261023.md:967  :271 → 引用的 Markdown 文件不在检查集内（TRANSCRIPTION_3F.md）
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_GENERATOR_CONTRACT_20261023.md:1039  :420 → 引用的 Markdown 文件不在检查集内（TRANSCRIPTION_3F.md）
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_GENERATOR_CONTRACT_20261023.md:1040  :421 → 引用的 Markdown 文件不在检查集内（TRANSCRIPTION_3F.md）
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_GENERATOR_CONTRACT_20261023.md:1040  :444 → 引用的 Markdown 文件不在检查集内（TRANSCRIPTION_3F.md）
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_GENERATOR_CONTRACT_20261023.md:1801  :409 → 目标行为空行/表格分隔行，无唯一证据可恢复
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_GENERATOR_PLAN_20261023.md:72  :1132 → 目标行为空行/表格分隔行，无唯一证据可恢复
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_GENERATOR_PLAN_20261023.md:135  :962 → 目标行为空行/表格分隔行，无唯一证据可恢复
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_GENERATOR_PLAN_20261023.md:135  :964 → 目标行为空行/表格分隔行，无唯一证据可恢复
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_GENERATOR_PLAN_20261023.md:246  :771 → 目标行为空行/表格分隔行，无唯一证据可恢复
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_GENERATOR_PLAN_20261023.md:246  :386 → 目标行为空行/表格分隔行，无唯一证据可恢复
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_GENERATOR_PLAN_20261023.md:246  :771 → 目标行为空行/表格分隔行，无唯一证据可恢复
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_GENERATOR_PLAN_20261023.md:246  :386 → 目标行为空行/表格分隔行，无唯一证据可恢复
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RAW_DATA_BLOCKERS_20261023.md:140  :8 → 目标行为空行/表格分隔行，无唯一证据可恢复
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\tools\test_records_spec.js:381  :420-421 → 引用的 Markdown 文件不在检查集内（TRANSCRIPTION_3F.md）
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\tools\test_records_spec.js:395  :420-421 → 引用的 Markdown 文件不在检查集内（TRANSCRIPTION_3F.md）
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\tools\test_records_spec.js:4893  :409 → 目标行为空行/表格分隔行，无唯一证据可恢复
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_AUDIT_PRECHECK_20261023.md:33  :60 → 引用的 Markdown 文件不在检查集内（TRANSCRIPTION_3F.md）
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_AUDIT_PRECHECK_20261023.md:56  :37 → 引用的 Markdown 文件不在检查集内（docs/SERVICE_2F_3F_REVIEW_20261023.md）
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_AUDIT_PRECHECK_20261023.md:63  :60 → 引用的 Markdown 文件不在检查集内（TRANSCRIPTION_3F.md）
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_AUDIT_PRECHECK_20261023.md:71  :41 → 目标行为空行/表格分隔行，无唯一证据可恢复
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_AUDIT_PRECHECK_20261023.md:82  :421 → 引用的 Markdown 文件不在检查集内（TRANSCRIPTION_3F.md）
+  C:\Users\25975\Desktop\食神寻味小程序开发\项目\docs\RECORD_AUDIT_PRECHECK_20261023.md:93  :81 → 引用的 Markdown 文件不在检查集内（TRANSCRIPTION_3F.md）
+
+结论：PASS（锚点齐备；失效行号与语义复核仅计数）

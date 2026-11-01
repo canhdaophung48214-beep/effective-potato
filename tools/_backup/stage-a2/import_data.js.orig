@@ -1,0 +1,904 @@
+#!/usr/bin/env node
+'use strict';
+
+/**
+ * 安全数据导入：CSV 表格 → 校验 → 预览 → （只有显式 --write 才）写入隔离目录
+ *
+ * 设计边界（本文件的四条硬规则）：
+ *   1. 默认只预览。不带 --write 时只读文件、只打印，绝不创建、修改、删除任何文件。
+ *   2. 只新增，不覆盖。与现有 id 冲突的整条记录被拒绝；不静默覆盖演示数据。
+ *   3. 写入目标必须显式给出（--out <目录>），且与 data/ 隔离。
+ *      本工具永远不会写 data/shops.js、data/dishes.js 或任何 pages/、utils/ 下的文件。
+ *   4. 导入记录一律 unverified。CSV 里写 verify_status=verified 无效，只作为错误被拒绝。
+ *
+ * 校验不复制规则：全部交给 tools/verify_data.js 的 validateDataset()，
+ * 本文件只负责「把 CSV 变成记录」和「安全落盘」。
+ *
+ * 用法：
+ *   node tools/import_data.js                              预览（读 tools/templates）
+ *   node tools/import_data.js --dir <CSV目录>               预览自定义目录
+ *   node tools/import_data.js --write --out <输出目录>      校验通过后写入隔离目录
+ *   node tools/import_data.js --all                        显示全部问题（默认只显示前 20 条）
+ *
+ * 退出码：
+ *   0 = 无拒绝、校验通过（dry-run 也返回 0）
+ *   1 = 存在被拒绝的记录或校验错误（含 CSV 格式错误）
+ *   2 = 用法错误（例如 --write 却没有给 --out）
+ *   3 = 写入阶段失败（已回滚，未留下半成品）
+ */
+
+const fs = require('fs');
+const path = require('path');
+const crypto = require('crypto');
+
+const ROOT = path.resolve(__dirname, '..');
+const verify = require('./verify_data');
+const provenance = require('../data/provenance');
+const { SHOPS } = require('../data/shops');
+const { DISHES } = require('../data/dishes');
+
+const TEMPLATE_DIR = path.join(__dirname, 'templates');
+
+/* 模板示例行的 id 前缀。以它开头的一律视为「格式示例」，跳过而不导入 */
+const EXAMPLE_ID_PREFIX = 'ex_';
+
+/* 记录类型：模型目前只能表达「菜品」，其余显式拒绝，不偷偷当成普通菜 */
+const RECORD_TYPE_DISH = '菜品';
+const RECORD_TYPES_UNSUPPORTED = ['套餐', '加料', '店铺规则'];
+
+const EXIT = { OK: 0, INVALID: 1, USAGE: 2, WRITE_FAILED: 3 };
+
+/* ------------------------------------------------------------------
+   表结构定义
+   ------------------------------------------------------------------ */
+
+const SCHEMAS = {
+  shops: {
+    file: 'shops.csv',
+    label: '店铺',
+    key: 'shop_id',
+    columns: [
+      'shop_id', 'shop_name', 'area', 'building', 'location',
+      'source_kind', 'source_detail', 'source_ref',
+      'collector', 'collect_date', 'evidence_file'
+    ]
+  },
+  floors: {
+    file: 'floors.csv',
+    label: '楼层',
+    key: 'floor_id',
+    columns: [
+      'shop_id', 'floor_id', 'floor_label',
+      'source_kind', 'source_detail', 'source_ref'
+    ]
+  },
+  stalls: {
+    file: 'stalls.csv',
+    label: '窗口',
+    key: 'stall_id',
+    columns: [
+      'shop_id', 'floor_id', 'stall_id', 'stall_name',
+      'side', 'no_status', 'no',
+      'source_kind', 'source_detail', 'source_ref'
+    ]
+  },
+  dishes: {
+    file: 'dishes.csv',
+    label: '菜品',
+    key: 'dish_id',
+    columns: [
+      'dish_id', 'dish_name', 'record_type', 'shop_id', 'stall_id',
+      'price', 'food_type', 'tastes',
+      'source_kind', 'source_detail', 'source_ref',
+      'collector', 'collect_date', 'evidence_file'
+    ]
+  }
+};
+
+/* 不允许出现在 CSV 里的列：可信度状态只能由程序决定 */
+const FORBIDDEN_COLUMNS = ['verify_status', 'verifyStatus', 'verified_at', 'verifiedAt'];
+
+/* ------------------------------------------------------------------
+   CSV 解析（RFC 4180 子集：BOM / 引号 / 字段内逗号 / 字段内换行 / CRLF）
+   绝不用 split(',')
+   ------------------------------------------------------------------ */
+
+/**
+ * @param {string} text 原始 CSV 文本
+ * @return {string[][]} 行 × 列的二维数组，首行是表头
+ */
+function parseCsv(text) {
+  if (typeof text !== 'string') {
+    throw new Error('CSV 内容必须是字符串');
+  }
+  let s = text;
+  if (s.charCodeAt(0) === 0xfeff) s = s.slice(1); /* 去掉 UTF-8 BOM */
+
+  const rows = [];
+  let row = [];
+  let field = '';
+  let inQuotes = false;
+  let i = 0;
+  let fieldStarted = false;
+
+  while (i < s.length) {
+    const ch = s[i];
+
+    if (inQuotes) {
+      if (ch === '"') {
+        if (s[i + 1] === '"') { field += '"'; i += 2; continue; }
+        inQuotes = false; i += 1; continue;
+      }
+      field += ch; i += 1; continue;
+    }
+
+    if (ch === '"') {
+      if (fieldStarted) {
+        throw new Error('CSV 格式错误：双引号只能出现在字段开头（第 ' + (rows.length + 1) + ' 行附近）');
+      }
+      inQuotes = true; fieldStarted = true; i += 1; continue;
+    }
+
+    if (ch === ',') {
+      row.push(field); field = ''; fieldStarted = false; i += 1; continue;
+    }
+
+    if (ch === '\r' || ch === '\n') {
+      if (ch === '\r' && s[i + 1] === '\n') i += 1;
+      row.push(field);
+      rows.push(row);
+      row = []; field = ''; fieldStarted = false; i += 1; continue;
+    }
+
+    field += ch; fieldStarted = true; i += 1;
+  }
+
+  if (inQuotes) throw new Error('CSV 格式错误：双引号未闭合');
+
+  if (field !== '' || row.length > 0) {
+    row.push(field);
+    rows.push(row);
+  }
+
+  /* 丢掉完全空白的行（末尾换行、空行），但保留「有空字段」的行 */
+  return rows.filter(function (r) {
+    return r.some(function (cell) { return String(cell).trim() !== ''; });
+  });
+}
+
+/**
+ * 表头 + 数据行 → 记录数组。列顺序无关，靠表头名字取值。
+ * @return {{records: object[], errors: string[], warnings: string[]}}
+ */
+function rowsToRecords(rows, schema) {
+  const errors = [];
+  const warnings = [];
+  const records = [];
+
+  if (!rows.length) {
+    errors.push(schema.file + '：文件为空（至少要有一行表头）');
+    return { records: records, errors: errors, warnings: warnings };
+  }
+
+  const header = rows[0].map(function (h) { return String(h).trim(); });
+
+  /* 表头去重 */
+  const seen = {};
+  header.forEach(function (h) {
+    if (seen[h]) warnings.push(schema.file + '：表头列 ' + h + ' 重复，后一列被忽略');
+    seen[h] = true;
+  });
+
+  /* 必填列必须存在 */
+  schema.columns.forEach(function (col) {
+    if (header.indexOf(col) === -1) {
+      errors.push(schema.file + '：缺少必需列 ' + col);
+    }
+  });
+
+  /* 状态列禁止出现 */
+  FORBIDDEN_COLUMNS.forEach(function (col) {
+    if (header.indexOf(col) !== -1) {
+      errors.push(schema.file + '：不允许 ' + col + ' 列 —— 核验状态由程序决定，导入一律 unverified');
+    }
+  });
+
+  /* 未知列只警告，不影响导入 */
+  header.forEach(function (h) {
+    if (h && schema.columns.indexOf(h) === -1) {
+      warnings.push(schema.file + '：未知列 ' + h + ' 被忽略');
+    }
+  });
+
+  if (errors.length) return { records: records, errors: errors, warnings: warnings };
+
+  for (let r = 1; r < rows.length; r++) {
+    const cells = rows[r];
+    const rec = { __row: r + 1, __file: schema.file };
+    header.forEach(function (h, idx) {
+      if (!h) return;
+      rec[h] = idx < cells.length ? String(cells[idx]) : '';
+    });
+    if (cells.length > header.length) {
+      warnings.push(schema.file + '：第 ' + (r + 1) + ' 行有 ' + (cells.length - header.length) + ' 个多余字段，已忽略');
+    }
+    records.push(rec);
+  }
+
+  return { records: records, errors: errors, warnings: warnings };
+}
+
+/* ------------------------------------------------------------------
+   读表
+   ------------------------------------------------------------------ */
+
+function readTable(dir, schema) {
+  const file = path.join(dir, schema.file);
+  if (!fs.existsSync(file)) {
+    return {
+      records: [],
+      errors: ['缺少文件：' + schema.file + '（目录 ' + dir + '）'],
+      warnings: [],
+      sha256: '',
+      missing: true
+    };
+  }
+  const buf = fs.readFileSync(file);
+  const text = buf.toString('utf8');
+  const parsed = rowsToRecords(parseCsv(text), schema);
+  parsed.sha256 = crypto.createHash('sha256').update(buf).digest('hex');
+  parsed.missing = false;
+  return parsed;
+}
+
+/* ------------------------------------------------------------------
+   记录构造
+   ------------------------------------------------------------------ */
+
+function isExampleId(id) {
+  return String(id || '').toLowerCase().indexOf(EXAMPLE_ID_PREFIX) === 0;
+}
+
+function isNonEmpty(v) {
+  return typeof v === 'string' && v.trim() !== '';
+}
+
+function trim(v) {
+  return typeof v === 'string' ? v.trim() : '';
+}
+
+/* 来源：只接受白名单里的值；demo 不允许通过导入制造 */
+function buildSource(rec) {
+  const kind = trim(rec.source_kind) || 'unknown';
+  const allowed = provenance.KIND_VALUES;
+  if (allowed.indexOf(kind) === -1) {
+    return { error: '来源类型 ' + JSON.stringify(kind) + ' 不在允许值 ' + allowed.join('/') };
+  }
+  if (kind === 'demo') {
+    return { error: '来源类型 demo 不允许通过导入创建（演示数据只能在 data/ 里手写）' };
+  }
+  return {
+    source: provenance.makeSource(kind, trim(rec.source_detail), trim(rec.source_ref))
+  };
+}
+
+/* 导入记录统一 unverified：状态与时间都由程序决定，不接受 CSV 指定 */
+function metaOf(rec) {
+  const s = buildSource(rec);
+  if (s.error) return { error: s.error };
+  return {
+    meta: {
+      source: s.source,
+      verifyStatus: provenance.VERIFY_STATUS.UNVERIFIED,
+      verifiedAt: null
+    }
+  };
+}
+
+function evidenceOf(rec) {
+  return {
+    collector: trim(rec.collector),
+    collectDate: trim(rec.collect_date),
+    evidenceFile: trim(rec.evidence_file)
+  };
+}
+
+/* ------------------------------------------------------------------
+   主体：CSV 表格 → 待写入记录 + 拒绝 / 跳过清单
+   ------------------------------------------------------------------ */
+
+function buildImport(tables, existing) {
+  const rejected = [];
+  const skipped = [];
+  const warnings = [];
+  const evidence = [];
+
+  const newShops = [];
+  const newDishes = [];
+  const shopById = {};
+  const floorIds = [];
+  const stallIds = [];
+
+  function reject(table, rec, reason) {
+    rejected.push({
+      table: table,
+      file: rec.__file,
+      row: rec.__row,
+      id: trim(rec[SCHEMAS[table].key]) || '(缺少 id)',
+      reason: reason
+    });
+  }
+
+  /* ---------- 1. 店铺 ---------- */
+  tables.shops.forEach(function (rec) {
+    const id = trim(rec.shop_id);
+    if (isExampleId(id)) { skipped.push({ table: 'shops', row: rec.__row, id: id, reason: '模板示例行（' + EXAMPLE_ID_PREFIX + ' 前缀）' }); return; }
+    if (existing.shopIds[id] || shopById[id]) { reject('shops', rec, '店铺 id 与现有数据或本次导入内重复：' + id); return; }
+    const m = metaOf(rec);
+    if (m.error) { reject('shops', rec, m.error); return; }
+
+    const shop = {
+      id: id,
+      name: trim(rec.shop_name),
+      area: trim(rec.area),
+      building: trim(rec.building),
+      location: trim(rec.location),
+      floors: [],
+      stalls: [],
+      source: m.meta.source,
+      verifyStatus: m.meta.verifyStatus,
+      verifiedAt: null
+    };
+    shopById[id] = shop;
+    newShops.push(shop);
+    const ev = evidenceOf(rec);
+    if (ev.collector || ev.collectDate || ev.evidenceFile) {
+      evidence.push(Object.assign({ table: 'shops', id: id }, ev));
+    }
+  });
+
+  /* ---------- 2. 楼层 ---------- */
+  tables.floors.forEach(function (rec) {
+    const id = trim(rec.floor_id);
+    const shopId = trim(rec.shop_id);
+    if (isExampleId(id) || isExampleId(shopId)) { skipped.push({ table: 'floors', row: rec.__row, id: id, reason: '模板示例行' }); return; }
+    const shop = shopById[shopId];
+    if (!shop) { reject('floors', rec, '楼层只能挂在本次新增的店铺下（shop_id=' + JSON.stringify(shopId) + ' 不在本次导入内，且不允许改动现有店铺）'); return; }
+    if (existing.floorIds[id] || floorIds.indexOf(id) !== -1) { reject('floors', rec, '楼层 id 与现有数据或本次导入内重复：' + id); return; }
+    const m = metaOf(rec);
+    if (m.error) { reject('floors', rec, m.error); return; }
+
+    const floor = {
+      id: id,
+      label: trim(rec.floor_label),
+      shopId: shopId,
+      source: m.meta.source,
+      verifyStatus: m.meta.verifyStatus,
+      verifiedAt: null
+    };
+    shop.floors.push(floor);
+    floorIds.push(id);
+  });
+
+  /* ---------- 3. 窗口 ---------- */
+  tables.stalls.forEach(function (rec) {
+    const id = trim(rec.stall_id);
+    const shopId = trim(rec.shop_id);
+    if (isExampleId(id) || isExampleId(shopId)) { skipped.push({ table: 'stalls', row: rec.__row, id: id, reason: '模板示例行' }); return; }
+    const shop = shopById[shopId];
+    if (!shop) { reject('stalls', rec, '窗口只能挂在本次新增的店铺下（shop_id=' + JSON.stringify(shopId) + ' 不在本次导入内）'); return; }
+    if (existing.stallIds[id] || stallIds.indexOf(id) !== -1) { reject('stalls', rec, '窗口 id 与现有数据或本次导入内重复：' + id); return; }
+    const m = metaOf(rec);
+    if (m.error) { reject('stalls', rec, m.error); return; }
+
+    const stall = {
+      id: id,
+      floorId: trim(rec.floor_id),
+      name: trim(rec.stall_name),
+      source: m.meta.source,
+      verifyStatus: m.meta.verifyStatus,
+      verifiedAt: null
+    };
+    const side = trim(rec.side);
+    if (side) stall.side = side;
+    const noStatus = trim(rec.no_status);
+    if (noStatus) stall.noStatus = noStatus;
+    const no = trim(rec.no);
+    if (no) stall.no = no;
+
+    shop.stalls.push(stall);
+    stallIds.push(id);
+  });
+
+  /* ---------- 4. 菜品 ---------- */
+  tables.dishes.forEach(function (rec) {
+    const id = trim(rec.dish_id);
+    const shopId = trim(rec.shop_id);
+    if (isExampleId(id) || isExampleId(shopId)) { skipped.push({ table: 'dishes', row: rec.__row, id: id, reason: '模板示例行' }); return; }
+
+    const recordType = trim(rec.record_type) || RECORD_TYPE_DISH;
+    if (RECORD_TYPES_UNSUPPORTED.indexOf(recordType) !== -1) {
+      reject('dishes', rec, '记录类型「' + recordType + '」当前数据模型不支持，不能当成普通菜品导入（需先扩展模型）');
+      return;
+    }
+    if (recordType !== RECORD_TYPE_DISH) {
+      reject('dishes', rec, '记录类型 ' + JSON.stringify(recordType) + ' 不是「' + RECORD_TYPE_DISH + '」');
+      return;
+    }
+
+    if (existing.dishIds[id] || newDishes.some(function (d) { return d.id === id; })) {
+      reject('dishes', rec, '菜品 id 与现有数据或本次导入内重复：' + id);
+      return;
+    }
+    const m = metaOf(rec);
+    if (m.error) { reject('dishes', rec, m.error); return; }
+
+    /* 价格：保持字符串原样交给校验器判断，先做一次可读的预检 */
+    const priceText = trim(rec.price);
+    const price = Number(priceText);
+    if (priceText === '' || !isFinite(price)) {
+      reject('dishes', rec, '价格不是数字：' + JSON.stringify(priceText));
+      return;
+    }
+
+    /* 口味：只接受单值（规约 1：辣度是互斥单值） */
+    const taste = trim(rec.tastes);
+    if (taste.indexOf('|') !== -1 || taste.indexOf(',') !== -1 || taste.indexOf('、') !== -1) {
+      reject('dishes', rec, '口味必须是单个值，收到 ' + JSON.stringify(taste));
+      return;
+    }
+
+    newDishes.push({
+      id: id,
+      name: trim(rec.dish_name),
+      price: price,
+      foodType: trim(rec.food_type),
+      shopId: shopId,
+      stallId: trim(rec.stall_id),
+      tastes: taste ? [taste] : [],
+      source: m.meta.source,
+      verifyStatus: m.meta.verifyStatus,
+      verifiedAt: null
+    });
+  });
+
+  /* ---------- 5. 归属自检（给出比校验器更早、更直白的原因）---------- */
+  const floorIdSet = {};
+  const stallIdSet = {};
+  newShops.forEach(function (shop) {
+    shop.floors.forEach(function (f) { floorIdSet[f.id] = shop.id; });
+    shop.stalls.forEach(function (s) { stallIdSet[s.id] = shop.id; });
+  });
+
+  newShops.forEach(function (shop) {
+    shop.stalls.forEach(function (stall) {
+      if (shop.floors.length === 0) {
+        if (stall.floorId !== '') {
+          reject('stalls', { __file: 'stalls.csv', __row: 0, stall_id: stall.id },
+            '该店铺在本次导入里没有楼层，窗口的 floor_id 必须留空，收到 ' + JSON.stringify(stall.floorId));
+        }
+        return;
+      }
+      if (floorIdSet[stall.floorId] !== shop.id) {
+        reject('stalls', { __file: 'stalls.csv', __row: 0, stall_id: stall.id },
+          '窗口的 floor_id 不属于该店铺：' + JSON.stringify(stall.floorId));
+      }
+    });
+  });
+
+  newDishes.forEach(function (dish) {
+    if (shopById[dish.shopId] === undefined) {
+      reject('dishes', { __file: 'dishes.csv', __row: 0, dish_id: dish.id },
+        'shop_id 不在本次导入的新增店铺里：' + JSON.stringify(dish.shopId));
+      return;
+    }
+    if (stallIdSet[dish.stallId] !== dish.shopId) {
+      reject('dishes', { __file: 'dishes.csv', __row: 0, dish_id: dish.id },
+        'stall_id 不属于该店铺（或不在本次导入内）：' + JSON.stringify(dish.stallId));
+    }
+  });
+
+  /* 被拒绝的记录不再进入待写入集合，避免「有拒绝还写进去一半」 */
+  const rejectedShopIds = {};
+  const rejectedStallIds = {};
+  const rejectedDishIds = {};
+  rejected.forEach(function (r) {
+    if (r.table === 'shops') rejectedShopIds[r.id] = true;
+    if (r.table === 'stalls') rejectedStallIds[r.id] = true;
+    if (r.table === 'dishes') rejectedDishIds[r.id] = true;
+  });
+
+  const finalShops = newShops.filter(function (s) { return !rejectedShopIds[s.id]; });
+  const finalDishes = newDishes.filter(function (d) { return !rejectedDishIds[d.id]; });
+
+  return {
+    shops: finalShops,
+    dishes: finalDishes,
+    rejected: rejected,
+    skipped: skipped,
+    warnings: warnings,
+    evidence: evidence
+  };
+}
+
+/* ------------------------------------------------------------------
+   现有 id 索引（只读，来自 data/）
+   ------------------------------------------------------------------ */
+
+function indexExisting() {
+  const shopIds = {};
+  const floorIds = {};
+  const stallIds = {};
+  const dishIds = {};
+
+  SHOPS.forEach(function (shop) {
+    shopIds[shop.id] = true;
+    (shop.floors || []).forEach(function (f) { floorIds[f.id] = true; });
+    (shop.stalls || []).forEach(function (s) { stallIds[s.id] = true; });
+  });
+  DISHES.forEach(function (d) { dishIds[d.id] = true; });
+
+  return { shopIds: shopIds, floorIds: floorIds, stallIds: stallIds, dishIds: dishIds };
+}
+
+/* ------------------------------------------------------------------
+   校验：全部复用 tools/verify_data.js，不复制规则
+   ------------------------------------------------------------------ */
+
+function validateNew(built, opts) {
+  return verify.validateDataset(
+    { shops: built.shops, dishes: built.dishes },
+    { declaredDemo: false, checkJoin: false, today: opts.today }
+  );
+}
+
+function validateMerged(built, opts) {
+  return verify.validateDataset(
+    { shops: SHOPS.concat(built.shops), dishes: DISHES.concat(built.dishes) },
+    { declaredDemo: false, checkJoin: false, today: opts.today }
+  );
+}
+
+/* 合并校验里只关心「本次新增的 id」引发的错误；演示数据本身是干净的基线 */
+function errorsOfNew(result, built) {
+  const ids = {};
+  built.shops.forEach(function (s) {
+    ids[s.id] = true;
+    (s.floors || []).forEach(function (f) { ids[f.id] = true; });
+    (s.stalls || []).forEach(function (s2) { ids[s2.id] = true; });
+  });
+  built.dishes.forEach(function (d) { ids[d.id] = true; });
+
+  return result.errors.filter(function (e) { return ids[e.id] === true; });
+}
+
+/* ------------------------------------------------------------------
+   写入（原子、可回滚）
+   ------------------------------------------------------------------ */
+
+function buildPayload(built, sources) {
+  const generatedAt = new Date().toISOString();
+  const head = {
+    schema: 'shanli-import-v1',
+    generatedAt: generatedAt,
+    demo: false,
+    note: '由 tools/import_data.js 生成。所有记录一律 unverified，未经人工核验不得当作已核实信息展示。'
+  };
+
+  return {
+    'shops.json': JSON.stringify(Object.assign({}, head, {
+      shops: built.shops.map(function (s) {
+        return {
+          id: s.id, name: s.name, area: s.area, building: s.building, location: s.location,
+          floors: s.floors.map(function (f) {
+            return { id: f.id, label: f.label, shopId: f.shopId, source: f.source, verifyStatus: f.verifyStatus, verifiedAt: f.verifiedAt };
+          }),
+          stalls: s.stalls.map(function (t) {
+            const o = { id: t.id, floorId: t.floorId, name: t.name, source: t.source, verifyStatus: t.verifyStatus, verifiedAt: t.verifiedAt };
+            if (t.side) o.side = t.side;
+            if (t.noStatus) o.noStatus = t.noStatus;
+            if (t.no) o.no = t.no;
+            return o;
+          }),
+          source: s.source, verifyStatus: s.verifyStatus, verifiedAt: s.verifiedAt
+        };
+      })
+    }), null, 2) + '\n',
+
+    'dishes.json': JSON.stringify(Object.assign({}, head, {
+      dishes: built.dishes.map(function (d) {
+        return {
+          id: d.id, name: d.name, price: d.price, foodType: d.foodType,
+          shopId: d.shopId, stallId: d.stallId, tastes: d.tastes,
+          source: d.source, verifyStatus: d.verifyStatus, verifiedAt: d.verifiedAt
+        };
+      })
+    }), null, 2) + '\n',
+
+    'manifest.json': JSON.stringify(Object.assign({}, head, {
+      counts: {
+        shops: built.shops.length,
+        floors: built.shops.reduce(function (a, s) { return a + s.floors.length; }, 0),
+        stalls: built.shops.reduce(function (a, s) { return a + s.stalls.length; }, 0),
+        dishes: built.dishes.length
+      },
+      skipped: built.skipped,
+      rejected: built.rejected,
+      sourceFiles: sources,
+      /* 证据链：模型里没有位置存这三项，只能留在 manifest 供人工审核 */
+      evidence: built.evidence,
+      evidenceNote: 'collector / collect_date / evidence_file 三项当前数据模型无法存放，只记录在本清单中，'
+        + '不写入 shops/dishes 数据，也不构成 verified 依据。'
+    }), null, 2) + '\n'
+  };
+}
+
+/**
+ * 原子写入：先写临时目录，全部成功后再逐个 rename 到目标目录。
+ * 任一环节失败 → 删除临时目录，目标目录保持原样（不会留下半成品）。
+ */
+function writePayload(outDir, payload) {
+  const names = Object.keys(payload);
+
+  if (fs.existsSync(outDir)) {
+    const clash = names.filter(function (n) { return fs.existsSync(path.join(outDir, n)); });
+    if (clash.length) {
+      const err = new Error('目标目录已存在同名文件：' + clash.join(', ') + '（默认不覆盖，请换一个目录或手动清理）');
+      err.code = 'EEXIST_TARGET';
+      throw err;
+    }
+  }
+
+  fs.mkdirSync(outDir, { recursive: true });
+  const tmpDir = path.join(outDir, '.import-tmp-' + process.pid + '-' + Date.now());
+  fs.mkdirSync(tmpDir);
+
+  try {
+    names.forEach(function (n) {
+      fs.writeFileSync(path.join(tmpDir, n), payload[n], 'utf8');
+    });
+    names.forEach(function (n) {
+      fs.renameSync(path.join(tmpDir, n), path.join(outDir, n));
+    });
+  } finally {
+    try { fs.rmSync(tmpDir, { recursive: true, force: true }); } catch (e) { /* 清理失败不影响结果判断 */ }
+  }
+}
+
+/* 写后复核：把刚写下的文件读回来，再走一遍同一套校验 */
+function verifyWritten(outDir, opts) {
+  const shopsFile = path.join(outDir, 'shops.json');
+  const dishesFile = path.join(outDir, 'dishes.json');
+  const shopsJson = JSON.parse(fs.readFileSync(shopsFile, 'utf8'));
+  const dishesJson = JSON.parse(fs.readFileSync(dishesFile, 'utf8'));
+
+  const shops = shopsJson.shops || [];
+  const dishes = dishesJson.dishes || [];
+
+  const solo = verify.validateDataset(
+    { shops: shops, dishes: dishes },
+    { declaredDemo: false, checkJoin: false, today: opts.today }
+  );
+  const merged = verify.validateDataset(
+    { shops: SHOPS.concat(shops), dishes: DISHES.concat(dishes) },
+    { declaredDemo: false, checkJoin: false, today: opts.today }
+  );
+
+  return { shops: shops, dishes: dishes, solo: solo, merged: merged };
+}
+
+/* ------------------------------------------------------------------
+   报告
+   ------------------------------------------------------------------ */
+
+function countShopsDetail(built) {
+  return {
+    shops: built.shops.length,
+    floors: built.shops.reduce(function (a, s) { return a + s.floors.length; }, 0),
+    stalls: built.shops.reduce(function (a, s) { return a + s.stalls.length; }, 0),
+    dishes: built.dishes.length
+  };
+}
+
+function printImportReport(ctx) {
+  const out = ctx.out || console.log;
+  const built = ctx.built;
+  const counts = countShopsDetail(built);
+
+  out('===== CSV 导入 · tools/import_data.js =====');
+  out('模式：' + (ctx.write ? '写入（--write）' : '预览（dry-run，不写任何文件）'));
+  out('CSV 目录：' + ctx.dir);
+  out('读取：' + ctx.readCounts);
+
+  if (built.skipped.length) {
+    out('');
+    out('跳过 ' + built.skipped.length + ' 条（不计入导入，也不报错）：');
+    built.skipped.forEach(function (s) {
+      out('  · ' + s.table + ' 第 ' + s.row + ' 行 · ' + s.id + '　原因：' + s.reason);
+    });
+  }
+
+  if (built.rejected.length) {
+    out('');
+    out('拒绝 ' + built.rejected.length + ' 条：');
+    built.rejected.forEach(function (r) {
+      out('  ✗ ' + r.table + ' 第 ' + r.row + ' 行 · ' + r.id + '　原因：' + r.reason);
+    });
+  }
+
+  out('');
+  out('准备新增：店铺 ' + counts.shops + ' / 楼层 ' + counts.floors +
+    ' / 窗口 ' + counts.stalls + ' / 菜品 ' + counts.dishes);
+
+  ['solo', 'merged'].forEach(function (key) {
+    const r = ctx[key];
+    const label = key === 'solo' ? '新增记录单独校验' : '与现有数据合并后校验';
+    const errs = key === 'merged' ? errorsOfNew(r, built) : r.errors;
+    out(label + '：' + r.errors.length + ' 错误 / ' + r.warnings.length + ' 警告' +
+      (key === 'merged' ? '（其中属于本次新增的 ' + errs.length + ' 条）' : ''));
+    errs.slice(0, ctx.showAll ? errs.length : 20).forEach(function (e) {
+      out('  ✗ [' + e.rule + '] ' + e.table + ' ' + e.id + ' → ' + e.field + ' = ' + e.value + '　' + e.reason);
+    });
+    if (!ctx.showAll && errs.length > 20) {
+      out('  …… 其余 ' + (errs.length - 20) + ' 条未显示（加 --all 查看全部）');
+    }
+  });
+
+  if (ctx.written) {
+    out('');
+    out('已写入：' + ctx.outDir);
+    out('写后复核：读回 ' + ctx.written.shops.length + ' 店铺 / ' + ctx.written.dishes.length +
+      ' 菜品，单独校验 ' + ctx.written.solo.errors.length + ' 错误，合并校验新增部分 ' +
+      errorsOfNew(ctx.written.merged, built).length + ' 错误');
+  }
+
+  out('');
+  const fatal = built.rejected.length > 0 ||
+    (ctx.solo.errors.length > 0) || (errorsOfNew(ctx.merged, built).length > 0);
+
+  if (fatal) {
+    out('❌ 存在拒绝或校验错误：本次 ' + (ctx.write ? '未写入' : '不可写入') + '，需要先修数据');
+  } else if (ctx.write) {
+    out('✅ 导入完成（全部记录为 unverified，未改动 data/ 下任何文件）');
+  } else {
+    out('✅ 预览通过：' + (counts.shops + counts.dishes > 0 ? '可以加 --write --out <目录> 写入' : '没有可导入的新记录（当前只有模板示例行）'));
+  }
+}
+
+/* ------------------------------------------------------------------
+   CLI
+   ------------------------------------------------------------------ */
+
+function parseArgs(argv) {
+  const opts = {
+    dir: TEMPLATE_DIR,
+    write: false,
+    out: '',
+    showAll: false
+  };
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === '--write') { opts.write = true; continue; }
+    if (a === '--all') { opts.showAll = true; continue; }
+    if (a === '--dir') {
+      opts.dir = argv[i + 1] ? path.resolve(argv[i + 1]) : '';
+      i += 1; continue;
+    }
+    if (a === '--out') {
+      opts.out = argv[i + 1] ? path.resolve(argv[i + 1]) : '';
+      i += 1; continue;
+    }
+    throw new Error('未知参数：' + a);
+  }
+  return opts;
+}
+
+function main(argv) {
+  let opts;
+  try {
+    opts = parseArgs(argv || []);
+  } catch (e) {
+    console.error('用法错误：' + e.message);
+    console.error('用法：node tools/import_data.js [--dir <CSV目录>] [--write --out <输出目录>] [--all]');
+    return EXIT.USAGE;
+  }
+
+  if (opts.write && !opts.out) {
+    console.error('用法错误：--write 必须同时给出 --out <输出目录>（本工具不会自动写进 data/）');
+    return EXIT.USAGE;
+  }
+
+  /* 读四张表 */
+  const tables = {};
+  const tableErrors = [];
+  const warnings = [];
+  const sources = {};
+  let readCounts = [];
+
+  Object.keys(SCHEMAS).forEach(function (name) {
+    const schema = SCHEMAS[name];
+    const t = readTable(opts.dir, schema);
+    tables[name] = t.records;
+    t.errors.forEach(function (e) { tableErrors.push(e); });
+    t.warnings.forEach(function (w) { warnings.push(w); });
+    sources[schema.file] = t.sha256;
+    readCounts.push(schema.label + ' ' + t.records.length + ' 行');
+  });
+
+  if (tableErrors.length) {
+    console.error('❌ CSV 读取失败：');
+    tableErrors.forEach(function (e) { console.error('  · ' + e); });
+    return EXIT.INVALID;
+  }
+
+  const existing = indexExisting();
+  const built = buildImport(tables, existing);
+  built.warnings = built.warnings.concat(warnings);
+
+  const ctx = {
+    dir: opts.dir,
+    write: opts.write,
+    showAll: opts.showAll,
+    readCounts: readCounts.join(' / '),
+    built: built,
+    solo: validateNew(built, {}),
+    merged: validateMerged(built, {}),
+    outDir: opts.out
+  };
+
+  const fatal = built.rejected.length > 0 ||
+    ctx.solo.errors.length > 0 ||
+    errorsOfNew(ctx.merged, built).length > 0;
+
+  if (opts.write) {
+    if (fatal) {
+      printImportReport(ctx);
+      return EXIT.INVALID;
+    }
+    const payload = buildPayload(built, sources);
+    try {
+      writePayload(opts.out, payload);
+    } catch (e) {
+      printImportReport(ctx);
+      console.error('');
+      console.error('❌ 写入失败，已回滚，目标目录未留下半成品：' + e.message);
+      return EXIT.WRITE_FAILED;
+    }
+    const written = verifyWritten(opts.out, {});
+    ctx.written = written;
+    if (written.solo.errors.length || errorsOfNew(written.merged, built).length) {
+      printImportReport(ctx);
+      console.error('');
+      console.error('❌ 写后复核失败：写入的文件未能通过校验，请删除 ' + opts.out + ' 后重新导入');
+      return EXIT.WRITE_FAILED;
+    }
+    printImportReport(ctx);
+    return EXIT.OK;
+  }
+
+  printImportReport(ctx);
+  return fatal ? EXIT.INVALID : EXIT.OK;
+}
+
+if (require.main === module) {
+  process.exitCode = main(process.argv.slice(2));
+}
+
+module.exports = {
+  parseCsv: parseCsv,
+  rowsToRecords: rowsToRecords,
+  readTable: readTable,
+  buildImport: buildImport,
+  indexExisting: indexExisting,
+  validateNew: validateNew,
+  validateMerged: validateMerged,
+  errorsOfNew: errorsOfNew,
+  buildPayload: buildPayload,
+  writePayload: writePayload,
+  verifyWritten: verifyWritten,
+  main: main,
+  SCHEMAS: SCHEMAS,
+  TEMPLATE_DIR: TEMPLATE_DIR,
+  EXAMPLE_ID_PREFIX: EXAMPLE_ID_PREFIX,
+  EXIT: EXIT
+};

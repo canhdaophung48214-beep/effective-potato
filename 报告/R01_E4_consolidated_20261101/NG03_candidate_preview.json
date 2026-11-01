@@ -1,0 +1,250 @@
+{
+  "version": "isolated-proposal-1",
+  "groupRef": "NG03",
+  "mode": "self_select_double_combination",
+  "rules": {
+    "riceRefill": "unlimited",
+    "allDishRefill": "unlimited",
+    "evidence": "owner_D1"
+  },
+  "composition": {
+    "status": "unknown",
+    "value": null
+  },
+  "slideEggRiceSameStall": false,
+  "slideEggRiceSameSalesSystem": false,
+  "D3": "14/16 independent whole-serving prices",
+  "items": [
+    {
+      "previewRef": "c01_t41|f3/辣椒炒肉（招牌）||",
+      "dishId": null,
+      "name": "辣椒炒肉（招牌）",
+      "sourceFile": "项目/tools/pilot/TRANSCRIPTION_3F.md",
+      "sourceLine": 185,
+      "sourceQuote": "| 辣椒炒肉（招牌） | 14 元 |",
+      "priceYuan": 14,
+      "saleUnit": {
+        "status": "known_by_owner",
+        "value": "份"
+      },
+      "priceMeaning": "independent_whole_serving_label",
+      "businessGroupRef": "NG03",
+      "composition": {
+        "status": "unknown",
+        "value": null
+      },
+      "choiceConstraints": {
+        "status": "unknown",
+        "value": null
+      }
+    },
+    {
+      "previewRef": "c01_t41|f3/杏鲍菇炒肉||",
+      "dishId": null,
+      "name": "杏鲍菇炒肉",
+      "sourceFile": "项目/tools/pilot/TRANSCRIPTION_3F.md",
+      "sourceLine": 186,
+      "sourceQuote": "| 杏鲍菇炒肉 | 12 元 |",
+      "priceYuan": 12,
+      "saleUnit": {
+        "status": "known_by_owner",
+        "value": "份"
+      },
+      "priceMeaning": "independent_whole_serving_label",
+      "businessGroupRef": "NG03",
+      "composition": {
+        "status": "unknown",
+        "value": null
+      },
+      "choiceConstraints": {
+        "status": "unknown",
+        "value": null
+      }
+    },
+    {
+      "previewRef": "c01_t41|f3/农家一碗香||",
+      "dishId": null,
+      "name": "农家一碗香",
+      "sourceFile": "项目/tools/pilot/TRANSCRIPTION_3F.md",
+      "sourceLine": 187,
+      "sourceQuote": "| 农家一碗香 | 12 元 |",
+      "priceYuan": 12,
+      "saleUnit": {
+        "status": "known_by_owner",
+        "value": "份"
+      },
+      "priceMeaning": "independent_whole_serving_label",
+      "businessGroupRef": "NG03",
+      "composition": {
+        "status": "unknown",
+        "value": null
+      },
+      "choiceConstraints": {
+        "status": "unknown",
+        "value": null
+      }
+    },
+    {
+      "previewRef": "c01_t41|f3/双椒回锅肉||",
+      "dishId": null,
+      "name": "双椒回锅肉",
+      "sourceFile": "项目/tools/pilot/TRANSCRIPTION_3F.md",
+      "sourceLine": 188,
+      "sourceQuote": "| 双椒回锅肉 | 12 元 |",
+      "priceYuan": 12,
+      "saleUnit": {
+        "status": "known_by_owner",
+        "value": "份"
+      },
+      "priceMeaning": "independent_whole_serving_label",
+      "businessGroupRef": "NG03",
+      "composition": {
+        "status": "unknown",
+        "value": null
+      },
+      "choiceConstraints": {
+        "status": "unknown",
+        "value": null
+      }
+    },
+    {
+      "previewRef": "c01_t41|f3/小炒腊肠（肉）||",
+      "dishId": null,
+      "name": "小炒腊肠（肉）",
+      "sourceFile": "项目/tools/pilot/TRANSCRIPTION_3F.md",
+      "sourceLine": 189,
+      "sourceQuote": "| 小炒腊肠（肉） | 12 元 |",
+      "priceYuan": 12,
+      "saleUnit": {
+        "status": "known_by_owner",
+        "value": "份"
+      },
+      "priceMeaning": "independent_whole_serving_label",
+      "businessGroupRef": "NG03",
+      "composition": {
+        "status": "unknown",
+        "value": null
+      },
+      "choiceConstraints": {
+        "status": "unknown",
+        "value": null
+      }
+    },
+    {
+      "previewRef": "c01_t41|f3/豆腐炒肉||",
+      "dishId": null,
+      "name": "豆腐炒肉",
+      "sourceFile": "项目/tools/pilot/TRANSCRIPTION_3F.md",
+      "sourceLine": 190,
+      "sourceQuote": "| 豆腐炒肉 | 12 元 |",
+      "priceYuan": 12,
+      "saleUnit": {
+        "status": "known_by_owner",
+        "value": "份"
+      },
+      "priceMeaning": "independent_whole_serving_label",
+      "businessGroupRef": "NG03",
+      "composition": {
+        "status": "unknown",
+        "value": null
+      },
+      "choiceConstraints": {
+        "status": "unknown",
+        "value": null
+      }
+    },
+    {
+      "previewRef": "c01_t41|f3/番茄拉丝炒蛋||",
+      "dishId": null,
+      "name": "番茄拉丝炒蛋",
+      "sourceFile": "项目/tools/pilot/TRANSCRIPTION_3F.md",
+      "sourceLine": 191,
+      "sourceQuote": "| 番茄拉丝炒蛋 | 12 元 |",
+      "priceYuan": 12,
+      "saleUnit": {
+        "status": "known_by_owner",
+        "value": "份"
+      },
+      "priceMeaning": "independent_whole_serving_label",
+      "businessGroupRef": "NG03",
+      "composition": {
+        "status": "unknown",
+        "value": null
+      },
+      "choiceConstraints": {
+        "status": "unknown",
+        "value": null
+      }
+    },
+    {
+      "previewRef": "c01_t41|f3/外婆菜炒鸡蛋||",
+      "dishId": null,
+      "name": "外婆菜炒鸡蛋",
+      "sourceFile": "项目/tools/pilot/TRANSCRIPTION_3F.md",
+      "sourceLine": 192,
+      "sourceQuote": "| 外婆菜炒鸡蛋 | 12 元 |",
+      "priceYuan": 12,
+      "saleUnit": {
+        "status": "known_by_owner",
+        "value": "份"
+      },
+      "priceMeaning": "independent_whole_serving_label",
+      "businessGroupRef": "NG03",
+      "composition": {
+        "status": "unknown",
+        "value": null
+      },
+      "choiceConstraints": {
+        "status": "unknown",
+        "value": null
+      }
+    },
+    {
+      "previewRef": "c01_t41|f3/青椒小炒肉||",
+      "dishId": null,
+      "name": "青椒小炒肉",
+      "sourceFile": "项目/tools/pilot/TRANSCRIPTION_3F.md",
+      "sourceLine": 193,
+      "sourceQuote": "| 青椒小炒肉 | 12 元 |",
+      "priceYuan": 12,
+      "saleUnit": {
+        "status": "known_by_owner",
+        "value": "份"
+      },
+      "priceMeaning": "independent_whole_serving_label",
+      "businessGroupRef": "NG03",
+      "composition": {
+        "status": "unknown",
+        "value": null
+      },
+      "choiceConstraints": {
+        "status": "unknown",
+        "value": null
+      }
+    },
+    {
+      "previewRef": "c01_t41|f3/红烧排骨饭||",
+      "dishId": null,
+      "name": "红烧排骨饭",
+      "sourceFile": "项目/tools/pilot/TRANSCRIPTION_3F.md",
+      "sourceLine": 194,
+      "sourceQuote": "| 红烧排骨饭 | 16 元 |",
+      "priceYuan": 16,
+      "saleUnit": {
+        "status": "known_by_owner",
+        "value": "份"
+      },
+      "priceMeaning": "independent_whole_serving_label",
+      "businessGroupRef": "NG03",
+      "composition": {
+        "status": "unknown",
+        "value": null
+      },
+      "choiceConstraints": {
+        "status": "unknown",
+        "value": null
+      }
+    }
+  ],
+  "formalImportAllowed": false
+}

@@ -1,0 +1,317 @@
+[
+  {
+    "manifestLine": 2,
+    "photoId": "S-01",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_f6c6fe120f2325641802d329ea54be67ccaa863a0e396bca5cb093785f1bcf5e.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 3,
+    "photoId": "S-02",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_7e603d57d3d65432fabb38ee69cd30bee7a5987141d2e0962cf02f91e87a1ec0.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 4,
+    "photoId": "S-03",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_f11c6d6dba36d83e7823bf0ac2afe4a6d7aeb7ad5d99007a1f09ec7844953fba.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "candidate",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 5,
+    "photoId": "S-04",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_ef91e37fdb3c2a92d042ea6adadbd9faae37dfb4c27aeb5324806e0c424b6f15.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 6,
+    "photoId": "3F-01",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_d8cb3398064c61e7cd5010af6ee904c6ac641bea07898530320e94eb502b63cc.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 7,
+    "photoId": "3F-02",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_379d4622d17af3c5ea86690fb27b97dfae09f25f7eb3dbb848ce3066ca43982b.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 8,
+    "photoId": "3F-03",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_c60ccab08695b9331751846574c3c7fb4d3311537f2598a664b8ae6d1ac41485.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 9,
+    "photoId": "3F-04",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_f57786adfa9c14525683250af226fb430962a85643cdc10b4007d497e337fe1d.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 10,
+    "photoId": "3F-05",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_cd3ba755714245e75d17b5a4dadba70d7da57af80feb7f92c4eb9019accf37e9.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "confirmed",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 11,
+    "photoId": "3F-06",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_06bc2879985e7726d93c6f2e7f8ab14db01d47b2f3c16a3a32c476257a3fd6a6.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "candidate",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 12,
+    "photoId": "3F-07",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_06bc2879985e7726d93c6f2e7f8ab14db01d47b2f3c16a3a32c476257a3fd6a6.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "candidate",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 13,
+    "photoId": "3F-08",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_f95f711fdc6e0150161decccbb8c4e5aadf77445dd3b72cde1cc46b5757f89b1.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 14,
+    "photoId": "3F-09",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_47cd11c088490565ec5b43a6810a8e7b5276162c45943cedff0c4e1d4711c08d.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 15,
+    "photoId": "3F-10",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_b663bf9368955f640ddf3e6d32be7204ae0f9c6903a81268e584391c1ddf46d6.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 16,
+    "photoId": "3F-11",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_855a017bf84a55eae499ccbf13d9deadba21c12ffa636e145a473c70cf32379b.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 17,
+    "photoId": "2F-01",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_19c384713fad9b4a0df2acab26ebfb6dce2882f4305094e28935e674da036e8e.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 18,
+    "photoId": "2F-02",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_d676a6c36d3d28c9fa931c70e27b96bf393f7fb22385fe5d7a8eb5e0d6a7aec1.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 19,
+    "photoId": "2F-03",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_19357347ccf247c27d8b1faae442892673fa437671fb45c1993c9c2922d055f2.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 20,
+    "photoId": "2F-04",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_2095909874cccb7179604d9e899bee67a1b801d830e374084e442302c7e4b630.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "confirmed",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 21,
+    "photoId": "2F-05",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "confirmed",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 22,
+    "photoId": "2F-06",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_63f434b076772706033820a2b37996c3bf1019112853cab4db3f3a7da174bfe5.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "candidate",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 23,
+    "photoId": "2F-07",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "confirmed",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 24,
+    "photoId": "2F-08",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_5a4feb479cd48e43c1ac30fab10800417d55dca87519f98119ae5624232d8fcf.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 25,
+    "photoId": "2F-09",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "confirmed",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 26,
+    "photoId": "2F-10",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_9069d718726289d2c5626e33b7d376577c6bfcb6082755a6b02b59d7b78dc062.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 27,
+    "photoId": "2F-11",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_991f8ce4b56efd33f900cf77b721dcfe446ab82c6bf985867ba377ab504772b6.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 28,
+    "photoId": "2F-12",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_b0bd8b62f1f2bc0d7c6ba802ff66dcff3d0f6b8a3aa666be90d1e5ce0707a9ef.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 29,
+    "photoId": "2F-13",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_15791a0c77521576e6957c65dbed0cdd88b9893c9cb945c1f609ad98a8c1e06d.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 30,
+    "photoId": "2F-14",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_689c7ca4089d0a1c3a5412a14437c9e105d6acb2ccf9022b5303ae8c5292323e.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 31,
+    "photoId": "2F-15",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_9abd86d23c3ca07e2e0d7f5f1e29c9ea4f9657959703e6f7ac5f4c127e3c0396.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 32,
+    "photoId": "2F-16",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 33,
+    "photoId": "2F-17",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_cc91259f1e6b2d58c945e641a6e4e187aa322ff636ce1ae14634710d56d1567d.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 34,
+    "photoId": "2F-18",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 35,
+    "photoId": "2F-19",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_ef85a1561ce194120766444869dfb2015ff28b857372960a595702df64f41454.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  },
+  {
+    "manifestLine": 36,
+    "photoId": "2F-20",
+    "path": "项目/evidence/ds-session-1e2717cc/sha256_3253464b2cf660731727a7d0d048c1a4a96abb5e13be6382c9cf9ea0b42fc039.jpg",
+    "exists": true,
+    "hashMatches": true,
+    "mappingStatus": "unresolved",
+    "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+  }
+]

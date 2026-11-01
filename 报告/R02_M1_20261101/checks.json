@@ -1,0 +1,31 @@
+{
+  "commands": [
+    {
+      "name": "default",
+      "exitCode": 0
+    },
+    {
+      "name": "strict",
+      "exitCode": 1
+    },
+    {
+      "name": "missing_evidence",
+      "exitCode": 1,
+      "expectedReject": true
+    },
+    {
+      "name": "future_date",
+      "exitCode": 1,
+      "expectedReject": true
+    }
+  ],
+  "sourceIntegrity": "39/39 existing evidence files",
+  "uniqueIds": 39,
+  "requiredCoreFields": "39/39 complete",
+  "dishMetadataFieldsNewlyRecovered": 0,
+  "parentEvidencePathsRecovered": 2,
+  "strictPassed": 0,
+  "manualDishCount": 39,
+  "projectFilesUnchanged": 377,
+  "exitCode": 0
+}

@@ -1,8 +1,9 @@
 {
-  "description": "山理吃什么 - 山东理工大学就餐推荐小程序",
-  "projectname": "shanli-chishenme",
-  "appid": "wx8e33612235271870",
+  "description": "食神寻味微信小程序",
+  "projectname": "食神寻味",
+  "appid": "wxcc28587e4d0254ad",
   "compileType": "miniprogram",
+  "cloudfunctionRoot": "cloudfunctions/",
   "setting": {
     "urlCheck": false,
     "es6": true,
@@ -36,7 +37,40 @@
   "condition": {},
   "simulatorPluginLibVersion": {},
   "packOptions": {
-    "ignore": [],
+    "ignore": [
+      {
+        "value": "tools",
+        "type": "folder"
+      },
+      {
+        "value": "design",
+        "type": "folder"
+      },
+      {
+        "value": "docs",
+        "type": "folder"
+      },
+      {
+        "value": "evidence",
+        "type": "folder"
+      },
+      {
+        "value": ".git",
+        "type": "folder"
+      },
+      {
+        "value": ".md",
+        "type": "suffix"
+      },
+      {
+        "value": ".gitignore",
+        "type": "file"
+      },
+      {
+        "value": ".gitattributes",
+        "type": "file"
+      }
+    ],
     "include": []
   },
   "editorSetting": {}

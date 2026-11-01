@@ -1,0 +1,15 @@
+<view class="card {{compact?'compact':''}}" bindtap="open">
+  <view class="visual"><text>{{item.preparation}}</text></view>
+  <view class="body">
+    <!-- MINIMAL_START -->
+    <block wx:if="{{minimal}}">
+      <view class="name long-text">{{item.name}}</view>
+      <view class="history">{{item.historicalPriceText}}</view>
+    </block>
+    <!-- MINIMAL_END -->
+    <block wx:else>
+    <view class="name long-text">{{item.name}}</view>
+    <view class="history">{{item.historicalPriceText}}</view>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,24 @@
+{
+  "R01_E2_tastes_evidence.csv": {
+    "bytes": 185395,
+    "sha": "9e5ec1a39e1aa26ecf6f44a2ba1d5fc3919be94b2128aa0431bc64c5925ba0f7"
+  },
+  "R01_E2_foodType_evidence.csv": {
+    "bytes": 142613,
+    "sha": "cdfd820c9f8d0ed237d1096e2e403b4b54d93511e2d2d99d05e4280c818fde14"
+  },
+  "R01_E2_缺失交集统计.json": {
+    "bytes": 9255,
+    "sha": "8311cbe7243a12a8abde3f13d9c4be72bbf6d1bda30cee11f721b837065dbb77"
+  },
+  "r01_e2_analyze.js": {
+    "bytes": 15102,
+    "sha": "c546e3a381925027c521aabf080adb6ead9f937281dc2e1c1c6c13d39058f65a"
+  },
+  "self": {
+    "file": "Codex_R01_E2_证据恢复分析_20261031.md",
+    "bytes": 25226,
+    "sha": "c4d08f1b963fca1515391e6e800aa4e82609a6c9e01c376d1a7f2ff86d535bda",
+    "note": "自引用条目：为报告自身最终字节与 SHA-256 的机读副本"
+  }
+}

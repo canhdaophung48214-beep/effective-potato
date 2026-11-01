@@ -1,0 +1,261 @@
+{
+  "scriptMappings": {
+    "jiangdao": {
+      "originalPath": "C:\\Users\\25975\\.dsh\\attachments\\v1\\objects\\e1\\e18a41a5ddc1f277b24234ee16f95280561422f62d07263f639ebf86e5e2a735",
+      "cropPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\jiangdao.png",
+      "relativeCropBox": [
+        0.2,
+        0.28,
+        0.95,
+        0.68
+      ],
+      "mappingBasis": "项目\\tools\\_crop3f.py JOBS jiangdao",
+      "originalPathExists": true,
+      "originalPathSHA256": "e18a41a5ddc1f277b24234ee16f95280561422f62d07263f639ebf86e5e2a735",
+      "cropPathExists": true,
+      "cropPathSHA256": "e5ccab9439eba8cad9dedf038aa71ead616acf66b212532f2c6cb116c6fa1e74"
+    },
+    "gigi": {
+      "originalPath": "C:\\Users\\25975\\.dsh\\attachments\\v1\\objects\\c2\\c246e69a3b11221dfc2eaa12ff80e48f25de394a2dbe6c186ef58d615fc74fd3",
+      "cropPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\gigi.png",
+      "relativeCropBox": [
+        0.55,
+        0.42,
+        1.0,
+        0.8
+      ],
+      "mappingBasis": "项目\\tools\\_crop3f.py JOBS gigi",
+      "originalPathExists": true,
+      "originalPathSHA256": "c246e69a3b11221dfc2eaa12ff80e48f25de394a2dbe6c186ef58d615fc74fd3",
+      "cropPathExists": true,
+      "cropPathSHA256": "aee3db3e724ce74649033b53c85bfbb8164919593df3b4144d725ecd8b892c80"
+    },
+    "wukexin": {
+      "originalPath": "C:\\Users\\25975\\.dsh\\attachments\\v1\\objects\\d3\\d3e975456fbb1dbe0495e2c4448db576ddc99a125e51798dfae7f5921f37f3ad",
+      "cropPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\wukexin.png",
+      "relativeCropBox": [
+        0.0,
+        0.24,
+        1.0,
+        0.4
+      ],
+      "mappingBasis": "项目\\tools\\_crop3f.py JOBS wukexin",
+      "originalPathExists": true,
+      "originalPathSHA256": "d3e975456fbb1dbe0495e2c4448db576ddc99a125e51798dfae7f5921f37f3ad",
+      "cropPathExists": true,
+      "cropPathSHA256": "4e1c0aa1a611bec7cc751b7182a20a539431786b77c985aa00adeb7eeeddb979"
+    },
+    "chapao": {
+      "originalPath": "C:\\Users\\25975\\.dsh\\attachments\\v1\\objects\\ba\\baabd23c778abb4fa516c4890afdfd80b09a61b30ec604c3667131d0d2485b38",
+      "cropPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\chapao.png",
+      "relativeCropBox": [
+        0.0,
+        0.22,
+        1.0,
+        0.42
+      ],
+      "mappingBasis": "项目\\tools\\_crop3f.py JOBS chapao",
+      "originalPathExists": true,
+      "originalPathSHA256": "baabd23c778abb4fa516c4890afdfd80b09a61b30ec604c3667131d0d2485b38",
+      "cropPathExists": true,
+      "cropPathSHA256": "e493a4bc49db9af5ae42f4aff70cd34006ca8eb0dc40e121505ef36d6f87f242"
+    },
+    "lataifan": {
+      "originalPath": "C:\\Users\\25975\\.dsh\\attachments\\v1\\objects\\9d\\9d149ab4d94dad0cb4d86f1304b712f6097e33d6d453ff8c592f355fd1097e77",
+      "cropPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\lataifan.png",
+      "relativeCropBox": [
+        0.18,
+        0.26,
+        0.82,
+        0.52
+      ],
+      "mappingBasis": "项目\\tools\\_crop3f.py JOBS lataifan",
+      "originalPathExists": true,
+      "originalPathSHA256": "9d149ab4d94dad0cb4d86f1304b712f6097e33d6d453ff8c592f355fd1097e77",
+      "cropPathExists": true,
+      "cropPathSHA256": "f86c894018d0b87d9475bdf98219aeb12b2e76f9ce69a5d745a8b9f1c2e8e6f1"
+    },
+    "lirou": {
+      "originalPath": "C:\\Users\\25975\\.dsh\\attachments\\v1\\objects\\bd\\bda0a6be97dea0b6fa54a68bfc1133af8a7c64c6f36a22fffbd25f4b8ba3eebc",
+      "cropPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\lirou.png",
+      "relativeCropBox": [
+        0.03,
+        0.22,
+        0.72,
+        0.4
+      ],
+      "mappingBasis": "项目\\tools\\_crop3f.py JOBS lirou",
+      "originalPathExists": true,
+      "originalPathSHA256": "bda0a6be97dea0b6fa54a68bfc1133af8a7c64c6f36a22fffbd25f4b8ba3eebc",
+      "cropPathExists": true,
+      "cropPathSHA256": "88842b0ee13705663c6fe3a823066207d64e1579086faba3beefe8d8ffbcb2d4"
+    },
+    "liruo": {
+      "originalPath": "C:\\Users\\25975\\.dsh\\attachments\\v1\\objects\\fc\\fc7c5cc01bdbacf1a665a5d972578f73b19611dd79fb105a836483d9e013b151",
+      "cropPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\liruo.png",
+      "relativeCropBox": [
+        0.0,
+        0.28,
+        0.8,
+        0.52
+      ],
+      "mappingBasis": "项目\\tools\\_crop3f.py JOBS liruo",
+      "originalPathExists": true,
+      "originalPathSHA256": "fc7c5cc01bdbacf1a665a5d972578f73b19611dd79fb105a836483d9e013b151",
+      "cropPathExists": true,
+      "cropPathSHA256": "19e39ae77097cdb4faaf957aa27661c08bed9522d69e0980591692d905b5c8c0"
+    },
+    "haiyuan": {
+      "originalPath": "C:\\Users\\25975\\.dsh\\attachments\\v1\\objects\\36\\3691e6cb9f8778b5c12c3df83254bf675056283ebf56a83f73fe7f1c238a97b4",
+      "cropPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\haiyuan.png",
+      "relativeCropBox": [
+        0.1,
+        0.33,
+        0.72,
+        0.5
+      ],
+      "mappingBasis": "项目\\tools\\_crop3f2.py JOBS haiyuan",
+      "originalPathExists": true,
+      "originalPathSHA256": "3691e6cb9f8778b5c12c3df83254bf675056283ebf56a83f73fe7f1c238a97b4",
+      "cropPathExists": true,
+      "cropPathSHA256": "447b01eb2012f79a68ce36115b9d616d9b671b012ce0c26cd8e2427404c9542f"
+    },
+    "wangji": {
+      "originalPath": "C:\\Users\\25975\\.dsh\\attachments\\v1\\objects\\e3\\e3340e6d79898a205a2ad2a23d3d7ae94f68b292af2643e8f140a8409b2ab73d",
+      "cropPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\wangji.png",
+      "relativeCropBox": [
+        0.08,
+        0.66,
+        0.68,
+        0.86
+      ],
+      "mappingBasis": "项目\\tools\\_crop3f2.py JOBS wangji",
+      "originalPathExists": true,
+      "originalPathSHA256": "e3340e6d79898a205a2ad2a23d3d7ae94f68b292af2643e8f140a8409b2ab73d",
+      "cropPathExists": true,
+      "cropPathSHA256": "608fcf1f9957a3b91302dbac8c5298c23933ae0d7cdc24123f02daa2af66484e"
+    },
+    "shuijiao": {
+      "originalPath": "C:\\Users\\25975\\.dsh\\attachments\\v1\\objects\\48\\4809f6148b813f95b95992bbab40b313d05b87d23b31e6f4a487b83feaa144e6",
+      "cropPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\shuijiao.png",
+      "relativeCropBox": [
+        0.28,
+        0.55,
+        0.56,
+        0.8
+      ],
+      "mappingBasis": "项目\\tools\\_crop3f2.py JOBS shuijiao",
+      "originalPathExists": true,
+      "originalPathSHA256": "4809f6148b813f95b95992bbab40b313d05b87d23b31e6f4a487b83feaa144e6",
+      "cropPathExists": true,
+      "cropPathSHA256": "00d297c967899ac976e7ebe7d2d66e7abae64a6dc5a838f91edea87adeffbc77"
+    },
+    "liuwan": {
+      "originalPath": "C:\\Users\\25975\\.dsh\\attachments\\v1\\objects\\44\\446b812d187b67cb9d64b2f837547dd38da5c9f2cebb8e03970490f4a3e8e83a",
+      "cropPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\liuwan.png",
+      "relativeCropBox": [
+        0.58,
+        0.24,
+        1.0,
+        0.46
+      ],
+      "mappingBasis": "项目\\tools\\_crop3f2.py JOBS liuwan",
+      "originalPathExists": true,
+      "originalPathSHA256": "446b812d187b67cb9d64b2f837547dd38da5c9f2cebb8e03970490f4a3e8e83a",
+      "cropPathExists": true,
+      "cropPathSHA256": "e7276a3c0e08de33f6cfe882d142e407ece2311fc2a19b0cace19367a7df973e"
+    },
+    "laisuo": {
+      "originalPath": "C:\\Users\\25975\\.dsh\\attachments\\v1\\objects\\42\\42308a835815f72a6dd11f799713a182ebe7239bd35072a9b444a2379f0fed3c",
+      "cropPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\laisuo.png",
+      "relativeCropBox": [
+        0.16,
+        0.1,
+        1.0,
+        0.45
+      ],
+      "mappingBasis": "项目\\tools\\_crop3f2.py JOBS laisuo",
+      "originalPathExists": true,
+      "originalPathSHA256": "42308a835815f72a6dd11f799713a182ebe7239bd35072a9b444a2379f0fed3c",
+      "cropPathExists": true,
+      "cropPathSHA256": "ef6b81d95dba9e2999956a0d15d091d0f592bbc19ec6ce1aa37c73eef38161e4"
+    },
+    "xiangshu": {
+      "originalPath": "C:\\Users\\25975\\.dsh\\attachments\\v1\\objects\\09\\092ab0885effcae1599c5649bfa0bab8adc3d1854983df747bd80ef0ac4672d1",
+      "cropPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\xiangshu.png",
+      "relativeCropBox": [
+        0.28,
+        0.28,
+        1.0,
+        0.8
+      ],
+      "mappingBasis": "项目\\tools\\_crop3f2.py JOBS xiangshu",
+      "originalPathExists": true,
+      "originalPathSHA256": "092ab0885effcae1599c5649bfa0bab8adc3d1854983df747bd80ef0ac4672d1",
+      "cropPathExists": true,
+      "cropPathSHA256": "aefb7a31ec4733db2b9b7069f9c2cb64aa11bc55d3f75a2f946d3ef3e358990c"
+    },
+    "lafanqie": {
+      "originalPath": "C:\\Users\\25975\\.dsh\\attachments\\v1\\objects\\9d\\9d149ab4d94dad0cb4d86f1304b712f6097e33d6d453ff8c592f355fd1097e77",
+      "cropPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\lafanqie.png",
+      "relativeCropBox": [
+        0.0,
+        0.42,
+        0.75,
+        0.6
+      ],
+      "mappingBasis": "项目\\tools\\_crop3f2.py JOBS lafanqie",
+      "originalPathExists": true,
+      "originalPathSHA256": "9d149ab4d94dad0cb4d86f1304b712f6097e33d6d453ff8c592f355fd1097e77",
+      "cropPathExists": true,
+      "cropPathSHA256": "6d479f40eb8aeec0541678573cf45cfd9729f6104be453ac8e65304a9b6ead8f"
+    },
+    "baoye": {
+      "originalPath": "C:\\Users\\25975\\.dsh\\attachments\\v1\\objects\\d3\\d394850c442c625a1ab69f76c531a79d16c4e44060016d30254584671a9e5ece",
+      "cropPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\baoye.png",
+      "relativeCropBox": [
+        0.0,
+        0.0,
+        0.6,
+        0.27
+      ],
+      "mappingBasis": "项目\\tools\\_crop3f2.py JOBS baoye",
+      "originalPathExists": true,
+      "originalPathSHA256": "d394850c442c625a1ab69f76c531a79d16c4e44060016d30254584671a9e5ece",
+      "cropPathExists": true,
+      "cropPathSHA256": "aa9b803a730cf5027eaa7253d8cc062143574e849f86c9bdbb14d66a57886d93"
+    },
+    "xiaolongbao": {
+      "originalPath": "C:\\Users\\25975\\.dsh\\attachments\\v1\\objects\\98\\984c68bc1edf2220bb838831cd73f8b895a6501c4fab38444be9bb461143c39a",
+      "cropPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\xiaolongbao.png",
+      "relativeCropBox": [
+        0.14,
+        0.24,
+        0.8,
+        0.42
+      ],
+      "mappingBasis": "项目\\tools\\_crop3f2.py JOBS xiaolongbao",
+      "originalPathExists": true,
+      "originalPathSHA256": "984c68bc1edf2220bb838831cd73f8b895a6501c4fab38444be9bb461143c39a",
+      "cropPathExists": true,
+      "cropPathSHA256": "0aafed578d7dd7063eb4e26dc074661890977ef9f379d8fb08365c9c6c6b6c50"
+    }
+  },
+  "stallCropAssociations": {
+    "T02": "haiyuan",
+    "T05": "wangji",
+    "T07": "chapao",
+    "T09": "shuijiao",
+    "T10": "liuwan",
+    "T12": "laisuo",
+    "T14": "xiangshu",
+    "T15": "lafanqie",
+    "T16": "baoye",
+    "T17": "xiaolongbao",
+    "T18": "jiangdao",
+    "T19": "gigi",
+    "T20": "lirou",
+    "T21": "wukexin"
+  },
+  "note": "T/P编号对应由R2转录标题和现有裁剪脚本标签关联；不等于逐图全部文字再次人工核实。没有对应原图路径的条目隔离。"
+}

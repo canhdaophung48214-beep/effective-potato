@@ -1,0 +1,4587 @@
+[
+  {
+    "oldRecordKey": "c01_t07|f2/山城麻辣小面|小份|",
+    "oldDishId": "c01_d040",
+    "oldName": "山城麻辣小面",
+    "oldStallId": "c01_t07",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:71",
+    "newSourceRefs": [
+      "R04-W2-01-L0071-S001"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t07|f2/招牌豌杂面|小份|",
+    "oldDishId": "c01_d041",
+    "oldName": "招牌豌杂面",
+    "oldStallId": "c01_t07",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:72",
+    "newSourceRefs": [
+      "R04-W2-01-L0072-S002"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t07|f2/特色鸡杂面|小份|",
+    "oldDishId": "c01_d042",
+    "oldName": "特色鸡杂面",
+    "oldStallId": "c01_t07",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:73",
+    "newSourceRefs": [
+      "R04-W2-01-L0073-S003"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t07|f2/特色牛肉面|小份|",
+    "oldDishId": "c01_d043",
+    "oldName": "特色牛肉面",
+    "oldStallId": "c01_t07",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:74",
+    "newSourceRefs": [
+      "R04-W2-01-L0074-S004"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t07|f2/美味杂酱||",
+    "oldDishId": "c01_d044",
+    "oldName": "美味杂酱",
+    "oldStallId": "c01_t07",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:80",
+    "newSourceRefs": [
+      "R04-W2-01-L0080-S005"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t07|f2/牛肉||",
+    "oldDishId": "c01_d045",
+    "oldName": "牛肉",
+    "oldStallId": "c01_t07",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:81",
+    "newSourceRefs": [
+      "R04-W2-01-L0081-S006"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t07|f2/椒麻鸡||",
+    "oldDishId": "c01_d046",
+    "oldName": "椒麻鸡",
+    "oldStallId": "c01_t07",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:82",
+    "newSourceRefs": [
+      "R04-W2-01-L0082-S007"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t07|f2/煎鸡蛋||",
+    "oldDishId": "c01_d047",
+    "oldName": "煎鸡蛋",
+    "oldStallId": "c01_t07",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:83",
+    "newSourceRefs": [
+      "R04-W2-01-L0083-S008"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t09|f2/小米南瓜粥||",
+    "oldDishId": "c01_d048",
+    "oldName": "小米南瓜粥",
+    "oldStallId": "c01_t09",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:95",
+    "newSourceRefs": [
+      "R04-W2-02-L0095-S009"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t09|f2/水果甜粥 / 牛奶燕麦粥 / 八宝粥 / 香菇鸡肉粥 / 皮蛋瘦肉粥||",
+    "oldDishId": "c01_d049",
+    "oldName": "水果甜粥 / 牛奶燕麦粥 / 八宝粥 / 香菇鸡肉粥 / 皮蛋瘦肉粥",
+    "oldStallId": "c01_t09",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:96",
+    "newSourceRefs": [
+      "R04-W2-02-L0096-S010"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t09|f2/椰奶八宝粥||",
+    "oldDishId": "c01_d050",
+    "oldName": "椰奶八宝粥",
+    "oldStallId": "c01_t09",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:97",
+    "newSourceRefs": [
+      "R04-W2-02-L0097-S011"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t09|f2/大虾海鲜粥||",
+    "oldDishId": "c01_d051",
+    "oldName": "大虾海鲜粥",
+    "oldStallId": "c01_t09",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:98",
+    "newSourceRefs": [
+      "R04-W2-02-L0098-S012"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/砂锅把子肉||",
+    "oldDishId": "c01_d052",
+    "oldName": "砂锅把子肉",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:120",
+    "newSourceRefs": [
+      "R04-W2-03-L0120-S013"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/黑金卤肉饭||",
+    "oldDishId": "c01_d053",
+    "oldName": "黑金卤肉饭",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:121",
+    "newSourceRefs": [
+      "R04-W2-03-L0121-S014"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/秘制红烧肉||",
+    "oldDishId": "c01_d054",
+    "oldName": "秘制红烧肉",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:122",
+    "newSourceRefs": [
+      "R04-W2-03-L0122-S015"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/蒲烧鳗鱼||",
+    "oldDishId": "c01_d055",
+    "oldName": "蒲烧鳗鱼",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:123",
+    "newSourceRefs": [
+      "R04-W2-03-L0123-S016"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/照烧鸡腿||",
+    "oldDishId": "c01_d056",
+    "oldName": "照烧鸡腿",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:124",
+    "newSourceRefs": [
+      "R04-W2-03-L0124-S017"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/土豆烧牛肉||",
+    "oldDishId": "c01_d057",
+    "oldName": "土豆烧牛肉",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:125",
+    "newSourceRefs": [
+      "R04-W2-03-L0125-S018"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/胡萝卜烧牛腩||",
+    "oldDishId": "c01_d058",
+    "oldName": "胡萝卜烧牛腩",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:126",
+    "newSourceRefs": [
+      "R04-W2-03-L0126-S019"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/鲜卤排骨||",
+    "oldDishId": "c01_d059",
+    "oldName": "鲜卤排骨",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:127",
+    "newSourceRefs": [
+      "R04-W2-03-L0127-S020"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/红烧鸡翅根||系列-公瑾爆蛋 · 新品暴击",
+    "oldDishId": "c01_d060",
+    "oldName": "红烧鸡翅根",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:133",
+    "newSourceRefs": [
+      "R04-W2-03-L0133-S021"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/美味鸡腿肉||系列-公瑾爆蛋 · 新品暴击",
+    "oldDishId": "c01_d061",
+    "oldName": "美味鸡腿肉",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:134",
+    "newSourceRefs": [
+      "R04-W2-03-L0134-S022"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/黑椒鸡排||系列-公瑾爆蛋 · 新品暴击",
+    "oldDishId": "c01_d062",
+    "oldName": "黑椒鸡排",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:135",
+    "newSourceRefs": [
+      "R04-W2-03-L0135-S023"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/蒲烧鳗鱼||系列-公瑾爆蛋 · 新品暴击",
+    "oldDishId": "c01_d063",
+    "oldName": "蒲烧鳗鱼",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:136",
+    "newSourceRefs": [
+      "R04-W2-03-L0136-S024"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/秘制红烧肉||系列-公瑾爆蛋 · 新品暴击",
+    "oldDishId": "c01_d064",
+    "oldName": "秘制红烧肉",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:137",
+    "newSourceRefs": [
+      "R04-W2-03-L0137-S025"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/黑金卤肉饭||系列-公瑾爆蛋 · 新品暴击",
+    "oldDishId": "c01_d065",
+    "oldName": "黑金卤肉饭",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:138",
+    "newSourceRefs": [
+      "R04-W2-03-L0138-S026"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/把子肉||系列-公瑾爆蛋 · 新品暴击",
+    "oldDishId": "c01_d066",
+    "oldName": "把子肉",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:139",
+    "newSourceRefs": [
+      "R04-W2-03-L0139-S027"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/鲜卤排骨||系列-公瑾爆蛋 · 新品暴击",
+    "oldDishId": "c01_d067",
+    "oldName": "鲜卤排骨",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:140",
+    "newSourceRefs": [
+      "R04-W2-03-L0140-S028"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/公瑾爆蛋||",
+    "oldDishId": "c01_d068",
+    "oldName": "公瑾爆蛋",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:146",
+    "newSourceRefs": [
+      "R04-W2-03-L0146-S029"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/茄子烧豆角||",
+    "oldDishId": "c01_d069",
+    "oldName": "茄子烧豆角",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:147",
+    "newSourceRefs": [
+      "R04-W2-03-L0147-S030"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/红烧鸡翅根||",
+    "oldDishId": "c01_d070",
+    "oldName": "红烧鸡翅根",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:148",
+    "newSourceRefs": [
+      "R04-W2-03-L0148-S031"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/甜辣大鸭腿||",
+    "oldDishId": "c01_d071",
+    "oldName": "甜辣大鸭腿",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:149",
+    "newSourceRefs": [
+      "R04-W2-03-L0149-S032"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/鱼香肉丝||",
+    "oldDishId": "c01_d072",
+    "oldName": "鱼香肉丝",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:150",
+    "newSourceRefs": [
+      "R04-W2-03-L0150-S033"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/黑椒鸡扒||",
+    "oldDishId": "c01_d073",
+    "oldName": "黑椒鸡扒",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:151",
+    "newSourceRefs": [
+      "R04-W2-03-L0151-S034"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/百事可乐鸡||",
+    "oldDishId": "c01_d074",
+    "oldName": "百事可乐鸡",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:152",
+    "newSourceRefs": [
+      "R04-W2-03-L0152-S035"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/麻辣黑鸭煲（辣）||",
+    "oldDishId": "c01_d075",
+    "oldName": "麻辣黑鸭煲（辣）",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:153",
+    "newSourceRefs": [
+      "R04-W2-03-L0153-S036"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/梅菜扣肉||",
+    "oldDishId": "c01_d076",
+    "oldName": "梅菜扣肉",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:154",
+    "newSourceRefs": [
+      "R04-W2-03-L0154-S037"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/川味小炒鸡杂||",
+    "oldDishId": "c01_d077",
+    "oldName": "川味小炒鸡杂",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:155",
+    "newSourceRefs": [
+      "R04-W2-03-L0155-S038"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/哥乐山辣子鸡||",
+    "oldDishId": "c01_d078",
+    "oldName": "哥乐山辣子鸡",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:156",
+    "newSourceRefs": [
+      "R04-W2-03-L0156-S039"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/小炒黄牛肉||",
+    "oldDishId": "c01_d079",
+    "oldName": "小炒黄牛肉",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:157",
+    "newSourceRefs": [
+      "R04-W2-03-L0157-S040"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/腐竹烧牛肚（辣）||",
+    "oldDishId": "c01_d080",
+    "oldName": "腐竹烧牛肚（辣）",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:158",
+    "newSourceRefs": [
+      "R04-W2-03-L0158-S041"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/麻辣鱿鱼||",
+    "oldDishId": "c01_d081",
+    "oldName": "麻辣鱿鱼",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:159",
+    "newSourceRefs": [
+      "R04-W2-03-L0159-S042"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/特色把子肉||",
+    "oldDishId": "c01_d082",
+    "oldName": "特色把子肉",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:165",
+    "newSourceRefs": [
+      "R04-W2-03-L0165-S043"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/黑椒鸡排||",
+    "oldDishId": "c01_d083",
+    "oldName": "黑椒鸡排",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:166",
+    "newSourceRefs": [
+      "R04-W2-03-L0166-S044"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/黄焖鸡盖方便面||",
+    "oldDishId": "c01_d464",
+    "oldName": "黄焖鸡盖方便面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:186",
+    "newSourceRefs": [
+      "R04-W2-04-L0186-S045"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/黄焖鸡米饭||",
+    "oldDishId": "c01_d465",
+    "oldName": "黄焖鸡米饭",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:187",
+    "newSourceRefs": [
+      "R04-W2-04-L0187-S046"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/经典过桥米线|米线|",
+    "oldDishId": "c01_d466",
+    "oldName": "经典过桥米线",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:228",
+    "newSourceRefs": [
+      "R04-W2-04-L0228-S047"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/经典过桥牛筋面|牛筋面|",
+    "oldDishId": "c01_d467",
+    "oldName": "经典过桥牛筋面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:228",
+    "newSourceRefs": [
+      "R04-W2-04-L0228-S048"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/经典过桥土豆粉|土豆粉|",
+    "oldDishId": "c01_d468",
+    "oldName": "经典过桥土豆粉",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:228",
+    "newSourceRefs": [
+      "R04-W2-04-L0228-S049"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/麻辣诱惑米线|米线|",
+    "oldDishId": "c01_d469",
+    "oldName": "麻辣诱惑米线",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:229",
+    "newSourceRefs": [
+      "R04-W2-04-L0229-S050"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/麻辣诱惑牛筋面|牛筋面|",
+    "oldDishId": "c01_d470",
+    "oldName": "麻辣诱惑牛筋面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:229",
+    "newSourceRefs": [
+      "R04-W2-04-L0229-S051"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/麻辣诱惑土豆粉|土豆粉|",
+    "oldDishId": "c01_d471",
+    "oldName": "麻辣诱惑土豆粉",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:229",
+    "newSourceRefs": [
+      "R04-W2-04-L0229-S052"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/美味鸡汤米线|米线|",
+    "oldDishId": "c01_d472",
+    "oldName": "美味鸡汤米线",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:230",
+    "newSourceRefs": [
+      "R04-W2-04-L0230-S053"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/美味鸡汤牛筋面|牛筋面|",
+    "oldDishId": "c01_d473",
+    "oldName": "美味鸡汤牛筋面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:230",
+    "newSourceRefs": [
+      "R04-W2-04-L0230-S054"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/美味鸡汤土豆粉|土豆粉|",
+    "oldDishId": "c01_d474",
+    "oldName": "美味鸡汤土豆粉",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:230",
+    "newSourceRefs": [
+      "R04-W2-04-L0230-S055"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/开胃番茄米线|米线|",
+    "oldDishId": "c01_d475",
+    "oldName": "开胃番茄米线",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:231",
+    "newSourceRefs": [
+      "R04-W2-04-L0231-S056"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/开胃番茄牛筋面|牛筋面|",
+    "oldDishId": "c01_d476",
+    "oldName": "开胃番茄牛筋面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:231",
+    "newSourceRefs": [
+      "R04-W2-04-L0231-S057"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/开胃番茄土豆粉|土豆粉|",
+    "oldDishId": "c01_d477",
+    "oldName": "开胃番茄土豆粉",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:231",
+    "newSourceRefs": [
+      "R04-W2-04-L0231-S058"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/老坛酸菜米线|米线|",
+    "oldDishId": "c01_d478",
+    "oldName": "老坛酸菜米线",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:232",
+    "newSourceRefs": [
+      "R04-W2-04-L0232-S059"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/老坛酸菜牛筋面|牛筋面|",
+    "oldDishId": "c01_d479",
+    "oldName": "老坛酸菜牛筋面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:232",
+    "newSourceRefs": [
+      "R04-W2-04-L0232-S060"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/老坛酸菜土豆粉|土豆粉|",
+    "oldDishId": "c01_d480",
+    "oldName": "老坛酸菜土豆粉",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:232",
+    "newSourceRefs": [
+      "R04-W2-04-L0232-S061"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/肉酱米线|米线|",
+    "oldDishId": "c01_d481",
+    "oldName": "肉酱米线",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:233",
+    "newSourceRefs": [
+      "R04-W2-04-L0233-S062"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/肉酱牛筋面|牛筋面|",
+    "oldDishId": "c01_d482",
+    "oldName": "肉酱牛筋面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:233",
+    "newSourceRefs": [
+      "R04-W2-04-L0233-S063"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/肉酱土豆粉|土豆粉|",
+    "oldDishId": "c01_d483",
+    "oldName": "肉酱土豆粉",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:233",
+    "newSourceRefs": [
+      "R04-W2-04-L0233-S064"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/金汤酸辣米线|米线|",
+    "oldDishId": "c01_d484",
+    "oldName": "金汤酸辣米线",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:234",
+    "newSourceRefs": [
+      "R04-W2-04-L0234-S065"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/金汤酸辣牛筋面|牛筋面|",
+    "oldDishId": "c01_d485",
+    "oldName": "金汤酸辣牛筋面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:234",
+    "newSourceRefs": [
+      "R04-W2-04-L0234-S066"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/金汤酸辣土豆粉|土豆粉|",
+    "oldDishId": "c01_d486",
+    "oldName": "金汤酸辣土豆粉",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:234",
+    "newSourceRefs": [
+      "R04-W2-04-L0234-S067"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/激情椒麻米线|米线|",
+    "oldDishId": "c01_d487",
+    "oldName": "激情椒麻米线",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:235",
+    "newSourceRefs": [
+      "R04-W2-04-L0235-S068"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/激情椒麻牛筋面|牛筋面|",
+    "oldDishId": "c01_d488",
+    "oldName": "激情椒麻牛筋面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:235",
+    "newSourceRefs": [
+      "R04-W2-04-L0235-S069"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/激情椒麻土豆粉|土豆粉|",
+    "oldDishId": "c01_d489",
+    "oldName": "激情椒麻土豆粉",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:235",
+    "newSourceRefs": [
+      "R04-W2-04-L0235-S070"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/番茄麻辣米线|米线|",
+    "oldDishId": "c01_d490",
+    "oldName": "番茄麻辣米线",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:236",
+    "newSourceRefs": [
+      "R04-W2-04-L0236-S071"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/番茄麻辣牛筋面|牛筋面|",
+    "oldDishId": "c01_d491",
+    "oldName": "番茄麻辣牛筋面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:236",
+    "newSourceRefs": [
+      "R04-W2-04-L0236-S072"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/番茄麻辣土豆粉|土豆粉|",
+    "oldDishId": "c01_d492",
+    "oldName": "番茄麻辣土豆粉",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:236",
+    "newSourceRefs": [
+      "R04-W2-04-L0236-S073"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/麻辣肥牛米线|米线|",
+    "oldDishId": "c01_d493",
+    "oldName": "麻辣肥牛米线",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:237",
+    "newSourceRefs": [
+      "R04-W2-04-L0237-S074"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/麻辣肥牛牛筋面|牛筋面|",
+    "oldDishId": "c01_d494",
+    "oldName": "麻辣肥牛牛筋面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:237",
+    "newSourceRefs": [
+      "R04-W2-04-L0237-S075"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/麻辣肥牛土豆粉|土豆粉|",
+    "oldDishId": "c01_d495",
+    "oldName": "麻辣肥牛土豆粉",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:237",
+    "newSourceRefs": [
+      "R04-W2-04-L0237-S076"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/番茄肥牛米线|米线|",
+    "oldDishId": "c01_d496",
+    "oldName": "番茄肥牛米线",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:238",
+    "newSourceRefs": [
+      "R04-W2-04-L0238-S077"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/番茄肥牛牛筋面|牛筋面|",
+    "oldDishId": "c01_d497",
+    "oldName": "番茄肥牛牛筋面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:238",
+    "newSourceRefs": [
+      "R04-W2-04-L0238-S078"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/番茄肥牛土豆粉|土豆粉|",
+    "oldDishId": "c01_d498",
+    "oldName": "番茄肥牛土豆粉",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:238",
+    "newSourceRefs": [
+      "R04-W2-04-L0238-S079"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/金汤肥牛米线|米线|",
+    "oldDishId": "c01_d499",
+    "oldName": "金汤肥牛米线",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:239",
+    "newSourceRefs": [
+      "R04-W2-04-L0239-S080"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/金汤肥牛牛筋面|牛筋面|",
+    "oldDishId": "c01_d500",
+    "oldName": "金汤肥牛牛筋面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:239",
+    "newSourceRefs": [
+      "R04-W2-04-L0239-S081"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/金汤肥牛土豆粉|土豆粉|",
+    "oldDishId": "c01_d501",
+    "oldName": "金汤肥牛土豆粉",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:239",
+    "newSourceRefs": [
+      "R04-W2-04-L0239-S082"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/青椒蛋炒饼|炒饼|",
+    "oldDishId": "c01_d502",
+    "oldName": "青椒蛋炒饼",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:262",
+    "newSourceRefs": [
+      "R04-W2-04-L0262-S083"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/青椒蛋炒面|炒面|",
+    "oldDishId": "c01_d503",
+    "oldName": "青椒蛋炒面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:262",
+    "newSourceRefs": [
+      "R04-W2-04-L0262-S084"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/青椒蛋炒饭|炒饭|",
+    "oldDishId": "c01_d504",
+    "oldName": "青椒蛋炒饭",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:262",
+    "newSourceRefs": [
+      "R04-W2-04-L0262-S085"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/火腿肠蛋炒饼|炒饼|",
+    "oldDishId": "c01_d505",
+    "oldName": "火腿肠蛋炒饼",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:263",
+    "newSourceRefs": [
+      "R04-W2-04-L0263-S086"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/火腿肠蛋炒面|炒面|",
+    "oldDishId": "c01_d506",
+    "oldName": "火腿肠蛋炒面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:263",
+    "newSourceRefs": [
+      "R04-W2-04-L0263-S087"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/火腿肠蛋炒饭|炒饭|",
+    "oldDishId": "c01_d507",
+    "oldName": "火腿肠蛋炒饭",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:263",
+    "newSourceRefs": [
+      "R04-W2-04-L0263-S088"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/香菇鸡丁蛋炒饼|炒饼|",
+    "oldDishId": "c01_d508",
+    "oldName": "香菇鸡丁蛋炒饼",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:264",
+    "newSourceRefs": [
+      "R04-W2-04-L0264-S089"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/香菇鸡丁蛋炒面|炒面|",
+    "oldDishId": "c01_d509",
+    "oldName": "香菇鸡丁蛋炒面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:264",
+    "newSourceRefs": [
+      "R04-W2-04-L0264-S090"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/香菇鸡丁蛋炒饭|炒饭|",
+    "oldDishId": "c01_d510",
+    "oldName": "香菇鸡丁蛋炒饭",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:264",
+    "newSourceRefs": [
+      "R04-W2-04-L0264-S091"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/广式腊肠蛋炒饼|炒饼|",
+    "oldDishId": "c01_d511",
+    "oldName": "广式腊肠蛋炒饼",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:265",
+    "newSourceRefs": [
+      "R04-W2-04-L0265-S092"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/广式腊肠蛋炒面|炒面|",
+    "oldDishId": "c01_d512",
+    "oldName": "广式腊肠蛋炒面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:265",
+    "newSourceRefs": [
+      "R04-W2-04-L0265-S093"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/广式腊肠蛋炒饭|炒饭|",
+    "oldDishId": "c01_d513",
+    "oldName": "广式腊肠蛋炒饭",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:265",
+    "newSourceRefs": [
+      "R04-W2-04-L0265-S094"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/三鲜蛋炒饼|炒饼|",
+    "oldDishId": "c01_d514",
+    "oldName": "三鲜蛋炒饼",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:266",
+    "newSourceRefs": [
+      "R04-W2-04-L0266-S095"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/三鲜蛋炒面|炒面|",
+    "oldDishId": "c01_d515",
+    "oldName": "三鲜蛋炒面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:266",
+    "newSourceRefs": [
+      "R04-W2-04-L0266-S096"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/三鲜蛋炒饭|炒饭|",
+    "oldDishId": "c01_d516",
+    "oldName": "三鲜蛋炒饭",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:266",
+    "newSourceRefs": [
+      "R04-W2-04-L0266-S097"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/土豆肉丝蛋炒饼|炒饼|",
+    "oldDishId": "c01_d517",
+    "oldName": "土豆肉丝蛋炒饼",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:267",
+    "newSourceRefs": [
+      "R04-W2-04-L0267-S098"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/土豆肉丝蛋炒面|炒面|",
+    "oldDishId": "c01_d518",
+    "oldName": "土豆肉丝蛋炒面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:267",
+    "newSourceRefs": [
+      "R04-W2-04-L0267-S099"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/土豆肉丝蛋炒饭|炒饭|",
+    "oldDishId": "c01_d519",
+    "oldName": "土豆肉丝蛋炒饭",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:267",
+    "newSourceRefs": [
+      "R04-W2-04-L0267-S100"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/青椒火腿蛋炒饼|炒饼|",
+    "oldDishId": "c01_d520",
+    "oldName": "青椒火腿蛋炒饼",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:268",
+    "newSourceRefs": [
+      "R04-W2-04-L0268-S101"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/青椒火腿蛋炒面|炒面|",
+    "oldDishId": "c01_d521",
+    "oldName": "青椒火腿蛋炒面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:268",
+    "newSourceRefs": [
+      "R04-W2-04-L0268-S102"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/青椒火腿蛋炒饭|炒饭|",
+    "oldDishId": "c01_d522",
+    "oldName": "青椒火腿蛋炒饭",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:268",
+    "newSourceRefs": [
+      "R04-W2-04-L0268-S103"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/青椒肉丝蛋炒饼|炒饼|",
+    "oldDishId": "c01_d523",
+    "oldName": "青椒肉丝蛋炒饼",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:269",
+    "newSourceRefs": [
+      "R04-W2-04-L0269-S104"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/青椒肉丝蛋炒面|炒面|",
+    "oldDishId": "c01_d524",
+    "oldName": "青椒肉丝蛋炒面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:269",
+    "newSourceRefs": [
+      "R04-W2-04-L0269-S105"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/青椒肉丝蛋炒饭|炒饭|",
+    "oldDishId": "c01_d525",
+    "oldName": "青椒肉丝蛋炒饭",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:269",
+    "newSourceRefs": [
+      "R04-W2-04-L0269-S106"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/孜然鸡肉蛋炒饼|炒饼|",
+    "oldDishId": "c01_d526",
+    "oldName": "孜然鸡肉蛋炒饼",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:270",
+    "newSourceRefs": [
+      "R04-W2-04-L0270-S107"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/孜然鸡肉蛋炒面|炒面|",
+    "oldDishId": "c01_d527",
+    "oldName": "孜然鸡肉蛋炒面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:270",
+    "newSourceRefs": [
+      "R04-W2-04-L0270-S108"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/孜然鸡肉蛋炒饭|炒饭|",
+    "oldDishId": "c01_d528",
+    "oldName": "孜然鸡肉蛋炒饭",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:270",
+    "newSourceRefs": [
+      "R04-W2-04-L0270-S109"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/老干妈肉丝蛋炒饼|炒饼|",
+    "oldDishId": "c01_d529",
+    "oldName": "老干妈肉丝蛋炒饼",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:271",
+    "newSourceRefs": [
+      "R04-W2-04-L0271-S110"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/老干妈肉丝蛋炒面|炒面|",
+    "oldDishId": "c01_d530",
+    "oldName": "老干妈肉丝蛋炒面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:271",
+    "newSourceRefs": [
+      "R04-W2-04-L0271-S111"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/老干妈肉丝蛋炒饭|炒饭|",
+    "oldDishId": "c01_d531",
+    "oldName": "老干妈肉丝蛋炒饭",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:271",
+    "newSourceRefs": [
+      "R04-W2-04-L0271-S112"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/酸菜肉丝蛋炒饼|炒饼|",
+    "oldDishId": "c01_d532",
+    "oldName": "酸菜肉丝蛋炒饼",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:272",
+    "newSourceRefs": [
+      "R04-W2-04-L0272-S113"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/酸菜肉丝蛋炒面|炒面|",
+    "oldDishId": "c01_d533",
+    "oldName": "酸菜肉丝蛋炒面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:272",
+    "newSourceRefs": [
+      "R04-W2-04-L0272-S114"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/酸菜肉丝蛋炒饭|炒饭|",
+    "oldDishId": "c01_d534",
+    "oldName": "酸菜肉丝蛋炒饭",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:272",
+    "newSourceRefs": [
+      "R04-W2-04-L0272-S115"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/香辣猪头肉蛋炒饼|炒饼|",
+    "oldDishId": "c01_d535",
+    "oldName": "香辣猪头肉蛋炒饼",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:273",
+    "newSourceRefs": [
+      "R04-W2-04-L0273-S116"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/香辣猪头肉蛋炒面|炒面|",
+    "oldDishId": "c01_d536",
+    "oldName": "香辣猪头肉蛋炒面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:273",
+    "newSourceRefs": [
+      "R04-W2-04-L0273-S117"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/香辣猪头肉蛋炒饭|炒饭|",
+    "oldDishId": "c01_d537",
+    "oldName": "香辣猪头肉蛋炒饭",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:273",
+    "newSourceRefs": [
+      "R04-W2-04-L0273-S118"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/红烧牛肉蛋炒饼|炒饼|",
+    "oldDishId": "c01_d538",
+    "oldName": "红烧牛肉蛋炒饼",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:274",
+    "newSourceRefs": [
+      "R04-W2-04-L0274-S119"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/红烧牛肉蛋炒面|炒面|",
+    "oldDishId": "c01_d539",
+    "oldName": "红烧牛肉蛋炒面",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:274",
+    "newSourceRefs": [
+      "R04-W2-04-L0274-S120"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t48|f2/红烧牛肉蛋炒饭|炒饭|",
+    "oldDishId": "c01_d540",
+    "oldName": "红烧牛肉蛋炒饭",
+    "oldStallId": "c01_t48",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:274",
+    "newSourceRefs": [
+      "R04-W2-04-L0274-S121"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/鸡蛋火腿炒饼||",
+    "oldDishId": "c01_d437",
+    "oldName": "鸡蛋火腿炒饼",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:297",
+    "newSourceRefs": [
+      "R04-W2-05-L0297-S122"
+    ],
+    "action": "SPLIT",
+    "reason": "明确规格列拆分/已记录独立菜品裁决拆分，不继承旧ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/鸡蛋火腿炒面||",
+    "oldDishId": "c01_d438",
+    "oldName": "鸡蛋火腿炒面",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:298",
+    "newSourceRefs": [
+      "R04-W2-05-L0298-S123"
+    ],
+    "action": "SPLIT",
+    "reason": "明确规格列拆分/已记录独立菜品裁决拆分，不继承旧ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/鸡蛋火腿炒方便面||",
+    "oldDishId": "c01_d439",
+    "oldName": "鸡蛋火腿炒方便面",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:299",
+    "newSourceRefs": [
+      "R04-W2-05-L0299-S124"
+    ],
+    "action": "SPLIT",
+    "reason": "明确规格列拆分/已记录独立菜品裁决拆分，不继承旧ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/鸡蛋火腿炒刀削面||",
+    "oldDishId": "c01_d440",
+    "oldName": "鸡蛋火腿炒刀削面",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:300",
+    "newSourceRefs": [
+      "R04-W2-05-L0300-S125"
+    ],
+    "action": "SPLIT",
+    "reason": "明确规格列拆分/已记录独立菜品裁决拆分，不继承旧ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/鸡蛋火腿炒河粉||",
+    "oldDishId": "c01_d441",
+    "oldName": "鸡蛋火腿炒河粉",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:301",
+    "newSourceRefs": [
+      "R04-W2-05-L0301-S126"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/鸡蛋火腿炒米粉||",
+    "oldDishId": "c01_d442",
+    "oldName": "鸡蛋火腿炒米粉",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:302",
+    "newSourceRefs": [
+      "R04-W2-05-L0302-S127"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/鸡蛋肉肠炒饼||",
+    "oldDishId": "c01_d443",
+    "oldName": "鸡蛋肉肠炒饼",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:303",
+    "newSourceRefs": [
+      "R04-W2-05-L0303-S128"
+    ],
+    "action": "SPLIT",
+    "reason": "明确规格列拆分/已记录独立菜品裁决拆分，不继承旧ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/鸡蛋肉肠炒面||",
+    "oldDishId": "c01_d444",
+    "oldName": "鸡蛋肉肠炒面",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:304",
+    "newSourceRefs": [
+      "R04-W2-05-L0304-S129"
+    ],
+    "action": "SPLIT",
+    "reason": "明确规格列拆分/已记录独立菜品裁决拆分，不继承旧ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/鸡蛋肉肠炒方便面||",
+    "oldDishId": "c01_d445",
+    "oldName": "鸡蛋肉肠炒方便面",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:305",
+    "newSourceRefs": [
+      "R04-W2-05-L0305-S130"
+    ],
+    "action": "SPLIT",
+    "reason": "明确规格列拆分/已记录独立菜品裁决拆分，不继承旧ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/鸡蛋肉肠炒刀削面||",
+    "oldDishId": "c01_d446",
+    "oldName": "鸡蛋肉肠炒刀削面",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:306",
+    "newSourceRefs": [
+      "R04-W2-05-L0306-S131"
+    ],
+    "action": "SPLIT",
+    "reason": "明确规格列拆分/已记录独立菜品裁决拆分，不继承旧ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/鸡蛋肉肠炒河粉||",
+    "oldDishId": "c01_d447",
+    "oldName": "鸡蛋肉肠炒河粉",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:307",
+    "newSourceRefs": [
+      "R04-W2-05-L0307-S132"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/鸡蛋肉肠炒米粉||",
+    "oldDishId": "c01_d448",
+    "oldName": "鸡蛋肉肠炒米粉",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:308",
+    "newSourceRefs": [
+      "R04-W2-05-L0308-S133"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/茄丁剁椒面||",
+    "oldDishId": "c01_d449",
+    "oldName": "茄丁剁椒面",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:316",
+    "newSourceRefs": [
+      "R04-W2-05-L0316-S134"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/酸豆角剁椒面||",
+    "oldDishId": "c01_d450",
+    "oldName": "酸豆角剁椒面",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:317",
+    "newSourceRefs": [
+      "R04-W2-05-L0317-S135"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/肉酱剁椒面||",
+    "oldDishId": "c01_d451",
+    "oldName": "肉酱剁椒面",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:318",
+    "newSourceRefs": [
+      "R04-W2-05-L0318-S136"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/辣子鸡丁剁椒面||",
+    "oldDishId": "c01_d452",
+    "oldName": "辣子鸡丁剁椒面",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:319",
+    "newSourceRefs": [
+      "R04-W2-05-L0319-S137"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/西红柿鸡蛋盖面||",
+    "oldDishId": "c01_d453",
+    "oldName": "西红柿鸡蛋盖面",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:320",
+    "newSourceRefs": [
+      "R04-W2-05-L0320-S138"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/招牌卤肉剁椒面||",
+    "oldDishId": "c01_d454",
+    "oldName": "招牌卤肉剁椒面",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:321",
+    "newSourceRefs": [
+      "R04-W2-05-L0321-S139"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/爆炒鸡杂剁椒面||",
+    "oldDishId": "c01_d455",
+    "oldName": "爆炒鸡杂剁椒面",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:322",
+    "newSourceRefs": [
+      "R04-W2-05-L0322-S140"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/小炒肉剁椒面||",
+    "oldDishId": "c01_d456",
+    "oldName": "小炒肉剁椒面",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:323",
+    "newSourceRefs": [
+      "R04-W2-05-L0323-S141"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/全家福剁椒面||",
+    "oldDishId": "c01_d457",
+    "oldName": "全家福剁椒面",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:324",
+    "newSourceRefs": [
+      "R04-W2-05-L0324-S142"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/红烧牛肉剁椒面||",
+    "oldDishId": "c01_d458",
+    "oldName": "红烧牛肉剁椒面",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:325",
+    "newSourceRefs": [
+      "R04-W2-05-L0325-S143"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/香菇炸酱面||",
+    "oldDishId": "c01_d459",
+    "oldName": "香菇炸酱面",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:326",
+    "newSourceRefs": [
+      "R04-W2-05-L0326-S144"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/番茄小面||",
+    "oldDishId": "c01_d460",
+    "oldName": "番茄小面",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:327",
+    "newSourceRefs": [
+      "R04-W2-05-L0327-S145"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/油泼面||",
+    "oldDishId": "c01_d461",
+    "oldName": "油泼面",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:328",
+    "newSourceRefs": [
+      "R04-W2-05-L0328-S146"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/葱油拌面||",
+    "oldDishId": "c01_d462",
+    "oldName": "葱油拌面",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:329",
+    "newSourceRefs": [
+      "R04-W2-05-L0329-S147"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t49|f2/大骨头面||",
+    "oldDishId": "c01_d463",
+    "oldName": "大骨头面",
+    "oldStallId": "c01_t49",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:330",
+    "newSourceRefs": [
+      "R04-W2-05-L0330-S148"
+    ],
+    "action": "RETAIN",
+    "reason": "原菜名/原价源项保留，仅用新批次局部ID"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/招牌黑猪肉面|小碗|",
+    "oldDishId": "c01_d234",
+    "oldName": "招牌黑猪肉面",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:359",
+    "newSourceRefs": [
+      "R04-W2-07-L0359-S149"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/招牌黑猪肉面|大碗|",
+    "oldDishId": "c01_d235",
+    "oldName": "招牌黑猪肉面",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:359",
+    "newSourceRefs": [
+      "R04-W2-07-L0359-S150"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/香菇蔬菜面|小碗|",
+    "oldDishId": "c01_d236",
+    "oldName": "香菇蔬菜面",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:360",
+    "newSourceRefs": [
+      "R04-W2-07-L0360-S151"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/香菇蔬菜面|大碗|",
+    "oldDishId": "c01_d237",
+    "oldName": "香菇蔬菜面",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:360",
+    "newSourceRefs": [
+      "R04-W2-07-L0360-S152"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/番茄鸡蛋面|小碗|",
+    "oldDishId": "c01_d238",
+    "oldName": "番茄鸡蛋面",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:361",
+    "newSourceRefs": [
+      "R04-W2-07-L0361-S153"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/番茄鸡蛋面|大碗|",
+    "oldDishId": "c01_d239",
+    "oldName": "番茄鸡蛋面",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:361",
+    "newSourceRefs": [
+      "R04-W2-07-L0361-S154"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/王中王肉酱面|小碗|",
+    "oldDishId": "c01_d240",
+    "oldName": "王中王肉酱面",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:362",
+    "newSourceRefs": [
+      "R04-W2-07-L0362-S155"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/王中王肉酱面|大碗|",
+    "oldDishId": "c01_d241",
+    "oldName": "王中王肉酱面",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:362",
+    "newSourceRefs": [
+      "R04-W2-07-L0362-S156"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/红烧牛肉面|小碗|",
+    "oldDishId": "c01_d242",
+    "oldName": "红烧牛肉面",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:363",
+    "newSourceRefs": [
+      "R04-W2-07-L0363-S157"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/红烧牛肉面|大碗|",
+    "oldDishId": "c01_d243",
+    "oldName": "红烧牛肉面",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:363",
+    "newSourceRefs": [
+      "R04-W2-07-L0363-S158"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/羊肉臊子面|小碗|",
+    "oldDishId": "c01_d244",
+    "oldName": "羊肉臊子面",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:364",
+    "newSourceRefs": [
+      "R04-W2-07-L0364-S159"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/羊肉臊子面|大碗|",
+    "oldDishId": "c01_d245",
+    "oldName": "羊肉臊子面",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:364",
+    "newSourceRefs": [
+      "R04-W2-07-L0364-S160"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/武汉热干面|小碗|",
+    "oldDishId": "c01_d246",
+    "oldName": "武汉热干面",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:365",
+    "newSourceRefs": [
+      "R04-W2-07-L0365-S161"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/武汉热干面|大碗|",
+    "oldDishId": "c01_d247",
+    "oldName": "武汉热干面",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:365",
+    "newSourceRefs": [
+      "R04-W2-07-L0365-S162"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/葱油拌面|小碗|",
+    "oldDishId": "c01_d248",
+    "oldName": "葱油拌面",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:366",
+    "newSourceRefs": [
+      "R04-W2-07-L0366-S163"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/葱油拌面|大碗|",
+    "oldDishId": "c01_d249",
+    "oldName": "葱油拌面",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:366",
+    "newSourceRefs": [
+      "R04-W2-07-L0366-S164"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/老北京炸酱面|小碗|",
+    "oldDishId": "c01_d250",
+    "oldName": "老北京炸酱面",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:367",
+    "newSourceRefs": [
+      "R04-W2-07-L0367-S165"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/老北京炸酱面|大碗|",
+    "oldDishId": "c01_d251",
+    "oldName": "老北京炸酱面",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:367",
+    "newSourceRefs": [
+      "R04-W2-07-L0367-S166"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/双椒拌面（辣度适中）|小碗|",
+    "oldDishId": "c01_d252",
+    "oldName": "双椒拌面（辣度适中）",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:368",
+    "newSourceRefs": [
+      "R04-W2-07-L0368-S167"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/双椒拌面（辣度适中）|大碗|",
+    "oldDishId": "c01_d253",
+    "oldName": "双椒拌面（辣度适中）",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:368",
+    "newSourceRefs": [
+      "R04-W2-07-L0368-S168"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/油泼面（香而不辣）|小碗|",
+    "oldDishId": "c01_d254",
+    "oldName": "油泼面（香而不辣）",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:369",
+    "newSourceRefs": [
+      "R04-W2-07-L0369-S169"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/油泼面（香而不辣）|大碗|",
+    "oldDishId": "c01_d255",
+    "oldName": "油泼面（香而不辣）",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:369",
+    "newSourceRefs": [
+      "R04-W2-07-L0369-S170"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/素椒炸酱面（微辣）|小碗|",
+    "oldDishId": "c01_d256",
+    "oldName": "素椒炸酱面（微辣）",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:370",
+    "newSourceRefs": [
+      "R04-W2-07-L0370-S171"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/素椒炸酱面（微辣）|大碗|",
+    "oldDishId": "c01_d257",
+    "oldName": "素椒炸酱面（微辣）",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:370",
+    "newSourceRefs": [
+      "R04-W2-07-L0370-S172"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/南昌拌粉（剁椒）|小碗|",
+    "oldDishId": "c01_d258",
+    "oldName": "南昌拌粉（剁椒）",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:371",
+    "newSourceRefs": [
+      "R04-W2-07-L0371-S173"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/南昌拌粉（剁椒）|大碗|",
+    "oldDishId": "c01_d259",
+    "oldName": "南昌拌粉（剁椒）",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:371",
+    "newSourceRefs": [
+      "R04-W2-07-L0371-S174"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/肉酱拌粉（不辣）|小碗|",
+    "oldDishId": "c01_d260",
+    "oldName": "肉酱拌粉（不辣）",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:372",
+    "newSourceRefs": [
+      "R04-W2-07-L0372-S175"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/肉酱拌粉（不辣）|大碗|",
+    "oldDishId": "c01_d261",
+    "oldName": "肉酱拌粉（不辣）",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:372",
+    "newSourceRefs": [
+      "R04-W2-07-L0372-S176"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/肉酱米线|小碗|",
+    "oldDishId": "c01_d262",
+    "oldName": "肉酱米线",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:373",
+    "newSourceRefs": [
+      "R04-W2-07-L0373-S177"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t28|f2/肉酱米线|大碗|",
+    "oldDishId": "c01_d263",
+    "oldName": "肉酱米线",
+    "oldStallId": "c01_t28",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:373",
+    "newSourceRefs": [
+      "R04-W2-07-L0373-S178"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t37|f2/纯素炒米粉||",
+    "oldDishId": "c01_d297",
+    "oldName": "纯素炒米粉",
+    "oldStallId": "c01_t37",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:389",
+    "newSourceRefs": [
+      "R04-W2-08-L0389-S179"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t37|f2/皮牙子炒米粉||",
+    "oldDishId": "c01_d298",
+    "oldName": "皮牙子炒米粉",
+    "oldStallId": "c01_t37",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:390",
+    "newSourceRefs": [
+      "R04-W2-08-L0390-S180"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t37|f2/鱼豆腐炒米粉||",
+    "oldDishId": "c01_d299",
+    "oldName": "鱼豆腐炒米粉",
+    "oldStallId": "c01_t37",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:391",
+    "newSourceRefs": [
+      "R04-W2-08-L0391-S181"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t37|f2/芹菜 / 酸菜鸡肉炒米粉||",
+    "oldDishId": "c01_d300",
+    "oldName": "芹菜 / 酸菜鸡肉炒米粉",
+    "oldStallId": "c01_t37",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:392",
+    "newSourceRefs": [
+      "R04-W2-08-L0392-S182"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t37|f2/鱼排 / 蟹排炒米粉||",
+    "oldDishId": "c01_d301",
+    "oldName": "鱼排 / 蟹排炒米粉",
+    "oldStallId": "c01_t37",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:393",
+    "newSourceRefs": [
+      "R04-W2-08-L0393-S183"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t37|f2/芹菜 / 酸菜牛肉炒米粉||",
+    "oldDishId": "c01_d302",
+    "oldName": "芹菜 / 酸菜牛肉炒米粉",
+    "oldStallId": "c01_t37",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:394",
+    "newSourceRefs": [
+      "R04-W2-08-L0394-S184"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t37|f2/麻辣 / 蒜蓉龙虾尾炒米粉||",
+    "oldDishId": "c01_d303",
+    "oldName": "麻辣 / 蒜蓉龙虾尾炒米粉",
+    "oldStallId": "c01_t37",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:395",
+    "newSourceRefs": [
+      "R04-W2-08-L0395-S185"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t37|f2/招牌鸡肉炒米粉 + 烤馕||",
+    "oldDishId": "c01_d304",
+    "oldName": "招牌鸡肉炒米粉 + 烤馕",
+    "oldStallId": "c01_t37",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:401",
+    "newSourceRefs": [
+      "R04-W2-08-L0401-S186"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t37|f2/经典牛肉炒米粉 + 烤馕||",
+    "oldDishId": "c01_d305",
+    "oldName": "经典牛肉炒米粉 + 烤馕",
+    "oldStallId": "c01_t37",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:402",
+    "newSourceRefs": [
+      "R04-W2-08-L0402-S187"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t37|f2/招牌鸡肉炒米粉 + 宽粉||",
+    "oldDishId": "c01_d306",
+    "oldName": "招牌鸡肉炒米粉 + 宽粉",
+    "oldStallId": "c01_t37",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:403",
+    "newSourceRefs": [
+      "R04-W2-08-L0403-S188"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t37|f2/经典牛肉炒米粉 + 宽粉||",
+    "oldDishId": "c01_d307",
+    "oldName": "经典牛肉炒米粉 + 宽粉",
+    "oldStallId": "c01_t37",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:404",
+    "newSourceRefs": [
+      "R04-W2-08-L0404-S189"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t37|f2/招牌鸡肉炒米粉 + 宽粉 + 烤馕||",
+    "oldDishId": "c01_d308",
+    "oldName": "招牌鸡肉炒米粉 + 宽粉 + 烤馕",
+    "oldStallId": "c01_t37",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:405",
+    "newSourceRefs": [
+      "R04-W2-08-L0405-S190"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t37|f2/经典牛肉炒米粉 + 宽粉 + 烤馕||",
+    "oldDishId": "c01_d309",
+    "oldName": "经典牛肉炒米粉 + 宽粉 + 烤馕",
+    "oldStallId": "c01_t37",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:406",
+    "newSourceRefs": [
+      "R04-W2-08-L0406-S191"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t37|f2/全家福套餐||",
+    "oldDishId": "c01_d310",
+    "oldName": "全家福套餐",
+    "oldStallId": "c01_t37",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:407",
+    "newSourceRefs": [
+      "R04-W2-08-L0407-S192"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t37|f2/素炒宽粉||",
+    "oldDishId": "c01_d311",
+    "oldName": "素炒宽粉",
+    "oldStallId": "c01_t37",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:413",
+    "newSourceRefs": [
+      "R04-W2-08-L0413-S193"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t37|f2/鸡肉炒馕 / 炒宽粉（芹菜 / 酸菜）||",
+    "oldDishId": "c01_d312",
+    "oldName": "鸡肉炒馕 / 炒宽粉（芹菜 / 酸菜）",
+    "oldStallId": "c01_t37",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:414",
+    "newSourceRefs": [
+      "R04-W2-08-L0414-S194"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t37|f2/牛肉炒馕 / 炒宽粉||",
+    "oldDishId": "c01_d313",
+    "oldName": "牛肉炒馕 / 炒宽粉",
+    "oldStallId": "c01_t37",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:415",
+    "newSourceRefs": [
+      "R04-W2-08-L0415-S195"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t37|f2/纯素炒年糕||",
+    "oldDishId": "c01_d314",
+    "oldName": "纯素炒年糕",
+    "oldStallId": "c01_t37",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:416",
+    "newSourceRefs": [
+      "R04-W2-08-L0416-S196"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t37|f2/经典牛肉炒米粉 / 宽粉||",
+    "oldDishId": "c01_d315",
+    "oldName": "经典牛肉炒米粉 / 宽粉",
+    "oldStallId": "c01_t37",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:417",
+    "newSourceRefs": [
+      "R04-W2-08-L0417-S197"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t37|f2/蟹排 / 鱼排 / 芹菜炒年糕||",
+    "oldDishId": "c01_d316",
+    "oldName": "蟹排 / 鱼排 / 芹菜炒年糕",
+    "oldStallId": "c01_t37",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:418",
+    "newSourceRefs": [
+      "R04-W2-08-L0418-S198"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t37|f2/特色鸡肉炒年糕||",
+    "oldDishId": "c01_d317",
+    "oldName": "特色鸡肉炒年糕",
+    "oldStallId": "c01_t37",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:419",
+    "newSourceRefs": [
+      "R04-W2-08-L0419-S199"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t37|f2/干叶 / 鱼排 / 蟹排 / 鱼豆腐 / 鸡肉炒石锅花饭||",
+    "oldDishId": "c01_d318",
+    "oldName": "干叶 / 鱼排 / 蟹排 / 鱼豆腐 / 鸡肉炒石锅花饭",
+    "oldStallId": "c01_t37",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:420",
+    "newSourceRefs": [
+      "R04-W2-08-L0420-S200"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t32|f2/大葱猪肉 / 玉米猪肉 / 白菜猪肉 / 荠菜猪肉 / 香菇猪肉 / 酸菜猪肉 / 韭菜猪肉 / 莲藕猪肉 / 香辣鱿鱼 / 香辣鸡肉|小份|",
+    "oldDishId": "c01_d264",
+    "oldName": "大葱猪肉 / 玉米猪肉 / 白菜猪肉 / 荠菜猪肉 / 香菇猪肉 / 酸菜猪肉 / 韭菜猪肉 / 莲藕猪肉 / 香辣鱿鱼 / 香辣鸡肉",
+    "oldStallId": "c01_t32",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:438",
+    "newSourceRefs": [
+      "R04-W2-09-L0438-S201"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t32|f2/大葱猪肉 / 玉米猪肉 / 白菜猪肉 / 荠菜猪肉 / 香菇猪肉 / 酸菜猪肉 / 韭菜猪肉 / 莲藕猪肉 / 香辣鱿鱼 / 香辣鸡肉|大份|",
+    "oldDishId": "c01_d265",
+    "oldName": "大葱猪肉 / 玉米猪肉 / 白菜猪肉 / 荠菜猪肉 / 香菇猪肉 / 酸菜猪肉 / 韭菜猪肉 / 莲藕猪肉 / 香辣鱿鱼 / 香辣鸡肉",
+    "oldStallId": "c01_t32",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:438",
+    "newSourceRefs": [
+      "R04-W2-09-L0438-S202"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t32|f2/芹菜猪肉|小份|",
+    "oldDishId": "c01_d266",
+    "oldName": "芹菜猪肉",
+    "oldStallId": "c01_t32",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:439",
+    "newSourceRefs": [
+      "R04-W2-09-L0439-S203"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t32|f2/芹菜猪肉|大份|",
+    "oldDishId": "c01_d267",
+    "oldName": "芹菜猪肉",
+    "oldStallId": "c01_t32",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:439",
+    "newSourceRefs": [
+      "R04-W2-09-L0439-S204"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t32|f2/西红柿鸡蛋 / 胡萝卜鸡蛋 / 荠菜鸡蛋 / 奥尔良鸡肉|小份|",
+    "oldDishId": "c01_d268",
+    "oldName": "西红柿鸡蛋 / 胡萝卜鸡蛋 / 荠菜鸡蛋 / 奥尔良鸡肉",
+    "oldStallId": "c01_t32",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:440",
+    "newSourceRefs": [
+      "R04-W2-09-L0440-S205"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t32|f2/西红柿鸡蛋 / 胡萝卜鸡蛋 / 荠菜鸡蛋 / 奥尔良鸡肉|大份|",
+    "oldDishId": "c01_d269",
+    "oldName": "西红柿鸡蛋 / 胡萝卜鸡蛋 / 荠菜鸡蛋 / 奥尔良鸡肉",
+    "oldStallId": "c01_t32",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:440",
+    "newSourceRefs": [
+      "R04-W2-09-L0440-S206"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t32|f2/虾仁肉三鲜 / 虾仁素三鲜|小份|",
+    "oldDishId": "c01_d270",
+    "oldName": "虾仁肉三鲜 / 虾仁素三鲜",
+    "oldStallId": "c01_t32",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:441",
+    "newSourceRefs": [
+      "R04-W2-09-L0441-S207"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t32|f2/虾仁肉三鲜 / 虾仁素三鲜|大份|",
+    "oldDishId": "c01_d271",
+    "oldName": "虾仁肉三鲜 / 虾仁素三鲜",
+    "oldStallId": "c01_t32",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:441",
+    "newSourceRefs": [
+      "R04-W2-09-L0441-S208"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t32|f2/大葱牛肉 / 孜然羊肉 / 肉三鲜|小份|",
+    "oldDishId": "c01_d272",
+    "oldName": "大葱牛肉 / 孜然羊肉 / 肉三鲜",
+    "oldStallId": "c01_t32",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:442",
+    "newSourceRefs": [
+      "R04-W2-09-L0442-S209"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t32|f2/大葱牛肉 / 孜然羊肉 / 肉三鲜|大份|",
+    "oldDishId": "c01_d273",
+    "oldName": "大葱牛肉 / 孜然羊肉 / 肉三鲜",
+    "oldStallId": "c01_t32",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:442",
+    "newSourceRefs": [
+      "R04-W2-09-L0442-S210"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t32|f2/鲅鱼肉|小份|",
+    "oldDishId": "c01_d274",
+    "oldName": "鲅鱼肉",
+    "oldStallId": "c01_t32",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:443",
+    "newSourceRefs": [
+      "R04-W2-09-L0443-S211"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t32|f2/鲅鱼肉|大份|",
+    "oldDishId": "c01_d275",
+    "oldName": "鲅鱼肉",
+    "oldStallId": "c01_t32",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:443",
+    "newSourceRefs": [
+      "R04-W2-09-L0443-S212"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t32|f2/汤圆|小份|",
+    "oldDishId": "c01_d276",
+    "oldName": "汤圆",
+    "oldStallId": "c01_t32",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:444",
+    "newSourceRefs": [
+      "R04-W2-09-L0444-S213"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t32|f2/汤圆|大份|",
+    "oldDishId": "c01_d277",
+    "oldName": "汤圆",
+    "oldStallId": "c01_t32",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:444",
+    "newSourceRefs": [
+      "R04-W2-09-L0444-S214"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t32|f2/白菜猪肉 / 韭菜猪肉 / 莲藕猪肉 / 茴香猪肉|小份|",
+    "oldDishId": "c01_d278",
+    "oldName": "白菜猪肉 / 韭菜猪肉 / 莲藕猪肉 / 茴香猪肉",
+    "oldStallId": "c01_t32",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:450",
+    "newSourceRefs": [
+      "R04-W2-09-L0450-S215"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t32|f2/白菜猪肉 / 韭菜猪肉 / 莲藕猪肉 / 茴香猪肉|大份|",
+    "oldDishId": "c01_d279",
+    "oldName": "白菜猪肉 / 韭菜猪肉 / 莲藕猪肉 / 茴香猪肉",
+    "oldStallId": "c01_t32",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:450",
+    "newSourceRefs": [
+      "R04-W2-09-L0450-S216"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t32|f2/素三鲜|小份|",
+    "oldDishId": "c01_d280",
+    "oldName": "素三鲜",
+    "oldStallId": "c01_t32",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:451",
+    "newSourceRefs": [
+      "R04-W2-09-L0451-S217"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t32|f2/素三鲜|大份|",
+    "oldDishId": "c01_d281",
+    "oldName": "素三鲜",
+    "oldStallId": "c01_t32",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:451",
+    "newSourceRefs": [
+      "R04-W2-09-L0451-S218"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t17|f2/辣椒炒肉（招牌）||",
+    "oldDishId": "c01_d185",
+    "oldName": "辣椒炒肉（招牌）",
+    "oldStallId": "c01_t17",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:465",
+    "newSourceRefs": [
+      "R04-W2-10-L0465-S219",
+      "R04-W2-10-L0465-S219-DECLARED-FEICHANG"
+    ],
+    "action": "SPLIT",
+    "reason": "明确规格列拆分/已记录独立菜品裁决拆分，不继承旧ID"
+  },
+  {
+    "oldRecordKey": "c01_t17|f2/小炒黄牛肉||",
+    "oldDishId": "c01_d186",
+    "oldName": "小炒黄牛肉",
+    "oldStallId": "c01_t17",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:466",
+    "newSourceRefs": [
+      "R04-W2-10-L0466-S220"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t17|f2/湖南炒腊肉||",
+    "oldDishId": "c01_d187",
+    "oldName": "湖南炒腊肉",
+    "oldStallId": "c01_t17",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:467",
+    "newSourceRefs": [
+      "R04-W2-10-L0467-S221"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t17|f2/农家一碗香||",
+    "oldDishId": "c01_d188",
+    "oldName": "农家一碗香",
+    "oldStallId": "c01_t17",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:468",
+    "newSourceRefs": [
+      "R04-W2-10-L0468-S222"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t17|f2/孜然小炒肉||",
+    "oldDishId": "c01_d189",
+    "oldName": "孜然小炒肉",
+    "oldStallId": "c01_t17",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:469",
+    "newSourceRefs": [
+      "R04-W2-10-L0469-S223"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t17|f2/泡椒三脆||",
+    "oldDishId": "c01_d190",
+    "oldName": "泡椒三脆",
+    "oldStallId": "c01_t17",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:470",
+    "newSourceRefs": [
+      "R04-W2-10-L0470-S224"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t17|f2/双椒碎碎鸡||",
+    "oldDishId": "c01_d191",
+    "oldName": "双椒碎碎鸡",
+    "oldStallId": "c01_t17",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:471",
+    "newSourceRefs": [
+      "R04-W2-10-L0471-S225"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t17|f2/青椒火腿炒鸡蛋||",
+    "oldDishId": "c01_d192",
+    "oldName": "青椒火腿炒鸡蛋",
+    "oldStallId": "c01_t17",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:472",
+    "newSourceRefs": [
+      "R04-W2-10-L0472-S226"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t17|f2/成都盐菜回锅肉||",
+    "oldDishId": "c01_d193",
+    "oldName": "成都盐菜回锅肉",
+    "oldStallId": "c01_t17",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:473",
+    "newSourceRefs": [
+      "R04-W2-10-L0473-S227"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t17|f2/长沙醋溜蛋||",
+    "oldDishId": "c01_d194",
+    "oldName": "长沙醋溜蛋",
+    "oldStallId": "c01_t17",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:474",
+    "newSourceRefs": [
+      "R04-W2-10-L0474-S228"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t17|f2/贵妃荔枝鸡||",
+    "oldDishId": "c01_d195",
+    "oldName": "贵妃荔枝鸡",
+    "oldStallId": "c01_t17",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:475",
+    "newSourceRefs": [
+      "R04-W2-10-L0475-S229"
+    ],
+    "action": "PENDING",
+    "reason": "源行价格明确标待确认，不能把旧解析数值当已解决;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t17|f2/招牌原味 / 川湘香辣 / 爽口藤椒 / 老坛酸菜 / 爆款酸辣 / 清新柠檬 / 可爱番茄 猪肚鸡||",
+    "oldDishId": "c01_d196",
+    "oldName": "招牌原味 / 川湘香辣 / 爽口藤椒 / 老坛酸菜 / 爆款酸辣 / 清新柠檬 / 可爱番茄 猪肚鸡",
+    "oldStallId": "c01_t17",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:481",
+    "newSourceRefs": [
+      "R04-W2-10-L0481-S230"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t17|f2/原味 / 香辣 / 金汤 / 藤椒 / 酸菜 / 番茄 / 柠檬 钵钵鸡||",
+    "oldDishId": "c01_d197",
+    "oldName": "原味 / 香辣 / 金汤 / 藤椒 / 酸菜 / 番茄 / 柠檬 钵钵鸡",
+    "oldStallId": "c01_t17",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:482",
+    "newSourceRefs": [
+      "R04-W2-10-L0482-S231"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t17|f2/原味 / 香辣 / 藤椒 / 酸菜 / 酸辣 / 柠檬 / 番茄 / 金汤 肥肠鸡||",
+    "oldDishId": "c01_d198",
+    "oldName": "原味 / 香辣 / 藤椒 / 酸菜 / 酸辣 / 柠檬 / 番茄 / 金汤 肥肠鸡",
+    "oldStallId": "c01_t17",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:483",
+    "newSourceRefs": [
+      "R04-W2-10-L0483-S232"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t17|f2/红烧排骨饭 / 红烧肉饭 / 土豆牛肉饭 / 梅菜烧五花肉 / 香辣鱿鱼饭||",
+    "oldDishId": "c01_d199",
+    "oldName": "红烧排骨饭 / 红烧肉饭 / 土豆牛肉饭 / 梅菜烧五花肉 / 香辣鱿鱼饭",
+    "oldStallId": "c01_t17",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:489",
+    "newSourceRefs": [
+      "R04-W2-10-L0489-S233"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t17|f2/土豆鸭饭 / 辣子鸡饭 / 台湾卤肉饭 / 海苔照烧鸡饭 / 蜜汁鸡块饭 / 孜然烤肉饭||",
+    "oldDishId": "c01_d200",
+    "oldName": "土豆鸭饭 / 辣子鸡饭 / 台湾卤肉饭 / 海苔照烧鸡饭 / 蜜汁鸡块饭 / 孜然烤肉饭",
+    "oldStallId": "c01_t17",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:490",
+    "newSourceRefs": [
+      "R04-W2-10-L0490-S234"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t17|f2/奥尔良鸡块饭 / 宫保鸡丁饭 / 黑椒鸡块饭 / 酱香肉片饭 / 咖喱鸡饭 / 烤香脆骨饭||",
+    "oldDishId": "c01_d201",
+    "oldName": "奥尔良鸡块饭 / 宫保鸡丁饭 / 黑椒鸡块饭 / 酱香肉片饭 / 咖喱鸡饭 / 烤香脆骨饭",
+    "oldStallId": "c01_t17",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:491",
+    "newSourceRefs": [
+      "R04-W2-10-L0491-S235"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t17|f2/梅菜肉丁饭 / 香骨鸡饭||",
+    "oldDishId": "c01_d202",
+    "oldName": "梅菜肉丁饭 / 香骨鸡饭",
+    "oldStallId": "c01_t17",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:492",
+    "newSourceRefs": [
+      "R04-W2-10-L0492-S236"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t17|f2/香菇肉酱饭 / 鱼香肉丝饭||",
+    "oldDishId": "c01_d203",
+    "oldName": "香菇肉酱饭 / 鱼香肉丝饭",
+    "oldStallId": "c01_t17",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:493",
+    "newSourceRefs": [
+      "R04-W2-10-L0493-S237"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t17|f2/肉沫茄子饭||",
+    "oldDishId": "c01_d204",
+    "oldName": "肉沫茄子饭",
+    "oldStallId": "c01_t17",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:494",
+    "newSourceRefs": [
+      "R04-W2-10-L0494-S238"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/油泼面||",
+    "oldDishId": "c01_d122",
+    "oldName": "油泼面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:508",
+    "newSourceRefs": [
+      "R04-W2-11-L0508-S239"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/牛肉板面（宽/细）||",
+    "oldDishId": "c01_d123",
+    "oldName": "牛肉板面（宽/细）",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:509",
+    "newSourceRefs": [
+      "R04-W2-11-L0509-S240"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/鸡汤砂锅面||",
+    "oldDishId": "c01_d124",
+    "oldName": "鸡汤砂锅面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:510",
+    "newSourceRefs": [
+      "R04-W2-11-L0510-S241"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/麻辣砂锅面||",
+    "oldDishId": "c01_d125",
+    "oldName": "麻辣砂锅面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:511",
+    "newSourceRefs": [
+      "R04-W2-11-L0511-S242"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/炸酱面||",
+    "oldDishId": "c01_d126",
+    "oldName": "炸酱面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:512",
+    "newSourceRefs": [
+      "R04-W2-11-L0512-S243"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/番茄 / 藤椒 / 菌汤 砂锅面||",
+    "oldDishId": "c01_d127",
+    "oldName": "番茄 / 藤椒 / 菌汤 砂锅面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:513",
+    "newSourceRefs": [
+      "R04-W2-11-L0513-S244"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/香辣 / 蒜香 砂锅面||",
+    "oldDishId": "c01_d128",
+    "oldName": "香辣 / 蒜香 砂锅面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:514",
+    "newSourceRefs": [
+      "R04-W2-11-L0514-S245"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/金汤砂锅面||",
+    "oldDishId": "c01_d129",
+    "oldName": "金汤砂锅面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:515",
+    "newSourceRefs": [
+      "R04-W2-11-L0515-S246"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/酸菜鱼砂锅面||",
+    "oldDishId": "c01_d130",
+    "oldName": "酸菜鱼砂锅面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:516",
+    "newSourceRefs": [
+      "R04-W2-11-L0516-S247"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/酸菜肉丝面||",
+    "oldDishId": "c01_d131",
+    "oldName": "酸菜肉丝面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:517",
+    "newSourceRefs": [
+      "R04-W2-11-L0517-S248"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/鸡汤||",
+    "oldDishId": "c01_d132",
+    "oldName": "鸡汤",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:523",
+    "newSourceRefs": [
+      "R04-W2-11-L0523-S249"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/麻辣||",
+    "oldDishId": "c01_d133",
+    "oldName": "麻辣",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:524",
+    "newSourceRefs": [
+      "R04-W2-11-L0524-S250"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/番茄 / 藤椒 / 菌汤||",
+    "oldDishId": "c01_d134",
+    "oldName": "番茄 / 藤椒 / 菌汤",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:525",
+    "newSourceRefs": [
+      "R04-W2-11-L0525-S251"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/香辣 / 蒜香||",
+    "oldDishId": "c01_d135",
+    "oldName": "香辣 / 蒜香",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:526",
+    "newSourceRefs": [
+      "R04-W2-11-L0526-S252"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/酸辣金汤||",
+    "oldDishId": "c01_d136",
+    "oldName": "酸辣金汤",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:527",
+    "newSourceRefs": [
+      "R04-W2-11-L0527-S253"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/大肉||",
+    "oldDishId": "c01_d137",
+    "oldName": "大肉",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:528",
+    "newSourceRefs": [
+      "R04-W2-11-L0528-S254"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/酸菜鱼 / 红烧牛肉||",
+    "oldDishId": "c01_d138",
+    "oldName": "酸菜鱼 / 红烧牛肉",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:529",
+    "newSourceRefs": [
+      "R04-W2-11-L0529-S255"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/麻辣爆肚粉||",
+    "oldDishId": "c01_d139",
+    "oldName": "麻辣爆肚粉",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:530",
+    "newSourceRefs": [
+      "R04-W2-11-L0530-S256"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/鸡汤砂锅米线|砂锅米线|",
+    "oldDishId": "c01_d140",
+    "oldName": "鸡汤砂锅米线",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:535",
+    "newSourceRefs": [
+      "R04-W2-11-L0535-S257"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/鸡汤牛筋面|牛筋面|",
+    "oldDishId": "c01_d141",
+    "oldName": "鸡汤牛筋面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:535",
+    "newSourceRefs": [
+      "R04-W2-11-L0535-S258"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/鸡汤土豆粉|土豆粉|",
+    "oldDishId": "c01_d142",
+    "oldName": "鸡汤土豆粉",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:535",
+    "newSourceRefs": [
+      "R04-W2-11-L0535-S259"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/麻辣砂锅米线|砂锅米线|",
+    "oldDishId": "c01_d143",
+    "oldName": "麻辣砂锅米线",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:536",
+    "newSourceRefs": [
+      "R04-W2-11-L0536-S260"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/麻辣牛筋面|牛筋面|",
+    "oldDishId": "c01_d144",
+    "oldName": "麻辣牛筋面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:536",
+    "newSourceRefs": [
+      "R04-W2-11-L0536-S261"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/麻辣土豆粉|土豆粉|",
+    "oldDishId": "c01_d145",
+    "oldName": "麻辣土豆粉",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:536",
+    "newSourceRefs": [
+      "R04-W2-11-L0536-S262"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/番茄砂锅米线|砂锅米线|",
+    "oldDishId": "c01_d146",
+    "oldName": "番茄砂锅米线",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:537",
+    "newSourceRefs": [
+      "R04-W2-11-L0537-S263"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/番茄牛筋面|牛筋面|",
+    "oldDishId": "c01_d147",
+    "oldName": "番茄牛筋面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:537",
+    "newSourceRefs": [
+      "R04-W2-11-L0537-S264"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/番茄土豆粉|土豆粉|",
+    "oldDishId": "c01_d148",
+    "oldName": "番茄土豆粉",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:537",
+    "newSourceRefs": [
+      "R04-W2-11-L0537-S265"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/藤椒砂锅米线|砂锅米线|",
+    "oldDishId": "c01_d149",
+    "oldName": "藤椒砂锅米线",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:538",
+    "newSourceRefs": [
+      "R04-W2-11-L0538-S266"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/藤椒牛筋面|牛筋面|",
+    "oldDishId": "c01_d150",
+    "oldName": "藤椒牛筋面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:538",
+    "newSourceRefs": [
+      "R04-W2-11-L0538-S267"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/藤椒土豆粉|土豆粉|",
+    "oldDishId": "c01_d151",
+    "oldName": "藤椒土豆粉",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:538",
+    "newSourceRefs": [
+      "R04-W2-11-L0538-S268"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/菌汤砂锅米线|砂锅米线|",
+    "oldDishId": "c01_d152",
+    "oldName": "菌汤砂锅米线",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:539",
+    "newSourceRefs": [
+      "R04-W2-11-L0539-S269"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/菌汤牛筋面|牛筋面|",
+    "oldDishId": "c01_d153",
+    "oldName": "菌汤牛筋面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:539",
+    "newSourceRefs": [
+      "R04-W2-11-L0539-S270"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/菌汤土豆粉|土豆粉|",
+    "oldDishId": "c01_d154",
+    "oldName": "菌汤土豆粉",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:539",
+    "newSourceRefs": [
+      "R04-W2-11-L0539-S271"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/香辣砂锅米线|砂锅米线|",
+    "oldDishId": "c01_d155",
+    "oldName": "香辣砂锅米线",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:540",
+    "newSourceRefs": [
+      "R04-W2-11-L0540-S272"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/香辣牛筋面|牛筋面|",
+    "oldDishId": "c01_d156",
+    "oldName": "香辣牛筋面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:540",
+    "newSourceRefs": [
+      "R04-W2-11-L0540-S273"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/香辣土豆粉|土豆粉|",
+    "oldDishId": "c01_d157",
+    "oldName": "香辣土豆粉",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:540",
+    "newSourceRefs": [
+      "R04-W2-11-L0540-S274"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/蒜香砂锅米线|砂锅米线|",
+    "oldDishId": "c01_d158",
+    "oldName": "蒜香砂锅米线",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:541",
+    "newSourceRefs": [
+      "R04-W2-11-L0541-S275"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/蒜香牛筋面|牛筋面|",
+    "oldDishId": "c01_d159",
+    "oldName": "蒜香牛筋面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:541",
+    "newSourceRefs": [
+      "R04-W2-11-L0541-S276"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/蒜香土豆粉|土豆粉|",
+    "oldDishId": "c01_d160",
+    "oldName": "蒜香土豆粉",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:541",
+    "newSourceRefs": [
+      "R04-W2-11-L0541-S277"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/酸辣金汤砂锅米线|砂锅米线|",
+    "oldDishId": "c01_d161",
+    "oldName": "酸辣金汤砂锅米线",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:542",
+    "newSourceRefs": [
+      "R04-W2-11-L0542-S278"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/酸辣金汤牛筋面|牛筋面|",
+    "oldDishId": "c01_d162",
+    "oldName": "酸辣金汤牛筋面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:542",
+    "newSourceRefs": [
+      "R04-W2-11-L0542-S279"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/酸辣金汤土豆粉|土豆粉|",
+    "oldDishId": "c01_d163",
+    "oldName": "酸辣金汤土豆粉",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:542",
+    "newSourceRefs": [
+      "R04-W2-11-L0542-S280"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/大肉砂锅米线|砂锅米线|",
+    "oldDishId": "c01_d164",
+    "oldName": "大肉砂锅米线",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:543",
+    "newSourceRefs": [
+      "R04-W2-11-L0543-S281"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/大肉牛筋面|牛筋面|",
+    "oldDishId": "c01_d165",
+    "oldName": "大肉牛筋面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:543",
+    "newSourceRefs": [
+      "R04-W2-11-L0543-S282"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/大肉土豆粉|土豆粉|",
+    "oldDishId": "c01_d166",
+    "oldName": "大肉土豆粉",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:543",
+    "newSourceRefs": [
+      "R04-W2-11-L0543-S283"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/酸菜鱼砂锅米线|砂锅米线|",
+    "oldDishId": "c01_d167",
+    "oldName": "酸菜鱼砂锅米线",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:544",
+    "newSourceRefs": [
+      "R04-W2-11-L0544-S284"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/酸菜鱼牛筋面|牛筋面|",
+    "oldDishId": "c01_d168",
+    "oldName": "酸菜鱼牛筋面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:544",
+    "newSourceRefs": [
+      "R04-W2-11-L0544-S285"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/酸菜鱼土豆粉|土豆粉|",
+    "oldDishId": "c01_d169",
+    "oldName": "酸菜鱼土豆粉",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:544",
+    "newSourceRefs": [
+      "R04-W2-11-L0544-S286"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/红烧牛肉砂锅米线|砂锅米线|",
+    "oldDishId": "c01_d170",
+    "oldName": "红烧牛肉砂锅米线",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:545",
+    "newSourceRefs": [
+      "R04-W2-11-L0545-S287"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/红烧牛肉牛筋面|牛筋面|",
+    "oldDishId": "c01_d171",
+    "oldName": "红烧牛肉牛筋面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:545",
+    "newSourceRefs": [
+      "R04-W2-11-L0545-S288"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/红烧牛肉土豆粉|土豆粉|",
+    "oldDishId": "c01_d172",
+    "oldName": "红烧牛肉土豆粉",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:545",
+    "newSourceRefs": [
+      "R04-W2-11-L0545-S289"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/酸甜拌米线 / 剁椒茄汁拌面 / 麻汁凉面 / 青稞牛筋面||",
+    "oldDishId": "c01_d173",
+    "oldName": "酸甜拌米线 / 剁椒茄汁拌面 / 麻汁凉面 / 青稞牛筋面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:555",
+    "newSourceRefs": [
+      "R04-W2-11-L0555-S290"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/葱油拌米线||",
+    "oldDishId": "c01_d174",
+    "oldName": "葱油拌米线",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:556",
+    "newSourceRefs": [
+      "R04-W2-11-L0556-S291"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/麻辣 / 香辣 / 番茄 / 酱香 / 肉沫酱 拌米线||",
+    "oldDishId": "c01_d175",
+    "oldName": "麻辣 / 香辣 / 番茄 / 酱香 / 肉沫酱 拌米线",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:557",
+    "newSourceRefs": [
+      "R04-W2-11-L0557-S292"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/椒麻鸡拌米线||",
+    "oldDishId": "c01_d176",
+    "oldName": "椒麻鸡拌米线",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:558",
+    "newSourceRefs": [
+      "R04-W2-11-L0558-S293"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/麻辣爆肚粉（面）||",
+    "oldDishId": "c01_d177",
+    "oldName": "麻辣爆肚粉（面）",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:559",
+    "newSourceRefs": [
+      "R04-W2-11-L0559-S294"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/酸辣粉||",
+    "oldDishId": "c01_d178",
+    "oldName": "酸辣粉",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:560",
+    "newSourceRefs": [
+      "R04-W2-11-L0560-S295"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/麻酱米线 / 麻酱牛筋面||",
+    "oldDishId": "c01_d179",
+    "oldName": "麻酱米线 / 麻酱牛筋面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:566",
+    "newSourceRefs": [
+      "R04-W2-11-L0566-S296"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/麻酱土豆粉||",
+    "oldDishId": "c01_d180",
+    "oldName": "麻酱土豆粉",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:567",
+    "newSourceRefs": [
+      "R04-W2-11-L0567-S297"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/麻酱火腿米线 / 牛筋面||",
+    "oldDishId": "c01_d181",
+    "oldName": "麻酱火腿米线 / 牛筋面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:568",
+    "newSourceRefs": [
+      "R04-W2-11-L0568-S298"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/麻酱火腿土豆粉||",
+    "oldDishId": "c01_d182",
+    "oldName": "麻酱火腿土豆粉",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:569",
+    "newSourceRefs": [
+      "R04-W2-11-L0569-S299"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/麻酱肥牛米线 / 牛筋面||",
+    "oldDishId": "c01_d183",
+    "oldName": "麻酱肥牛米线 / 牛筋面",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:570",
+    "newSourceRefs": [
+      "R04-W2-11-L0570-S300"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t16|f2/麻酱肥牛土豆粉||",
+    "oldDishId": "c01_d184",
+    "oldName": "麻酱肥牛土豆粉",
+    "oldStallId": "c01_t16",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:571",
+    "newSourceRefs": [
+      "R04-W2-11-L0571-S301"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t14|f2/全州拌饭||",
+    "oldDishId": "c01_d099",
+    "oldName": "全州拌饭",
+    "oldStallId": "c01_t14",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:585",
+    "newSourceRefs": [
+      "R04-W2-12-L0585-S302"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t14|f2/蜜汁鸡肉 / 蜜汁鱿鱼 / 烤里脊肉 / 烤五花肉 / 蜜汁叉烧肉 拌饭||",
+    "oldDishId": "c01_d100",
+    "oldName": "蜜汁鸡肉 / 蜜汁鱿鱼 / 烤里脊肉 / 烤五花肉 / 蜜汁叉烧肉 拌饭",
+    "oldStallId": "c01_t14",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:586",
+    "newSourceRefs": [
+      "R04-W2-12-L0586-S303"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t14|f2/泡菜五花肉拌饭 / 金枪鱼沙拉拌饭||",
+    "oldDishId": "c01_d101",
+    "oldName": "泡菜五花肉拌饭 / 金枪鱼沙拉拌饭",
+    "oldStallId": "c01_t14",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:587",
+    "newSourceRefs": [
+      "R04-W2-12-L0587-S304"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t14|f2/黑椒肥牛拌饭||",
+    "oldDishId": "c01_d102",
+    "oldName": "黑椒肥牛拌饭",
+    "oldStallId": "c01_t14",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:588",
+    "newSourceRefs": [
+      "R04-W2-12-L0588-S305"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t14|f2/肉末茄子||",
+    "oldDishId": "c01_d103",
+    "oldName": "肉末茄子",
+    "oldStallId": "c01_t14",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:594",
+    "newSourceRefs": [
+      "R04-W2-12-L0594-S306"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t14|f2/宫保鸡丁 / 鱼香肉丝 / 糖醋里脊 / 把子肉套餐 / 卤肉饭 / 咖喱鸡 / 石板鸡蛋肉末||",
+    "oldDishId": "c01_d104",
+    "oldName": "宫保鸡丁 / 鱼香肉丝 / 糖醋里脊 / 把子肉套餐 / 卤肉饭 / 咖喱鸡 / 石板鸡蛋肉末",
+    "oldStallId": "c01_t14",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:595",
+    "newSourceRefs": [
+      "R04-W2-12-L0595-S307"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t14|f2/梅菜扣肉 / 红烧肉 / 辣椒炒肉 / 青椒炒鸡 / 香辣肉丝 / 孜然肉片||",
+    "oldDishId": "c01_d105",
+    "oldName": "梅菜扣肉 / 红烧肉 / 辣椒炒肉 / 青椒炒鸡 / 香辣肉丝 / 孜然肉片",
+    "oldStallId": "c01_t14",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:596",
+    "newSourceRefs": [
+      "R04-W2-12-L0596-S308"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t14|f2/川香辣子鸡 / 农家小炒肉 / 小炒肉 / 回锅肉 / 猪肘饭 / 爆炒肉片 / 香辣鸡杂 / 土豆牛肉 / 腐竹烧肉||",
+    "oldDishId": "c01_d106",
+    "oldName": "川香辣子鸡 / 农家小炒肉 / 小炒肉 / 回锅肉 / 猪肘饭 / 爆炒肉片 / 香辣鸡杂 / 土豆牛肉 / 腐竹烧肉",
+    "oldStallId": "c01_t14",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:597",
+    "newSourceRefs": [
+      "R04-W2-12-L0597-S309"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t14|f2/辣炒肥肠||",
+    "oldDishId": "c01_d107",
+    "oldName": "辣炒肥肠",
+    "oldStallId": "c01_t14",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:598",
+    "newSourceRefs": [
+      "R04-W2-12-L0598-S310"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t14|f2/小炒黄牛肉||",
+    "oldDishId": "c01_d108",
+    "oldName": "小炒黄牛肉",
+    "oldStallId": "c01_t14",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:599",
+    "newSourceRefs": [
+      "R04-W2-12-L0599-S311"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t15|f2/红烧土豆 / 清炒甘兰||",
+    "oldDishId": "c01_d109",
+    "oldName": "红烧土豆 / 清炒甘兰",
+    "oldStallId": "c01_t15",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:613",
+    "newSourceRefs": [
+      "R04-W2-13-L0613-S312"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t15|f2/地三鲜||",
+    "oldDishId": "c01_d110",
+    "oldName": "地三鲜",
+    "oldStallId": "c01_t15",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:614",
+    "newSourceRefs": [
+      "R04-W2-13-L0614-S313"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t15|f2/糖醋里脊 / 红烧里脊 / 鱼香茄子 / 肉末茄子 / 香辣火腿 / 西红柿炒鸡蛋||",
+    "oldDishId": "c01_d111",
+    "oldName": "糖醋里脊 / 红烧里脊 / 鱼香茄子 / 肉末茄子 / 香辣火腿 / 西红柿炒鸡蛋",
+    "oldStallId": "c01_t15",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:615",
+    "newSourceRefs": [
+      "R04-W2-13-L0615-S314"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t15|f2/火腿鸡蛋 / 酸菜肉丝 / 肉末豆角||",
+    "oldDishId": "c01_d112",
+    "oldName": "火腿鸡蛋 / 酸菜肉丝 / 肉末豆角",
+    "oldStallId": "c01_t15",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:616",
+    "newSourceRefs": [
+      "R04-W2-13-L0616-S315"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t15|f2/土豆鸡丁 / 宫保鸡丁 / 辣子鸡丁 / 泡椒猪肝||",
+    "oldDishId": "c01_d113",
+    "oldName": "土豆鸡丁 / 宫保鸡丁 / 辣子鸡丁 / 泡椒猪肝",
+    "oldStallId": "c01_t15",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:617",
+    "newSourceRefs": [
+      "R04-W2-13-L0617-S316"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t15|f2/辣椒炒肉||",
+    "oldDishId": "c01_d114",
+    "oldName": "辣椒炒肉",
+    "oldStallId": "c01_t15",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:618",
+    "newSourceRefs": [
+      "R04-W2-13-L0618-S317"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t15|f2/红烧牛肉||",
+    "oldDishId": "c01_d115",
+    "oldName": "红烧牛肉",
+    "oldStallId": "c01_t15",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:619",
+    "newSourceRefs": [
+      "R04-W2-13-L0619-S318"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t15|f2/香辣肉丝 / 葱爆肉片 / 甘兰回锅肉 / 木须肉 / 孜然鱿鱼 / 孜然肉片 / 鱼香肉丝||",
+    "oldDishId": "c01_d116",
+    "oldName": "香辣肉丝 / 葱爆肉片 / 甘兰回锅肉 / 木须肉 / 孜然鱿鱼 / 孜然肉片 / 鱼香肉丝",
+    "oldStallId": "c01_t15",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:620",
+    "newSourceRefs": [
+      "R04-W2-13-L0620-S319"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t15|f2/红烧肉 / 四川腊肉 / 孜然五花肉||",
+    "oldDishId": "c01_d117",
+    "oldName": "红烧肉 / 四川腊肉 / 孜然五花肉",
+    "oldStallId": "c01_t15",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:621",
+    "newSourceRefs": [
+      "R04-W2-13-L0621-S320"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t15|f2/葱爆牛肉 / 土豆肥肠 / 香辣肥肠 / 孜然牛肉 / 孜然羊肉||",
+    "oldDishId": "c01_d118",
+    "oldName": "葱爆牛肉 / 土豆肥肠 / 香辣肥肠 / 孜然牛肉 / 孜然羊肉",
+    "oldStallId": "c01_t15",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:622",
+    "newSourceRefs": [
+      "R04-W2-13-L0622-S321"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t15|f2/蛋炒饭||",
+    "oldDishId": "c01_d119",
+    "oldName": "蛋炒饭",
+    "oldStallId": "c01_t15",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:623",
+    "newSourceRefs": [
+      "R04-W2-13-L0623-S322"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t15|f2/肉丝炒饭 / 孜然猪肝||",
+    "oldDishId": "c01_d120",
+    "oldName": "肉丝炒饭 / 孜然猪肝",
+    "oldStallId": "c01_t15",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:624",
+    "newSourceRefs": [
+      "R04-W2-13-L0624-S323"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t15|f2/孜然土豆||",
+    "oldDishId": "c01_d121",
+    "oldName": "孜然土豆",
+    "oldStallId": "c01_t15",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:625",
+    "newSourceRefs": [
+      "R04-W2-13-L0625-S324"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t19|f2/牛骨面||",
+    "oldDishId": "c01_d205",
+    "oldName": "牛骨面",
+    "oldStallId": "c01_t19",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:639",
+    "newSourceRefs": [
+      "R04-W2-14-L0639-S325"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t19|f2/经典牛肉面||",
+    "oldDishId": "c01_d206",
+    "oldName": "经典牛肉面",
+    "oldStallId": "c01_t19",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:640",
+    "newSourceRefs": [
+      "R04-W2-14-L0640-S326"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t19|f2/阳春面 / 酸菜肉丝面||",
+    "oldDishId": "c01_d207",
+    "oldName": "阳春面 / 酸菜肉丝面",
+    "oldStallId": "c01_t19",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:641",
+    "newSourceRefs": [
+      "R04-W2-14-L0641-S327"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t19|f2/大肉面（特价）||",
+    "oldDishId": "c01_d208",
+    "oldName": "大肉面（特价）",
+    "oldStallId": "c01_t19",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:642",
+    "newSourceRefs": [
+      "R04-W2-14-L0642-S328"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t19|f2/牛杂面||",
+    "oldDishId": "c01_d209",
+    "oldName": "牛杂面",
+    "oldStallId": "c01_t19",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:643",
+    "newSourceRefs": [
+      "R04-W2-14-L0643-S329"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t19|f2/酸辣鸡杂面 / 肥肠面 / 牛肚面||",
+    "oldDishId": "c01_d210",
+    "oldName": "酸辣鸡杂面 / 肥肠面 / 牛肚面",
+    "oldStallId": "c01_t19",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:644",
+    "newSourceRefs": [
+      "R04-W2-14-L0644-S330"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t19|f2/麻辣 / 香辣 / 藤椒 / 红烧 / 番茄 牛肉面||",
+    "oldDishId": "c01_d211",
+    "oldName": "麻辣 / 香辣 / 藤椒 / 红烧 / 番茄 牛肉面",
+    "oldStallId": "c01_t19",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:645",
+    "newSourceRefs": [
+      "R04-W2-14-L0645-S331"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t19|f2/原味 / 酱香 / 菌菇 / 黑胡椒 / 葱油 拌面||",
+    "oldDishId": "c01_d212",
+    "oldName": "原味 / 酱香 / 菌菇 / 黑胡椒 / 葱油 拌面",
+    "oldStallId": "c01_t19",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:651",
+    "newSourceRefs": [
+      "R04-W2-14-L0651-S332"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t19|f2/热干面 / 剁椒肉酱拌面 / 孜然炒面 / 麻汁凉面 / 葱油凉面||",
+    "oldDishId": "c01_d213",
+    "oldName": "热干面 / 剁椒肉酱拌面 / 孜然炒面 / 麻汁凉面 / 葱油凉面",
+    "oldStallId": "c01_t19",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:652",
+    "newSourceRefs": [
+      "R04-W2-14-L0652-S333"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t19|f2/黑胡椒炒面||",
+    "oldDishId": "c01_d214",
+    "oldName": "黑胡椒炒面",
+    "oldStallId": "c01_t19",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:653",
+    "newSourceRefs": [
+      "R04-W2-14-L0653-S334"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t19|f2/椒麻鸡 / 鱼香 / 藤椒 / 竹笋肉丁 / 香菇肉丁 拌面||",
+    "oldDishId": "c01_d215",
+    "oldName": "椒麻鸡 / 鱼香 / 藤椒 / 竹笋肉丁 / 香菇肉丁 拌面",
+    "oldStallId": "c01_t19",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:654",
+    "newSourceRefs": [
+      "R04-W2-14-L0654-S335"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t19|f2/肉沫酱拌面 / 大盘鸡拌面 / 番茄肉酱 / 香辣肉酱 / 麻辣肉酱 拌面||",
+    "oldDishId": "c01_d216",
+    "oldName": "肉沫酱拌面 / 大盘鸡拌面 / 番茄肉酱 / 香辣肉酱 / 麻辣肉酱 拌面",
+    "oldStallId": "c01_t19",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:655",
+    "newSourceRefs": [
+      "R04-W2-14-L0655-S336"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t35|f2/肉松沙拉寿司||",
+    "oldDishId": "c01_d282",
+    "oldName": "肉松沙拉寿司",
+    "oldStallId": "c01_t35",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:671",
+    "newSourceRefs": [
+      "R04-W2-15-L0671-S337"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t35|f2/反卷黄金脆 / 蟹肉棒 / 沙拉玉米 / 泡菜 / 香辣金针菇 寿司||",
+    "oldDishId": "c01_d283",
+    "oldName": "反卷黄金脆 / 蟹肉棒 / 沙拉玉米 / 泡菜 / 香辣金针菇 寿司",
+    "oldStallId": "c01_t35",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:672",
+    "newSourceRefs": [
+      "R04-W2-15-L0672-S338"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t35|f2/芝士 / 海草 寿司||",
+    "oldDishId": "c01_d284",
+    "oldName": "芝士 / 海草 寿司",
+    "oldStallId": "c01_t35",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:673",
+    "newSourceRefs": [
+      "R04-W2-15-L0673-S339"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t35|f2/双蛋黄肉松 / 玉米蛋黄 / 烟重培根 寿司||",
+    "oldDishId": "c01_d285",
+    "oldName": "双蛋黄肉松 / 玉米蛋黄 / 烟重培根 寿司",
+    "oldStallId": "c01_t35",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:674",
+    "newSourceRefs": [
+      "R04-W2-15-L0674-S340"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t35|f2/芝士玉米 / 牛板筋 / 碳烤鱿鱼 寿司||",
+    "oldDishId": "c01_d286",
+    "oldName": "芝士玉米 / 牛板筋 / 碳烤鱿鱼 寿司",
+    "oldStallId": "c01_t35",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:675",
+    "newSourceRefs": [
+      "R04-W2-15-L0675-S341"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t35|f2/金枪鱼 / 爆珠鱼籽 寿司||",
+    "oldDishId": "c01_d287",
+    "oldName": "金枪鱼 / 爆珠鱼籽 寿司",
+    "oldStallId": "c01_t35",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:676",
+    "newSourceRefs": [
+      "R04-W2-15-L0676-S342"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t35|f2/传统原味||",
+    "oldDishId": "c01_d288",
+    "oldName": "传统原味",
+    "oldStallId": "c01_t35",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:682",
+    "newSourceRefs": [
+      "R04-W2-15-L0682-S343"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t35|f2/甜味红豆 / 玉米沙拉 / 泡菜（微辣）/ 金针菇（微辣）/ 辣条||",
+    "oldDishId": "c01_d289",
+    "oldName": "甜味红豆 / 玉米沙拉 / 泡菜（微辣）/ 金针菇（微辣）/ 辣条",
+    "oldStallId": "c01_t35",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:683",
+    "newSourceRefs": [
+      "R04-W2-15-L0683-S344"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t35|f2/鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊||",
+    "oldDishId": "c01_d290",
+    "oldName": "鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊",
+    "oldStallId": "c01_t35",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:684",
+    "newSourceRefs": [
+      "R04-W2-15-L0684-S345"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t35|f2/拉丝芝士 / 纯肉烤肠||",
+    "oldDishId": "c01_d291",
+    "oldName": "拉丝芝士 / 纯肉烤肠",
+    "oldStallId": "c01_t35",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:685",
+    "newSourceRefs": [
+      "R04-W2-15-L0685-S346"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t35|f2/香酥鸡排||",
+    "oldDishId": "c01_d292",
+    "oldName": "香酥鸡排",
+    "oldStallId": "c01_t35",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:686",
+    "newSourceRefs": [
+      "R04-W2-15-L0686-S347"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t35|f2/香煎猪排||",
+    "oldDishId": "c01_d293",
+    "oldName": "香煎猪排",
+    "oldStallId": "c01_t35",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:687",
+    "newSourceRefs": [
+      "R04-W2-15-L0687-S348"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t35|f2/黑椒牛排||",
+    "oldDishId": "c01_d294",
+    "oldName": "黑椒牛排",
+    "oldStallId": "c01_t35",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:688",
+    "newSourceRefs": [
+      "R04-W2-15-L0688-S349"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t35|f2/金枪鱼||",
+    "oldDishId": "c01_d295",
+    "oldName": "金枪鱼",
+    "oldStallId": "c01_t35",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:689",
+    "newSourceRefs": [
+      "R04-W2-15-L0689-S350"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t35|f2/日式鳗鱼||",
+    "oldDishId": "c01_d296",
+    "oldName": "日式鳗鱼",
+    "oldStallId": "c01_t35",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:690",
+    "newSourceRefs": [
+      "R04-W2-15-L0690-S351"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t21|f2/辣椒炒肉 + 荷包蛋||",
+    "oldDishId": "c01_d217",
+    "oldName": "辣椒炒肉 + 荷包蛋",
+    "oldStallId": "c01_t21",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:702",
+    "newSourceRefs": [
+      "R04-W2-16-L0702-S352"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t21|f2/双椒猪头肉||",
+    "oldDishId": "c01_d218",
+    "oldName": "双椒猪头肉",
+    "oldStallId": "c01_t21",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:703",
+    "newSourceRefs": [
+      "R04-W2-16-L0703-S353"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t21|f2/青花辣椒炒鸡||",
+    "oldDishId": "c01_d219",
+    "oldName": "青花辣椒炒鸡",
+    "oldStallId": "c01_t21",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:704",
+    "newSourceRefs": [
+      "R04-W2-16-L0704-S354"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t21|f2/春笋炒腊肉||",
+    "oldDishId": "c01_d220",
+    "oldName": "春笋炒腊肉",
+    "oldStallId": "c01_t21",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:705",
+    "newSourceRefs": [
+      "R04-W2-16-L0705-S355"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t21|f2/香干炒耳尖||",
+    "oldDishId": "c01_d221",
+    "oldName": "香干炒耳尖",
+    "oldStallId": "c01_t21",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:706",
+    "newSourceRefs": [
+      "R04-W2-16-L0706-S356"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t21|f2/回锅肉||",
+    "oldDishId": "c01_d222",
+    "oldName": "回锅肉",
+    "oldStallId": "c01_t21",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:707",
+    "newSourceRefs": [
+      "R04-W2-16-L0707-S357"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t21|f2/爆炒牛肉||",
+    "oldDishId": "c01_d223",
+    "oldName": "爆炒牛肉",
+    "oldStallId": "c01_t21",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:708",
+    "newSourceRefs": [
+      "R04-W2-16-L0708-S358"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t21|f2/手撕包菜炒肉||",
+    "oldDishId": "c01_d224",
+    "oldName": "手撕包菜炒肉",
+    "oldStallId": "c01_t21",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:709",
+    "newSourceRefs": [
+      "R04-W2-16-L0709-S359"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t21|f2/西红柿炒蛋 / 辣椒炒蛋 / 香干炒肉 / 土豆丝炒蛋 / 土豆丝炒肉||",
+    "oldDishId": "c01_d225",
+    "oldName": "西红柿炒蛋 / 辣椒炒蛋 / 香干炒肉 / 土豆丝炒蛋 / 土豆丝炒肉",
+    "oldStallId": "c01_t21",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:715",
+    "newSourceRefs": [
+      "R04-W2-16-L0715-S360"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t21|f2/莴笋炒肉 / 干锅菜花炒肉||",
+    "oldDishId": "c01_d226",
+    "oldName": "莴笋炒肉 / 干锅菜花炒肉",
+    "oldStallId": "c01_t21",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:716",
+    "newSourceRefs": [
+      "R04-W2-16-L0716-S361"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t21|f2/香辣肥肠||",
+    "oldDishId": "c01_d227",
+    "oldName": "香辣肥肠",
+    "oldStallId": "c01_t21",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:717",
+    "newSourceRefs": [
+      "R04-W2-16-L0717-S362"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t21|f2/火腿 / 腊肠 / 培根 滑蛋饭||",
+    "oldDishId": "c01_d228",
+    "oldName": "火腿 / 腊肠 / 培根 滑蛋饭",
+    "oldStallId": "c01_t21",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:723",
+    "newSourceRefs": [
+      "R04-W2-16-L0723-S363"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t21|f2/鱼香肉丝 / 肉末豆角 滑蛋饭||",
+    "oldDishId": "c01_d229",
+    "oldName": "鱼香肉丝 / 肉末豆角 滑蛋饭",
+    "oldStallId": "c01_t21",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:724",
+    "newSourceRefs": [
+      "R04-W2-16-L0724-S364"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t21|f2/宫保鸡丁 / 香菇鸡肉 / 香辣脆骨 / 台式卤肉 滑蛋饭||",
+    "oldDishId": "c01_d230",
+    "oldName": "宫保鸡丁 / 香菇鸡肉 / 香辣脆骨 / 台式卤肉 滑蛋饭",
+    "oldStallId": "c01_t21",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:725",
+    "newSourceRefs": [
+      "R04-W2-16-L0725-S365"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t21|f2/奥尔良鸡肉 / 黑椒鸡排 滑蛋饭||",
+    "oldDishId": "c01_d231",
+    "oldName": "奥尔良鸡肉 / 黑椒鸡排 滑蛋饭",
+    "oldStallId": "c01_t21",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:726",
+    "newSourceRefs": [
+      "R04-W2-16-L0726-S366"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t21|f2/孜然五花肉 / 辣椒炒肉 / 藤椒肉丝 / 照烧鸡排 / 泡椒肉丝 / 农家小炒肉 滑蛋饭||",
+    "oldDishId": "c01_d232",
+    "oldName": "孜然五花肉 / 辣椒炒肉 / 藤椒肉丝 / 照烧鸡排 / 泡椒肉丝 / 农家小炒肉 滑蛋饭",
+    "oldStallId": "c01_t21",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:727",
+    "newSourceRefs": [
+      "R04-W2-16-L0727-S367"
+    ],
+    "action": "PENDING",
+    "reason": "一行并列多品种/变体，未获逐菜实体拆分，不把整行当单一道菜;源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t21|f2/小炒黄牛肉 滑蛋饭||",
+    "oldDishId": "c01_d233",
+    "oldName": "小炒黄牛肉 滑蛋饭",
+    "oldStallId": "c01_t21",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:728",
+    "newSourceRefs": [
+      "R04-W2-16-L0728-S368"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/双拼饭（公瑾爆蛋 + 红烧鸡翅根）||",
+    "oldDishId": "c01_d084",
+    "oldName": "双拼饭（公瑾爆蛋 + 红烧鸡翅根）",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:757",
+    "newSourceRefs": [
+      "R04-W2-03-L0757-S369"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/双拼饭（公瑾爆蛋 + 美味鸡腿肉）||",
+    "oldDishId": "c01_d085",
+    "oldName": "双拼饭（公瑾爆蛋 + 美味鸡腿肉）",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:758",
+    "newSourceRefs": [
+      "R04-W2-03-L0758-S370"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/双拼饭（公瑾爆蛋 + 黑椒鸡排）||",
+    "oldDishId": "c01_d086",
+    "oldName": "双拼饭（公瑾爆蛋 + 黑椒鸡排）",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:759",
+    "newSourceRefs": [
+      "R04-W2-03-L0759-S371"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/双拼饭（公瑾爆蛋 + 蒲烧鳗鱼）||",
+    "oldDishId": "c01_d087",
+    "oldName": "双拼饭（公瑾爆蛋 + 蒲烧鳗鱼）",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:760",
+    "newSourceRefs": [
+      "R04-W2-03-L0760-S372"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/双拼饭（公瑾爆蛋 + 秘制红烧肉）||",
+    "oldDishId": "c01_d088",
+    "oldName": "双拼饭（公瑾爆蛋 + 秘制红烧肉）",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:761",
+    "newSourceRefs": [
+      "R04-W2-03-L0761-S373"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/双拼饭（公瑾爆蛋 + 黑金卤肉饭）||",
+    "oldDishId": "c01_d089",
+    "oldName": "双拼饭（公瑾爆蛋 + 黑金卤肉饭）",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:762",
+    "newSourceRefs": [
+      "R04-W2-03-L0762-S374"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/双拼饭（公瑾爆蛋 + 把子肉）||",
+    "oldDishId": "c01_d090",
+    "oldName": "双拼饭（公瑾爆蛋 + 把子肉）",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:763",
+    "newSourceRefs": [
+      "R04-W2-03-L0763-S375"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t11|f2/双拼饭（公瑾爆蛋 + 鲜卤排骨）||",
+    "oldDishId": "c01_d091",
+    "oldName": "双拼饭（公瑾爆蛋 + 鲜卤排骨）",
+    "oldStallId": "c01_t11",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:764",
+    "newSourceRefs": [
+      "R04-W2-03-L0764-S376"
+    ],
+    "action": "PENDING",
+    "reason": "源文字可定位，但对应照片与档口未唯一映射，保留待核验"
+  },
+  {
+    "oldRecordKey": "c01_t20|f2/手抓饼基础套餐（默认含鸡蛋）||",
+    "oldDishId": "",
+    "oldName": "手抓饼基础套餐（默认含鸡蛋）",
+    "oldStallId": "c01_t20",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:340",
+    "newSourceRefs": [
+      "R04-NG01-L0340"
+    ],
+    "action": "REPLACE",
+    "reason": "负责人D1/D2已确认：基础菜品或关联加价组，不作五道独立菜"
+  },
+  {
+    "oldRecordKey": "c01_t20|f2/油条 / 薄脆 / 鸡蛋 / 培根 / 辣条 / 双汇火腿肠 / 双汇鸡肉肠||",
+    "oldDishId": "",
+    "oldName": "油条 / 薄脆 / 鸡蛋 / 培根 / 辣条 / 双汇火腿肠 / 双汇鸡肉肠",
+    "oldStallId": "c01_t20",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:341",
+    "newSourceRefs": [
+      "R04-NG01-L0341"
+    ],
+    "action": "REPLACE",
+    "reason": "负责人D1/D2已确认：基础菜品或关联加价组，不作五道独立菜"
+  },
+  {
+    "oldRecordKey": "c01_t20|f2/大鸡蛋（双黄）||",
+    "oldDishId": "",
+    "oldName": "大鸡蛋（双黄）",
+    "oldStallId": "c01_t20",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:342",
+    "newSourceRefs": [
+      "R04-NG01-L0342"
+    ],
+    "action": "REPLACE",
+    "reason": "负责人D1/D2已确认：基础菜品或关联加价组，不作五道独立菜"
+  },
+  {
+    "oldRecordKey": "c01_t20|f2/鸡柳 / 里脊 / 肉松 / 脆骨肠 / 台式烤肠||",
+    "oldDishId": "",
+    "oldName": "鸡柳 / 里脊 / 肉松 / 脆骨肠 / 台式烤肠",
+    "oldStallId": "c01_t20",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:343",
+    "newSourceRefs": [
+      "R04-NG01-L0343"
+    ],
+    "action": "REPLACE",
+    "reason": "负责人D1/D2已确认：基础菜品或关联加价组，不作五道独立菜"
+  },
+  {
+    "oldRecordKey": "c01_t20|f2/黑椒纯肉肠 / 原味纯肉肠||",
+    "oldDishId": "",
+    "oldName": "黑椒纯肉肠 / 原味纯肉肠",
+    "oldStallId": "c01_t20",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:344",
+    "newSourceRefs": [
+      "R04-NG01-L0344"
+    ],
+    "action": "REPLACE",
+    "reason": "负责人D1/D2已确认：基础菜品或关联加价组，不作五道独立菜"
+  },
+  {
+    "oldRecordKey": "c01_t20|f2/土豆丝||",
+    "oldDishId": "",
+    "oldName": "土豆丝",
+    "oldStallId": "c01_t20",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_2F.md:345",
+    "newSourceRefs": [
+      "R04-NG01-L0345"
+    ],
+    "action": "REPLACE",
+    "reason": "负责人D1/D2已确认：基础菜品或关联加价组，不作五道独立菜"
+  }
+]

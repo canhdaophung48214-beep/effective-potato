@@ -1,0 +1,10 @@
+{
+  "name": "submit",
+  "version": "1.0.0",
+  "description": "UGC MVP 阶段 B：私有纠错投稿（只写 submissions / upload_logs）",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

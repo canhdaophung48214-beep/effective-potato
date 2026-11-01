@@ -1,0 +1,544 @@
+=== node tools/test_retention_audit_gate.js ===
+PASS G-A 完整 OK 对账允许清正文
+PASS G-B PARTIAL 即使 closed=1 也拦截且正文逐字节不变
+PASS G-C FAILED 即使 closed=1 也拦截且不写虚假 complete
+PASS G-D RECONCILE_ANOMALIES / 疑似孤儿 prepare 拦截
+PASS G-D2 未超阈值的运行中 prepare 即使对账 ok=true 也拦截
+PASS G-E completeScan=false 即使 ok=true 也拦截
+PASS G-F 截断结果即使 ok=true 也拦截
+PASS G-F2 实际 501 条只读扫描截断阻断正文清理
+PASS G-G 对账超时拦截
+PASS G-H 对账结果缺失拦截
+PASS G-H2 对账计数结构不完整拦截
+PASS G-I 返回码伪装 OK 仍检查 outcomes 中 PARTIAL
+PASS G-J 短暂对账故障后重试成功才清正文
+PASS G-K 数据库对账响应缺失不按空日志放行
+PASS G-L 维护入口同样不能绕过闸门
+PASS G-M 无令牌拒绝且不查询或更新正文
+PASS 16 / FAIL 0
+
+EXIT_CODE=0
+
+=== node tools/test_retention_reconcile.js ===
+PASS C1 正常 prepare/complete 同批闭合且成功口径兼容
+PASS C1b 只输出哈希引用，不回传原始批次 ID
+PASS C2 恰好十分钟为疑似孤儿，异常码与分类一致
+PASS C3 未满十分钟仍是运行中
+PASS C4 complete 无 prepare 是异常
+PASS C5 重复 prepare 与重复 complete 分别发现
+PASS C6 计数不守恒或首尾选中数变化被发现
+PASS C7 无效 ID、日期、时间及必填关联字段计入异常
+PASS C7b 日志时间恰等于对账时间允许进入批次
+PASS C7c 未来日志拒绝并计入 invalidLogs
+PASS C8 多页扫描稳定推进，完整结果三批闭合
+PASS C8b 截断窗口内已配对也不冒充全局闭合
+PASS C9 截断窗口明确非成功且可继续，不误判孤儿
+PASS C10 续页为局部窗口，缺配对不能冒充全局结论
+PASS C11 第二页读取故障不返回假完整结论
+PASS C12 无令牌在读取日志前拒绝
+PASS C13 鉴权后对账只读，不更改投稿或审计日志
+PASS C14 返回值不含正文、身份、令牌
+PASS C15 R1 恢复批次沿用 prepare/complete，计数闭合
+PASS C16 恢复 prepare 失败时未处理业务记录
+PASS C17 T-2 恢复批次有准备和完成，正文仍为空
+PASS C17b 清理恢复批次可被同一对账入口识别
+PASS C19 系统身份字段和批次投稿 ID 不合规可检测且不回显
+PASS C20 恢复 complete 写入失败不得谎报闭合
+PASS C21 PARTIAL 计数闭合仍不得报告正常成功
+PASS C22 FAILED 计数闭合仍不得报告正常成功
+PASS C23 DEFERRED 与失败和正常成功分别表达
+PASS C24 COMPLETE 与失败计数矛盾时归计数异常，不宣称 OK
+PASS C25 T-2 清理部分失败也保留 PARTIAL 结果
+PASS C18 索引仅为本地草案且日志仍禁止更新/删除
+PASS 30 / FAIL 0
+
+EXIT_CODE=0
+
+=== node tools/test_retention_mark.js ===
+== A. 配置门禁 ==
+[PASS] A1 缺少确认状态时拒绝执行
+[PASS] A2 配置未确认时不访问投稿集合
+[PASS] A3 待确认状态拒绝执行
+[PASS] A4 非法天数拒绝执行
+[PASS] A4b 已裁决 29 天不能被配置覆盖
+[PASS] A5 非法批次上限拒绝执行
+[PASS] A6 缺少确认人拒绝执行
+== A2. 维护入口门禁 ==
+[PASS] A7 非 mark 动作拒绝
+[PASS] A8 缺少维护令牌拒绝
+[PASS] A9 正确维护令牌可调用
+== B. 到期标记 ==
+[PASS] B1 已确认配置可执行
+[PASS] B2 空正文也计入，到期标记两条
+[PASS] B3 状态改为 expired
+[PASS] B4 rev 递增
+[PASS] B5 标记任务不清除投稿正文
+[PASS] B6 刚好第 29 天不提前标记
+[PASS] B7 已处理状态不被覆盖
+[PASS] B8 空 payload 的 pending 仍标记 expired
+[PASS] B9 写入最小化运行审计行
+[PASS] B10 运行审计行不含投稿人 openid
+[PASS] B11 批次 prepare 与 complete 都留痕
+[PASS] B11b prepare/complete 共享非空批次 ID
+[PASS] B12 每条成功状态更新有独立事件
+[PASS] B13 系统审计明确使用空 openidHash
+[PASS] B14 逐条运行日志含可倒查字段，长期摘要投影仍为八个逻辑字段
+== C. 可重跑与失败关闭 ==
+[PASS] C1 重跑不重复标记
+[PASS] C2 重跑不再次递增 rev
+[PASS] C2b 重跑后仍有 prepare/complete 两条批次事件
+[PASS] C3 状态写入失败如实返回数据库错误
+[PASS] C4 写入失败不谎报已标记数
+[PASS] C5 写入失败保留原状态
+[PASS] C6 完整失败批次有 FAILED 终态
+== D. 查询、批次与并发 ==
+[PASS] D1 已审核记录不占两条批次名额
+[PASS] D2 同一创建时间按 _id 升序，a 先处理
+[PASS] D3 同一创建时间按 _id 升序，z 也处理
+[PASS] D4 第三条 pending 留到下一批
+[PASS] D5 下批继续处理，不被已审核旧记录饿死
+[PASS] D5a 同时刻跨批按 _id 稳定排序
+[PASS] D5b 同时刻另一条留待下一批
+[PASS] D6 并发审核获胜时版本条件阻止覆盖
+[PASS] D7 并发变更按冲突计数
+[PASS] D8 并发冲突不伪造逐条标记事件
+[PASS] D9 单条写失败不阻断下一条
+[PASS] D10 部分成功明确返回错误
+[PASS] D11 部分成功统计为 1/1
+[PASS] D12 部分成功批次审计为 PARTIAL
+[PASS] D13 查询失败返回数据库错误
+[PASS] D14 查询失败零状态写入
+[PASS] D15 prepare 审计失败时不更新状态
+[PASS] D16 prepare 审计失败返回 LOG_FAILED
+[PASS] D17 逐条审计失败如实返回 LOG_FAILED
+[PASS] D18 逐条审计失败不能伪称状态未更新
+[PASS] D19 逐条审计失败标明已更新数量
+[PASS] D19b 逐条审计失败仍写 PARTIAL 批次尾
+[PASS] D20 complete 审计失败如实返回 LOG_FAILED
+[PASS] D21 complete 审计失败保留成功计数
+== E. 缺陷回归与失败后续跑 ==
+[PASS] E1 空正文单独到期仍标记且只记一次逐条事件
+[PASS] E2 查询先过滤 pending 再限批
+[PASS] E3 并发版本变化后重跑只标记一次
+[PASS] E4 单条更新失败后重跑只补未完成记录
+== F. 审计待补与计数守恒 ==
+[PASS] F1 审计中断时选中记录分到互斥结果
+[PASS] F2 待补标记与状态同次写入，后续记录仍 pending
+[PASS] F3 逐条审计可按 ID 恢复且重复调用不重写日志
+[PASS] F4 日志已落库但回执丢失时按稳定 ID 确认，不重复追加
+[PASS] F5 两个独立实例交错执行仅一次状态转换和逐条日志
+[PASS] F6 连续触发不重复转换或补写已完成审计
+[PASS] F7 日志存在但待补标记清除失败，重试不产生第二条日志
+[PASS] F7b 两个独立恢复实例并发时只产生一条逐条日志
+[PASS] F7c 后续状态和 rev 已变化时仍能补记原标记事件
+[PASS] F8 系统日志符合 at/rev 与空哈希契约
+[PASS] F9 待补审计入口仍须维护令牌
+
+---- 汇总 ----
+PASS 71 / FAIL 0
+RESULT: OK（本地模拟，未验证云端真实行为）
+
+EXIT_CODE=0
+
+=== node tools/test_retention_purge.js ===
+PASS P1 严格 30 天边界：整点与未到期不清，超时才清
+PASS P2 保留外壳、审核状态、来源和准入状态
+PASS P3 重跑已清正文不重复转换或写逐条日志
+PASS P4 清理日志不含正文或身份字段
+PASS P5 超期 pending 只报告需标记，不清正文
+PASS P6 经既有状态转换和审计完成后才清正文
+PASS P7 T-1 失败批次和待补审计阻断正文清理
+PASS P8 逐条审计已恢复但历史 PARTIAL 批次仍禁止清理
+PASS P9 并发状态和 rev 变化不被覆盖，重读后的下次运行可继续
+PASS P10 写入失败留退避标记，PARTIAL 批次阻断后续正文清理
+PASS P11 逐条审计失败后标记留存，重启实例自动补记且不重复清正文
+PASS P12 批次 prepare 日志失败零正文写入
+PASS P13 prepare 失败后重试可完成
+PASS P14 两函数实例共享假 DB 时单次有效清理
+PASS P15 无维护令牌被拒绝
+PASS P16 本地索引与事件草案已声明且未冒充云端生效
+PASS P17 批次 complete 日志失败后孤儿 prepare 阻断重跑，逐条事件不重复
+PASS P18 异常版本记录退避，DEFERRED 批次未审清前阻断后续正文清理
+PASS 18 / FAIL 0
+
+EXIT_CODE=0
+
+=== node tools/test_retention_recover_pending.js ===
+PASS R1 空队列正常完成
+PASS R2 有界批次跨三次调用持续推进
+PASS R3 连续运行不重复写逐条事件
+PASS R4 日志失败延后重试，后续记录不饥饿
+PASS R5 rev 冲突后重试不重复日志或覆盖新版本
+PASS R6 日志已写但状态确认中断后可续跑
+PASS R7 两个函数实例共享假 DB 时单条日志
+PASS R8 恢复不清正文或更改准入状态
+PASS R8b 延后排程写入也失败时，原待补标记仍可在下次发现
+PASS R11 旧待补标记缺 retryAfter 仍能自动发现
+PASS R12 本地索引草案覆盖状态筛选与稳定排序
+PASS R9 未授权自动恢复被拒绝
+PASS R10 授权入口可调用且空队列正常返回
+PASS 13 / FAIL 0
+
+EXIT_CODE=0
+
+=== node tools/test_ugc_review.js ===
+== A. 静态边界（源码扫描） ==
+[PASS] A1 只声明两个集合
+[PASS] A2 只按冻结常量访问两个集合
+[PASS] A2b 只依赖 crypto 与 wx-server-sdk
+[PASS] A2c 不读写生成器产物或冻结映射
+[PASS] A3 不读取客户端身份字段
+[PASS] A4 不写 verified 状态
+[PASS] A5 日志只 add（源码内仅一处 collection(COL.LOGS)）
+[PASS] A6 无 collection(COL.LOGS) 上的 update/remove
+[PASS] A7 app.json 注册了投稿页与审核页
+[PASS] A8 tabBar 不含审核页与投稿页
+[PASS] A9 sitemap 显式 disallow 审核页
+[PASS] A10 disallow 规则位于 allow * 之前
+[PASS] A11 sitemap 也排除投稿页
+[PASS] A12 sitemap 无命中审核页的 allow 规则
+[PASS] A13 审核页不缓存身份/列表
+[PASS] A14 审核页不本地判定管理员
+[PASS] A15 审核页无分享入口
+== B. 鉴权闸门（fail-closed） ==
+[PASS] B1 未配置管理员时拒绝
+[PASS] B1b 拒绝原因可审计
+[PASS] B1c 拒绝时零数据库调用
+[PASS] B2 非管理员拒绝
+[PASS] B2b 非管理员原因
+[PASS] B2c 非管理员零数据库调用
+[PASS] B3 空 openid 拒绝
+[PASS] B4 普通用户改状态被拒（403 而非动作错误）
+[PASS] B5 管理员名单解析去重
+[PASS] B6 解析保留顺序
+== C. 动作白名单与 session ==
+[PASS] C1 管理员未知动作拒绝
+[PASS] C2 管理员 session 通过
+[PASS] C3 session 返回角色
+[PASS] C4 session 不读数据库
+== D. 队列与详情 ==
+[PASS] D1 list 成功
+[PASS] D2 只返回 pending
+[PASS] D3 最多 20 条
+[PASS] D4 按 createdAt 升序
+[PASS] D5 列表不含 submitter/openid
+[PASS] D6 管理员可查看任意投稿
+[PASS] D7 detail 返回 submissionId
+[PASS] D8 缺 id 拒绝
+[PASS] D9 不存在统一 404
+== E. approve 状态迁移 ==
+[PASS] E1 缺 expectedRev 拒绝
+[PASS] E2 rev 不一致拒绝
+[PASS] E3 内容安全故障不许通过
+[PASS] E3b 返回具体安全状态
+[PASS] E4 明确风险不许通过
+[PASS] E5 需复核允许通过
+[PASS] E5b rev 递增
+[PASS] E6 正常通过
+[PASS] E7 状态为 approved
+[PASS] E8 落库状态 approved
+[PASS] E9 review.decision
+[PASS] E10 管理员身份只存摘要
+[PASS] E11 通过不改 verifyStatus
+[PASS] E12 通过不改 importEligibility
+[PASS] E13 通过不写菜品库
+[PASS] E14 审计日志 event=review_approve
+[PASS] E15 审计日志角色 admin
+[PASS] E16 审计日志无 openid 明文
+[PASS] E17 重复通过被拒
+[PASS] E18 并发更新 0 行视为冲突
+== F. reject ==
+[PASS] F1 非法理由码拒绝
+[PASS] F1b 人工 reject 不可冒充系统 expire
+[PASS] F1c 人工接口没有 expire 动作
+[PASS] F2 理由超 100 字拒绝
+[PASS] F3 正常驳回
+[PASS] F4 落库 rejected
+[PASS] F5 理由码落库
+[PASS] F6 理由文本归一
+[PASS] F7 审计日志带理由码
+== G. delete（用户数据删除请求） ==
+[PASS] G1 不存在返回 404
+[PASS] G2 删除成功
+[PASS] G3 正文被清空
+[PASS] G4 身份被匿名化
+[PASS] G5 状态置 rejected
+[PASS] G6 理由码 user_deleted
+[PASS] G7 审计日志 event=delete_request
+[PASS] G8 重复删除幂等
+== H. 日志失败与实际状态一致性 ==
+[PASS] H1 日志失败返回 LOG_FAILED
+[PASS] H2 明确告知状态已变更
+[PASS] H3 返回真实新状态
+[PASS] H4 记录确实已变更
+[PASS] H5 尝试写 alarm 行
+== I. 只追加与副作用 ==
+[PASS] I1 全程无 remove 调用
+[PASS] I2 upload_logs 无 update/remove
+[PASS] I3 审核不写菜品库
+[PASS] I4 审计日志含 schemaVersion/event/day
+
+---- 汇总 ----
+PASS 86 / FAIL 0
+RESULT: OK（本地模拟，未验证云端真实行为）
+
+EXIT_CODE=0
+
+=== node tools/test_ugc_submit.js ===
+== A. 静态边界（源码扫描） ==
+[PASS] A1 不引用生成器产物或冻结映射
+[PASS] A2 不读取本地演示数据源
+[PASS] A3 只声明两个写入集合
+[PASS] A4 落库字段写死 unverified
+[PASS] A5 不提供数据库 update/remove 调用路径
+[PASS] A6 投稿页不调用身份/定位/相册接口
+[PASS] A7 投稿页不写本地缓存
+[PASS] A8 保留期限未写死（配置项待确认）
+== B. 入口与身份 ==
+[PASS] B1 非 submit 动作拒绝
+[PASS] B2 缺 openid 拒绝
+[PASS] B3 审计盐未配置时拒绝
+[PASS] B3b 拒绝时不落库
+== C. 保留字段（客户端不能指定身份/状态） ==
+[PASS] C1 顶层 status 被拒
+[PASS] C2 顶层 reviewerOpenid 被拒
+[PASS] C3 顶层 verifyStatus 被拒
+[PASS] C4 顶层 role 被拒
+[PASS] C5 顶层 openid 被拒
+[PASS] C6 顶层 isAdmin 被拒
+[PASS] C7 顶层 dishId 被拒
+[PASS] C8 顶层 review 被拒
+[PASS] C9 payload 非白名单键被拒
+[PASS] C10 target 非白名单键被拒
+== D. 请求体校验 ==
+[PASS] D1 kind 非法
+[PASS] D2 clientToken 非 32 hex
+[PASS] D3 缺 clientToken
+[PASS] D4 shopId 形状不符
+[PASS] D5 stallId 形状不符
+[PASS] D6 dishId 形状不符
+[PASS] D7 price 两位小数
+[PASS] D8 price 非正数
+[PASS] D9 price 为字符串
+[PASS] D10 note 空白
+[PASS] D11 note 超 100 字
+[PASS] D12 note 含零宽字符
+[PASS] D13 nameSuggestion 超 20 字
+[PASS] D14 price_fix 缺 price
+[PASS] D15 info_fix 无任何内容
+== E. 请求体大小与图片 ==
+[PASS] E1 超大请求体拒绝
+[PASS] E2 任何图片都拒绝
+[PASS] E3 空图片数组允许
+== F. 目标校验 ==
+[PASS] F1 演示数据不可投稿
+[PASS] F2 目标不存在
+[PASS] F3 档口不一致
+[PASS] F4 非待核实数据不可投稿
+[PASS] F4b 非待核实数据原因可区分
+== F2. P3：field_unverified 但 verifyStatus 已离开待核实 ==
+[PASS] F5 已核实记录不可投稿
+[PASS] F6 已核实记录 422
+[PASS] F7 原因标注 VERIFYSTATUS_NOT_UNVERIFIED
+[PASS] F8 回传当前 verifyStatus 供排查
+[PASS] F9 被拒时不落库
+[PASS] F10 已过期记录不可投稿
+[PASS] F11 已过期记录原因一致
+[PASS] F12 显式 unverified 允许投稿
+[PASS] F13 档口级目标同样按 verifyStatus 拒绝
+[PASS] F14 档口级拒绝原因一致
+[PASS] F15 正常目标通过
+== G. 落库字段与“不自动赋 dishId” ==
+[PASS] G1 无 dishId 也允许（档口级纠错）
+[PASS] G2 dishId 保持 null
+[PASS] G3 状态恒 pending
+[PASS] G4 dataClass 固定
+[PASS] G5 verifyStatus 固定 unverified
+[PASS] G6 verifiedAt 为 null
+[PASS] G7 importEligibility 固定 blocked
+[PASS] G8 rev 初始为 1
+[PASS] G9 photos 恒为空数组
+[PASS] G10 存储 submitter.openid 为服务端身份
+[PASS] G11 不写 openid 明文到日志
+[PASS] G12 日志不写正文全文
+[PASS] G13 只写入两个集合
+[PASS] G14 其它集合只读不写
+== H. 幂等与去重 ==
+[PASS] H1 同令牌第一次创建
+[PASS] H2 同令牌重试幂等
+[PASS] H3 幂等不新增记录
+[PASS] H4 同内容待审去重
+[PASS] H5 去重返回 dupOf
+[PASS] H6 去重不新增记录
+== I. 限流 ==
+[PASS] I1 五分钟内第 4 条被限流
+[PASS] I2 返回 retryAfter
+[PASS] I3 24 小时内第 11 条被限流
+== J. 内容安全四种结果 ==
+[PASS] J1 pass 落库状态
+[PASS] J2 review 落库状态
+[PASS] J3 risk 落库状态
+[PASS] J4 errcode 落库状态
+[PASS] J4b 接口故障仍为 pending
+[PASS] J4c 故障写安全日志
+[PASS] J5 抛异常判 error（不当通过）
+[PASS] J5b 调用挂起按超时判 error
+[PASS] J5c 挂起重试次数为 2
+[PASS] J5d 超时后仍为 pending
+[PASS] J5e 超时未阻塞过久
+[PASS] J6 无文本时跳过检测
+[PASS] J7 跳过仍记 pass 且降级标注
+== K. 数据库失败不谎报成功 ==
+[PASS] K1 落库失败返回 DATABASE_ERROR
+[PASS] K2 落库失败不返回成功
+[PASS] K3 目标读取失败返回 DATABASE_ERROR
+[PASS] K4 限流计数失败返回 DATABASE_ERROR
+== L. 审计日志失败如实上报 ==
+[PASS] L1 日志失败返回 LOG_FAILED
+[PASS] L2 已落库记录仍存在（不谎报）
+[PASS] L3 返回中说明记录已写入
+== M. 幂等性不因日志失败丢失 ==
+[PASS] M1 首次成功
+[PASS] M2 重试幂等返回同一条
+[PASS] M3 不重复落库
+== N. 校验顺序：形状先于查库（P2 与源码一致） ==
+[PASS] N1 旧命名 dishId 返回 INVALID_FIELD
+[PASS] N2 指出是 dishId（message=DISH_ID）
+[PASS] N3 形状不符时一次数据库都没读
+[PASS] N4 旧命名 shopId 返回 INVALID_FIELD
+[PASS] N5 形状不符时同样不读库
+[PASS] N6 形状合法但不存在才查库并报 TARGET_NOT_FOUND
+[PASS] N7 此时确实读过 dishes
+[PASS] N8 注释已改为与真实顺序一致
+
+---- 汇总 ----
+PASS 110 / FAIL 0
+RESULT: OK（本地模拟，未验证云端真实行为）
+
+EXIT_CODE=0
+
+=== node tools/test_ugc_client_contract.js ===
+
+== A. 投稿页 ↔ submit 契约 ==
+  PASS A. handler 存在: onKindChange
+  PASS A. handler 存在: onInput
+  PASS A. handler 存在: onSubmit
+  PASS A. handler 存在: onSubmitAgain
+  PASS A. 调用名取自 config.ugc.FUNCTIONS.SUBMIT
+  PASS A. 页面使用 FUNCTIONS.SUBMIT 调用
+  PASS A. 页面发送 action=submit
+  PASS A. 页面发送 clientToken
+  PASS A. 页面发送 target 三个键
+  PASS A. 页面发送 payload
+  PASS A. 无保留字段: status
+  PASS A. 无保留字段: review
+  PASS A. 无保留字段: reviewerOpenid
+  PASS A. 无保留字段: verifyStatus
+  PASS A. 无保留字段: verifiedAt
+  PASS A. 无保留字段: importEligibility
+  PASS A. 无保留字段: dataClass
+  PASS A. 无保留字段: submitter
+  PASS A. 无保留字段: dedupe
+  PASS A. 无保留字段: security
+  PASS A. 无保留字段: createdAt
+  PASS A. 无保留字段: updatedAt
+  PASS A. 无保留字段: rev
+  PASS A. 无保留字段: openid
+  PASS A. 无保留字段: openId
+  PASS A. 无保留字段: role
+  PASS A. 无保留字段: isAdmin
+  PASS A. 无保留字段: schemaVersion
+  PASS A. 无保留字段: reopenOf
+  PASS A. 无保留字段: _id
+  PASS A. 无保留字段: _openid
+  PASS A. 无保留字段: updatedBy
+  PASS A. 客户端生成 32 位十六进制 token
+  PASS A. 服务端校验 clientToken 形状
+  PASS A. note 上限一致
+  PASS A. name 上限一致
+  PASS A. textarea maxlength 与 NOTE_MAX 一致
+  PASS A. 客户端价格规则为最多一位小数
+  PASS A. 服务端校验价格小数位
+  PASS A. 处理 RATE_LIMITED retryAfter
+  PASS A. 处理 DUPLICATE
+  PASS A. 处理 LOG_FAILED 且提示勿重复提交
+  PASS A. 区分 securityState risk/review
+  PASS A. 无 wx.setStorage/setStorageSync 调用
+  PASS A. onLoad 校验链接参数形状
+  PASS A. 坏参数丢弃并提示
+  PASS A. 演示数据给出明确提示而非格式错误
+  PASS A. 演示编号正则存在
+
+== B. 审核页 ↔ review 契约 ==
+  PASS B. handler 存在: onApprove
+  PASS B. handler 存在: onReject
+  PASS B. 动作在服务端白名单: session
+  PASS B. 动作在服务端白名单: list
+  PASS B. 动作在服务端白名单: approve
+  PASS B. 动作在服务端白名单: reject
+  PASS B. 页面先调 session 再 list
+  PASS B. approve 携带 expectedRev
+  PASS B. reject 携带 expectedRev 与 reasonCode
+  PASS B. 页面使用的驳回原因在服务端白名单: inaccurate
+  PASS B. STATE_CONFLICT 后自动刷新
+  PASS B. SECURITY_UNAVAILABLE 提示不能通过
+  PASS B. 审核页未定义 onShareAppMessage
+  PASS B. 审核页不写 storage
+
+== C. 页面注册与入口边界 ==
+  PASS C. submit 页已在 app.json 注册
+  PASS C. review 页已在 app.json 注册
+  PASS C. 审核页不在 tabBar
+  PASS C. 投稿页不在 tabBar
+  PASS C. 审核页无分享（wxml 无 button open-type=share）
+  PASS C. 首页存在投稿入口 navigateTo
+  PASS C. 入口带 shopId/stallId 参数
+  PASS C. 入口可选带 dishId
+  PASS C. 入口前校验 shopId 与 stallId
+  PASS C. 卡片暴露真实编号 data 属性
+  PASS C. 卡片绑定 onSubmitDish
+  PASS C. 审核页仍为零入口（navigateTo=0）
+
+== D. 错误码文案覆盖 ==
+  PASS D. 有中文文案: INVALID_ACTION
+  PASS D. 有中文文案: NO_OPENID
+  PASS D. 有中文文案: INTERNAL
+  PASS D. 有中文文案: PAYLOAD_TOO_LARGE
+  PASS D. 有中文文案: PHOTO_NOT_SUPPORTED
+  PASS D. 有中文文案: RESERVED_FIELD
+  PASS D. 有中文文案: DATABASE_ERROR
+  PASS D. 有中文文案: DUPLICATE
+  PASS D. 有中文文案: RATE_LIMITED
+  PASS D. 有中文文案: LOG_FAILED
+  PASS D. 有中文文案: INVALID_FIELD
+  PASS D. 有中文文案: NOT_FOUND
+  PASS D. 有中文文案: STATE_CONFLICT
+  PASS D. 有中文文案: SECURITY_UNAVAILABLE
+  PASS D. 有中文文案: FORBIDDEN
+  PASS D. textOf 回退存在
+
+----------------------------------------
+PASS 90 / FAIL 0 / TOTAL 90
+RESULT: OK
+
+EXIT_CODE=0
+
+=== node tools/check_eol.js ===
+检查范围：[强制] docs/**/*.md　[报告] tools/**/*.md
+排除：tools/_backup/**、node_modules/**、.git/**、miniprogram_npm/**；不跟随符号链接；目录深度上限 8 层
+
+[强制] docs/**/*.md：文件 47 个，合规 47，违规 0（源规则 0 / 规范化 0 / 扫描 0）
+
+[报告] tools/**/*.md：文件 14 个，合规 14，违规 0（源规则 0 / 规范化 0 / 扫描 0）（报告模式，不影响退出码）
+
+合计：文件 61 个，违规记录 0（源规则 0 / 规范化 0 / 扫描 0）
+说明：本工具只做检测。把 CRLF 改成 LF 只是修复动作，不视为通过；不提供 --fix。
+
+EXIT_CODE=0
+
+=== git diff --check ===
+
+STDERR:
+warning: in the working copy of 'project.config.json', CRLF will be replaced by LF the next time Git touches it
+
+EXIT_CODE=0

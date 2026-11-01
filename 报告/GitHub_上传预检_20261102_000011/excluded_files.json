@@ -1,0 +1,962 @@
+[
+  {
+    "path": "项目/project.private.config.json",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/COMMIT_EDITMSG",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/config",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/description",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/HEAD",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/index",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/index.wxss.before-shortviewport",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/index.wxss.before-tabbar",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/index.wxss.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/project.config.json.before-packignore",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/verify_cascade.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/verify_foodtype.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/verify_sl.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/verify_stage2.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/a7-choice/dishes.js",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/a7-choice/index.js",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/a7-choice/matcher.js",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/a7-choice/REAL_DATA_COLLECTION_SPEC.md",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/a7-choice/regression.js",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/a7-choice/test_verify_data.js",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/a7-choice/verify_data.js",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/r1-retention-20261029-20261029T0637432733201Z/cloudfunctions__retention__index.js",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/r1-retention-20261029-20261029T0637432733201Z/config__cloud__schema.submissions.json",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/r1-retention-20261029-20261029T0637432733201Z/docs__UGC_MVP_DESIGN_FINAL_20261026.md",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/r1-retention-20261029-20261029T0637432733201Z/tools__test_retention_mark.js",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/r1-retention-20261029-20261029T0637432733201Z/tools__ugc_fake_cloud.js",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/retention-audit-20261029-20261029T0615109693621Z/cloudfunctions__retention__index.js",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/retention-audit-20261029-20261029T0615109693621Z/config__cloud__schema.submissions.json",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/retention-audit-20261029-20261029T0615109693621Z/config__cloud__schema.upload_logs.json",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/retention-audit-20261029-20261029T0615109693621Z/docs__UGC_MVP_DESIGN_FINAL_20261026.md",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/retention-audit-20261029-20261029T0615109693621Z/report__报告__Codex_Retention_P0_闭环验收_20261029.md",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/retention-audit-20261029-20261029T0615109693621Z/tools__test_retention_mark.js",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/retention-audit-20261029-20261029T0615109693621Z/tools__ugc_fake_cloud.js",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/retention-p0-close-20261029-20261029T0554421214165Z/config__cloud__schema.submissions.json",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/retention-p0-close-20261029-20261029T0554421214165Z/config__cloud__schema.upload_logs.json",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/retention-p0-close-20261029-20261029T0554421214165Z/docs__UGC_MVP_DESIGN_FINAL_20261026.md",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/retention-p0-close-20261029-20261029T0554421214165Z/test_retention_mark.js",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage-a2/floors.csv.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage-a2/import_data.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage-a2/stalls.csv.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage-a2/test_import_data.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage-assert/contract.before-assertfix.md",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage-assert/test_records_spec.before-assertfix.js",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage-g48/contract.before-g48.md",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage-g48/test_records_spec.before-g48.js",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage-g48/test_records_spec.before-t94.js",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage-pk1/contract.before-pk1.md",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage-pk1/decision_record.before-pk1.md",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage-pk1/test_records_spec.before-pk1.js",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage-q6/contract.before-q6.md",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage-q6/test_records_spec.before-q6.js",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage-q6-phase2/contract.before-e26.md",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage-q6-phase2/test_records_spec.before-e26.js",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage-q7/contract.before-c2.md",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage-q7/test_records_spec.before-c2.js",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage-s2/seed-index.js.before-s2",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage-s2/test_seed_auth.js.before-s2",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage-s2/verify_seed.js.before-s2",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage2/data-index.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage2/dishes.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage2/index.wxml.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage2/index.wxss.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage2/shops.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage2b/data-index.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage2b/dishes.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage2b/provenance.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage2b/shops.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage2b/verify_provenance.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage2c/provenance.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage2c/README.md.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage2c/verify_provenance.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage3/data_index.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage3/data_shops.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage3/pages_index_index.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage3/pages_index_index.wxml.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage3/pages_index_index.wxss.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage3/tools_README.md.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage3/tools_regression.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage3/tools_verify_provenance.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage3/tools_verify_stage2.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/tools/_backup/stage3/utils_matcher.js.orig",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/hooks/applypatch-msg.sample",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/hooks/commit-msg.sample",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/hooks/fsmonitor-watchman.sample",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/hooks/post-update.sample",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/hooks/pre-applypatch.sample",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/hooks/pre-commit.sample",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/hooks/pre-merge-commit.sample",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/hooks/pre-push.sample",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/hooks/pre-rebase.sample",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/hooks/pre-receive.sample",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/hooks/prepare-commit-msg.sample",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/hooks/push-to-checkout.sample",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/hooks/sendemail-validate.sample",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/hooks/update.sample",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/info/exclude",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/logs/HEAD",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/refs/heads/main",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/refs/tags/v0.2.0",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/04/d632abffdc48d2dd810e8dc41cddfd079e071d",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/05/41fafe075eb6cd88002a2c904c3b3bf6946811",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/08/231f84e6c8385c317064098840158e939382d7",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/0b/f5db5617e1844798d9c6712ad728fed50c3377",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/10/4d6ae05d8c6681998ba1d20a7d6267005b5696",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/16/56c61fd634f2a83e7b1ce572cfd65b99f38bae",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/1e/305a362c0ee92f9eb84b31655fd0fa9eb28014",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/22/f49a8446be9653571c914a4f640f6610f73774",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/27/4ebd6bc35da21394e5e04b0abd7e02b4ce0fad",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/2e/83751a721af77b8046d321fd10b8bf15e2b1a7",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/33/47c2b60cdc750b866235d728eec1f1a639b83f",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/35/87d1e43cc92399080b45b1f86cf930c7c32633",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/38/60a4a6c2138f48a2f7cbc1968e4113784d8324",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/46/bb326f48c76a3b7a8cbdf40e9a92caf82c3dfe",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/4d/0df82f50018f4b128eb8aab7070036af66f7a3",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/4d/6baf2283df68b437aaee2098ae5e0a338c023a",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/50/34dcd9619ec98452d853ec63503bef8e8f50d0",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/51/22095f95b76053177a12cd249ee9c75f2dc9ba",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/56/fd2853e5365c64bea11c38bee58df8b6751b0e",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/61/995bc47b7f22bfb638b7f01d3f2c2c65101dee",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/62/aff5403d643cb4ea084f578203e4dfdfcf307b",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/66/5d8bcf1573135a233c7f53a44d1eee37206584",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/66/a9bdc9e16940fff4ef559d295ef8988288b477",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/6a/b602799aff10661dcd7fbef5852b7f7ec3ecda",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/6b/22e919c2abe39c50d7c21d1b4b870fff485ba6",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/76/a3242b95c1c7669824260116b221519271e271",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/76/e1bfab3d0f91eece2c7f5cd2703569dd86a5ac",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/7d/3b1d6e10643dae800bb422742f6eef1a34d682",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/81/ed45d0d20a1bf8161885e9785355cfaf15140c",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/84/72b1fcbea725774eab38336fcd395fea6d9df7",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/90/74123c80e82ea3a165115f7341b09d0ec8507a",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/92/30ad86f7c23fd275e45650bd2ae1c1df158358",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/92/f2a7db7c2f443bb51b4ba5adc570f82448c978",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/97/53ab89165813f712beaea5bd69ceafbf285b9b",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/9d/6a017839e95ab6f148e29f8d3fa44d9c88608d",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/9e/d32ffef49c55383bdee28554f4b1637ce48166",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/a0/db9e0299e2d2e4c78881bfb3a4c98831857586",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/a1/2c78cc9c3bd63d755e61113299bd33454998fe",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/a5/c5459900d96dbaa5dac96386d64e13cf7b1ae0",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/ad/8b0782644250091ddef93a22328586511f3ee2",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/ae/530e46efcbd09326f46bdb5266933940fe66e9",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/ae/a02d467bc3cb593553a5944eae02cc4c9bdf14",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/ae/e18bb4eb99d51fec144c26496a444d29b66878",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/c0/c84fb551d93f25fc61df65d31a2ad66ca63f57",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/c5/53343f1e43ae68709490e0e118dbd60dfc01d0",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/c6/297a5306bc946da873e46641c2ed0ea00c8668",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/c9/4c17f4921a211153bbdbc14cf9014ea60257a8",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/ca/29f965769dd42946379feb26cc25e417d7f998",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/ce/b30e01a747987dd95258ea65d96696642d81c6",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/d0/17ce2db99ae38f4d61570a1accd8a6cb0823bc",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/df/aa27f8c78d18919450075377854fda59efd805",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/e5/069d7cd7460b9860b58f64144038ec2f907a3a",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/eb/f65d5322a221ecc41f8fcbf8a509c6ac4d66e1",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/ed/40bc8290db63bf5d7a7134e6da3fd2b61643b3",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/f3/a56e3590721ebe3348fefdb0695b3ca64c18a5",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/f9/74182bfa3ab5a72fd469c1761e8d7c5b1a955a",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/fa/8c0c9a44a9aaf72fef0f6730ab7545183002f2",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/fb/7825d5657457d1016d14a472cf8f727c0ac5dd",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/objects/fe/2db57b00c24bd3cd6d847a87b9dde778779098",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "项目/.git/logs/refs/heads/main",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_E2_20261101_evidence/test_1.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_E2_20261101_evidence/test_1_final.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_E2_20261101_evidence/test_2.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_E2_20261101_evidence/test_3.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_E2_20261101_evidence/test_4.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_E2_20261101_evidence/test_5.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_E2_20261101_evidence/test_6.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_E3_evidence/e2_reused_test.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_E3_evidence/validation.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_20261101/diff_check.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_20261101/import_default.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_20261101/import_strict.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_20261101/negative_duplicate_id.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_20261101/negative_missing_photo.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_20261101/negative_unknown_taste.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_20261101/regression_import.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_20261101/regression_verify.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_M1_20261101/default.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_M1_20261101/future_date.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_M1_20261101/missing_evidence.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_M1_20261101/strict.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_M2_20261101/fixture_invalid_evidence_path.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_M2_20261101/fixture_missing_collector.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_M2_20261101/fixture_missing_date.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_M2_20261101/fixture_no_upload_positive.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_M2_20261101/real_default.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_M2_20261101/real_strict.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_M3_1_20261101/business_preview.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_M3_20261101/strict_actual.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_M3_3_20261101/price_adapter.py.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_M3_3_20261101/test_price_adapter.py.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_M3_4_20261101/original_importer_compatibility.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_M3_4_20261101/test_adapter.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_UI_AB_20261101/project.private.config.json",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_M3_4_20261101/M342_evidence/git_diff_check.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_M3_4_20261101/M342_evidence/test_adapter.js.after_login.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_M3_4_20261101/M342_evidence/test_adapter.js.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_M3_4_20261101/M342_evidence/test_m342.js.after_login.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_M3_4_20261101/M342_evidence/test_m342.js.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R02_M3_3_20261101/__pycache__/price_adapter.cpython-314.pyc",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/e2_t1.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/e2_t2.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/e2_t3.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_base_test_b1_adapter.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_base_test_cloudrepo.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_base_test_home_datasource.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_base_test_import_data.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_base_test_index_state.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_base_test_records_spec.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_base_test_seed_pilot.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_base_test_seed_s21.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_base_test_verify_data.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_final_build_pilot_dryrun.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_final_test_b1_adapter.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_final_test_cloudrepo.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_final_test_home_datasource.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_final_test_import_data.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_final_test_index_state.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_final_test_records_spec.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_final_test_seed_pilot.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_final_test_seed_s21.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_final_test_verify_data.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_final_verify_stage2.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_stepB_test_verify_data.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_stepC_test_import_data.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_d_stepC_test_verify_data.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_i_patch2_import_data.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_i_patch2_verify_data.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_i_patch_b1_adapter.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_i_patch_import_data.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_i_patch_verify_data.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_i_test_b1_adapter.js.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_i_test_cloudrepo.js.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_i_test_home_datasource.js.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_i_test_import_data.js.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_i_test_index_state.js.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_i_test_records_spec.js.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_i_test_records_spec_rootcwd.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_i_test_seed_pilot.js.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_i_test_seed_s21.js.log",
+    "reason": "private/local/cache/backup"
+  },
+  {
+    "path": "报告/R01_20261031/_raw/r03_i_test_verify_data.js.log",
+    "reason": "private/local/cache/backup"
+  }
+]

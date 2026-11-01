@@ -1,0 +1,151 @@
+/* ===================================================================
+   评分页样式 —— 灶火纸感
+   颜色写成固定值（与首页一致，不使用 CSS 变量）
+   =================================================================== */
+
+.page {
+  padding: 0 32rpx 48rpx;
+}
+
+/* ---------------- 标题 ---------------- */
+.hero {
+  padding: 32rpx 8rpx 24rpx;
+}
+
+.hero-title {
+  font-size: 52rpx;
+  font-weight: 700;
+  color: #241E1A;
+  letter-spacing: 2rpx;
+  line-height: 1.2;
+}
+
+.hero-sub {
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: #9C9289;
+}
+
+/* ---------------- 空状态卡 ---------------- */
+.empty-card {
+  margin-top: 8rpx;
+  padding: 48rpx 32rpx 40rpx;
+  background: #FFFFFF;
+  border: 1rpx solid #EDE4D9;
+  border-radius: 28rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.empty-mark {
+  width: 96rpx;
+  height: 96rpx;
+  border-radius: 50%;
+  background: #FDECE7;
+  border: 1rpx solid #F6DCD2;
+  color: #D9412B;
+  font-size: 44rpx;
+  font-weight: 700;
+  line-height: 94rpx;
+  text-align: center;
+}
+
+.empty-title {
+  margin-top: 24rpx;
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #241E1A;
+  letter-spacing: 1rpx;
+}
+
+.empty-desc {
+  margin-top: 14rpx;
+  font-size: 26rpx;
+  line-height: 1.7;
+  color: #6F655D;
+}
+
+.empty-tag {
+  margin-top: 24rpx;
+  height: 44rpx;
+  padding: 0 20rpx;
+  border-radius: 999rpx;
+  background: #FFF4E3;
+  border: 1rpx solid #F4E2C4;
+  color: #A66A12;
+  font-size: 22rpx;
+  font-weight: 600;
+  line-height: 42rpx;
+}
+
+/* ---------------- 说明卡 ---------------- */
+.card {
+  margin-top: 20rpx;
+  padding: 28rpx 28rpx 32rpx;
+  background: #FFFFFF;
+  border: 1rpx solid #EDE4D9;
+  border-radius: 28rpx;
+}
+
+.card-title {
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #241E1A;
+}
+
+.card-desc {
+  margin-top: 8rpx;
+  margin-bottom: 20rpx;
+  font-size: 24rpx;
+  line-height: 1.6;
+  color: #9C9289;
+}
+
+/* 维度条 */
+.dim {
+  display: flex;
+  align-items: center;
+  height: 52rpx;
+}
+
+.dim-label {
+  width: 150rpx;
+  flex: 0 0 150rpx;
+  font-size: 25rpx;
+  color: #6F655D;
+}
+
+.track {
+  flex: 1;
+  height: 12rpx;
+  margin: 0 16rpx;
+  background: #F3EBE1;
+  border-radius: 999rpx;
+  overflow: hidden;
+}
+
+.track-fill {
+  height: 100%;
+  background: #D9412B;
+  border-radius: 999rpx;
+}
+
+.dim-val {
+  width: 70rpx;
+  flex: 0 0 70rpx;
+  text-align: right;
+  font-size: 23rpx;
+  font-weight: 600;
+  color: #9C9289;
+}
+
+/* ---------------- 脚注 ---------------- */
+.note {
+  margin-top: 24rpx;
+  padding: 0 8rpx;
+  font-size: 22rpx;
+  line-height: 1.7;
+  color: #9C9289;
+}

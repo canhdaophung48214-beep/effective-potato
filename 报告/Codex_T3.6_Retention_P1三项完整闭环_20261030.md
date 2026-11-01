@@ -1,0 +1,1305 @@
+# Codex｜T3.6 Retention 并发安全与版本一致性实施验收（2026-10-30）
+
+执行人：Codex；独立验收：DSH。本轮仅改本地文件、使用离线假数据库，不访问或部署云端。文件名沿用工单指定；**本报告不宣称三项 P1 已完整闭环**。
+
+## 1. 分项结论
+
+| 项目 | 本地结果 | 真实云端/上线状态 |
+|---|---|---|
+| 全局审计与正文 TOCTOU | **生产调用入口安全关闭 PASS**：`main({action:'purge'})` 经鉴权后、读库前返回 `PURGE_GLOBAL_FENCE_UNVERIFIED`；普通内部 `purgePayload` 也关闭。`__test__` 仅用私有 Symbol 开启离线模拟正向清理。 | **PENDING**：未建立能让日志写入与正文更新共同遵守的跨文档原子屏障。生产正文清理不可用，不能上线。 |
+| 行锁、租约、旧实例 | **本地模拟 PASS**：同一投稿文档持久保存 owner/lease/fencingToken；接管使 rev 和 token 变化，旧实例 CAS 失败。 | **PENDING**：CloudBase 条件更新、服务器时间、旧实例超时与锁续租尚未实测；行锁不保护全局日志。 |
+| rev 一致性 | **本地 PASS**：Retention 所有实际投稿写入（标记、审计确认/退避、清理、行锁）均以旧 rev 条件写 `rev+1`，冲突分类；新增 `complete` 区分批次生命周期与执行完成。 | **PENDING**：真实数据库 CAS 语义与跨入口并发未验收。 |
+| 历史 FAILED/PARTIAL 修复 | **安全阻断 PASS；正向修复 PENDING**：逐条 `audit.pending` 能幂等补记，但原失败批次不会因此变成成功；没有 force/ignore 入口。 | **PENDING**：历史日志缺原批次选中记录的不可变清单与逐条归属，无法安全构造“已修复”事件。 |
+| 大规模分页与扫描锚点 | **本地 PASS**：499/500/501/1001、续扫、重放、损坏凭据、双向插入与缺失检测。scanScope 含 scanId、起始时间、水位、游标、页数、扫描数及完成标志。 | **PENDING**：真实索引/排序/读一致性/请求大小未验证；续扫完成仍不用于生产 purge 放行。 |
+
+总体：**PENDING**。T3.4 的实测 TOCTOU 不能被行锁或离线测试抹去；因此生产清理入口保持失败关闭。三项新测试均退出 0，但“历史失败修复成功”和“真实云端并发安全”没有 PASS。
+
+## 2. 开工基线、文件清单与调用关系
+
+开工 Git：`main`，HEAD `274ebd6bc35da21394e5e04b0abd7e02b4ce0fad`，暂存 0，`status --porcelain=v1 --untracked-files=all` 328 条（15 个既有已跟踪修改、313 个未跟踪）。开工 `cloudfunctions/retention/index.js` 46,633 字节、SHA-256 `8BE773F7D271A9C92F98B3AFF62AE0C035A054FE8B20F09B7EC617EE674682C7`，已是未跟踪文件。DSH T3.6 早前报告结论是“当时交付物不存在”，不是对本轮新代码的验收。`.baton/task.md`、`.baton/handoff/current.md`、`.baton/PROTOCOL.md` 在根目录与项目目录均未找到，未伪造交接单。
+
+修改前逐项采集并备份的 10 个文件：`cloudfunctions/retention/index.js`、`tools/ugc_fake_cloud.js`、`config/cloud/schema.submissions.json`、`config/cloud/schema.upload_logs.json`、`tools/test_retention_mark.js`、`tools/test_retention_purge.js`、`tools/test_retention_recover_pending.js`、`tools/test_retention_reconcile.js`、`tools/test_retention_audit_gate.js`、`tools/test_retention_t34_resume.js`。哈希和大小见 §4。`ugc_fake_cloud.js`、`schema.upload_logs.json`、`test_retention_reconcile.js` 经核对后未修改。
+
+当前源码调用关系：`main:1089` 先验证维护令牌；`markExpired:663` 更新 pending→expired 并写 `retention_mark` prepare/record/complete；`recoverAudit:156`、`recoverPending:208`、`deferAudit:141` 补记和退避；`recoverPurgePending:436`、`recoverPurgeAudit:295`、`deferPurge:339` 处理清理审计；`reconcileBatches:895` 只读；`purgePayload:534` 在离线模拟中先恢复、再对账、选候选、写 prepare、获取行锁、条件清正文、逐条审计、释放锁、写 complete。清正文条件更新在 `:615` 附近；调用方无法通过 `main` 到达它。`submit/index.js` 创建投稿 `rev=1`；`review/index.js` 审核/人工删除使用预期 rev 条件，人工删除另有 `payload:null` 路径，本轮未修改。Retention 之外的日志写入者不参与本轮行锁；这正是全局屏障未能关闭的原因。
+
+## 3. 实际修改与最小影响
+
+1. `cloudfunctions/retention/index.js`：补齐标记审计确认/退避、清理审计确认/退避的 `rev+1`；增加同文档清理行锁的获取、续租、条件释放及 fencingToken 校验；正文更新同时校验旧 rev、owner、fencingToken 和锁状态，改用点路径保留锁元数据。冲突批次记 `DEFERRED`，不写虚假 `COMPLETE`。外部及普通内部清理失败关闭；只有模块内私有 Symbol 允许 `__test__` 离线模拟。续扫新增 `scanId/initialCount`，末尾事件总数不等于起点则返回 `SCAN_CHANGED`、`completeScan=false`、要求重扫。
+2. `config/cloud/schema.submissions.json`：声明 `retention.purge.lock` 的 state/owner/fencingToken/leaseExpiresAt；明确所有投稿元数据变更也递增 rev。仅本地 schema，未应用云端。
+3. 既有测试 `test_retention_mark.js`、`test_retention_purge.js`、`test_retention_recover_pending.js`、`test_retention_audit_gate.js`、`test_retention_t34_resume.js`：按新 rev 与更严格的失败关闭语义更新预期，并保留原有风险断言。旧“并发冲突后马上继续清理”预期改为“DEFERRED 批次未审清前阻断”，同时检查正文原样不变。
+4. 新增三份专项测试：`tools/test_retention_t36_concurrency.js`（15 条）、`tools/test_retention_t36_repair.js`（7 条）、`tools/test_retention_t36_resume.js`（15 条）。新增 `docs/RETENTION_T36_DESIGN_20261030.md`，分别标记本地实现、离线验证、静态分析与云端 PENDING。
+
+实际 11 个修改/新建文件的逐行 unified diff 见 `报告/Codex_T3.6_精确差异_20261030.patch`，70,840 字节，SHA-256 `D9073D38525B00AB18D324FD0B07B75EB9F7C8E6BCCE82E4154CCE4C28C112F1`。附录嵌入同一份精确差异；旧侧来自本轮外部原字节备份，新文件旧侧为 `/dev/null`。目标源码和 schema 在 Git 中原已未跟踪，普通 `git diff` 不显示其改动。
+
+## 4. 备份、字节数与 SHA-256
+
+新备份目录：`C:\Users\25975\Desktop\食神寻味小程序开发\备份\T3_6_retention_20261030_122422_918\`，位于项目/Git 仓库外。`manifest.txt` 记录 10 个原文件的相对路径、字节数、哈希和备份路径；每份复制后与修改前源文件 SHA-256 一致，未覆盖旧备份。
+
+| 文件 | 改前字节 / SHA-256 | 改后字节 / SHA-256 |
+|---|---|---|
+| `cloudfunctions/retention/index.js` | 46,633 / `8BE773F7D271A9C92F98B3AFF62AE0C035A054FE8B20F09B7EC617EE674682C7` | 56,114 / `255686A5077214D1B85A23EEFBF8A2B54F2AC31F96A0A289912BB29B56C1CF7D` |
+| `config/cloud/schema.submissions.json` | 8,489 / `954D2E2875EFEFBACE184E450D29AA097CE2A434369A9AF471E800BC433CA105` | 9,152 / `E7B4A9DCC4067A4F21E04E87E4FFBC83F9766C19CA208C6F34D1AEB8ABA496CA` |
+| `tools/test_retention_mark.js` | 22,398 / `8A3498D7E75A5C792A23273B4A0F76256A03E6E5C60FD55A3E6C98D5A995E733` | 22,428 / `7253675CF15756E09F47C03257E4CCDB4E79890ABCCEF8A3242970178C5D08D0` |
+| `tools/test_retention_purge.js` | 9,206 / `32FCD7433A9A27F824906C9E2AF174DAFC67BA1538BB6B9D86C082B1340CC82D` | 9,335 / `4B1D6059F93DB01BE3171209A8F006CCD7C5212A621425313CA7564F402EFCE1` |
+| `tools/test_retention_recover_pending.js` | 7,118 / `E7B8E24042AA54FB682FBCF2711F0D91FF859A651B78D753B61BFA805BF7BCB9` | 7,118 / `1111DB731E7EB6A9A5654450C0907DDD16083F8B65373A812B63B740BE46F8BB` |
+| `tools/test_retention_audit_gate.js` | 10,640 / `FA27B88047DE34581C85145612F0B96EAC9975A4C72B9326A33C6A6C968E9C10` | 10,670 / `C3A8C7B65A016E665EA67261C18F7547AFA2006DF9F5800DDDB45121038C2D48` |
+| `tools/test_retention_t34_resume.js` | 7,758 / `E6EF3BD70C2AE3C35C9AC3D65FCBA2952770F70ACF8D1B2A9E486E6D68CCF498` | 8,049 / `B7EF8DBBE9E90B50485900C2C4C9DB07897C3039A58BD611969BA0375F58A091` |
+| `tools/test_retention_t36_concurrency.js` | 新建 | 9,298 / `DD22F2806C2EE182FF70FB221BD31E3BC269898C4590239BD8A863D43FB9AD0D` |
+| `tools/test_retention_t36_repair.js` | 新建 | 5,722 / `5B61D15A8A635C67BDDDA1AEB8CF4A3DA1CEB51632F5785F0C0A2CD7A51BF320` |
+| `tools/test_retention_t36_resume.js` | 新建 | 5,627 / `56BE1628C89087079A5332F07232152CC01095092AF5005260300D54E3705FF1` |
+| `docs/RETENTION_T36_DESIGN_20261030.md` | 新建 | 8,009 / `87C27184FFE64420CBE456E308E60CA29CEF137B81769233DF73EBF1F2015F36` |
+
+备份的 `ugc_fake_cloud.js`、`schema.upload_logs.json`、`test_retention_reconcile.js` 未修改；不以修改后的文件冒充原始备份。反事实副本位于此备份目录的 `counterfactual/`，与原始备份分开。
+
+## 5. 三份新测试的完整实际输出
+
+原始输出文件：`报告/Codex_T3.6_回归原始输出_20261030.txt`，107,294 字节，SHA-256 `92375286F3FE50274FEACC9D5ED852029B6E6D82393F8CBC02BDEB41A8D66E00`。以下为三份新测试完整输出，不以旧报告结果替代。
+
+### `node tools/test_retention_t36_concurrency.js`（退出码 0）
+
+```text
+PASS C1 外部清理入口因全局屏障未验证而在读写前关闭
+PASS C2 无令牌仍先被拒绝
+PASS C3 行锁持久、活租约拒绝第二实例、过期可接管且世代递增
+PASS C4 旧实例复活无法续租或释放新实例行锁
+PASS C5 续租和条件释放分别递增 rev，释放保留 fencingToken
+PASS C6 行锁操作不写正文或逐条审计
+PASS C7 其他流程改 rev 后旧实例不能清正文
+PASS C8 新实例接管后旧实例条件更新失败且正文逐字节不变
+PASS C9 本地无异常路径仍可清正文，锁释放且重跑幂等
+PASS C10 两个独立实例共享假库时最多一次正文清理
+PASS C11 标记审计退避更新旧 rev 条件并递增新 rev
+PASS C12 单条 audit.pending 只退避该记录并递增 rev，不清正文
+PASS C13 清理审计确认递增 rev 且保持正文为空
+PASS C14 获取锁后中断不清正文、不写虚假成功日志并释放锁
+PASS C15 fencingToken 变化即使 rev 未变也阻断旧写入
+T3.6 concurrency: 15 PASS / 0 FAIL
+```
+
+### `node tools/test_retention_t36_repair.js`（退出码 0）
+
+```text
+PASS H1 无逐条关联证据的历史 FAILED 仍为异常
+PASS H2 无 force/ignore-history 绕过入口且原始日志不变
+PASS H3 待补逐条审计能恢复且稳定事件 ID 不重复
+PASS H4 逐条恢复不伪造历史 PARTIAL 已修复
+PASS H5 修复尝试仍不清正文或改写原始批次
+PASS H6 缺失原始关联证据的记录不能凭 batchId 人工补成功
+PASS H7 逐条补记日志失败后可重试且不重复写原批次
+T3.6 repair: 7 PASS / 0 FAIL; positive historical repair PENDING
+```
+
+### `node tools/test_retention_t36_resume.js`（退出码 0）
+
+```text
+PASS S499 原范围完整续扫且准确计数
+PASS S500 原范围完整续扫且准确计数
+PASS S501 原范围完整续扫且准确计数
+PASS S501 中间页绝不称完整
+PASS S501 同一断点重复执行不重复计数
+PASS S1001 原范围完整续扫且准确计数
+PASS S1001 中间页绝不称完整
+PASS S1001 同一断点重复执行不重复计数
+PASS S1 中途新增更小 _id 被基数复核发现，禁止完整结论
+PASS S2 中途新增更大 _id 同样作废扫描
+PASS S3 新实例使用原 scanId/水位/时间而非从头重扫
+PASS S4 损坏凭据读库前拒绝
+PASS S5 末尾复核中断不能成功，原断点可重试
+PASS S6 原范围内日志消失会失败关闭
+PASS S7 全部续扫均未写入业务或审计集合
+T3.6 resume: 15 PASS / 0 FAIL
+```
+
+## 6. 反事实、并发和中断证据
+
+仅在仓库外隔离副本中改变源码，正式工作区没有变异：
+
+| 变异/对照 | 命令实际结果 | 证明范围 |
+|---|---|---|
+| T3.6 新并发测试对开工旧源码 | 退出 1；C1/C2 失败，随后缺少 `acquirePurgeLease` 报 TypeError | 新测试能发现旧实现缺少失败关闭和行锁。 |
+| 新续扫测试对开工旧源码 | 退出 1；4 PASS / 11 FAIL | 旧实现缺 scanId、计数复核及精确范围。 |
+| 移除正文更新的 `rev` 条件 | 退出 1；14 PASS / 1 FAIL，C7 变红 | 版本条件实际防止旧快照清正文。 |
+| 移除正文更新的 fencingToken 条件 | 退出 1；14 PASS / 1 FAIL，C15 变红 | fencing 条件实际阻止 token 变化后的旧写入。 |
+| 移除续扫末尾总数比较 | 退出 1；12 PASS / 3 FAIL，S1/S2/S6 变红 | 扫描中新增更小/更大 `_id` 及日志缺失能够被检测。 |
+
+两个 `loadFunction` 实例共享假数据库的本地并发探针 C8/C10、过期接管 C3/C4、rev 改变 C7、锁后中断 C14 均通过；这只是**单进程假数据库的条件更新模拟**，不证明 CloudBase 真实并发原子性。`tools/test_retention_purge.js` 的现有日志失败后恢复测试仍通过；生产入口关闭使真实正文不会被清理。
+
+## 7. 回归矩阵与退出码
+
+除三份新测试外，本轮最终源码状态实际运行如下；完整命令输出在 §5 的原始输出文件。未设跳过项的套件按 0 跳过记录；冻结主套件的 11 项 PENDING 未转 PASS。
+
+| 命令 | 退出码 | 实际结果 |
+|---|---:|---|
+| `node tools/test_retention_t34_resume.js` | 0 | 21 PASS / 0 FAIL |
+| `node tools/test_retention_reconcile.js` | 0 | 30 PASS / 0 FAIL |
+| `node tools/test_retention_mark.js` | 0 | 71 PASS / 0 FAIL |
+| `node tools/test_retention_purge.js` | 0 | 18 PASS / 0 FAIL |
+| `node tools/test_retention_recover_pending.js` | 0 | 13 PASS / 0 FAIL |
+| `node tools/test_retention_audit_gate.js` | 0 | 16 PASS / 0 FAIL |
+| `node tools/test_ugc_review.js` | 0 | 86 PASS / 0 FAIL |
+| `node tools/test_ugc_submit.js` | 0 | 110 PASS / 0 FAIL |
+| `node tools/test_ugc_client_contract.js` | 0 | 90 PASS / 0 FAIL |
+| `node tools/test_index_state.js` | 0 | 205 PASS / 0 FAIL |
+| `node tools/test_pages.js` | 0 | 106 PASS / 0 FAIL |
+| `node tools/test_records_spec_t8.js` | 0 | 5 PASS / 0 FAIL / 1 PENDING（真实掉电实验） |
+| `node tools/check_eol.js` | 0 | 63 个 Markdown 文件合规，违规 0 |
+| `node tools/test_check_doc_refs.js` | 0 | 51 PASS / 0 FAIL |
+| `node tools/test_records_spec.js`（只运行） | 0 | 290 PASS / 0 FAIL / 11 PENDING |
+| 四个 `node --check`（源码和三份新测试） | 均 0 | 无语法错误 |
+| 两份 schema 的 Node JSON 解析 | 0 | `schema parse OK` |
+| `git diff --check` | 0 | 既有 `project.config.json` 的换行提示；无 whitespace 错误。未跟踪目标文件另检无尾随空格。 |
+
+## 8. CloudBase 能力限制与未解决问题
+
+[CloudBase 官方事务文档](https://docs.cloudbase.net/database/transaction)描述服务端事务和写冲突，但事务内仅支持 `doc`，不支持 `where`，有 100 次操作、30 秒限制；项目当前依赖 `wx-server-sdk ~2.6.3`。这些文档不能证明本项目可在同一原子单元中扫描全局日志、验证锁文档并更新投稿正文。**锁文档读取与另一文档写入分离，不能称为原子屏障。** 因此未创建锁集合、触发器或云端索引，外部 purge 保持失败关闭。
+
+历史 FAILED/PARTIAL 的正向修复仍缺不可变的原批次选中记录证据；本轮没有追加无依据的修复完成事件。真实 CloudBase 的 `where` 条件更新、点路径、缺失字段排序、事件 count 一致性、`_id` 水位、索引命中、续扫凭据大小、租约时钟、网络回执不确定和并发两实例均 PENDING。审计日志仍只追加，未修改历史记录。上线前需要独立设计并验证全局 fencing/事务或串行执行，取得历史修复证据，再在隔离云环境测试并经 DSH 复审。
+
+## 9. Git、副作用与停止
+
+收工 Git 仍为 `main`、同一 HEAD、暂存 0；`status --porcelain=v1 --untracked-files=all` 332 条（15 个原有已跟踪修改、317 个未跟踪，较开工仅新增三份测试和一份设计文档）。本轮修改的其他目标文件开工前已未跟踪，原有未提交字节由独立备份保留。无 Git add/commit/reset/checkout/stash；无云端调用、部署、建索引、触发器、权限/环境变量变更；无真实投稿处理、`verifyStatus`、ID 映射、审批文件或正式产物修改。未修改冻结生成器、冻结主测试套件与冻结契约。
+
+本轮到此停止，交 DSH 按五项分别验收。**不得因离线测试全绿启用生产 purge，也不得自行进入 T3.7。**
+
+## 附录：精确 unified diff
+
+```diff
+diff --git "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\T3_6_retention_20261030_122422_918\\cloudfunctions__retention__index.js" b/cloudfunctions/retention/index.js
+index 6222c33..f3ee616 100644
+--- "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\T3_6_retention_20261030_122422_918\\cloudfunctions__retention__index.js"
++++ b/cloudfunctions/retention/index.js
+@@ -49,6 +49,8 @@ const RECONCILE_MAX_ROWS = 500;
+ // Continuations are diagnostics only; purge never accepts a caller supplied scan token.
+ const RECONCILE_TOKEN_MAX_CHARS = 2 * 1024 * 1024;
+ const PURGE_AUDIT_GATE_TIMEOUT_MS = 5000;
++const PURGE_ROW_LEASE_MS = 30 * 1000;
++const OFFLINE_PURGE_SIMULATION = Symbol('retention-offline-purge-simulation');
+ 
+ function fail(code, message, extra) {
+   return Object.assign({ ok: false, code: code, message: message || '' }, extra || {});
+@@ -138,13 +140,15 @@ const RECOVERY_RETRY_MS = 60 * 1000;
+ 
+ async function deferAudit(row, now) {
+   const audit = row && row.retention && row.retention.audit;
+-  if (!audit || audit.state !== 'pending') return false;
++  if (!audit || audit.state !== 'pending' || !Number.isSafeInteger(row.rev) ||
++      row.rev >= Number.MAX_SAFE_INTEGER) return false;
+   try {
+     const updated = await db.collection(COL.SUBMISSIONS)
+       .where({ _id: row._id, status: row.status, rev: row.rev,
+         'retention.audit.eventId': audit.eventId, 'retention.audit.state': 'pending' })
+       .update({ data: { retention: Object.assign({}, row.retention,
+-        { audit: Object.assign({}, audit, { retryAfter: new Date(now.getTime() + RECOVERY_RETRY_MS) }) }) } });
++        { audit: Object.assign({}, audit, { retryAfter: new Date(now.getTime() + RECOVERY_RETRY_MS) }) }),
++        rev: row.rev + 1 } });
+     return !!(updated && updated.stats && updated.stats.updated === 1);
+   } catch (err) { return false; }
+ }
+@@ -158,7 +162,8 @@ async function recoverAudit(submissionId) {
+   const audit = retention && retention.audit;
+   if (!audit) return fail('NO_PENDING_AUDIT', '该投稿没有待补审计标记');
+   if (audit.state === 'complete') return { ok: true, code: 'ALREADY_RECOVERED' };
+-  if (audit.state !== 'pending' || !Number.isInteger(audit.markedRev) ||
++  if (audit.state !== 'pending' || !Number.isSafeInteger(row.rev) ||
++      row.rev >= Number.MAX_SAFE_INTEGER || !Number.isInteger(audit.markedRev) ||
+       audit.eventId !== recordEventId(row._id, audit.markedRev) || !/^\d{4}-\d{2}-\d{2}$/.test(audit.day)) {
+     return fail('AUDIT_STATE_INVALID', '待补审计标记与投稿状态不一致');
+   }
+@@ -184,19 +189,20 @@ async function recoverAudit(submissionId) {
+       .where({ _id: row._id, status: row.status, rev: row.rev,
+         'retention.audit.eventId': audit.eventId, 'retention.audit.state': 'pending' })
+       .update({ data: { retention: Object.assign({}, retention,
+-        { audit: Object.assign({}, audit, { state: 'complete' }) }) } });
++        { audit: Object.assign({}, audit, { state: 'complete' }) }), rev: row.rev + 1 } });
+     if (!updated || !updated.stats || updated.stats.updated !== 1) {
+       let latest;
+       try { latest = (await db.collection(COL.SUBMISSIONS).doc(submissionId).get()).data; }
+       catch (err) { return fail('STATE_CONFLICT', '审计已存在，但待补标记未能确认清除'); }
+-      if (latest && latest.retention && latest.retention.audit &&
++      if (latest && Number.isInteger(latest.rev) && latest.rev >= row.rev + 1 &&
++          latest.retention && latest.retention.audit &&
+           latest.retention.audit.eventId === audit.eventId && latest.retention.audit.state === 'complete') {
+-        return { ok: true, code: 'ALREADY_RECOVERED', submissionId: row._id };
++        return { ok: true, code: 'ALREADY_RECOVERED', submissionId: row._id, rev: latest.rev };
+       }
+       return fail('STATE_CONFLICT', '审计已存在，但待补标记未能确认清除');
+     }
+   } catch (err) { return fail('DATABASE_ERROR', '审计已存在，但待补标记清除失败'); }
+-  return { ok: true, code: 'OK', submissionId: row._id };
++  return { ok: true, code: 'OK', submissionId: row._id, rev: row.rev + 1 };
+ }
+ 
+ async function recoverPending(options) {
+@@ -247,13 +253,14 @@ async function recoverPending(options) {
+   }
+   result.unprocessed = result.selected - result.recovered - result.deferred - result.conflicts - result.failed;
+   const completion = result.failed || result.retrySchedulingFailed ? 'PARTIAL' :
+-    (result.deferred ? 'DEFERRED' : 'COMPLETE');
++    (result.deferred || result.conflicts ? 'DEFERRED' : 'COMPLETE');
+   try { await writeRunLog(result, 'complete', completion, null); }
+   catch (err) { return fail('LOG_FAILED', '恢复批次已执行，收尾审计未确认写入',
+     Object.assign({ logged: false }, result)); }
+   // Every selected row belongs to exactly one class. Completed and deferred rows
+   // leave the head of the next eligible batch; failed rows receive a retry delay.
+-  return Object.assign({ ok: result.failed === 0, code: result.failed ? 'RECOVERY_PARTIAL' : 'OK' }, result);
++  return Object.assign({ ok: result.failed === 0, code: result.failed ? 'RECOVERY_PARTIAL' : 'OK',
++    complete: completion === 'COMPLETE' }, result);
+ }
+ 
+ function purgeEventId(id, rev) {
+@@ -292,7 +299,8 @@ async function recoverPurgeAudit(submissionId) {
+   const purge = row && row.retention && row.retention.purge;
+   if (!purge) return fail('NO_PENDING_PURGE_AUDIT', '没有待补清理审计标记');
+   if (purge.state === 'complete') return { ok: true, code: 'ALREADY_RECOVERED' };
+-  if (purge.state !== 'pending' || !Number.isInteger(purge.purgedRev) ||
++  if (purge.state !== 'pending' || !Number.isSafeInteger(row.rev) ||
++      row.rev >= Number.MAX_SAFE_INTEGER || !Number.isInteger(purge.purgedRev) ||
+       purge.eventId !== purgeEventId(row._id, purge.purgedRev) || row.payload !== null ||
+       !/^\d{4}-\d{2}-\d{2}$/.test(purge.day)) {
+     return fail('PURGE_AUDIT_STATE_INVALID', '清理状态与待补审计标记不一致');
+@@ -314,12 +322,15 @@ async function recoverPurgeAudit(submissionId) {
+     const updated = await db.collection(COL.SUBMISSIONS)
+       .where({ _id: row._id, status: row.status, rev: row.rev,
+         'retention.purge.eventId': purge.eventId, 'retention.purge.state': 'pending' })
+-      .update({ data: { 'retention.purge.state': 'complete' } });
+-    if (updated && updated.stats && updated.stats.updated === 1) return { ok: true, code: 'OK' };
++      .update({ data: { 'retention.purge.state': 'complete', rev: row.rev + 1 } });
++    if (updated && updated.stats && updated.stats.updated === 1) {
++      return { ok: true, code: 'OK', rev: row.rev + 1 };
++    }
+     const latest = (await db.collection(COL.SUBMISSIONS).doc(submissionId).get()).data;
+-    if (latest && latest.retention && latest.retention.purge &&
++    if (latest && Number.isInteger(latest.rev) && latest.rev >= row.rev + 1 &&
++        latest.retention && latest.retention.purge &&
+         latest.retention.purge.eventId === purge.eventId && latest.retention.purge.state === 'complete') {
+-      return { ok: true, code: 'ALREADY_RECOVERED' };
++      return { ok: true, code: 'ALREADY_RECOVERED', rev: latest.rev };
+     }
+     return fail('STATE_CONFLICT', '清理审计已存在，待补标记尚未确认完成');
+   } catch (err) { return fail('DATABASE_ERROR', '清理审计已存在，待补标记更新失败'); }
+@@ -327,11 +338,98 @@ async function recoverPurgeAudit(submissionId) {
+ 
+ async function deferPurge(row, now) {
+   const purge = row.retention && row.retention.purge || {};
++  if (purge.state === 'complete' || !Number.isSafeInteger(row.rev) ||
++      row.rev >= Number.MAX_SAFE_INTEGER) return false;
+   try {
+     const updated = await db.collection(COL.SUBMISSIONS)
+       .where({ _id: row._id, status: row.status, rev: row.rev })
+-      .update({ data: { 'retention.purge.retryAfter': new Date(now.getTime() + RECOVERY_RETRY_MS) } });
+-    return !!(updated && updated.stats && updated.stats.updated === 1 && purge.state !== 'complete');
++      .update({ data: { 'retention.purge.retryAfter': new Date(now.getTime() + RECOVERY_RETRY_MS),
++        rev: row.rev + 1 } });
++    return !!(updated && updated.stats && updated.stats.updated === 1);
++  } catch (err) { return false; }
++}
++
++// The lock and the payload live in the same submission document. A successful
++// takeover changes both rev and fencingToken, so a stale owner cannot match
++// the later payload update. This does not serialize the global upload_logs scan.
++async function acquirePurgeLease(row, now, owner) {
++  if (!row || PURGE_STATES.indexOf(row.status) === -1 ||
++      !Number.isSafeInteger(row.rev) || row.rev < 1 ||
++      row.rev >= Number.MAX_SAFE_INTEGER ||
++      typeof owner !== 'string' || !/^[0-9a-f]{32}$/.test(owner) ||
++      !(now instanceof Date) || Number.isNaN(now.getTime())) {
++    return fail('LOCK_STATE_INVALID', '清理行锁参数无效');
++  }
++  const previous = row.retention && row.retention.purge && row.retention.purge.lock;
++  if (previous && (!['held', 'released'].includes(previous.state) ||
++      !/^[0-9a-f]{32}$/.test(previous.owner) ||
++      !Number.isSafeInteger(previous.fencingToken) || previous.fencingToken < 1 ||
++      Number.isNaN(new Date(previous.leaseExpiresAt).getTime()))) {
++    return fail('LOCK_STATE_INVALID', '已有清理行锁不合法');
++  }
++  const previousToken = previous && previous.fencingToken || 0;
++  if (!Number.isSafeInteger(previousToken) || previousToken < 0 ||
++      previousToken === Number.MAX_SAFE_INTEGER) return fail('LOCK_STATE_INVALID', '清理行锁世代无效');
++  if (previous && previous.state === 'held' &&
++      new Date(previous.leaseExpiresAt).getTime() > now.getTime()) {
++    return fail('LOCK_BUSY', '清理行锁仍由其他实例持有');
++  }
++  const lock = { state: 'held', owner: owner, fencingToken: previousToken + 1,
++    leaseExpiresAt: new Date(now.getTime() + PURGE_ROW_LEASE_MS) };
++  try {
++    const updated = await db.collection(COL.SUBMISSIONS)
++      .where({ _id: row._id, status: row.status, rev: row.rev, payload: _.neq(null) })
++      .update({ data: { 'retention.purge.lock': lock, rev: row.rev + 1 } });
++    if (!updated || !updated.stats || updated.stats.updated !== 1) {
++      return fail('STATE_CONFLICT', '清理行锁获取时投稿已变化');
++    }
++    return { ok: true, code: 'OK', lock: lock, rev: row.rev + 1 };
++  } catch (err) { return fail('DATABASE_ERROR', '清理行锁获取失败'); }
++}
++
++async function changePurgeLease(id, owner, fencingToken, now, state) {
++  if (typeof id !== 'string' || !id || !/^[0-9a-f]{32}$/.test(owner) ||
++      !Number.isSafeInteger(fencingToken) || fencingToken < 1 ||
++      !(now instanceof Date) || Number.isNaN(now.getTime()) ||
++      !['held', 'released'].includes(state)) return fail('LOCK_STATE_INVALID', '清理行锁参数无效');
++  let row;
++  try { row = (await db.collection(COL.SUBMISSIONS).doc(id).get()).data; }
++  catch (err) { return fail('DATABASE_ERROR', '读取清理行锁失败'); }
++  const lock = row && row.retention && row.retention.purge && row.retention.purge.lock;
++  if (!row || !Number.isSafeInteger(row.rev) || row.rev >= Number.MAX_SAFE_INTEGER) {
++    return fail('LOCK_STATE_INVALID', '清理行锁版本无效');
++  }
++  if (!lock || lock.state !== 'held' || lock.owner !== owner ||
++      lock.fencingToken !== fencingToken) return fail('LOCK_LOST', '清理行锁已被接管');
++  if (state === 'held' && new Date(lock.leaseExpiresAt).getTime() <= now.getTime()) {
++    return fail('LOCK_EXPIRED', '清理行锁租约已到期');
++  }
++  const nextLock = Object.assign({}, lock, { state: state,
++    leaseExpiresAt: state === 'held' ? new Date(now.getTime() + PURGE_ROW_LEASE_MS) : now });
++  try {
++    const updated = await db.collection(COL.SUBMISSIONS)
++      .where({ _id: id, rev: row.rev, 'retention.purge.lock.owner': owner,
++        'retention.purge.lock.fencingToken': fencingToken,
++        'retention.purge.lock.state': 'held' })
++      .update({ data: { 'retention.purge.lock': nextLock, rev: row.rev + 1 } });
++    return updated && updated.stats && updated.stats.updated === 1 ?
++      { ok: true, code: 'OK', rev: row.rev + 1, lock: nextLock } :
++      fail('STATE_CONFLICT', '清理行锁更新时投稿已变化');
++  } catch (err) { return fail('DATABASE_ERROR', '清理行锁更新失败'); }
++}
++
++function renewPurgeLease(id, owner, fencingToken, now) {
++  return changePurgeLease(id, owner, fencingToken, now, 'held');
++}
++
++function releasePurgeLease(id, owner, fencingToken, now) {
++  return changePurgeLease(id, owner, fencingToken, now, 'released');
++}
++
++async function deferLatestPurge(id, now) {
++  try {
++    const row = (await db.collection(COL.SUBMISSIONS).doc(id).get()).data;
++    return !!(row && row.payload !== null && await deferPurge(row, now));
+   } catch (err) { return false; }
+ }
+ 
+@@ -369,15 +467,15 @@ async function recoverPurgePending(options) {
+     }
+   }
+   result.unprocessed = result.selected - result.recovered - result.deferred - result.conflicts - result.failed;
++  const completion = result.failed || result.retrySchedulingFailed ? 'PARTIAL' :
++    (result.deferred || result.conflicts ? 'DEFERRED' : 'COMPLETE');
+   if (rows.length) {
+-    const completion = result.failed || result.retrySchedulingFailed ? 'PARTIAL' :
+-      (result.deferred ? 'DEFERRED' : 'COMPLETE');
+     try { await writePurgeLog(result, 'complete', completion, null); }
+     catch (err) { return fail('LOG_FAILED', '清理审计恢复已执行，收尾日志未确认写入',
+       Object.assign({ logged: false }, result)); }
+   }
+   return Object.assign({ ok: result.failed === 0,
+-    code: result.failed ? 'RECOVERY_PARTIAL' : 'OK' }, result);
++    code: result.failed ? 'RECOVERY_PARTIAL' : 'OK', complete: completion === 'COMPLETE' }, result);
+ }
+ 
+ function completeAuditReconcile(result, eventType) {
+@@ -434,6 +532,9 @@ async function checkPurgeAuditGate(testHooks) {
+ }
+ 
+ async function purgePayload(options, testHooks) {
++  if (!testHooks || testHooks[OFFLINE_PURGE_SIMULATION] !== true) {
++    return fail('PURGE_GLOBAL_FENCE_UNVERIFIED', '跨文档全局审计屏障尚未验证，正文清理失败关闭');
++  }
+   const config = readPolicy();
+   if (config.error) return config.error;
+   const now = options && options.now instanceof Date ? new Date(options.now.getTime()) : new Date();
+@@ -482,37 +583,79 @@ async function purgePayload(options, testHooks) {
+       continue;
+     }
+     if (PURGE_STATES.indexOf(row.status) === -1 || row.payload === null ||
+-        !Number.isInteger(row.rev) || row.rev < 1) {
++        !Number.isSafeInteger(row.rev) || row.rev < 1 || row.rev >= Number.MAX_SAFE_INTEGER) {
+       result.skipped++;
+       if (!await deferPurge(row, now)) result.retrySchedulingFailed = true;
+       continue;
+     }
+-    const nextRev = row.rev + 1;
++    const owner = crypto.randomBytes(16).toString('hex');
++    const acquired = await acquirePurgeLease(row, now, owner);
++    if (!acquired.ok) {
++      if (acquired.code === 'LOCK_BUSY') result.deferredRetry++;
++      else if (acquired.code === 'STATE_CONFLICT') result.conflicts++;
++      else {
++        result.failed++;
++        if (!await deferPurge(row, now)) result.retrySchedulingFailed = true;
++      }
++      continue;
++    }
++    const token = acquired.lock.fencingToken;
++    if (testHooks && testHooks.afterLockAcquired) {
++      try { await testHooks.afterLockAcquired(row, acquired); }
++      catch (err) {
++        result.failed++;
++        if (!(await releasePurgeLease(row._id, owner, token, now)).ok) {
++          result.retrySchedulingFailed = true;
++        }
++        continue;
++      }
++    }
++    const nextRev = acquired.rev + 1;
+     const eventId = purgeEventId(row._id, nextRev);
+     let updated;
+     try {
+       updated = await db.collection(COL.SUBMISSIONS)
+-        .where({ _id: row._id, status: row.status, rev: row.rev, payload: _.neq(null) })
++        .where({ _id: row._id, status: row.status, rev: acquired.rev, payload: _.neq(null),
++          'retention.purge.lock.state': 'held',
++          'retention.purge.lock.owner': owner,
++          'retention.purge.lock.fencingToken': token })
+         .update({ data: { payload: null, payloadRedactedAt: db.serverDate(),
+-          'retention.purge': { state: 'pending', eventId: eventId, purgedRev: nextRev,
+-            day: now.toISOString().slice(0, 10), retryAfter: new Date(0) },
++          'retention.purge.state': 'pending', 'retention.purge.eventId': eventId,
++          'retention.purge.purgedRev': nextRev,
++          'retention.purge.day': now.toISOString().slice(0, 10),
++          'retention.purge.retryAfter': new Date(0),
+           updatedAt: db.serverDate(), rev: nextRev } });
+-    } catch (err) { result.failed++; if (!await deferPurge(row, now)) result.retrySchedulingFailed = true; continue; }
+-    if (!updated || !updated.stats || updated.stats.updated !== 1) { result.conflicts++; continue; }
++    } catch (err) {
++      result.failed++;
++      if (!(await releasePurgeLease(row._id, owner, token, now)).ok ||
++          !await deferLatestPurge(row._id, now)) result.retrySchedulingFailed = true;
++      continue;
++    }
++    if (!updated || !updated.stats || updated.stats.updated !== 1) {
++      result.conflicts++;
++      if (!(await releasePurgeLease(row._id, owner, token, now)).ok) {
++        result.retrySchedulingFailed = true;
++      }
++      continue;
++    }
+     result.purged++;
+     const outcome = await recoverPurgeAudit(row._id);
+     if (outcome.ok) result.purgedAudited++;
+     else result.auditFailedCount++;
++    if (!(await releasePurgeLease(row._id, owner, token, now)).ok) {
++      result.retrySchedulingFailed = true;
++    }
+   }
+   result.unprocessed = result.selected - result.purgedAudited - result.auditFailedCount -
+     result.deferredAudit - result.deferredRetry - result.skipped - result.conflicts - result.failed;
+   const hasFailure = result.failed || result.auditFailedCount || !auditRecovery.ok || result.retrySchedulingFailed;
+   const hasDeferred = result.deferredAudit || result.deferredRetry || result.skipped ||
++    result.conflicts ||
+     result.needsMark || auditRecovery.deferred;
+   const complete = hasFailure ? 'PARTIAL' : (hasDeferred ? 'DEFERRED' : 'COMPLETE');
+   try { await writePurgeLog(result, 'complete', complete, null); }
+   catch (err) { return fail('LOG_FAILED', '正文处理后批次审计收尾失败', Object.assign({ logged: false }, result)); }
+-  return Object.assign({ ok: complete === 'COMPLETE',
++  return Object.assign({ ok: complete === 'COMPLETE', complete: complete === 'COMPLETE',
+     code: complete === 'COMPLETE' ? 'OK' : (hasFailure ? 'PURGE_PARTIAL' : 'PURGE_DEFERRED'),
+     cutoff: cutoff.toISOString() }, result);
+ }
+@@ -560,7 +703,8 @@ async function markExpired(options) {
+   }
+   for (let i = 0; i < rows.length; i++) {
+     const row = rows[i];
+-    if (!row || row.status !== STATUS.PENDING || !Number.isInteger(row.rev) || row.rev < 1) {
++    if (!row || row.status !== STATUS.PENDING || !Number.isSafeInteger(row.rev) ||
++        row.rev < 1 || row.rev >= Number.MAX_SAFE_INTEGER) {
+       skipped++;
+       continue;
+     }
+@@ -603,7 +747,8 @@ async function markExpired(options) {
+   Object.assign(result, { marked: marked, skipped: skipped, conflicts: conflicts,
+     failed: failed, auditFailed: auditFailed, auditFailedCount: auditFailedCount,
+     markedAudited: marked - auditFailedCount, unprocessed: unprocessed });
+-  const completion = failed === 0 && !auditFailed && unprocessed === 0 ? 'COMPLETE' : (marked > 0 ? 'PARTIAL' : 'FAILED');
++  const completion = failed || auditFailed || unprocessed ? (marked > 0 ? 'PARTIAL' : 'FAILED') :
++    (conflicts || skipped ? 'DEFERRED' : 'COMPLETE');
+   try {
+     await writeRunLog(result, 'complete', completion, null);
+   } catch (err) {
+@@ -629,6 +774,7 @@ async function markExpired(options) {
+   return {
+     ok: failed === 0,
+     code: failed === 0 ? 'OK' : 'DATABASE_ERROR',
++    complete: completion === 'COMPLETE',
+     marked: marked,
+     skipped: skipped,
+     conflicts: conflicts,
+@@ -735,6 +881,8 @@ function openScanState(token, eventType) {
+   try { state = JSON.parse(Buffer.from(parts[0], 'base64url').toString('utf8')); }
+   catch (err) { return null; }
+   if (!state || state.version !== 1 || state.eventType !== eventType ||
++      typeof state.scanId !== 'string' || !/^[0-9a-f]{32}$/.test(state.scanId) ||
++      !validCount(state.initialCount) ||
+       typeof state.cursor !== 'string' || !state.cursor || state.cursor.length > 128 ||
+       typeof state.upperId !== 'string' || !state.upperId || state.upperId.length > 128 ||
+       state.cursor > state.upperId || !Number.isSafeInteger(state.scanned) || state.scanned < 1 ||
+@@ -776,8 +924,16 @@ async function reconcileBatches(options) {
+   let truncated = false;
+   let reachedUpper = false;
+   let upperId = previous ? previous.upperId : null;
++  const scanId = previous ? previous.scanId : crypto.randomBytes(16).toString('hex');
++  let initialCount = previous ? previous.initialCount : null;
+   try {
+     if (resumable && !previous) {
++      const baseline = await db.collection(COL.LOGS).where({ event: eventType }).count();
++      if (!baseline || !validCount(baseline.total)) {
++        return fail('RECONCILE_RESULT_INVALID', '审计扫描基数无效',
++          { scanned: 0, truncated: true, completeScan: false });
++      }
++      initialCount = baseline.total;
+       const top = await db.collection(COL.LOGS).where({ event: eventType })
+         .orderBy('_id', 'desc').limit(1).get();
+       if (!top || !Array.isArray(top.data) ||
+@@ -825,6 +981,20 @@ async function reconcileBatches(options) {
+     return fail('DATABASE_ERROR', '对账只读扫描中断',
+       { scanned: logs.length, nextCursor: cursor || null, truncated: true, completeScan: false });
+   }
++  if (resumable && !truncated) {
++    let finalCount;
++    try { finalCount = await db.collection(COL.LOGS).where({ event: eventType }).count(); }
++    catch (err) { return fail('DATABASE_ERROR', '审计扫描末尾复核失败',
++      { scanned: logs.length, truncated: true, completeScan: false }); }
++    if (!finalCount || !validCount(finalCount.total) || finalCount.total !== initialCount) {
++      return fail('SCAN_CHANGED', '扫描期间审计日志总数发生变化，须重新开始',
++        { scanned: logs.length + (previous ? previous.scanned : 0),
++          truncated: true, completeScan: false, nextContinuation: null,
++          scanScope: { scanId: scanId, scanStartedAt: now.toISOString(),
++            highWaterMark: upperId, initialCount: initialCount,
++            observedCount: finalCount && finalCount.total } });
++    }
++  }
+   const groups = new Map();
+   let invalidLogs = previous ? previous.invalidLogs : 0;
+   const entries = previous ? previous.entries.slice() : [];
+@@ -901,10 +1071,15 @@ async function reconcileBatches(options) {
+     scanned: logs.length + (previous ? previous.scanned : 0),
+     pages: pages + (previous ? previous.pages : 0), truncated: truncated, completeScan: completeScan,
+     nextCursor: truncated ? cursor : null, thresholdMs: RECONCILE_GRACE_MS,
+-    scanScope: resumable ? { upperId: upperId, capturedAt: now.toISOString(),
+-      consistency: 'KEYSPACE_WATERMARK_NOT_ATOMIC' } : null,
++    scanScope: resumable ? { scanId: scanId, scanStartedAt: now.toISOString(),
++      highWaterMark: upperId, upperId: upperId, capturedAt: now.toISOString(),
++      cursor: truncated ? cursor : null, pages: pages + (previous ? previous.pages : 0),
++      scanned: logs.length + (previous ? previous.scanned : 0),
++      completeScan: completeScan, initialCount: initialCount,
++      consistency: 'KEYSPACE_WATERMARK_COUNT_CHECK_NOT_ATOMIC' } : null,
+     nextContinuation: resumable && truncated ? sealScanState({ version: 1, eventType: eventType,
+       now: now.toISOString(), upperId: upperId, cursor: cursor,
++      scanId: scanId, initialCount: initialCount,
+       scanned: logs.length + (previous ? previous.scanned : 0),
+       pages: pages + (previous ? previous.pages : 0), invalidLogs: invalidLogs,
+       entries: entries }) : null,
+@@ -923,7 +1098,9 @@ exports.main = async function (event, context) {
+     resumable: event.resumable, continuation: event.continuation });
+   if (event.action === 'recover') return recoverAudit(event.submissionId);
+   if (event.action === 'recoverPending') return recoverPending();
+-  if (event.action === 'purge') return purgePayload({ requestId: context && context.request_id });
++  if (event.action === 'purge') {
++    return fail('PURGE_GLOBAL_FENCE_UNVERIFIED', '跨文档全局审计屏障尚未验证，正文清理入口失败关闭');
++  }
+   return markExpired({ requestId: context && context.request_id });
+ };
+ 
+@@ -933,8 +1110,16 @@ exports.__test__ = {
+   markExpired: markExpired,
+   recoverAudit: recoverAudit,
+   recoverPending: recoverPending,
+-  purgePayload: purgePayload,
++  // Only the in-process test export can construct the private simulation flag.
++  // main and all ordinary calls to purgePayload stay closed.
++  purgePayload: function (options, hooks) {
++    return purgePayload(options, Object.assign({}, hooks,
++      { [OFFLINE_PURGE_SIMULATION]: true }));
++  },
+   recoverPurgePending: recoverPurgePending,
+   recoverPurgeAudit: recoverPurgeAudit,
+-  reconcileBatches: reconcileBatches
++  reconcileBatches: reconcileBatches,
++  acquirePurgeLease: acquirePurgeLease,
++  renewPurgeLease: renewPurgeLease,
++  releasePurgeLease: releasePurgeLease
+ };
+diff --git "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\T3_6_retention_20261030_122422_918\\config__cloud__schema.submissions.json" b/config/cloud/schema.submissions.json
+index a37b55f..39ed578 100644
+--- "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\T3_6_retention_20261030_122422_918\\config__cloud__schema.submissions.json"
++++ b/config/cloud/schema.submissions.json
+@@ -70,7 +70,17 @@
+             "eventId": { "type": "string" },
+             "day": { "type": "string" },
+             "purgedRev": { "type": "integer" },
+-            "retryAfter": { "type": "date" }
++            "retryAfter": { "type": "date" },
++            "lock": {
++              "type": "object|null",
++              "note": "T3.6 本地行锁；同一投稿文档内的 rev/fencingToken 条件保护，不代表全局审计屏障已验证",
++              "properties": {
++                "state": { "type": "string", "enum": ["held", "released"] },
++                "owner": { "type": "string", "pattern": "^[0-9a-f]{32}$" },
++                "fencingToken": { "type": "integer" },
++                "leaseExpiresAt": { "type": "date" }
++              }
++            }
+           }
+         },
+         "markedAt": { "type": "date", "note": "T-1 系统标记时间" },
+@@ -109,7 +119,7 @@
+     "updatedBy": { "type": "string|null" },
+     "createdAt": { "type": "date" },
+     "updatedAt": { "type": "date" },
+-    "rev": { "type": "integer", "value": 1, "note": "比对更新用，避免并发覆盖" }
++    "rev": { "type": "integer", "value": 1, "note": "投稿创建为 1；每次实际业务文档变更（含 Retention 审计状态、退避和行锁）均以旧 rev 条件更新并递增 1；真实云端条件更新语义待验收" }
+   },
+   "indexes": [
+     {
+diff --git "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\T3_6_retention_20261030_122422_918\\tools__test_retention_mark.js" b/tools/test_retention_mark.js
+index 89de68e..2042f3a 100644
+--- "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\T3_6_retention_20261030_122422_918\\tools__test_retention_mark.js"
++++ b/tools/test_retention_mark.js
+@@ -140,7 +140,7 @@ async function main() {
+   eq('B1 已确认配置可执行', r.code, 'OK');
+   eq('B2 空正文也计入，到期标记两条', r.marked, 2);
+   eq('B3 状态改为 expired', docById(overdue._id).status, 'expired');
+-  eq('B4 rev 递增', docById(overdue._id).rev, 2);
++  eq('B4 标记与审计确认各递增一次 rev', docById(overdue._id).rev, 3);
+   ok('B5 标记任务不清除投稿正文', JSON.stringify(docById(overdue._id).payload) === JSON.stringify(overdue.payload));
+   eq('B6 刚好第 29 天不提前标记', docById('boundary').status, 'pending');
+   eq('B7 已处理状态不被覆盖', docById('approved').status, 'approved');
+@@ -177,7 +177,7 @@ async function main() {
+   console.log('== C. 可重跑与失败关闭 ==');
+   r = await T.markExpired({ now: now, requestId: 'local-test-rerun' });
+   eq('C1 重跑不重复标记', r.marked, 0);
+-  eq('C2 重跑不再次递增 rev', docById(overdue._id).rev, 2);
++  eq('C2 重跑不再次递增 rev', docById(overdue._id).rev, 3);
+   eq('C2b 重跑后仍有 prepare/complete 两条批次事件', h.docs('upload_logs').filter(function (log) {
+     return log.result && log.result.stats && log.result.stats.phase === 'complete';
+   }).length, 2);
+@@ -273,7 +273,7 @@ async function main() {
+   seedSubmission({ _id: 'empty_only', payload: null, rev: 7 });
+   r = await T.markExpired({ now: now });
+   ok('E1 空正文单独到期仍标记且只记一次逐条事件', r.marked === 1 &&
+-    docById('empty_only').status === 'expired' && docById('empty_only').rev === 8 &&
++    docById('empty_only').status === 'expired' && docById('empty_only').rev === 9 &&
+     docById('empty_only').payload === null && h.docs('upload_logs').filter(function (log) {
+       return log.submissionId === 'empty_only' && log.result.code === 'OK';
+     }).length === 1);
+@@ -309,7 +309,7 @@ async function main() {
+   const secondAttempt = await T.markExpired({ now: now });
+   ok('E3 并发版本变化后重跑只标记一次', firstConflict.conflicts === 1 &&
+     firstConflict.marked === 0 && secondAttempt.marked === 1 &&
+-    docById('changed_pending').rev === 3 &&
++    docById('changed_pending').rev === 4 &&
+     h.docs('upload_logs').filter(function (log) { return log.submissionId === 'changed_pending'; }).length === 1);
+ 
+   prepare();
+@@ -322,7 +322,7 @@ async function main() {
+   ok('E4 单条更新失败后重跑只补未完成记录', partial.code === 'DATABASE_ERROR' &&
+     partial.marked === 1 && partial.failed === 1 && recovered.marked === 1 &&
+     docById('retry_failed_first').status === 'expired' &&
+-    docById('retry_succeeded_second').rev === 2 &&
++    docById('retry_succeeded_second').rev === 3 &&
+     ['retry_failed_first', 'retry_succeeded_second'].every(function (id) {
+       return h.docs('upload_logs').filter(function (log) { return log.submissionId === id; }).length === 1;
+     }));
+@@ -350,7 +350,7 @@ async function main() {
+   const nextRun = await T.markExpired({ now: now });
+   ok('F3 逐条审计可按 ID 恢复且重复调用不重写日志', fixed.code === 'OK' &&
+     fixedAgain.code === 'ALREADY_RECOVERED' && nextRun.marked === 1 &&
+-    docById('audit_first').rev === 2 && docById('audit_second').rev === 2 &&
++    docById('audit_first').rev === 3 && docById('audit_second').rev === 3 &&
+     ['audit_first', 'audit_second'].every(function (id) {
+       return h.docs('upload_logs').filter(function (log) { return log.submissionId === id; }).length === 1;
+     }));
+@@ -387,7 +387,7 @@ async function main() {
+   ok('F5 两个独立实例交错执行仅一次状态转换和逐条日志',
+     concurrent[0].marked + concurrent[1].marked === 1 &&
+     concurrent[0].conflicts + concurrent[1].conflicts === 1 &&
+-    docById('two_instances').rev === 2 &&
++    docById('two_instances').rev === 3 &&
+     h.docs('upload_logs').filter(function (log) { return log.submissionId === 'two_instances'; }).length === 1);
+   const repeated = await T.markExpired({ now: now });
+   ok('F6 连续触发不重复转换或补写已完成审计', repeated.marked === 0 &&
+@@ -428,7 +428,7 @@ async function main() {
+   h.state.docs.submissions[0].rev = 3;
+   const afterReview = await T.recoverAudit('reviewed_after_mark');
+   ok('F7c 后续状态和 rev 已变化时仍能补记原标记事件', afterReview.code === 'OK' &&
+-    docById('reviewed_after_mark').status === 'rejected' && docById('reviewed_after_mark').rev === 3 &&
++    docById('reviewed_after_mark').status === 'rejected' && docById('reviewed_after_mark').rev === 4 &&
+     h.docs('upload_logs').filter(function (log) { return log.submissionId === 'reviewed_after_mark'; }).length === 1);
+ 
+   const logSchema = require('../config/cloud/schema.upload_logs.json');
+diff --git "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\T3_6_retention_20261030_122422_918\\tools__test_retention_purge.js" b/tools/test_retention_purge.js
+index 1dfc1b8..d8f28b5 100644
+--- "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\T3_6_retention_20261030_122422_918\\tools__test_retention_purge.js"
++++ b/tools/test_retention_purge.js
+@@ -41,7 +41,7 @@ async function run() {
+     r.purged === 3 && closed(r));
+   check('P2 保留外壳、审核状态、来源和准入状态',
+     ['approved', 'rejected', 'expired'].every(function (id) {
+-      const row = doc(id); return row.status === id && row.rev === 2 &&
++      const row = doc(id); return row.status === id && row.rev === 5 &&
+         row.payloadRedactedAt instanceof Date && row.verifyStatus === 'unverified' &&
+         row.source.kind === 'user' && row.review.decision === id;
+     }));
+@@ -79,9 +79,11 @@ async function run() {
+   h.setBeforeUpdate(function (rows) { rows[0].status = 'rejected'; rows[0].rev = 2; h.setBeforeUpdate(null); });
+   const conflict = await T.purgePayload({ now: now });
+   const retry = await T.purgePayload({ now: now });
+-  check('P9 并发状态和 rev 变化不被覆盖，重读后的下次运行可继续',
+-    conflict.conflicts === 1 && conflict.purged === 0 && retry.purged === 1 &&
+-    doc('race').status === 'rejected' && doc('race').rev === 3 && closed(conflict));
++  check('P9 并发状态和 rev 变化不被覆盖，冲突批次未审清前继续阻断',
++    conflict.conflicts === 1 && conflict.purged === 0 && conflict.complete === false &&
++    conflict.code === 'PURGE_DEFERRED' &&
++    retry.code === 'AUDIT_GATE_BLOCKED' && doc('race').payload !== null &&
++    doc('race').status === 'rejected' && doc('race').rev === 2 && closed(conflict));
+ 
+   setup(1); seed('bad', 'approved', 40 * day); seed('good', 'rejected', 39 * day);
+   h.setFail({ collection: 'submissions', op: 'update', atCall: 1 });
+@@ -102,7 +104,7 @@ async function run() {
+     auditFailure.code === 'PURGE_PARTIAL' && auditFailure.auditFailedCount === 1 &&
+     afterFailure.code === 'AUDIT_GATE_BLOCKED' && afterFailure.auditRecovery.recovered === 1 &&
+     doc('log_failure').retention.purge.state === 'complete' &&
+-    doc('log_failure').rev === 2 && logs('log_failure').length === 1 && closed(auditFailure));
++    doc('log_failure').rev === 5 && logs('log_failure').length === 1 && closed(auditFailure));
+ 
+   setup(); seed('prepare_failure', 'approved', 31 * day);
+   h.setFail({ collection: 'upload_logs', op: 'add', atCall: 1 });
+diff --git "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\T3_6_retention_20261030_122422_918\\tools__test_retention_recover_pending.js" b/tools/test_retention_recover_pending.js
+index 43feb33..42cd57f 100644
+--- "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\T3_6_retention_20261030_122422_918\\tools__test_retention_recover_pending.js"
++++ b/tools/test_retention_recover_pending.js
+@@ -75,7 +75,7 @@ async function run() {
+   const conflict = await T.recoverPending({ now: now });
+   const retry = await T.recoverPending({ now: now });
+   check('R5 rev 冲突后重试不重复日志或覆盖新版本', conflict.conflicts === 1 &&
+-    retry.recovered === 1 && doc('rev_race').rev === 3 && logs('rev_race').length === 1 &&
++    retry.recovered === 1 && doc('rev_race').rev === 4 && logs('rev_race').length === 1 &&
+     conserved(conflict) && conserved(retry));
+ 
+   setup(1);
+diff --git "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\T3_6_retention_20261030_122422_918\\tools__test_retention_audit_gate.js" b/tools/test_retention_audit_gate.js
+index 863acd8..5812d81 100644
+--- "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\T3_6_retention_20261030_122422_918\\tools__test_retention_audit_gate.js"
++++ b/tools/test_retention_audit_gate.js
+@@ -192,7 +192,8 @@ async function run() {
+   setup(); candidate('public_entry'); batch('retention_mark', 'FAILED', 'entry_batch');
+   const before = payloadBytes('public_entry'), logCount = h.docs('upload_logs').length;
+   result = await fn.main({ action: 'purge', maintenanceToken: 'offline-token' }, {});
+-  check('G-L 维护入口同样不能绕过闸门', result.code === 'AUDIT_GATE_BLOCKED' &&
++  check('G-L 维护入口在全局屏障未验证时失败关闭',
++    result.code === 'PURGE_GLOBAL_FENCE_UNVERIFIED' &&
+     stillPrivate('public_entry', before, logCount));
+ 
+   setup(); candidate('unauthorized');
+diff --git "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\T3_6_retention_20261030_122422_918\\tools__test_retention_t34_resume.js" b/tools/test_retention_t34_resume.js
+index 7e14723..df09eac 100644
+--- "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\T3_6_retention_20261030_122422_918\\tools__test_retention_t34_resume.js"
++++ b/tools/test_retention_t34_resume.js
+@@ -65,7 +65,9 @@ async function run() {
+       result.scanned === total && result.batches.length === 1 &&
+       result.counts.closed === 1 && result.counts.outcomes.OK === 1 &&
+       result.scanScope && result.scanScope.upperId === String(total - 1).padStart(5, '0') &&
+-      result.scanScope.consistency === 'KEYSPACE_WATERMARK_NOT_ATOMIC' &&
++      result.scanScope.consistency === 'KEYSPACE_WATERMARK_COUNT_CHECK_NOT_ATOMIC' &&
++      /^[0-9a-f]{32}$/.test(result.scanScope.scanId) &&
++      result.scanScope.scanned === total && result.scanScope.completeScan === true &&
+       steps === Math.ceil(total / 500));
+     if (total > 500) {
+       check(total + ' 条未扫完时保持失败关闭', intermediateSafe && !!firstToken);
+@@ -111,8 +113,9 @@ async function run() {
+     actor: { role: 'system', openidHash: null }, result: { code: 'PREPARE',
+       stats: { phase: 'prepare', operation: 'mark', batchId: 'late-batch', selected: 1 } } });
+   const late = await scan({ continuation: watermark.nextContinuation });
+-  check('扫描中插入水位内未来日志阻断成功', late.ok === false &&
+-    late.code === 'RECONCILE_ANOMALIES' && late.counts.invalidLogs === 1 &&
++  check('扫描中插入水位内日志使原扫描作废', late.ok === false &&
++    late.code === 'SCAN_CHANGED' && late.completeScan === false &&
++    late.scanScope.observedCount === late.scanScope.initialCount + 1 &&
+     late.scanned === 502);
+ 
+   setup(501);
+@@ -121,8 +124,9 @@ async function run() {
+     action: 'retention_mark', submissionId: 'later',
+     at: new Date(now.getTime() + 1000), result: { code: 'OK' } });
+   const snapshot = await scan({ continuation: frozen.nextContinuation });
+-  check('高水位之外的新日志不进入本次诊断快照', snapshot.scanned === 501 &&
+-    snapshot.ok === true && snapshot.completeScan === true);
++  check('高水位之外的新日志也使原扫描作废', snapshot.scanned === 501 &&
++    snapshot.ok === false && snapshot.code === 'SCAN_CHANGED' &&
++    snapshot.completeScan === false && snapshot.nextContinuation === null);
+   const before = h.calls('upload_logs').length;
+   const denied = await fn.main({ action: 'reconcile', eventType: 'retention_mark',
+     resumable: true, maintenanceToken: 'wrong' });
+diff --git a/tools/test_retention_t36_concurrency.js b/tools/test_retention_t36_concurrency.js
+new file mode 100644
+index 0000000..564f438
+--- /dev/null
++++ b/tools/test_retention_t36_concurrency.js
+@@ -0,0 +1,177 @@
++'use strict';
++
++const crypto = require('crypto');
++const { createHarness } = require('./ugc_fake_cloud');
++const h = createHarness();
++const fn = h.loadFunction('cloudfunctions/retention/index.js');
++const T = fn.__test__;
++const now = new Date('2026-10-30T12:00:00.000Z');
++let pass = 0, fail = 0;
++
++function check(name, condition) {
++  console.log((condition ? 'PASS ' : 'FAIL ') + name);
++  if (condition) pass++; else fail++;
++}
++function setup() {
++  h.reset();
++  process.env.UGC_RETENTION_POLICY_STATUS = 'confirmed';
++  process.env.UGC_RETENTION_MARK_AFTER_DAYS = '29';
++  process.env.UGC_RETENTION_BATCH_LIMIT = '10';
++  process.env.UGC_RETENTION_CONFIRMED_BY = 'offline-test';
++  process.env.UGC_RETENTION_TRIGGER_TOKEN = 'offline-secret';
++}
++function seed(id) {
++  h.seed('submissions', { _id: id, status: 'approved', rev: 1,
++    createdAt: new Date(now.getTime() - 31 * 86400000),
++    payload: { text: 'private-' + id }, verifyStatus: 'unverified' });
++}
++function row(id) { return h.docs('submissions').find(function (x) { return x._id === id; }); }
++function logs(id) { return h.docs('upload_logs').filter(function (x) { return x.submissionId === id; }); }
++function bytes(id) { return Buffer.from(JSON.stringify(row(id).payload)); }
++
++async function run() {
++  setup(); seed('public');
++  const before = bytes('public');
++  const denied = await fn.main({ action: 'purge', maintenanceToken: 'offline-secret' }, {});
++  check('C1 外部清理入口因全局屏障未验证而在读写前关闭',
++    denied.code === 'PURGE_GLOBAL_FENCE_UNVERIFIED' && row('public').rev === 1 &&
++    Buffer.compare(before, bytes('public')) === 0 && h.touchedCollections().length === 0);
++  const unauthorized = await fn.main({ action: 'purge' }, {});
++  check('C2 无令牌仍先被拒绝', unauthorized.code === 'FORBIDDEN' &&
++    h.touchedCollections().length === 0);
++
++  setup(); seed('lease');
++  const ownerA = 'a'.repeat(32), ownerB = 'b'.repeat(32);
++  const instanceB = h.loadFunction('cloudfunctions/retention/index.js').__test__;
++  const first = await T.acquirePurgeLease(row('lease'), now, ownerA);
++  const busy = await instanceB.acquirePurgeLease(row('lease'), new Date(now.getTime() + 1000), ownerB);
++  const second = await instanceB.acquirePurgeLease(row('lease'),
++    new Date(now.getTime() + 31000), ownerB);
++  check('C3 行锁持久、活租约拒绝第二实例、过期可接管且世代递增',
++    first.ok && busy.code === 'LOCK_BUSY' && second.ok &&
++    second.lock.fencingToken === first.lock.fencingToken + 1 && row('lease').rev === 3);
++  const staleRelease = await T.releasePurgeLease('lease', ownerA, first.lock.fencingToken,
++    new Date(now.getTime() + 31000));
++  const staleRenew = await T.renewPurgeLease('lease', ownerA, first.lock.fencingToken,
++    new Date(now.getTime() + 31000));
++  check('C4 旧实例复活无法续租或释放新实例行锁',
++    staleRelease.code === 'LOCK_LOST' && staleRenew.code === 'LOCK_LOST' &&
++    row('lease').retention.purge.lock.owner === ownerB && row('lease').rev === 3);
++  const renewed = await instanceB.renewPurgeLease('lease', ownerB, second.lock.fencingToken,
++    new Date(now.getTime() + 32000));
++  const released = await instanceB.releasePurgeLease('lease', ownerB, second.lock.fencingToken,
++    new Date(now.getTime() + 33000));
++  check('C5 续租和条件释放分别递增 rev，释放保留 fencingToken',
++    renewed.ok && renewed.rev === 4 && released.ok && released.rev === 5 &&
++    row('lease').retention.purge.lock.state === 'released' &&
++    row('lease').retention.purge.lock.fencingToken === second.lock.fencingToken);
++  check('C6 行锁操作不写正文或逐条审计',
++    row('lease').payload.text === 'private-lease' && logs('lease').length === 0);
++
++  setup(); seed('rev_race');
++  const revBefore = bytes('rev_race');
++  const changedRev = await T.purgePayload({ now: now }, { afterLockAcquired: async function () {
++    h.state.docs.submissions[0].rev++;
++  } });
++  check('C7 其他流程改 rev 后旧实例不能清正文',
++    changedRev.conflicts === 1 && changedRev.purged === 0 && changedRev.complete === false &&
++    Buffer.compare(revBefore, bytes('rev_race')) === 0 &&
++    logs('rev_race').length === 0 &&
++    h.docs('upload_logs').every(function (x) {
++      return !x.result || x.result.code !== 'COMPLETE';
++    }));
++
++  setup(); seed('takeover');
++  const takeoverBefore = bytes('takeover');
++  const takeover = await T.purgePayload({ now: now }, { afterLockAcquired: async function () {
++    const current = row('takeover');
++    const next = await instanceB.acquirePurgeLease(current,
++      new Date(now.getTime() + 31000), ownerB);
++    if (!next.ok) throw new Error('takeover failed');
++  } });
++  check('C8 新实例接管后旧实例条件更新失败且正文逐字节不变',
++    takeover.conflicts === 1 && takeover.purged === 0 &&
++    Buffer.compare(takeoverBefore, bytes('takeover')) === 0 &&
++    row('takeover').retention.purge.lock.owner === ownerB && logs('takeover').length === 0);
++
++  setup(); seed('positive');
++  const positive = await T.purgePayload({ now: now });
++  const once = row('positive');
++  const again = await T.purgePayload({ now: now });
++  check('C9 本地无异常路径仍可清正文，锁释放且重跑幂等',
++    positive.ok && positive.complete === true && positive.purged === 1 &&
++    once.payload === null && once.rev === 5 &&
++    once.retention.purge.lock.state === 'released' && logs('positive').length === 1 &&
++    again.purged === 0 && row('positive').rev === 5);
++
++  setup(); seed('two_instances');
++  const other = h.loadFunction('cloudfunctions/retention/index.js').__test__;
++  const both = await Promise.all([T.purgePayload({ now: now }), other.purgePayload({ now: now })]);
++  check('C10 两个独立实例共享假库时最多一次正文清理',
++    both.reduce(function (sum, x) { return sum + (x.purged || 0); }, 0) === 1 &&
++    row('two_instances').payload === null && logs('two_instances').length === 1);
++
++  setup();
++  const markId = 'defer-audit';
++  const auditId = 'retention_mark_' + crypto.createHash('sha256')
++    .update(markId + '\0' + 2).digest('hex');
++  h.seed('submissions', { _id: markId, status: 'expired', rev: 2,
++    createdAt: new Date(now.getTime() - 31 * 86400000), payload: { text: 'private' },
++    retention: { audit: { state: 'pending', markedRev: 2,
++      eventId: auditId, day: '2026-10-30', retryAfter: new Date(0) } } });
++  h.setFail({ collection: 'upload_logs', op: 'add', atCall: 2 });
++  const deferredMark = await T.recoverPending({ now: now });
++  h.clearFail();
++  check('C11 标记审计退避更新旧 rev 条件并递增新 rev',
++    deferredMark.failed === 1 && row(markId).rev === 3 &&
++    row(markId).retention.audit.state === 'pending' &&
++    row(markId).retention.audit.retryAfter > now);
++
++  setup(); seed('defer-purge');
++  h.state.docs.submissions[0].retention = { audit: { state: 'pending' } };
++  const deferredPurge = await T.purgePayload({ now: now });
++  check('C12 单条 audit.pending 只退避该记录并递增 rev，不清正文',
++    deferredPurge.deferredAudit === 1 && deferredPurge.complete === false &&
++    row('defer-purge').rev === 2 && row('defer-purge').payload.text === 'private-defer-purge');
++
++  setup();
++  const purgeId = 'recover-purge';
++  const purgeEventId = 'retention_purge_' + crypto.createHash('sha256')
++    .update(purgeId + '\0' + 2).digest('hex');
++  h.seed('submissions', { _id: purgeId, status: 'approved', rev: 2,
++    createdAt: new Date(now.getTime() - 31 * 86400000), payload: null,
++    retention: { purge: { state: 'pending', purgedRev: 2,
++      eventId: purgeEventId, day: '2026-10-30', retryAfter: new Date(0) } } });
++  const recoveredPurge = await T.recoverPurgePending({ now: now });
++  check('C13 清理审计确认递增 rev 且保持正文为空',
++    recoveredPurge.recovered === 1 && recoveredPurge.complete === true &&
++    row(purgeId).rev === 3 && row(purgeId).retention.purge.state === 'complete' &&
++    row(purgeId).payload === null && logs(purgeId).length === 1);
++
++  setup(); seed('interrupted-lock');
++  const interruption = await T.purgePayload({ now: now }, { afterLockAcquired: function () {
++    throw new Error('offline simulated interruption');
++  } });
++  check('C14 获取锁后中断不清正文、不写虚假成功日志并释放锁',
++    interruption.failed === 1 && interruption.complete === false &&
++    row('interrupted-lock').payload.text === 'private-interrupted-lock' &&
++    row('interrupted-lock').retention.purge.lock.state === 'released' &&
++    logs('interrupted-lock').length === 0 &&
++    h.docs('upload_logs').every(function (x) {
++      return !x.result || x.result.code !== 'COMPLETE';
++    }));
++
++  setup(); seed('fence-change');
++  const fenceBefore = bytes('fence-change');
++  const fenceChanged = await T.purgePayload({ now: now }, { afterLockAcquired: function () {
++    h.state.docs.submissions[0].retention.purge.lock.fencingToken++;
++  } });
++  check('C15 fencingToken 变化即使 rev 未变也阻断旧写入',
++    fenceChanged.conflicts === 1 && fenceChanged.complete === false &&
++    Buffer.compare(fenceBefore, bytes('fence-change')) === 0 &&
++    logs('fence-change').length === 0);
++
++  console.log('T3.6 concurrency: ' + pass + ' PASS / ' + fail + ' FAIL');
++  if (fail) process.exitCode = 1;
++}
++run().catch(function (err) { console.error(err.stack || err); process.exitCode = 1; });
+diff --git a/tools/test_retention_t36_repair.js b/tools/test_retention_t36_repair.js
+new file mode 100644
+index 0000000..3fee813
+--- /dev/null
++++ b/tools/test_retention_t36_repair.js
+@@ -0,0 +1,113 @@
++'use strict';
++
++const crypto = require('crypto');
++const { createHarness } = require('./ugc_fake_cloud');
++const h = createHarness();
++const fn = h.loadFunction('cloudfunctions/retention/index.js');
++const T = fn.__test__;
++const now = new Date('2026-10-30T12:00:00.000Z');
++let pass = 0, fail = 0;
++function check(name, condition) {
++  console.log((condition ? 'PASS ' : 'FAIL ') + name);
++  if (condition) pass++; else fail++;
++}
++function setup() {
++  h.reset();
++  process.env.UGC_RETENTION_POLICY_STATUS = 'confirmed';
++  process.env.UGC_RETENTION_MARK_AFTER_DAYS = '29';
++  process.env.UGC_RETENTION_BATCH_LIMIT = '10';
++  process.env.UGC_RETENTION_CONFIRMED_BY = 'offline-test';
++  process.env.UGC_RETENTION_TRIGGER_TOKEN = 'offline-secret';
++}
++function batch(id, code, stats) {
++  for (const phase of ['prepare', 'complete']) {
++    const complete = phase === 'complete';
++    h.seed('upload_logs', { _id: id + '_' + phase, schemaVersion: 1,
++      event: 'retention_mark', action: 'retention_mark', submissionId: null,
++      day: '2026-10-30', at: new Date(now.getTime() - (complete ? 500 : 1000)),
++      rev: 1, actor: { role: 'system', openidHash: null }, result: {
++        code: complete ? code : 'PREPARE',
++        stats: Object.assign({ phase: phase, operation: 'mark', batchId: id,
++          selected: 1, marked: 0, markedAudited: 0, auditFailedCount: 0,
++          skipped: 0, conflicts: 0, failed: complete ? 1 : 0,
++          unprocessed: complete ? 0 : 1 }, complete ? stats : {}) } });
++  }
++}
++function eventId(id, rev) {
++  return 'retention_mark_' + crypto.createHash('sha256')
++    .update(id + '\0' + rev).digest('hex');
++}
++function scan() { return T.reconcileBatches({ eventType: 'retention_mark', now: now }); }
++async function run() {
++  setup();
++  batch('failed_old', 'FAILED');
++  const originals = JSON.stringify(h.docs('upload_logs'));
++  const failed = await scan();
++  check('H1 无逐条关联证据的历史 FAILED 仍为异常', failed.ok === false &&
++    failed.code === 'RECONCILE_ANOMALIES' && failed.counts.outcomes.FAILED === 1 &&
++    failed.batches[0].outcome === 'FAILED');
++  const denied = await fn.main({ action: 'repair', maintenanceToken: 'offline-secret',
++    batchId: 'failed_old', force: true });
++  check('H2 无 force/ignore-history 绕过入口且原始日志不变',
++    denied.code === 'INVALID_ACTION' && JSON.stringify(h.docs('upload_logs')) === originals &&
++    h.updateCalls() === 0 && h.removeCalls() === 0);
++
++  setup();
++  batch('partial_old', 'PARTIAL', { marked: 1, markedAudited: 0,
++    auditFailedCount: 1, failed: 0 });
++  const id = 'record-with-marker';
++  h.seed('submissions', { _id: id, status: 'expired', rev: 2,
++    createdAt: new Date(now.getTime() - 31 * 86400000), payload: { text: 'private' },
++    retention: { audit: { state: 'pending', markedRev: 2,
++      eventId: eventId(id, 2), day: '2026-10-30', retryAfter: new Date(0) } } });
++  const originalTwo = JSON.stringify(h.docs('upload_logs'));
++  const pre = await scan();
++  const recovered = await T.recoverAudit(id);
++  const repeated = await T.recoverAudit(id);
++  const post = await scan();
++  const all = h.docs('upload_logs');
++  check('H3 待补逐条审计能恢复且稳定事件 ID 不重复',
++    pre.code === 'RECONCILE_ANOMALIES' && recovered.code === 'OK' &&
++    repeated.code === 'ALREADY_RECOVERED' && recovered.rev === 3 &&
++    all.filter(function (x) { return x.submissionId === id; }).length === 1);
++  check('H4 逐条恢复不伪造历史 PARTIAL 已修复', post.ok === false &&
++    post.code === 'RECONCILE_ANOMALIES' && post.counts.outcomes.PARTIAL === 1 &&
++    post.batches[0].outcome === 'PARTIAL' &&
++    JSON.stringify(all.slice(0, 2)) === originalTwo);
++  check('H5 修复尝试仍不清正文或改写原始批次',
++    h.docs('submissions')[0].payload.text === 'private' &&
++    h.docs('submissions')[0].rev === 3 && h.removeCalls() === 0 &&
++    all.slice(0, 2).every(function (x) { return x.result.code !== 'COMPLETE'; }));
++
++  setup();
++  batch('failed_no_marker', 'FAILED');
++  h.seed('submissions', { _id: 'unrecoverable', status: 'approved', rev: 1,
++    createdAt: new Date(now.getTime() - 31 * 86400000), payload: { text: 'private' } });
++  const noEvidence = await T.recoverAudit('unrecoverable');
++  const again = await scan();
++  check('H6 缺失原始关联证据的记录不能凭 batchId 人工补成功',
++    noEvidence.code === 'NO_PENDING_AUDIT' && again.code === 'RECONCILE_ANOMALIES' &&
++    h.docs('submissions')[0].payload.text === 'private' &&
++    h.docs('upload_logs').length === 2);
++
++  setup();
++  batch('partial_retry', 'PARTIAL', { marked: 1, markedAudited: 0,
++    auditFailedCount: 1, failed: 0 });
++  h.seed('submissions', { _id: 'retry-record', status: 'expired', rev: 2,
++    createdAt: new Date(now.getTime() - 31 * 86400000), payload: { text: 'private' },
++    retention: { audit: { state: 'pending', markedRev: 2,
++      eventId: eventId('retry-record', 2), day: '2026-10-30', retryAfter: new Date(0) } } });
++  h.setFail({ collection: 'upload_logs', op: 'add', atCall: 1 });
++  const failedWrite = await T.recoverAudit('retry-record');
++  h.clearFail();
++  const retryWrite = await T.recoverAudit('retry-record');
++  const afterRetry = await scan();
++  check('H7 逐条补记日志失败后可重试且不重复写原批次',
++    failedWrite.code === 'LOG_FAILED' && retryWrite.code === 'OK' &&
++    h.docs('upload_logs').length === 3 && h.docs('submissions')[0].rev === 3 &&
++    afterRetry.code === 'RECONCILE_ANOMALIES' && afterRetry.counts.outcomes.PARTIAL === 1);
++
++  console.log('T3.6 repair: ' + pass + ' PASS / ' + fail + ' FAIL; positive historical repair PENDING');
++  if (fail) process.exitCode = 1;
++}
++run().catch(function (err) { console.error(err.stack || err); process.exitCode = 1; });
+diff --git a/tools/test_retention_t36_resume.js b/tools/test_retention_t36_resume.js
+new file mode 100644
+index 0000000..892df81
+--- /dev/null
++++ b/tools/test_retention_t36_resume.js
+@@ -0,0 +1,115 @@
++'use strict';
++
++const { createHarness } = require('./ugc_fake_cloud');
++const h = createHarness();
++const T = h.loadFunction('cloudfunctions/retention/index.js').__test__;
++const now = new Date('2026-10-30T12:00:00.000Z');
++let pass = 0, fail = 0;
++function check(name, condition) {
++  console.log((condition ? 'PASS ' : 'FAIL ') + name);
++  if (condition) pass++; else fail++;
++}
++function setup(n) {
++  h.reset();
++  process.env.UGC_RETENTION_POLICY_STATUS = 'confirmed';
++  process.env.UGC_RETENTION_MARK_AFTER_DAYS = '29';
++  process.env.UGC_RETENTION_BATCH_LIMIT = '10';
++  process.env.UGC_RETENTION_CONFIRMED_BY = 'offline-test';
++  process.env.UGC_RETENTION_TRIGGER_TOKEN = 'offline-secret';
++  for (let i = 0; i < n; i++) {
++    const id = String(i).padStart(5, '0');
++    h.seed('upload_logs', { _id: id, event: 'retention_mark',
++      action: 'retention_mark', submissionId: 'synthetic-' + id,
++      at: new Date(now.getTime() - 1000), result: { code: 'OK' } });
++  }
++}
++function scan(options) {
++  return T.reconcileBatches(Object.assign({ eventType: 'retention_mark', now: now,
++    resumable: true }, options || {}));
++}
++async function finish(first) {
++  let result = first, calls = 1;
++  while (result.nextContinuation && calls < 10) {
++    result = await scan({ continuation: result.nextContinuation });
++    calls++;
++  }
++  return { result: result, calls: calls };
++}
++async function run() {
++  for (const total of [499, 500, 501, 1001]) {
++    setup(total);
++    const first = await scan();
++    const done = await finish(first);
++    check('S' + total + ' 原范围完整续扫且准确计数',
++      done.result.ok === true && done.result.completeScan === true &&
++      done.result.scanned === total && done.result.scanScope.scanned === total &&
++      done.result.scanScope.initialCount === total &&
++      done.calls === Math.ceil(total / 500));
++    if (total > 500) {
++      check('S' + total + ' 中间页绝不称完整', first.ok === false &&
++        first.completeScan === false && first.scanScope.completeScan === false &&
++        first.scanScope.cursor === String(499).padStart(5, '0'));
++      const replay = await scan({ continuation: first.nextContinuation });
++      check('S' + total + ' 同一断点重复执行不重复计数', replay.scanned ===
++        Math.min(total, 1000) && replay.scanScope.scanId === first.scanScope.scanId);
++    }
++  }
++
++  setup(501);
++  const first = await scan();
++  h.seed('upload_logs', { _id: '00000a', event: 'retention_mark',
++    action: 'retention_mark', submissionId: 'late-small-id',
++    at: new Date(now.getTime() + 1000), result: { code: 'OK' } });
++  const changedSmall = await scan({ continuation: first.nextContinuation });
++  check('S1 中途新增更小 _id 被基数复核发现，禁止完整结论',
++    changedSmall.code === 'SCAN_CHANGED' && changedSmall.ok === false &&
++    changedSmall.completeScan === false && changedSmall.nextContinuation === null &&
++    changedSmall.scanScope.observedCount === 502);
++
++  setup(501);
++  const firstLarge = await scan();
++  h.seed('upload_logs', { _id: 'zzzzz', event: 'retention_mark',
++    action: 'retention_mark', submissionId: 'late-large-id',
++    at: new Date(now.getTime() + 1000), result: { code: 'OK' } });
++  const changedLarge = await scan({ continuation: firstLarge.nextContinuation });
++  check('S2 中途新增更大 _id 同样作废扫描', changedLarge.code === 'SCAN_CHANGED' &&
++    changedLarge.completeScan === false && changedLarge.scanScope.observedCount === 502);
++
++  setup(501);
++  const stable = await scan();
++  const otherInstance = h.loadFunction('cloudfunctions/retention/index.js').__test__;
++  const resumed = await otherInstance.reconcileBatches({ eventType: 'retention_mark',
++    continuation: stable.nextContinuation });
++  check('S3 新实例使用原 scanId/水位/时间而非从头重扫', resumed.ok === true &&
++    resumed.scanned === 501 && resumed.scanScope.pages > stable.scanScope.pages &&
++    resumed.scanScope.scanId === stable.scanScope.scanId &&
++    resumed.scanScope.highWaterMark === stable.scanScope.highWaterMark &&
++    resumed.scanScope.scanStartedAt === stable.scanScope.scanStartedAt);
++  const damaged = stable.nextContinuation.slice(0, -1) + 'X';
++  const callsBefore = h.calls('upload_logs').length;
++  const invalid = await scan({ continuation: damaged });
++  check('S4 损坏凭据读库前拒绝', invalid.code === 'INVALID_SCAN_CONTINUATION' &&
++    h.calls('upload_logs').length === callsBefore);
++
++  setup(501);
++  const interruptedFirst = await scan();
++  const countCalls = h.calls('upload_logs').filter(function (x) { return x === 'count'; }).length;
++  h.setFail({ collection: 'upload_logs', op: 'count', atCall: countCalls + 1 });
++  const interrupted = await scan({ continuation: interruptedFirst.nextContinuation });
++  h.clearFail();
++  const recovered = await scan({ continuation: interruptedFirst.nextContinuation });
++  check('S5 末尾复核中断不能成功，原断点可重试', interrupted.ok === false &&
++    interrupted.completeScan === false && recovered.ok === true && recovered.scanned === 501);
++
++  setup(501);
++  const firstMissing = await scan();
++  h.state.docs.upload_logs.pop();
++  const missing = await scan({ continuation: firstMissing.nextContinuation });
++  check('S6 原范围内日志消失会失败关闭', missing.code === 'SCAN_CHANGED' &&
++    missing.completeScan === false);
++  check('S7 全部续扫均未写入业务或审计集合',
++    h.updateCalls() === 0 && h.removeCalls() === 0);
++  console.log('T3.6 resume: ' + pass + ' PASS / ' + fail + ' FAIL');
++  if (fail) process.exitCode = 1;
++}
++run().catch(function (err) { console.error(err.stack || err); process.exitCode = 1; });
+diff --git a/docs/RETENTION_T36_DESIGN_20261030.md b/docs/RETENTION_T36_DESIGN_20261030.md
+new file mode 100644
+index 0000000..6d76f51
+--- /dev/null
++++ b/docs/RETENTION_T36_DESIGN_20261030.md
+@@ -0,0 +1,43 @@
++# Retention T3.6：并发、版本与扫描设计（2026-10-30）
++
++本文以本地代码为准，区分已实现、离线验证、静态分析和真实云端待验收。`cloudfunctions/retention/index.js` 尚未部署，本轮不创建云端资源。
++
++## 1. 整体架构与安全边界
++
++外部维护入口 `main` 先验证维护令牌。`mark/recover/recoverPending/reconcile` 保留现有功能；外部 `purge` 因全局审计屏障无法证明跨集合原子性，返回 `PURGE_GLOBAL_FENCE_UNVERIFIED`，在任何业务查询和正文更新之前失败关闭。普通内部 `purgePayload` 调用也失败关闭；仅 `__test__.purgePayload` 通过模块私有 Symbol 开启离线模拟，用于验证原有正常清理路径与新增同文档行锁。该测试出口不是云端 `main` 动作，不能作为云端安全证明。没有新增 `force/ignore/skip-history` 参数。
++
++当前写入图：`markExpired` 写投稿状态与 `retention.audit`，并通过 `writeRunLog` 追加批次日志；`recoverAudit/recoverPending/deferAudit` 追加或确认逐条日志、更新待补状态/退避；`purgePayload` 调用 `recoverPurgePending`、两类事件对账、查询候选、写 prepare、同文档行锁、条件清正文、`recoverPurgeAudit`、条件释放行锁、写 complete；`deferPurge` 更新重试时间；`reconcileBatches` 只读。`submit` 创建投稿；`review` 更新审核状态或按人工删除请求清正文，均在本轮修改范围之外。Retention 不覆盖 `review` 的人工删除路径。
++
++## 2. 同文档行锁、租约和 fencingToken
++
++锁持久化在 `submissions.retention.purge.lock`，与正文和 `rev` 位于同一投稿文档。它保存随机 32 位十六进制 `owner`、`held/released` 状态、`leaseExpiresAt` 和递增的 `fencingToken`。获取锁以读取时的 `_id/status/rev/payload≠null` 条件更新，同时 `rev+1`；租约未过期的另一 owner 被拒。过期接管以新的 `rev` 条件更新并将 fencingToken 加一。续租和释放要求 owner、fencingToken、state、旧 rev 同时匹配，成功也 `rev+1`。正文更新要求同一文档上的 owner、fencingToken、state 和旧 rev 同时匹配；新持有者接管后，旧实例的条件更新不能命中。
++
++本地假数据库测试覆盖两个独立函数实例、活租约、过期接管、旧实例续租/释放失败、额外 rev 变化、条件清正文冲突、崩溃后逐条审计恢复。锁仅保护同一投稿文档；它**不是**全局日志扫描的分布式锁。旧实例在租约到期但尚未被新实例接管时仍可能按旧 token 尝试写，真实云端对服务器时间条件的语义未证实；因此外部 purge 继续失败关闭。进程崩溃后锁会保留，接管依赖后续任务与真实时钟；无云端调度验收，不宣称自动恢复完成。
++
++## 3. rev 版本机制
++
++投稿创建 `rev=1`。Retention 每次成功更新投稿文档都以读到的旧 rev 为条件并写 `rev+1`：T-1 标记、标记审计确认/退避、T-2 候选退避、行锁获取/续租/释放、正文清除、清理审计确认。逐条日志 `rev=1` 是日志 schema 版本语义，与投稿 rev 分开。返回成功的恢复/锁操作带新 rev；失配按冲突分类，不做无条件覆盖。`review` 现有人工审核和删除路径已用预期 rev 条件，但本轮未改其源码；其真实云端原子性仍待验收。schema 注释同步说明元数据变更也递增 rev。
++
++批次结果分类：`PARTIAL/FAILED` 保留失败；冲突或退避的批次为 `DEFERRED`，不再把仅有冲突的批次记成正常 `COMPLETE`。逐条 `retention.audit.state=pending` 仍只跳过该条候选；全局异常不降格为单条跳过。审计日志保持只追加。
++
++## 4. scanScope、水位和分页续扫
++
++只读 `reconcile(resumable:true)` 每次最多扫描 500 条，每页最多 50 条，按 `(event,_id)` 升序与 `_id>cursor` 前进。首轮记录 `scanId`、`scanStartedAt`、`highWaterMark`（起始最大 `_id`）、事件总数 `initialCount`；续扫凭据由维护令牌派生密钥签名，保存同一水位、游标、已哈希批次投影和累计计数。输出 `scanScope` 包含范围、页数、扫描数、完成标志与 `KEYSPACE_WATERMARK_COUNT_CHECK_NOT_ATOMIC` 一致性标签。凭据校验失败在读库前返回错误。相同凭据重复读取不会写库或重复累计；中断后可使用原凭据重试。
++
++所有页结束前 `completeScan=false`。末尾重查同一事件总数；若扫描期间插入更小或更大 `_id`，或日志消失，总数变化触发 `SCAN_CHANGED`、`completeScan=false`、无继续凭据，必须重启扫描。相同时间的日志仍以 `_id` 稳定排序。该计数复核依赖日志只追加和数据库读一致性；“先读基数、再扫、最后读基数”不是事务快照，插入与删除数量抵消、跨查询不一致、末尾复核后新增日志仍可能漏检。外部 purge 不接受该扫描结果，因此不会因它的 `completeScan=true` 清正文。超过 2 MiB 的续扫凭据不能继续，失败关闭；真实 CloudBase 请求大小和索引尚未验收。
++
++## 5. 历史 FAILED/PARTIAL 修复状态
++
++原始 prepare/complete 日志不可更新或删除。现有批次日志仅有 batchId 和汇总计数；逐条事件没有原批次关联，也没有不可变的原批次选中记录清单。即使逐条 `audit.pending` 通过稳定事件 ID 补记，也不能证明某个历史失败批次的全部缺失内容已补齐。因此**本轮不追加“修复完成”事件，不开放人工修复入口**；FAILED/PARTIAL/DEFERRED 与孤儿 prepare 继续阻断。
++
++可上线的后续修复协议必须先具备不可变的批次选中记录证据，再为每条真正缺失的审计补记稳定事件 ID；随后追加关联原 batchId 的修复事件，包含修复类型、UTC 时间、系统/授权操作者、原因、证据摘要和稳定修复事件 ID。重复修复按 ID 幂等，写失败后保留待补依据；重新完整对账无其他异常才可解除阻断。历史证据无法重建时继续阻断并交人工调查，不能把口头确认或参数开关当成证据。此协议本轮**未实现**，状态 PENDING。
++
++## 6. 状态机与失败恢复
++
++`pending` 投稿在 T-1 条件更新中进入 `expired` 并建立 `retention.audit.pending`；稳定事件 ID 的逐条日志确认后变 `complete`。T-2 只对超过 30 天的 `approved/rejected/expired` 且正文非空、标记审计不 pending 的记录尝试清理。行锁获取后，以旧 rev 和 fencingToken 条件清正文，同次建立 `retention.purge.pending`；逐条日志确认后改 `complete`；失败时待补标记保留，恢复入口可重试。任何全局对账异常、扫描未完成、锁丢失或版本冲突不得写虚假成功日志。外部 purge 因全局屏障未证实保持失败关闭，故这些本地状态转换只在离线模拟中执行。
++
++## 7. CloudBase 能力与残余风险
++
++[CloudBase 官方事务文档](https://docs.cloudbase.net/database/transaction)描述服务端事务、快照隔离、写冲突；同时说明事务内仅支持 `doc`、不支持 `where`，最多 100 次操作、30 秒。项目实际依赖 `wx-server-sdk ~2.6.3`，没有本轮真实云端环境证据证明它能把全局 `upload_logs` 查询、锁文档及投稿文档纳入同一原子约束。仅靠在锁文档上读锁，再更新另一业务文档，仍有旧实例复活窗口。真实索引、`_id` 排序、点路径更新、条件更新、计数一致性、回执丢失、跨实例事务和调度均 PENDING。
++
++生产解锁前须先获得可验证的跨文档事务/串行执行条件，让所有 Retention 日志写入者与清理者遵守同一持久 fencing；在隔离环境验证双实例、过期接管、旧实例继续写、进程崩溃、网络超时和新增异常日志交错；并完成历史失败批次证据化修复及大规模扫描索引验收。若这些条件无法满足，保持外部正文清理失败关闭。
+
+```

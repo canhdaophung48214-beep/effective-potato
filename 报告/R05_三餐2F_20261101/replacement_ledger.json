@@ -1,0 +1,626 @@
+[
+  {
+    "oldRecordKey": "c02_d040",
+    "oldStallId": "c02_t01",
+    "oldName": "特色羊杂面",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0095"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0095-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d041",
+    "oldStallId": "c02_t01",
+    "oldName": "辣肉汤面",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0096"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0096-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d042",
+    "oldStallId": "c02_t01",
+    "oldName": "小苏肉汤面",
+    "action": "PENDING",
+    "newSourceRefs": [
+      "R05-SC2F-L0097"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [],
+    "reason": "转录稿待确认清单第6项保留小苏/小酥字义疑问"
+  },
+  {
+    "oldRecordKey": "c02_d043",
+    "oldStallId": "c02_t01",
+    "oldName": "卤肉汤面",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0098"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0098-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d044",
+    "oldStallId": "c02_t01",
+    "oldName": "肉臊汤面",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0099"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0099-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d045",
+    "oldStallId": "c02_t01",
+    "oldName": "老坛酸菜汤面",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0100"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0100-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "",
+    "oldStallId": "c02_t01",
+    "oldName": "豇豆肉碎面",
+    "action": "NEW",
+    "newSourceRefs": [
+      "R05-SC2F-L0101"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [],
+    "reason": "源文存在但旧CSV未生成；疑字继续待核验"
+  },
+  {
+    "oldRecordKey": "c02_d046",
+    "oldStallId": "c02_t01",
+    "oldName": "清汤面",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0102"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0102-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d047",
+    "oldStallId": "c02_t01",
+    "oldName": "辣肉拌面",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0103"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0103-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d048",
+    "oldStallId": "c02_t01",
+    "oldName": "小苏肉拌面",
+    "action": "PENDING",
+    "newSourceRefs": [
+      "R05-SC2F-L0104"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [],
+    "reason": "转录稿待确认清单第6项保留小苏/小酥字义疑问"
+  },
+  {
+    "oldRecordKey": "c02_d049",
+    "oldStallId": "c02_t01",
+    "oldName": "麻辣鸡丝拌面",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0105"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0105-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d050",
+    "oldStallId": "c02_t01",
+    "oldName": "肉臊拌面",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0106"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0106-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d051",
+    "oldStallId": "c02_t01",
+    "oldName": "豇豆拌面",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0107"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0107-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d052",
+    "oldStallId": "c02_t01",
+    "oldName": "老坛酸菜拌面",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0108"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0108-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d053",
+    "oldStallId": "c02_t01",
+    "oldName": "火腿拌面",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0109"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0109-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d054",
+    "oldStallId": "c02_t01",
+    "oldName": "麻辣拌面",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0110"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0110-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d055",
+    "oldStallId": "c02_t01",
+    "oldName": "麻汁拌面",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0111"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0111-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d056",
+    "oldStallId": "c02_t01",
+    "oldName": "招牌炸酱面",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0112"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0112-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d057",
+    "oldStallId": "c02_t01",
+    "oldName": "肉酱炸酱面",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0113"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0113-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d058",
+    "oldStallId": "c02_t01",
+    "oldName": "鸡蛋炸酱面",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0114"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0114-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d059",
+    "oldStallId": "c02_t01",
+    "oldName": "双拼炸酱面",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0115"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0115-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d060",
+    "oldStallId": "c02_t02",
+    "oldName": "重庆小面（素）",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0123"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0123-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d061",
+    "oldStallId": "c02_t02",
+    "oldName": "杂酱面（素）",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0124"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0124-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d062",
+    "oldStallId": "c02_t02",
+    "oldName": "招牌豌杂面（素）",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0125"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0125-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d063",
+    "oldStallId": "c02_t02",
+    "oldName": "酸菜面（素）",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0126"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0126-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d064",
+    "oldStallId": "c02_t02",
+    "oldName": "牛肉面（荤）",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0127"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0127-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d065",
+    "oldStallId": "c02_t02",
+    "oldName": "干拌小面（素）",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0128"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0128-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d066",
+    "oldStallId": "c02_t02",
+    "oldName": "干拌杂酱面（素）",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0129"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0129-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d067",
+    "oldStallId": "c02_t02",
+    "oldName": "干拌豌杂面（素）",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0130"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0130-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d068",
+    "oldStallId": "c02_t02",
+    "oldName": "清汤小面",
+    "action": "PENDING",
+    "newSourceRefs": [
+      "R05-SC2F-L0131"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [],
+    "reason": "转录稿明确标注疑字或括号语义待确认"
+  },
+  {
+    "oldRecordKey": "c02_d069",
+    "oldStallId": "c02_t02",
+    "oldName": "清汤杂酱面",
+    "action": "PENDING",
+    "newSourceRefs": [
+      "R05-SC2F-L0132"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [],
+    "reason": "转录稿明确标注疑字或括号语义待确认"
+  },
+  {
+    "oldRecordKey": "c02_d070",
+    "oldStallId": "c02_t02",
+    "oldName": "清汤豌杂面",
+    "action": "PENDING",
+    "newSourceRefs": [
+      "R05-SC2F-L0133"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [],
+    "reason": "转录稿明确标注疑字或括号语义待确认"
+  },
+  {
+    "oldRecordKey": "c02_d071",
+    "oldStallId": "c02_t02",
+    "oldName": "麻酱凉面",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0134"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0134-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d072",
+    "oldStallId": "c02_t03",
+    "oldName": "德式烤肠意大利面",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0143"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0143-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d073",
+    "oldStallId": "c02_t03",
+    "oldName": "培根意大利面",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0144"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0144-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "c02_d074",
+    "oldStallId": "c02_t03",
+    "oldName": "虾仁意大利面",
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R05-SC2F-L0145"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R05-SC2F-L0145-V1"
+    ],
+    "reason": "原名原价源行一致；不继承旧正式ID"
+  },
+  {
+    "oldRecordKey": "",
+    "oldStallId": "c02_t01",
+    "oldName": "卤蛋",
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R05-SC2F-L0117-O1"
+    ],
+    "candidateRefs": [],
+    "reason": "源文加料明确，关系独立计数不作菜品"
+  },
+  {
+    "oldRecordKey": "",
+    "oldStallId": "c02_t01",
+    "oldName": "卤肉",
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R05-SC2F-L0117-O2"
+    ],
+    "candidateRefs": [],
+    "reason": "源文加料明确，关系独立计数不作菜品"
+  },
+  {
+    "oldRecordKey": "",
+    "oldStallId": "c02_t01",
+    "oldName": "狮子头",
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R05-SC2F-L0117-O3"
+    ],
+    "candidateRefs": [],
+    "reason": "源文加料明确，关系独立计数不作菜品"
+  },
+  {
+    "oldRecordKey": "",
+    "oldStallId": "c02_t02",
+    "oldName": "卤蛋",
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R05-SC2F-L0136-O1"
+    ],
+    "candidateRefs": [],
+    "reason": "源文加料明确，关系独立计数不作菜品"
+  },
+  {
+    "oldRecordKey": "",
+    "oldStallId": "c02_t02",
+    "oldName": "卤肠",
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R05-SC2F-L0136-O2"
+    ],
+    "candidateRefs": [],
+    "reason": "源文加料明确，关系独立计数不作菜品"
+  },
+  {
+    "oldRecordKey": "",
+    "oldStallId": "c02_t02",
+    "oldName": "煎蛋",
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R05-SC2F-L0136-O3"
+    ],
+    "candidateRefs": [],
+    "reason": "源文加料明确，关系独立计数不作菜品"
+  },
+  {
+    "oldRecordKey": "",
+    "oldStallId": "c02_t02",
+    "oldName": "辣椒",
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R05-SC2F-L0136-O4"
+    ],
+    "candidateRefs": [],
+    "reason": "源文加料明确，关系独立计数不作菜品"
+  },
+  {
+    "oldRecordKey": "",
+    "oldStallId": "c02_t02",
+    "oldName": "豆干",
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R05-SC2F-L0136-O5"
+    ],
+    "candidateRefs": [],
+    "reason": "源文加料明确，关系独立计数不作菜品"
+  },
+  {
+    "oldRecordKey": "",
+    "oldStallId": "c02_t03",
+    "oldName": "西冷牛排套餐",
+    "action": "NEW",
+    "newSourceRefs": [
+      "R05-SC2F-L0147-B1"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [],
+    "reason": "套餐证据单列待适配，不作为普通菜导入"
+  },
+  {
+    "oldRecordKey": "",
+    "oldStallId": "c02_t03",
+    "oldName": "黑椒牛排套餐",
+    "action": "NEW",
+    "newSourceRefs": [
+      "R05-SC2F-L0147-B2"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [],
+    "reason": "套餐证据单列待适配，不作为普通菜导入"
+  },
+  {
+    "oldRecordKey": "",
+    "oldStallId": "c02_t03",
+    "oldName": "鸡排套餐",
+    "action": "NEW",
+    "newSourceRefs": [
+      "R05-SC2F-L0147-B3"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [],
+    "reason": "套餐证据单列待适配，不作为普通菜导入"
+  }
+]

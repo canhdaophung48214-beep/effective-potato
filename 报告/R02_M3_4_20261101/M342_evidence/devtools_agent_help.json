@@ -1,0 +1,10 @@
+{
+  "command": [
+    "D:/微信开发/微信web开发者工具/cli.bat",
+    "agent",
+    "--help"
+  ],
+  "exitCode": 0,
+  "stdout": "Usage: cli agent <command>\n\nCommands:\n  cli agent start           Start persistent agent automation server\n  cli agent tool            Execute an agent atomic tool\n  cli agent chat            Execute an agent chat request\n  cli agent render          Execute an agent atomic tool and capture card render\n                            result\n  cli agent card-click      Click an agent atomic card\n  cli agent get-dom         Get DOM from agent atomic card or detail half page\n  cli agent get-card-image  Get Agent atomic card image base64\n  cli agent clear           Clear agent conversation\n  cli agent debug           Set agent LLM debug mode\n  cli agent overlay         Set AgentUI interaction overlay\n  cli agent detail-close    Close agent detail half page\n\nProject options:\n  --project    project path\n  --appid      miniprogram appid or 3rd platform appid. Ignored when --project\n               is provided\n  --ext-appid  miniprogram appid to be developed by 3rd platform. Ignored when\n               --project is provided\n\nOther global options:\n  --port         Optional. IDE HTTP server port. If IDE hasn't been launched, it\n                 will be launched and start HTTP server at <port>. If IDE has\n                 launched with a HTTP server of different port, you must quit\n                 IDE before re-run the command.                         [number]\n  --token        Optional. CLI access token configured in IDE Security Settings.\n                 It can also be set with the WECHAT_DEVTOOLS_CLI_TOKEN\n                 environment variable.                                  [string]\n  --lang         Optional. 'en' or 'zh'. Defaults to 'en'.\n  --debug        Optional. Turn on debug mode\n  --disable-gpu  Disable GPU Acceleration when launching IDE           [boolean]\n  -h, --help     Show help                                             [boolean]\n",
+  "stderr": ""
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_20261101\\candidates\\dishes.csv",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M1_20261101_151029\\dishes.csv",
+    "bytes": 14251,
+    "sha256": "bed0bd3e84d4f2fb4940e8fa44c6cd334c9cb51cffbb3a9f2f7ee6f0001966cb"
+  },
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_20261101\\candidates\\floors.csv",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M1_20261101_151029\\floors.csv",
+    "bytes": 172,
+    "sha256": "e3b2e82b45fe6409d37e9f3ca5f45032d11a8035b2fed27d6bea96f0ea55ba30"
+  },
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_20261101\\candidates\\shops.csv",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M1_20261101_151029\\shops.csv",
+    "bytes": 337,
+    "sha256": "fa8d3995553943dcfdbde6f44dc91f750db6446938cf05c96de6b1f4d248fdb8"
+  },
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_20261101\\candidates\\stalls.csv",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M1_20261101_151029\\stalls.csv",
+    "bytes": 353,
+    "sha256": "9b82a5bf18c664b7f633d97f938cf5e18c849d2c838f38b0a2f090d8563c4369"
+  },
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_20261101\\first_batch.json",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M1_20261101_151029\\first_batch.json",
+    "bytes": 41137,
+    "sha256": "e0ae9a0fbc69df0798604ec41844cef44e4c9e18089850090383fee145782e50"
+  }
+]

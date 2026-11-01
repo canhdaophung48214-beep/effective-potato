@@ -1,0 +1,17 @@
+[
+  {
+    "case": "unknown_taste",
+    "exitCode": 1,
+    "expected": "reject invalid candidate"
+  },
+  {
+    "case": "duplicate_id",
+    "exitCode": 1,
+    "expected": "reject invalid candidate"
+  },
+  {
+    "case": "missing_photo",
+    "exitCode": 1,
+    "expected": "reject invalid candidate"
+  }
+]

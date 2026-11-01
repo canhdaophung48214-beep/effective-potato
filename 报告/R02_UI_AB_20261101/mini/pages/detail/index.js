@@ -1,0 +1,2 @@
+const records=require('../../data/history-records.js');const model=require('../../lib/menu-model.js');
+Page({data:{item:null},onLoad(options){this.setData({item:model.getDetail(records,options.id)})},back(){wx.navigateBack()},another(){const index=records.findIndex(x=>x.id===this.data.item.id);this.setData({item:model.getDetail(records,records[(index+1)%records.length].id)})},openList(){wx.navigateTo({url:'/pages/menu/index'})}});

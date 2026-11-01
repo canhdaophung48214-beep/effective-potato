@@ -1,0 +1,11 @@
+PASS loads 39 unique historical records
+PASS never exposes a current price or generic price field
+PASS search and preparation filters use existing names only
+PASS historical amount sorting does not relabel it as current price
+PASS detail keeps evidence and unknown state
+PASS empty search returns an empty collection
+PASS three pages and shared components exist
+PASS runtime pages use a CommonJS data module instead of requiring JSON
+PASS visible copy contains safety notices and no fabricated claims
+PASS responsive and long-text safeguards are present
+RESULT 10 PASS / 0 FAIL

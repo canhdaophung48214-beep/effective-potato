@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "result": {
+      "pageId": 3,
+      "path": "pages/history/index",
+      "query": {},
+      "route": "/pages/history/index",
+      "title": "历史菜单"
+    }
+  },
+  {
+    "id": 1,
+    "result": {
+      "pageId": 3,
+      "path": "pages/history/index",
+      "query": {},
+      "route": "/pages/history/index",
+      "title": "历史菜单"
+    }
+  },
+  {
+    "id": 2,
+    "error": {
+      "message": "appservice App.getSystemInfo unimplemented"
+    }
+  }
+]

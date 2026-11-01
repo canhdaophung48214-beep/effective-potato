@@ -1,0 +1,557 @@
+diff --git "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\retention-p0-20261028-2329\\cloudfunctions__retention__index.js" "b/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\cloudfunctions\\retention\\index.js"
+index 413b485..79b4e81 100644
+--- "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\retention-p0-20261028-2329\\cloudfunctions__retention__index.js"
++++ "b/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\cloudfunctions\\retention\\index.js"
+@@ -4,7 +4,7 @@
+  * 本函数不包含 triggers 配置，不能因提交本代码而自动运行。部署前必须由负责人
+  * 在云环境显式确认每项策略参数；缺少或未确认任一参数时，入口失败关闭且不读写数据。
+  *
+- * 本轮只有 mark 动作：将超过已确认标记期限、尚有正文的 pending 投稿置为 expired。
++ * 本轮只有 mark 动作：将超过已确认标记期限的 pending 投稿置为 expired。
+  * 正文清除与审计日志轮转是独立的不可逆流程，不在本入口实现。
+  *
+  * 环境变量（均必填、无默认值）：
+@@ -36,6 +36,7 @@ const STATUS = Object.freeze({
+ });
+ 
+ const DAY_MS = 24 * 60 * 60 * 1000;
++const MARK_AFTER_DAYS = 29;
+ const MAX_BATCH_LIMIT = 100;
+ 
+ function fail(code, message, extra) {
+@@ -59,7 +60,7 @@ function readPolicy() {
+   const confirmedBy = typeof process.env.UGC_RETENTION_CONFIRMED_BY === 'string'
+     ? process.env.UGC_RETENTION_CONFIRMED_BY.trim()
+     : '';
+-  if (!markAfterDays || !batchLimit || !confirmedBy) {
++  if (markAfterDays !== MARK_AFTER_DAYS || !batchLimit || !confirmedBy) {
+     return { error: fail('RETENTION_CONFIG_INVALID', '已确认的保留期策略参数不完整或不合法') };
+   }
+   return { policy: { markAfterDays: markAfterDays, batchLimit: batchLimit, confirmedBy: confirmedBy } };
+@@ -78,32 +79,31 @@ function hasValidMaintenanceToken(value) {
+     crypto.timingSafeEqual(expectedBuffer, actualBuffer);
+ }
+ 
+-async function writeRunLog(result) {
+-  return db.collection(COL.LOGS).add({
+-    data: {
+-      schemaVersion: 1,
+-      event: 'retention_mark',
+-      action: 'retention_mark',
+-      submissionId: null,
+-      target: null,
+-      actor: { openidHash: null, role: 'system' },
+-      result: {
+-        code: 'OK',
+-        stats: {
+-          marked: result.marked,
+-          skipped: result.skipped,
+-          conflicts: result.conflicts
+-        },
+-        attempts: result.attempts
+-      },
+-      errorCode: '',
+-      note: 'retention policy confirmed by ' + result.confirmedBy,
+-      day: result.now.toISOString().slice(0, 10),
+-      at: db.serverDate(),
+-      requestId: result.requestId || '',
+-      rev: 1
+-    }
+-  });
++async function writeRunLog(result, phase, code, submissionId) {
++  const data = {
++    schemaVersion: 1,
++    event: 'retention_mark',
++    action: 'retention_mark',
++    submissionId: submissionId || null,
++    day: result.now.toISOString().slice(0, 10),
++    result: { code: code },
++    errorCode: '',
++    actor: { role: 'system' }
++  };
++  // A record event is exactly the approved eight-field logical projection.
++  // Batch rows carry operational counters separately and are not record summaries.
++  if (phase !== 'record') {
++    data.result.stats = {
++      phase: phase,
++      marked: result.marked,
++      skipped: result.skipped,
++      conflicts: result.conflicts,
++      failed: result.failed,
++      attempts: result.attempts
++    };
++    data.at = db.serverDate();
++  }
++  return db.collection(COL.LOGS).add({ data: data });
+ }
+ 
+ async function markExpired(options) {
+@@ -117,8 +117,9 @@ async function markExpired(options) {
+   let rows;
+   try {
+     const res = await db.collection(COL.SUBMISSIONS)
+-      .where({ createdAt: _.lt(cutoff) })
++      .where({ status: STATUS.PENDING, createdAt: _.lt(cutoff) })
+       .orderBy('createdAt', 'asc')
++      .orderBy('_id', 'asc')
+       .limit(policy.batchLimit)
+       .get();
+     rows = (res && Array.isArray(res.data)) ? res.data : [];
+@@ -129,9 +130,19 @@ async function markExpired(options) {
+   let marked = 0;
+   let skipped = 0;
+   let conflicts = 0;
++  let failed = 0;
++  const result = { marked: 0, skipped: 0, conflicts: 0, failed: 0,
++    attempts: rows.length, now: now };
++  try {
++    await writeRunLog(result, 'prepare', 'PREPARE', null);
++  } catch (err) {
++    return fail('LOG_FAILED', '批次准备审计写入失败，未更改投稿', {
++      marked: 0, skipped: 0, conflicts: 0, failed: 0, logged: false
++    });
++  }
+   for (let i = 0; i < rows.length; i++) {
+     const row = rows[i];
+-    if (!row || row.status !== STATUS.PENDING || row.payload === null || !Number.isInteger(row.rev)) {
++    if (!row || row.status !== STATUS.PENDING || !Number.isInteger(row.rev) || row.rev < 1) {
+       skipped++;
+       continue;
+     }
+@@ -152,42 +163,42 @@ async function markExpired(options) {
+         });
+       updated = res && res.stats && res.stats.updated === 1;
+     } catch (err) {
+-      return fail('DATABASE_ERROR', '写入到期标记失败', {
+-        marked: marked,
+-        skipped: skipped,
+-        conflicts: conflicts
+-      });
++      failed++;
++      continue;
+     }
+-    if (updated) marked++;
+-    else conflicts++;
++    if (updated) {
++      marked++;
++      result.marked = marked;
++      try { await writeRunLog(result, 'record', 'OK', row._id); }
++      catch (err) {
++        return fail('LOG_FAILED', '状态已标记，但逐条审计写入失败', {
++          marked: marked, skipped: skipped, conflicts: conflicts, failed: failed, logged: false
++        });
++      }
++    } else conflicts++;
+   }
+ 
+-  const result = {
+-    marked: marked,
+-    skipped: skipped,
+-    conflicts: conflicts,
+-    attempts: rows.length,
+-    confirmedBy: policy.confirmedBy,
+-    now: now,
+-    requestId: options && options.requestId
+-  };
++  Object.assign(result, { marked: marked, skipped: skipped, conflicts: conflicts, failed: failed });
++  const completion = failed === 0 ? 'COMPLETE' : (marked > 0 ? 'PARTIAL' : 'FAILED');
+   try {
+-    await writeRunLog(result);
++    await writeRunLog(result, 'complete', completion, null);
+   } catch (err) {
+     return fail('LOG_FAILED', '到期标记已执行，但运行审计日志写入失败', {
+       marked: marked,
+       skipped: skipped,
+       conflicts: conflicts,
++      failed: failed,
+       logged: false
+     });
+   }
+ 
+   return {
+-    ok: true,
+-    code: 'OK',
++    ok: failed === 0,
++    code: failed === 0 ? 'OK' : 'DATABASE_ERROR',
+     marked: marked,
+     skipped: skipped,
+     conflicts: conflicts,
++    failed: failed,
+     cutoff: cutoff.toISOString()
+   };
+ }
+diff --git "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\retention-p0-20261028-2329\\tools__test_retention_mark.js" "b/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_mark.js"
+index cac49fa..c0527a0 100644
+--- "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\retention-p0-20261028-2329\\tools__test_retention_mark.js"
++++ "b/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_mark.js"
+@@ -97,6 +97,10 @@ async function main() {
+   r = await T.markExpired({ now: now });
+   eq('A4 非法天数拒绝执行', r.code, 'RETENTION_CONFIG_INVALID');
+ 
++  prepare({ markAfterDays: '30' });
++  r = await T.markExpired({ now: now });
++  eq('A4b 已裁决 29 天不能被配置覆盖', r.code, 'RETENTION_CONFIG_INVALID');
++
+   prepare({ batchLimit: '0' });
+   r = await T.markExpired({ now: now });
+   eq('A5 非法批次上限拒绝执行', r.code, 'RETENTION_CONFIG_INVALID');
+@@ -134,23 +138,41 @@ async function main() {
+   });
+   r = await T.markExpired({ now: now, requestId: 'local-test-run' });
+   eq('B1 已确认配置可执行', r.code, 'OK');
+-  eq('B2 仅标记一条逾期待审记录', r.marked, 1);
++  eq('B2 空正文也计入，到期标记两条', r.marked, 2);
+   eq('B3 状态改为 expired', docById(overdue._id).status, 'expired');
+   eq('B4 rev 递增', docById(overdue._id).rev, 2);
+   ok('B5 标记任务不清除投稿正文', JSON.stringify(docById(overdue._id).payload) === JSON.stringify(overdue.payload));
+   eq('B6 刚好第 29 天不提前标记', docById('boundary').status, 'pending');
+   eq('B7 已处理状态不被覆盖', docById('approved').status, 'approved');
+-  eq('B8 已匿名化记录不被覆盖', docById('already_redacted').status, 'pending');
++  eq('B8 空 payload 的 pending 仍标记 expired', docById('already_redacted').status, 'expired');
+   ok('B9 写入最小化运行审计行', h.docs('upload_logs').some(function (log) {
+     return log.event === 'retention_mark' && log.result && log.result.stats &&
+-      log.result.stats.marked === 1;
++      log.result.stats.marked === 2;
+   }));
+   ok('B10 运行审计行不含投稿人 openid', JSON.stringify(h.docs('upload_logs')).indexOf('fake_user_001') === -1);
++  ok('B11 批次 prepare 与 complete 都留痕', ['prepare', 'complete'].every(function (phase) {
++    return h.docs('upload_logs').some(function (log) { return log.result && log.result.stats && log.result.stats.phase === phase; });
++  }));
++  ok('B12 每条成功状态更新有独立事件', ['overdue', 'already_redacted'].every(function (id) {
++    return h.docs('upload_logs').some(function (log) { return log.submissionId === id && log.result.code === 'OK'; });
++  }));
++  ok('B13 系统审计省略 openidHash', h.docs('upload_logs').every(function (log) {
++    return log.actor && log.actor.role === 'system' && !Object.prototype.hasOwnProperty.call(log.actor, 'openidHash');
++  }));
++  ok('B14 逐条标记事件仅含八个逻辑字段', h.docs('upload_logs').filter(function (log) {
++    return log.submissionId !== null;
++  }).every(function (log) {
++    return Object.keys(log).sort().join(',') === '_id,action,actor,day,errorCode,event,result,schemaVersion,submissionId' &&
++      Object.keys(log.result).join(',') === 'code' && Object.keys(log.actor).join(',') === 'role';
++  }));
+ 
+   console.log('== C. 可重跑与失败关闭 ==');
+   r = await T.markExpired({ now: now, requestId: 'local-test-rerun' });
+   eq('C1 重跑不重复标记', r.marked, 0);
+   eq('C2 重跑不再次递增 rev', docById(overdue._id).rev, 2);
++  eq('C2b 重跑后仍有 prepare/complete 两条批次事件', h.docs('upload_logs').filter(function (log) {
++    return log.result && log.result.stats && log.result.stats.phase === 'complete';
++  }).length, 2);
+ 
+   prepare();
+   seedSubmission({ _id: 'write_failure' });
+@@ -159,6 +181,81 @@ async function main() {
+   eq('C3 状态写入失败如实返回数据库错误', r.code, 'DATABASE_ERROR');
+   eq('C4 写入失败不谎报已标记数', r.marked, 0);
+   eq('C5 写入失败保留原状态', docById('write_failure').status, 'pending');
++  eq('C6 完整失败批次有 FAILED 终态', h.docs('upload_logs').filter(function (log) {
++    return log.result && log.result.code === 'FAILED';
++  }).length, 1);
++
++  console.log('== D. 查询、批次与并发 ==');
++  prepare({ batchLimit: '2' });
++  seedSubmission({ _id: 'old_approved', status: 'approved', createdAt: new Date('2026-01-01T00:00:00Z') });
++  seedSubmission({ _id: 'old_rejected', status: 'rejected', createdAt: new Date('2026-01-02T00:00:00Z') });
++  seedSubmission({ _id: 'pending_z', createdAt: new Date('2026-01-03T00:00:00Z') });
++  seedSubmission({ _id: 'pending_a', createdAt: new Date('2026-01-03T00:00:00Z') });
++  seedSubmission({ _id: 'pending_later', createdAt: new Date('2026-01-04T00:00:00Z') });
++  r = await T.markExpired({ now: now });
++  eq('D1 已审核记录不占两条批次名额', r.marked, 2);
++  eq('D2 同一创建时间按 _id 升序，a 先处理', docById('pending_a').status, 'expired');
++  eq('D3 同一创建时间按 _id 升序，z 也处理', docById('pending_z').status, 'expired');
++  eq('D4 第三条 pending 留到下一批', docById('pending_later').status, 'pending');
++  r = await T.markExpired({ now: now });
++  eq('D5 下批继续处理，不被已审核旧记录饿死', docById('pending_later').status, 'expired');
++
++  prepare({ batchLimit: '1' });
++  seedSubmission({ _id: 'tie_z', createdAt: new Date('2026-01-03T00:00:00Z') });
++  seedSubmission({ _id: 'tie_a', createdAt: new Date('2026-01-03T00:00:00Z') });
++  r = await T.markExpired({ now: now });
++  eq('D5a 同时刻跨批按 _id 稳定排序', docById('tie_a').status, 'expired');
++  eq('D5b 同时刻另一条留待下一批', docById('tie_z').status, 'pending');
++
++  prepare();
++  seedSubmission({ _id: 'raced' });
++  h.setBeforeUpdate(function (rows) {
++    rows[0].status = 'approved'; rows[0].rev = 2;
++    h.setBeforeUpdate(null);
++  });
++  r = await T.markExpired({ now: now });
++  eq('D6 并发审核获胜时版本条件阻止覆盖', docById('raced').status, 'approved');
++  eq('D7 并发变更按冲突计数', r.conflicts, 1);
++  eq('D8 并发冲突不伪造逐条标记事件', h.docs('upload_logs').filter(function (log) { return log.submissionId === 'raced'; }).length, 0);
++
++  prepare();
++  seedSubmission({ _id: 'bad_first', createdAt: new Date('2026-01-01T00:00:00Z') });
++  seedSubmission({ _id: 'good_second', createdAt: new Date('2026-01-02T00:00:00Z') });
++  h.setFail({ collection: 'submissions', op: 'update', atCall: 1 });
++  r = await T.markExpired({ now: now });
++  eq('D9 单条写失败不阻断下一条', docById('good_second').status, 'expired');
++  eq('D10 部分成功明确返回错误', r.code, 'DATABASE_ERROR');
++  eq('D11 部分成功统计为 1/1', String(r.marked) + '/' + String(r.failed), '1/1');
++  eq('D12 部分成功批次审计为 PARTIAL', h.docs('upload_logs').filter(function (log) { return log.result.code === 'PARTIAL'; }).length, 1);
++
++  prepare();
++  seedSubmission({ _id: 'read_failure' });
++  h.setFail({ collection: 'submissions', op: 'get' });
++  r = await T.markExpired({ now: now });
++  eq('D13 查询失败返回数据库错误', r.code, 'DATABASE_ERROR');
++  eq('D14 查询失败零状态写入', h.state.updateCalls, 0);
++
++  prepare();
++  seedSubmission({ _id: 'log_failure' });
++  h.setFail({ collection: 'upload_logs', op: 'add' });
++  r = await T.markExpired({ now: now });
++  eq('D15 prepare 审计失败时不更新状态', docById('log_failure').status, 'pending');
++  eq('D16 prepare 审计失败返回 LOG_FAILED', r.code, 'LOG_FAILED');
++
++  prepare();
++  seedSubmission({ _id: 'record_log_failure' });
++  h.setFail({ collection: 'upload_logs', op: 'add', atCall: 2 });
++  r = await T.markExpired({ now: now });
++  eq('D17 逐条审计失败如实返回 LOG_FAILED', r.code, 'LOG_FAILED');
++  eq('D18 逐条审计失败不能伪称状态未更新', docById('record_log_failure').status, 'expired');
++  eq('D19 逐条审计失败标明已更新数量', r.marked, 1);
++
++  prepare();
++  seedSubmission({ _id: 'complete_log_failure' });
++  h.setFail({ collection: 'upload_logs', op: 'add', atCall: 3 });
++  r = await T.markExpired({ now: now });
++  eq('D20 complete 审计失败如实返回 LOG_FAILED', r.code, 'LOG_FAILED');
++  eq('D21 complete 审计失败保留成功计数', r.marked, 1);
+ 
+   console.log('');
+   console.log('---- 汇总 ----');
+diff --git "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\retention-p0-20261028-2329\\tools__test_ugc_review.js" "b/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_ugc_review.js"
+index efe90c8..3f5a6f7 100644
+--- "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\retention-p0-20261028-2329\\tools__test_ugc_review.js"
++++ "b/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_ugc_review.js"
+@@ -238,6 +238,10 @@ async function main() {
+   seedSubmission();
+   r = await fn.main({ action: 'reject', submissionId: 'sub_1', expectedRev: 1, reasonCode: 'bogus' }, {});
+   eq('F1 非法理由码拒绝', r.code, 'INVALID_FIELD');
++  r = await fn.main({ action: 'reject', submissionId: 'sub_1', expectedRev: 1, reasonCode: 'expired' }, {});
++  eq('F1b 人工 reject 不可冒充系统 expire', r.code, 'INVALID_FIELD');
++  r = await fn.main({ action: 'expire', submissionId: 'sub_1', expectedRev: 1 }, {});
++  eq('F1c 人工接口没有 expire 动作', r.code, 'INVALID_ACTION');
+   r = await fn.main({ action: 'reject', submissionId: 'sub_1', expectedRev: 1, reasonCode: 'inaccurate', reasonText: '字'.repeat(101) }, {});
+   eq('F2 理由超 100 字拒绝', r.code, 'INVALID_FIELD');
+   r = await fn.main({ action: 'reject', submissionId: 'sub_1', expectedRev: 1, reasonCode: 'inaccurate', reasonText: '  价格  不符  ' }, {});
+diff --git "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\retention-p0-20261028-2329\\tools__ugc_fake_cloud.js" "b/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\ugc_fake_cloud.js"
+index 07df7d8..3e91f4f 100644
+--- "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\retention-p0-20261028-2329\\tools__ugc_fake_cloud.js"
++++ "b/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\ugc_fake_cloud.js"
+@@ -61,7 +61,8 @@ function createHarness() {
+     touched: Object.create(null),
+     removeCalls: 0,
+     updateCalls: 0,
+-    forceUpdateZero: false
++    forceUpdateZero: false,
++    beforeUpdate: null
+   };
+ 
+   function bucket(name) {
+@@ -73,7 +74,8 @@ function createHarness() {
+ 
+   function maybeFail(name, op) {
+     state.calls[name].push(op);
+-    if (state.fail && state.fail.collection === name && state.fail.op === op) {
++    if (state.fail && state.fail.collection === name && state.fail.op === op &&
++        (!state.fail.atCall || state.calls[name].filter(function (call) { return call === op; }).length === state.fail.atCall)) {
+       const err = new Error('FAKE_DB_FAIL:' + name + '.' + op);
+       err.errCode = -500001;
+       throw err;
+@@ -90,33 +92,35 @@ function createHarness() {
+     const chain = {
+       _cond: cond || {},
+       _limit: null,
+-      _order: null,
++      _order: [],
+       count: function () {
+         maybeFail(name, 'count');
+         const n = rows.filter(function (d) { return matches(d, chain._cond); }).length;
+         return Promise.resolve({ total: n });
+       },
+       limit: function (n) { chain._limit = n; return chain; },
+-      orderBy: function (field, dir) { chain._order = { field: field, dir: dir }; return chain; },
++      orderBy: function (field, dir) { chain._order.push({ field: field, dir: dir }); return chain; },
+       get: function () {
+         maybeFail(name, 'get');
+         let out = rows.filter(function (d) { return matches(d, chain._cond); });
+-        if (chain._order) {
+-          const f = chain._order.field;
+-          const sign = chain._order.dir === 'desc' ? -1 : 1;
++        if (chain._order.length) {
+           out = out.slice().sort(function (a, b) {
+-            const av = getPath(a, f);
+-            const bv = getPath(b, f);
+-            const at = av instanceof Date ? av.getTime() : av;
+-            const bt = bv instanceof Date ? bv.getTime() : bv;
+-            if (at === bt) return 0;
+-            return at > bt ? sign : -sign;
++            for (let i = 0; i < chain._order.length; i++) {
++              const order = chain._order[i];
++              const av = getPath(a, order.field);
++              const bv = getPath(b, order.field);
++              const at = av instanceof Date ? av.getTime() : av;
++              const bt = bv instanceof Date ? bv.getTime() : bv;
++              if (at !== bt) return (at > bt ? 1 : -1) * (order.dir === 'desc' ? -1 : 1);
++            }
++            return 0;
+           });
+         }
+         if (chain._limit !== null) out = out.slice(0, chain._limit);
+         return Promise.resolve({ data: out.map(function (d) { return clone(d); }) });
+       },
+       update: function (payload) {
++        if (state.beforeUpdate) state.beforeUpdate(rows, chain._cond);
+         maybeFail(name, 'update');
+         state.updateCalls++;
+         let updated = 0;
+@@ -216,6 +220,7 @@ function createHarness() {
+     setFail: function (fail) { state.fail = fail; },
+     clearFail: function () { state.fail = null; },
+     setForceUpdateZero: function (v) { state.forceUpdateZero = !!v; },
++    setBeforeUpdate: function (fn) { state.beforeUpdate = fn; },
+     reset: function () {
+       state.docs = Object.create(null);
+       state.calls = Object.create(null);
+@@ -225,6 +230,7 @@ function createHarness() {
+       state.updateCalls = 0;
+       state.fail = null;
+       state.forceUpdateZero = false;
++      state.beforeUpdate = null;
+     },
+     seed: function (name, doc) {
+       if (!state.docs[name]) state.docs[name] = [];
+diff --git "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\retention-p0-20261028-2329\\config__cloud__schema.submissions.json" "b/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\config\\cloud\\schema.submissions.json"
+index 24482c7..3500810 100644
+--- "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\retention-p0-20261028-2329\\config__cloud__schema.submissions.json"
++++ "b/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\config\\cloud\\schema.submissions.json"
+@@ -23,7 +23,7 @@
+       }
+     },
+     "payload": {
+-      "type": "object",
++      "type": "object|null",
+       "properties": {
+         "price": { "type": "number|null", "note": "有限正数，≤1 位小数；>100 仅记录警告" },
+         "nameSuggestion": { "type": "string|null", "note": "≤20 字" },
+@@ -46,11 +46,11 @@
+       },
+       "note": "error 只表示未能完成检测，绝不能当作通过；approve 仅接受 pass/review"
+     },
+-    "status": { "type": "string", "enum": ["pending", "approved", "rejected"], "value": "pending" },
++    "status": { "type": "string", "enum": ["pending", "approved", "rejected", "expired"], "value": "pending" },
+     "review": {
+       "type": "object|null",
+       "properties": {
+-        "decision": { "type": "string", "enum": ["approve", "reject"] },
++        "decision": { "type": "string", "enum": ["approve", "reject", "expire"], "note": "expire 仅由系统保留期流程写入；人工接口不可选择" },
+         "byOpenidHash": { "type": "string", "note": "管理员 openid 的 HMAC 摘要，不存原文" },
+         "at": { "type": "date" },
+         "reasonCode": { "type": "string" },
+@@ -100,6 +100,12 @@
+       "unique": false,
+       "purpose": "审核队列按提交时间先后"
+     },
++    {
++      "name": "ix_retention_mark_order",
++      "keys": [{ "field": "status", "order": "asc" }, { "field": "createdAt", "order": "asc" }, { "field": "_id", "order": "asc" }],
++      "unique": false,
++      "purpose": "T-1 到期标记先筛 pending，再按创建时间与 ID 稳定分批；仅本地建议，云端未建"
++    },
+     {
+       "name": "ix_submitter_created",
+       "keys": [{ "field": "submitter.openid", "order": "asc" }, { "field": "createdAt", "order": "desc" }],
+diff --git "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\retention-p0-20261028-2329\\config__cloud__schema.upload_logs.json" "b/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\config\\cloud\\schema.upload_logs.json"
+index 46a5dda..a845924 100644
+--- "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\retention-p0-20261028-2329\\config__cloud__schema.upload_logs.json"
++++ "b/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\config\\cloud\\schema.upload_logs.json"
+@@ -10,12 +10,12 @@
+   "fields": {
+     "_id": { "type": "string", "note": "系统生成" },
+     "schemaVersion": { "type": "integer", "value": 1 },
+-    "event": { "type": "string", "enum": ["submit", "denied", "throttle", "security_call", "review_approve", "review_reject", "alarm", "delete_request"] },
++    "event": { "type": "string", "enum": ["submit", "denied", "throttle", "security_call", "review_approve", "review_reject", "alarm", "delete_request", "retention_mark"] },
+     "action": { "type": "string", "note": "云函数实际动作：submit / denied / throttle / security_call / approve / reject / delete 等，便于排查" },
+     "actor": {
+       "type": "object",
+       "properties": {
+-        "openidHash": { "type": "string", "note": "HMAC-SHA256(salt).slice(0,32)，不存 openid 原文" },
++        "openidHash": { "type": "string", "note": "人工操作者用 HMAC-SHA256(salt).slice(0,32)；系统操作者省略此字段，不写 null" },
+         "role": { "type": "string", "enum": ["submitter", "admin", "system"] }
+       }
+     },
+diff --git "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\retention-p0-20261028-2329\\cloudfunctions__review__index.js" "b/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\cloudfunctions\\review\\index.js"
+index 354a30a..e30cc0a 100644
+--- "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\retention-p0-20261028-2329\\cloudfunctions__review__index.js"
++++ "b/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\cloudfunctions\\review\\index.js"
+@@ -44,7 +44,8 @@ const ACTIONS = Object.freeze(['session', 'list', 'detail', 'approve', 'reject',
+ const STATUS = Object.freeze({
+   PENDING: 'pending',
+   APPROVED: 'approved',
+-  REJECTED: 'rejected'
++  REJECTED: 'rejected',
++  EXPIRED: 'expired'
+ });
+ 
+ /* 驳回理由码：固定枚举，前端只显示码对应文案；管理员手写理由另存 reasonText。 */
+@@ -54,13 +55,12 @@ const REASON_CODES = Object.freeze([
+   'insufficient_evidence',
+   'out_of_scope',
+   'user_deleted',
+-  'expired',
+   'security_unavailable',
+   'revoked',
+   'other'
+ ]);
+ 
+-const STATUS_VALUES = Object.freeze([STATUS.PENDING, STATUS.APPROVED, STATUS.REJECTED]);
++const STATUS_VALUES = Object.freeze([STATUS.PENDING, STATUS.APPROVED, STATUS.REJECTED, STATUS.EXPIRED]);
+ 
+ /* 允许被采纳的安全状态：risk / error 一律禁止通过（接口故障不得当通过）。 */
+ const APPROVABLE_SECURITY = Object.freeze(['pass', 'review']);
+diff --git "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\retention-p0-20261028-2329\\docs__UGC_MVP_DESIGN_FINAL_20261026.md" "b/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\docs\\UGC_MVP_DESIGN_FINAL_20261026.md"
+index 37a2558..817daa5 100644
+--- "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\retention-p0-20261028-2329\\docs__UGC_MVP_DESIGN_FINAL_20261026.md"
++++ "b/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\docs\\UGC_MVP_DESIGN_FINAL_20261026.md"
+@@ -201,12 +201,13 @@
+ ```
+ pending ──approve──> approved（终态）
+    └─────reject────> rejected（终态，必须 reasonCode）
++   └─────expire──> expired（仅系统保留期流程）
+ ```
+ 
+-- **允许**：`pending → approved`、`pending → rejected`。
++- **允许**：人工 `pending → approved`、`pending → rejected`；仅系统保留期流程可执行 `pending → expired`，`expire` 是独立决策，不复用 `reject`。
+ - **禁止**：`approved → pending`、`rejected → pending`、`approved ⇄ rejected`、任何客户端发起的状态写入。
+ - **复议**：不改写历史。用户重新提交生成新记录并写 `reopenOf`；管理员如需"回收已通过的建议"，只能新建一条 `rejected(reasonCode=revoked)` 的关联记录，**旧记录保持原样**（append-only 精神）。
+-- **超时**：`pending` 超过 30 天未审 → 由管理员或定时任务标记 `rejected(reasonCode=expired)`；**不自动通过**。内容安全 `error` 超过 7 天未重试成功 → `rejected(reasonCode=security_unavailable)`。
++- **超时（2026-10-28 裁决）**：`createdAt < now-29d` 且仍为 `pending` 时，系统标记 `expired`，正文不清；空 `payload` 仍须标记。`createdAt < now-30d` 时清正文，覆盖 `approved`、`rejected`、`expired`；若此时仍为 `pending`，先用状态与 rev 条件安全标记 `expired`，另记补救审计事件，再清正文。两处边界均为严格 `<`，人工审核接口不得执行 `expire`。
+ 
+ ### 3.4 敏感字段最小化
+ 
+@@ -257,7 +258,9 @@ pending ──approve──> approved（终态）
+ 
+ 结论：**联调必需 4 条**（均属 `submissions`：待审列表、限流计数、幂等、去重各一条），`upload_logs` 的 3 条与 `ix_security_status` 随功能补齐；若控制台索引数量受限，按上表"必需 → 预留 → 延后"顺序建。
+ 
+-#### 3.5.2 保留期（待负责人决策，不得视为已定政策）
++#### 3.5.2 保留期（2026-10-28 已裁决，尚未部署）
++
++**现行裁决**：投稿正文自 `createdAt` 起 30 天，审计明细 90 天；逐条摘要采用 `schemaVersion/event/action/submissionId/day/result.code/errorCode/role` 八个逻辑字段，自生成起保留 180 天。每批追加 `prepare` 与 `complete` 两条运行摘要，失败需区分全失败和部分成功。系统操作者省略 `actor.openidHash`，人工操作者沿用 32 位 HMAC 摘要。当前仅 T-1 标记有本地代码，T-2 正文清理、日志轮转及触发器尚未实现或部署；本节规则不代表线上已生效。下列 A/B/C 表仅保留历史候选背景，不再作为待决选项。
+ 
+ 本节此前把「`submissions` 90 天 / `upload_logs` 180 天」写成既定值，属于越权设定。现改为待决策项，候选如下，**由负责人选择，本文不替选**：
+ 
+@@ -267,9 +270,8 @@ pending ──approve──> approved（终态）
+ | B 中间（原提案） | 90 天 | 180 天 | 覆盖一次完整纠错周期 + 季度复盘 | 必须在隐私条款中明确承诺，承诺后必须做到 |
+ | C 最长 | 180 天 | 365 天 | 审计追溯最完整 | 个人数据留存最久，合规解释成本最高 |
+ 
+-- **决策前**：`config/ugc.js` 的 `RETENTION.status='pending_confirmation'`；代码不执行任何清理；隐私条款、文案、联调清单一律写「待确认」。
+-- **决策后**：先写入隐私指引（B2），再实现清理任务，最后在联调清单登记「已配置」并留截图。
+-- **清理纪律**（与选哪个候选无关）：只删不改状态；删除动作写 `delete_request` 行；正文删除后保留匿名计数；删除请求见 §7.7。
++- **本地与线上状态**：`config/ugc.js` 仍标 `pending_confirmation`，表示尚未部署和验收，不能再解释为业务期限未裁决。上线前须先完成隐私指引、清理实现与触发器验收并留截图。
++- **清理纪律**：T-1 只改状态、不清正文；T-2 独立按严格 30 天边界清正文，若仍为 pending，先补标 expired；过期标记与正文清理各自留痕，不得用 `delete_request` 冒充系统保留事件。正文删除后保留符合八字段口径的最小摘要；用户主动删除请求见 §7.7。
+ 
+ ---
+ 

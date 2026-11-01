@@ -1,0 +1,104 @@
+ M app.js
+ M app.json
+ M app.wxss
+ M data/dishes.js
+ M data/index.js
+ M pages/index/index.js
+ M pages/index/index.json
+ M pages/index/index.wxml
+ M pages/index/index.wxss
+ M project.config.json
+ M sitemap.json
+ M tools/README.md
+ M tools/regression.js
+ M tools/verify_stage2.js
+ M utils/matcher.js
+?? assets/
+?? cloudfunctions/
+?? config/
+?? design/
+?? docs/
+?? evidence/
+?? pages/community/
+?? pages/profile/
+?? pages/rating/
+?? pages/review/
+?? pages/submit/
+?? tools/COMBO_MODEL_A4_2_DRAFT.md
+?? tools/COMBO_SET_MODEL_PROPOSAL.md
+?? tools/REAL_DATA_COLLECTION_SPEC.md
+?? tools/_backup/a7-choice/
+?? tools/_backup/index.wxss.before-shortviewport
+?? tools/_backup/index.wxss.before-tabbar
+?? tools/_backup/project.config.json.before-packignore
+?? tools/_backup/r1-retention-20261029-20261029T0637432733201Z/
+?? tools/_backup/retention-audit-20261029-20261029T0615109693621Z/
+?? tools/_backup/retention-p0-close-20261029-20261029T0554421214165Z/
+?? tools/_backup/stage-a2/
+?? tools/_backup/stage-assert/
+?? tools/_backup/stage-g48/
+?? tools/_backup/stage-pk1/
+?? tools/_backup/stage-q6-phase2/
+?? tools/_backup/stage-q6/
+?? tools/_backup/stage-q7/
+?? tools/_backup/stage-s2/
+?? tools/_backup/stage3/
+?? tools/check_doc_refs.js
+?? tools/check_eol.js
+?? tools/check_id_admission.js
+?? tools/doc_ref_whitelist.json
+?? tools/gen_icon.py
+?? tools/gen_meme.py
+?? tools/gen_meme2.py
+?? tools/gen_poster.py
+?? tools/import_data.js
+?? tools/pilot/
+?? tools/retention_t363_fixture.js
+?? tools/templates/
+?? tools/test_b1_adapter.js
+?? tools/test_check_doc_refs.js
+?? tools/test_check_eol.js
+?? tools/test_check_id_admission.js
+?? tools/test_cloudrepo.js
+?? tools/test_home_datasource.js
+?? tools/test_import_data.js
+?? tools/test_index_state.js
+?? tools/test_pages.js
+?? tools/test_records_spec.js
+?? tools/test_records_spec_t8.js
+?? tools/test_retention_audit_gate.js
+?? tools/test_retention_mark.js
+?? tools/test_retention_purge.js
+?? tools/test_retention_reconcile.js
+?? tools/test_retention_recover_pending.js
+?? tools/test_retention_t34_resume.js
+?? tools/test_retention_t361_deferred.js
+?? tools/test_retention_t361_lock_recovery.js
+?? tools/test_retention_t361_repair.js
+?? tools/test_retention_t362_deferred.js
+?? tools/test_retention_t362_discovery.js
+?? tools/test_retention_t362_repair.js
+?? tools/test_retention_t362_scan_queue.js
+?? tools/test_retention_t363_audit_recovery.js
+?? tools/test_retention_t363_batch_integrity.js
+?? tools/test_retention_t363_deferred_resolution.js
+?? tools/test_retention_t365_repair_regression.js
+?? tools/test_retention_t365_skipped_recovery.js
+?? tools/test_retention_t365_unrecoverable.js
+?? tools/test_retention_t36_concurrency.js
+?? tools/test_retention_t36_repair.js
+?? tools/test_retention_t36_resume.js
+?? tools/test_seed_auth.js
+?? tools/test_seed_pilot.js
+?? tools/test_seed_s21.js
+?? tools/test_ugc_client_contract.js
+?? tools/test_ugc_review.js
+?? tools/test_ugc_submit.js
+?? tools/test_verify_data.js
+?? tools/ugc_fake_cloud.js
+?? tools/verify_data.js
+?? tools/verify_multiselect.js
+?? tools/verify_seed.js
+?? utils/b1Adapter.js
+?? utils/cloudRepo.js
+?? utils/datasetGuard.js

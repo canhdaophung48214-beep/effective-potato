@@ -1,0 +1,35 @@
+diff --git "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\index-state-20261028-2336\\test_index_state.js" "b/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_index_state.js"
+index 61995bc..1c81712 100644
+--- "a/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\index-state-20261028-2336\\test_index_state.js"
++++ "b/C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_index_state.js"
+@@ -194,7 +194,7 @@ async function S1_initial() {
+ 
+   const page = makePage();
+   checkEqual('S1 dataState 初始为 loading', page.data.dataState, 'loading');
+-  checkEqual('S1 dataSource 初始为 local', page.data.dataSource, 'local');
++  checkEqual('S1 加载前来源未知', page.data.dataSource, 'unknown');
+   checkEqual('S1 dataErrorText 初始为空串', page.data.dataErrorText, '');
+   checkEqual('S1 raw 尚未准备好', page.raw, undefined);
+ 
+@@ -426,7 +426,9 @@ async function S8_fields_used() {
+   const js = require('fs').readFileSync(path.join(ROOT, 'pages', 'index', 'index.js'), 'utf8');
+   check('S8 JS 里 dataSource 由 raw.source 赋值', js.indexOf('dataSource: self.raw.source') >= 0 || js.indexOf('dataSource: this.raw.source') >= 0);
+   check('S8 JS 里没有把 dataSource 写死成 cloud', js.indexOf('dataSource: \'cloud\'') < 0);
+-  check('S8 本阶段没有引入云端调用点', js.indexOf('loadCloudDataset') < 0 && js.indexOf('wx.cloud') < 0);
++  check('S8 首页通过统一只读入口加载云端数据', js.indexOf("require('../../utils/cloudRepo')") >= 0 &&
++    js.indexOf('loadCloudDataset({ db: wx.cloud.database() })') >= 0);
++  check('S8 首页没有直接写数据库', !/\.(add|update|remove|set)\s*\(/.test(js.replace(/setData\s*\(/g, '')));
+ 
+   /* onRetry 必须是真事件处理函数：调用它要真的重新走一遍加载 */
+   const page = makePage();
+@@ -653,7 +655,9 @@ async function S13_unknown_source() {
+ 
+   /* WXML 必须在 unknown 时换成告示，而不是继续打"演示数据"横幅 */
+   const wxml = require('fs').readFileSync(path.join(ROOT, 'pages', 'index', 'index.wxml'), 'utf8');
+-  check('S13 WXML 的演示横幅带条件', wxml.indexOf("dataSource !== 'unknown'") >= 0);
++  check('S13 WXML 仅 local 显示演示横幅',
++    /class="demo-badge"\s+wx:elif="\{\{dataSource === 'local'\}\}"/.test(wxml));
++  check('S13 WXML 真实来源有独立横幅', wxml.indexOf("dataSource === 'cloud'") >= 0);
+   check('S13 WXML 有来源未知的告示', wxml.indexOf('数据来源未知') >= 0);
+ }
+ 

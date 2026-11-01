@@ -1,0 +1,55 @@
+import pathlib,json,hashlib,difflib
+E=pathlib.Path(__file__).parent.resolve();R=E.parent.parent
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+report='''# R09 饭团原图逐项恢复
+
+本地候选生成PASS，独立验收/正式准入PENDING。新增独立菜品候选11，组件0、加料0、套餐0，正式导入0。
+
+## 来源与新旧关系
+
+真实来源为PHOTO_MANIFEST中2F-18（sha256_44d50356…c528.jpg）及已有本地Windows OCR。R04的W2-15历史转录将多个菜名合写为一行，并留在待核验池；本轮对未生成的饭团子项增加原图逐项证据，不重建、不修改R04或其PENDING状态。
+
+11条饭团：金针菇7、鲜香卤蛋8、和风蟹柳8、咸蛋黄肉松8、拉丝芝士10、纯肉烤肠10、香酥鸡排11、香煎猪排12、黑椒牛排13、金枪鱼14、日式鳗鱼15（元，单位未知）。每条保留OCR菜名行、价行、两条原文与转录同项同价行。只使用同行或直接相邻价格行，不将分离菜名列表和价列表按数组顺序强配。
+
+原图档口正式身份未签发，本地stallRef=R09-PHOTO-2F18，历史名称仅声明W2-15关联，不继承c01_t35或正式ID。楼层、日期、采集人未知仍null。tastes=[]，不把菜名微辣直接写成正式口味。照片不上传。当前价未知，禁止交易报价。
+
+## 分母和统计
+
+1张源照片；11条已抽取独立菜品源项；8个旧待核验父源组派生11个新子项。源组/台账共16个责任组=11候选+5待核验材料组。5组是寿司分离价列、早段饭团、培根疑字、辣条/里脊同排疑字、鸡蛋仔100/10价义，不能称5道菜，也不冒称整张菜单只有16原始行。
+
+source_ledger中NEW11、PENDING5；旧父记录保留且只追溯，不重新签发RETAIN/REPLACE/VOID动作，旧记录修改/作废0。旧聚合源组与新子项关系保存于priorPendingSourceRef/oldRecordKeys。same_name_crosscheck记录跨批次同名检查；同名并非同店身份，检查同照片同名无已生成候选后才新增。
+
+## 验证
+
+python -X utf8 build_r09.py exit0；python -X utf8 test_r09.py：20 PASS / 0 FAIL / 0 SKIP，exit0，见test_output.txt。9项负向覆盖改价、改名、错配价行、伪造日期、旧ID、猜口味、报价、重复、猜组成。检查原图SHA、旧OCR逐项一致、源行与父子追溯、16责任覆盖。
+
+git diff --check exit0，既有project.config.json CRLF提示不修改。正式项目与R03-R08文件哈希未变，Git状态/暂存/HEAD一致。没有生产代码修改，不重跑无关历史全套。未宣称正式导入器或人工视觉验真通过；证据等级是既有OCR与文本交叉，visual signoff未完成。
+
+## 交付与边界
+
+before原始来源副本在项目外新目录，backup_manifest逐个记录大小与SHA，逐字节验证。diff.patch仅列新文本工作文件，不含证据二进制，不声称可git apply。file_manifest/manifest非循环哈希。
+
+R08三P3只登记：同名米饭无专门分组字段；OCR误字无逐行异常标记；photo_coverage键格式兼容问题，原文见source_assets/R08_review.md §五。未返工R08。
+
+更新全项目进度另存本目录batch_progress.md：454旧独立候选+R09 11=465（R09待独立验收）；R08组件2/加料5不纳入独立菜品。正式准入仍PENDING，正式导入0。区域划分继续延期。
+
+完成后已继续筛选下一张特色小炒原图，拟将新逐项证据在另一独立批次实际落盘，不覆盖本目录。尚未能确认的图片局部继续待核验，不声称全部像素穷尽。R03-R08、正式data/契约/ID/审批均未改，无云端、部署、索引或Git写操作。
+'''
+(E/'execution_report.md').write_text(report,encoding='utf8')
+(E/'batch_progress.md').write_text('''# 项目批次进度（R09交付快照，不覆盖历史）
+
+| 批次 | 独立候选 | 组件 | 加料 | 状态 |
+|---|---:|---:|---:|---|
+| R03 |133|0|0|已验收冻结|
+| R04 |113|0|5组|已验收冻结|
+| R05 |30|0|8|已验收冻结|
+| R06 |140|0|0|已验收冻结，采用负责人独立候选口径|
+| R07 |38|0|24+1补充|已验收冻结|
+| R08 |0|2|5|已验收冻结|
+| R09 |11|0|0|本地通过、待DSH|
+
+独立候选累计465（454已验收+11待验收），不是465正式准入记录；旧批采用已确认业务统计口径，不反向重分类。本轮R09独立饭团，无组件/套餐。所有批次正式导入0。R09待核验5是材料组，不加到独立菜品总数。已延期区域及采集元数据不重复询问。
+''',encoding='utf8')
+ns=['build_r09.py','test_r09.py','candidates.json','source_groups.json','source_ledger.csv','source_ledger.json','unresolved.csv','optional_surcharges.json','bundle_relations.json','statistics.json','execution_report.md','batch_progress.md']
+(E/'diff.patch').write_text(''.join(''.join(difflib.unified_diff([], (E/n).read_text(encoding='utf-8-sig').splitlines(True),fromfile='/dev/null',tofile='R09/'+n)) for n in ns),encoding='utf8')
+entries=[{'path':p.relative_to(E).as_posix(),'bytes':p.stat().st_size,'sha256':sha(p)} for p in sorted(E.rglob('*')) if p.is_file() and p.name not in ['file_manifest.json','manifest.sha256']];(E/'file_manifest.json').write_text(json.dumps({'files':entries,'excludesSelf':True},ensure_ascii=False,indent=2),encoding='utf8');entries.append({'path':'file_manifest.json','sha256':sha(E/'file_manifest.json')});(E/'manifest.sha256').write_text(''.join(x['sha256']+'  '+x['path']+'\n' for x in entries),encoding='utf8');assert all(sha(E/x['path'])==x['sha256'] for x in entries);print('R09 manifest:',len(entries),'PASS')

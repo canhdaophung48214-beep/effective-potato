@@ -1,0 +1,13 @@
+{
+  "sourcePhotos": 1,
+  "transcriptionDishItems": 37,
+  "independentDishCandidates": 15,
+  "mealComponents": 0,
+  "optionalSurcharges": 0,
+  "bundleRelations": 0,
+  "pendingDishItems": 22,
+  "sourceGroups": 37,
+  "oldRecordsChanged": 0,
+  "formalImports": 0
+}
+build exit=0

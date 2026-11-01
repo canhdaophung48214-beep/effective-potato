@@ -1,0 +1,1 @@
+.search{height:82rpx;padding:0 26rpx;display:flex;align-items:center;gap:16rpx;background:#fff;border:2rpx solid #7bac64;border-radius:999rpx;box-shadow:0 8rpx 24rpx rgba(43,92,34,.08)}.icon{font-size:42rpx;color:#2f7d24}.search input{flex:1;min-width:0;font-size:28rpx;color:#172018}

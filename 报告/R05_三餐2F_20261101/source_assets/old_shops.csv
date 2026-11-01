@@ -1,0 +1,4 @@
+shop_id,shop_name,area,building,location,source_kind,source_detail,source_ref,collector,collect_date,evidence_file
+c01,服务楼,campus,服务楼,服务楼 · 2 楼西区,field,2026-10-22 现场查看三个窗口的价目表，价格与菜名由现场人员口述整理,,产品负责人,2026-10-22,img/c01_sign.jpg
+c02,三餐,campus,第三餐厅,三餐 · 2 楼最西侧,field,2026-10-22 现场拍摄三个窗口的价目表照片,,产品负责人,2026-10-22,img/c02_sign.jpg
+c03,四餐,campus,第四餐厅,四餐 · 2 楼南门正门口,field,2026-10-22 现场拍摄窗口价目表照片,,产品负责人,2026-10-22,img/c03_sign.jpg

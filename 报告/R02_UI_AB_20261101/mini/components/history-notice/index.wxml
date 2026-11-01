@@ -1,0 +1,1 @@
+<view class="notice {{compact?'compact':''}}"><text class="badge">历史记录</text><view><view class="title">当前价格未知</view><view class="copy">原菜单金额仅作历史参考，不用于交易报价</view></view></view>

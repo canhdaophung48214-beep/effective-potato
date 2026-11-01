@@ -1,0 +1,52 @@
+===== CSV 导入 · tools/import_data.js =====
+模式：预览（dry-run，不写任何文件）
+CSV 目录：C:\Users\25975\Desktop\食神寻味小程序开发\报告\R01_20261031\preview
+读取：店铺 1 行 / 楼层 2 行 / 窗口 12 行 / 菜品 12 行
+
+准备新增：店铺 1 / 楼层 2 / 窗口 12 / 菜品 12
+新增记录单独校验：22 错误 / 0 警告
+  ✗ [D1] dish c01_d040 → foodType = ""　菜品必须有 foodType
+  ✗ [D7] dish c01_d040 → tastes = []　口味数组长度必须是 1（data/dishes.js:29-33：辣度是同一维度的互斥档位）
+  ✗ [D1] dish c01_d048 → foodType = ""　菜品必须有 foodType
+  ✗ [D7] dish c01_d048 → tastes = []　口味数组长度必须是 1（data/dishes.js:29-33：辣度是同一维度的互斥档位）
+  ✗ [D7] dish c01_d084 → tastes = []　口味数组长度必须是 1（data/dishes.js:29-33：辣度是同一维度的互斥档位）
+  ✗ [D7] dish c01_d140 → tastes = []　口味数组长度必须是 1（data/dishes.js:29-33：辣度是同一维度的互斥档位）
+  ✗ [D1] dish c01_d464 → foodType = ""　菜品必须有 foodType
+  ✗ [D7] dish c01_d464 → tastes = []　口味数组长度必须是 1（data/dishes.js:29-33：辣度是同一维度的互斥档位）
+  ✗ [D1] dish c01_d437 → foodType = ""　菜品必须有 foodType
+  ✗ [D7] dish c01_d437 → tastes = []　口味数组长度必须是 1（data/dishes.js:29-33：辣度是同一维度的互斥档位）
+  ✗ [D1] dish c01_d297 → foodType = ""　菜品必须有 foodType
+  ✗ [D7] dish c01_d297 → tastes = []　口味数组长度必须是 1（data/dishes.js:29-33：辣度是同一维度的互斥档位）
+  ✗ [D1] dish c01_d319 → foodType = ""　菜品必须有 foodType
+  ✗ [D7] dish c01_d319 → tastes = []　口味数组长度必须是 1（data/dishes.js:29-33：辣度是同一维度的互斥档位）
+  ✗ [D1] dish c01_d331 → foodType = ""　菜品必须有 foodType
+  ✗ [D7] dish c01_d331 → tastes = []　口味数组长度必须是 1（data/dishes.js:29-33：辣度是同一维度的互斥档位）
+  ✗ [D1] dish c01_d362 → foodType = ""　菜品必须有 foodType
+  ✗ [D7] dish c01_d362 → tastes = []　口味数组长度必须是 1（data/dishes.js:29-33：辣度是同一维度的互斥档位）
+  ✗ [D1] dish c01_d373 → foodType = ""　菜品必须有 foodType
+  ✗ [D7] dish c01_d373 → tastes = []　口味数组长度必须是 1（data/dishes.js:29-33：辣度是同一维度的互斥档位）
+  …… 其余 2 条未显示（加 --all 查看全部）
+与现有数据合并后校验：22 错误 / 0 警告（其中属于本次新增的 22 条）
+  ✗ [D1] dish c01_d040 → foodType = ""　菜品必须有 foodType
+  ✗ [D7] dish c01_d040 → tastes = []　口味数组长度必须是 1（data/dishes.js:29-33：辣度是同一维度的互斥档位）
+  ✗ [D1] dish c01_d048 → foodType = ""　菜品必须有 foodType
+  ✗ [D7] dish c01_d048 → tastes = []　口味数组长度必须是 1（data/dishes.js:29-33：辣度是同一维度的互斥档位）
+  ✗ [D7] dish c01_d084 → tastes = []　口味数组长度必须是 1（data/dishes.js:29-33：辣度是同一维度的互斥档位）
+  ✗ [D7] dish c01_d140 → tastes = []　口味数组长度必须是 1（data/dishes.js:29-33：辣度是同一维度的互斥档位）
+  ✗ [D1] dish c01_d464 → foodType = ""　菜品必须有 foodType
+  ✗ [D7] dish c01_d464 → tastes = []　口味数组长度必须是 1（data/dishes.js:29-33：辣度是同一维度的互斥档位）
+  ✗ [D1] dish c01_d437 → foodType = ""　菜品必须有 foodType
+  ✗ [D7] dish c01_d437 → tastes = []　口味数组长度必须是 1（data/dishes.js:29-33：辣度是同一维度的互斥档位）
+  ✗ [D1] dish c01_d297 → foodType = ""　菜品必须有 foodType
+  ✗ [D7] dish c01_d297 → tastes = []　口味数组长度必须是 1（data/dishes.js:29-33：辣度是同一维度的互斥档位）
+  ✗ [D1] dish c01_d319 → foodType = ""　菜品必须有 foodType
+  ✗ [D7] dish c01_d319 → tastes = []　口味数组长度必须是 1（data/dishes.js:29-33：辣度是同一维度的互斥档位）
+  ✗ [D1] dish c01_d331 → foodType = ""　菜品必须有 foodType
+  ✗ [D7] dish c01_d331 → tastes = []　口味数组长度必须是 1（data/dishes.js:29-33：辣度是同一维度的互斥档位）
+  ✗ [D1] dish c01_d362 → foodType = ""　菜品必须有 foodType
+  ✗ [D7] dish c01_d362 → tastes = []　口味数组长度必须是 1（data/dishes.js:29-33：辣度是同一维度的互斥档位）
+  ✗ [D1] dish c01_d373 → foodType = ""　菜品必须有 foodType
+  ✗ [D7] dish c01_d373 → tastes = []　口味数组长度必须是 1（data/dishes.js:29-33：辣度是同一维度的互斥档位）
+  …… 其余 2 条未显示（加 --all 查看全部）
+
+❌ 存在拒绝或校验错误：本次 不可写入，需要先修数据

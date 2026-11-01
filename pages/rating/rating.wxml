@@ -1,0 +1,36 @@
+<!-- 评分栏：没有真实评价数据时的空状态，不展示任何虚构分数或榜单 -->
+<view class="page">
+
+  <view class="hero">
+    <view class="hero-title">评分</view>
+    <view class="hero-sub">先看分数，再决定吃什么</view>
+  </view>
+
+  <view class="empty-card">
+    <view class="empty-mark">—</view>
+    <view class="empty-title">暂无真实评分数据</view>
+    <view class="empty-desc">
+      评分需要真实的用户评价与内容审核才能展示。当前版本还没有接入评价功能，
+      所以这里不会出现分数、评分人数或榜单，也不会用示例数字占位。
+    </view>
+    <view class="empty-tag">规划中 · 未上线</view>
+  </view>
+
+  <view class="card">
+    <view class="card-title">将来会怎么算分</view>
+    <view class="card-desc">接入真实评价后，按四个维度加权；有效样本太少时直接显示「暂无评分」，不硬凑一个数。</view>
+
+    <view class="dim" wx:for="{{dimensions}}" wx:key="key">
+      <text class="dim-label">{{item.label}}</text>
+      <view class="track">
+        <view class="track-fill" style="width:{{item.weight}}%"></view>
+      </view>
+      <text class="dim-val">{{item.weight}}%</text>
+    </view>
+  </view>
+
+  <view class="note">
+    评分与文字评价属于用户内容，需审核后公开。本页不包含任何示例分数，权重也仍可能调整。
+  </view>
+
+</view>

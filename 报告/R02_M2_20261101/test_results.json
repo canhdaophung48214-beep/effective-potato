@@ -1,0 +1,73 @@
+[
+  {
+    "name": "real_default",
+    "command": [
+      "node",
+      "tools/import_data.js",
+      "--dir",
+      "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M2_20261101\\candidates",
+      "--all"
+    ],
+    "exitCode": 0
+  },
+  {
+    "name": "real_strict",
+    "command": [
+      "node",
+      "tools/import_data.js",
+      "--dir",
+      "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M2_20261101\\candidates",
+      "--all",
+      "--require-evidence"
+    ],
+    "exitCode": 1
+  },
+  {
+    "name": "fixture_no_upload_positive",
+    "command": [
+      "node",
+      "tools/import_data.js",
+      "--dir",
+      "C:\\Users\\25975\\AppData\\Local\\Temp\\R02M2_SYNTHETIC_ONLY_ra5zutnv",
+      "--all",
+      "--require-evidence"
+    ],
+    "exitCode": 0
+  },
+  {
+    "name": "fixture_missing_date",
+    "command": [
+      "node",
+      "tools/import_data.js",
+      "--dir",
+      "C:\\Users\\25975\\AppData\\Local\\Temp\\R02M2_SYNTHETIC_ONLY_hgszro42",
+      "--all",
+      "--require-evidence"
+    ],
+    "exitCode": 1
+  },
+  {
+    "name": "fixture_missing_collector",
+    "command": [
+      "node",
+      "tools/import_data.js",
+      "--dir",
+      "C:\\Users\\25975\\AppData\\Local\\Temp\\R02M2_SYNTHETIC_ONLY_allzte9i",
+      "--all",
+      "--require-evidence"
+    ],
+    "exitCode": 1
+  },
+  {
+    "name": "fixture_invalid_evidence_path",
+    "command": [
+      "node",
+      "tools/import_data.js",
+      "--dir",
+      "C:\\Users\\25975\\AppData\\Local\\Temp\\R02M2_SYNTHETIC_ONLY_egf5tmzm",
+      "--all",
+      "--require-evidence"
+    ],
+    "exitCode": 1
+  }
+]

@@ -1,0 +1,57 @@
+[
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E4_NG03_双拼与套餐业务裁决材料_20261101.md",
+    "bytes": 9796,
+    "sha256": "5182334bf658e4aef564a0c5b476d53720aed8b905f7913fcd8600810d1159d2"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E4_全项目照片补拍清单_20261101.md",
+    "bytes": 61259,
+    "sha256": "827c8369050a2e1e82073cf0bf2d1534b45632f0f984b7fd2329cdf64df6a785"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\Codex_R01_E4_集中执行报告_20261101.md",
+    "bytes": 1773,
+    "sha256": "5240424333ae19eb074b56466a99f82e6eded696b7617eb6823f646f025ba4c5"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E4_consolidated_20261101\\backup_manifest.json",
+    "bytes": 341,
+    "sha256": "fad5b1c2a24764705d20038cc902ef3baee8363e0de9e42104b01bc58d8e979c"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E4_consolidated_20261101\\git_status.txt",
+    "bytes": 17312,
+    "sha256": "83d8c88e4c749b796e3cfcd2cf1e814127c91487f8c89bb98fe0911817740ad0"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E4_consolidated_20261101\\NG03_candidate_preview.json",
+    "bytes": 7087,
+    "sha256": "a0a2f1b539e48552782c486fd1028891e585dc02488726a787f9e50ed63dd418"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E4_consolidated_20261101\\NG03_material.diff",
+    "bytes": 1305,
+    "sha256": "3537bb60b3e61379c596a44fe32bbaa87023077720aa630f860c79e9012b452d"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E4_consolidated_20261101\\photo_requirements.json",
+    "bytes": 118552,
+    "sha256": "c8d67ebd8f018ee394181d82349618b8f4f824e242813a3d40352e1d5702ac17"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E4_consolidated_20261101\\prototype.py",
+    "bytes": 1624,
+    "sha256": "b1c64ccd627af01af408fafe2492f64c6ecdc38795aa98ba2d717e3571c6fb1b"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E4_consolidated_20261101\\prototype_output.txt",
+    "bytes": 38,
+    "sha256": "ea2ce00406079701984df4579cd9c2cb42655a6acee84ca5ad4cebdc6402d293"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E4_consolidated_20261101\\UNIFIED_DESIGN.md",
+    "bytes": 1996,
+    "sha256": "9e53127c8467d02079e40f1a72cf460cb4dbccc4f8a491b1872d282e2789b687"
+  }
+]

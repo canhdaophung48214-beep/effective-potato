@@ -1,0 +1,4 @@
+{
+  "directory": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_runtime_20261101_160327",
+  "reason": "真实微信页栈存在但data.records缺失；将页面不支持的JSON require替换为CommonJS数据模块；不改39条值"
+}

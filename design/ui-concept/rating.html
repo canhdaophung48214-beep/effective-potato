@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>rating-concept</title>
+<link rel="stylesheet" href="concept.css" />
+</head>
+<body>
+<div class="phone">
+
+  <div class="statusbar">
+    <div>9:41</div>
+    <div class="right">
+      <div class="bar"><i></i><i></i><i></i><i></i></div>
+      <svg width="15" height="11" viewBox="0 0 15 11" fill="none" stroke="#241E1A" stroke-width="1.4" stroke-linecap="round">
+        <path d="M1 4.2a9 9 0 0 1 13 0"/><path d="M3.4 6.6a5.6 5.6 0 0 1 8.2 0"/><circle cx="7.5" cy="9.2" r=".9" fill="#241E1A" stroke="none"/>
+      </svg>
+      <div class="battery"><i></i></div>
+    </div>
+  </div>
+
+  <div class="appbar">
+    <div class="brand">
+      <h1>评分榜</h1>
+      <p>先看分数，再决定吃什么</p>
+    </div>
+    <div class="region"><span class="dot"></span>西校区</div>
+  </div>
+
+  <div class="screen">
+
+    <div class="seg">
+      <div class="on">综合评分</div>
+      <div>性价比</div>
+      <div>近 7 天</div>
+    </div>
+
+    <!-- 榜首 -->
+    <div class="card champ" style="padding:11px">
+      <div class="ph" style="width:96px;height:96px;flex:0 0 96px"><span class="g"></span></div>
+      <div class="info">
+        <div class="top">
+          <span class="crown">本周榜首</span>
+          <span class="badge demo">示意数据</span>
+        </div>
+        <h3>牛肉米粉（大份）</h3>
+        <div class="sub">二号食堂 · 3 号窗口 · 米线类</div>
+        <div class="score"><b>4.6</b><i>分</i><small>· 128 人评分 · ¥11</small></div>
+      </div>
+    </div>
+
+    <div class="sec">
+      <h2>大家都在评</h2>
+      <span class="more">按评分 ›</span>
+    </div>
+
+    <div class="card">
+      <div class="rank">
+        <div class="no">2</div>
+        <div class="ph amber"></div>
+        <div class="info">
+          <b>砂锅米线</b>
+          <small>四号食堂 · 1 号窗口 · ¥12</small>
+        </div>
+        <div class="tail"><em>4.4</em><small>96 人</small></div>
+      </div>
+      <div class="rank" style="border-top:1px solid #F5EFE7;padding-top:7px;padding-bottom:7px">
+        <div class="no">3</div>
+        <div class="ph jade"></div>
+        <div class="info">
+          <b>猪肉白菜饺子（10 个）</b>
+          <small>东区食堂 · 2 号窗口 · ¥10</small>
+        </div>
+        <div class="tail"><em>4.2</em><small>74 人</small></div>
+      </div>
+      <div class="rank" style="border-top:1px solid #F5EFE7;padding-top:7px;padding-bottom:7px">
+        <div class="no">4</div>
+        <div class="ph wine"></div>
+        <div class="info">
+          <b>红烧肉盖饭</b>
+          <small>一号食堂 · 2 号窗口 · ¥12</small>
+        </div>
+        <div class="tail"><em>4.0</em><small>61 人</small></div>
+      </div>
+    </div>
+
+    <!-- 评价入口 -->
+    <div class="card" style="padding:12px;display:flex;align-items:center;gap:10px">
+      <div class="avatar jade">你</div>
+      <div style="display:flex;flex-direction:column;gap:2px">
+        <b style="font-size:13px">给吃过的菜打分</b>
+        <small style="font-size:10px;color:#9C9289">评分 + 一句感受，审核后展示</small>
+      </div>
+      <div style="margin-left:auto;height:30px;padding:0 12px;display:flex;align-items:center;border:1px solid #D9412B;color:#D9412B;border-radius:999px;font-size:12px;font-weight:700">去评分</div>
+    </div>
+
+    <div class="card" style="padding:11px;display:flex;flex-direction:column;gap:7px">
+      <div style="display:flex;align-items:baseline;gap:8px">
+        <b style="font-size:13px">分数怎么算</b>
+        <small style="font-size:10px;color:#9C9289">样本不足显示「暂无评分」· 评价需审核</small>
+      </div>
+      <div class="dim"><span>口味</span><div class="track"><i style="width:40%"></i></div><b>40%</b></div>
+      <div class="dim"><span>性价比</span><div class="track"><i style="width:30%"></i></div><b>30%</b></div>
+      <div class="dim"><span>分量</span><div class="track"><i style="width:15%"></i></div><b>15%</b></div>
+      <div class="dim"><span>出餐速度</span><div class="track"><i style="width:15%"></i></div><b>15%</b></div>
+    </div>
+
+
+  </div>
+
+  <div class="concept-mark">概念设计稿 · 分数与人数为示意</div>
+
+  <div class="tabbar">
+    <div class="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M3.5 10.4 12 3.6l8.5 6.8V20a1 1 0 0 1-1 1h-5v-6h-5v6h-5a1 1 0 0 1-1-1z"/></svg>
+      <span>首页</span>
+    </div>
+    <div class="tab on">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="m12 3.8 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 10l5.9-.9z"/></svg>
+      <span>评分</span>
+    </div>
+    <div class="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M20 14.5a2 2 0 0 1-2 2H8l-4 3.2V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/></svg>
+      <span>社区</span>
+    </div>
+    <div class="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="8.6" r="3.7"/><path d="M4.8 20.2a7.4 7.4 0 0 1 14.4 0"/></svg>
+      <span>我的</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

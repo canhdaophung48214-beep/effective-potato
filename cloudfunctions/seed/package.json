@@ -1,0 +1,10 @@
+{
+  "name": "seed",
+  "version": "1.0.0",
+  "description": "阶段 2 演示数据写入与核对（仅 8 条固定记录）",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

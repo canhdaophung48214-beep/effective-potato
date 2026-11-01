@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "历史菜单",
+  "usingComponents": {
+    "history-menu": "../../components/history-menu/index"
+  }
+}

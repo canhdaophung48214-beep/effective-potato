@@ -1,0 +1,1 @@
+Component({properties:{value:{type:String,value:''},placeholder:{type:String,value:'搜索 39 条历史菜单'}},methods:{onInput(e){this.triggerEvent('input',{value:e.detail.value})},onConfirm(){this.triggerEvent('confirm')}}});

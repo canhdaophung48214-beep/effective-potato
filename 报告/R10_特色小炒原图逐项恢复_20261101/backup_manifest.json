@@ -1,0 +1,23 @@
+[
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\ds-session-1e2717cc\\sha256_6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f.jpg",
+    "snapshot": "source_assets/photo_2F16.jpg",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R10_20261101_234810\\photo_2F16.jpg",
+    "bytes": 270221,
+    "sha256": "6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f"
+  },
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E3_evidence\\ocr_raw.json",
+    "snapshot": "source_assets/prior_ocr_raw.json",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R10_20261101_234810\\prior_ocr_raw.json",
+    "bytes": 109610,
+    "sha256": "29237ee6df183ec34a429725ef19dc4f788da7643a7909ec6319df4b1b5d90ab"
+  },
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\pilot\\TRANSCRIPTION_2F.md",
+    "snapshot": "source_assets/TRANSCRIPTION_2F.md",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R10_20261101_234810\\TRANSCRIPTION_2F.md",
+    "bytes": 49530,
+    "sha256": "37516c5f7bb46c7fc387621fbefddbc6be98b5c27f6cf119399b5a2befc9e34c"
+  }
+]

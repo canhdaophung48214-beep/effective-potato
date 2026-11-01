@@ -1,0 +1,10 @@
+{
+  "name": "retention",
+  "version": "0.1.0",
+  "description": "UGC 保留期到期标记；不含触发器配置，默认失败关闭",
+  "main": "index.js",
+  "private": true,
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

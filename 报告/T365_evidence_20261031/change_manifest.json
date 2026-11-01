@@ -1,0 +1,51 @@
+[
+  {
+    "file": "cloudfunctions/retention/index.js",
+    "beforeBytes": 95575,
+    "beforeSHA256": "3b54b15583960d9beedb706f830fd48f6aa6d22eab8d0dc0138e992e87975cf0",
+    "afterBytes": 108172,
+    "afterSHA256": "33e3863dc5d8760f1e53b9a7898fad9f977539fd983346cc8a20b2e9faee9123"
+  },
+  {
+    "file": "config/cloud/schema.upload_logs.json",
+    "beforeBytes": 4398,
+    "beforeSHA256": "98b4c5b5b862a6f76596071a4030f9f0b48ae6552f7de1ae50104c80c7f5be51",
+    "afterBytes": 4940,
+    "afterSHA256": "638ef64c586939dfdee5849732a17288c00384913079a47ec404038a5d363577"
+  },
+  {
+    "file": "config/cloud/schema.submissions.json",
+    "beforeBytes": 9152,
+    "beforeSHA256": "e7b4a9dcc4067a4f21e04e87e4ffbc83f9766c19ca208c6f34d1aeb8aba496ca",
+    "afterBytes": 9419,
+    "afterSHA256": "c37ea2ba762a73531a4de899bb6ae353dc598e452fec0abf977f5ce7d8fa48f0"
+  },
+  {
+    "file": "tools/test_retention_t365_skipped_recovery.js",
+    "beforeBytes": null,
+    "beforeSHA256": null,
+    "afterBytes": 2075,
+    "afterSHA256": "7a67f6b6c77658de2ef2faf6d0774ae9885d0be6884576184857a1d478f6e68a"
+  },
+  {
+    "file": "tools/test_retention_t365_unrecoverable.js",
+    "beforeBytes": null,
+    "beforeSHA256": null,
+    "afterBytes": 4746,
+    "afterSHA256": "5b864048393fda5a24ff1b52d7709b385c93a724d7ceafe67f0a38d9e572fba9"
+  },
+  {
+    "file": "tools/test_retention_t365_repair_regression.js",
+    "beforeBytes": null,
+    "beforeSHA256": null,
+    "afterBytes": 3224,
+    "afterSHA256": "2a419299566934d3776be76cb3c45d175c2efc735f4308d9074b4339af38da1b"
+  },
+  {
+    "file": "docs/RETENTION_T365_DESIGN_20261031.md",
+    "beforeBytes": null,
+    "beforeSHA256": null,
+    "afterBytes": 4013,
+    "afterSHA256": "759413b6a6630829b488b61058a03db5397b352801a691686406cc2b932cc35a"
+  }
+]

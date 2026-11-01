@@ -1,0 +1,16 @@
+[
+  {
+    "optionRef": "R07-SUPPLEMENT-C09-FRIED-MUSHROOM",
+    "name": "炸金针菇",
+    "additionalPriceYuan": 1,
+    "stallRef": "offsite_batch2:c09_t01_TRACE_ONLY",
+    "baseCandidateRef": null,
+    "independentDish": false,
+    "selectionConstraints": null,
+    "evidenceType": "COLLECTION_NOTE_EXAMPLE_NOT_FRESH_PHOTO_REVIEW",
+    "sourceFile": "source_assets/remaining_collection_notes.md",
+    "sourceLine": 72,
+    "sourceQuote": "| c09 自选炸货 6 项（炸金针菇 1 元等） | 属「饭里加料」小食，录进去会让随机抽菜抽出 1 元的配菜 | 同上 |",
+    "admissionStatus": "RELATION_PREVIEW_ONLY"
+  }
+]

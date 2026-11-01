@@ -1,0 +1,9 @@
+﻿sourceRecordRef,name,reason,sourcePhoto,disposition,nextAction
+R08-C05-EGGS,煎蛋/卤蛋两项,OCR仅辨蛋，1.5/7.5混淆，不按常识纠价,source_assets/c05_t01_menu.jpg,PENDING,原图局部核对/清晰材料；不重开区域及延期元数据
+R08-C05-ONION-CAKE,葱花酥油饼,同OCR行出现7元/斤与2元/份，价目对应不确定,source_assets/c05_t01_menu.jpg,PENDING,原图局部核对/清晰材料；不重开区域及延期元数据
+R08-C06-REMAINING,忆米嘉其余加料组,原说明16项，扣除本批两项，其余14项不完整具名；不虚构展开清单,source_assets/c06_t01_menu.jpg,PENDING,原图局部核对/清晰材料；不重开区域及延期元数据
+R08-C09-FRIED,赣五爷其余炸货组,6项中炸金针菇1元已归R07补充，余5项无完整可核对名称价格，禁止重复生成旧关系,source_assets/c09_t01_menu.jpg,PENDING,原图局部核对/清晰材料；不重开区域及延期元数据
+R08-C08-RECOMMEND,土耳其烤鸡推荐区6项,OCR无法一一匹配菜名价格，不以5元碎片推价,source_assets/c08_t01_menu.jpg,PENDING,原图局部核对/清晰材料；不重开区域及延期元数据
+R08-C03-WEIGHT,味爱特称重计价,OCR为L77元/50g，虽旧说明1.77，但不是固定价独立菜品；保留经营线索不生成菜,source_assets/c03_t01_menu.jpg,PENDING,原图局部核对/清晰材料；不重开区域及延期元数据
+R08-C10-WEIGHT,航语佳称重计价,人均价格不是单菜价格，称重范围不可推定,source_assets/c10_t01_menu.jpg,PENDING,原图局部核对/清晰材料；不重开区域及延期元数据
+R08-PHOTO-TAIL,其他照片未收录碎片,其余已有菜名价大部分R06覆盖；无法明确匹配新实体者不重复或推断,source_assets/c04_t01_menu.jpg,PENDING,原图局部核对/清晰材料；不重开区域及延期元数据

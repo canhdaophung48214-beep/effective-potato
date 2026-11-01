@@ -1,0 +1,75 @@
+{
+  "_meta": {
+    "purpose": "UGC MVP 阶段 B 本地建议审计日志 schema，未应用到任何云端环境",
+    "status": "pending_admin_console_verification",
+    "collection": "upload_logs",
+    "readBy": "普通客户端不可读；retention 服务端仅按确定性 _id 读取待补逐条事件，内部排查权限待云端验收",
+    "writtenBy": "submit / review / retention 云函数仅追加（add）；任何一方都不得 update/delete",
+    "retention": "已裁决审计明细 90 天、逐条八字段摘要自生成起 180 天；轮转与云端部署尚未完成"
+  },
+  "fields": {
+    "_id": { "type": "string", "note": "系统生成" },
+    "schemaVersion": { "type": "integer", "value": 1 },
+    "event": { "type": "string", "enum": ["submit", "denied", "throttle", "security_call", "review_approve", "review_reject", "alarm", "delete_request", "retention_mark", "retention_purge", "retention_deferred_attempt"] },
+    "action": { "type": "string", "note": "云函数实际动作；系统标记／清理使用 retention_mark／retention_purge，人工审核使用各自已定义动作" },
+    "submissionId": { "type": "string|null", "note": "逐条事件关联投稿 ID；批次 prepare/complete 为 null" },
+    "actor": {
+      "type": "object",
+      "properties": {
+        "openidHash": { "type": "string|null", "pattern": "^[0-9a-f]{32}$", "note": "投稿人和管理员必须是 32 位小写十六进制 HMAC 摘要；系统任务明确写 null，禁止虚构哈希" },
+        "role": { "type": "string", "enum": ["submitter", "admin", "system"] }
+      }
+    },
+    "target": {
+      "type": "object",
+      "properties": {
+        "collection": { "type": "string", "enum": ["submissions"] },
+        "id": { "type": "string|null" }
+      }
+    },
+    "result": {
+      "type": "object",
+      "properties": {
+        "code": { "type": "string", "note": "逐条日志为 OK/错误码；Retention 批次 prepare 为 PREPARE，complete 为 COMPLETE/PARTIAL/FAILED/DEFERRED/DEFERRED_NOT_STARTED/DEFERRED_RETRYABLE；追加修复为 REPAIR_CONFIRMED，证据型延期恢复为 DEFERRED_RESOLUTION。T365 增加独立 retention_deferred_attempt/REQUEUED_CURRENT_REV 签名事件；原始结果永不改写" },
+        "stats": { "type": "object|null", "note": "Retention 批次含 phase/operation/batchId/selected 与互斥结果计数；purge prepare 记录选中投稿 ID、读取时版本/状态和正文 HMAC；DEFERRED complete 记录逐项原因与摘要；resolution 关联原 batchId/batchRef、prepare/complete、manifestHash、每条投稿的原始及观测 rev、恢复动作及证据引用、unresolvedCount 和 HMAC seal。revBefore/revAfter 明确记录合法历史 rev=0 到1；显式 disposeDeferredBatch 处置含 RECORD_ABSENT（observedRev=null 且确认精确不存在）、ALREADY_CLEARED、NO_LONGER_ELIGIBLE、REQUEUED_CURRENT_REV；不确定性 BLOCKED_UNCERTAIN 不落成功凭证。重试引用绑定独立稳定 batchId，retryDeferredAttempt 重跑完整守卫。 不含正文，只追加" },
+        "attempts": { "type": "integer", "note": "内容安全尝试次数" }
+      }
+    },
+    "errorCode": { "type": "string|null", "note": "拒绝/驳回原因码" },
+    "note": { "type": "string|null", "note": "仅内部短说明，禁止写用户私密信息与凭据" },
+    "clientTokenHash": { "type": "string|null", "note": "客户端令牌摘要，仅 submit 使用" },
+    "day": { "type": "string", "note": "YYYY-MM-DD，便于按天归档" },
+    "at": { "type": "date", "note": "所有运行日志均填写；逐条 retention_mark 也可按 ix_at 倒查" },
+    "rev": { "type": "integer", "value": 1, "note": "所有运行日志填写 1；系统逐条日志使用稳定 _id 以支持幂等补记" }
+  },
+  "indexes": [
+    {
+      "name": "ix_at",
+      "keys": [{ "field": "at", "order": "desc" }],
+      "unique": false,
+      "purpose": "按时间排查"
+    },
+    {
+      "name": "ix_event_day",
+      "keys": [{ "field": "event", "order": "asc" }, { "field": "day", "order": "asc" }],
+      "unique": false,
+      "purpose": "按事件与日期聚合"
+    },
+    {
+      "name": "ix_retention_reconcile_event_id",
+      "keys": [{ "field": "event", "order": "asc" }, { "field": "_id", "order": "asc" }],
+      "unique": false,
+      "purpose": "按 retention 事件与 _id 做只读有界对账扫描；仅本地声明，云端未创建或验收"
+    },
+    {
+      "name": "ix_actor_at",
+      "keys": [{ "field": "actor.openidHash", "order": "asc" }, { "field": "at", "order": "desc" }],
+      "unique": false,
+      "purpose": "按主体追溯"
+    }
+  ],
+  "appendOnly": {
+    "forbidden": ["collection.update", "collection.remove", "doc.update", "doc.remove"],
+    "note": "审计日志只允许 add；如需纠错，追加一条新记录并在 note 说明，不得改写历史"
+  }
+}

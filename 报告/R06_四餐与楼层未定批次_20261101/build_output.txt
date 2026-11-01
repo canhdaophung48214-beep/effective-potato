@@ -1,0 +1,29 @@
+{
+  "originalRecords": 142,
+  "fourthMenuRows": 10,
+  "unlocatedCsvRows": 132,
+  "oldRecords": 140,
+  "candidates": 140,
+  "candidateSourceGroups": 140,
+  "blockingUnresolved": 2,
+  "nonBlockingFieldIssues": 132,
+  "unresolvedCsvRows": 134,
+  "oldRetained": 140,
+  "oldReplaced": 0,
+  "oldVoided": 0,
+  "newSourceResponsibilities": 2,
+  "explicitSpecificationVariants": 0,
+  "formalIdsAssigned": 0,
+  "formalImports": 0,
+  "candidateStallDistribution": {
+    "R06-FOURTH-S01": 8,
+    "R06-UNLOCATED-c04_t01": 21,
+    "R06-UNLOCATED-c05_t01": 19,
+    "R06-UNLOCATED-c06_t01": 17,
+    "R06-UNLOCATED-c07_t01": 6,
+    "R06-UNLOCATED-c08_t01": 1,
+    "R06-UNLOCATED-c09_t01": 7,
+    "R06-UNLOCATED-c11_t01": 61
+  }
+}
+build exit=0

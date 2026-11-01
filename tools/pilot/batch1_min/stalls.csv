@@ -1,0 +1,2 @@
+shop_id,floor_id,stall_id,stall_name,side,no_status,no,source_kind,source_detail,source_ref,collector,collect_date,evidence_file
+c02,c02_f2,c02_t02,韩小面,west,unverified,,field,2026-10-22 现场拍摄韩小面价目表（含汤面 / 拌面 / 清汤 / 小吃四栏与店长提示）；档口名与价格有照片支持；方位 west 来自项目负责人 2026-10-26 提供的现场信息，非餐厅负责人签字，照片未独立证明；no_status 保持 unverified,,产品负责人,2026-10-22,img/c02_t02_menu.jpg

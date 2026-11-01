@@ -1,0 +1,86 @@
+[
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\pilot\\c03_offsite_batch2\\img\\c03_t01_menu.jpg",
+    "snapshot": "source_assets/c03_t01_menu.jpg",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R08_20261101_233634\\c03_t01_menu.jpg",
+    "bytes": 649599,
+    "sha256": "9b18a285ca9beead686f57c0848e4001714a527fa867f5c2c4152cd6a842b150"
+  },
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\pilot\\c03_offsite_batch2\\img\\c04_t01_menu.jpg",
+    "snapshot": "source_assets/c04_t01_menu.jpg",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R08_20261101_233634\\c04_t01_menu.jpg",
+    "bytes": 620423,
+    "sha256": "acbe584c11a70485651d0d851eab7b519f3ef7df4a4e45f0e0d92ccf62771484"
+  },
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\pilot\\c03_offsite_batch2\\img\\c05_t01_menu.jpg",
+    "snapshot": "source_assets/c05_t01_menu.jpg",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R08_20261101_233634\\c05_t01_menu.jpg",
+    "bytes": 616404,
+    "sha256": "24de847459276407577c44d31f6779f33dcd51d3e7c9408a74bc1e910a33aa60"
+  },
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\pilot\\c03_offsite_batch2\\img\\c06_t01_menu.jpg",
+    "snapshot": "source_assets/c06_t01_menu.jpg",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R08_20261101_233634\\c06_t01_menu.jpg",
+    "bytes": 696877,
+    "sha256": "4ee5f6689dfe9495e1b3d97b6c2b066d56b842142a796928daa2d16b806d5ce1"
+  },
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\pilot\\c03_offsite_batch2\\img\\c07_t01_menu.jpg",
+    "snapshot": "source_assets/c07_t01_menu.jpg",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R08_20261101_233634\\c07_t01_menu.jpg",
+    "bytes": 557362,
+    "sha256": "72f7e0df0c6de28d629f0052fb734789a0ad3f899ccd4392bf2446dcfbb5ae26"
+  },
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\pilot\\c03_offsite_batch2\\img\\c08_t01_menu.jpg",
+    "snapshot": "source_assets/c08_t01_menu.jpg",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R08_20261101_233634\\c08_t01_menu.jpg",
+    "bytes": 711046,
+    "sha256": "47c3770e2a5e623dcd9fe776d6ce1158350adffd1017bee5f93368f236325880"
+  },
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\pilot\\c03_offsite_batch2\\img\\c09_t01_menu.jpg",
+    "snapshot": "source_assets/c09_t01_menu.jpg",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R08_20261101_233634\\c09_t01_menu.jpg",
+    "bytes": 707206,
+    "sha256": "97c29767a2ee17bcf4e37dd0e4ce2b0336de57ee9ba49de20e8d15d6c455663e"
+  },
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\pilot\\c03_offsite_batch2\\img\\c10_t01_menu.jpg",
+    "snapshot": "source_assets/c10_t01_menu.jpg",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R08_20261101_233634\\c10_t01_menu.jpg",
+    "bytes": 470124,
+    "sha256": "39a0b8922f5f00b25b01ee49917e9fa92543acc91245cdcdec5397289a8ab117"
+  },
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\pilot\\c03_offsite_batch2\\img\\c11_t01_menu.jpg",
+    "snapshot": "source_assets/c11_t01_menu.jpg",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R08_20261101_233634\\c11_t01_menu.jpg",
+    "bytes": 601804,
+    "sha256": "b67838596e7fd601485330151332c563d9df5706539c759dda806e791604a544"
+  },
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\pilot\\c03_offsite_batch2\\img\\c11_t01_menu2.jpg",
+    "snapshot": "source_assets/c11_t01_menu2.jpg",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R08_20261101_233634\\c11_t01_menu2.jpg",
+    "bytes": 680259,
+    "sha256": "53a68e408d2393014126598a32ff2780a4dfac004e4109c548962c083e34bdad"
+  },
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\pilot\\c03_offsite_batch2\\采集说明.md",
+    "snapshot": "source_assets/collection_notes.md",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R08_20261101_233634\\collection_notes.md",
+    "bytes": 7002,
+    "sha256": "cf20d6e5ef7500dd38939b2843f5729bd792750a700854cbc1b2cc784b6626b0"
+  },
+  {
+    "original": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\DSH_R07_服务楼早期口述批次_独立验收_20261101.md",
+    "snapshot": "source_assets/R07_review.md",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R08_20261101_233634\\R07_review.md",
+    "bytes": 5543,
+    "sha256": "674164e2f00b020ae79c3be1d903bf0790f4d1d5b5684c9e392b9e73ab01610f"
+  }
+]

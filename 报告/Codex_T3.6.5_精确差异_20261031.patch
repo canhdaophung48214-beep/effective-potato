@@ -1,0 +1,497 @@
+diff --git "a/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\345\244\207\344\273\275\\T365_impl_20261031_144505_614\\cloudfunctions\\retention\\index.js" "b/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\351\241\271\347\233\256\\cloudfunctions\\retention\\index.js"
+index 435ee75..07d9faf 100644
+--- "a/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\345\244\207\344\273\275\\T365_impl_20261031_144505_614\\cloudfunctions\\retention\\index.js"
++++ "b/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\351\241\271\347\233\256\\cloudfunctions\\retention\\index.js"
+@@ -733,6 +733,107 @@ async function repairPurgeBatch(options) {
+     confirmedUntouched: confirmedUntouched };
+ }
+ 
++function exactDocumentAbsent(err) {
++  // wx-server-sdk doc.get: the code alone is shared with unrelated failures.
++  return !!(err && err.errCode === -1 &&
++    /^(document does not exist|document not found)$/i.test(String(err.message || '').trim()));
++}
++
++function requeueAttemptId(batchId, id) {
++  return 'retention_retry_' + crypto.createHash('sha256')
++    .update(batchId + '\0' + id).digest('hex');
++}
++
++async function ensureDeferredAttempt(batchId, item, row, now) {
++  const nextBatchId = requeueAttemptId(batchId, item.id);
++  const stats = { operation: 'requeueDeferred', batchId: nextBatchId, sourceBatchId: batchId,
++    submissionId: item.id, originalRev: item.rev, observedRev: row.rev,
++    status: row.status, payloadProof: purgeEvidence([row])[0].payloadProof,
++    createdAt: now.toISOString() };
++  stats.seal = deferredResolutionSeal(stats);
++  const eventId = nextBatchId;
++  let existing;
++  try { existing = (await db.collection(COL.LOGS).doc(eventId).get()).data; }
++  catch (err) { if (!exactDocumentAbsent(err)) return null; }
++  const valid = function (log) { const x = log && log.result && log.result.stats;
++    return !!(log && log._id === eventId && log.event === 'retention_deferred_attempt' &&
++      validAttemptMetadata(log, item.id) && log.result.code === 'REQUEUED_CURRENT_REV' &&
++      x && x.batchId === nextBatchId && x.sourceBatchId === batchId &&
++      x.submissionId === item.id && x.originalRev === item.rev && x.observedRev === row.rev &&
++      x.status === row.status && x.payloadProof === stats.payloadProof &&
++      x.seal === deferredResolutionSeal(x)); };
++  if (!existing) {
++    const log = { _id: eventId, schemaVersion: 1, event: 'retention_deferred_attempt',
++      action: 'retention_deferred_attempt', submissionId: item.id,
++      day: now.toISOString().slice(0, 10), result: { code: 'REQUEUED_CURRENT_REV', stats },
++      errorCode: '', actor: { role: 'system', openidHash: null }, at: db.serverDate(), rev: 1 };
++    try { await db.collection(COL.LOGS).add({ data: log }); existing = log; }
++    catch (err) {
++      try { existing = (await db.collection(COL.LOGS).doc(eventId).get()).data; }
++      catch (readErr) { return null; }
++    }
++  }
++  return valid(existing) ? { eventId, batchId: nextBatchId } : null;
++}
++
++function validAttemptMetadata(log, id) {
++  return !!(log && log.schemaVersion === 1 && log.action === 'retention_deferred_attempt' &&
++    log.submissionId === id && log.rev === 1 && validUtcDay(log.day) &&
++    Number.isFinite(new Date(log.at).getTime()) && log.actor &&
++    log.actor.role === 'system' && log.actor.openidHash === null);
++}
++
++async function resolutionAttemptsValid(stats) {
++  for (const item of stats.items || []) {
++    if (item.reasonCode !== 'REQUEUED_CURRENT_REV') continue;
++    let log;
++    try { log = (await db.collection(COL.LOGS).doc(item.evidenceRef).get()).data; }
++    catch (err) { return false; }
++    const x = log && log.result && log.result.stats;
++    if (!x || log._id !== requeueAttemptId(stats.batchId, item.submissionId) ||
++        log.event !== 'retention_deferred_attempt' || !validAttemptMetadata(log, item.submissionId) || log.result.code !== 'REQUEUED_CURRENT_REV' ||
++        x.sourceBatchId !== stats.batchId || x.batchId !== item.nextBatchId ||
++        x.submissionId !== item.submissionId || x.observedRev !== item.observedRev ||
++        x.originalRev !== item.originalRev || x.seal !== deferredResolutionSeal(x)) return false;
++  }
++  return true;
++}
++
++async function retryDeferredAttempt(options, hooks) {
++  if (!hooks || hooks[OFFLINE_PURGE_SIMULATION] !== true) {
++    return fail('PURGE_GLOBAL_FENCE_UNVERIFIED', '跨文档全局审计屏障尚未验证');
++  }
++  const batchId = options && options.batchId;
++  const id = options && options.submissionId;
++  if (typeof batchId !== 'string' || typeof id !== 'string') return fail('BLOCKED_UNCERTAIN', '缺少重试引用');
++  let resolution, attempt, row;
++  try {
++    resolution = (await db.collection(COL.LOGS).doc(purgeBatchLogId(batchId, 'deferred_resolution')).get()).data;
++    attempt = (await db.collection(COL.LOGS).doc(requeueAttemptId(batchId, id)).get()).data;
++    row = (await db.collection(COL.SUBMISSIONS).doc(id).get()).data;
++  } catch (err) { return fail('BLOCKED_UNCERTAIN', '重试证据读取不确定'); }
++  const info = resolution && batchLogInfo(resolution, 'retention_purge');
++  const item = info && !info.invalid && info.stats.items.find(function (x) {
++    return x.submissionId === id && x.reasonCode === 'REQUEUED_CURRENT_REV'; });
++  const stats = attempt && attempt.result && attempt.result.stats;
++  if (!item || !stats || !await resolutionAttemptsValid(info.stats) || !row ||
++      row.rev !== stats.observedRev || row.status !== stats.status ||
++      purgeEvidence([row])[0].payloadProof !== stats.payloadProof) {
++    return fail('BLOCKED_UNCERTAIN', '重试当前版本与凭证不一致');
++  }
++  try {
++    const existing = (await db.collection(COL.LOGS).doc(purgeBatchLogId(stats.batchId, 'prepare')).get()).data;
++    if (existing) return fail('ATTEMPT_ALREADY_STARTED', '该重试已开始，须核对原尝试');
++  } catch (err) { if (!exactDocumentAbsent(err)) return fail('BLOCKED_UNCERTAIN', '重试状态读取不确定'); }
++  return purgePayload({ now: options.now, requestId: stats.batchId, retrySubmissionId: id, retryEvidence: stats }, hooks);
++}
++
++async function disposeDeferredBatch(options) {
++  const result = await resolveDeferredBatch(Object.assign({}, options, { disposition: true }));
++  return result.ok ? result : Object.assign({}, result, { reasonCode: result.code,
++    code: 'BLOCKED_UNCERTAIN', resolutionState: 'BLOCKED_UNCERTAIN' });
++}
++
+ async function resolveDeferredBatch(options) {
+   const config = readPolicy();
+   if (config.error) return config.error;
+@@ -748,7 +849,12 @@ async function resolveDeferredBatch(options) {
+     complete = (await db.collection(COL.LOGS).doc(completeId).get()).data; }
+   catch (err) { return fail('DEFERRED_MANIFEST_MISSING', '原批次日志或清单不存在'); }
+   try { existing = (await db.collection(COL.LOGS).doc(resolutionId).get()).data; }
+-  catch (err) { existing = null; }
++  catch (err) {
++    if (options && options.disposition && !exactDocumentAbsent(err)) {
++      return fail('DEFERRED_LOG_UNCONFIRMED', '恢复凭证读取结果不确定');
++    }
++    existing = null;
++  }
+   const pre = batchLogInfo(prepare, 'retention_purge');
+   const end = batchLogInfo(complete, 'retention_purge');
+   const manifest = pre && pre.stats && pre.stats.selectedEvidence;
+@@ -776,6 +882,7 @@ async function resolveDeferredBatch(options) {
+         info.stats.deferredDigest !== end.stats.deferredDigest) {
+       return fail('DEFERRED_RESOLUTION_CONFLICT', '原恢复凭证不匹配');
+     }
++    if (!await resolutionAttemptsValid(info.stats)) return fail('DEFERRED_LOG_UNCONFIRMED', '重试凭证未验证');
+     const checked = await reconcileAfterRepair();
+     return checked && checked.ok && checked.completeScan ?
+       { ok: true, code: 'ALREADY_RESOLVED', eventId: resolutionId } :
+@@ -784,13 +891,62 @@ async function resolveDeferredBatch(options) {
+   const items = [];
+   for (const item of manifest) {
+     if (!item || typeof item.id !== 'string' || !item.id ||
+-        !Number.isSafeInteger(item.rev) || item.rev < 1 ||
++        !Number.isSafeInteger(item.rev) || item.rev < 0 ||
+         !/^[0-9a-f]{64}$/.test(item.payloadProof)) {
+       return fail('DEFERRED_EVIDENCE_INVALID', '选中记录证据无效');
+     }
++    const deferredReason = reasons.find(function (x) { return x.id === item.id; });
+     let row;
+     try { row = (await db.collection(COL.SUBMISSIONS).doc(item.id).get()).data; }
+-    catch (err) { return fail('DEFERRED_RECORD_MISSING', '无法重新读取选中记录'); }
++    catch (err) {
++      if (deferredReason && options && options.disposition && exactDocumentAbsent(err)) {
++        items.push({ submissionId: item.id, originalRev: item.rev, observedRev: null, observedStatus: null,
++          confirmedAbsent: true, reasonCode: 'RECORD_ABSENT', recoveryAction: 'confirmedExactDocumentNotFound',
++          evidenceRef: completeId });
++        continue;
++      }
++      return fail('DEFERRED_RECORD_MISSING', '无法重新读取选中记录');
++    }
++    if (options && options.disposition && deferredReason && row && row._id === item.id) {
++      if (deferredReason.reasonCode === 'AUDIT_PENDING') {
++        const audit = row.retention && row.retention.audit;
++        let record;
++        try { record = (await db.collection(COL.LOGS).doc(deferredReason.auditEventId).get()).data; }
++        catch (err) { return fail('DEFERRED_AUDIT_MISSING', '待补审计缺少逐条日志'); }
++        if (!audit || audit.state !== 'complete' || audit.eventId !== deferredReason.auditEventId ||
++            !Number.isSafeInteger(audit.markedRev) || audit.eventId !== recordEventId(item.id, audit.markedRev) ||
++            !record || record._id !== audit.eventId || record.submissionId !== item.id ||
++            record.event !== 'retention_mark' || record.action !== 'retention_mark' ||
++            record.day !== audit.day || record.rev !== 1 || !record.actor ||
++            record.actor.role !== 'system' || record.actor.openidHash !== null ||
++            !record.result || record.result.code !== 'OK') return fail('DEFERRED_AUDIT_MISSING', '逐条审计证据不匹配');
++      }
++      if (!Number.isSafeInteger(row.rev) || row.rev < 0) return fail('DEFERRED_REV_CONFLICT', '当前版本无效');
++      const pending = row.retention && row.retention.audit && row.retention.audit.state === 'pending';
++      const purge = row.retention && row.retention.purge;
++      if (pending || purge && (purge.state === 'pending' || purge.lock && purge.lock.state === 'held')) {
++        return fail('DEFERRED_RECORD_CHANGED', '待补审计或行锁尚未解决');
++      }
++      let disposition;
++      let attempt;
++      if (row.payload === null) disposition = 'ALREADY_CLEARED';
++      else if (row.status === STATUS.PENDING) disposition = 'NO_LONGER_ELIGIBLE';
++      else if (row.rev >= 1 && row.rev < Number.MAX_SAFE_INTEGER &&
++          PURGE_STATES.includes(row.status) && row.payload !== undefined &&
++          Number.isFinite(new Date(row.createdAt).getTime()) &&
++          new Date(row.createdAt).getTime() < makeCutoff(now, PURGE_AFTER_DAYS).getTime()) {
++        disposition = 'REQUEUED_CURRENT_REV';
++        attempt = await ensureDeferredAttempt(batchId, item, row, now);
++        if (!attempt) return fail('DEFERRED_LOG_UNCONFIRMED', '重试凭证未确认');
++      }
++      if (!disposition) return fail('DEFERRED_RECORD_CHANGED', '无法确认当前记录处置');
++      items.push(Object.assign({ submissionId: item.id, originalRev: item.rev,
++        observedRev: row.rev, observedStatus: row.status, reasonCode: disposition,
++        recoveryAction: disposition === 'REQUEUED_CURRENT_REV' ? 'guardedPurgeNewBatch' : 'terminalDisposition',
++        evidenceRef: attempt ? attempt.eventId : completeId },
++        attempt ? { nextBatchId: attempt.batchId } : {}));
++      continue;
++    }
+     if (!row || row._id !== item.id || row.status !== item.status) {
+       return fail('DEFERRED_RECORD_CHANGED', '记录状态变化无法解释');
+     }
+@@ -1049,12 +1205,22 @@ async function purgePayload(options, testHooks) {
+     const pending = await db.collection(COL.SUBMISSIONS)
+       .where({ status: STATUS.PENDING, createdAt: _.lt(cutoff) }).count();
+     needsMark = pending.total;
++    const candidateFilter = { status: _.in(PURGE_STATES), createdAt: _.lt(cutoff), payload: _.neq(null) };
++    if (options && options.retrySubmissionId) candidateFilter._id = options.retrySubmissionId;
+     const response = await db.collection(COL.SUBMISSIONS)
+-      .where({ status: _.in(PURGE_STATES), createdAt: _.lt(cutoff), payload: _.neq(null) })
++      .where(candidateFilter)
+       .orderBy('retention.purge.retryAfter', 'asc').orderBy('createdAt', 'asc')
+       .orderBy('_id', 'asc').limit(config.policy.batchLimit).get();
+     rows = response && Array.isArray(response.data) ? response.data : [];
+   } catch (err) { return fail('DATABASE_ERROR', '读取到期正文候选失败'); }
++  if (options && options.retryEvidence) {
++    const expected = options.retryEvidence;
++    if (rows.length !== 1 || rows[0]._id !== expected.submissionId ||
++        rows[0].rev !== expected.observedRev || rows[0].status !== expected.status ||
++        purgeEvidence(rows)[0].payloadProof !== expected.payloadProof) {
++      return fail('BLOCKED_UNCERTAIN', '重试扫描版本与凭证不一致');
++    }
++  }
+   const result = { now: now, batchId: options && options.requestId || crypto.randomBytes(16).toString('hex'),
+     selected: rows.length, needsMark: needsMark, purged: 0, purgedAudited: 0,
+     auditFailedCount: 0, deferredAudit: 0, deferredRetry: 0,
+@@ -1089,6 +1255,7 @@ async function purgePayload(options, testHooks) {
+       if (!await deferPurge(row, now)) result.retrySchedulingFailed = true;
+       else result.blockedDeferred.push({ id: row._id, reasonCode: 'SKIPPED_RECHECK',
+         originalRev: row.rev, observedRev: row.rev + 1,
++        revBefore: row.rev, revAfter: row.rev + 1,
+         recoveryAction: 'recheckSubmission' });
+       continue;
+     }
+@@ -1417,7 +1584,10 @@ function batchLogInfo(log, eventType) {
+         !Array.isArray(stats.items) || stats.items.length !== stats.selected ||
+         !stats.items.every(function (item) { return item &&
+           typeof item.submissionId === 'string' && item.submissionId &&
+-          Number.isSafeInteger(item.originalRev) && Number.isSafeInteger(item.observedRev) &&
++          Number.isSafeInteger(item.originalRev) && item.originalRev >= 0 &&
++          (Number.isSafeInteger(item.observedRev) && item.observedRev >= 0 ||
++            item.reasonCode === 'RECORD_ABSENT' && item.observedRev === null &&
++            item.confirmedAbsent === true && item.recoveryAction === 'confirmedExactDocumentNotFound') &&
+           typeof item.reasonCode === 'string' && typeof item.recoveryAction === 'string' &&
+           typeof item.evidenceRef === 'string'; }) ||
+         !validUtcDay(String(stats.createdAt).slice(0, 10)) ||
+@@ -1581,7 +1751,8 @@ async function reconcileBatches(options) {
+   for (const log of logs) {
+     const info = batchLogInfo(log, eventType);
+     if (!info) continue;
+-    if (info.invalid || info.at.getTime() > now.getTime()) { invalidLogs++; continue; }
++    if (info.invalid || info.at.getTime() > now.getTime() ||
++        info.phase === 'resolution' && !await resolutionAttemptsValid(info.stats)) { invalidLogs++; continue; }
+     if (resumable) {
+       const digest = crypto.createHash('sha256').update(eventType + '\0' + info.operation +
+         '\0' + info.batchId).digest('hex');
+@@ -1760,7 +1931,7 @@ async function reconcileBatches(options) {
+ 
+ exports.main = async function (event, context) {
+   if (!event || ['mark', 'recover', 'recoverPending', 'purge', 'reconcile',
+-    'repairPurgeBatch', 'resolveDeferredBatch', 'discoverPurgeBatches'].indexOf(event.action) === -1) {
++    'repairPurgeBatch', 'resolveDeferredBatch', 'disposeDeferredBatch', 'retryDeferredAttempt', 'discoverPurgeBatches'].indexOf(event.action) === -1) {
+     return fail('INVALID_ACTION', '仅支持维护令牌保护的保留期动作');
+   }
+   if (!hasValidMaintenanceToken(event.maintenanceToken)) {
+@@ -1772,6 +1943,8 @@ exports.main = async function (event, context) {
+   if (event.action === 'recover') return recoverAudit(event.submissionId);
+   if (event.action === 'recoverPending') return recoverPending();
+   if (event.action === 'repairPurgeBatch') return repairPurgeBatch({ batchId: event.batchId });
++  if (event.action === 'retryDeferredAttempt') return retryDeferredAttempt({ batchId: event.batchId, submissionId: event.submissionId });
++  if (event.action === 'disposeDeferredBatch') return disposeDeferredBatch({ batchId: event.batchId });
+   if (event.action === 'resolveDeferredBatch') return resolveDeferredBatch({ batchId: event.batchId });
+   if (event.action === 'discoverPurgeBatches') return discoverPurgeBatches({
+     batchRef: event.batchRef, cursor: event.cursor, limit: event.limit });
+@@ -1803,5 +1976,8 @@ exports.__test__ = {
+   recoverExpiredPurgeLease: recoverExpiredPurgeLease,
+   repairPurgeBatch: repairPurgeBatch,
+   resolveDeferredBatch: resolveDeferredBatch,
++  disposeDeferredBatch: disposeDeferredBatch,
++  retryDeferredAttempt: function (options, hooks) { return retryDeferredAttempt(options,
++    Object.assign({}, hooks, { [OFFLINE_PURGE_SIMULATION]: true })); },
+   discoverPurgeBatches: discoverPurgeBatches
+ };
+diff --git "a/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\345\244\207\344\273\275\\T365_impl_20261031_144505_614\\config\\cloud\\schema.upload_logs.json" "b/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\351\241\271\347\233\256\\config\\cloud\\schema.upload_logs.json"
+index 65c0496..ba6b79c 100644
+--- "a/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\345\244\207\344\273\275\\T365_impl_20261031_144505_614\\config\\cloud\\schema.upload_logs.json"
++++ "b/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\351\241\271\347\233\256\\config\\cloud\\schema.upload_logs.json"
+@@ -10,7 +10,7 @@
+   "fields": {
+     "_id": { "type": "string", "note": "系统生成" },
+     "schemaVersion": { "type": "integer", "value": 1 },
+-    "event": { "type": "string", "enum": ["submit", "denied", "throttle", "security_call", "review_approve", "review_reject", "alarm", "delete_request", "retention_mark", "retention_purge"] },
++    "event": { "type": "string", "enum": ["submit", "denied", "throttle", "security_call", "review_approve", "review_reject", "alarm", "delete_request", "retention_mark", "retention_purge", "retention_deferred_attempt"] },
+     "action": { "type": "string", "note": "云函数实际动作；系统标记／清理使用 retention_mark／retention_purge，人工审核使用各自已定义动作" },
+     "submissionId": { "type": "string|null", "note": "逐条事件关联投稿 ID；批次 prepare/complete 为 null" },
+     "actor": {
+@@ -30,8 +30,8 @@
+     "result": {
+       "type": "object",
+       "properties": {
+-        "code": { "type": "string", "note": "逐条日志为 OK/错误码；Retention 批次 prepare 为 PREPARE，complete 为 COMPLETE/PARTIAL/FAILED/DEFERRED/DEFERRED_NOT_STARTED/DEFERRED_RETRYABLE；追加修复为 REPAIR_CONFIRMED，证据型延期恢复为 DEFERRED_RESOLUTION。原始结果永不改写" },
+-        "stats": { "type": "object|null", "note": "Retention 批次含 phase/operation/batchId/selected 与互斥结果计数；purge prepare 记录选中投稿 ID、读取时版本/状态和正文 HMAC；DEFERRED complete 记录逐项原因与摘要；resolution 关联原 batchId/batchRef、prepare/complete、manifestHash、每条投稿的原始及观测 rev、恢复动作及证据引用、unresolvedCount 和 HMAC seal。不含正文，只追加" },
++        "code": { "type": "string", "note": "逐条日志为 OK/错误码；Retention 批次 prepare 为 PREPARE，complete 为 COMPLETE/PARTIAL/FAILED/DEFERRED/DEFERRED_NOT_STARTED/DEFERRED_RETRYABLE；追加修复为 REPAIR_CONFIRMED，证据型延期恢复为 DEFERRED_RESOLUTION。T365 增加独立 retention_deferred_attempt/REQUEUED_CURRENT_REV 签名事件；原始结果永不改写" },
++        "stats": { "type": "object|null", "note": "Retention 批次含 phase/operation/batchId/selected 与互斥结果计数；purge prepare 记录选中投稿 ID、读取时版本/状态和正文 HMAC；DEFERRED complete 记录逐项原因与摘要；resolution 关联原 batchId/batchRef、prepare/complete、manifestHash、每条投稿的原始及观测 rev、恢复动作及证据引用、unresolvedCount 和 HMAC seal。revBefore/revAfter 明确记录合法历史 rev=0 到1；显式 disposeDeferredBatch 处置含 RECORD_ABSENT（observedRev=null 且确认精确不存在）、ALREADY_CLEARED、NO_LONGER_ELIGIBLE、REQUEUED_CURRENT_REV；不确定性 BLOCKED_UNCERTAIN 不落成功凭证。重试引用绑定独立稳定 batchId，retryDeferredAttempt 重跑完整守卫。 不含正文，只追加" },
+         "attempts": { "type": "integer", "note": "内容安全尝试次数" }
+       }
+     },
+diff --git "a/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\345\244\207\344\273\275\\T365_impl_20261031_144505_614\\config\\cloud\\schema.submissions.json" "b/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\351\241\271\347\233\256\\config\\cloud\\schema.submissions.json"
+index 39ed578..3561d37 100644
+--- "a/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\345\244\207\344\273\275\\T365_impl_20261031_144505_614\\config\\cloud\\schema.submissions.json"
++++ "b/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\351\241\271\347\233\256\\config\\cloud\\schema.submissions.json"
+@@ -119,7 +119,7 @@
+     "updatedBy": { "type": "string|null" },
+     "createdAt": { "type": "date" },
+     "updatedAt": { "type": "date" },
+-    "rev": { "type": "integer", "value": 1, "note": "投稿创建为 1；每次实际业务文档变更（含 Retention 审计状态、退避和行锁）均以旧 rev 条件更新并递增 1；真实云端条件更新语义待验收" }
++    "rev": { "type": "integer", "minimum": 0, "value": 1, "note": "投稿创建仍为 1；兼容明确存储的历史或初始 0，缺失/null 不回填为 0；每次实际业务文档变更（含 Retention 审计状态、退避和行锁）均以旧 rev 条件更新并递增 1；真实云端条件更新语义待验收" }
+   },
+   "indexes": [
+     {
+diff --git "a/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\346\212\245\345\221\212\\T365_evidence_20261031\\empty" "b/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\351\241\271\347\233\256\\tools\\test_retention_t365_skipped_recovery.js"
+index e69de29..d285791 100644
+--- "a/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\346\212\245\345\221\212\\T365_evidence_20261031\\empty"
++++ "b/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\351\241\271\347\233\256\\tools\\test_retention_t365_skipped_recovery.js"
+@@ -0,0 +1,27 @@
++const assert = require('assert');
++const { fixture } = require('./retention_t363_fixture');
++async function run() {
++  const f = fixture(); f.seed('real-zero', false); f.h.state.docs.submissions[0].rev = 0;
++  const first = await f.T.purgePayload({ now: f.now, requestId: 't365-zero' });
++  assert.equal(first.skipped, 1); assert.equal(first.code, 'PURGE_DEFERRED');
++  assert.equal(f.row('real-zero').rev, 1); assert(f.row('real-zero').payload);
++  const logs = f.batch('t365-zero'); const original = JSON.stringify(logs);
++  const prepare = logs.find(x => x.result.stats.phase === 'prepare');
++  const reason = logs.find(x => x.result.stats.phase === 'complete').result.stats.deferredReasons[0];
++  assert.strictEqual(prepare.result.stats.selectedEvidence[0].rev, 0);
++  assert.strictEqual(reason.revBefore, 0); assert.strictEqual(reason.revAfter, 1);
++  const resolved = await f.T.resolveDeferredBatch({ batchId: 't365-zero' }); assert(resolved.ok);
++  const scan = await f.T.reconcileBatches({ eventType: 'retention_purge', resumable: true });
++  assert(scan.ok); assert.equal(scan.counts.resolvedDeferred, 1); assert.equal(scan.counts.outcomes.DEFERRED, 1);
++  assert.equal(JSON.stringify(f.batch('t365-zero').filter(x => x.result.stats.phase !== 'resolution')), original);
++  const next = await f.T.purgePayload({ now: new Date(f.now.getTime() + 61000), requestId: 't365-zero-new' });
++  assert(next.ok); assert.equal(next.purged, 1); assert.strictEqual(f.row('real-zero').payload, null);
++  assert.equal((await f.T.resolveDeferredBatch({ batchId: 't365-zero' })).code, 'ALREADY_RESOLVED');
++  for (const rev of [undefined, null, -1, 0.5]) {
++    const g = fixture(); g.seed('invalid', false); g.h.state.docs.submissions[0].rev = rev;
++    await g.T.purgePayload({ now: g.now, requestId: 'invalid' });
++    assert(!(await g.T.resolveDeferredBatch({ batchId: 'invalid' })).ok); assert(g.row('invalid').payload);
++  }
++  console.log('PASS T365 real skipped 0→1, strict resolve, immutable outcome, retry and invalid versions');
++}
++run().catch(e => { console.error(e); process.exitCode = 1; });
+diff --git "a/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\346\212\245\345\221\212\\T365_evidence_20261031\\empty" "b/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\351\241\271\347\233\256\\tools\\test_retention_t365_unrecoverable.js"
+index e69de29..c774581 100644
+--- "a/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\346\212\245\345\221\212\\T365_evidence_20261031\\empty"
++++ "b/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\351\241\271\347\233\256\\tools\\test_retention_t365_unrecoverable.js"
+@@ -0,0 +1,59 @@
++const assert = require('assert');
++const { fixture } = require('./retention_t363_fixture');
++async function setup(id) { const f = fixture(); f.seed(id, false); f.h.state.docs.submissions[0].rev = 0;
++  await f.T.purgePayload({ now: f.now, requestId: id }); return f; }
++async function run() {
++  for (const disposition of ['RECORD_ABSENT', 'ALREADY_CLEARED', 'NO_LONGER_ELIGIBLE', 'REQUEUED_CURRENT_REV']) {
++    const f = await setup(disposition); const original = JSON.stringify(f.batch(disposition));
++    const row = f.h.state.docs.submissions[0];
++    if (disposition === 'RECORD_ABSENT') f.h.state.docs.submissions.splice(0, 1);
++    if (disposition === 'ALREADY_CLEARED') { row.payload = null; row.rev++; }
++    if (disposition === 'NO_LONGER_ELIGIBLE') { row.status = 'pending'; row.rev++; }
++    if (disposition === 'REQUEUED_CURRENT_REV') row.rev += 3;
++    const observedBefore = JSON.stringify(f.h.docs('submissions'));
++    const result = await f.fn.main({ action: 'disposeDeferredBatch', batchId: disposition,
++      maintenanceToken: 'offline-t363-secret' }); assert(result.ok, JSON.stringify(result));
++    const resolution = f.batch(disposition).find(x => x.result.stats.phase === 'resolution');
++    const item = resolution.result.stats.items[0]; assert.equal(item.reasonCode, disposition);
++    assert.equal(JSON.stringify(f.batch(disposition).filter(x => x.result.stats.phase !== 'resolution')), original);
++    assert((await f.T.disposeDeferredBatch({ batchId: disposition })).ok);
++    assert((await f.T.reconcileBatches({ eventType: 'retention_purge' })).ok);
++    assert.equal(JSON.stringify(f.h.docs('submissions')), observedBefore);
++    if (disposition === 'RECORD_ABSENT') assert.strictEqual(item.observedRev, null);
++    if (disposition === 'REQUEUED_CURRENT_REV') {
++      assert(item.nextBatchId && item.nextBatchId !== disposition);
++      const publicRetry = await f.fn.main({ action: 'retryDeferredAttempt', batchId: disposition,
++        submissionId: disposition, maintenanceToken: 'offline-t363-secret' });
++      assert.equal(publicRetry.code, 'PURGE_GLOBAL_FENCE_UNVERIFIED');
++      const retry = await f.T.retryDeferredAttempt({ batchId: disposition, submissionId: disposition,
++        now: new Date(f.now.getTime() + 61000) }); assert(retry.ok, JSON.stringify(retry));
++      assert.equal(retry.purged, 1); assert.strictEqual(f.row(disposition).payload, null);
++      assert.equal(f.batch(item.nextBatchId).filter(x => x.event === 'retention_purge').length, 2);
++    }
++    if (disposition === 'NO_LONGER_ELIGIBLE') {
++      assert.equal((await f.T.purgePayload({ now: new Date(f.now.getTime()+61000), requestId: 'pending-scan' })).purged, 0);
++      assert.equal(JSON.stringify(f.h.docs('submissions')), observedBefore);
++      row.status = 'expired'; row.rev++;
++      const retry = await f.T.purgePayload({ now: new Date(f.now.getTime()+62000), requestId: 'reentered' });
++      assert.equal(retry.purged, 1); assert.strictEqual(f.row(disposition).payload, null);
++    }
++  }
++  const uncertain = await setup('read-error'); const readBefore = JSON.stringify(uncertain.h.docs('submissions')); uncertain.h.setFail({ collection: 'submissions', op: 'get' });
++  assert.equal((await uncertain.T.disposeDeferredBatch({ batchId: 'read-error' })).code, 'BLOCKED_UNCERTAIN');
++  assert.equal(JSON.stringify(uncertain.h.docs('submissions')), readBefore);
++  assert(!uncertain.batch('read-error').some(x => x.result.stats.phase === 'resolution'));
++  const missing = fixture(); assert.equal((await missing.T.disposeDeferredBatch({ batchId: 'missing' })).code, 'BLOCKED_UNCERTAIN');
++  const forged = await setup('forged'); forged.h.state.docs.submissions[0].rev++;
++  assert((await forged.T.disposeDeferredBatch({ batchId: 'forged' })).ok);
++  const event = forged.h.state.docs.upload_logs.find(x => x.event === 'retention_deferred_attempt');
++  event.result.stats.observedRev++;
++  assert(!(await forged.T.reconcileBatches({ eventType: 'retention_purge' })).ok);
++  assert(!(await forged.T.retryDeferredAttempt({ batchId: 'forged', submissionId: 'forged' })).ok);
++  const drift = await setup('drift'); assert((await drift.T.disposeDeferredBatch({ batchId: 'drift' })).ok);
++  drift.h.state.docs.submissions[0].rev++;
++  assert.equal((await drift.T.retryDeferredAttempt({ batchId: 'drift', submissionId: 'drift' })).code, 'BLOCKED_UNCERTAIN');
++  assert(drift.row('drift').payload);
++  const auth = fixture(); assert.equal((await auth.fn.main({ action: 'disposeDeferredBatch', batchId: 'x' })).code, 'FORBIDDEN');
++  console.log('PASS T365 terminal dispositions, authenticated retry, pending reentry, uncertainty, forged attempt and drift');
++}
++run().catch(e => { console.error(e); process.exitCode = 1; });
+diff --git "a/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\346\212\245\345\221\212\\T365_evidence_20261031\\empty" "b/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\351\241\271\347\233\256\\tools\\test_retention_t365_repair_regression.js"
+index e69de29..f3c4b22 100644
+--- "a/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\346\212\245\345\221\212\\T365_evidence_20261031\\empty"
++++ "b/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\351\241\271\347\233\256\\tools\\test_retention_t365_repair_regression.js"
+@@ -0,0 +1,41 @@
++const assert = require('assert');
++const { fixture } = require('./retention_t363_fixture');
++async function zero(id) { const f = fixture(); f.seed(id, false); f.h.state.docs.submissions[0].rev = 0;
++  await f.T.purgePayload({ now: f.now, requestId: id }); return f; }
++async function run() {
++  const audit = fixture(); audit.seed('audit', true);
++  await audit.T.purgePayload({ now: audit.now, requestId: 'audit' });
++  audit.h.state.docs.submissions[0].retention.audit.state = 'complete';
++  assert.equal((await audit.T.disposeDeferredBatch({ batchId: 'audit' })).code, 'BLOCKED_UNCERTAIN');
++  assert(audit.row('audit').payload);
++  const missing = await zero('missing-attempt');
++  assert((await missing.T.disposeDeferredBatch({ batchId: 'missing-attempt' })).ok);
++  missing.h.state.docs.upload_logs = missing.h.state.docs.upload_logs.filter(x => x.event !== 'retention_deferred_attempt');
++  assert(!(await missing.T.reconcileBatches({ eventType: 'retention_purge', resumable: true })).ok);
++  for (const field of ['actor', 'action']) {
++    const metadata = await zero('tampered-' + field);
++    assert((await metadata.T.disposeDeferredBatch({ batchId: 'tampered-' + field })).ok);
++    const attempt = metadata.h.state.docs.upload_logs.find(x => x.event === 'retention_deferred_attempt');
++    if (field === 'actor') attempt.actor.role = 'admin';
++    else attempt.action = 'forged_action';
++    assert(!(await metadata.T.reconcileBatches({ eventType: 'retention_purge' })).ok);
++    assert(!(await metadata.T.retryDeferredAttempt({ batchId: 'tampered-' + field,
++      submissionId: 'tampered-' + field })).ok);
++  }
++  const sealed = await zero('forged-resolution');
++  assert((await sealed.T.disposeDeferredBatch({ batchId: 'forged-resolution' })).ok);
++  sealed.h.state.docs.upload_logs.find(x => x.result.code === 'DEFERRED_RESOLUTION').result.stats.items[0].reasonCode = 'RECORD_ABSENT';
++  assert(!(await sealed.T.reconcileBatches({ eventType: 'retention_purge' })).ok);
++  const uncertain = await zero('uncertain-write'); uncertain.h.setFail({ collection: 'upload_logs', op: 'add' });
++  assert.equal((await uncertain.T.disposeDeferredBatch({ batchId: 'uncertain-write' })).code, 'BLOCKED_UNCERTAIN');
++  assert(uncertain.row('uncertain-write').payload);
++  const missingManifest = await zero('missing-manifest');
++  delete missingManifest.h.state.docs.upload_logs.find(x => x.result.stats.phase === 'prepare').result.stats.selectedEvidence;
++  assert.equal((await missingManifest.T.disposeDeferredBatch({ batchId: 'missing-manifest' })).code, 'BLOCKED_UNCERTAIN');
++  const noGate = await zero('gate'); assert((await noGate.T.disposeDeferredBatch({ batchId: 'gate' })).ok);
++  noGate.seed('unresolved-audit', true);
++  const guarded = await noGate.T.retryDeferredAttempt({ batchId: 'gate', submissionId: 'gate', now: new Date(noGate.now.getTime()+61000) }, { reconcile: async () => ({ok:false, completeScan:false}) });
++  assert(!guarded.ok); assert(noGate.row('gate').payload);
++  console.log('PASS T365 audit proof, absent attempt, forged resolution, uncertain writes, missing manifest, guarded retry');
++}
++run().catch(e => { console.error(e.stdout ? e.stdout.toString() : e); process.exitCode = 1; });
+diff --git "a/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\346\212\245\345\221\212\\T365_evidence_20261031\\empty" "b/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\351\241\271\347\233\256\\docs\\RETENTION_T365_DESIGN_20261031.md"
+index e69de29..6f7d4fc 100644
+--- "a/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\346\212\245\345\221\212\\T365_evidence_20261031\\empty"
++++ "b/C:\\Users\\25975\\Desktop\\\351\243\237\347\245\236\345\257\273\345\221\263\345\260\217\347\250\213\345\272\217\345\274\200\345\217\221\\\351\241\271\347\233\256\\docs\\RETENTION_T365_DESIGN_20261031.md"
+@@ -0,0 +1,33 @@
++# Retention T3.6.5 本地设计与证据
++
++日期：2026-10-31。仅本地模拟；不涉及云部署、云数据、索引写入或 Git 写操作。生产 purge 和 retryDeferredAttempt 都保留 PURGE_GLOBAL_FENCE_UNVERIFIED，跨文档全局屏障未验证。
++
++## 真实 skipped 恢复
++
++新测试从真实 expired、31 天、payload 存在、明确 rev=0 的候选调用实际 purgePayload。原逻辑仍将其归 skipped，并由 deferPurge 条件写入 rev=1；complete 明确追加 revBefore=0 / revAfter=1，不改 skipped 分类。prepare 的选中清单允许明确整数 0；缺失、null、负数、非整数均不是 0。resolveDeferredBatch 接受此清单并按原严格版本规则复核；新增批次随后清理正文。既有严格 drift 测试保持通过。
++
++## 显式处置与可验证重试
++
++维护令牌保护的新 disposeDeferredBatch 与旧严格 resolver 分开。原 prepare/complete 永不修改，原 outcome 始终为 DEFERRED。处置是签名 resolution 项的 reasonCode：
++
++| 处置 | 必要证据 | 后续 |
++| --- | --- | --- |
++| RECORD_ABSENT | 指定文档 get 抛 SDK errCode=-1 且消息精确匹配 document does not exist / document not found；其他读取异常拒绝 | observedRev=null，记录确认不存在；不声称谁删除了记录 |
++| ALREADY_CLEARED | 精确文档当前 payload=null，并记录 rev/status；待补清理审计与 held 锁先阻断 | 不再清理 |
++| NO_LONGER_ELIGIBLE | 当前 status=pending、明确合法 rev | 仅解除原延期；后续回到终态仍可被普通候选查询选中 |
++| REQUEUED_CURRENT_REV | 当前终态、超过 30 天、非空且存在 payload、合法最新 rev、无未补审计或 held 锁 | 追加稳定独立 retention_deferred_attempt 事件；resolution 引用其独立 batchId |
++| BLOCKED_UNCERTAIN | 读错/缺清单/未知状态/写入无法核验等 | 不追加成功 resolution，不触碰正文 |
++
++AUDIT_PENDING 必须验证原 retention_mark 逐条日志的稳定 ID、动作、日期、版本、系统身份和成功码。非延期、原已清的 manifest 项继续走旧严格清理审计校验。
++
++attempt 的稳定 ID 绑定原 batchId 和投稿 ID；HMAC 覆盖原始/当前版本、状态、正文 HMAC 和时间。重复调用复用已核实的同一事件；内容冲突拒绝。reconcile 在确认 resolution 前重新读取并验证所有 attempt，包括续扫投影之前的验证；缺失或伪造凭证不会解除阻断。
++
++retryDeferredAttempt 的生产入口始终关闭。仅 __test__ 可使用私有模拟标志，重新验证 resolution、attempt 和当前版本/状态/正文摘要，再调用实际 purgePayload。候选复读后再次检查 expected rev/status/proof，避免两次读取之间的漂移；后续沿用全量审计门禁、审计恢复、退避、行锁、fencing 与条件更新。重试仅选择指定投稿，并以独立稳定 batchId 写 prepare/complete；已开始的重试不重复执行，须按原批次恢复/修复。
++
++## 备份与验证
++
++外部备份：../备份/T365_impl_20261031_144505_614/SHA256_MANIFEST.json。包含原 index.js、schema.upload_logs.json、schema.submissions.json 的绝对路径、SHA256、字节数和逐字节哈希核验。未修改既有测试。
++
++新增三脚本使用 tools/retention_t363_fixture.js 与真实云函数代码，不手造 rev=2 历史 prepare/complete。覆盖：真实 0→1、旧 resolver 恢复、新批次清理、重复幂等、原日志不变、非法版本、确切不存在、正文已清、pending 退出和重入、最新 rev 重排及实际执行、读取不确定、缺失历史清单、缺失/伪造 attempt、伪造 resolution、未确认写入、审计证据缺失、公开入口围栏、后续版本漂移及审计门禁。另已运行十个未改动的旧回归脚本，包括 PARTIAL/FAILED repair、LOCK_BUSY 恢复、fencing、分页续扫。
++
++本地结论不能证明云 SDK 错误枚举、条件更新或全局一致性；未识别的 notfound 表达保守阻断，待云端验收。

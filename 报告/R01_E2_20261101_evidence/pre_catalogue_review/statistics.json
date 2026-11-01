@@ -1,0 +1,39 @@
+{
+  "scope": {
+    "formalDemo": 45,
+    "generatedCandidates": 490,
+    "sourceItems": 525,
+    "notGenerated": 35
+  },
+  "tastesEmpty": 490,
+  "foodTypeMissing": 368,
+  "intersection": 368,
+  "onlyTastes": 122,
+  "onlyFoodType": 0,
+  "union": 490,
+  "classifications": {
+    "tastes": {
+      "C": 448,
+      "B": 40,
+      "A": 2
+    },
+    "foodType": {
+      "C": 205,
+      "B": 163
+    }
+  },
+  "candidateFields": 2,
+  "candidateDishes": 2,
+  "remainUnknownTastes": 488,
+  "remainUnknownFoodType": 368,
+  "completeTwoFieldCandidates": 0,
+  "needsConfirmationUniqueDishes": 186,
+  "structuredCompoundRows": 73,
+  "sameNameGroups": 38,
+  "crossStallSameNameGroups": 10,
+  "csvFiles": 33,
+  "csvStrictMatches": 12,
+  "csvIdOnlyConflicts": 1348,
+  "photoEntries": 35,
+  "photoUnique": 34
+}

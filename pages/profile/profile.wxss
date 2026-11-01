@@ -1,0 +1,156 @@
+/* ===================================================================
+   我的页样式 —— 灶火纸感
+   颜色写成固定值，不使用 CSS 变量
+   =================================================================== */
+
+.page {
+  padding: 0 32rpx 48rpx;
+}
+
+/* ---------------- 标题 ---------------- */
+.hero {
+  padding: 32rpx 8rpx 24rpx;
+}
+
+.hero-title {
+  font-size: 52rpx;
+  font-weight: 700;
+  color: #241E1A;
+  letter-spacing: 2rpx;
+  line-height: 1.2;
+}
+
+.hero-sub {
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: #9C9289;
+}
+
+/* ---------------- 未登录卡 ---------------- */
+.profile-card {
+  margin-top: 8rpx;
+  padding: 28rpx;
+  background: #FFFFFF;
+  border: 1rpx solid #EDE4D9;
+  border-radius: 28rpx;
+  display: flex;
+  align-items: center;
+}
+
+.avatar-placeholder {
+  width: 104rpx;
+  height: 104rpx;
+  flex: 0 0 104rpx;
+  margin-right: 24rpx;
+  border-radius: 50%;
+  background: #F3EBE1;
+  border: 1rpx dashed #D9CDBF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar-q {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #B3A79B;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-name {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #241E1A;
+}
+
+.profile-desc {
+  margin-top: 8rpx;
+  font-size: 23rpx;
+  line-height: 1.7;
+  color: #9C9289;
+}
+
+/* ---------------- 统计（值为 —） ---------------- */
+.stats {
+  margin-top: 20rpx;
+  padding: 26rpx 0;
+  background: #FFFFFF;
+  border: 1rpx solid #EDE4D9;
+  border-radius: 28rpx;
+  display: flex;
+}
+
+.stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat + .stat {
+  border-left: 1rpx solid #F0E9E0;
+}
+
+.stat-value {
+  font-size: 38rpx;
+  font-weight: 700;
+  color: #C6BAAE;
+  line-height: 1.2;
+}
+
+.stat-label {
+  margin-top: 8rpx;
+  font-size: 23rpx;
+  color: #9C9289;
+}
+
+.stats-note {
+  margin-top: 12rpx;
+  padding: 0 8rpx;
+  font-size: 22rpx;
+  color: #9C9289;
+}
+
+/* ---------------- 功能入口（不可点） ---------------- */
+.menu-card {
+  margin-top: 24rpx;
+  background: #FFFFFF;
+  border: 1rpx solid #EDE4D9;
+  border-radius: 28rpx;
+  overflow: hidden;
+}
+
+.menu-item {
+  height: 104rpx;
+  padding: 0 28rpx;
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #F5EFE7;
+}
+
+.menu-item:last-child {
+  border-bottom: 0;
+}
+
+.menu-label {
+  flex: 1;
+  font-size: 28rpx;
+  color: #6F655D;
+}
+
+.menu-state {
+  font-size: 22rpx;
+  color: #B3A79B;
+}
+
+/* ---------------- 脚注 ---------------- */
+.note {
+  margin-top: 24rpx;
+  padding: 0 8rpx;
+  font-size: 22rpx;
+  line-height: 1.7;
+  color: #9C9289;
+}

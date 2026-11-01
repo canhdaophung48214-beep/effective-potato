@@ -247,45 +247,94 @@ check(sig(q1) === 'd37,d38,d39', '回归题1 校内+米线类+15元 = 3 道', q1
 const q2 = filterDishes(ALL_DISHES, { area: 'campus', foodType: 'rice', taste: 'mild_spicy' });
 check(sig(q2) === 'd03,d07', '回归题2 校内+微辣+饭类 = 2 道', q2.map(function (d) { return d.name; }).join(' / '));
 
+/* A7 决策：'choice'（辣度可自选）是通配——用户选任何一档都算命中。
+   这里用合成数据测语义，不依赖演示数据里有没有 choice 的菜。 */
+(function () {
+  const mk = function (id, tastes) {
+    return { id: id, name: id, price: 10, foodType: 'noodle', shopId: 's01', stallId: 's01_t1', tastes: tastes };
+  };
+  const pool = [mk('x1', ['choice']), mk('x2', ['light']), mk('x3', ['spicy'])];
+  ['light', 'mild_spicy', 'spicy'].forEach(function (t) {
+    const got = filterDishes(pool, { taste: t }).map(function (d) { return d.id; });
+    check(got.indexOf('x1') !== -1, 'choice 菜品在「' + t + '」下命中', got.join(','));
+  });
+  const spicyHit = filterDishes(pool, { taste: 'spicy' }).map(function (d) { return d.id; });
+  check(spicyHit.indexOf('x2') === -1, '清淡菜品不会在「麻辣」下命中', spicyHit.join(','));
+  check(Object.keys(TASTE_LABEL).length === 4 && TASTE_LABEL.choice === '可选辣度',
+    '口味枚举含 choice 且文案为「可选辣度」', Object.keys(TASTE_LABEL).join(','));
+})();
+
 /* ================================================================
    R3 地点级联与下级重置
    ================================================================ */
-group('R3 地点级联与下级重置');
+group('R3 餐厅多选与每店独立条件');
 
+/* 阶段 3 起：单店级联 → 多选 + 每店独立位置条件。
+   旧版的保证「换餐厅会重置下级条件」在新模型里变成两条更强的保证：
+   ① 新选中的餐厅条件槽一开始是空的 ② 取消一家店只删它自己的槽，别家逐字节不变。
+   旧单值口径的等价性另见 R14（独立实现对账）。 */
 let p = makePage();
-check(p.data.area === 'all' && p.data.shopId === 'all', '初始 区域/餐厅 都是不限');
+const viewOf = function (pid) {
+  return p.data.shopViews.filter(function (v) { return v.id === pid; })[0];
+};
+check(p.data.area === 'all' && p.data.selectedShops.length === 0, '初始 区域/餐厅 都是不限');
 
 p.onSelectArea({ currentTarget: { dataset: { value: 'campus' } } });
 check(p.data.restaurantOptions.length === 6, '选校内后餐厅候选 = 6 家', p.data.restaurantOptions.length);
 
-p.onSelectShop({ currentTarget: { dataset: { value: 's01' } } });
-check(p.data.floorOptions.length === 2, 's01 楼层候选 = 2', p.data.floorOptions.length);
-check(p.data.stallOptions.length === 3, 's01 未选楼层时窗口候选 = 3（全部窗口）', p.data.stallOptions.length);
+p.onToggleShop({ currentTarget: { dataset: { shopId: 's01' } } });
+check(p.data.selectedShops.length === 1 && p.data.selectedShops[0] === 's01', '选餐厅 s01');
+check(viewOf('s01').floorChips.length === 3, 's01 楼层候选 = 2 层 +「不限」（3 个 chip）', viewOf('s01').floorChips.length);
+check(viewOf('s01').stallChips.length === 4, 's01 未选楼层时店铺候选 = 全部 3 个 +「不限」', viewOf('s01').stallChips.length);
+check(viewOf('s01').expanded === false, '新选中的餐厅默认折叠（页面不会被撑长）');
+check(viewOf('s01').sideChips.length === 0, '演示数据没有方位 → 方位行整行不渲染');
 
-p.onSelectFloor({ currentTarget: { dataset: { value: 's01_f2' } } });
-check(p.data.stallOptions.length === 2, '选 2 楼后窗口候选收敛为 2', p.data.stallOptions.length);
+p.onToggleFloor({ currentTarget: { dataset: { shopId: 's01', value: 's01_f2' } } });
+check(p.data.shopFilters.s01.floorIds.length === 1 && p.data.shopFilters.s01.floorIds[0] === 's01_f2',
+  '楼层只记进 s01 自己的条件槽', JSON.stringify(p.data.shopFilters.s01));
+check(viewOf('s01').floorChips.filter(function (c) { return c.on; }).length === 1 &&
+  !viewOf('s01').floorChips[0].on, '选 2 楼后「不限楼层」熄灭，只剩 2 楼点亮');
 
-p.onSelectStall({ currentTarget: { dataset: { value: 's01_t2' } } });
-check(p.data.stallId === 's01_t2', '窗口已选中');
+p.onToggleStall({ currentTarget: { dataset: { shopId: 's01', value: 's01_t2' } } });
+check(p.data.shopFilters.s01.stallIds.length === 1 && p.data.shopFilters.s01.stallIds[0] === 's01_t2', '店铺条件已选中');
+check(p.matched.every(function (d) { return d.shopId === 's01' && d.floorId === 's01_f2' && d.stallId === 's01_t2'; }),
+  '楼层 + 店铺在同一家店内是「与」，结果全部命中 s01 2 楼的 t2', p.matched.length + ' 道');
 
-p.onSelectShop({ currentTarget: { dataset: { value: 's03' } } });
-check(p.data.floorId === 'all', '换餐厅后 floorId 自动重置为 all', p.data.floorId);
-check(p.data.stallId === 'all', '换餐厅后 stallId 自动重置为 all', p.data.stallId);
-check(p.data.floorOptions.length === 2, 's03 楼层候选换成自己的 2 层', p.data.floorOptions.length);
-check(p.data.stallOptions.length === 3, 's03 窗口候选换成自己的 3 个', p.data.stallOptions.length);
+/* 再选一家：不能继承上一家店的任何条件 */
+p.onToggleShop({ currentTarget: { dataset: { shopId: 's03' } } });
+check(p.data.selectedShops.length === 2, '可以同时选两家餐厅', p.data.selectedShops.join(','));
+check(p.data.shopFilters.s03.floorIds.length === 0 && p.data.shopFilters.s03.stallIds.length === 0,
+  '新选餐厅的条件槽是空的（不继承 s01）', JSON.stringify(p.data.shopFilters.s03));
+check(JSON.stringify(p.data.shopFilters.s01) === '{"floorIds":["s01_f2"],"stallIds":["s01_t2"],"sides":[]}',
+  's01 的条件原样保留');
+check(viewOf('s03').floorChips.length === 3, 's03 用自己 2 层作为楼层候选', viewOf('s03').floorChips.length);
+check(viewOf('s03').stallChips.length === 4, 's03 用自己 3 个档口作为店铺候选', viewOf('s03').stallChips.length);
+check(viewOf('s03').expanded === false, '第二家店同样默认折叠');
 
-p.onSelectShop({ currentTarget: { dataset: { value: 's05' } } });
-check(p.data.floorOptions.length === 0, 's05 没有楼层划分 → 楼层候选为空', p.data.floorOptions.length);
-check(/没有楼层划分/.test(p.data.floorHint), 's05 给出「没有楼层划分」提示', p.data.floorHint);
-check(p.data.stallOptions.length === 3, 's05 直接可选 3 个档口', p.data.stallOptions.length);
+/* 取消一家，另一家必须逐字节不变 */
+const keep01 = JSON.stringify(p.data.shopFilters.s01);
+p.onToggleShop({ currentTarget: { dataset: { shopId: 's03' } } });
+check(p.data.selectedShops.length === 1 && p.data.selectedShops[0] === 's01', '取消 s03 后只剩 s01');
+check(JSON.stringify(p.data.shopFilters.s01) === keep01, '取消 s03 之后 s01 的条件逐字节不变');
+check(p.data.shopFilters.s03 === undefined, '取消后不留 s03 的孤儿条件');
+
+p.onToggleShop({ currentTarget: { dataset: { shopId: 's05' } } });
+check(viewOf('s05').floorChips.length === 0, 's05 没有楼层划分 → 楼层候选为空（不制造假楼层）', viewOf('s05').floorChips.length);
+check(/没有楼层划分/.test(viewOf('s05').floorHint), 's05 给出「没有楼层划分」提示', viewOf('s05').floorHint);
+check(viewOf('s05').hasFloor === false, 's05 hasFloor = false，界面据此整块隐藏');
+check(viewOf('s05').stallChips.length === 4, 's05 直接可选全部 3 个档口', viewOf('s05').stallChips.length);
 
 p.onSelectArea({ currentTarget: { dataset: { value: 'offsite' } } });
-check(p.data.shopId === 'all' && p.data.floorId === 'all' && p.data.stallId === 'all', '换区域后三级全部重置');
+check(p.data.selectedShops.length === 0 && Object.keys(p.data.shopFilters).length === 0,
+  '换区域后选中餐厅与每店条件全部清空');
+check(Object.keys(p.data.expandedShops).length === 0, '换区域后折叠状态也清空');
 check(p.data.restaurantOptions.length === 6, '校外商家候选 = 6 家', p.data.restaurantOptions.length);
 
-/* 脏组合防护：手动塞一个不属于该店的 floorId，候选不能串店 */
-p.onSelectShop({ currentTarget: { dataset: { value: 's12' } } });
-check(p.data.stallOptions.length === 2, 's12 档口候选 = 2', p.data.stallOptions.length);
+/* 脏组合防护：候选永远只来自这家店自己的数据 */
+p.onToggleShop({ currentTarget: { dataset: { shopId: 's12' } } });
+check(viewOf('s12').stallChips.length === 3, 's12 档口候选 = 自己的 2 个 +「不限」', viewOf('s12').stallChips.length);
+check(viewOf('s12').stallChips.every(function (c) { return c.id === 'all' || c.id.indexOf('s12_') === 0; }),
+  's12 的店铺候选里没有别的店的档口（不串店）');
 
 /* ================================================================
    R4 随机选店
@@ -293,7 +342,7 @@ check(p.data.stallOptions.length === 2, 's12 档口候选 = 2', p.data.stallOpti
 group('R4 随机选店只从符合条件的店铺里抽');
 
 p = makePage();
-p.onSelectFoodType({ currentTarget: { dataset: { value: 'rice_noodle' } } });
+p.onToggleFoodType({ currentTarget: { dataset: { value: 'rice_noodle' } } });
 const pool4 = p.matched;
 const legal4 = collectShopIds(pool4);
 let bad4 = 0;
@@ -380,7 +429,7 @@ check(bad7 === 0, '300 次「换一家」都没有返回当前店铺', bad7 ? ba
 
 /* 只剩一家：必须提示且状态不变 */
 p = makePage();
-p.onSelectShop({ currentTarget: { dataset: { value: 's05' } } });
+p.onToggleShop({ currentTarget: { dataset: { shopId: 's05' } } });
 p.onRandomShop();
 const onlyShop = p.data.pickedShop.id;
 const toastBefore = p.__toastCount();
@@ -445,9 +494,9 @@ p = makePage();
 eq(p.data.conditionText, '不限区域 · 不限预算 · 不限类型 · 不限口味', '默认条件文案');
 
 p.onSelectArea({ currentTarget: { dataset: { value: 'campus' } } });
-p.onSelectShop({ currentTarget: { dataset: { value: 's01' } } });
-p.onSelectFloor({ currentTarget: { dataset: { value: 's01_f2' } } });
-p.onSelectTaste({ currentTarget: { dataset: { value: 'mild_spicy' } } });
+p.onToggleShop({ currentTarget: { dataset: { shopId: 's01' } } });
+p.onToggleFloor({ currentTarget: { dataset: { shopId: 's01', value: 's01_f2' } } });
+p.onToggleTaste({ currentTarget: { dataset: { value: 'mild_spicy' } } });
 p.onSelectBudget({ currentTarget: { dataset: { value: 15 } } });
 const cond9 = p.data.conditionText;
 check(cond9.indexOf('校内食堂') > -1, '摘要含区域');
@@ -457,7 +506,7 @@ check(cond9.indexOf('15 元以内') > -1, '摘要含预算');
 check(cond9.indexOf('微辣') > -1, '摘要含口味');
 check(cond9.indexOf('不限类型') > -1, '摘要含「不限类型」占位');
 
-p.onSelectFoodType({ currentTarget: { dataset: { value: 'noodle' } } });
+p.onToggleFoodType({ currentTarget: { dataset: { value: 'noodle' } } });
 check(p.data.conditionText.indexOf('面类') > -1, '摘要随主食类型变化');
 check(p.data.conditionText.indexOf('不限类型') === -1, '选了类型后不再显示「不限类型」');
 
@@ -468,12 +517,12 @@ group('R10 重置恢复默认');
 
 p.onReset();
 eq(p.data.area, 'all', '重置 area');
-eq(p.data.shopId, 'all', '重置 shopId');
-eq(p.data.floorId, 'all', '重置 floorId');
-eq(p.data.stallId, 'all', '重置 stallId');
+eq(p.data.selectedShops.length, 0, '重置 selectedShops');
+eq(Object.keys(p.data.shopFilters).length, 0, '重置 shopFilters（每店条件）');
+eq(Object.keys(p.data.expandedShops).length, 0, '重置 expandedShops（折叠状态）');
 eq(p.data.budget, 0, '重置 budget');
-eq(p.data.foodType, 'all', '重置 foodType');
-eq(p.data.taste, 'all', '重置 taste');
+eq(p.data.foodTypes.length, 0, '重置 foodTypes');
+eq(p.data.tastes.length, 0, '重置 tastes');
 eq(p.data.sortMode, 'default', '重置 sortMode');
 eq(p.data.mode, 'none', '重置 mode');
 eq(p.data.pickedShop, null, '重置 pickedShop');
@@ -481,8 +530,8 @@ eq(p.data.pickedDish, null, '重置 pickedDish');
 eq(p.data.listDishes.length, 0, '重置清空列表');
 eq(p.data.matchedCount, ALL_DISHES.length, '重置后计数回到全量');
 eq(p.data.restaurantOptions.length, 0, '重置后餐厅候选清空');
-eq(p.data.floorOptions.length, 0, '重置后楼层候选清空');
-eq(p.data.stallOptions.length, 0, '重置后窗口候选清空');
+eq(p.data.shopViews.length, 0, '重置后每店位置配置清空');
+eq(p.data.conditionText, '不限区域 · 不限预算 · 不限类型 · 不限口味', '重置后摘要回到默认文案');
 
 /* ================================================================
    R11 空结果
@@ -492,8 +541,8 @@ group('R11 空结果：计数 0、按钮不切状态、有提示');
 p = makePage();
 p.onSelectArea({ currentTarget: { dataset: { value: 'campus' } } });
 p.onSelectBudget({ currentTarget: { dataset: { value: 10 } } });
-p.onSelectFoodType({ currentTarget: { dataset: { value: 'rice' } } });
-p.onSelectTaste({ currentTarget: { dataset: { value: 'mild_spicy' } } });
+p.onToggleFoodType({ currentTarget: { dataset: { value: 'rice' } } });
+p.onToggleTaste({ currentTarget: { dataset: { value: 'mild_spicy' } } });
 check(p.data.matchedCount === 0, '构造出空结果（校内+10元+饭类+微辣）', p.data.matchedCount);
 
 const t0 = p.__toastCount();
@@ -552,6 +601,56 @@ const taps = (wxml.match(/bindtap="(\w+)"/g) || []).map(function (s) { return s.
 const jsText = fs.readFileSync(P('pages/index/index.js'), 'utf8');
 const missingTap = taps.filter(function (fn) { return !new RegExp('\\b' + fn + '\\s*\\(').test(jsText); });
 check(missingTap.length === 0, 'WXML 的 bindtap 全部有实现', taps.length + ' 个');
+
+/* ================================================================
+   R14 旧单值口径：用新 API 复现，必须与旧独立实现逐一对上
+   refFilter 是阶段 1 写的、这次一个字符都没动的独立实现 —— 它才是「旧逻辑」的裁判
+   ================================================================ */
+group('R14 旧单值口径经新 API 等价复现');
+
+function drivePage(c) {
+  const q = makePage();
+  const tap = function (fn, value) { q[fn]({ currentTarget: { dataset: { value: value } } }); };
+  const tapShop = function (fn, shopId, value) {
+    q[fn]({ currentTarget: { dataset: { shopId: shopId, value: value } } });
+  };
+  if (c.area && c.area !== 'all') tap('onSelectArea', c.area);
+  if (c.shopId && c.shopId !== 'all') tapShop('onToggleShop', c.shopId);
+  if (c.floorId && c.floorId !== 'all') tapShop('onToggleFloor', c.shopId, c.floorId);
+  if (c.stallId && c.stallId !== 'all') tapShop('onToggleStall', c.shopId, c.stallId);
+  if (c.foodType && c.foodType !== 'all') tap('onToggleFoodType', c.foodType);
+  if (c.taste && c.taste !== 'all') tap('onToggleTaste', c.taste);
+  if (c.budget) tap('onSelectBudget', c.budget);
+  return q;
+}
+
+const legacyCases = [
+  { area: 'campus', foodType: 'rice_noodle', budget: 15 },
+  { area: 'campus', foodType: 'rice', taste: 'mild_spicy' },
+  { shopId: 's01', floorId: 's01_f2' },
+  { shopId: 's01', stallId: 's01_t2', taste: 'spicy' },
+  { area: 'campus', shopId: 's03', floorId: 's03_f1', budget: 10 },
+  { shopId: 's05', foodType: 'snack', budget: 10 },
+  { taste: 'light', budget: 20 },
+  { area: 'offsite', foodType: 'malatang', taste: 'spicy', budget: 20 }
+];
+
+let legacyBad = 0;
+const legacyDetail = [];
+legacyCases.forEach(function (c) {
+  const q = drivePage(c);
+  const got = sig(q.matched);
+  const want = sig(refFilter(ALL_DISHES, c));
+  if (got !== want || q.data.matchedCount !== q.matched.length) {
+    legacyBad++;
+    legacyDetail.push(JSON.stringify(c) + ' 新 ' + q.matched.length + ' 道 / 旧 ' + want.split(',').filter(Boolean).length + ' 道');
+  }
+});
+
+check(legacyBad === 0, '旧口径 ' + legacyCases.length + ' 组用新 API 复现，结果与 refFilter 完全一致',
+  legacyBad ? legacyDetail.join(' | ') : legacyCases.length + '/' + legacyCases.length);
+check(sig(drivePage(legacyCases[0]).matched) === 'd37,d38,d39', '回归题1 在新 API 下仍是 d37,d38,d39');
+check(sig(drivePage(legacyCases[1]).matched) === 'd03,d07', '回归题2 在新 API 下仍是 d03,d07');
 
 /* ---------------- 汇总 ---------------- */
 

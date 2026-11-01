@@ -1,0 +1,88 @@
+{
+  "conflicts": [
+    {
+      "code": "NS_UNAPPROVED",
+      "source": "batch1",
+      "namespace": "c03",
+      "message": "batch1 使用的命名空间 c03 未获正式批准（有条件批准也不覆盖它，不代表已批准）",
+      "records": {
+        "shops": [
+          "c03"
+        ],
+        "stalls": [
+          "c03_t01"
+        ],
+        "dishes": {
+          "count": 8,
+          "min": "c03_d075",
+          "max": "c03_d082",
+          "sample": [
+            "c03_d075",
+            "c03_d076",
+            "c03_d077",
+            "c03_d078",
+            "c03_d079"
+          ]
+        }
+      },
+      "references": [
+        {
+          "file": "tools/pilot/batch1/shops.csv",
+          "table": "shops",
+          "count": 1,
+          "ids": [
+            "c03"
+          ],
+          "lines": [
+            4,
+            4
+          ]
+        },
+        {
+          "file": "tools/pilot/batch1/stalls.csv",
+          "table": "stalls",
+          "count": 1,
+          "ids": [
+            "c03_t01"
+          ],
+          "lines": [
+            8,
+            8
+          ]
+        },
+        {
+          "file": "tools/pilot/batch1/dishes.csv",
+          "table": "dishes",
+          "count": 8,
+          "ids": [
+            "c03_d075",
+            "c03_d076",
+            "c03_d077",
+            "c03_d078",
+            "c03_d079",
+            "c03_d080",
+            "c03_d081",
+            "c03_d082"
+          ],
+          "lines": [
+            76,
+            83
+          ]
+        }
+      ],
+      "dependencies": [
+        "冻结映射 tools/pilot/id-map.json 中没有 c03 的任何条目（运行时副本只含已批准号段）",
+        "任何正式批准记录（tools/pilot/approvals/*.json）的 scope 均未提及 c03",
+        "命名空间登记 docs/decisions/*NAMESPACE*APPROVAL*.json 中没有 c03 的条目",
+        "batch1 是草稿批次，其 ID 处置（重编或作废）尚未批准（见 ACCELERATION_READINESS §9 R-2）"
+      ]
+    }
+  ],
+  "notes": [
+    "id-map.json（运行时副本）SHA-256 前 16 位：4478c976dcb68ef6…，与批准记录冻结的决策文件不是同一份，按 planDigest/mapVersion 对齐",
+    "NS_CONDITIONAL c02（pilot）：有条件批准 ap-20261026-01-c02，仅代表试点候选；禁止写入冻结映射与正式数据、禁止标 verified。后续正式登记条件见 docs/decisions/C02_NAMESPACE_CONDITIONAL_APPROVAL_20261026.json",
+    "NS_CONDITIONAL c02（batch1）：有条件批准 ap-20261026-01-c02，仅代表试点候选；禁止写入冻结映射与正式数据、禁止标 verified。后续正式登记条件见 docs/decisions/C02_NAMESPACE_CONDITIONAL_APPROVAL_20261026.json",
+    "NS_CONDITIONAL c02（batch1_min）：有条件批准 ap-20261026-01-c02，仅代表试点候选；禁止写入冻结映射与正式数据、禁止标 verified。后续正式登记条件见 docs/decisions/C02_NAMESPACE_CONDITIONAL_APPROVAL_20261026.json",
+    "来源规模：map 菜品 104；batch1 菜品 82；batch1_min 菜品 12；pilot 菜品 12"
+  ]
+}

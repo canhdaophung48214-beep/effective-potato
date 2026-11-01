@@ -1,0 +1,422 @@
+{
+  "isolatedDeliveryChanges": [
+    {
+      "path": "build_r03.py",
+      "status": "MODIFIED",
+      "beforeBytes": 18359,
+      "afterBytes": 18563,
+      "beforeSHA256": "fa2aa52654943e7ea4f75c41e15b6a0a01a10461178b931f531a50bad2f41807",
+      "afterSHA256": "4e8449ee9275f9eb120cdab2d23a633b5a79980636f934540d81e16fc18d58f8"
+    },
+    {
+      "path": "candidates.json",
+      "status": "MODIFIED",
+      "beforeBytes": 280567,
+      "afterBytes": 265292,
+      "beforeSHA256": "fe0f9a0d990a2e097b0496d280b541893b79fbaa874da7da2f2e2f0b05183c2b",
+      "afterSHA256": "f24b521908dfe8467d22a4aa8fa62d40632f3da1e28692a175e2b8edf109d961"
+    },
+    {
+      "path": "F1_evidence/backup_manifest.json",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 10871,
+      "beforeSHA256": null,
+      "afterSHA256": "49d0d98e65b7382441d8df84f4f1681b204a2df1bb859e86ab947e63f9276139"
+    },
+    {
+      "path": "F1_evidence/git_after.json",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 20671,
+      "beforeSHA256": null,
+      "afterSHA256": "45d14109de711b0b729ff139ac9813ea21ad2e9adb1609dd93aec646dd7af0a2"
+    },
+    {
+      "path": "F1_evidence/git_before.json",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 21293,
+      "beforeSHA256": null,
+      "afterSHA256": "56d98fcda97d000d6066b2c9fb171831484a668fda0916f35a1dd0027df2a285"
+    },
+    {
+      "path": "F1_evidence/git_diff_check.txt",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 121,
+      "beforeSHA256": null,
+      "afterSHA256": "2de5e4828563c1932ee40a6508e9e04ae7c78ac48cdb970b6e0c193e4e6cc2ce"
+    },
+    {
+      "path": "F1_evidence/git_status_short.txt",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 3226,
+      "beforeSHA256": null,
+      "afterSHA256": "e52b105c0ba2e51dfe977f0627ad503457d41e9b22cf7ba68d1bef2d96db1493"
+    },
+    {
+      "path": "F1_evidence/git_status_uall.txt",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 17312,
+      "beforeSHA256": null,
+      "afterSHA256": "83d8c88e4c749b796e3cfcd2cf1e814127c91487f8c89bb98fe0911817740ad0"
+    },
+    {
+      "path": "F1_evidence/migration_files.csv",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 4943,
+      "beforeSHA256": null,
+      "afterSHA256": "39bb301485af72ad7bb88b3ed324f2841b25a6b3aae39c3320e287a975bee5eb"
+    },
+    {
+      "path": "F1_evidence/migration_manifest.json",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 11349,
+      "beforeSHA256": null,
+      "afterSHA256": "3e44433684bb7b14b49d9c3be0dad24a25068ca891efcbedb78a36744ed71cd4"
+    },
+    {
+      "path": "F1_evidence/post_move_checks.json",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 468,
+      "beforeSHA256": null,
+      "afterSHA256": "48070ac1fd02e7cbabd2f69bae0066001cf098bfee503b05caf70f76c1c04510"
+    },
+    {
+      "path": "F1_evidence/pre_move_repro_path_failure.txt",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 1906,
+      "beforeSHA256": null,
+      "afterSHA256": "b5764a9c8a8db021ebf36420e955d0192ce3dde40f8ad6f64c6c58379b628011"
+    },
+    {
+      "path": "F1_evidence/pre_move_test_r03.py.txt",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 1576,
+      "beforeSHA256": null,
+      "afterSHA256": "bc5321ee856690eb324d7204440fce3e9f9562fb47c4881ee2669cad40679f7e"
+    },
+    {
+      "path": "F1_evidence/pre_move_test_r03_f1.py.txt",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 806,
+      "beforeSHA256": null,
+      "afterSHA256": "891e597fc134fb44e1e82057aefabf81acfb73dd5cde4402a3d66a20fed0a3c0"
+    },
+    {
+      "path": "F1_evidence/pre_move_tests.json",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 126,
+      "beforeSHA256": null,
+      "afterSHA256": "1402baff99e0fe8eb6dde507e850c03ee706cd0057c19eaf469632d0059618f1"
+    },
+    {
+      "path": "F1_evidence/project_before.json",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 121571,
+      "beforeSHA256": null,
+      "afterSHA256": "ffcd71a5cca1b7bd5368c9c749a013cd379dc13b789acc4a9116a69e8029aa33"
+    },
+    {
+      "path": "F1_evidence/removed_duplicate_new.json",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 301,
+      "beforeSHA256": null,
+      "afterSHA256": "b807fd5a58105de7256470d72fa784fc8b1f006d190773d6789553b9360d497e"
+    },
+    {
+      "path": "finalize_f1.py",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 11559,
+      "beforeSHA256": null,
+      "afterSHA256": "1626b713b0243aca22701ea629bf854e25806f48d81af1cd579c691daf047cdd"
+    },
+    {
+      "path": "new_source_records.json",
+      "status": "MODIFIED",
+      "beforeBytes": 350093,
+      "afterBytes": 319912,
+      "beforeSHA256": "6c42fb793449ca9f0d90e9729ea753260481744ea024fe8d40f62912458ac13c",
+      "afterSHA256": "90b25434188597221dc22d226b9de8b5ef405a46939418018c1ffc11fa6df44f"
+    },
+    {
+      "path": "ocr_t19.ps1",
+      "status": "MODIFIED",
+      "beforeBytes": 1767,
+      "afterBytes": 1872,
+      "beforeSHA256": "e983334832887d539f53ac877551dd81450d60278c03a0ee45804c7ae5ec8c1d",
+      "afterSHA256": "a27e00eb4da372f585d01c24d823ddefffb2fe40a0492ec7e230ee17a4a9b478"
+    },
+    {
+      "path": "pack_f1.py",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 2121,
+      "beforeSHA256": null,
+      "afterSHA256": "45d89e40ace1f1b95d9e139a01254c8ab4d06afa8411ce16f65611113c00be8a"
+    },
+    {
+      "path": "photo_source_index.json",
+      "status": "MODIFIED",
+      "beforeBytes": 12666,
+      "afterBytes": 11786,
+      "beforeSHA256": "f25369b7c5512297d61269674029fbc34b578a96c96660fb1e800cc17fb67dbb",
+      "afterSHA256": "5ff6e30c3abcc4e809f2a80bc6184e6f6acf78d78089fcae4bdf99ecc73ae181"
+    },
+    {
+      "path": "R03_F1_test_output.txt",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 2659,
+      "beforeSHA256": null,
+      "afterSHA256": "9472795eef3374e1a6b524d76c92fae63faba4fc943cad3f03745e1c0327fb3d"
+    },
+    {
+      "path": "R03_F1_修复报告.md",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 7614,
+      "beforeSHA256": null,
+      "afterSHA256": "8da3140eebee0df16665f652ade0a1e62d51c7ae2d101962abcadf580463c87a"
+    },
+    {
+      "path": "R03_执行报告.md",
+      "status": "MODIFIED",
+      "beforeBytes": 9255,
+      "afterBytes": 10205,
+      "beforeSHA256": "f57c93e1750689a725a8ae58d8d60ad1c57ba8a1c061fd06826684c2e57f72e3",
+      "afterSHA256": "cd09edb284078772084299a0e126e903270145c04fc240e27c89701609e09221"
+    },
+    {
+      "path": "README_F1_复现.md",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 1333,
+      "beforeSHA256": null,
+      "afterSHA256": "e7f77f30aec4bb3c0b1b410b5474ed2271bb9ca90aa2479822450a4a7ca88ffe"
+    },
+    {
+      "path": "replacement_ledger.csv",
+      "status": "MODIFIED",
+      "beforeBytes": 51292,
+      "afterBytes": 51204,
+      "beforeSHA256": "148b1487ed2870e7aea0a70c2f90ce1ccc8f86ab343fa42263d138fe61d3c519",
+      "afterSHA256": "81d7a9916b5dc70ed54f4a42ccf9377ba08ee3d9cfba7973646afe44f3876e31"
+    },
+    {
+      "path": "replacement_ledger.json",
+      "status": "MODIFIED",
+      "beforeBytes": 128577,
+      "afterBytes": 128283,
+      "beforeSHA256": "698cbff94ebe62cc3590852adf87ec7615aab80630ec6c314b20ca5b6e4664e0",
+      "afterSHA256": "4e68eb58aea331de249c96600a7de2f70561cfc0755469697e26c069e1dd91af"
+    },
+    {
+      "path": "source_assets/crops/baoye.png",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 1545692,
+      "beforeSHA256": null,
+      "afterSHA256": "aa9b803a730cf5027eaa7253d8cc062143574e849f86c9bdbb14d66a57886d93"
+    },
+    {
+      "path": "source_assets/crops/chapao.png",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 1423805,
+      "beforeSHA256": null,
+      "afterSHA256": "e493a4bc49db9af5ae42f4aff70cd34006ca8eb0dc40e121505ef36d6f87f242"
+    },
+    {
+      "path": "source_assets/crops/gigi.png",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 2482001,
+      "beforeSHA256": null,
+      "afterSHA256": "aee3db3e724ce74649033b53c85bfbb8164919593df3b4144d725ecd8b892c80"
+    },
+    {
+      "path": "source_assets/crops/haiyuan.png",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 1263730,
+      "beforeSHA256": null,
+      "afterSHA256": "447b01eb2012f79a68ce36115b9d616d9b671b012ce0c26cd8e2427404c9542f"
+    },
+    {
+      "path": "source_assets/crops/jiangdao.png",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 2084835,
+      "beforeSHA256": null,
+      "afterSHA256": "e5ccab9439eba8cad9dedf038aa71ead616acf66b212532f2c6cb116c6fa1e74"
+    },
+    {
+      "path": "source_assets/crops/lafanqie.png",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 1031803,
+      "beforeSHA256": null,
+      "afterSHA256": "6d479f40eb8aeec0541678573cf45cfd9729f6104be453ac8e65304a9b6ead8f"
+    },
+    {
+      "path": "source_assets/crops/laisuo.png",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 1470427,
+      "beforeSHA256": null,
+      "afterSHA256": "ef6b81d95dba9e2999956a0d15d091d0f592bbc19ec6ce1aa37c73eef38161e4"
+    },
+    {
+      "path": "source_assets/crops/lataifan.png",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 1803664,
+      "beforeSHA256": null,
+      "afterSHA256": "f86c894018d0b87d9475bdf98219aeb12b2e76f9ce69a5d745a8b9f1c2e8e6f1"
+    },
+    {
+      "path": "source_assets/crops/lirou.png",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 815916,
+      "beforeSHA256": null,
+      "afterSHA256": "88842b0ee13705663c6fe3a823066207d64e1579086faba3beefe8d8ffbcb2d4"
+    },
+    {
+      "path": "source_assets/crops/liruo.png",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 1891628,
+      "beforeSHA256": null,
+      "afterSHA256": "19e39ae77097cdb4faaf957aa27661c08bed9522d69e0980591692d905b5c8c0"
+    },
+    {
+      "path": "source_assets/crops/liuwan.png",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 1694721,
+      "beforeSHA256": null,
+      "afterSHA256": "e7276a3c0e08de33f6cfe882d142e407ece2311fc2a19b0cace19367a7df973e"
+    },
+    {
+      "path": "source_assets/crops/shuijiao.png",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 2077477,
+      "beforeSHA256": null,
+      "afterSHA256": "00d297c967899ac976e7ebe7d2d66e7abae64a6dc5a838f91edea87adeffbc77"
+    },
+    {
+      "path": "source_assets/crops/wangji.png",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 2321623,
+      "beforeSHA256": null,
+      "afterSHA256": "608fcf1f9957a3b91302dbac8c5298c23933ae0d7cdc24123f02daa2af66484e"
+    },
+    {
+      "path": "source_assets/crops/wukexin.png",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 1155091,
+      "beforeSHA256": null,
+      "afterSHA256": "4e1c0aa1a611bec7cc751b7182a20a539431786b77c985aa00adeb7eeeddb979"
+    },
+    {
+      "path": "source_assets/crops/xiangshu.png",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 1891455,
+      "beforeSHA256": null,
+      "afterSHA256": "aefb7a31ec4733db2b9b7069f9c2cb64aa11bc55d3f75a2f946d3ef3e358990c"
+    },
+    {
+      "path": "source_assets/crops/xiaolongbao.png",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 1743482,
+      "beforeSHA256": null,
+      "afterSHA256": "0aafed578d7dd7063eb4e26dc074661890977ef9f379d8fb08365c9c6c6b6c50"
+    },
+    {
+      "path": "source_assets/tools/_crop3f.py",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 1650,
+      "beforeSHA256": null,
+      "afterSHA256": "afe3f4b94f95dbbde37ac5fb803027bc776540180ec5dad3ee229c78bca85131"
+    },
+    {
+      "path": "source_assets/tools/_crop3f2.py",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 2100,
+      "beforeSHA256": null,
+      "afterSHA256": "ecb7b3b5deb9e8977f7e8c85017ed736f4e95de6c9f34fff3cf08c3262d0e261"
+    },
+    {
+      "path": "source_assets/TRANSCRIPTION_3F_R2.md",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 26981,
+      "beforeSHA256": null,
+      "afterSHA256": "3f173f76ae0316bdf0252c1e9e2e530564c25038f1b36e7094150b7f8fa30a1f"
+    },
+    {
+      "path": "statistics.json",
+      "status": "MODIFIED",
+      "beforeBytes": 947,
+      "afterBytes": 1095,
+      "beforeSHA256": "4c6d009d66a5efd6f4b4eb545fc671b1447fd74f471f1138576d60431fba200d",
+      "afterSHA256": "0d2c0a067bbb154eb48dd72e2f5ca9806213ad0ab2d74ad96e4e4252773a244c"
+    },
+    {
+      "path": "t19_ocr_actual.json",
+      "status": "MODIFIED",
+      "beforeBytes": 7812,
+      "afterBytes": 6961,
+      "beforeSHA256": "ca48a3f2f6164dcf34a7fcafedb34d5a4402b6afae356c35a9a07bf3d5b12048",
+      "afterSHA256": "b57fb0431189cbfaa39863a78a106f5fc0d37542ed1dabe631451ee9ed5d28fb"
+    },
+    {
+      "path": "t19_ocr_inputs.json",
+      "status": "MODIFIED",
+      "beforeBytes": 319,
+      "afterBytes": 261,
+      "beforeSHA256": "6c4401aaaeed1624f80b3df23dca1fd8afd6f3fc15e0411153c83d07d11d7d2b",
+      "afterSHA256": "07e68fd2fd3cb76d2e63713f6c831bb274475298b3919ef95489708c57577a2c"
+    },
+    {
+      "path": "test_r03.py",
+      "status": "MODIFIED",
+      "beforeBytes": 6272,
+      "afterBytes": 6508,
+      "beforeSHA256": "afbda0ac24f51ef21328a47aa8beb31e8fa99ae2543718b4bc4a6be5de753ebb",
+      "afterSHA256": "a4cec9abf80f2be7fda6e78c92153bc34f9ef33244c2217ca8f50f2d35d2df6c"
+    },
+    {
+      "path": "test_r03_f1.py",
+      "status": "ADDED",
+      "beforeBytes": null,
+      "afterBytes": 3942,
+      "beforeSHA256": null,
+      "afterSHA256": "47070fb9f8a7d0481a63ef341e028d90269c8e5193ff2be9cc32d553ea847519"
+    }
+  ],
+  "projectSourceMoves": "migration_manifest.json; nineteen byte-identical copies and authorized original removals",
+  "manifestChanges": "old full manifests backed up; final manifests recomputed separately to avoid self-reference"
+}

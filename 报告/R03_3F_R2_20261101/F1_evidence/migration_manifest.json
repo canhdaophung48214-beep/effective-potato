@@ -1,0 +1,216 @@
+{
+  "status": "MOVED_VERIFIED",
+  "files": [
+    {
+      "source": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f.py",
+      "sourceRelativeToProject": "tools/_crop3f.py",
+      "destination": "source_assets/tools/_crop3f.py",
+      "bytes": 1650,
+      "sha256": "afe3f4b94f95dbbde37ac5fb803027bc776540180ec5dad3ee229c78bca85131",
+      "byteIdentical": true,
+      "tracked": false,
+      "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R03_F1_20261101_222515\\source_inputs\\tools\\_crop3f.py"
+    },
+    {
+      "source": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f2.py",
+      "sourceRelativeToProject": "tools/_crop3f2.py",
+      "destination": "source_assets/tools/_crop3f2.py",
+      "bytes": 2100,
+      "sha256": "ecb7b3b5deb9e8977f7e8c85017ed736f4e95de6c9f34fff3cf08c3262d0e261",
+      "byteIdentical": true,
+      "tracked": false,
+      "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R03_F1_20261101_222515\\source_inputs\\tools\\_crop3f2.py"
+    },
+    {
+      "source": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\pilot\\TRANSCRIPTION_3F_R2.md",
+      "sourceRelativeToProject": "tools/pilot/TRANSCRIPTION_3F_R2.md",
+      "destination": "source_assets/TRANSCRIPTION_3F_R2.md",
+      "bytes": 26981,
+      "sha256": "3f173f76ae0316bdf0252c1e9e2e530564c25038f1b36e7094150b7f8fa30a1f",
+      "byteIdentical": true,
+      "tracked": false,
+      "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R03_F1_20261101_222515\\source_inputs\\tools\\pilot\\TRANSCRIPTION_3F_R2.md"
+    },
+    {
+      "source": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\baoye.png",
+      "sourceRelativeToProject": "tools/_crop3f/baoye.png",
+      "destination": "source_assets/crops/baoye.png",
+      "bytes": 1545692,
+      "sha256": "aa9b803a730cf5027eaa7253d8cc062143574e849f86c9bdbb14d66a57886d93",
+      "byteIdentical": true,
+      "tracked": false,
+      "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R03_F1_20261101_222515\\source_inputs\\tools\\_crop3f\\baoye.png"
+    },
+    {
+      "source": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\chapao.png",
+      "sourceRelativeToProject": "tools/_crop3f/chapao.png",
+      "destination": "source_assets/crops/chapao.png",
+      "bytes": 1423805,
+      "sha256": "e493a4bc49db9af5ae42f4aff70cd34006ca8eb0dc40e121505ef36d6f87f242",
+      "byteIdentical": true,
+      "tracked": false,
+      "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R03_F1_20261101_222515\\source_inputs\\tools\\_crop3f\\chapao.png"
+    },
+    {
+      "source": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\gigi.png",
+      "sourceRelativeToProject": "tools/_crop3f/gigi.png",
+      "destination": "source_assets/crops/gigi.png",
+      "bytes": 2482001,
+      "sha256": "aee3db3e724ce74649033b53c85bfbb8164919593df3b4144d725ecd8b892c80",
+      "byteIdentical": true,
+      "tracked": false,
+      "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R03_F1_20261101_222515\\source_inputs\\tools\\_crop3f\\gigi.png"
+    },
+    {
+      "source": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\haiyuan.png",
+      "sourceRelativeToProject": "tools/_crop3f/haiyuan.png",
+      "destination": "source_assets/crops/haiyuan.png",
+      "bytes": 1263730,
+      "sha256": "447b01eb2012f79a68ce36115b9d616d9b671b012ce0c26cd8e2427404c9542f",
+      "byteIdentical": true,
+      "tracked": false,
+      "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R03_F1_20261101_222515\\source_inputs\\tools\\_crop3f\\haiyuan.png"
+    },
+    {
+      "source": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\jiangdao.png",
+      "sourceRelativeToProject": "tools/_crop3f/jiangdao.png",
+      "destination": "source_assets/crops/jiangdao.png",
+      "bytes": 2084835,
+      "sha256": "e5ccab9439eba8cad9dedf038aa71ead616acf66b212532f2c6cb116c6fa1e74",
+      "byteIdentical": true,
+      "tracked": false,
+      "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R03_F1_20261101_222515\\source_inputs\\tools\\_crop3f\\jiangdao.png"
+    },
+    {
+      "source": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\lafanqie.png",
+      "sourceRelativeToProject": "tools/_crop3f/lafanqie.png",
+      "destination": "source_assets/crops/lafanqie.png",
+      "bytes": 1031803,
+      "sha256": "6d479f40eb8aeec0541678573cf45cfd9729f6104be453ac8e65304a9b6ead8f",
+      "byteIdentical": true,
+      "tracked": false,
+      "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R03_F1_20261101_222515\\source_inputs\\tools\\_crop3f\\lafanqie.png"
+    },
+    {
+      "source": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\laisuo.png",
+      "sourceRelativeToProject": "tools/_crop3f/laisuo.png",
+      "destination": "source_assets/crops/laisuo.png",
+      "bytes": 1470427,
+      "sha256": "ef6b81d95dba9e2999956a0d15d091d0f592bbc19ec6ce1aa37c73eef38161e4",
+      "byteIdentical": true,
+      "tracked": false,
+      "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R03_F1_20261101_222515\\source_inputs\\tools\\_crop3f\\laisuo.png"
+    },
+    {
+      "source": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\lataifan.png",
+      "sourceRelativeToProject": "tools/_crop3f/lataifan.png",
+      "destination": "source_assets/crops/lataifan.png",
+      "bytes": 1803664,
+      "sha256": "f86c894018d0b87d9475bdf98219aeb12b2e76f9ce69a5d745a8b9f1c2e8e6f1",
+      "byteIdentical": true,
+      "tracked": false,
+      "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R03_F1_20261101_222515\\source_inputs\\tools\\_crop3f\\lataifan.png"
+    },
+    {
+      "source": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\lirou.png",
+      "sourceRelativeToProject": "tools/_crop3f/lirou.png",
+      "destination": "source_assets/crops/lirou.png",
+      "bytes": 815916,
+      "sha256": "88842b0ee13705663c6fe3a823066207d64e1579086faba3beefe8d8ffbcb2d4",
+      "byteIdentical": true,
+      "tracked": false,
+      "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R03_F1_20261101_222515\\source_inputs\\tools\\_crop3f\\lirou.png"
+    },
+    {
+      "source": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\liruo.png",
+      "sourceRelativeToProject": "tools/_crop3f/liruo.png",
+      "destination": "source_assets/crops/liruo.png",
+      "bytes": 1891628,
+      "sha256": "19e39ae77097cdb4faaf957aa27661c08bed9522d69e0980591692d905b5c8c0",
+      "byteIdentical": true,
+      "tracked": false,
+      "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R03_F1_20261101_222515\\source_inputs\\tools\\_crop3f\\liruo.png"
+    },
+    {
+      "source": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\liuwan.png",
+      "sourceRelativeToProject": "tools/_crop3f/liuwan.png",
+      "destination": "source_assets/crops/liuwan.png",
+      "bytes": 1694721,
+      "sha256": "e7276a3c0e08de33f6cfe882d142e407ece2311fc2a19b0cace19367a7df973e",
+      "byteIdentical": true,
+      "tracked": false,
+      "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R03_F1_20261101_222515\\source_inputs\\tools\\_crop3f\\liuwan.png"
+    },
+    {
+      "source": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\shuijiao.png",
+      "sourceRelativeToProject": "tools/_crop3f/shuijiao.png",
+      "destination": "source_assets/crops/shuijiao.png",
+      "bytes": 2077477,
+      "sha256": "00d297c967899ac976e7ebe7d2d66e7abae64a6dc5a838f91edea87adeffbc77",
+      "byteIdentical": true,
+      "tracked": false,
+      "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R03_F1_20261101_222515\\source_inputs\\tools\\_crop3f\\shuijiao.png"
+    },
+    {
+      "source": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\wangji.png",
+      "sourceRelativeToProject": "tools/_crop3f/wangji.png",
+      "destination": "source_assets/crops/wangji.png",
+      "bytes": 2321623,
+      "sha256": "608fcf1f9957a3b91302dbac8c5298c23933ae0d7cdc24123f02daa2af66484e",
+      "byteIdentical": true,
+      "tracked": false,
+      "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R03_F1_20261101_222515\\source_inputs\\tools\\_crop3f\\wangji.png"
+    },
+    {
+      "source": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\wukexin.png",
+      "sourceRelativeToProject": "tools/_crop3f/wukexin.png",
+      "destination": "source_assets/crops/wukexin.png",
+      "bytes": 1155091,
+      "sha256": "4e1c0aa1a611bec7cc751b7182a20a539431786b77c985aa00adeb7eeeddb979",
+      "byteIdentical": true,
+      "tracked": false,
+      "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R03_F1_20261101_222515\\source_inputs\\tools\\_crop3f\\wukexin.png"
+    },
+    {
+      "source": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\xiangshu.png",
+      "sourceRelativeToProject": "tools/_crop3f/xiangshu.png",
+      "destination": "source_assets/crops/xiangshu.png",
+      "bytes": 1891455,
+      "sha256": "aefb7a31ec4733db2b9b7069f9c2cb64aa11bc55d3f75a2f946d3ef3e358990c",
+      "byteIdentical": true,
+      "tracked": false,
+      "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R03_F1_20261101_222515\\source_inputs\\tools\\_crop3f\\xiangshu.png"
+    },
+    {
+      "source": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\_crop3f\\xiaolongbao.png",
+      "sourceRelativeToProject": "tools/_crop3f/xiaolongbao.png",
+      "destination": "source_assets/crops/xiaolongbao.png",
+      "bytes": 1743482,
+      "sha256": "0aafed578d7dd7063eb4e26dc074661890977ef9f379d8fb08365c9c6c6b6c50",
+      "byteIdentical": true,
+      "tracked": false,
+      "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R03_F1_20261101_222515\\source_inputs\\tools\\_crop3f\\xiaolongbao.png"
+    }
+  ],
+  "removedProjectFiles": [
+    "tools/_crop3f.py",
+    "tools/_crop3f2.py",
+    "tools/pilot/TRANSCRIPTION_3F_R2.md",
+    "tools/_crop3f/baoye.png",
+    "tools/_crop3f/chapao.png",
+    "tools/_crop3f/gigi.png",
+    "tools/_crop3f/haiyuan.png",
+    "tools/_crop3f/jiangdao.png",
+    "tools/_crop3f/lafanqie.png",
+    "tools/_crop3f/laisuo.png",
+    "tools/_crop3f/lataifan.png",
+    "tools/_crop3f/lirou.png",
+    "tools/_crop3f/liruo.png",
+    "tools/_crop3f/liuwan.png",
+    "tools/_crop3f/shuijiao.png",
+    "tools/_crop3f/wangji.png",
+    "tools/_crop3f/wukexin.png",
+    "tools/_crop3f/xiangshu.png",
+    "tools/_crop3f/xiaolongbao.png"
+  ]
+}

@@ -1,0 +1,51 @@
+diff --git a/tools/test_records_spec.js b/tools/test_records_spec.js
+index fdfe6a8..b3c853f 100644
+--- a/tools/test_records_spec.js
++++ b/tools/test_records_spec.js
+@@ -29,6 +29,28 @@ const fs = require('fs');
+ const path = require('path');
+ 
+ const ROOT = path.resolve(__dirname, '..');
++function parseProductsDir(argv) {
++  if (argv.length === 0) return null;
++  if (argv.length !== 2 || argv[0] !== '--products-dir' || !argv[1] || argv[1].startsWith('--')) {
++    throw new Error('用法：node tools/test_records_spec.js [--products-dir <项目外绝对目录>]');
++  }
++  if (!path.isAbsolute(argv[1])) throw new Error('--products-dir 必须是绝对路径');
++  const real = fs.realpathSync(argv[1]);
++  if (!fs.statSync(real).isDirectory()) throw new Error('--products-dir 必须是目录');
++  const root = fs.realpathSync(ROOT);
++  const rel = path.relative(root, real);
++  if (rel === '' || (rel !== '..' && !rel.startsWith('..' + path.sep) && !path.isAbsolute(rel))) {
++    throw new Error('--products-dir 不得位于项目内');
++  }
++  return real;
++}
++const PRODUCTS_DIR = parseProductsDir(process.argv.slice(2));
++if (PRODUCTS_DIR) {
++  const check = require(path.join(ROOT, 'tools', 'pilot', 'gen_records.js')).run({ inspectDir: PRODUCTS_DIR });
++  if (check.exitCode !== 0 || check.summary.status !== 'PUBLISH_COMPLETE') {
++    throw new Error('--products-dir 发布不完整：' + (check.summary.code || check.summary.status));
++  }
++}
+ const P = {
+   t2f: path.join(ROOT, 'tools', 'pilot', 'TRANSCRIPTION_2F.md'),
+   t3f: path.join(ROOT, 'tools', 'pilot', 'TRANSCRIPTION_3F.md'),
+@@ -36,7 +58,7 @@ const P = {
+   audit: path.join(ROOT, 'docs', 'RECORD_AUDIT_PRECHECK_20261023.md'),
+   contract: path.join(ROOT, 'docs', 'RECORD_GENERATOR_CONTRACT_20261023.md'),
+   gen: path.join(ROOT, 'tools', 'pilot', 'gen_records.js'),
+-  records: path.join(ROOT, 'tools', 'pilot', 'records.json'),
++  records: path.join(PRODUCTS_DIR || path.join(ROOT, 'tools', 'pilot'), 'records.json'),
+   decision: path.join(ROOT, 'docs', 'decisions', 'DECISION_RECORD_SET_R2_20261024.md')
+ };
+ 
+@@ -1098,7 +1120,7 @@ const REF = (function () {
+ // ================================================================ 生成器依赖项
+ (function generatorChecks() {
+   const genExists = fs.existsSync(P.gen);
+-  const recExists = fs.existsSync(P.records);
++  const recExists = !!PRODUCTS_DIR && fs.existsSync(P.records);
+   if (!genExists) {
+     pending('G1', '生成器存在性：文件已存在（G1 已转运行时通过，见 §9.2；此分支为历史兼容）', 'tools/pilot/gen_records.js', '文件存在（G1 已转运行时通过，见 §9.2，此分支为历史兼容）');
+   } else {

@@ -1,0 +1,23 @@
+﻿newStallRef,newSignText,oldStallRefs,relationship,formalIdAssigned,photoLabels,originalPhotoLinked,identityCaveat
+T01,壹桶干拌冒菜（P01）,[],NEW_OR_UNMAPPED_STALL,False,"[""P01""]",False,临时T编号不是正式档口ID
+T02,海源 · 鸡丁米线（P02 P03）,[],NEW_OR_UNMAPPED_STALL,False,"[""P02"", ""P03""]",True,临时T编号不是正式档口ID
+T03,稻米香 鸭腿饭 ／ 楚味鸭脖王（P04 P18）,[],NEW_OR_UNMAPPED_STALL,False,"[""P04"", ""P18""]",False,T03稻米香/楚味鸭脖王为同框双品牌，经营主体是否独立不自动合并/拆正式档口
+T04,烤肉拌饭 · 擂椒拌饭（P05）,[],NEW_OR_UNMAPPED_STALL,False,"[""P05""]",False,临时T编号不是正式档口ID
+T05,王记羊肉汤（P07）,[],NEW_OR_UNMAPPED_STALL,False,"[""P07""]",True,临时T编号不是正式档口ID
+T06,小坏麻糬 · 自选千层（P08）,[],NEW_OR_UNMAPPED_STALL,False,"[""P08""]",False,临时T编号不是正式档口ID
+T07,稻柜 · 双拼茶泡饭（P09）,"[""c01_t40""]",NAMED_SOURCE_CROSSWALK_ONLY,False,"[""P09""]",True,临时T编号不是正式档口ID
+T08,麻辣拌 · 手拍粉 · 五谷鱼粉（P10）,[],NEW_OR_UNMAPPED_STALL,False,"[""P10""]",False,临时T编号不是正式档口ID
+T09,山理手工水饺（P11）,[],NEW_OR_UNMAPPED_STALL,False,"[""P11""]",True,临时T编号不是正式档口ID
+T10,刘婉婉 · 生炸炒岭鸡（P12）,[],NEW_OR_UNMAPPED_STALL,False,"[""P12""]",True,临时T编号不是正式档口ID
+T11,初山炸串 · 拌饭（P13 P14）,[],NEW_OR_UNMAPPED_STALL,False,"[""P13"", ""P14""]",False,临时T编号不是正式档口ID
+T12,来嗦一碗 · 手擀面（P15 P16）,[],NEW_OR_UNMAPPED_STALL,False,"[""P15"", ""P16""]",True,临时T编号不是正式档口ID
+T13,席之邻 · 辣椒炒肉双拼饭（P17）,"[""c01_t41""]",NAMED_SOURCE_CROSSWALK_ONLY,False,"[""P17""]",True,临时T编号不是正式档口ID
+T14,快乐番薯（P19 P20 P21）,[],NEW_OR_UNMAPPED_STALL,False,"[""P19"", ""P20"", ""P21""]",True,临时T编号不是正式档口ID
+T15,米生 · 辣番茄火锅米线（P22）,"[""c01_t45""]",NAMED_SOURCE_CROSSWALK_ONLY,False,"[""P22""]",True,临时T编号不是正式档口ID
+T16,爆二爷 · 把子肉饭（P23）,[],NEW_OR_UNMAPPED_STALL,False,"[""P23""]",True,临时T编号不是正式档口ID
+T17,懿百岁 · 鲜肉小笼包（P24）,"[""c01_t42 (只限错误挂靠的小笼包，不是整体W05)""]",CORRECTED_INDEPENDENT_STALL,False,"[""P24""]",True,临时T编号不是正式档口ID
+T18,犟稻 · 超级酱骨饭（P25）,"[""c01_t38""]",OLD_SEGMENT_VOID_NEW_SOURCE,False,"[""P25""]",True,临时T编号不是正式档口ID
+T19,咖喱 Gigi 蛋包饭（P26）,"[""c01_t39""]",NAMED_SOURCE_CROSSWALK_ONLY,False,"[""P26""]",True,临时T编号不是正式档口ID
+T20,辣肉面（P27）,"[""c01_t44""]",NAMED_SOURCE_CROSSWALK_ONLY,False,"[""P27""]",True,临时T编号不是正式档口ID
+T21,吴可心 · 粗粮捞面（P28）,"[""c01_t47""]",OLD_SEGMENT_VOID_NEW_SOURCE,False,"[""P28""]",True,临时T编号不是正式档口ID
+T22,梨泰院烧肉饭（P29）,"[""c01_t46""]",NAMED_SOURCE_CROSSWALK_ONLY,False,"[""P29""]",False,临时T编号不是正式档口ID

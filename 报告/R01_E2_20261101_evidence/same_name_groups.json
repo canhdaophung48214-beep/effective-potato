@@ -1,0 +1,804 @@
+[
+  {
+    "name": "黑金卤肉饭",
+    "records": [
+      {
+        "dishId": "c01_d053",
+        "stallId": "c01_t11",
+        "spec": "",
+        "price": 15,
+        "source": "TRANSCRIPTION_2F.md#W2-03 第 121 行"
+      },
+      {
+        "dishId": "c01_d065",
+        "stallId": "c01_t11",
+        "spec": "",
+        "price": 15,
+        "source": "TRANSCRIPTION_2F.md#W2-03 第 138 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "秘制红烧肉",
+    "records": [
+      {
+        "dishId": "c01_d054",
+        "stallId": "c01_t11",
+        "spec": "",
+        "price": 15,
+        "source": "TRANSCRIPTION_2F.md#W2-03 第 122 行"
+      },
+      {
+        "dishId": "c01_d064",
+        "stallId": "c01_t11",
+        "spec": "",
+        "price": 16,
+        "source": "TRANSCRIPTION_2F.md#W2-03 第 137 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "蒲烧鳗鱼",
+    "records": [
+      {
+        "dishId": "c01_d055",
+        "stallId": "c01_t11",
+        "spec": "",
+        "price": 16,
+        "source": "TRANSCRIPTION_2F.md#W2-03 第 123 行"
+      },
+      {
+        "dishId": "c01_d063",
+        "stallId": "c01_t11",
+        "spec": "",
+        "price": 16,
+        "source": "TRANSCRIPTION_2F.md#W2-03 第 136 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "鲜卤排骨",
+    "records": [
+      {
+        "dishId": "c01_d059",
+        "stallId": "c01_t11",
+        "spec": "",
+        "price": 16,
+        "source": "TRANSCRIPTION_2F.md#W2-03 第 127 行"
+      },
+      {
+        "dishId": "c01_d067",
+        "stallId": "c01_t11",
+        "spec": "",
+        "price": 16,
+        "source": "TRANSCRIPTION_2F.md#W2-03 第 140 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "红烧鸡翅根",
+    "records": [
+      {
+        "dishId": "c01_d060",
+        "stallId": "c01_t11",
+        "spec": "",
+        "price": 13,
+        "source": "TRANSCRIPTION_2F.md#W2-03 第 133 行"
+      },
+      {
+        "dishId": "c01_d070",
+        "stallId": "c01_t11",
+        "spec": "",
+        "price": 12,
+        "source": "TRANSCRIPTION_2F.md#W2-03 第 148 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "黑椒鸡排",
+    "records": [
+      {
+        "dishId": "c01_d062",
+        "stallId": "c01_t11",
+        "spec": "",
+        "price": 14,
+        "source": "TRANSCRIPTION_2F.md#W2-03 第 135 行"
+      },
+      {
+        "dishId": "c01_d083",
+        "stallId": "c01_t11",
+        "spec": "",
+        "price": 13,
+        "source": "TRANSCRIPTION_2F.md#W2-03 第 166 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "百事可乐鸡",
+    "records": [
+      {
+        "dishId": "c01_d074",
+        "stallId": "c01_t11",
+        "spec": "",
+        "price": 15,
+        "source": "TRANSCRIPTION_2F.md#W2-03 第 152 行"
+      },
+      {
+        "dishId": "c01_d371",
+        "stallId": "c01_t43",
+        "spec": "",
+        "price": 12,
+        "source": "TRANSCRIPTION_3F.md#W06 大 第 252 行"
+      }
+    ],
+    "differentStalls": true
+  },
+  {
+    "name": "小炒黄牛肉",
+    "records": [
+      {
+        "dishId": "c01_d079",
+        "stallId": "c01_t11",
+        "spec": "",
+        "price": 16,
+        "source": "TRANSCRIPTION_2F.md#W2-03 第 157 行"
+      },
+      {
+        "dishId": "c01_d186",
+        "stallId": "c01_t17",
+        "spec": "",
+        "price": 19.9,
+        "source": "TRANSCRIPTION_2F.md#W2-10 第 466 行"
+      },
+      {
+        "dishId": "c01_d108",
+        "stallId": "c01_t14",
+        "spec": "",
+        "price": 17,
+        "source": "TRANSCRIPTION_2F.md#W2-12 第 599 行"
+      }
+    ],
+    "differentStalls": true
+  },
+  {
+    "name": "肉酱米线",
+    "records": [
+      {
+        "dishId": "c01_d481",
+        "stallId": "c01_t48",
+        "spec": "米线",
+        "price": 12,
+        "source": "TRANSCRIPTION_2F.md#W2-04 第 233 行"
+      },
+      {
+        "dishId": "c01_d262",
+        "stallId": "c01_t28",
+        "spec": "小碗",
+        "price": 11,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 373 行"
+      },
+      {
+        "dishId": "c01_d263",
+        "stallId": "c01_t28",
+        "spec": "大碗",
+        "price": 11.9,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 373 行"
+      }
+    ],
+    "differentStalls": true
+  },
+  {
+    "name": "油泼面",
+    "records": [
+      {
+        "dishId": "c01_d461",
+        "stallId": "c01_t49",
+        "spec": "",
+        "price": 10,
+        "source": "TRANSCRIPTION_2F.md#W2-05 第 328 行"
+      },
+      {
+        "dishId": "c01_d122",
+        "stallId": "c01_t16",
+        "spec": "",
+        "price": 7,
+        "source": "TRANSCRIPTION_2F.md#W2-11 第 508 行"
+      }
+    ],
+    "differentStalls": true
+  },
+  {
+    "name": "葱油拌面",
+    "records": [
+      {
+        "dishId": "c01_d462",
+        "stallId": "c01_t49",
+        "spec": "",
+        "price": 10,
+        "source": "TRANSCRIPTION_2F.md#W2-05 第 329 行"
+      },
+      {
+        "dishId": "c01_d248",
+        "stallId": "c01_t28",
+        "spec": "小碗",
+        "price": 9,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 366 行"
+      },
+      {
+        "dishId": "c01_d249",
+        "stallId": "c01_t28",
+        "spec": "大碗",
+        "price": 9.9,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 366 行"
+      }
+    ],
+    "differentStalls": true
+  },
+  {
+    "name": "招牌黑猪肉面",
+    "records": [
+      {
+        "dishId": "c01_d234",
+        "stallId": "c01_t28",
+        "spec": "小碗",
+        "price": 9,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 359 行"
+      },
+      {
+        "dishId": "c01_d235",
+        "stallId": "c01_t28",
+        "spec": "大碗",
+        "price": 9.9,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 359 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "香菇蔬菜面",
+    "records": [
+      {
+        "dishId": "c01_d236",
+        "stallId": "c01_t28",
+        "spec": "小碗",
+        "price": 9,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 360 行"
+      },
+      {
+        "dishId": "c01_d237",
+        "stallId": "c01_t28",
+        "spec": "大碗",
+        "price": 9.9,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 360 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "番茄鸡蛋面",
+    "records": [
+      {
+        "dishId": "c01_d238",
+        "stallId": "c01_t28",
+        "spec": "小碗",
+        "price": 9,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 361 行"
+      },
+      {
+        "dishId": "c01_d239",
+        "stallId": "c01_t28",
+        "spec": "大碗",
+        "price": 9.9,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 361 行"
+      },
+      {
+        "dishId": "c01_d433",
+        "stallId": "c01_t47",
+        "spec": "",
+        "price": 13,
+        "source": "TRANSCRIPTION_3F.md#W10 吴 第 396 行"
+      }
+    ],
+    "differentStalls": true
+  },
+  {
+    "name": "王中王肉酱面",
+    "records": [
+      {
+        "dishId": "c01_d240",
+        "stallId": "c01_t28",
+        "spec": "小碗",
+        "price": 10,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 362 行"
+      },
+      {
+        "dishId": "c01_d241",
+        "stallId": "c01_t28",
+        "spec": "大碗",
+        "price": 10.9,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 362 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "红烧牛肉面",
+    "records": [
+      {
+        "dishId": "c01_d242",
+        "stallId": "c01_t28",
+        "spec": "小碗",
+        "price": 12,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 363 行"
+      },
+      {
+        "dishId": "c01_d243",
+        "stallId": "c01_t28",
+        "spec": "大碗",
+        "price": 12.9,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 363 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "羊肉臊子面",
+    "records": [
+      {
+        "dishId": "c01_d244",
+        "stallId": "c01_t28",
+        "spec": "小碗",
+        "price": 12,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 364 行"
+      },
+      {
+        "dishId": "c01_d245",
+        "stallId": "c01_t28",
+        "spec": "大碗",
+        "price": 12.9,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 364 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "武汉热干面",
+    "records": [
+      {
+        "dishId": "c01_d246",
+        "stallId": "c01_t28",
+        "spec": "小碗",
+        "price": 8,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 365 行"
+      },
+      {
+        "dishId": "c01_d247",
+        "stallId": "c01_t28",
+        "spec": "大碗",
+        "price": 8.9,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 365 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "老北京炸酱面",
+    "records": [
+      {
+        "dishId": "c01_d250",
+        "stallId": "c01_t28",
+        "spec": "小碗",
+        "price": 10,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 367 行"
+      },
+      {
+        "dishId": "c01_d251",
+        "stallId": "c01_t28",
+        "spec": "大碗",
+        "price": 10.9,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 367 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "双椒拌面（辣度适中）",
+    "records": [
+      {
+        "dishId": "c01_d252",
+        "stallId": "c01_t28",
+        "spec": "小碗",
+        "price": 10,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 368 行"
+      },
+      {
+        "dishId": "c01_d253",
+        "stallId": "c01_t28",
+        "spec": "大碗",
+        "price": 10.9,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 368 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "油泼面（香而不辣）",
+    "records": [
+      {
+        "dishId": "c01_d254",
+        "stallId": "c01_t28",
+        "spec": "小碗",
+        "price": 10,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 369 行"
+      },
+      {
+        "dishId": "c01_d255",
+        "stallId": "c01_t28",
+        "spec": "大碗",
+        "price": 10.9,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 369 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "素椒炸酱面（微辣）",
+    "records": [
+      {
+        "dishId": "c01_d256",
+        "stallId": "c01_t28",
+        "spec": "小碗",
+        "price": 11,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 370 行"
+      },
+      {
+        "dishId": "c01_d257",
+        "stallId": "c01_t28",
+        "spec": "大碗",
+        "price": 11.9,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 370 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "南昌拌粉（剁椒）",
+    "records": [
+      {
+        "dishId": "c01_d258",
+        "stallId": "c01_t28",
+        "spec": "小碗",
+        "price": 8,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 371 行"
+      },
+      {
+        "dishId": "c01_d259",
+        "stallId": "c01_t28",
+        "spec": "大碗",
+        "price": 8.9,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 371 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "肉酱拌粉（不辣）",
+    "records": [
+      {
+        "dishId": "c01_d260",
+        "stallId": "c01_t28",
+        "spec": "小碗",
+        "price": 9,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 372 行"
+      },
+      {
+        "dishId": "c01_d261",
+        "stallId": "c01_t28",
+        "spec": "大碗",
+        "price": 9.9,
+        "source": "TRANSCRIPTION_2F.md#W2-07 第 372 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "大葱猪肉 / 玉米猪肉 / 白菜猪肉 / 荠菜猪肉 / 香菇猪肉 / 酸菜猪肉 / 韭菜猪肉 / 莲藕猪肉 / 香辣鱿鱼 / 香辣鸡肉",
+    "records": [
+      {
+        "dishId": "c01_d264",
+        "stallId": "c01_t32",
+        "spec": "小份",
+        "price": 11,
+        "source": "TRANSCRIPTION_2F.md#W2-09 第 438 行"
+      },
+      {
+        "dishId": "c01_d265",
+        "stallId": "c01_t32",
+        "spec": "大份",
+        "price": 14,
+        "source": "TRANSCRIPTION_2F.md#W2-09 第 438 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "芹菜猪肉",
+    "records": [
+      {
+        "dishId": "c01_d266",
+        "stallId": "c01_t32",
+        "spec": "小份",
+        "price": 12,
+        "source": "TRANSCRIPTION_2F.md#W2-09 第 439 行"
+      },
+      {
+        "dishId": "c01_d267",
+        "stallId": "c01_t32",
+        "spec": "大份",
+        "price": 16,
+        "source": "TRANSCRIPTION_2F.md#W2-09 第 439 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "西红柿鸡蛋 / 胡萝卜鸡蛋 / 荠菜鸡蛋 / 奥尔良鸡肉",
+    "records": [
+      {
+        "dishId": "c01_d268",
+        "stallId": "c01_t32",
+        "spec": "小份",
+        "price": 11,
+        "source": "TRANSCRIPTION_2F.md#W2-09 第 440 行"
+      },
+      {
+        "dishId": "c01_d269",
+        "stallId": "c01_t32",
+        "spec": "大份",
+        "price": 14,
+        "source": "TRANSCRIPTION_2F.md#W2-09 第 440 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "虾仁肉三鲜 / 虾仁素三鲜",
+    "records": [
+      {
+        "dishId": "c01_d270",
+        "stallId": "c01_t32",
+        "spec": "小份",
+        "price": 17,
+        "source": "TRANSCRIPTION_2F.md#W2-09 第 441 行"
+      },
+      {
+        "dishId": "c01_d271",
+        "stallId": "c01_t32",
+        "spec": "大份",
+        "price": 22,
+        "source": "TRANSCRIPTION_2F.md#W2-09 第 441 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "大葱牛肉 / 孜然羊肉 / 肉三鲜",
+    "records": [
+      {
+        "dishId": "c01_d272",
+        "stallId": "c01_t32",
+        "spec": "小份",
+        "price": 12,
+        "source": "TRANSCRIPTION_2F.md#W2-09 第 442 行"
+      },
+      {
+        "dishId": "c01_d273",
+        "stallId": "c01_t32",
+        "spec": "大份",
+        "price": 16,
+        "source": "TRANSCRIPTION_2F.md#W2-09 第 442 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "鲅鱼肉",
+    "records": [
+      {
+        "dishId": "c01_d274",
+        "stallId": "c01_t32",
+        "spec": "小份",
+        "price": 15,
+        "source": "TRANSCRIPTION_2F.md#W2-09 第 443 行"
+      },
+      {
+        "dishId": "c01_d275",
+        "stallId": "c01_t32",
+        "spec": "大份",
+        "price": 20,
+        "source": "TRANSCRIPTION_2F.md#W2-09 第 443 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "汤圆",
+    "records": [
+      {
+        "dishId": "c01_d276",
+        "stallId": "c01_t32",
+        "spec": "小份",
+        "price": 8,
+        "source": "TRANSCRIPTION_2F.md#W2-09 第 444 行"
+      },
+      {
+        "dishId": "c01_d277",
+        "stallId": "c01_t32",
+        "spec": "大份",
+        "price": 10,
+        "source": "TRANSCRIPTION_2F.md#W2-09 第 444 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "白菜猪肉 / 韭菜猪肉 / 莲藕猪肉 / 茴香猪肉",
+    "records": [
+      {
+        "dishId": "c01_d278",
+        "stallId": "c01_t32",
+        "spec": "小份",
+        "price": 13,
+        "source": "TRANSCRIPTION_2F.md#W2-09 第 450 行"
+      },
+      {
+        "dishId": "c01_d279",
+        "stallId": "c01_t32",
+        "spec": "大份",
+        "price": 16,
+        "source": "TRANSCRIPTION_2F.md#W2-09 第 450 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "素三鲜",
+    "records": [
+      {
+        "dishId": "c01_d280",
+        "stallId": "c01_t32",
+        "spec": "小份",
+        "price": 12,
+        "source": "TRANSCRIPTION_2F.md#W2-09 第 451 行"
+      },
+      {
+        "dishId": "c01_d281",
+        "stallId": "c01_t32",
+        "spec": "大份",
+        "price": 15,
+        "source": "TRANSCRIPTION_2F.md#W2-09 第 451 行"
+      }
+    ],
+    "differentStalls": false
+  },
+  {
+    "name": "贵妃荔枝鸡",
+    "records": [
+      {
+        "dishId": "c01_d195",
+        "stallId": "c01_t17",
+        "spec": "",
+        "price": 15.9,
+        "source": "TRANSCRIPTION_2F.md#W2-10 第 475 行"
+      },
+      {
+        "dishId": "c01_d363",
+        "stallId": "c01_t43",
+        "spec": "",
+        "price": 13,
+        "source": "TRANSCRIPTION_3F.md#W06 大 第 244 行"
+      }
+    ],
+    "differentStalls": true
+  },
+  {
+    "name": "酸菜肉丝面",
+    "records": [
+      {
+        "dishId": "c01_d131",
+        "stallId": "c01_t16",
+        "spec": "",
+        "price": 10,
+        "source": "TRANSCRIPTION_2F.md#W2-11 第 517 行"
+      },
+      {
+        "dishId": "c01_d377",
+        "stallId": "c01_t44",
+        "spec": "",
+        "price": 9,
+        "source": "TRANSCRIPTION_3F.md#W07 辣 第 271 行"
+      },
+      {
+        "dishId": "c01_d434",
+        "stallId": "c01_t47",
+        "spec": "",
+        "price": 12,
+        "source": "TRANSCRIPTION_3F.md#W10 吴 第 397 行"
+      }
+    ],
+    "differentStalls": true
+  },
+  {
+    "name": "煎蛋",
+    "records": [
+      {
+        "dishId": "c01_d328",
+        "stallId": "c01_t38",
+        "spec": "",
+        "price": 2,
+        "source": "TRANSCRIPTION_3F.md#W01 犟 第 80 行"
+      },
+      {
+        "dishId": "c01_d386",
+        "stallId": "c01_t44",
+        "spec": "",
+        "price": 2,
+        "source": "TRANSCRIPTION_3F.md#W07 辣 第 285 行"
+      }
+    ],
+    "differentStalls": true
+  },
+  {
+    "name": "烤肠",
+    "records": [
+      {
+        "dishId": "c01_d329",
+        "stallId": "c01_t38",
+        "spec": "",
+        "price": 2,
+        "source": "TRANSCRIPTION_3F.md#W01 犟 第 81 行"
+      },
+      {
+        "dishId": "c01_d387",
+        "stallId": "c01_t44",
+        "spec": "",
+        "price": 1.5,
+        "source": "TRANSCRIPTION_3F.md#W07 辣 第 286 行"
+      }
+    ],
+    "differentStalls": true
+  },
+  {
+    "name": "招牌肉夹馍",
+    "records": [
+      {
+        "dishId": "c01_d347",
+        "stallId": "c01_t42",
+        "spec": "1 个",
+        "price": 5,
+        "source": "TRANSCRIPTION_3F.md#W05 刘 第 210 行"
+      },
+      {
+        "dishId": "c01_d348",
+        "stallId": "c01_t42",
+        "spec": "2 个",
+        "price": 9,
+        "source": "TRANSCRIPTION_3F.md#W05 刘 第 210 行"
+      },
+      {
+        "dishId": "c01_d349",
+        "stallId": "c01_t42",
+        "spec": "3 个",
+        "price": 12,
+        "source": "TRANSCRIPTION_3F.md#W05 刘 第 210 行"
+      }
+    ],
+    "differentStalls": false
+  }
+]

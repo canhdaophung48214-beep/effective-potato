@@ -1,0 +1,25 @@
+PASS 113条候选字段、源行、照片哈希及价格直接对应
+PASS 382条旧记录唯一且全部有去向
+PASS 383源组唯一
+PASS 源组候选/选项/待核验互斥守恒
+PASS 双向追溯无遗漏
+PASS 明确规格12源行变20条，恢复8条大份
+PASS 既有39复用但不重复计入新增
+PASS NG01基础含蛋4元份
+PASS 五组加料不是五道菜且不编造组合规则
+PASS 价格待确认行不进入候选
+PASS W2-10价义拆分但证据链未全时继续隔离
+PASS 16档口保留对应、不擅自合并
+PASS 负向:改价
+PASS 负向:复制正式ID
+PASS 负向:开启报价
+PASS 负向:伪造日期
+PASS 负向:重复候选
+PASS 负向:错误源行
+PASS 原始材料快照逐字节一致
+PASS 正式项目全部文件哈希保持不变
+PASS R03已关闭交付未修改
+PASS Git前后状态、HEAD和暂存区一致
+git diff --check: 0  warning: in the working copy of 'project.config.json', CRLF will be replaced by LF the next time Git touches it
+
+RESULT: 22 PASS / 0 FAIL / 0 SKIP; exit=0

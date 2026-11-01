@@ -1,0 +1,2920 @@
+--- /dev/null
++++ R05/capture.js
+@@ -0,0 +1 @@
++const fs=require('fs'),path=require('path');const p=path.resolve('项目/tools/pilot/gen_records.js');const g=require(p);const text=fs.readFileSync('项目/tools/pilot/TRANSCRIPTION_DRAFT.md','utf8');fs.writeFileSync(path.join(__dirname,'parsed_source.json'),JSON.stringify(g.__test__.parseDoc(text,{file:'TRANSCRIPTION_DRAFT.md'}),null,2));console.log('existing parseDoc read-only capture exit=0');
+--- /dev/null
++++ R05/build_r05.py
+@@ -0,0 +1,60 @@
++import pathlib,json,csv,hashlib,shutil,subprocess,re,collections,datetime
++R=pathlib.Path.cwd();P=R/'项目';E=pathlib.Path(__file__).parent.resolve();B=R/'备份'/('R05_'+datetime.datetime.now().strftime('%Y%m%d_%H%M%S'));B.mkdir()
++def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
++def J(p):return json.loads(p.read_text(encoding='utf-8-sig'))
++def dump(n,v):(E/n).write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
++def read(p):
++ with p.open(encoding='utf-8-sig',newline='') as f:return list(csv.DictReader(f))
++def wc(n,rows):
++ with (E/n).open('w',encoding='utf-8-sig',newline='') as f:
++  w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows({k:json.dumps(v,ensure_ascii=False) if isinstance(v,(dict,list)) else v for k,v in x.items()} for x in rows)
++def git(*a):
++ r=subprocess.run(['git','-c','core.quotepath=false',*a],cwd=P,capture_output=True,text=True,encoding='utf8');assert r.returncode==0;return r.stdout
++state={k:git(*a) for k,a in {'head':['rev-parse','HEAD'],'branch':['branch','--show-current'],'staged':['diff','--cached','--name-status'],'status':['status','--porcelain=v1','-uall']}.items()};dump('git_before.json',state)
++project=[{'path':str(p),'bytes':p.stat().st_size,'sha256':sha(p)} for p in P.rglob('*') if p.is_file() and '.git' not in p.parts and 'node_modules' not in p.parts];dump('project_before.json',project)
++closed=[{'path':str(p),'sha256':sha(p)} for d in ['R03_3F_R2_20261101','R04_2F_20261101'] for p in (R/'报告'/d).rglob('*') if p.is_file()];dump('closed_batches_before.json',closed)
++inputs=[(P/'tools/pilot/TRANSCRIPTION_DRAFT.md','TRANSCRIPTION_DRAFT.md'),(P/'tools/pilot/batch1/dishes.csv','old_dishes.csv'),(P/'tools/pilot/batch1/stalls.csv','old_stalls.csv'),(P/'tools/pilot/batch1/shops.csv','old_shops.csv'),(P/'tools/pilot/batch1/待补照片清单.md','old_photo_status.md'),(P/'tools/pilot/batch1_min/dishes.csv','batch1_min_dishes.csv'),(P/'tools/pilot/batch1_min/shops.csv','batch1_min_shops.csv'),(P/'docs/decisions/C02_NAMESPACE_CONDITIONAL_APPROVAL_20261026.json','c02_conditional_approval.json')]
++manifest=[]
++for p,n in inputs:
++ q=E/'source_assets'/n;b=B/n;shutil.copyfile(p,q);shutil.copyfile(p,b);assert p.read_bytes()==q.read_bytes()==b.read_bytes();manifest.append({'original':str(p),'snapshot':str(q),'backup':str(b),'bytes':p.stat().st_size,'sha256':sha(p)})
++for i in range(1,4):
++ p=P/f'tools/pilot/batch1/img/c02_t0{i}_menu.jpg';q=E/'source_assets'/p.name;shutil.copyfile(p,q);assert p.read_bytes()==q.read_bytes();manifest.append({'original':str(p),'snapshot':str(q),'bytes':p.stat().st_size,'sha256':sha(p),'backup':'unmodified original retained; snapshot verified'})
++dump('backup_manifest.json',manifest);(B/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2),encoding='utf8')
++lines=(E/'source_assets/TRANSCRIPTION_DRAFT.md').read_text(encoding='utf-8-sig').splitlines();parsed=J(E/'parsed_source.json');old=[r for r in read(E/'source_assets/old_dishes.csv') if r['shop_id']=='c02'];assert len(old)==35
++stalls={r['stall_id']:r for r in read(E/'source_assets/old_stalls.csv') if r['shop_id']=='c02'}
++raw=[];C=[];U=[];O=[];ledger=[];relations=[]
++for t in parsed['tables']:
++ m=re.match(r'2\.([123]) 窗口',t['section'])
++ if not m or t['header'][0]!='菜名':continue
++ no=int(m[1]);stall=f'R05-SC2F-S{no:02d}';oldstall=f'c02_t0{no}'
++ for row in t['rows']:
++  cells=row['cells'];name=cells[0].replace('⚠','').strip();ln=row['line'];ref=f'R05-SC2F-L{ln:04d}';matches=[o for o in old if o['stall_id']==oldstall and o['dish_name']==name];assert len(matches)<=1
++  reasons=[]
++  if '⚠' in cells[0]:reasons.append('转录稿明确标注疑字或括号语义待确认')
++  if '小苏肉' in name:reasons.append('转录稿待确认清单第6项保留小苏/小酥字义疑问')
++  r={'sourceRecordRef':ref,'name':name,'sourceFile':'source_assets/TRANSCRIPTION_DRAFT.md','sourceLine':ln,'sourceQuote':lines[ln-1],'stallRef':stall,'kind':'dish','oldRecordKeys':[o['dish_id'] for o in matches]};raw.append(r)
++  if reasons:U.append({**r,'reasons':reasons,'classification':'BUSINESS_EVIDENCE_NEEDS_VERIFICATION','nextAction':'只核对疑字/括号，不推测；其他候选继续'})
++  else:
++   photo=E/'source_assets'/f'c02_t0{no}_menu.jpg'
++   C.append({**r,'candidateId':ref+'-V1','formalDishId':None,'amount':float(cells[1]),'rawPriceExpression':cells[1],'specification':None,'currency':'CNY','unitRaw':None,'foodType':cells[2],'tastes':[],'tastesEvidenceStatus':'UNKNOWN;旧choice或按菜名猜辣不继承','shopRef':'R05-SC_MODEL_ONLY','floorRef':'R05-SC2F_MODEL_ONLY','parentVerificationStatus':'OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED','photoEvidence':{'file':photo.relative_to(E).as_posix(),'sha256':sha(photo),'mappingSource':'source_assets/old_stalls.csv','oldStallRefForTrace':oldstall,'strength':'existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim'},'currentPriceValidity':'UNKNOWN','collector':None,'captureDate':None,'transactionQuoteAllowed':False,'admissionStatus':'ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED','businessDecisionRefs':['source_assets/c02_conditional_approval.json:scope candidate namespace only'],'composition':None})
++  if matches:ledger.append({'oldRecordKey':matches[0]['dish_id'],'oldStallId':oldstall,'oldName':matches[0]['dish_name'],'action':'PENDING' if reasons else 'RETAIN','newSourceRefs':[ref],'optionRefs':[],'candidateRefs':[ref+'-V1'] if not reasons else [],'reason':';'.join(reasons) if reasons else '原名原价源行一致；不继承旧正式ID'})
++  else:ledger.append({'oldRecordKey':'','oldStallId':oldstall,'oldName':name,'action':'NEW','newSourceRefs':[ref],'optionRefs':[],'candidateRefs':[],'reason':'源文存在但旧CSV未生成；疑字继续待核验'})
++# Auxiliary source rows: add-ons stay attached to stall, not fabricated to a specific dish.
++for no,pattern in [(1,'卤味（不录）：卤蛋 1 / 卤肉 6 / 狮子头 2'),(2,'加料（不录）：卤蛋 1 / 卤肠 1.5 / 煎蛋 2 / 辣椒 2 / 豆干 1.5')]:
++ ln=next(i+1 for i,l in enumerate(lines) if pattern in l);text=lines[ln-1].split('：',1)[1].split('。')[0]
++ for i,part in enumerate(text.split(' / '),1):
++  m=re.fullmatch(r'(.+?)\s+(\d+(?:\.\d+)?)',part.strip());assert m
++  ref=f'R05-SC2F-L{ln:04d}-O{i}';o={'optionRef':ref,'sourceRecordRef':ref,'name':m[1],'additionalPriceYuan':float(m[2]),'stallRef':f'R05-SC2F-S{no:02d}','baseCandidateRef':None,'associationScope':'stall_only_specific_base_unknown','independentDish':False,'selectionConstraints':None,'sourceFile':'source_assets/TRANSCRIPTION_DRAFT.md','sourceLine':ln,'sourceQuote':lines[ln-1]};O.append(o);raw.append({**o,'kind':'optional_surcharge','oldRecordKeys':[]});ledger.append({'oldRecordKey':'','oldStallId':f'c02_t0{no}','oldName':m[1],'action':'NEW','newSourceRefs':[],'optionRefs':[ref],'candidateRefs':[],'reason':'源文加料明确，关系独立计数不作菜品'})
++ln=next(i+1 for i,l in enumerate(lines) if l.startswith('套餐（不录）：西冷牛排套餐'))
++for i,part in enumerate(lines[ln-1].split('：',1)[1].split('（')[0].split(' / '),1):
++ m=re.fullmatch(r'(.+?)\s+(\d+(?:\.\d+)?)',part.strip());assert m;ref=f'R05-SC2F-L{ln:04d}-B{i}';r={'sourceRecordRef':ref,'name':m[1],'sourceFile':'source_assets/TRANSCRIPTION_DRAFT.md','sourceLine':ln,'sourceQuote':lines[ln-1],'stallRef':'R05-SC2F-S03','kind':'bundle','oldRecordKeys':[]};raw.append(r)
++ # Explicitly excluded by old source/contract; preserve evidence but do not auto-admit a bundle.
++ U.append({**r,'reasons':['原文明确套餐不录；当前批次无套餐准入授权，组合成分只保留原句'],'classification':'BUSINESS_EVIDENCE_TECHNICAL_ADMISSION_PENDING','nextAction':'复用组合关系做后续隔离适配；不生成正式菜品'})
++ relations.append({'bundleSourceRef':ref,'compositionSourceText':'含意面、煎蛋、西蓝花','componentCandidateRefs':None,'selectionRules':None,'sourceLine':ln})
++ ledger.append({'oldRecordKey':'','oldStallId':'c02_t03','oldName':m[1],'action':'NEW','newSourceRefs':[ref],'optionRefs':[],'candidateRefs':[],'reason':'套餐证据单列待适配，不作为普通菜导入'})
++assert len(raw)==47 and len(C)==30 and len(O)==8 and len(U)==9
++assert {r['oldRecordKey'] for r in ledger if r['oldRecordKey']}=={o['dish_id'] for o in old}
++dump('replacement_ledger.json',ledger);wc('replacement_ledger.csv',ledger);dump('candidates.json',C);dump('source_groups.json',raw);dump('optional_surcharges.json',O);dump('bundle_relations.json',relations);wc('unresolved.csv',U)
++cross=[{'stallRef':f'R05-SC2F-S{i:02d}','oldStallIdForTrace':f'c02_t0{i}','name':stalls[f'c02_t0{i}']['stall_name'],'photo':f'source_assets/c02_t0{i}_menu.jpg','parentLocation':'三餐二楼最西侧，负责人信息/非正式签发','formalStallIdAssigned':False} for i in range(1,4)];wc('stall_crosswalk.csv',cross)
++stats={'physicalSourceLines':len({r['sourceLine'] for r in raw}),'dishTableRows':36,'auxiliaryPhysicalLines':3,'sourceGroups':47,'dishSourceGroups':36,'optionSourceGroups':8,'bundleSourceGroups':3,'explicitSpecificationVariants':0,'candidateRecords':30,'candidateSourceGroups':30,'unresolvedSourceGroups':9,'oldRecords':35,'oldActionCounts':dict(collections.Counter(r['action'] for r in ledger if r['oldRecordKey'])),'newSourceGroups':12,'optionRelations':8,'formalIdsAssigned':0,'formalImports':0};dump('statistics.json',stats)
++print(json.dumps(stats,ensure_ascii=False,indent=2));print('build exit=0')
+--- /dev/null
++++ R05/test_r05.py
+@@ -0,0 +1,59 @@
++import pathlib,json,csv,hashlib,copy,subprocess,re,collections
++E=pathlib.Path(__file__).parent.resolve();R=E.parent.parent;P=R/'项目'
++def J(n):return json.loads((E/n).read_text(encoding='utf-8-sig'))
++def read(n):
++ with (E/n).open(encoding='utf-8-sig',newline='') as f:return list(csv.DictReader(f))
++def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
++C=J('candidates.json');G=J('source_groups.json');L=J('replacement_ledger.json');O=J('optional_surcharges.json');U=read('unresolved.csv');old={o['dish_id']:o for o in read('source_assets/old_dishes.csv') if o['shop_id']=='c02'};lines=(E/'source_assets/TRANSCRIPTION_DRAFT.md').read_text(encoding='utf-8-sig').splitlines();N=0
++
++def ok(x):assert x
++def test(name,f):
++ global N
++ f();N+=1;print('PASS '+name)
++def validate(cs,os):
++ assert len(cs)==30 and len({c['candidateId'] for c in cs})==30
++ assert len({(c['stallRef'],c['name'],c['specification']) for c in cs})==30
++ for c in cs:
++  assert c['sourceQuote']==lines[c['sourceLine']-1]
++  cells=[x.strip() for x in c['sourceQuote'].strip('|').split('|')]
++  assert c['name']==cells[0] and c['rawPriceExpression']==cells[1] and c['amount']==float(cells[1]) and c['foodType']==cells[2]
++  assert '⚠' not in cells[0] and '小苏肉' not in c['name']
++  assert c['formalDishId'] is None and c['captureDate'] is None and c['collector'] is None and c['unitRaw'] is None
++  assert c['currentPriceValidity']=='UNKNOWN' and c['transactionQuoteAllowed'] is False and c['tastes']==[]
++  assert c['specification'] is None and c['composition'] is None
++  assert sha(E/c['photoEvidence']['file'])==c['photoEvidence']['sha256']
++  assert len(c['oldRecordKeys'])==1
++  o=old[c['oldRecordKeys'][0]];assert o['dish_name']==c['name'] and float(o['price'])==c['amount']
++  st=next(x for x in read('source_assets/old_stalls.csv') if x['stall_id']==o['stall_id']);assert pathlib.Path(st['evidence_file']).name==pathlib.Path(c['photoEvidence']['file']).name
++ for o in os:
++  assert o['independentDish'] is False and o['selectionConstraints'] is None and o['baseCandidateRef'] is None
++  assert o['sourceQuote']==lines[o['sourceLine']-1]
++  assert re.search(re.escape(o['name'])+r'\s+'+re.escape(str(o['additionalPriceYuan']).removesuffix('.0'))+r'(?![\d.])',o['sourceQuote'])
++test('30候选逐项原名原价/源行/照片映射校验',lambda:validate(C,O))
++test('35旧记录责任唯一完整',lambda:ok(len([l for l in L if l['oldRecordKey']])==35 and {l['oldRecordKey'] for l in L if l['oldRecordKey']}==set(old)))
++test('47源组唯一',lambda:ok(len(G)==47 and len({g['sourceRecordRef'] for g in G})==47))
++test('39物理源行与47展开源组分别复算',lambda:ok(len({g['sourceLine'] for g in G})==39 and collections.Counter(g['kind'] for g in G)=={'dish':36,'optional_surcharge':8,'bundle':3}))
++test('台账须合并newSourceRefs和optionRefs才能完整覆盖',lambda:ok({r for l in L for r in l['newSourceRefs']+l['optionRefs']}=={g['sourceRecordRef'] for g in G} and len([r for l in L for r in l['newSourceRefs']+l['optionRefs']])==47))
++test('候选30+加料8+待核验9互斥守恒',lambda:ok(len(C)+len(O)+len(U)==47 and {c['sourceRecordRef'] for c in C}|{o['sourceRecordRef'] for o in O}|{u['sourceRecordRef'] for u in U}=={g['sourceRecordRef'] for g in G}))
++test('不把候选数冒充规格数：显式规格0',lambda:ok(all(c['specification'] is None for c in C) and J('statistics.json')['explicitSpecificationVariants']==0))
++test('旧5项疑问+新1疑问+3套餐留待核验',lambda:ok(len(U)==9 and sum(u['kind']=='dish' for u in U)==6 and sum(u['kind']=='bundle' for u in U)==3))
++test('双拼菜名不推导具体组成',lambda:ok(next(c for c in C if c['name']=='双拼炸酱面')['composition'] is None))
++test('加料8项独立关系、不变独立菜品',lambda:ok(len(O)==8 and not {o['optionRef'] for o in O}&{c['candidateId'] for c in C}))
++test('三套餐保留源成分文字但不强推组件ID',lambda:ok(len(J('bundle_relations.json'))==3 and all(r['componentCandidateRefs'] is None for r in J('bundle_relations.json'))))
++test('三档口独立无合并',lambda:ok(len(read('stall_crosswalk.csv'))==3 and len({c['stallRef'] for c in C})==3))
++for name,fn in [('改价',lambda cs,os:cs[0].update(amount=99)),('旧正式ID继承',lambda cs,os:cs[0].update(formalDishId=cs[0]['oldRecordKeys'][0])),('伪造采集日期',lambda cs,os:cs[0].update(captureDate='2026-11-01')),('伪造计价单位',lambda cs,os:cs[0].update(unitRaw='份')),('启用当前报价',lambda cs,os:cs[0].update(transactionQuoteAllowed=True)),('候选重复',lambda cs,os:cs.__setitem__(1,copy.deepcopy(cs[0]))),('照片映射错误',lambda cs,os:cs[0]['photoEvidence'].update(file='source_assets/c02_t02_menu.jpg')),('加料误作独立菜',lambda cs,os:os[0].update(independentDish=True)),('编造口味',lambda cs,os:cs[0].update(tastes=['light'])),('编造双拼组成',lambda cs,os:next(c for c in cs if c['name']=='双拼炸酱面').update(composition=['鸡蛋','肉酱']))]:
++ def neg(fn=fn):
++  cs=copy.deepcopy(C);os=copy.deepcopy(O);fn(cs,os)
++  try:validate(cs,os)
++  except AssertionError:return
++  raise AssertionError('负向数据未被发现')
++ test('负向:'+name,neg)
++test('所有快照及外部备份逐字节一致',lambda:ok(all(pathlib.Path(x['original']).read_bytes()==pathlib.Path(x['snapshot']).read_bytes() and (not x['backup'].startswith(str(R/'备份')) or pathlib.Path(x['backup']).read_bytes()==pathlib.Path(x['original']).read_bytes()) for x in J('backup_manifest.json'))))
++test('正式项目所有既有文件字节未变',lambda:ok(all(sha(x['path'])==x['sha256'] for x in J('project_before.json'))))
++test('R03/R04已关闭成果全部字节未变',lambda:ok(all(sha(x['path'])==x['sha256'] for x in J('closed_batches_before.json'))))
++after={}
++for k,a in {'head':['rev-parse','HEAD'],'branch':['branch','--show-current'],'staged':['diff','--cached','--name-status'],'status':['status','--porcelain=v1','-uall']}.items():
++ r=subprocess.run(['git','-c','core.quotepath=false',*a],cwd=P,capture_output=True,text=True,encoding='utf8');assert r.returncode==0;after[k]=r.stdout
++(E/'git_after.json').write_text(json.dumps(after,ensure_ascii=False,indent=2),encoding='utf8');test('Git HEAD/分支/暂存/工作区状态不变',lambda:ok(after==J('git_before.json')))
++r=subprocess.run(['git','diff','--check'],cwd=P,capture_output=True,text=True);print('COMMAND git diff --check EXIT',r.returncode);print(r.stdout+r.stderr);assert r.returncode==0
++print(f'RESULT {N} PASS / 0 FAIL / 0 SKIP; exit=0')
+--- /dev/null
++++ R05/replacement_ledger.csv
+@@ -0,0 +1,48 @@
++oldRecordKey,oldStallId,oldName,action,newSourceRefs,optionRefs,candidateRefs,reason
++c02_d040,c02_t01,特色羊杂面,RETAIN,"[""R05-SC2F-L0095""]",[],"[""R05-SC2F-L0095-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d041,c02_t01,辣肉汤面,RETAIN,"[""R05-SC2F-L0096""]",[],"[""R05-SC2F-L0096-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d042,c02_t01,小苏肉汤面,PENDING,"[""R05-SC2F-L0097""]",[],[],转录稿待确认清单第6项保留小苏/小酥字义疑问
++c02_d043,c02_t01,卤肉汤面,RETAIN,"[""R05-SC2F-L0098""]",[],"[""R05-SC2F-L0098-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d044,c02_t01,肉臊汤面,RETAIN,"[""R05-SC2F-L0099""]",[],"[""R05-SC2F-L0099-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d045,c02_t01,老坛酸菜汤面,RETAIN,"[""R05-SC2F-L0100""]",[],"[""R05-SC2F-L0100-V1""]",原名原价源行一致；不继承旧正式ID
++,c02_t01,豇豆肉碎面,NEW,"[""R05-SC2F-L0101""]",[],[],源文存在但旧CSV未生成；疑字继续待核验
++c02_d046,c02_t01,清汤面,RETAIN,"[""R05-SC2F-L0102""]",[],"[""R05-SC2F-L0102-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d047,c02_t01,辣肉拌面,RETAIN,"[""R05-SC2F-L0103""]",[],"[""R05-SC2F-L0103-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d048,c02_t01,小苏肉拌面,PENDING,"[""R05-SC2F-L0104""]",[],[],转录稿待确认清单第6项保留小苏/小酥字义疑问
++c02_d049,c02_t01,麻辣鸡丝拌面,RETAIN,"[""R05-SC2F-L0105""]",[],"[""R05-SC2F-L0105-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d050,c02_t01,肉臊拌面,RETAIN,"[""R05-SC2F-L0106""]",[],"[""R05-SC2F-L0106-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d051,c02_t01,豇豆拌面,RETAIN,"[""R05-SC2F-L0107""]",[],"[""R05-SC2F-L0107-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d052,c02_t01,老坛酸菜拌面,RETAIN,"[""R05-SC2F-L0108""]",[],"[""R05-SC2F-L0108-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d053,c02_t01,火腿拌面,RETAIN,"[""R05-SC2F-L0109""]",[],"[""R05-SC2F-L0109-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d054,c02_t01,麻辣拌面,RETAIN,"[""R05-SC2F-L0110""]",[],"[""R05-SC2F-L0110-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d055,c02_t01,麻汁拌面,RETAIN,"[""R05-SC2F-L0111""]",[],"[""R05-SC2F-L0111-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d056,c02_t01,招牌炸酱面,RETAIN,"[""R05-SC2F-L0112""]",[],"[""R05-SC2F-L0112-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d057,c02_t01,肉酱炸酱面,RETAIN,"[""R05-SC2F-L0113""]",[],"[""R05-SC2F-L0113-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d058,c02_t01,鸡蛋炸酱面,RETAIN,"[""R05-SC2F-L0114""]",[],"[""R05-SC2F-L0114-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d059,c02_t01,双拼炸酱面,RETAIN,"[""R05-SC2F-L0115""]",[],"[""R05-SC2F-L0115-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d060,c02_t02,重庆小面（素）,RETAIN,"[""R05-SC2F-L0123""]",[],"[""R05-SC2F-L0123-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d061,c02_t02,杂酱面（素）,RETAIN,"[""R05-SC2F-L0124""]",[],"[""R05-SC2F-L0124-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d062,c02_t02,招牌豌杂面（素）,RETAIN,"[""R05-SC2F-L0125""]",[],"[""R05-SC2F-L0125-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d063,c02_t02,酸菜面（素）,RETAIN,"[""R05-SC2F-L0126""]",[],"[""R05-SC2F-L0126-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d064,c02_t02,牛肉面（荤）,RETAIN,"[""R05-SC2F-L0127""]",[],"[""R05-SC2F-L0127-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d065,c02_t02,干拌小面（素）,RETAIN,"[""R05-SC2F-L0128""]",[],"[""R05-SC2F-L0128-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d066,c02_t02,干拌杂酱面（素）,RETAIN,"[""R05-SC2F-L0129""]",[],"[""R05-SC2F-L0129-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d067,c02_t02,干拌豌杂面（素）,RETAIN,"[""R05-SC2F-L0130""]",[],"[""R05-SC2F-L0130-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d068,c02_t02,清汤小面,PENDING,"[""R05-SC2F-L0131""]",[],[],转录稿明确标注疑字或括号语义待确认
++c02_d069,c02_t02,清汤杂酱面,PENDING,"[""R05-SC2F-L0132""]",[],[],转录稿明确标注疑字或括号语义待确认
++c02_d070,c02_t02,清汤豌杂面,PENDING,"[""R05-SC2F-L0133""]",[],[],转录稿明确标注疑字或括号语义待确认
++c02_d071,c02_t02,麻酱凉面,RETAIN,"[""R05-SC2F-L0134""]",[],"[""R05-SC2F-L0134-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d072,c02_t03,德式烤肠意大利面,RETAIN,"[""R05-SC2F-L0143""]",[],"[""R05-SC2F-L0143-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d073,c02_t03,培根意大利面,RETAIN,"[""R05-SC2F-L0144""]",[],"[""R05-SC2F-L0144-V1""]",原名原价源行一致；不继承旧正式ID
++c02_d074,c02_t03,虾仁意大利面,RETAIN,"[""R05-SC2F-L0145""]",[],"[""R05-SC2F-L0145-V1""]",原名原价源行一致；不继承旧正式ID
++,c02_t01,卤蛋,NEW,[],"[""R05-SC2F-L0117-O1""]",[],源文加料明确，关系独立计数不作菜品
++,c02_t01,卤肉,NEW,[],"[""R05-SC2F-L0117-O2""]",[],源文加料明确，关系独立计数不作菜品
++,c02_t01,狮子头,NEW,[],"[""R05-SC2F-L0117-O3""]",[],源文加料明确，关系独立计数不作菜品
++,c02_t02,卤蛋,NEW,[],"[""R05-SC2F-L0136-O1""]",[],源文加料明确，关系独立计数不作菜品
++,c02_t02,卤肠,NEW,[],"[""R05-SC2F-L0136-O2""]",[],源文加料明确，关系独立计数不作菜品
++,c02_t02,煎蛋,NEW,[],"[""R05-SC2F-L0136-O3""]",[],源文加料明确，关系独立计数不作菜品
++,c02_t02,辣椒,NEW,[],"[""R05-SC2F-L0136-O4""]",[],源文加料明确，关系独立计数不作菜品
++,c02_t02,豆干,NEW,[],"[""R05-SC2F-L0136-O5""]",[],源文加料明确，关系独立计数不作菜品
++,c02_t03,西冷牛排套餐,NEW,"[""R05-SC2F-L0147-B1""]",[],[],套餐证据单列待适配，不作为普通菜导入
++,c02_t03,黑椒牛排套餐,NEW,"[""R05-SC2F-L0147-B2""]",[],[],套餐证据单列待适配，不作为普通菜导入
++,c02_t03,鸡排套餐,NEW,"[""R05-SC2F-L0147-B3""]",[],[],套餐证据单列待适配，不作为普通菜导入
+--- /dev/null
++++ R05/replacement_ledger.json
+@@ -0,0 +1,626 @@
++[
++  {
++    "oldRecordKey": "c02_d040",
++    "oldStallId": "c02_t01",
++    "oldName": "特色羊杂面",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0095"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0095-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d041",
++    "oldStallId": "c02_t01",
++    "oldName": "辣肉汤面",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0096"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0096-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d042",
++    "oldStallId": "c02_t01",
++    "oldName": "小苏肉汤面",
++    "action": "PENDING",
++    "newSourceRefs": [
++      "R05-SC2F-L0097"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [],
++    "reason": "转录稿待确认清单第6项保留小苏/小酥字义疑问"
++  },
++  {
++    "oldRecordKey": "c02_d043",
++    "oldStallId": "c02_t01",
++    "oldName": "卤肉汤面",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0098"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0098-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d044",
++    "oldStallId": "c02_t01",
++    "oldName": "肉臊汤面",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0099"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0099-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d045",
++    "oldStallId": "c02_t01",
++    "oldName": "老坛酸菜汤面",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0100"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0100-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "",
++    "oldStallId": "c02_t01",
++    "oldName": "豇豆肉碎面",
++    "action": "NEW",
++    "newSourceRefs": [
++      "R05-SC2F-L0101"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [],
++    "reason": "源文存在但旧CSV未生成；疑字继续待核验"
++  },
++  {
++    "oldRecordKey": "c02_d046",
++    "oldStallId": "c02_t01",
++    "oldName": "清汤面",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0102"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0102-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d047",
++    "oldStallId": "c02_t01",
++    "oldName": "辣肉拌面",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0103"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0103-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d048",
++    "oldStallId": "c02_t01",
++    "oldName": "小苏肉拌面",
++    "action": "PENDING",
++    "newSourceRefs": [
++      "R05-SC2F-L0104"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [],
++    "reason": "转录稿待确认清单第6项保留小苏/小酥字义疑问"
++  },
++  {
++    "oldRecordKey": "c02_d049",
++    "oldStallId": "c02_t01",
++    "oldName": "麻辣鸡丝拌面",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0105"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0105-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d050",
++    "oldStallId": "c02_t01",
++    "oldName": "肉臊拌面",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0106"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0106-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d051",
++    "oldStallId": "c02_t01",
++    "oldName": "豇豆拌面",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0107"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0107-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d052",
++    "oldStallId": "c02_t01",
++    "oldName": "老坛酸菜拌面",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0108"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0108-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d053",
++    "oldStallId": "c02_t01",
++    "oldName": "火腿拌面",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0109"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0109-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d054",
++    "oldStallId": "c02_t01",
++    "oldName": "麻辣拌面",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0110"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0110-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d055",
++    "oldStallId": "c02_t01",
++    "oldName": "麻汁拌面",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0111"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0111-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d056",
++    "oldStallId": "c02_t01",
++    "oldName": "招牌炸酱面",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0112"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0112-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d057",
++    "oldStallId": "c02_t01",
++    "oldName": "肉酱炸酱面",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0113"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0113-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d058",
++    "oldStallId": "c02_t01",
++    "oldName": "鸡蛋炸酱面",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0114"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0114-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d059",
++    "oldStallId": "c02_t01",
++    "oldName": "双拼炸酱面",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0115"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0115-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d060",
++    "oldStallId": "c02_t02",
++    "oldName": "重庆小面（素）",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0123"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0123-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d061",
++    "oldStallId": "c02_t02",
++    "oldName": "杂酱面（素）",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0124"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0124-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d062",
++    "oldStallId": "c02_t02",
++    "oldName": "招牌豌杂面（素）",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0125"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0125-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d063",
++    "oldStallId": "c02_t02",
++    "oldName": "酸菜面（素）",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0126"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0126-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d064",
++    "oldStallId": "c02_t02",
++    "oldName": "牛肉面（荤）",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0127"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0127-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d065",
++    "oldStallId": "c02_t02",
++    "oldName": "干拌小面（素）",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0128"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0128-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d066",
++    "oldStallId": "c02_t02",
++    "oldName": "干拌杂酱面（素）",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0129"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0129-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d067",
++    "oldStallId": "c02_t02",
++    "oldName": "干拌豌杂面（素）",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0130"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0130-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d068",
++    "oldStallId": "c02_t02",
++    "oldName": "清汤小面",
++    "action": "PENDING",
++    "newSourceRefs": [
++      "R05-SC2F-L0131"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [],
++    "reason": "转录稿明确标注疑字或括号语义待确认"
++  },
++  {
++    "oldRecordKey": "c02_d069",
++    "oldStallId": "c02_t02",
++    "oldName": "清汤杂酱面",
++    "action": "PENDING",
++    "newSourceRefs": [
++      "R05-SC2F-L0132"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [],
++    "reason": "转录稿明确标注疑字或括号语义待确认"
++  },
++  {
++    "oldRecordKey": "c02_d070",
++    "oldStallId": "c02_t02",
++    "oldName": "清汤豌杂面",
++    "action": "PENDING",
++    "newSourceRefs": [
++      "R05-SC2F-L0133"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [],
++    "reason": "转录稿明确标注疑字或括号语义待确认"
++  },
++  {
++    "oldRecordKey": "c02_d071",
++    "oldStallId": "c02_t02",
++    "oldName": "麻酱凉面",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0134"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0134-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d072",
++    "oldStallId": "c02_t03",
++    "oldName": "德式烤肠意大利面",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0143"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0143-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d073",
++    "oldStallId": "c02_t03",
++    "oldName": "培根意大利面",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0144"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0144-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "c02_d074",
++    "oldStallId": "c02_t03",
++    "oldName": "虾仁意大利面",
++    "action": "RETAIN",
++    "newSourceRefs": [
++      "R05-SC2F-L0145"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [
++      "R05-SC2F-L0145-V1"
++    ],
++    "reason": "原名原价源行一致；不继承旧正式ID"
++  },
++  {
++    "oldRecordKey": "",
++    "oldStallId": "c02_t01",
++    "oldName": "卤蛋",
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R05-SC2F-L0117-O1"
++    ],
++    "candidateRefs": [],
++    "reason": "源文加料明确，关系独立计数不作菜品"
++  },
++  {
++    "oldRecordKey": "",
++    "oldStallId": "c02_t01",
++    "oldName": "卤肉",
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R05-SC2F-L0117-O2"
++    ],
++    "candidateRefs": [],
++    "reason": "源文加料明确，关系独立计数不作菜品"
++  },
++  {
++    "oldRecordKey": "",
++    "oldStallId": "c02_t01",
++    "oldName": "狮子头",
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R05-SC2F-L0117-O3"
++    ],
++    "candidateRefs": [],
++    "reason": "源文加料明确，关系独立计数不作菜品"
++  },
++  {
++    "oldRecordKey": "",
++    "oldStallId": "c02_t02",
++    "oldName": "卤蛋",
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R05-SC2F-L0136-O1"
++    ],
++    "candidateRefs": [],
++    "reason": "源文加料明确，关系独立计数不作菜品"
++  },
++  {
++    "oldRecordKey": "",
++    "oldStallId": "c02_t02",
++    "oldName": "卤肠",
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R05-SC2F-L0136-O2"
++    ],
++    "candidateRefs": [],
++    "reason": "源文加料明确，关系独立计数不作菜品"
++  },
++  {
++    "oldRecordKey": "",
++    "oldStallId": "c02_t02",
++    "oldName": "煎蛋",
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R05-SC2F-L0136-O3"
++    ],
++    "candidateRefs": [],
++    "reason": "源文加料明确，关系独立计数不作菜品"
++  },
++  {
++    "oldRecordKey": "",
++    "oldStallId": "c02_t02",
++    "oldName": "辣椒",
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R05-SC2F-L0136-O4"
++    ],
++    "candidateRefs": [],
++    "reason": "源文加料明确，关系独立计数不作菜品"
++  },
++  {
++    "oldRecordKey": "",
++    "oldStallId": "c02_t02",
++    "oldName": "豆干",
++    "action": "NEW",
++    "newSourceRefs": [],
++    "optionRefs": [
++      "R05-SC2F-L0136-O5"
++    ],
++    "candidateRefs": [],
++    "reason": "源文加料明确，关系独立计数不作菜品"
++  },
++  {
++    "oldRecordKey": "",
++    "oldStallId": "c02_t03",
++    "oldName": "西冷牛排套餐",
++    "action": "NEW",
++    "newSourceRefs": [
++      "R05-SC2F-L0147-B1"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [],
++    "reason": "套餐证据单列待适配，不作为普通菜导入"
++  },
++  {
++    "oldRecordKey": "",
++    "oldStallId": "c02_t03",
++    "oldName": "黑椒牛排套餐",
++    "action": "NEW",
++    "newSourceRefs": [
++      "R05-SC2F-L0147-B2"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [],
++    "reason": "套餐证据单列待适配，不作为普通菜导入"
++  },
++  {
++    "oldRecordKey": "",
++    "oldStallId": "c02_t03",
++    "oldName": "鸡排套餐",
++    "action": "NEW",
++    "newSourceRefs": [
++      "R05-SC2F-L0147-B3"
++    ],
++    "optionRefs": [],
++    "candidateRefs": [],
++    "reason": "套餐证据单列待适配，不作为普通菜导入"
++  }
++]
+--- /dev/null
++++ R05/candidates.json
+@@ -0,0 +1,1232 @@
++[
++  {
++    "sourceRecordRef": "R05-SC2F-L0095",
++    "name": "特色羊杂面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 95,
++    "sourceQuote": "| 特色羊杂面 | 11 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d040"
++    ],
++    "candidateId": "R05-SC2F-L0095-V1",
++    "formalDishId": null,
++    "amount": 11.0,
++    "rawPriceExpression": "11",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t01_menu.jpg",
++      "sha256": "f6c6fe120f2325641802d329ea54be67ccaa863a0e396bca5cb093785f1bcf5e",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t01",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0096",
++    "name": "辣肉汤面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 96,
++    "sourceQuote": "| 辣肉汤面 | 11 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d041"
++    ],
++    "candidateId": "R05-SC2F-L0096-V1",
++    "formalDishId": null,
++    "amount": 11.0,
++    "rawPriceExpression": "11",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t01_menu.jpg",
++      "sha256": "f6c6fe120f2325641802d329ea54be67ccaa863a0e396bca5cb093785f1bcf5e",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t01",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0098",
++    "name": "卤肉汤面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 98,
++    "sourceQuote": "| 卤肉汤面 | 11 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d043"
++    ],
++    "candidateId": "R05-SC2F-L0098-V1",
++    "formalDishId": null,
++    "amount": 11.0,
++    "rawPriceExpression": "11",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t01_menu.jpg",
++      "sha256": "f6c6fe120f2325641802d329ea54be67ccaa863a0e396bca5cb093785f1bcf5e",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t01",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0099",
++    "name": "肉臊汤面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 99,
++    "sourceQuote": "| 肉臊汤面 | 10 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d044"
++    ],
++    "candidateId": "R05-SC2F-L0099-V1",
++    "formalDishId": null,
++    "amount": 10.0,
++    "rawPriceExpression": "10",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t01_menu.jpg",
++      "sha256": "f6c6fe120f2325641802d329ea54be67ccaa863a0e396bca5cb093785f1bcf5e",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t01",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0100",
++    "name": "老坛酸菜汤面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 100,
++    "sourceQuote": "| 老坛酸菜汤面 | 9 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d045"
++    ],
++    "candidateId": "R05-SC2F-L0100-V1",
++    "formalDishId": null,
++    "amount": 9.0,
++    "rawPriceExpression": "9",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t01_menu.jpg",
++      "sha256": "f6c6fe120f2325641802d329ea54be67ccaa863a0e396bca5cb093785f1bcf5e",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t01",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0102",
++    "name": "清汤面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 102,
++    "sourceQuote": "| 清汤面 | 7 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d046"
++    ],
++    "candidateId": "R05-SC2F-L0102-V1",
++    "formalDishId": null,
++    "amount": 7.0,
++    "rawPriceExpression": "7",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t01_menu.jpg",
++      "sha256": "f6c6fe120f2325641802d329ea54be67ccaa863a0e396bca5cb093785f1bcf5e",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t01",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0103",
++    "name": "辣肉拌面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 103,
++    "sourceQuote": "| 辣肉拌面 | 11 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d047"
++    ],
++    "candidateId": "R05-SC2F-L0103-V1",
++    "formalDishId": null,
++    "amount": 11.0,
++    "rawPriceExpression": "11",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t01_menu.jpg",
++      "sha256": "f6c6fe120f2325641802d329ea54be67ccaa863a0e396bca5cb093785f1bcf5e",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t01",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0105",
++    "name": "麻辣鸡丝拌面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 105,
++    "sourceQuote": "| 麻辣鸡丝拌面 | 11 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d049"
++    ],
++    "candidateId": "R05-SC2F-L0105-V1",
++    "formalDishId": null,
++    "amount": 11.0,
++    "rawPriceExpression": "11",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t01_menu.jpg",
++      "sha256": "f6c6fe120f2325641802d329ea54be67ccaa863a0e396bca5cb093785f1bcf5e",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t01",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0106",
++    "name": "肉臊拌面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 106,
++    "sourceQuote": "| 肉臊拌面 | 10 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d050"
++    ],
++    "candidateId": "R05-SC2F-L0106-V1",
++    "formalDishId": null,
++    "amount": 10.0,
++    "rawPriceExpression": "10",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t01_menu.jpg",
++      "sha256": "f6c6fe120f2325641802d329ea54be67ccaa863a0e396bca5cb093785f1bcf5e",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t01",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0107",
++    "name": "豇豆拌面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 107,
++    "sourceQuote": "| 豇豆拌面 | 9 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d051"
++    ],
++    "candidateId": "R05-SC2F-L0107-V1",
++    "formalDishId": null,
++    "amount": 9.0,
++    "rawPriceExpression": "9",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t01_menu.jpg",
++      "sha256": "f6c6fe120f2325641802d329ea54be67ccaa863a0e396bca5cb093785f1bcf5e",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t01",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0108",
++    "name": "老坛酸菜拌面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 108,
++    "sourceQuote": "| 老坛酸菜拌面 | 9 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d052"
++    ],
++    "candidateId": "R05-SC2F-L0108-V1",
++    "formalDishId": null,
++    "amount": 9.0,
++    "rawPriceExpression": "9",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t01_menu.jpg",
++      "sha256": "f6c6fe120f2325641802d329ea54be67ccaa863a0e396bca5cb093785f1bcf5e",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t01",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0109",
++    "name": "火腿拌面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 109,
++    "sourceQuote": "| 火腿拌面 | 9 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d053"
++    ],
++    "candidateId": "R05-SC2F-L0109-V1",
++    "formalDishId": null,
++    "amount": 9.0,
++    "rawPriceExpression": "9",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t01_menu.jpg",
++      "sha256": "f6c6fe120f2325641802d329ea54be67ccaa863a0e396bca5cb093785f1bcf5e",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t01",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0110",
++    "name": "麻辣拌面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 110,
++    "sourceQuote": "| 麻辣拌面 | 7 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d054"
++    ],
++    "candidateId": "R05-SC2F-L0110-V1",
++    "formalDishId": null,
++    "amount": 7.0,
++    "rawPriceExpression": "7",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t01_menu.jpg",
++      "sha256": "f6c6fe120f2325641802d329ea54be67ccaa863a0e396bca5cb093785f1bcf5e",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t01",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0111",
++    "name": "麻汁拌面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 111,
++    "sourceQuote": "| 麻汁拌面 | 7 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d055"
++    ],
++    "candidateId": "R05-SC2F-L0111-V1",
++    "formalDishId": null,
++    "amount": 7.0,
++    "rawPriceExpression": "7",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t01_menu.jpg",
++      "sha256": "f6c6fe120f2325641802d329ea54be67ccaa863a0e396bca5cb093785f1bcf5e",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t01",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0112",
++    "name": "招牌炸酱面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 112,
++    "sourceQuote": "| 招牌炸酱面 | 10 | noodle | 炸酱 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d056"
++    ],
++    "candidateId": "R05-SC2F-L0112-V1",
++    "formalDishId": null,
++    "amount": 10.0,
++    "rawPriceExpression": "10",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t01_menu.jpg",
++      "sha256": "f6c6fe120f2325641802d329ea54be67ccaa863a0e396bca5cb093785f1bcf5e",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t01",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0113",
++    "name": "肉酱炸酱面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 113,
++    "sourceQuote": "| 肉酱炸酱面 | 10 | noodle | 炸酱 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d057"
++    ],
++    "candidateId": "R05-SC2F-L0113-V1",
++    "formalDishId": null,
++    "amount": 10.0,
++    "rawPriceExpression": "10",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t01_menu.jpg",
++      "sha256": "f6c6fe120f2325641802d329ea54be67ccaa863a0e396bca5cb093785f1bcf5e",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t01",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0114",
++    "name": "鸡蛋炸酱面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 114,
++    "sourceQuote": "| 鸡蛋炸酱面 | 9 | noodle | 炸酱 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d058"
++    ],
++    "candidateId": "R05-SC2F-L0114-V1",
++    "formalDishId": null,
++    "amount": 9.0,
++    "rawPriceExpression": "9",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t01_menu.jpg",
++      "sha256": "f6c6fe120f2325641802d329ea54be67ccaa863a0e396bca5cb093785f1bcf5e",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t01",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0115",
++    "name": "双拼炸酱面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 115,
++    "sourceQuote": "| 双拼炸酱面 | 10 | noodle | 炸酱 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d059"
++    ],
++    "candidateId": "R05-SC2F-L0115-V1",
++    "formalDishId": null,
++    "amount": 10.0,
++    "rawPriceExpression": "10",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t01_menu.jpg",
++      "sha256": "f6c6fe120f2325641802d329ea54be67ccaa863a0e396bca5cb093785f1bcf5e",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t01",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0123",
++    "name": "重庆小面（素）",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 123,
++    "sourceQuote": "| 重庆小面（素） | 7 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S02",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d060"
++    ],
++    "candidateId": "R05-SC2F-L0123-V1",
++    "formalDishId": null,
++    "amount": 7.0,
++    "rawPriceExpression": "7",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t02_menu.jpg",
++      "sha256": "7e603d57d3d65432fabb38ee69cd30bee7a5987141d2e0962cf02f91e87a1ec0",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t02",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0124",
++    "name": "杂酱面（素）",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 124,
++    "sourceQuote": "| 杂酱面（素） | 9 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S02",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d061"
++    ],
++    "candidateId": "R05-SC2F-L0124-V1",
++    "formalDishId": null,
++    "amount": 9.0,
++    "rawPriceExpression": "9",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t02_menu.jpg",
++      "sha256": "7e603d57d3d65432fabb38ee69cd30bee7a5987141d2e0962cf02f91e87a1ec0",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t02",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0125",
++    "name": "招牌豌杂面（素）",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 125,
++    "sourceQuote": "| 招牌豌杂面（素） | 11 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S02",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d062"
++    ],
++    "candidateId": "R05-SC2F-L0125-V1",
++    "formalDishId": null,
++    "amount": 11.0,
++    "rawPriceExpression": "11",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t02_menu.jpg",
++      "sha256": "7e603d57d3d65432fabb38ee69cd30bee7a5987141d2e0962cf02f91e87a1ec0",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t02",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0126",
++    "name": "酸菜面（素）",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 126,
++    "sourceQuote": "| 酸菜面（素） | 8 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S02",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d063"
++    ],
++    "candidateId": "R05-SC2F-L0126-V1",
++    "formalDishId": null,
++    "amount": 8.0,
++    "rawPriceExpression": "8",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t02_menu.jpg",
++      "sha256": "7e603d57d3d65432fabb38ee69cd30bee7a5987141d2e0962cf02f91e87a1ec0",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t02",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0127",
++    "name": "牛肉面（荤）",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 127,
++    "sourceQuote": "| 牛肉面（荤） | 15 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S02",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d064"
++    ],
++    "candidateId": "R05-SC2F-L0127-V1",
++    "formalDishId": null,
++    "amount": 15.0,
++    "rawPriceExpression": "15",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t02_menu.jpg",
++      "sha256": "7e603d57d3d65432fabb38ee69cd30bee7a5987141d2e0962cf02f91e87a1ec0",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t02",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0128",
++    "name": "干拌小面（素）",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 128,
++    "sourceQuote": "| 干拌小面（素） | 7 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S02",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d065"
++    ],
++    "candidateId": "R05-SC2F-L0128-V1",
++    "formalDishId": null,
++    "amount": 7.0,
++    "rawPriceExpression": "7",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t02_menu.jpg",
++      "sha256": "7e603d57d3d65432fabb38ee69cd30bee7a5987141d2e0962cf02f91e87a1ec0",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t02",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0129",
++    "name": "干拌杂酱面（素）",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 129,
++    "sourceQuote": "| 干拌杂酱面（素） | 9 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S02",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d066"
++    ],
++    "candidateId": "R05-SC2F-L0129-V1",
++    "formalDishId": null,
++    "amount": 9.0,
++    "rawPriceExpression": "9",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t02_menu.jpg",
++      "sha256": "7e603d57d3d65432fabb38ee69cd30bee7a5987141d2e0962cf02f91e87a1ec0",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t02",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0130",
++    "name": "干拌豌杂面（素）",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 130,
++    "sourceQuote": "| 干拌豌杂面（素） | 11 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S02",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d067"
++    ],
++    "candidateId": "R05-SC2F-L0130-V1",
++    "formalDishId": null,
++    "amount": 11.0,
++    "rawPriceExpression": "11",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t02_menu.jpg",
++      "sha256": "7e603d57d3d65432fabb38ee69cd30bee7a5987141d2e0962cf02f91e87a1ec0",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t02",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0134",
++    "name": "麻酱凉面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 134,
++    "sourceQuote": "| 麻酱凉面 | 8 | noodle | 小吃 |",
++    "stallRef": "R05-SC2F-S02",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d071"
++    ],
++    "candidateId": "R05-SC2F-L0134-V1",
++    "formalDishId": null,
++    "amount": 8.0,
++    "rawPriceExpression": "8",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t02_menu.jpg",
++      "sha256": "7e603d57d3d65432fabb38ee69cd30bee7a5987141d2e0962cf02f91e87a1ec0",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t02",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0143",
++    "name": "德式烤肠意大利面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 143,
++    "sourceQuote": "| 德式烤肠意大利面 | 9.9 | noodle |",
++    "stallRef": "R05-SC2F-S03",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d072"
++    ],
++    "candidateId": "R05-SC2F-L0143-V1",
++    "formalDishId": null,
++    "amount": 9.9,
++    "rawPriceExpression": "9.9",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t03_menu.jpg",
++      "sha256": "ef91e37fdb3c2a92d042ea6adadbd9faae37dfb4c27aeb5324806e0c424b6f15",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t03",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0144",
++    "name": "培根意大利面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 144,
++    "sourceQuote": "| 培根意大利面 | 9.9 | noodle |",
++    "stallRef": "R05-SC2F-S03",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d073"
++    ],
++    "candidateId": "R05-SC2F-L0144-V1",
++    "formalDishId": null,
++    "amount": 9.9,
++    "rawPriceExpression": "9.9",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t03_menu.jpg",
++      "sha256": "ef91e37fdb3c2a92d042ea6adadbd9faae37dfb4c27aeb5324806e0c424b6f15",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t03",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0145",
++    "name": "虾仁意大利面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 145,
++    "sourceQuote": "| 虾仁意大利面 | 9.9 | noodle |",
++    "stallRef": "R05-SC2F-S03",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d074"
++    ],
++    "candidateId": "R05-SC2F-L0145-V1",
++    "formalDishId": null,
++    "amount": 9.9,
++    "rawPriceExpression": "9.9",
++    "specification": null,
++    "currency": "CNY",
++    "unitRaw": null,
++    "foodType": "noodle",
++    "tastes": [],
++    "tastesEvidenceStatus": "UNKNOWN;旧choice或按菜名猜辣不继承",
++    "shopRef": "R05-SC_MODEL_ONLY",
++    "floorRef": "R05-SC2F_MODEL_ONLY",
++    "parentVerificationStatus": "OWNER_REPORTED_LOCATION_NOT_FORMALLY_SIGNED",
++    "photoEvidence": {
++      "file": "source_assets/c02_t03_menu.jpg",
++      "sha256": "ef91e37fdb3c2a92d042ea6adadbd9faae37dfb4c27aeb5324806e0c424b6f15",
++      "mappingSource": "source_assets/old_stalls.csv",
++      "oldStallRefForTrace": "c02_t03",
++      "strength": "existing explicit batch mapping; archive PHOTO_MANIFEST sample mapping unresolved; no fresh visual claim"
++    },
++    "currentPriceValidity": "UNKNOWN",
++    "collector": null,
++    "captureDate": null,
++    "transactionQuoteAllowed": false,
++    "admissionStatus": "ISOLATED_HISTORY_ONLY_NOT_FORMALLY_AUTHORIZED",
++    "businessDecisionRefs": [
++      "source_assets/c02_conditional_approval.json:scope candidate namespace only"
++    ],
++    "composition": null
++  }
++]
+--- /dev/null
++++ R05/source_groups.json
+@@ -0,0 +1,590 @@
++[
++  {
++    "sourceRecordRef": "R05-SC2F-L0095",
++    "name": "特色羊杂面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 95,
++    "sourceQuote": "| 特色羊杂面 | 11 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d040"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0096",
++    "name": "辣肉汤面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 96,
++    "sourceQuote": "| 辣肉汤面 | 11 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d041"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0097",
++    "name": "小苏肉汤面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 97,
++    "sourceQuote": "| 小苏肉汤面 | 11 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d042"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0098",
++    "name": "卤肉汤面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 98,
++    "sourceQuote": "| 卤肉汤面 | 11 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d043"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0099",
++    "name": "肉臊汤面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 99,
++    "sourceQuote": "| 肉臊汤面 | 10 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d044"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0100",
++    "name": "老坛酸菜汤面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 100,
++    "sourceQuote": "| 老坛酸菜汤面 | 9 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d045"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0101",
++    "name": "豇豆肉碎面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 101,
++    "sourceQuote": "| ⚠ 豇豆肉碎面 | 9 | noodle | 汤面（第 7 项，字迹待确认） |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0102",
++    "name": "清汤面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 102,
++    "sourceQuote": "| 清汤面 | 7 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d046"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0103",
++    "name": "辣肉拌面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 103,
++    "sourceQuote": "| 辣肉拌面 | 11 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d047"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0104",
++    "name": "小苏肉拌面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 104,
++    "sourceQuote": "| 小苏肉拌面 | 11 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d048"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0105",
++    "name": "麻辣鸡丝拌面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 105,
++    "sourceQuote": "| 麻辣鸡丝拌面 | 11 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d049"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0106",
++    "name": "肉臊拌面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 106,
++    "sourceQuote": "| 肉臊拌面 | 10 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d050"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0107",
++    "name": "豇豆拌面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 107,
++    "sourceQuote": "| 豇豆拌面 | 9 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d051"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0108",
++    "name": "老坛酸菜拌面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 108,
++    "sourceQuote": "| 老坛酸菜拌面 | 9 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d052"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0109",
++    "name": "火腿拌面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 109,
++    "sourceQuote": "| 火腿拌面 | 9 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d053"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0110",
++    "name": "麻辣拌面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 110,
++    "sourceQuote": "| 麻辣拌面 | 7 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d054"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0111",
++    "name": "麻汁拌面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 111,
++    "sourceQuote": "| 麻汁拌面 | 7 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d055"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0112",
++    "name": "招牌炸酱面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 112,
++    "sourceQuote": "| 招牌炸酱面 | 10 | noodle | 炸酱 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d056"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0113",
++    "name": "肉酱炸酱面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 113,
++    "sourceQuote": "| 肉酱炸酱面 | 10 | noodle | 炸酱 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d057"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0114",
++    "name": "鸡蛋炸酱面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 114,
++    "sourceQuote": "| 鸡蛋炸酱面 | 9 | noodle | 炸酱 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d058"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0115",
++    "name": "双拼炸酱面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 115,
++    "sourceQuote": "| 双拼炸酱面 | 10 | noodle | 炸酱 |",
++    "stallRef": "R05-SC2F-S01",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d059"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0123",
++    "name": "重庆小面（素）",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 123,
++    "sourceQuote": "| 重庆小面（素） | 7 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S02",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d060"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0124",
++    "name": "杂酱面（素）",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 124,
++    "sourceQuote": "| 杂酱面（素） | 9 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S02",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d061"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0125",
++    "name": "招牌豌杂面（素）",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 125,
++    "sourceQuote": "| 招牌豌杂面（素） | 11 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S02",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d062"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0126",
++    "name": "酸菜面（素）",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 126,
++    "sourceQuote": "| 酸菜面（素） | 8 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S02",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d063"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0127",
++    "name": "牛肉面（荤）",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 127,
++    "sourceQuote": "| 牛肉面（荤） | 15 | noodle | 汤面 |",
++    "stallRef": "R05-SC2F-S02",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d064"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0128",
++    "name": "干拌小面（素）",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 128,
++    "sourceQuote": "| 干拌小面（素） | 7 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S02",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d065"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0129",
++    "name": "干拌杂酱面（素）",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 129,
++    "sourceQuote": "| 干拌杂酱面（素） | 9 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S02",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d066"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0130",
++    "name": "干拌豌杂面（素）",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 130,
++    "sourceQuote": "| 干拌豌杂面（素） | 11 | noodle | 拌面 |",
++    "stallRef": "R05-SC2F-S02",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d067"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0131",
++    "name": "清汤小面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 131,
++    "sourceQuote": "| ⚠ 清汤小面 | 7 | noodle | 清汤（括号内疑为「可拌」） |",
++    "stallRef": "R05-SC2F-S02",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d068"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0132",
++    "name": "清汤杂酱面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 132,
++    "sourceQuote": "| ⚠ 清汤杂酱面 | 9 | noodle | 清汤（同上） |",
++    "stallRef": "R05-SC2F-S02",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d069"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0133",
++    "name": "清汤豌杂面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 133,
++    "sourceQuote": "| ⚠ 清汤豌杂面 | 11 | noodle | 清汤（同上） |",
++    "stallRef": "R05-SC2F-S02",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d070"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0134",
++    "name": "麻酱凉面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 134,
++    "sourceQuote": "| 麻酱凉面 | 8 | noodle | 小吃 |",
++    "stallRef": "R05-SC2F-S02",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d071"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0143",
++    "name": "德式烤肠意大利面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 143,
++    "sourceQuote": "| 德式烤肠意大利面 | 9.9 | noodle |",
++    "stallRef": "R05-SC2F-S03",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d072"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0144",
++    "name": "培根意大利面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 144,
++    "sourceQuote": "| 培根意大利面 | 9.9 | noodle |",
++    "stallRef": "R05-SC2F-S03",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d073"
++    ]
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0145",
++    "name": "虾仁意大利面",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 145,
++    "sourceQuote": "| 虾仁意大利面 | 9.9 | noodle |",
++    "stallRef": "R05-SC2F-S03",
++    "kind": "dish",
++    "oldRecordKeys": [
++      "c02_d074"
++    ]
++  },
++  {
++    "optionRef": "R05-SC2F-L0117-O1",
++    "sourceRecordRef": "R05-SC2F-L0117-O1",
++    "name": "卤蛋",
++    "additionalPriceYuan": 1.0,
++    "stallRef": "R05-SC2F-S01",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_specific_base_unknown",
++    "independentDish": false,
++    "selectionConstraints": null,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 117,
++    "sourceQuote": "卤味（不录）：卤蛋 1 / 卤肉 6 / 狮子头 2。店铺备注：加面免费，点餐前提前说。",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "optionRef": "R05-SC2F-L0117-O2",
++    "sourceRecordRef": "R05-SC2F-L0117-O2",
++    "name": "卤肉",
++    "additionalPriceYuan": 6.0,
++    "stallRef": "R05-SC2F-S01",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_specific_base_unknown",
++    "independentDish": false,
++    "selectionConstraints": null,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 117,
++    "sourceQuote": "卤味（不录）：卤蛋 1 / 卤肉 6 / 狮子头 2。店铺备注：加面免费，点餐前提前说。",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "optionRef": "R05-SC2F-L0117-O3",
++    "sourceRecordRef": "R05-SC2F-L0117-O3",
++    "name": "狮子头",
++    "additionalPriceYuan": 2.0,
++    "stallRef": "R05-SC2F-S01",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_specific_base_unknown",
++    "independentDish": false,
++    "selectionConstraints": null,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 117,
++    "sourceQuote": "卤味（不录）：卤蛋 1 / 卤肉 6 / 狮子头 2。店铺备注：加面免费，点餐前提前说。",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "optionRef": "R05-SC2F-L0136-O1",
++    "sourceRecordRef": "R05-SC2F-L0136-O1",
++    "name": "卤蛋",
++    "additionalPriceYuan": 1.0,
++    "stallRef": "R05-SC2F-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_specific_base_unknown",
++    "independentDish": false,
++    "selectionConstraints": null,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 136,
++    "sourceQuote": "加料（不录）：卤蛋 1 / 卤肠 1.5 / 煎蛋 2 / 辣椒 2 / 豆干 1.5。店铺备注：加面免费，点餐前提前说。",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "optionRef": "R05-SC2F-L0136-O2",
++    "sourceRecordRef": "R05-SC2F-L0136-O2",
++    "name": "卤肠",
++    "additionalPriceYuan": 1.5,
++    "stallRef": "R05-SC2F-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_specific_base_unknown",
++    "independentDish": false,
++    "selectionConstraints": null,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 136,
++    "sourceQuote": "加料（不录）：卤蛋 1 / 卤肠 1.5 / 煎蛋 2 / 辣椒 2 / 豆干 1.5。店铺备注：加面免费，点餐前提前说。",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "optionRef": "R05-SC2F-L0136-O3",
++    "sourceRecordRef": "R05-SC2F-L0136-O3",
++    "name": "煎蛋",
++    "additionalPriceYuan": 2.0,
++    "stallRef": "R05-SC2F-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_specific_base_unknown",
++    "independentDish": false,
++    "selectionConstraints": null,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 136,
++    "sourceQuote": "加料（不录）：卤蛋 1 / 卤肠 1.5 / 煎蛋 2 / 辣椒 2 / 豆干 1.5。店铺备注：加面免费，点餐前提前说。",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "optionRef": "R05-SC2F-L0136-O4",
++    "sourceRecordRef": "R05-SC2F-L0136-O4",
++    "name": "辣椒",
++    "additionalPriceYuan": 2.0,
++    "stallRef": "R05-SC2F-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_specific_base_unknown",
++    "independentDish": false,
++    "selectionConstraints": null,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 136,
++    "sourceQuote": "加料（不录）：卤蛋 1 / 卤肠 1.5 / 煎蛋 2 / 辣椒 2 / 豆干 1.5。店铺备注：加面免费，点餐前提前说。",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "optionRef": "R05-SC2F-L0136-O5",
++    "sourceRecordRef": "R05-SC2F-L0136-O5",
++    "name": "豆干",
++    "additionalPriceYuan": 1.5,
++    "stallRef": "R05-SC2F-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_specific_base_unknown",
++    "independentDish": false,
++    "selectionConstraints": null,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 136,
++    "sourceQuote": "加料（不录）：卤蛋 1 / 卤肠 1.5 / 煎蛋 2 / 辣椒 2 / 豆干 1.5。店铺备注：加面免费，点餐前提前说。",
++    "kind": "optional_surcharge",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0147-B1",
++    "name": "西冷牛排套餐",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 147,
++    "sourceQuote": "套餐（不录）：西冷牛排套餐 17.8 / 黑椒牛排套餐 14.8 / 鸡排套餐 12.8（含意面、煎蛋、西蓝花）。",
++    "stallRef": "R05-SC2F-S03",
++    "kind": "bundle",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0147-B2",
++    "name": "黑椒牛排套餐",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 147,
++    "sourceQuote": "套餐（不录）：西冷牛排套餐 17.8 / 黑椒牛排套餐 14.8 / 鸡排套餐 12.8（含意面、煎蛋、西蓝花）。",
++    "stallRef": "R05-SC2F-S03",
++    "kind": "bundle",
++    "oldRecordKeys": []
++  },
++  {
++    "sourceRecordRef": "R05-SC2F-L0147-B3",
++    "name": "鸡排套餐",
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 147,
++    "sourceQuote": "套餐（不录）：西冷牛排套餐 17.8 / 黑椒牛排套餐 14.8 / 鸡排套餐 12.8（含意面、煎蛋、西蓝花）。",
++    "stallRef": "R05-SC2F-S03",
++    "kind": "bundle",
++    "oldRecordKeys": []
++  }
++]
+--- /dev/null
++++ R05/optional_surcharges.json
+@@ -0,0 +1,114 @@
++[
++  {
++    "optionRef": "R05-SC2F-L0117-O1",
++    "sourceRecordRef": "R05-SC2F-L0117-O1",
++    "name": "卤蛋",
++    "additionalPriceYuan": 1.0,
++    "stallRef": "R05-SC2F-S01",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_specific_base_unknown",
++    "independentDish": false,
++    "selectionConstraints": null,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 117,
++    "sourceQuote": "卤味（不录）：卤蛋 1 / 卤肉 6 / 狮子头 2。店铺备注：加面免费，点餐前提前说。"
++  },
++  {
++    "optionRef": "R05-SC2F-L0117-O2",
++    "sourceRecordRef": "R05-SC2F-L0117-O2",
++    "name": "卤肉",
++    "additionalPriceYuan": 6.0,
++    "stallRef": "R05-SC2F-S01",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_specific_base_unknown",
++    "independentDish": false,
++    "selectionConstraints": null,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 117,
++    "sourceQuote": "卤味（不录）：卤蛋 1 / 卤肉 6 / 狮子头 2。店铺备注：加面免费，点餐前提前说。"
++  },
++  {
++    "optionRef": "R05-SC2F-L0117-O3",
++    "sourceRecordRef": "R05-SC2F-L0117-O3",
++    "name": "狮子头",
++    "additionalPriceYuan": 2.0,
++    "stallRef": "R05-SC2F-S01",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_specific_base_unknown",
++    "independentDish": false,
++    "selectionConstraints": null,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 117,
++    "sourceQuote": "卤味（不录）：卤蛋 1 / 卤肉 6 / 狮子头 2。店铺备注：加面免费，点餐前提前说。"
++  },
++  {
++    "optionRef": "R05-SC2F-L0136-O1",
++    "sourceRecordRef": "R05-SC2F-L0136-O1",
++    "name": "卤蛋",
++    "additionalPriceYuan": 1.0,
++    "stallRef": "R05-SC2F-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_specific_base_unknown",
++    "independentDish": false,
++    "selectionConstraints": null,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 136,
++    "sourceQuote": "加料（不录）：卤蛋 1 / 卤肠 1.5 / 煎蛋 2 / 辣椒 2 / 豆干 1.5。店铺备注：加面免费，点餐前提前说。"
++  },
++  {
++    "optionRef": "R05-SC2F-L0136-O2",
++    "sourceRecordRef": "R05-SC2F-L0136-O2",
++    "name": "卤肠",
++    "additionalPriceYuan": 1.5,
++    "stallRef": "R05-SC2F-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_specific_base_unknown",
++    "independentDish": false,
++    "selectionConstraints": null,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 136,
++    "sourceQuote": "加料（不录）：卤蛋 1 / 卤肠 1.5 / 煎蛋 2 / 辣椒 2 / 豆干 1.5。店铺备注：加面免费，点餐前提前说。"
++  },
++  {
++    "optionRef": "R05-SC2F-L0136-O3",
++    "sourceRecordRef": "R05-SC2F-L0136-O3",
++    "name": "煎蛋",
++    "additionalPriceYuan": 2.0,
++    "stallRef": "R05-SC2F-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_specific_base_unknown",
++    "independentDish": false,
++    "selectionConstraints": null,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 136,
++    "sourceQuote": "加料（不录）：卤蛋 1 / 卤肠 1.5 / 煎蛋 2 / 辣椒 2 / 豆干 1.5。店铺备注：加面免费，点餐前提前说。"
++  },
++  {
++    "optionRef": "R05-SC2F-L0136-O4",
++    "sourceRecordRef": "R05-SC2F-L0136-O4",
++    "name": "辣椒",
++    "additionalPriceYuan": 2.0,
++    "stallRef": "R05-SC2F-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_specific_base_unknown",
++    "independentDish": false,
++    "selectionConstraints": null,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 136,
++    "sourceQuote": "加料（不录）：卤蛋 1 / 卤肠 1.5 / 煎蛋 2 / 辣椒 2 / 豆干 1.5。店铺备注：加面免费，点餐前提前说。"
++  },
++  {
++    "optionRef": "R05-SC2F-L0136-O5",
++    "sourceRecordRef": "R05-SC2F-L0136-O5",
++    "name": "豆干",
++    "additionalPriceYuan": 1.5,
++    "stallRef": "R05-SC2F-S02",
++    "baseCandidateRef": null,
++    "associationScope": "stall_only_specific_base_unknown",
++    "independentDish": false,
++    "selectionConstraints": null,
++    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
++    "sourceLine": 136,
++    "sourceQuote": "加料（不录）：卤蛋 1 / 卤肠 1.5 / 煎蛋 2 / 辣椒 2 / 豆干 1.5。店铺备注：加面免费，点餐前提前说。"
++  }
++]
+--- /dev/null
++++ R05/bundle_relations.json
+@@ -0,0 +1,23 @@
++[
++  {
++    "bundleSourceRef": "R05-SC2F-L0147-B1",
++    "compositionSourceText": "含意面、煎蛋、西蓝花",
++    "componentCandidateRefs": null,
++    "selectionRules": null,
++    "sourceLine": 147
++  },
++  {
++    "bundleSourceRef": "R05-SC2F-L0147-B2",
++    "compositionSourceText": "含意面、煎蛋、西蓝花",
++    "componentCandidateRefs": null,
++    "selectionRules": null,
++    "sourceLine": 147
++  },
++  {
++    "bundleSourceRef": "R05-SC2F-L0147-B3",
++    "compositionSourceText": "含意面、煎蛋、西蓝花",
++    "componentCandidateRefs": null,
++    "selectionRules": null,
++    "sourceLine": 147
++  }
++]
+--- /dev/null
++++ R05/unresolved.csv
+@@ -0,0 +1,10 @@
++sourceRecordRef,name,sourceFile,sourceLine,sourceQuote,stallRef,kind,oldRecordKeys,reasons,classification,nextAction
++R05-SC2F-L0097,小苏肉汤面,source_assets/TRANSCRIPTION_DRAFT.md,97,| 小苏肉汤面 | 11 | noodle | 汤面 |,R05-SC2F-S01,dish,"[""c02_d042""]","[""转录稿待确认清单第6项保留小苏/小酥字义疑问""]",BUSINESS_EVIDENCE_NEEDS_VERIFICATION,只核对疑字/括号，不推测；其他候选继续
++R05-SC2F-L0101,豇豆肉碎面,source_assets/TRANSCRIPTION_DRAFT.md,101,| ⚠ 豇豆肉碎面 | 9 | noodle | 汤面（第 7 项，字迹待确认） |,R05-SC2F-S01,dish,[],"[""转录稿明确标注疑字或括号语义待确认""]",BUSINESS_EVIDENCE_NEEDS_VERIFICATION,只核对疑字/括号，不推测；其他候选继续
++R05-SC2F-L0104,小苏肉拌面,source_assets/TRANSCRIPTION_DRAFT.md,104,| 小苏肉拌面 | 11 | noodle | 拌面 |,R05-SC2F-S01,dish,"[""c02_d048""]","[""转录稿待确认清单第6项保留小苏/小酥字义疑问""]",BUSINESS_EVIDENCE_NEEDS_VERIFICATION,只核对疑字/括号，不推测；其他候选继续
++R05-SC2F-L0131,清汤小面,source_assets/TRANSCRIPTION_DRAFT.md,131,| ⚠ 清汤小面 | 7 | noodle | 清汤（括号内疑为「可拌」） |,R05-SC2F-S02,dish,"[""c02_d068""]","[""转录稿明确标注疑字或括号语义待确认""]",BUSINESS_EVIDENCE_NEEDS_VERIFICATION,只核对疑字/括号，不推测；其他候选继续
++R05-SC2F-L0132,清汤杂酱面,source_assets/TRANSCRIPTION_DRAFT.md,132,| ⚠ 清汤杂酱面 | 9 | noodle | 清汤（同上） |,R05-SC2F-S02,dish,"[""c02_d069""]","[""转录稿明确标注疑字或括号语义待确认""]",BUSINESS_EVIDENCE_NEEDS_VERIFICATION,只核对疑字/括号，不推测；其他候选继续
++R05-SC2F-L0133,清汤豌杂面,source_assets/TRANSCRIPTION_DRAFT.md,133,| ⚠ 清汤豌杂面 | 11 | noodle | 清汤（同上） |,R05-SC2F-S02,dish,"[""c02_d070""]","[""转录稿明确标注疑字或括号语义待确认""]",BUSINESS_EVIDENCE_NEEDS_VERIFICATION,只核对疑字/括号，不推测；其他候选继续
++R05-SC2F-L0147-B1,西冷牛排套餐,source_assets/TRANSCRIPTION_DRAFT.md,147,套餐（不录）：西冷牛排套餐 17.8 / 黑椒牛排套餐 14.8 / 鸡排套餐 12.8（含意面、煎蛋、西蓝花）。,R05-SC2F-S03,bundle,[],"[""原文明确套餐不录；当前批次无套餐准入授权，组合成分只保留原句""]",BUSINESS_EVIDENCE_TECHNICAL_ADMISSION_PENDING,复用组合关系做后续隔离适配；不生成正式菜品
++R05-SC2F-L0147-B2,黑椒牛排套餐,source_assets/TRANSCRIPTION_DRAFT.md,147,套餐（不录）：西冷牛排套餐 17.8 / 黑椒牛排套餐 14.8 / 鸡排套餐 12.8（含意面、煎蛋、西蓝花）。,R05-SC2F-S03,bundle,[],"[""原文明确套餐不录；当前批次无套餐准入授权，组合成分只保留原句""]",BUSINESS_EVIDENCE_TECHNICAL_ADMISSION_PENDING,复用组合关系做后续隔离适配；不生成正式菜品
++R05-SC2F-L0147-B3,鸡排套餐,source_assets/TRANSCRIPTION_DRAFT.md,147,套餐（不录）：西冷牛排套餐 17.8 / 黑椒牛排套餐 14.8 / 鸡排套餐 12.8（含意面、煎蛋、西蓝花）。,R05-SC2F-S03,bundle,[],"[""原文明确套餐不录；当前批次无套餐准入授权，组合成分只保留原句""]",BUSINESS_EVIDENCE_TECHNICAL_ADMISSION_PENDING,复用组合关系做后续隔离适配；不生成正式菜品
+--- /dev/null
++++ R05/stall_crosswalk.csv
+@@ -0,0 +1,4 @@
++stallRef,oldStallIdForTrace,name,photo,parentLocation,formalStallIdAssigned
++R05-SC2F-S01,c02_t01,面發發小館 · 羊杂面,source_assets/c02_t01_menu.jpg,三餐二楼最西侧，负责人信息/非正式签发,False
++R05-SC2F-S02,c02_t02,韩小面,source_assets/c02_t02_menu.jpg,三餐二楼最西侧，负责人信息/非正式签发,False
++R05-SC2F-S03,c02_t03,校园铁板牛排 · 意面披萨,source_assets/c02_t03_menu.jpg,三餐二楼最西侧，负责人信息/非正式签发,False
+--- /dev/null
++++ R05/statistics.json
+@@ -0,0 +1,22 @@
++{
++  "physicalSourceLines": 39,
++  "dishTableRows": 36,
++  "auxiliaryPhysicalLines": 3,
++  "sourceGroups": 47,
++  "dishSourceGroups": 36,
++  "optionSourceGroups": 8,
++  "bundleSourceGroups": 3,
++  "explicitSpecificationVariants": 0,
++  "candidateRecords": 30,
++  "candidateSourceGroups": 30,
++  "unresolvedSourceGroups": 9,
++  "oldRecords": 35,
++  "oldActionCounts": {
++    "RETAIN": 30,
++    "PENDING": 5
++  },
++  "newSourceGroups": 12,
++  "optionRelations": 8,
++  "formalIdsAssigned": 0,
++  "formalImports": 0
++}
+--- /dev/null
++++ R05/R05_执行报告.md
+@@ -0,0 +1,78 @@
++# R05 三餐二楼历史菜单恢复与候选生成
++
++本地隔离生成 PASS；正式准入及实质疑义 PENDING。交付等待DSH独立验收，未正式导入。
++
++## 选择与证据范围
++
++选择三餐二楼最西侧。TRANSCRIPTION_DRAFT.md §2.1—2.3有36条菜单表行和三个档口；旧batch1有35条三餐记录、三张真实菜单文件与明确档口对应。比四餐二楼10条的可恢复数量多；另有c03_offsite_batch2的132条旧菜品但其采集说明明确楼层不明，不能强行归楼。详见R06_推荐目标.md。
++
++复用正式生成器gen_records.js的__test__.parseDoc，只读捕获源表到parsed_source.json。capture.js没有调用正式生成器--write。本轮build_r05.py只消费该解析结果，构建与R03/R04一致的来源/关系/本地候选包，不改生产生成器。
++
++原始转录的85条汇总不适合作本批分母：它混合服务楼、三餐、四餐。这里只统计三餐段落。R03、R04全部文件预先指纹并逐项验证，未重新审计其内容或修改任何字节。
++
++## 数量与口径
++
++| 指标 | 数量 |
++|---|---:|
++| 菜品原始表格行 |36|
++| 加料/卤味物理行 |2|
++| 套餐物理行 |1|
++| 物理源行合计 |39|
++| 展开源组 |47|
++| 菜品源组 |36|
++| 加料源组 |8|
++| 套餐源组 |3|
++| 显式规格变体数 |0|
++| 隔离候选数 / 候选源组 |30 / 30|
++| 加料关系 |8|
++| 待核验源组 |9|
++| 旧菜品责任数 |35|
++| 旧RETAIN / PENDING |30 / 5|
++| 新增责任源组 |12|
++| 正式分配ID / 正式导入 |0 / 0|
++
++47源组=30候选源组+8关系源组+9待核验源组。12个新增责任是旧CSV未生成的1条疑字菜单+8加料+3套餐，不等于新增12道合格菜品。台账47行：35条旧责任+12条新增责任。没有证据支持旧记录作废、档口合并或规格SPLIT，本轮VOID/REPLACE/MERGE/SPLIT均0，不为套用旧模板制造动作。
++
++**独立复算必须取newSourceRefs与optionRefs的并集**：8条加料只在optionRefs，不可仅数newSourceRefs。候选数、源组数、显式规格数分别统计。本批一源组恰有一候选，不把这一巧合推广到其他批次。
++
++## 实际候选与隔离结果
++
++30候选保留菜名、源价格表达、逐行引用和明确档口照片关联；新的R05-SC2F局部标识，formalDishId为null。旧c02 ID仅追溯，不继承正式资格。历史原价currentPriceValidity=UNKNOWN，禁止交易报价。单位、采集人、实际拍摄日期继续未知，未把CSV整理人/日期无条件当真实拍摄事实。
++
++三档口分别保留，不因“羊杂面”等同名与服务楼记录合并；父级位置采用历史负责人陈述，未宣称门头与楼层已签发。
++
++待核验9源组：1条豇豆肉碎面疑字、3条韩小面清汤括号语义、2条“小苏/小酥”疑字、3条原文明确“套餐不录”的牛排/鸡排套餐。后三条已有价格和“含意面、煎蛋、西蓝花”原句，单独保留bundle_relations，未绕过旧套餐准入边界当普通菜生成。双拼炸酱面菜名保持原文，composition=null，不从名称猜组成，也不套用NG03规则。
++
++8条加料为面發發3条卤味与韩小面5条加料。只关联档口，不编造对应某一道基础菜、数量或多选限制。NG01、NG03不在本批，原成果不动。
++
++## 证据等级与既有业务信息
++
++来源采用转录稿行级文本、batch1旧CSV独立同价同名交叉核对、旧stalls.csv明确照片文件名关联。图片快照与原档逐字节相同、SHA有效。PHOTO_MANIFEST早期样张映射仍有unresolved，本轮没有把它改成confirmed；所用证据强度是既有采集批次显式映射，而非本轮新完成视觉验真。未调用外部视觉API，也未伪造OCR。
++
++batch1_min已记录韩小面辣度及父级位置来自2026-10-26负责人现场信息、非餐厅签字。该来源保存在source_assets/batch1_min_dishes.csv和batch1_min_shops.csv，不删除、不要求重复裁决。本轮不把旧按菜名推断和choice占位批量当作直接照片口味证据，候选tastes=[]合法未知；该现场陈述留作后续字段级证据核验。照片未上传，也不要求上传。
++
++c02的有条件命名空间审批保存在c02_conditional_approval.json，只授权试点候选存在、不代表生产准入。未修改原审批，不申请新正式ID。
++
++## 测试及原始输出
++
++实际运行：node 报告/R05_三餐2F_20261101/capture.js，退出0；python -X utf8 报告/R05_三餐2F_20261101/build_r05.py，退出0；python -X utf8 报告/R05_三餐2F_20261101/test_r05.py，26 PASS / 0 FAIL / 0 SKIP，退出0。
++
++test_output.txt为本轮真实测试输出。含10种负向变异：改价、旧ID继承、伪造日期/单位、开启报价、重复、错误照片关联、加料独立菜、编造口味、编造双拼组成，均被同一校验拒绝。验证47源组责任覆盖、加料optionRefs统计、未知状态、来源存在与哈希、旧菜同价对应。
++
++git diff --check退出0，打印既有project.config.json CRLF转换提示；不为消提示修改文件。没有运行无关全套测试，没有声称正式导入器或严格采集证据模式通过。
++
++## 备份、差异、Git及边界
++
++backup_manifest.json记录项目外新备份目录、逐文件字节数、SHA与源快照。备份是原始输入字节，不是伪造改前版本；本轮所有代码与候选均新建，没有改写需恢复的原生产文件。图像原档保留，另做字节一致快照。diff.patch是本轮新建工作产物相对空文件的精确unified diff，不混入既有项目脏改动。
++
++project_before.json包含正式项目既有文件指纹，所有复核一致；closed_batches_before.json包含R03/R04全部指纹，所有复核一致。git_before.json/git_after.json记录真实HEAD、分支、暂存、完整工作区状态，二者一致。Git未发生写操作。baton task/handoff/protocol在根目录/项目未找到，不新建冒充交接；本执行报告承担交接证据。
++
++manifest.sha256与file_manifest.json覆盖本交付，清单自身不循环哈希。正式data、ID映射、审批、契约、原材料未改；无正式导入、云端调用、部署、建索引。
++
++## 自审与后续
++
++PASS：候选真实生成30条；35旧责任闭合；8加料不作菜品；47源组守恒；26项针对性测试；正式项目/R03/R04字节不变；候选重复与错误来源负向检查。
++
++PENDING：6条疑义菜品、3条套餐准入与关系适配；父级正式证据、当前价格、延期元数据与正式准入。没有以旧报告或本地模拟代替真实证据。
++
++R05交DSH；恢复计划继续保留R06四餐二楼的推荐目标和材料缺口清单，本轮不提前修改R06数据。优先复核源文疑字隔离、加料范围、套餐边界和照片映射的证据强度。
+--- /dev/null
++++ R05/R06_推荐目标.md
+@@ -0,0 +1,11 @@
++# R06 推荐：四餐二楼南门
++
++只读准备，未生成或修改R06数据。
++
++| 可选范围 | 现有材料 | 缺口 | 建议 |
++|---|---|---|---|
++| 四餐二楼南门·卤大姨 | TRANSCRIPTION_DRAFT.md §3.1的10条菜单，batch1中c03历史行与c03_t01_menu.jpg明确关联；PHOTO_MANIFEST样张S-03有位置候选；原价与套餐/续添文字可定位 | 泰式咖喱鸡、春浓茄丁名称有疑问；门头/楼层正式签发待补；不要与offsite批次c03味爱特混用命名空间 | R06优先；可先恢复不含疑字的源项，不承诺最终候选数 |
++| 未定位采集批次c03_offsite_batch2 | 9商家、132旧菜品、10菜单照片，采集说明有逐照映射 | floors.csv空表，建筑/楼层未知；两品牌与双牌关系待核验；旧口味多为占位推断 | 证据数量更多但无法作为确定楼层；后续可建独立“位置未知批次”，不能擅自归楼 |
++| 一楼/四楼等其他楼层 | 本轮检索未找到独立明确命名转录稿 | 没有足够可定位菜单来源 | 暂不以正式演示数据充当真实菜单 |
++
++R06建议步骤：截取四餐§3.1；按照片索引和旧CSV核对；疑字项隔离；保留历史价格和双拼组成未知；区分店铺c03历史命名空间冲突；生成本地新标识。不得继承旧正式ID或当前交易资格。本轮仅形成推荐，不提前建R06候选。

@@ -5,12 +5,12 @@
    =================================================================== */
 
 .page {
-  padding: 0 32rpx 48rpx;
+  padding: 0 32rpx 32rpx;
 }
 
 /* ==================== 页面标题 ==================== */
 .hero {
-  padding: 22rpx 8rpx 24rpx;
+  padding: 14rpx 8rpx 16rpx;
 }
 
 .hero-title {
@@ -22,14 +22,14 @@
 }
 
 .hero-sub {
-  margin-top: 8rpx;
+  margin-top: 6rpx;
   font-size: 26rpx;
   color: #86909C;
 }
 
 .demo-badge {
   display: inline-block;
-  margin-top: 14rpx;
+  margin-top: 10rpx;
   padding: 6rpx 18rpx;
   font-size: 22rpx;
   color: #E85F26;
@@ -37,29 +37,43 @@
   border-radius: 20rpx;
 }
 
+/* 来源未知时的告示：不许跟"演示数据"共用同一套颜色，
+   否则等于用演示的口径去描述一批来路不明的数据。 */
+.demo-badge-warn {
+  color: #C9353F;
+  background: #FFF0F0;
+}
+
+/* 真实试点数据：绿色系，和"演示 / 来源未知"明确区分。
+   注意文案始终带「全部待核实」——真实来源 ≠ 已核实事实。 */
+.demo-badge-real {
+  color: #1F6B45;
+  background: #ECF8F1;
+}
+
 /* ==================== 筛选面板 ==================== */
 .panel {
   background: #FFFFFF;
   border-radius: 28rpx;
-  padding: 24rpx;
+  padding: 20rpx;
   box-shadow: 0 4rpx 24rpx rgba(31, 35, 41, 0.04);
 }
 
 .filter-group {
-  margin-bottom: 16rpx;
+  margin-bottom: 8rpx;
 }
 
 .filter-label {
   font-size: 26rpx;
   font-weight: 600;
   color: #4E5969;
-  margin-bottom: 12rpx;
+  margin-bottom: 8rpx;
 }
 
 /* 未选区域时的地点分级说明 */
 .locate-tip {
-  margin-bottom: 20rpx;
-  padding: 14rpx 20rpx;
+  margin-bottom: 10rpx;
+  padding: 10rpx 18rpx;
   font-size: 24rpx;
   color: #86909C;
   background: #F7F8FA;
@@ -118,10 +132,79 @@
   font-weight: 600;
 }
 
+/* ==================== 每家餐厅的位置配置（阶段 3） ==================== */
+/* 默认折叠，只有展开时才出现楼层 / 店铺 / 方位三组子选项，
+   避免一次选了好几家店就把筛选面板撑成一整屏 */
+.shop-config {
+  margin-bottom: 16rpx;
+  background: #FBFBFC;
+  border: 1rpx solid #EDEFF2;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.shop-config-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18rpx 20rpx;
+}
+
+.shop-config-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.shop-config-name {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #1F2329;
+}
+
+/* 折叠状态下的一行摘要：选了什么一眼看到，太长就省略 */
+.shop-config-sum {
+  display: block;
+  margin-top: 4rpx;
+  font-size: 22rpx;
+  color: #86909C;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.shop-config-toggle {
+  flex-shrink: 0;
+  margin-left: 16rpx;
+  padding: 6rpx 18rpx;
+  font-size: 24rpx;
+  color: #FF7A45;
+  background: #FFF1EB;
+  border-radius: 999rpx;
+}
+
+.shop-config-body {
+  padding: 4rpx 20rpx 18rpx;
+  border-top: 1rpx solid #EDEFF2;
+}
+
+/* 子级分组标题：比一级标题轻一档，形成层级 */
+.sub-label {
+  margin: 16rpx 0 10rpx;
+  font-size: 24rpx;
+  font-weight: 600;
+  color: #4E5969;
+}
+
+/* 子级 chip 小一号，和全局筛选 chip 区分开 */
+.sub-chip {
+  padding: 8rpx 18rpx;
+  font-size: 24rpx;
+}
+
 /* 条件摘要 */
 .summary {
   margin-top: 2rpx;
-  padding-top: 16rpx;
+  padding-top: 8rpx;
   border-top: 1rpx solid #EDEFF2;
 }
 
@@ -143,7 +226,7 @@
 }
 
 .reset-btn {
-  margin-top: 16rpx;
+  margin-top: 10rpx;
   padding: 14rpx 0;
   text-align: center;
   font-size: 26rpx;
@@ -156,7 +239,7 @@
 /* ==================== 操作按钮 ==================== */
 .action-row {
   display: flex;
-  margin-top: 18rpx;
+  margin-top: 12rpx;
 }
 
 .btn {
@@ -286,6 +369,15 @@
 .price-unit {
   font-size: 24rpx;
   margin-right: 2rpx;
+}
+
+/* 菜品卡片上的纠错入口：小、右对齐，不抢价格视觉重心 */
+.dish-fix {
+  margin-top: 12rpx;
+  text-align: right;
+  font-size: 24rpx;
+  color: #165DFF;
+  line-height: 1.4;
 }
 
 /* 随机选中的店铺 */
@@ -526,4 +618,101 @@
 .result-cond-bottom {
   margin-top: 20rpx;
   margin-bottom: 0;
+}
+
+/* ================================================================
+   阶段 3-3（2026-10-22）：加载中 / 加载失败 状态卡
+   与首页既有卡片同一套观感：白底、20rpx 圆角、24rpx 内边距。
+   ================================================================ */
+.state-card {
+  margin-top: 8rpx;
+  padding: 28rpx 24rpx;
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  box-shadow: 0 2rpx 12rpx rgba(31, 35, 41, 0.04);
+}
+
+.state-card-error {
+  border-left: 6rpx solid #FF7A45;
+}
+
+.state-title {
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #1F2329;
+}
+
+.state-desc {
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  line-height: 1.6;
+  color: #86909C;
+}
+
+.state-btn {
+  margin-top: 20rpx;
+  height: 76rpx;
+  line-height: 76rpx;
+  text-align: center;
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #FFFFFF;
+  background: #FF7A45;
+  border-radius: 16rpx;
+}
+
+/* 加载中的呼吸点：纯 CSS，无定时器 */
+.state-dot {
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 50%;
+  background: #FF7A45;
+  margin-bottom: 16rpx;
+  animation: state-pulse 1.1s ease-in-out infinite;
+}
+
+@keyframes state-pulse {
+  0%   { opacity: 0.25; }
+  50%  { opacity: 1; }
+  100% { opacity: 0.25; }
+}
+/* ===================================================================
+   矮屏适配（窗口高度 ≤ 820px，覆盖绝大多数手机）
+
+   背景：加了底栏之后，筛选条件变多时「查看全部」会被挤到首屏之外
+        （实测 430×752 加压后底边 779px，超出 27px）。
+   做法：只压缩顶部装饰性留白与非关键文字，按钮高度、chip 尺寸、
+        字号可读性一律不动；主标题与「演示数据」提示必须保留。
+   =================================================================== */
+@media (max-height: 820px) {
+  .hero {
+    padding: 10rpx 8rpx 10rpx;
+  }
+
+  .hero-title {
+    font-size: 46rpx;
+  }
+
+  /* 副标题只是修饰语，空间紧张时优先让位 */
+  .hero-sub {
+    display: none;
+  }
+
+  .demo-badge {
+    margin-top: 8rpx;
+  }
+
+  .locate-tip {
+    margin-bottom: 8rpx;
+    padding: 8rpx 16rpx;
+    font-size: 22rpx;
+  }
+
+  .panel {
+    padding: 16rpx;
+  }
+
+  .filter-group {
+    margin-bottom: 6rpx;
+  }
 }

@@ -1,0 +1,12 @@
+{
+  "command": [
+    "D:/微信开发/微信web开发者工具/cli.bat",
+    "open",
+    "--project",
+    "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\mini",
+    "--debug"
+  ],
+  "exitCode": 0,
+  "stdout": "[info] args {\n  _: [ 'open' ],\n  project: 'C:\\\\Users\\\\25975\\\\Desktop\\\\食神寻味小程序开发\\\\报告\\\\R02_M3_4_20261101\\\\mini',\n  debug: true,\n  '$0': 'cli',\n  token: undefined\n}\n[info] installPath D:\\微信开发\\微信web开发者工具\\resources\\app.asar\n[info] userDirPath C:\\Users\\25975\\AppData\\Local\\微信开发者工具\\User Data\\514aed618735f067b71d7281afe0a393\\Default\n[info] appPath ./微信开发者工具.exe\n[info] updatePort cliport=3799\n[info] connect upgrade response 200\n\n[info] ws connect 48788 f8d6c1ad7864b1b153a30cc40d281ce234721430 without token\n\n[info] long connection established\n\n",
+  "stderr": "- initialize\n\n(node:5060) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.\n(Use `微信开发者工具 --trace-deprecation ...` to show where the warning was created)\n√ IDE server has started, listening on http://127.0.0.1:55616\n- preparing\n√ open\n"
+}

@@ -1,0 +1,29 @@
+test_19_copies_byte_verified_and_exact_scope (__main__.F1Tests.test_19_copies_byte_verified_and_exact_scope) ... ok
+test_266_photo_hashes_and_source_lines (__main__.F1Tests.test_266_photo_hashes_and_source_lines) ... ok
+test_counts_and_unique_replace_owner (__main__.F1Tests.test_counts_and_unique_replace_owner) ... ok
+test_csv_json_ledger_agree (__main__.F1Tests.test_csv_json_ledger_agree) ... ok
+test_no_other_new_old_double_registration (__main__.F1Tests.test_no_other_new_old_double_registration) ... ok
+test_no_other_project_changes (__main__.F1Tests.test_no_other_project_changes) ... ok
+test_reproducible_isolated_build (__main__.F1Tests.test_reproducible_isolated_build) ... FAIL
+
+======================================================================
+FAIL: test_reproducible_isolated_build (__main__.F1Tests.test_reproducible_isolated_build)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\25975\Desktop\食神寻味小程序开发\报告\R03_3F_R2_20261101\test_r03_f1.py", line 42, in test_reproducible_isolated_build
+    c=json.loads((out/'candidates.json').read_text());self.assertEqual(c,J('candidates.json'))
+                                                      ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [{'ca[703 chars]s': 'source_assets/tools/_crop3f2.py JOBS haiy[204320 chars] []}] != [{'ca[703 chars]s': '项目\\tools\\_crop3f2.py JOBS haiyuan', 'or[203213 chars] []}]
+
+First differing element 0:
+{'can[702 chars]s': 'source_assets/tools/_crop3f2.py JOBS haiy[741 chars]: []}
+{'can[702 chars]s': '项目\\tools\\_crop3f2.py JOBS haiyuan', 'or[732 chars]: []}
+
+Diff is 273409 characters long. Set self.maxDiff to None to see it.
+
+----------------------------------------------------------------------
+Ran 7 tests in 1.438s
+
+FAILED (failures=1)
+
+EXIT=1

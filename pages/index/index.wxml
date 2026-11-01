@@ -6,7 +6,8 @@
   <view class="dish-card">
     <view class="dish-left">
       <view class="dish-name">{{dish.name}}</view>
-      <view class="dish-shop">{{dish.shopName}} · {{dish.stall}}</view>
+      <!-- stallLabel：已核实编号显示「N 号窗口」，没有编号就显示店铺名 -->
+      <view class="dish-shop">{{dish.shopName}} · {{dish.stallLabel}}</view>
       <view class="dish-loc">{{dish.location}}</view>
       <view class="dish-tags">
         <!-- 第一个标签由数据决定：演示信息 / 待核实 / 已核实 / 核实已过期。
@@ -19,6 +20,13 @@
     </view>
     <view class="dish-right">
       <view class="dish-price"><text class="price-unit">¥</text>{{dish.price}}</view>
+      <!-- 纠错入口：只带真实编号；演示数据进去后由投稿页明确拒绝 -->
+      <view class="dish-fix"
+            data-shop-id="{{dish.shopId}}"
+            data-stall-id="{{dish.stallId}}"
+            data-dish-id="{{dish.id}}"
+            bindtap="onSubmitDish"
+            hover-class="tap-hover">纠错</view>
     </view>
   </view>
 </template>
@@ -28,15 +36,37 @@
 
   <!-- ==================== 页面标题 ==================== -->
   <view class="hero">
-    <view class="hero-title">山理吃什么</view>
-    <view class="hero-sub">山东理工大学 · 今天吃点什么好</view>
-    <view class="demo-badge">演示数据 · 不对应任何真实商家</view>
+    <view class="hero-title">吃什么</view>
+    <view class="hero-sub"> 今天吃点什么好</view>
+    <!-- 数据来源标签：加载完成后才出现，必须让用户一眼分清真实 / 演示 / 未知 -->
+    <block wx:if="{{dataState === 'ready'}}">
+      <view class="demo-badge demo-badge-real" wx:if="{{dataSource === 'cloud'}}">真实试点数据 · 全部待核实</view>
+      <view class="demo-badge" wx:elif="{{dataSource === 'local'}}">演示数据 · 不对应任何真实商家</view>
+      <view class="demo-badge demo-badge-warn" wx:else>数据来源未知 · 请勿当作真实信息</view>
+      <view class="demo-badge demo-badge-warn" wx:if="{{dataNoticeText}}">{{dataNoticeText}}</view>
+    </block>
+  </view>
+
+  <!-- ==================== 加载状态 ==================== -->
+  <!-- 由 page 的 dataState 真实驱动；本阶段数据源固定为本地 -->
+  <view class="state-card" wx:if="{{dataState === 'loading'}}">
+    <view class="state-dot"></view>
+    <view class="state-title">正在准备数据…</view>
+    <view class="state-desc">正在尝试读取真实数据，读不到会自动回退到演示数据</view>
+  </view>
+
+  <view class="state-card state-card-error" wx:elif="{{dataState === 'error'}}">
+    <view class="state-title">数据没能加载出来</view>
+    <view class="state-desc">{{dataErrorText}}</view>
+    <view class="state-btn" bindtap="onRetry" hover-class="tap-hover">重试</view>
   </view>
 
   <!-- ==================== 筛选区 ==================== -->
+  <block wx:elif="{{dataState === 'ready'}}">
+
   <view class="panel">
 
-    <!-- ---------- 一级：就餐区域 ---------- -->
+    <!-- ---------- 一级：就餐区域（单选） ---------- -->
     <view class="filter-group">
       <view class="filter-label">就餐区域</view>
       <view class="chip-row">
@@ -50,125 +80,139 @@
 
     <!-- ---------- 未选区域时的说明 ---------- -->
     <view class="locate-tip" wx:if="{{area === 'all'}}">
-      选「校内食堂」可按 餐厅 → 楼层 → 窗口 逐步定位；选「校外周边」可按 商家 → 档口 定位。
+      先选「校内食堂」或「校外周边」，才会列出对应的餐厅 / 商家。
     </view>
 
-    <!-- ---------- 校内：餐厅 / 楼层 / 窗口 ---------- -->
-    <block wx:if="{{area === 'campus'}}">
-
-      <!-- 二级：餐厅 -->
-      <view class="filter-group">
-        <view class="filter-label">餐厅</view>
-        <view class="chip-row">
-          <view class="chip {{shopId === 'all' ? 'chip-on' : ''}}"
-                data-value="all" bindtap="onSelectShop">不限餐厅</view>
-          <view class="chip {{shopId === item.id ? 'chip-on' : ''}}"
-                wx:for="{{restaurantOptions}}"
-                wx:key="id"
-                data-value="{{item.id}}"
-                bindtap="onSelectShop">{{item.name}}</view>
-        </view>
-      </view>
-
-      <!-- 三级：楼层 -->
-      <view class="filter-group">
-        <view class="filter-label">楼层</view>
-        <view class="chip-row">
-          <view class="chip {{floorId === 'all' ? 'chip-on' : ''}}"
-                data-value="all" bindtap="onSelectFloor">不限楼层</view>
-          <view class="chip {{floorId === item.id ? 'chip-on' : ''}}"
-                wx:for="{{floorOptions}}"
-                wx:key="id"
-                data-value="{{item.id}}"
-                bindtap="onSelectFloor">{{item.label}}</view>
-        </view>
-        <view class="filter-hint" wx:if="{{floorHint}}">{{floorHint}}</view>
-      </view>
-
-      <!-- 四级：窗口 -->
-      <view class="filter-group">
-        <view class="filter-label">窗口</view>
-        <view class="chip-row">
-          <view class="chip {{stallId === 'all' ? 'chip-on' : ''}}"
-                data-value="all" bindtap="onSelectStall">不限窗口</view>
-          <view class="chip {{stallId === item.id ? 'chip-on' : ''}}"
-                wx:for="{{stallOptions}}"
-                wx:key="id"
-                data-value="{{item.id}}"
-                bindtap="onSelectStall">{{item.name}}</view>
-        </view>
-        <view class="filter-hint" wx:if="{{stallHint}}">{{stallHint}}</view>
-      </view>
-
-    </block>
-
-    <!-- ---------- 校外：商家 / 档口（不套用楼层结构） ---------- -->
-    <block wx:if="{{area === 'offsite'}}">
-
-      <view class="filter-group">
-        <view class="filter-label">商家</view>
-        <view class="chip-row">
-          <view class="chip {{shopId === 'all' ? 'chip-on' : ''}}"
-                data-value="all" bindtap="onSelectShop">不限商家</view>
-          <view class="chip {{shopId === item.id ? 'chip-on' : ''}}"
-                wx:for="{{restaurantOptions}}"
-                wx:key="id"
-                data-value="{{item.id}}"
-                bindtap="onSelectShop">{{item.name}}</view>
-        </view>
-      </view>
-
-      <view class="filter-group">
-        <view class="filter-label">档口</view>
-        <view class="chip-row">
-          <view class="chip {{stallId === 'all' ? 'chip-on' : ''}}"
-                data-value="all" bindtap="onSelectStall">不限档口</view>
-          <view class="chip {{stallId === item.id ? 'chip-on' : ''}}"
-                wx:for="{{stallOptions}}"
-                wx:key="id"
-                data-value="{{item.id}}"
-                bindtap="onSelectStall">{{item.name}}</view>
-        </view>
-        <view class="filter-hint" wx:if="{{stallHint}}">{{stallHint}}</view>
-      </view>
-
-    </block>
-
-    <!-- ---------- 原有筛选：预算 / 主食类型 / 口味 ---------- -->
+    <!-- ---------- 二级：餐厅 / 商家（可多选，组内「或」） ---------- -->
     <view class="filter-group">
-      <view class="filter-label">预算</view>
-      <view class="chip-row">
+      <view class="filter-label">
+        {{area === 'offsite' ? '商家' : '餐厅'}}<text class="label-tip">可多选</text>
+      </view>
+
+      <block wx:if="{{area === 'all'}}">
+        <view class="filter-hint">选好就餐区域后，这里会列出可选的{{area === 'offsite' ? '商家' : '餐厅'}}。</view>
+      </block>
+
+      <block wx:elif="{{restaurantOptions.length}}">
+        <view class="chip-row">
+          <view class="chip {{item.selected ? 'chip-on' : ''}}"
+                wx:for="{{restaurantOptions}}"
+                wx:key="id"
+                data-shop-id="{{item.id}}"
+                bindtap="onToggleShop">{{item.name}}</view>
+        </view>
+        <view class="filter-hint">
+          可以同时选多家，符合任意一家即可；每家可以单独设楼层、店铺和方位。
+        </view>
+      </block>
+
+      <view class="filter-hint" wx:else>该区域暂无可选餐厅。</view>
+    </view>
+
+    <!-- ---------- 三级：每家餐厅各自的位置配置（默认折叠） ----------
+         楼层 / 店铺 / 方位三组都是多选，组内「或」、组间「与」，
+         不同餐厅之间互不影响。数据里没有的楼层、编号、方位一律不出现。 -->
+    <view class="shop-config" wx:for="{{shopViews}}" wx:key="id">
+
+      <!-- 折叠头：点标题展开 / 收起 -->
+      <view class="shop-config-head"
+            data-shop-id="{{item.id}}"
+            bindtap="onToggleShopConfig"
+            hover-class="tap-hover">
+        <view class="shop-config-title">
+          <text class="shop-config-name">{{item.name}}</text>
+          <text class="shop-config-sum">{{item.summary}}</text>
+        </view>
+        <text class="shop-config-toggle">{{item.expanded ? '收起' : '设置'}}</text>
+      </view>
+
+      <view class="shop-config-body" wx:if="{{item.expanded}}">
+
+        <!-- 楼层组：该店没有楼层划分时只给一句说明 -->
+        <block wx:if="{{item.floorChips.length}}">
+          <view class="sub-label">楼层<text class="label-tip">可多选</text></view>
+          <view class="chip-row">
+            <view class="chip sub-chip {{opt.on ? 'chip-on' : ''}}"
+                  wx:for="{{item.floorChips}}"
+                  wx:for-item="opt"
+                  wx:key="id"
+                  data-shop-id="{{item.id}}"
+                  data-value="{{opt.id}}"
+                  bindtap="onToggleFloor">{{opt.label}}</view>
+          </view>
+        </block>
+        <view class="filter-hint" wx:else>{{item.floorHint}}</view>
+
+        <!-- 店铺 / 位置组：按已选楼层收敛，没有编号就只显示店名 -->
+        <block wx:if="{{item.stallChips.length}}">
+          <view class="sub-label">店铺 / 位置<text class="label-tip">可多选</text></view>
+          <view class="chip-row">
+            <view class="chip sub-chip {{opt.on ? 'chip-on' : ''}}"
+                  wx:for="{{item.stallChips}}"
+                  wx:for-item="opt"
+                  wx:key="id"
+                  data-shop-id="{{item.id}}"
+                  data-value="{{opt.id}}"
+                  bindtap="onToggleStall">{{opt.label}}</view>
+          </view>
+        </block>
+        <view class="filter-hint" wx:if="{{item.stallHint}}">{{item.stallHint}}</view>
+
+        <!-- 方位组：该店数据里没有任何方位时，这一整块不渲染 -->
+        <block wx:if="{{item.hasSide}}">
+          <view class="sub-label">方位<text class="label-tip">可多选</text></view>
+          <view class="chip-row">
+            <view class="chip sub-chip {{opt.on ? 'chip-on' : ''}}"
+                  wx:for="{{item.sideChips}}"
+                  wx:for-item="opt"
+                  wx:key="value"
+                  data-shop-id="{{item.id}}"
+                  data-value="{{opt.value}}"
+                  bindtap="onToggleSide">{{opt.label}}</view>
+          </view>
+        </block>
+
+      </view>
+    </view>
+
+    <!-- ---------- 预算（单选，横向滚动；选项文字不缩） ---------- -->
+    <view class="filter-group">
+      <view class="filter-label">预算<text class="label-tip">横向滑动</text></view>
+      <scroll-view class="type-scroll" scroll-x="true" enhanced="true" show-scrollbar="false">
         <view class="chip {{budget === item.value ? 'chip-on' : ''}}"
               wx:for="{{budgetOptions}}"
               wx:key="value"
               data-value="{{item.value}}"
-              bindtap="onSelectBudget" style="position: relative; left: 6rpx; top: 24rpx">{{item.label}}</view>
-      </view>
+              bindtap="onSelectBudget">{{item.label}}</view>
+      </scroll-view>
     </view>
 
-    <!-- 主食类型：9 个选项，竖排会把筛选区拉得太长，这里做成横向一行可滑动 -->
+    <!-- ---------- 主食类型（多选，9 个选项横向一行可滑动） ---------- -->
     <view class="filter-group">
       <view class="filter-label">
-        主食类型<text class="label-tip">横向滑动</text>
+        主食类型<text class="label-tip">可多选 · 横向滑动</text>
       </view>
       <scroll-view class="type-scroll" scroll-x="true" enhanced="true" show-scrollbar="false">
-        <view class="chip {{foodType === item.value ? 'chip-on' : ''}}"
-              wx:for="{{foodTypeOptions}}"
+        <view class="chip {{opt.on ? 'chip-on' : ''}}"
+              wx:for="{{foodTypeChips}}"
+              wx:for-item="opt"
               wx:key="value"
-              data-value="{{item.value}}"
-              bindtap="onSelectFoodType">{{item.label}}</view>
+              data-value="{{opt.value}}"
+              bindtap="onToggleFoodType">{{opt.label}}</view>
       </scroll-view>
       <view class="filter-hint">米线类与粉类分开统计，米线不算面类。</view>
     </view>
 
+    <!-- ---------- 口味（多选） ---------- -->
     <view class="filter-group">
-      <view class="filter-label">口味</view>
+      <view class="filter-label">口味<text class="label-tip">可多选</text></view>
       <view class="chip-row">
-        <view class="chip {{taste === item.value ? 'chip-on' : ''}}"
-              wx:for="{{tasteOptions}}"
+        <view class="chip {{opt.on ? 'chip-on' : ''}}"
+              wx:for="{{tasteChips}}"
+              wx:for-item="opt"
               wx:key="value"
-              data-value="{{item.value}}"
-              bindtap="onSelectTaste">{{item.label}}</view>
+              data-value="{{opt.value}}"
+              bindtap="onToggleTaste">{{opt.label}}</view>
       </view>
     </view>
 
@@ -201,7 +245,7 @@
   <!-- 情况一：没有任何符合条件的菜品 -->
   <view class="empty" wx:if="{{matchedCount === 0}}">
     <view class="empty-title">没有找到符合条件的菜品</view>
-    <view class="empty-desc">试试放宽预算、换一个口味或主食类型，或把餐厅 / 楼层 / 窗口改回「不限」。</view>
+    <view class="empty-desc">试试放宽预算、换一个口味或主食类型，或把餐厅 / 楼层 / 店铺改回「不限」。</view>
     <view class="empty-btn" bindtap="onReset" hover-class="tap-hover">一键重置</view>
   </view>
 
@@ -275,8 +319,15 @@
 
   </block>
 
-  <view class="footer-note">
-    本项目为课程演示版本，全部餐厅、楼层、窗口、菜名、价格、主食分类均为虚构演示数据。
+  <view class="footer-note" wx:if="{{dataSource === 'cloud'}}">
+    当前展示的是云开发中的真实试点数据：均未经过人工核实，标为「待核实」，不构成事实声明。
+    纠错投稿只针对这些真实编号，审核通过也不会自动改变核实状态。
   </view>
+  <view class="footer-note" wx:else>
+    本项目为课程演示版本，全部餐厅、楼层、窗口、菜名、价格、主食分类均为虚构演示数据。
+    方位与窗口编号尚未采集，相关筛选项在数据补齐前不会出现。
+  </view>
+
+  </block>
 
 </view>

@@ -1,0 +1,84 @@
+# T1 路径与测试发现机制变更提案（待独立审查，2026-10-28）
+
+## 结论与边界
+
+**状态：PENDING。** 本文仅提交候选 diff；未应用到冻结主套件，未运行正式 `--write`，未生成正式产物。采用已批准的方案 B：发布目标为**项目根外、父目录已存在、事先不存在的新目录**。每次发布换一个新目录，不覆盖旧版。建议测试通过显式环境参数 `RECORDS_PUBLISH_DIR` 发现产物；暂不增加发布指针和 `write_publish_pointer.js`。
+
+## 现状证据
+
+| 位置 | 已核事实 | 对方案的约束 |
+|---|---|---|
+| `项目/tools/pilot/gen_records.js:1560-1582` | `assertSafeOutDir` 拒绝项目根及 `data/pages/utils/cloudfunctions/config/tools`，但目前没有强制“只准项目外”的判断 | 正式路径必须由操作者保证在项目外；如要代码强制，需另审生成器 diff |
+| `项目/tools/pilot/gen_records.js:1717-1740` | `publishOutputs` 在 S1 前校验路径、同卷和父目录存在；父目录不存在时失败 | 外部发布根应提前建立；本轮不创建发布根 |
+| `项目/docs/RECORD_GENERATOR_CONTRACT_20261023.md:1182-1199,1257-1261` | S1–S10；S6 要求目标不存在，S7 单次 rename，S10 后才有 `COMMITTED`；缺 `--out` 是 E24/2 | 不可预建目标目录，不可默认补路径，不可仅凭三文件存在判成功 |
+| `项目/docs/RECORD_GENERATOR_PLAN_20261023.md:243` | Q4-P 已裁决：`--out` 无默认，缺参 E24/2 | 方案不改变 CLI 口径 |
+| `项目/tools/test_records_spec.js:39,908-910` | 两组正式产物路径常量固定在 `tools/pilot` | 外部发布后主套件无法从这些常量发现产物 |
+| `项目/tools/test_records_spec.js:249,290,1114,1190,1828,1842` | 部分 PENDING 当前为无条件登记，另有 G2 根据文件存在性分支 | 仅改变路径常量不能证明六条产物类已 PASS；应在真实发布和逐条断言审查后再处理 |
+| `项目/tools/test_records_spec.js:4475-4476` | T283 断言项目内没有正式三件套 | 保留此负向保护 |
+
+## 外部目录规范
+
+候选形态：`C:\Users\25975\Desktop\食神寻味发布\records-YYYYMMDD-HHMMSS-<唯一后缀>`。其中“食神寻味发布”是项目根外的专用父目录，须预先存在；末级目录在调用前必须不存在。正式命令将来应显式传 `--write --out <末级绝对路径>`，但**本轮未获正式写出授权，不执行**。读侧以 S10 完成标记 `COMMITTED`、三文件齐全、无 `PUBLISHING` 和 manifest 结构/计数检查作为准入条件；发布目录不能因失败被自动删除或修补。
+
+## 发现机制比较与推荐
+
+| 机制 | 操作 | 优点 | 风险与处置 |
+|---|---|---|---|
+| 显式参数（推荐） | 执行测试时设置 `RECORDS_PUBLISH_DIR` 为绝对路径 | 无可变“当前版”状态，运行记录可精确复现，单次测试明确绑定某版 | 忘传参数时维持现有 PENDING；路径错误或不完整时不得将其判 PASS |
+| 项目外指针 | 单独文件记录最近成功目录，读侧再解引用 | 人工运行方便 | 指针写入时机、并发更新、损坏、回退和指向不完整目录都要新协议；目前没有多消费方证明其必要性 |
+
+当前不新增指针写脚本。若未来需要，应先确定指针格式、原子更新和独立读侧验证，再单独审查。
+
+## 精确候选文件清单与 unified diff
+
+此 diff 只解决**路径发现**，保留所有 PENDING 与既有断言。冻结文件 `项目/tools/test_records_spec.js` **待独立审查后才可应用**。没有生成器改动。
+
+```diff
+--- a/tools/test_records_spec.js
++++ b/tools/test_records_spec.js
+@@ -29,6 +29,10 @@ const path = require('path');
+ 
+ const ROOT = path.resolve(__dirname, '..');
++const PUBLISHED_DIR = process.env.RECORDS_PUBLISH_DIR || null;
++if (PUBLISHED_DIR && (!path.isAbsolute(PUBLISHED_DIR) ||
++    path.relative(ROOT, path.resolve(PUBLISHED_DIR)).split(path.sep)[0] !== '..')) {
++  throw new Error('RECORDS_PUBLISH_DIR 必须是项目外的绝对目录');
++}
+ const P = {
+@@ -36,7 +40,7 @@ const P = {
+   contract: path.join(ROOT, 'docs', 'RECORD_GENERATOR_CONTRACT_20261023.md'),
+   gen: path.join(ROOT, 'tools', 'pilot', 'gen_records.js'),
+-  records: path.join(ROOT, 'tools', 'pilot', 'records.json'),
++  records: path.join(PUBLISHED_DIR || path.join(ROOT, 'tools', 'pilot'), 'records.json'),
+   decision: path.join(ROOT, 'docs', 'decisions', 'DECISION_RECORD_SET_R2_20261024.md')
+@@ -905,9 +909,9 @@
+     approvals: path.join(ROOT, 'tools', 'pilot', 'approvals'),
+     idMap: path.join(ROOT, 'tools', 'pilot', 'id-map.json'),
+     gen: path.join(ROOT, 'tools', 'pilot', 'gen_records.js'),
+-    records: path.join(ROOT, 'tools', 'pilot', 'records.json'),
+-    blockers: path.join(ROOT, 'tools', 'pilot', 'records_blockers.json'),
+-    manifest: path.join(ROOT, 'tools', 'pilot', 'gen-manifest.json')
++    records: path.join(PUBLISHED_DIR || path.join(ROOT, 'tools', 'pilot'), 'records.json'),
++    blockers: path.join(PUBLISHED_DIR || path.join(ROOT, 'tools', 'pilot'), 'records_blockers.json'),
++    manifest: path.join(PUBLISHED_DIR || path.join(ROOT, 'tools', 'pilot'), 'gen-manifest.json')
+   };
+```
+
+**审查注意：** 以上是最小候选，不足以独立完成六条 PENDING 的运行时验收。审查时还须确认路径检查对 Windows 盘符、大小写、符号链接/目录联接的语义；若要求严格防止目录别名指回项目内，应另补 `realpath` 检查并提交第二版 diff。主套件读取指定目录前应调用现有 `inspectPublished` 或等价读侧校验，这属于后续逐条产物断言 diff；不得仅因设置环境变量就标 PASS。
+
+## 影响、风险、回滚
+
+| 文件 | 影响 | 风险 | 回滚 |
+|---|---|---|---|
+| `项目/tools/test_records_spec.js`（候选） | 允许测试从外部目录读取三件套；未传参时保留旧基线 | 冻结件哈希变化；目录别名和不完整目录可能误读；无条件 PENDING 尚不能验收 | 独立审查后如需撤销，仅按备份哈希恢复这几行，不做 Git restore/reset；重新跑主套件 |
+| `报告/T1_路径与测试发现机制变更提案_20261028.md` | 记录评审材料 | 方案与未来实现可能分叉 | 留存历史并另出修订版，不覆盖审批结论 |
+
+## 测试与失败预期（应用候选 diff 后，尚未执行）
+
+1. 未设置 `RECORDS_PUBLISH_DIR`：`node tools/test_records_spec.js` 保持当前基线，产物类仍 PENDING；不创建文件。
+2. 参数为相对路径或项目内路径：测试在加载阶段明确失败、退出非零；不读取产物。
+3. 参数指向不存在/不完整目录：读侧必须报告 PENDING 或 `E17_INCOMPLETE_PUBLISH`，不得 PASS；需要随后的逐条运行时断言 diff 落地。
+4. 参数指向经 S1–S10 成功发布的项目外目录：逐条校验六条产物类断言、manifest 与哈希；只有测试实际通过才可转 PASS。
+5. 回归：`node --check tools/test_records_spec.js`、`node tools/test_records_spec.js`、`node tools/check_eol.js`、`git diff --check`。命令只在独立审查批准并备份冻结件后执行。
+
+本轮未修改上述冻结文件；正式写出和六条状态转换均为 **PENDING**。

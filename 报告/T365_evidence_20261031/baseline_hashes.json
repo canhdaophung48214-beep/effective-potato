@@ -1,0 +1,146 @@
+[
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\cloudfunctions\\retention\\index.js",
+    "Bytes": 95575,
+    "SHA256": "3B54B15583960D9BEEDB706F830FD48F6AA6D22EAB8D0DC0138E992E87975CF0",
+    "Modified": "2026-10-30T16:15:26.5387465Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\config\\cloud\\schema.submissions.json",
+    "Bytes": 9152,
+    "SHA256": "E7B4A9DCC4067A4F21E04E87E4FFBC83F9766C19CA208C6F34D1AEB8ABA496CA",
+    "Modified": "2026-10-30T04:29:59.9964562Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\config\\cloud\\schema.upload_logs.json",
+    "Bytes": 4398,
+    "SHA256": "98B4C5B5B862A6F76596071A4030F9F0B48AE6552F7DE1AE50104C80C7F5BE51",
+    "Modified": "2026-10-30T16:00:38.6194357Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\retention_t363_fixture.js",
+    "Bytes": 1398,
+    "SHA256": "E8B51CF2F9386C2EA0B84A09CF6C32993F351FDA19EEE5169A9CC5D038E25823",
+    "Modified": "2026-10-30T16:00:55.1846394Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_audit_gate.js",
+    "Bytes": 10670,
+    "SHA256": "C3A8C7B65A016E665EA67261C18F7547AFA2006DF9F5800DDDB45121038C2D48",
+    "Modified": "2026-10-30T04:28:39.7681435Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_mark.js",
+    "Bytes": 22428,
+    "SHA256": "7253675CF15756E09F47C03257E4CCDB4E79890ABCCEF8A3242970178C5D08D0",
+    "Modified": "2026-10-30T04:25:37.7235283Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_purge.js",
+    "Bytes": 9365,
+    "SHA256": "F06FBC82C92FDBEECD6040404C7D3CF626971413D32DB899B03D1AAEA775C787",
+    "Modified": "2026-10-30T15:39:18.6749636Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_reconcile.js",
+    "Bytes": 14955,
+    "SHA256": "4E78E8CC68388A76E686BE3173B9AD32C2F8DCA62700D2F5093B1217ACF01C4F",
+    "Modified": "2026-10-30T03:01:13.0103271Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_recover_pending.js",
+    "Bytes": 7118,
+    "SHA256": "1111DB731E7EB6A9A5654450C0907DDD16083F8B65373A812B63B740BE46F8BB",
+    "Modified": "2026-10-30T04:25:46.3707603Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_t34_resume.js",
+    "Bytes": 8049,
+    "SHA256": "B7EF8DBBE9E90B50485900C2C4C9DB07897C3039A58BD611969BA0375F58A091",
+    "Modified": "2026-10-30T04:29:26.9653957Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_t36_concurrency.js",
+    "Bytes": 9298,
+    "SHA256": "DD22F2806C2EE182FF70FB221BD31E3BC269898C4590239BD8A863D43FB9AD0D",
+    "Modified": "2026-10-30T04:37:35.4429313Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_t36_repair.js",
+    "Bytes": 5722,
+    "SHA256": "5B61D15A8A635C67BDDDA1AEB8CF4A3DA1CEB51632F5785F0C0A2CD7A51BF320",
+    "Modified": "2026-10-30T04:33:49.3196658Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_t36_resume.js",
+    "Bytes": 5627,
+    "SHA256": "56BE1628C89087079A5332F07232152CC01095092AF5005260300D54E3705FF1",
+    "Modified": "2026-10-30T04:32:17.7806620Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_t361_deferred.js",
+    "Bytes": 5054,
+    "SHA256": "816E632337A132D52243561E99FDBE81042A1A9474C59134881085113A18E98D",
+    "Modified": "2026-10-30T15:13:29.8541406Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_t361_lock_recovery.js",
+    "Bytes": 6370,
+    "SHA256": "41D65AE8CCF599C36C3118702472A329F8EAE5CDC1DC3D6B448EEA4EFB2B0724",
+    "Modified": "2026-10-30T15:18:17.1637379Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_t361_repair.js",
+    "Bytes": 8247,
+    "SHA256": "754F56E4A71C8B524C6A7678D417BC964064F8C5193ECD34A67CA2B6142D6540",
+    "Modified": "2026-10-30T15:22:57.3365927Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_t362_deferred.js",
+    "Bytes": 4424,
+    "SHA256": "8B4C5CBF0E01D5EB5532B080DAF001E0A17D8A5609554908A327CFCA539AB583",
+    "Modified": "2026-10-30T15:40:25.6904450Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_t362_discovery.js",
+    "Bytes": 2559,
+    "SHA256": "52E1E36A9B65600055953281CEDD944AB41C7603EEFEF3407D68F8FFD018AA89",
+    "Modified": "2026-10-30T15:41:23.1345578Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_t362_repair.js",
+    "Bytes": 2684,
+    "SHA256": "5ED0C7BC7A83A61EDD6A1BC3DE8CD92F0DE41CF00189A33D180CDC972D1ED2BE",
+    "Modified": "2026-10-30T15:40:49.8100203Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_t362_scan_queue.js",
+    "Bytes": 2543,
+    "SHA256": "28F9FD071730008E0A7EB79014835FAB130D62D498DA6B767219126F682419DC",
+    "Modified": "2026-10-30T15:41:48.4193214Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_t363_audit_recovery.js",
+    "Bytes": 3167,
+    "SHA256": "0D3ACDA267639E633903B4B9A39E1426F43BCA4C34511299C1C13B9424CF6600",
+    "Modified": "2026-10-30T16:10:25.6109188Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_t363_batch_integrity.js",
+    "Bytes": 6788,
+    "SHA256": "5BB77D76838B7F01CAE22F98FB6C098C0A5C01AAB200505B12DE2029A214F726",
+    "Modified": "2026-10-30T16:15:39.1642467Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\test_retention_t363_deferred_resolution.js",
+    "Bytes": 4903,
+    "SHA256": "0A301464AA053D11FFCFF58D5E8F3373255F8B959277AD9A2424D876FA027CAB",
+    "Modified": "2026-10-30T16:04:51.8931291Z"
+  },
+  {
+    "Path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\ugc_fake_cloud.js",
+    "Bytes": 11387,
+    "SHA256": "DBD4D02F19EC1175B8A23E06BFD242FE04ADEB53C11CD0EB53C83E0EF8AF6404",
+    "Modified": "2026-10-30T15:40:00.3271473Z"
+  }
+]

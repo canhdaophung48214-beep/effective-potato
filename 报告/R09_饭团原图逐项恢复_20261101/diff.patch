@@ -1,0 +1,1223 @@
+--- /dev/null
++++ R09/build_r09.py
+@@ -0,0 +1,43 @@
++import pathlib,json,csv,hashlib,shutil,subprocess,datetime,re,collections
++E=pathlib.Path(__file__).parent.resolve();R=E.parent.parent;P=R/'项目';B=R/'备份'/('R09_'+datetime.datetime.now().strftime('%Y%m%d_%H%M%S'));B.mkdir()
++def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
++def J(p):return json.loads(p.read_text(encoding='utf-8-sig'))
++def dump(n,v):(E/n).write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n',encoding='utf8')
++def read(p):
++ with p.open(encoding='utf-8-sig',newline='') as f:return list(csv.DictReader(f))
++def wc(n,rs):
++ with (E/n).open('w',encoding='utf-8-sig',newline='') as f:
++  w=csv.DictWriter(f,fieldnames=list(rs[0]));w.writeheader();w.writerows({k:json.dumps(v,ensure_ascii=False) if isinstance(v,(list,dict)) else v for k,v in x.items()} for x in rs)
++def git(*a):
++ r=subprocess.run(['git','-c','core.quotepath=false',*a],cwd=P,capture_output=True,text=True,encoding='utf8');assert r.returncode==0;return r.stdout
++dump('git_before.json',{k:git(*a) for k,a in {'head':['rev-parse','HEAD'],'branch':['branch','--show-current'],'staged':['diff','--cached','--name-status'],'status':['status','--porcelain=v1','-uall']}.items()})
++dump('project_before.json',[{'path':str(p),'sha256':sha(p)} for p in P.rglob('*') if p.is_file() and '.git' not in p.parts and 'node_modules' not in p.parts])
++closed=['R03_3F_R2_20261101','R04_2F_20261101','R05_三餐2F_20261101','R06_四餐与楼层未定批次_20261101','R07_服务楼早期口述批次_20261101','R08_未转录菜单局部_20261101'];dump('closed_before.json',[{'path':str(p),'sha256':sha(p)} for d in closed for p in (R/'报告'/d).rglob('*') if p.is_file()])
++photo=P/'evidence/ds-session-1e2717cc/sha256_44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528.jpg'
++inputs=[(photo,'photo_2F18.jpg'),(R/'报告/R01_E3_evidence/ocr_raw.json','prior_ocr_raw.json'),(P/'tools/pilot/TRANSCRIPTION_2F.md','TRANSCRIPTION_2F.md'),(P/'evidence/PHOTO_MANIFEST_20261025.csv','PHOTO_MANIFEST.csv'),(R/'报告/DSH_R08_未转录菜单局部_独立验收_20261101.md','R08_review.md')];M=[]
++for p,n in inputs:
++ q=E/'source_assets'/n;b=B/n;shutil.copyfile(p,q);shutil.copyfile(p,b);assert p.read_bytes()==q.read_bytes()==b.read_bytes();M.append({'original':str(p),'snapshot':q.relative_to(E).as_posix(),'backup':str(b),'bytes':p.stat().st_size,'sha256':sha(p)})
++dump('backup_manifest.json',M);(B/'manifest.json').write_text(json.dumps(M,ensure_ascii=False,indent=2),encoding='utf8')
++ocr=next(x for x in J(E/'source_assets/prior_ocr_raw.json') if photo.name in x['path']);assert ocr['status']=='OCR_COMPLETED';dump('photo_ocr.json',ocr)
++lines=(E/'source_assets/TRANSCRIPTION_2F.md').read_text(encoding='utf-8-sig').splitlines();oldraw=J(R/'报告/R04_2F_20261101/new_source_records.json');oldpending=read(R/'报告/R04_2F_20261101/unresolved.csv');prevc=[(b,c) for b in closed for c in J(R/'报告'/b/'candidates.json')];C=[];G=[];L=[];U=[];cross=[]
++# Name and price line numbers are explicit. No global OCR list-to-price alignment.
++choices=[('金针菇饭团',42,42,7,'金针菇'),('鲜香卤蛋饭团',43,44,8,'鲜香卤蛋'),('和风蟹柳饭团',45,46,8,'和风蟹柳'),('咸蛋黄肉松饭团',49,50,8,'咸蛋黄肉松'),('拉丝芝士饭团',51,52,10,'拉丝芝士'),('纯肉烤肠饭团',53,54,10,'纯肉烤肠'),('香酥鸡排饭团',55,56,11,'香酥鸡排'),('香煎猪排饭团',57,58,12,'香煎猪排'),('黑椒牛排饭团',59,60,13,'黑椒牛排'),('金枪鱼饭团',61,62,14,'金枪鱼'),('日式鳗鱼饭团',63,64,15,'日式鳗鱼')]
++for i,(name,nl,pl,price,token) in enumerate(choices,1):
++ ntext=ocr['lines'][nl-1];ptext=ocr['lines'][pl-1];assert name in re.sub(r'\s+','',ntext) and str(price)+'元' in re.sub(r'\s+','',ptext)
++ sourceLine=next(j+1 for j,l in enumerate(lines) if 680<=j+1<=690 and token in l);quote=lines[sourceLine-1];assert str(price)+' 元' in quote
++ prior=next(x for x in oldraw if x['oldStallIdForTrace']=='c01_t35' and x['sourceLine']==sourceLine);assert any(u['recordRef']==prior['sourceRecordRef'] for u in oldpending)
++ ref=f'R09-2F18-RICEBALL-{i:02d}';oldkeys=prior['oldRecordKeys'];ev={'photoFile':'source_assets/photo_2F18.jpg','photoSHA256':sha(photo),'ocrFile':'photo_ocr.json','ocrNameLine':nl,'ocrPriceLine':pl,'ocrNameQuote':ntext,'ocrPriceQuote':ptext,'transcriptionFile':'source_assets/TRANSCRIPTION_2F.md','sourceLine':sourceLine,'sourceQuote':quote,'evidenceLevel':'OCR + same-item transcription price crosscheck; no new human visual signoff'}
++ g={'sourceRecordRef':ref,'name':name,'kind':'dish','blocked':False,'disposition':'CANDIDATE','priorPendingSourceRef':prior['sourceRecordRef'],'oldRecordKeys':oldkeys,'evidence':ev};G.append(g)
++ c={'candidateId':ref+'-V1','sourceRecordRef':ref,'name':name,'recordKind':'dish','independentDish':True,'formalDishId':None,'amount':price,'rawPriceExpression':ptext,'unitRaw':None,'specification':None,'composition':None,'stallRef':'R09-PHOTO-2F18','stallNameClaim':'W2-15 半亩良田（历史转录关联，正式身份待核验）','floorRef':None,'tastes':[],'foodType':None,'collector':None,'captureDate':None,'currentPriceValidity':'UNKNOWN','transactionQuoteAllowed':False,'verifyStatus':'unverified','verifiedAt':None,'admissionStatus':'ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED','priorPendingSourceRef':prior['sourceRecordRef'],'oldRecordKeys':oldkeys,'evidence':ev};C.append(c)
++ L.append({'sourceRecordRef':ref,'action':'NEW','priorDisposition':'R04_PENDING_SOURCE_GROUP','priorPendingSourceRef':prior['sourceRecordRef'],'oldRecordKeys':oldkeys,'candidateRefs':[c['candidateId']],'optionRefs':[],'name':name,'reason':'原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任'})
++ for b,pc in prevc:
++  if pc.get('name',pc.get('dishName'))==name:cross.append({'name':name,'otherBatch':b,'otherCandidateId':pc['candidateId'],'relation':'same name only; no automatic identity merge'})
++# Remaining items are source responsibilities, never synthetic menu rows.
++for ref,name,reason,nl in [('R09-2F18-UNRESOLVED-SUSHI','寿司价格列组','原OCR将16菜名与价列分开，不按数组位置强配价',1),('R09-2F18-UNRESOLVED-LOWER','原味/红豆/玉米沙拉/泡菜饭团组','菜名与多个价位排列仍需局部位置确认',35),('R09-2F18-UNRESOLVED-BACON','培根饭团','OCR缺烟字与旧转录烟重/烟熏矛盾，名称不纠造',47),('R09-2F18-UNRESOLVED-TWO','辣条/铁板里脊饭团','同一行价签两项且OCR缺铁字，不推断纠字',65),('R09-2F18-UNRESOLVED-EGGWAFFLE','鸡蛋仔及口味','OCR为100份，原转录10元/份，不假装原图金额已确认',17)]:
++ G.append({'sourceRecordRef':ref,'name':name,'kind':'unresolved_material_group','blocked':True,'disposition':'PENDING','evidence':{'photoFile':'source_assets/photo_2F18.jpg','ocrLine':nl,'ocrQuote':ocr['lines'][nl-1]}});U.append({'sourceRecordRef':ref,'name':name,'reason':reason,'photoFile':'source_assets/photo_2F18.jpg','ocrLine':nl,'nextAction':'原图局部定位或清晰材料；不要求延期元数据/区域裁决'});L.append({'sourceRecordRef':ref,'action':'PENDING','priorDisposition':'not individually admitted','priorPendingSourceRef':None,'oldRecordKeys':[],'candidateRefs':[],'optionRefs':[],'name':name,'reason':reason})
++assert len(C)==11 and len(G)==16
++# No candidate of this photo/name identity was already generated.
++assert not any(pc.get('name')==c['name'] and ('44d50356' in json.dumps(pc,ensure_ascii=False)) for c in C for b,pc in prevc)
++dump('candidates.json',C);dump('source_groups.json',G);dump('source_ledger.json',L);wc('source_ledger.csv',L);wc('unresolved.csv',U);dump('optional_surcharges.json',[]);dump('bundle_relations.json',[]);dump('same_name_crosscheck.json',cross)
++dump('statistics.json',{'sourcePhotos':1,'extractedDishRows':11,'materialResponsibilityGroups':16,'independentDishCandidates':11,'mealComponents':0,'optionalSurcharges':0,'bundleRelations':0,'pendingMaterialGroups':5,'newChildResponsibilities':11,'oldRecordsRewritten':0,'oldRecordsVoided':0,'formalImports':0,'priorPendingParentGroups':len({c['priorPendingSourceRef'] for c in C})})
++print(json.dumps(J(E/'statistics.json'),ensure_ascii=False,indent=2));print('build exit=0')
+--- /dev/null
++++ R09/test_r09.py
+@@ -0,0 +1,46 @@
++import pathlib,json,csv,re,hashlib,copy,subprocess
++E=pathlib.Path(__file__).parent.resolve();R=E.parent.parent;P=R/'项目'
++def J(n):return json.loads((E/n).read_text(encoding='utf-8-sig'))
++def sha(p):return hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
++C=J('candidates.json');G=J('source_groups.json');L=J('source_ledger.json');ocr=J('photo_ocr.json');lines=(E/'source_assets/TRANSCRIPTION_2F.md').read_text(encoding='utf-8-sig').splitlines();N=0
++def ok(x):assert x
++def test(n,f):
++ global N
++ f();N+=1;print('PASS '+n)
++def validate(cs):
++ assert len(cs)==11 and len({c['candidateId'] for c in cs})==11 and len({c['name'] for c in cs})==11
++ for c in cs:
++  ev=c['evidence'];nq=ocr['lines'][ev['ocrNameLine']-1];pq=ocr['lines'][ev['ocrPriceLine']-1];assert nq==ev['ocrNameQuote'] and pq==ev['ocrPriceQuote']
++  assert c['name'] in re.sub(r'\s+','',nq)
++  assert re.search(r'(?<!\d)'+str(c['amount'])+'元',re.sub(r'\s+','',pq))
++  assert ev['ocrPriceLine']-ev['ocrNameLine'] in [0,1]
++  assert ev['sourceQuote']==lines[ev['sourceLine']-1] and str(c['amount'])+' 元' in ev['sourceQuote']
++  assert sha(E/ev['photoFile'])==ev['photoSHA256'] and c['rawPriceExpression']==pq
++  assert c['formalDishId'] is None and c['collector'] is None and c['captureDate'] is None and c['unitRaw'] is None
++  assert c['transactionQuoteAllowed'] is False and c['currentPriceValidity']=='UNKNOWN' and c['tastes']==[]
++  assert c['specification'] is None and c['composition'] is None and c['recordKind']=='dish' and c['independentDish'] is True
++  assert c['stallRef']=='R09-PHOTO-2F18' and c['floorRef'] is None
++test('11独立饭团名称/金额/同行或相邻行/原图SHA核验',lambda:validate(C))
++test('源组16=候选11+待核验材料组5',lambda:ok(len(G)==16 and sum(g['blocked'] for g in G)==5 and len({g['sourceRecordRef'] for g in G})==16))
++test('源台账完整且唯一，不把原父组数量当子项数',lambda:ok(len(L)==16 and {l['sourceRecordRef'] for l in L}=={g['sourceRecordRef'] for g in G} and len({c['priorPendingSourceRef'] for c in C})==8))
++old=json.loads((R/'报告/R04_2F_20261101/new_source_records.json').read_text(encoding='utf8'))
++test('11子项全部追溯R04待核验父组，不冒充旧正式ID',lambda:ok(all(any(s['sourceRecordRef']==c['priorPendingSourceRef'] and s['oldRecordKeys']==c['oldRecordKeys'] for s in old) for c in C)))
++test('不生成组件/加料/套餐',lambda:ok(J('optional_surcharges.json')==[] and J('bundle_relations.json')==[] and all(c['name'].endswith('饭团') for c in C)))
++test('无猜测的培根/铁板里脊/鸡蛋仔价',lambda:ok(all(not any(t in c['name'] for t in ['培根','里脊','鸡蛋仔']) for c in C)))
++test('原始OCR快照逐项相同',lambda:ok(ocr==next(x for x in J('source_assets/prior_ocr_raw.json') if '44d50356' in x['path'])))
++for n,mut in [('改价',lambda c:c[0].update(amount=99)),('改名',lambda c:c[0].update(name='未知新菜饭团')),('误配价行',lambda c:c[0]['evidence'].update(ocrPriceLine=64)),('伪造采集日期',lambda c:c[0].update(captureDate='2026-10-23')),('复制正式ID',lambda c:c[0].update(formalDishId='c01_d999')),('推断口味',lambda c:c[0].update(tastes=['mild_spicy'])),('开放报价',lambda c:c[0].update(transactionQuoteAllowed=True)),('候选重复',lambda c:c.__setitem__(1,copy.deepcopy(c[0]))),('假定套餐成分',lambda c:c[0].update(composition=['米饭','馅料']))]:
++ def neg(mut=mut):
++  cs=copy.deepcopy(C);mut(cs)
++  try:validate(cs)
++  except AssertionError:return
++  raise AssertionError('变异未捕获')
++ test('负向:'+n,neg)
++test('所有原始来源/备份/快照逐字节一致',lambda:ok(all(pathlib.Path(x['original']).read_bytes()==(E/x['snapshot']).read_bytes()==pathlib.Path(x['backup']).read_bytes() for x in J('backup_manifest.json'))))
++test('正式项目字节未变',lambda:ok(all(sha(x['path'])==x['sha256'] for x in J('project_before.json'))))
++test('R03-R08全部冻结成果字节未变',lambda:ok(all(sha(x['path'])==x['sha256'] for x in J('closed_before.json'))))
++after={}
++for k,a in {'head':['rev-parse','HEAD'],'branch':['branch','--show-current'],'staged':['diff','--cached','--name-status'],'status':['status','--porcelain=v1','-uall']}.items():
++ r=subprocess.run(['git','-c','core.quotepath=false',*a],cwd=P,capture_output=True,text=True,encoding='utf8');assert r.returncode==0;after[k]=r.stdout
++(E/'git_after.json').write_text(json.dumps(after,ensure_ascii=False,indent=2),encoding='utf8');test('Git HEAD/分支/暂存/工作区一致',lambda:ok(after==J('git_before.json')))
++r=subprocess.run(['git','diff','--check'],cwd=P,capture_output=True,text=True);print('git diff --check exit=',r.returncode);print(r.stdout+r.stderr);assert r.returncode==0
++print(f'RESULT {N} PASS / 0 FAIL / 0 SKIP; exit=0')
+--- /dev/null
++++ R09/candidates.json
+@@ -0,0 +1,464 @@
++[
++  {
++    "candidateId": "R09-2F18-RICEBALL-01-V1",
++    "sourceRecordRef": "R09-2F18-RICEBALL-01",
++    "name": "金针菇饭团",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 7,
++    "rawPriceExpression": "金 针 菇 饭 团 （ 微 辣 ） 7 元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "stallRef": "R09-PHOTO-2F18",
++    "stallNameClaim": "W2-15 半亩良田（历史转录关联，正式身份待核验）",
++    "floorRef": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-15-L0683-S344",
++    "oldRecordKeys": [
++      "c01_t35|f2/甜味红豆 / 玉米沙拉 / 泡菜（微辣）/ 金针菇（微辣）/ 辣条||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
++      "ocrFile": "photo_ocr.json",
++      "ocrNameLine": 42,
++      "ocrPriceLine": 42,
++      "ocrNameQuote": "金 针 菇 饭 团 （ 微 辣 ） 7 元",
++      "ocrPriceQuote": "金 针 菇 饭 团 （ 微 辣 ） 7 元",
++      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 683,
++      "sourceQuote": "| 甜味红豆 / 玉米沙拉 / 泡菜（微辣）/ 金针菇（微辣）/ 辣条 | 7 元 |",
++      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
++    }
++  },
++  {
++    "candidateId": "R09-2F18-RICEBALL-02-V1",
++    "sourceRecordRef": "R09-2F18-RICEBALL-02",
++    "name": "鲜香卤蛋饭团",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 8,
++    "rawPriceExpression": "8 元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "stallRef": "R09-PHOTO-2F18",
++    "stallNameClaim": "W2-15 半亩良田（历史转录关联，正式身份待核验）",
++    "floorRef": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-15-L0684-S345",
++    "oldRecordKeys": [
++      "c01_t35|f2/鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
++      "ocrFile": "photo_ocr.json",
++      "ocrNameLine": 43,
++      "ocrPriceLine": 44,
++      "ocrNameQuote": "鲜 香 卤 蛋 饭 团",
++      "ocrPriceQuote": "8 元",
++      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 684,
++      "sourceQuote": "| 鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊 | 8 元 |",
++      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
++    }
++  },
++  {
++    "candidateId": "R09-2F18-RICEBALL-03-V1",
++    "sourceRecordRef": "R09-2F18-RICEBALL-03",
++    "name": "和风蟹柳饭团",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 8,
++    "rawPriceExpression": "8 元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "stallRef": "R09-PHOTO-2F18",
++    "stallNameClaim": "W2-15 半亩良田（历史转录关联，正式身份待核验）",
++    "floorRef": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-15-L0684-S345",
++    "oldRecordKeys": [
++      "c01_t35|f2/鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
++      "ocrFile": "photo_ocr.json",
++      "ocrNameLine": 45,
++      "ocrPriceLine": 46,
++      "ocrNameQuote": "' 和 风 蟹 柳 饭 团",
++      "ocrPriceQuote": "8 元",
++      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 684,
++      "sourceQuote": "| 鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊 | 8 元 |",
++      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
++    }
++  },
++  {
++    "candidateId": "R09-2F18-RICEBALL-04-V1",
++    "sourceRecordRef": "R09-2F18-RICEBALL-04",
++    "name": "咸蛋黄肉松饭团",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 8,
++    "rawPriceExpression": "8 元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "stallRef": "R09-PHOTO-2F18",
++    "stallNameClaim": "W2-15 半亩良田（历史转录关联，正式身份待核验）",
++    "floorRef": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-15-L0684-S345",
++    "oldRecordKeys": [
++      "c01_t35|f2/鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
++      "ocrFile": "photo_ocr.json",
++      "ocrNameLine": 49,
++      "ocrPriceLine": 50,
++      "ocrNameQuote": "《 咸 蛋 黄 肉 松 饭 团",
++      "ocrPriceQuote": "8 元",
++      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 684,
++      "sourceQuote": "| 鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊 | 8 元 |",
++      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
++    }
++  },
++  {
++    "candidateId": "R09-2F18-RICEBALL-05-V1",
++    "sourceRecordRef": "R09-2F18-RICEBALL-05",
++    "name": "拉丝芝士饭团",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 10,
++    "rawPriceExpression": "10 元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "stallRef": "R09-PHOTO-2F18",
++    "stallNameClaim": "W2-15 半亩良田（历史转录关联，正式身份待核验）",
++    "floorRef": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-15-L0685-S346",
++    "oldRecordKeys": [
++      "c01_t35|f2/拉丝芝士 / 纯肉烤肠||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
++      "ocrFile": "photo_ocr.json",
++      "ocrNameLine": 51,
++      "ocrPriceLine": 52,
++      "ocrNameQuote": "拉 丝 芝 士 饭 团",
++      "ocrPriceQuote": "10 元",
++      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 685,
++      "sourceQuote": "| 拉丝芝士 / 纯肉烤肠 | 10 元 |",
++      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
++    }
++  },
++  {
++    "candidateId": "R09-2F18-RICEBALL-06-V1",
++    "sourceRecordRef": "R09-2F18-RICEBALL-06",
++    "name": "纯肉烤肠饭团",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 10,
++    "rawPriceExpression": "10 元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "stallRef": "R09-PHOTO-2F18",
++    "stallNameClaim": "W2-15 半亩良田（历史转录关联，正式身份待核验）",
++    "floorRef": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-15-L0685-S346",
++    "oldRecordKeys": [
++      "c01_t35|f2/拉丝芝士 / 纯肉烤肠||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
++      "ocrFile": "photo_ocr.json",
++      "ocrNameLine": 53,
++      "ocrPriceLine": 54,
++      "ocrNameQuote": "' 纯 肉 烤 肠 饭 团",
++      "ocrPriceQuote": "10 元",
++      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 685,
++      "sourceQuote": "| 拉丝芝士 / 纯肉烤肠 | 10 元 |",
++      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
++    }
++  },
++  {
++    "candidateId": "R09-2F18-RICEBALL-07-V1",
++    "sourceRecordRef": "R09-2F18-RICEBALL-07",
++    "name": "香酥鸡排饭团",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 11,
++    "rawPriceExpression": "11 元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "stallRef": "R09-PHOTO-2F18",
++    "stallNameClaim": "W2-15 半亩良田（历史转录关联，正式身份待核验）",
++    "floorRef": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-15-L0686-S347",
++    "oldRecordKeys": [
++      "c01_t35|f2/香酥鸡排||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
++      "ocrFile": "photo_ocr.json",
++      "ocrNameLine": 55,
++      "ocrPriceLine": 56,
++      "ocrNameQuote": "香 酥 鸡 排 饭 团",
++      "ocrPriceQuote": "11 元",
++      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 686,
++      "sourceQuote": "| 香酥鸡排 | 11 元 |",
++      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
++    }
++  },
++  {
++    "candidateId": "R09-2F18-RICEBALL-08-V1",
++    "sourceRecordRef": "R09-2F18-RICEBALL-08",
++    "name": "香煎猪排饭团",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 12,
++    "rawPriceExpression": "12 元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "stallRef": "R09-PHOTO-2F18",
++    "stallNameClaim": "W2-15 半亩良田（历史转录关联，正式身份待核验）",
++    "floorRef": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-15-L0687-S348",
++    "oldRecordKeys": [
++      "c01_t35|f2/香煎猪排||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
++      "ocrFile": "photo_ocr.json",
++      "ocrNameLine": 57,
++      "ocrPriceLine": 58,
++      "ocrNameQuote": "香 煎 猪 排 饭 团",
++      "ocrPriceQuote": "12 元",
++      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 687,
++      "sourceQuote": "| 香煎猪排 | 12 元 |",
++      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
++    }
++  },
++  {
++    "candidateId": "R09-2F18-RICEBALL-09-V1",
++    "sourceRecordRef": "R09-2F18-RICEBALL-09",
++    "name": "黑椒牛排饭团",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 13,
++    "rawPriceExpression": "13 元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "stallRef": "R09-PHOTO-2F18",
++    "stallNameClaim": "W2-15 半亩良田（历史转录关联，正式身份待核验）",
++    "floorRef": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-15-L0688-S349",
++    "oldRecordKeys": [
++      "c01_t35|f2/黑椒牛排||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
++      "ocrFile": "photo_ocr.json",
++      "ocrNameLine": 59,
++      "ocrPriceLine": 60,
++      "ocrNameQuote": "黑 椒 牛 排 饭 团",
++      "ocrPriceQuote": "13 元",
++      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 688,
++      "sourceQuote": "| 黑椒牛排 | 13 元 |",
++      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
++    }
++  },
++  {
++    "candidateId": "R09-2F18-RICEBALL-10-V1",
++    "sourceRecordRef": "R09-2F18-RICEBALL-10",
++    "name": "金枪鱼饭团",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 14,
++    "rawPriceExpression": "14 元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "stallRef": "R09-PHOTO-2F18",
++    "stallNameClaim": "W2-15 半亩良田（历史转录关联，正式身份待核验）",
++    "floorRef": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-15-L0689-S350",
++    "oldRecordKeys": [
++      "c01_t35|f2/金枪鱼||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
++      "ocrFile": "photo_ocr.json",
++      "ocrNameLine": 61,
++      "ocrPriceLine": 62,
++      "ocrNameQuote": "金 枪 鱼 饭 团",
++      "ocrPriceQuote": "14 元",
++      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 689,
++      "sourceQuote": "| 金枪鱼 | 14 元 |",
++      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
++    }
++  },
++  {
++    "candidateId": "R09-2F18-RICEBALL-11-V1",
++    "sourceRecordRef": "R09-2F18-RICEBALL-11",
++    "name": "日式鳗鱼饭团",
++    "recordKind": "dish",
++    "independentDish": true,
++    "formalDishId": null,
++    "amount": 15,
++    "rawPriceExpression": "15 元",
++    "unitRaw": null,
++    "specification": null,
++    "composition": null,
++    "stallRef": "R09-PHOTO-2F18",
++    "stallNameClaim": "W2-15 半亩良田（历史转录关联，正式身份待核验）",
++    "floorRef": null,
++    "tastes": [],
++    "foodType": null,
++    "collector": null,
++    "captureDate": null,
++    "currentPriceValidity": "UNKNOWN",
++    "transactionQuoteAllowed": false,
++    "verifyStatus": "unverified",
++    "verifiedAt": null,
++    "admissionStatus": "ISOLATED_HISTORY_NOT_FORMALLY_AUTHORIZED",
++    "priorPendingSourceRef": "R04-W2-15-L0690-S351",
++    "oldRecordKeys": [
++      "c01_t35|f2/日式鳗鱼||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
++      "ocrFile": "photo_ocr.json",
++      "ocrNameLine": 63,
++      "ocrPriceLine": 64,
++      "ocrNameQuote": "日 式 鳗 鱼 饭 团",
++      "ocrPriceQuote": "15 元",
++      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 690,
++      "sourceQuote": "| 日式鳗鱼 | 15 元 |",
++      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
++    }
++  }
++]
+--- /dev/null
++++ R09/source_groups.json
+@@ -0,0 +1,326 @@
++[
++  {
++    "sourceRecordRef": "R09-2F18-RICEBALL-01",
++    "name": "金针菇饭团",
++    "kind": "dish",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "priorPendingSourceRef": "R04-W2-15-L0683-S344",
++    "oldRecordKeys": [
++      "c01_t35|f2/甜味红豆 / 玉米沙拉 / 泡菜（微辣）/ 金针菇（微辣）/ 辣条||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
++      "ocrFile": "photo_ocr.json",
++      "ocrNameLine": 42,
++      "ocrPriceLine": 42,
++      "ocrNameQuote": "金 针 菇 饭 团 （ 微 辣 ） 7 元",
++      "ocrPriceQuote": "金 针 菇 饭 团 （ 微 辣 ） 7 元",
++      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 683,
++      "sourceQuote": "| 甜味红豆 / 玉米沙拉 / 泡菜（微辣）/ 金针菇（微辣）/ 辣条 | 7 元 |",
++      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R09-2F18-RICEBALL-02",
++    "name": "鲜香卤蛋饭团",
++    "kind": "dish",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "priorPendingSourceRef": "R04-W2-15-L0684-S345",
++    "oldRecordKeys": [
++      "c01_t35|f2/鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
++      "ocrFile": "photo_ocr.json",
++      "ocrNameLine": 43,
++      "ocrPriceLine": 44,
++      "ocrNameQuote": "鲜 香 卤 蛋 饭 团",
++      "ocrPriceQuote": "8 元",
++      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 684,
++      "sourceQuote": "| 鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊 | 8 元 |",
++      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R09-2F18-RICEBALL-03",
++    "name": "和风蟹柳饭团",
++    "kind": "dish",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "priorPendingSourceRef": "R04-W2-15-L0684-S345",
++    "oldRecordKeys": [
++      "c01_t35|f2/鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
++      "ocrFile": "photo_ocr.json",
++      "ocrNameLine": 45,
++      "ocrPriceLine": 46,
++      "ocrNameQuote": "' 和 风 蟹 柳 饭 团",
++      "ocrPriceQuote": "8 元",
++      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 684,
++      "sourceQuote": "| 鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊 | 8 元 |",
++      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R09-2F18-RICEBALL-04",
++    "name": "咸蛋黄肉松饭团",
++    "kind": "dish",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "priorPendingSourceRef": "R04-W2-15-L0684-S345",
++    "oldRecordKeys": [
++      "c01_t35|f2/鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
++      "ocrFile": "photo_ocr.json",
++      "ocrNameLine": 49,
++      "ocrPriceLine": 50,
++      "ocrNameQuote": "《 咸 蛋 黄 肉 松 饭 团",
++      "ocrPriceQuote": "8 元",
++      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 684,
++      "sourceQuote": "| 鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊 | 8 元 |",
++      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R09-2F18-RICEBALL-05",
++    "name": "拉丝芝士饭团",
++    "kind": "dish",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "priorPendingSourceRef": "R04-W2-15-L0685-S346",
++    "oldRecordKeys": [
++      "c01_t35|f2/拉丝芝士 / 纯肉烤肠||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
++      "ocrFile": "photo_ocr.json",
++      "ocrNameLine": 51,
++      "ocrPriceLine": 52,
++      "ocrNameQuote": "拉 丝 芝 士 饭 团",
++      "ocrPriceQuote": "10 元",
++      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 685,
++      "sourceQuote": "| 拉丝芝士 / 纯肉烤肠 | 10 元 |",
++      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R09-2F18-RICEBALL-06",
++    "name": "纯肉烤肠饭团",
++    "kind": "dish",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "priorPendingSourceRef": "R04-W2-15-L0685-S346",
++    "oldRecordKeys": [
++      "c01_t35|f2/拉丝芝士 / 纯肉烤肠||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
++      "ocrFile": "photo_ocr.json",
++      "ocrNameLine": 53,
++      "ocrPriceLine": 54,
++      "ocrNameQuote": "' 纯 肉 烤 肠 饭 团",
++      "ocrPriceQuote": "10 元",
++      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 685,
++      "sourceQuote": "| 拉丝芝士 / 纯肉烤肠 | 10 元 |",
++      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R09-2F18-RICEBALL-07",
++    "name": "香酥鸡排饭团",
++    "kind": "dish",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "priorPendingSourceRef": "R04-W2-15-L0686-S347",
++    "oldRecordKeys": [
++      "c01_t35|f2/香酥鸡排||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
++      "ocrFile": "photo_ocr.json",
++      "ocrNameLine": 55,
++      "ocrPriceLine": 56,
++      "ocrNameQuote": "香 酥 鸡 排 饭 团",
++      "ocrPriceQuote": "11 元",
++      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 686,
++      "sourceQuote": "| 香酥鸡排 | 11 元 |",
++      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R09-2F18-RICEBALL-08",
++    "name": "香煎猪排饭团",
++    "kind": "dish",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "priorPendingSourceRef": "R04-W2-15-L0687-S348",
++    "oldRecordKeys": [
++      "c01_t35|f2/香煎猪排||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
++      "ocrFile": "photo_ocr.json",
++      "ocrNameLine": 57,
++      "ocrPriceLine": 58,
++      "ocrNameQuote": "香 煎 猪 排 饭 团",
++      "ocrPriceQuote": "12 元",
++      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 687,
++      "sourceQuote": "| 香煎猪排 | 12 元 |",
++      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R09-2F18-RICEBALL-09",
++    "name": "黑椒牛排饭团",
++    "kind": "dish",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "priorPendingSourceRef": "R04-W2-15-L0688-S349",
++    "oldRecordKeys": [
++      "c01_t35|f2/黑椒牛排||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
++      "ocrFile": "photo_ocr.json",
++      "ocrNameLine": 59,
++      "ocrPriceLine": 60,
++      "ocrNameQuote": "黑 椒 牛 排 饭 团",
++      "ocrPriceQuote": "13 元",
++      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 688,
++      "sourceQuote": "| 黑椒牛排 | 13 元 |",
++      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R09-2F18-RICEBALL-10",
++    "name": "金枪鱼饭团",
++    "kind": "dish",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "priorPendingSourceRef": "R04-W2-15-L0689-S350",
++    "oldRecordKeys": [
++      "c01_t35|f2/金枪鱼||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
++      "ocrFile": "photo_ocr.json",
++      "ocrNameLine": 61,
++      "ocrPriceLine": 62,
++      "ocrNameQuote": "金 枪 鱼 饭 团",
++      "ocrPriceQuote": "14 元",
++      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 689,
++      "sourceQuote": "| 金枪鱼 | 14 元 |",
++      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R09-2F18-RICEBALL-11",
++    "name": "日式鳗鱼饭团",
++    "kind": "dish",
++    "blocked": false,
++    "disposition": "CANDIDATE",
++    "priorPendingSourceRef": "R04-W2-15-L0690-S351",
++    "oldRecordKeys": [
++      "c01_t35|f2/日式鳗鱼||"
++    ],
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "photoSHA256": "44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528",
++      "ocrFile": "photo_ocr.json",
++      "ocrNameLine": 63,
++      "ocrPriceLine": 64,
++      "ocrNameQuote": "日 式 鳗 鱼 饭 团",
++      "ocrPriceQuote": "15 元",
++      "transcriptionFile": "source_assets/TRANSCRIPTION_2F.md",
++      "sourceLine": 690,
++      "sourceQuote": "| 日式鳗鱼 | 15 元 |",
++      "evidenceLevel": "OCR + same-item transcription price crosscheck; no new human visual signoff"
++    }
++  },
++  {
++    "sourceRecordRef": "R09-2F18-UNRESOLVED-SUSHI",
++    "name": "寿司价格列组",
++    "kind": "unresolved_material_group",
++    "blocked": true,
++    "disposition": "PENDING",
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "ocrLine": 1,
++      "ocrQuote": "肉 松 沙 拉 寿 司"
++    }
++  },
++  {
++    "sourceRecordRef": "R09-2F18-UNRESOLVED-LOWER",
++    "name": "原味/红豆/玉米沙拉/泡菜饭团组",
++    "kind": "unresolved_material_group",
++    "blocked": true,
++    "disposition": "PENDING",
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "ocrLine": 35,
++      "ocrQuote": "0 专 统 原 味 饭 团"
++    }
++  },
++  {
++    "sourceRecordRef": "R09-2F18-UNRESOLVED-BACON",
++    "name": "培根饭团",
++    "kind": "unresolved_material_group",
++    "blocked": true,
++    "disposition": "PENDING",
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "ocrLine": 47,
++      "ocrQuote": "' 熏 培 根 饭 团"
++    }
++  },
++  {
++    "sourceRecordRef": "R09-2F18-UNRESOLVED-TWO",
++    "name": "辣条/铁板里脊饭团",
++    "kind": "unresolved_material_group",
++    "blocked": true,
++    "disposition": "PENDING",
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "ocrLine": 65,
++      "ocrQuote": "辣 条 饭 团 7 元 板 里 脊 饭 团 8 元"
++    }
++  },
++  {
++    "sourceRecordRef": "R09-2F18-UNRESOLVED-EGGWAFFLE",
++    "name": "鸡蛋仔及口味",
++    "kind": "unresolved_material_group",
++    "blocked": true,
++    "disposition": "PENDING",
++    "evidence": {
++      "photoFile": "source_assets/photo_2F18.jpg",
++      "ocrLine": 17,
++      "ocrQuote": "巪 鸡 蛋 仔 100 份"
++    }
++  }
++]
+--- /dev/null
++++ R09/source_ledger.csv
+@@ -0,0 +1,17 @@
++sourceRecordRef,action,priorDisposition,priorPendingSourceRef,oldRecordKeys,candidateRefs,optionRefs,name,reason
++R09-2F18-RICEBALL-01,NEW,R04_PENDING_SOURCE_GROUP,R04-W2-15-L0683-S344,"[""c01_t35|f2/甜味红豆 / 玉米沙拉 / 泡菜（微辣）/ 金针菇（微辣）/ 辣条||""]","[""R09-2F18-RICEBALL-01-V1""]",[],金针菇饭团,原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任
++R09-2F18-RICEBALL-02,NEW,R04_PENDING_SOURCE_GROUP,R04-W2-15-L0684-S345,"[""c01_t35|f2/鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊||""]","[""R09-2F18-RICEBALL-02-V1""]",[],鲜香卤蛋饭团,原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任
++R09-2F18-RICEBALL-03,NEW,R04_PENDING_SOURCE_GROUP,R04-W2-15-L0684-S345,"[""c01_t35|f2/鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊||""]","[""R09-2F18-RICEBALL-03-V1""]",[],和风蟹柳饭团,原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任
++R09-2F18-RICEBALL-04,NEW,R04_PENDING_SOURCE_GROUP,R04-W2-15-L0684-S345,"[""c01_t35|f2/鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊||""]","[""R09-2F18-RICEBALL-04-V1""]",[],咸蛋黄肉松饭团,原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任
++R09-2F18-RICEBALL-05,NEW,R04_PENDING_SOURCE_GROUP,R04-W2-15-L0685-S346,"[""c01_t35|f2/拉丝芝士 / 纯肉烤肠||""]","[""R09-2F18-RICEBALL-05-V1""]",[],拉丝芝士饭团,原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任
++R09-2F18-RICEBALL-06,NEW,R04_PENDING_SOURCE_GROUP,R04-W2-15-L0685-S346,"[""c01_t35|f2/拉丝芝士 / 纯肉烤肠||""]","[""R09-2F18-RICEBALL-06-V1""]",[],纯肉烤肠饭团,原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任
++R09-2F18-RICEBALL-07,NEW,R04_PENDING_SOURCE_GROUP,R04-W2-15-L0686-S347,"[""c01_t35|f2/香酥鸡排||""]","[""R09-2F18-RICEBALL-07-V1""]",[],香酥鸡排饭团,原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任
++R09-2F18-RICEBALL-08,NEW,R04_PENDING_SOURCE_GROUP,R04-W2-15-L0687-S348,"[""c01_t35|f2/香煎猪排||""]","[""R09-2F18-RICEBALL-08-V1""]",[],香煎猪排饭团,原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任
++R09-2F18-RICEBALL-09,NEW,R04_PENDING_SOURCE_GROUP,R04-W2-15-L0688-S349,"[""c01_t35|f2/黑椒牛排||""]","[""R09-2F18-RICEBALL-09-V1""]",[],黑椒牛排饭团,原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任
++R09-2F18-RICEBALL-10,NEW,R04_PENDING_SOURCE_GROUP,R04-W2-15-L0689-S350,"[""c01_t35|f2/金枪鱼||""]","[""R09-2F18-RICEBALL-10-V1""]",[],金枪鱼饭团,原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任
++R09-2F18-RICEBALL-11,NEW,R04_PENDING_SOURCE_GROUP,R04-W2-15-L0690-S351,"[""c01_t35|f2/日式鳗鱼||""]","[""R09-2F18-RICEBALL-11-V1""]",[],日式鳗鱼饭团,原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任
++R09-2F18-UNRESOLVED-SUSHI,PENDING,not individually admitted,,[],[],[],寿司价格列组,原OCR将16菜名与价列分开，不按数组位置强配价
++R09-2F18-UNRESOLVED-LOWER,PENDING,not individually admitted,,[],[],[],原味/红豆/玉米沙拉/泡菜饭团组,菜名与多个价位排列仍需局部位置确认
++R09-2F18-UNRESOLVED-BACON,PENDING,not individually admitted,,[],[],[],培根饭团,OCR缺烟字与旧转录烟重/烟熏矛盾，名称不纠造
++R09-2F18-UNRESOLVED-TWO,PENDING,not individually admitted,,[],[],[],辣条/铁板里脊饭团,同一行价签两项且OCR缺铁字，不推断纠字
++R09-2F18-UNRESOLVED-EGGWAFFLE,PENDING,not individually admitted,,[],[],[],鸡蛋仔及口味,OCR为100份，原转录10元/份，不假装原图金额已确认
+--- /dev/null
++++ R09/source_ledger.json
+@@ -0,0 +1,222 @@
++[
++  {
++    "sourceRecordRef": "R09-2F18-RICEBALL-01",
++    "action": "NEW",
++    "priorDisposition": "R04_PENDING_SOURCE_GROUP",
++    "priorPendingSourceRef": "R04-W2-15-L0683-S344",
++    "oldRecordKeys": [
++      "c01_t35|f2/甜味红豆 / 玉米沙拉 / 泡菜（微辣）/ 金针菇（微辣）/ 辣条||"
++    ],
++    "candidateRefs": [
++      "R09-2F18-RICEBALL-01-V1"
++    ],
++    "optionRefs": [],
++    "name": "金针菇饭团",
++    "reason": "原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任"
++  },
++  {
++    "sourceRecordRef": "R09-2F18-RICEBALL-02",
++    "action": "NEW",
++    "priorDisposition": "R04_PENDING_SOURCE_GROUP",
++    "priorPendingSourceRef": "R04-W2-15-L0684-S345",
++    "oldRecordKeys": [
++      "c01_t35|f2/鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊||"
++    ],
++    "candidateRefs": [
++      "R09-2F18-RICEBALL-02-V1"
++    ],
++    "optionRefs": [],
++    "name": "鲜香卤蛋饭团",
++    "reason": "原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任"
++  },
++  {
++    "sourceRecordRef": "R09-2F18-RICEBALL-03",
++    "action": "NEW",
++    "priorDisposition": "R04_PENDING_SOURCE_GROUP",
++    "priorPendingSourceRef": "R04-W2-15-L0684-S345",
++    "oldRecordKeys": [
++      "c01_t35|f2/鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊||"
++    ],
++    "candidateRefs": [
++      "R09-2F18-RICEBALL-03-V1"
++    ],
++    "optionRefs": [],
++    "name": "和风蟹柳饭团",
++    "reason": "原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任"
++  },
++  {
++    "sourceRecordRef": "R09-2F18-RICEBALL-04",
++    "action": "NEW",
++    "priorDisposition": "R04_PENDING_SOURCE_GROUP",
++    "priorPendingSourceRef": "R04-W2-15-L0684-S345",
++    "oldRecordKeys": [
++      "c01_t35|f2/鲜香卤蛋 / 和风蟹柳 / 烟重培根 / 咸蛋黄肉松 / 铁板里脊||"
++    ],
++    "candidateRefs": [
++      "R09-2F18-RICEBALL-04-V1"
++    ],
++    "optionRefs": [],
++    "name": "咸蛋黄肉松饭团",
++    "reason": "原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任"
++  },
++  {
++    "sourceRecordRef": "R09-2F18-RICEBALL-05",
++    "action": "NEW",
++    "priorDisposition": "R04_PENDING_SOURCE_GROUP",
++    "priorPendingSourceRef": "R04-W2-15-L0685-S346",
++    "oldRecordKeys": [
++      "c01_t35|f2/拉丝芝士 / 纯肉烤肠||"
++    ],
++    "candidateRefs": [
++      "R09-2F18-RICEBALL-05-V1"
++    ],
++    "optionRefs": [],
++    "name": "拉丝芝士饭团",
++    "reason": "原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任"
++  },
++  {
++    "sourceRecordRef": "R09-2F18-RICEBALL-06",
++    "action": "NEW",
++    "priorDisposition": "R04_PENDING_SOURCE_GROUP",
++    "priorPendingSourceRef": "R04-W2-15-L0685-S346",
++    "oldRecordKeys": [
++      "c01_t35|f2/拉丝芝士 / 纯肉烤肠||"
++    ],
++    "candidateRefs": [
++      "R09-2F18-RICEBALL-06-V1"
++    ],
++    "optionRefs": [],
++    "name": "纯肉烤肠饭团",
++    "reason": "原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任"
++  },
++  {
++    "sourceRecordRef": "R09-2F18-RICEBALL-07",
++    "action": "NEW",
++    "priorDisposition": "R04_PENDING_SOURCE_GROUP",
++    "priorPendingSourceRef": "R04-W2-15-L0686-S347",
++    "oldRecordKeys": [
++      "c01_t35|f2/香酥鸡排||"
++    ],
++    "candidateRefs": [
++      "R09-2F18-RICEBALL-07-V1"
++    ],
++    "optionRefs": [],
++    "name": "香酥鸡排饭团",
++    "reason": "原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任"
++  },
++  {
++    "sourceRecordRef": "R09-2F18-RICEBALL-08",
++    "action": "NEW",
++    "priorDisposition": "R04_PENDING_SOURCE_GROUP",
++    "priorPendingSourceRef": "R04-W2-15-L0687-S348",
++    "oldRecordKeys": [
++      "c01_t35|f2/香煎猪排||"
++    ],
++    "candidateRefs": [
++      "R09-2F18-RICEBALL-08-V1"
++    ],
++    "optionRefs": [],
++    "name": "香煎猪排饭团",
++    "reason": "原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任"
++  },
++  {
++    "sourceRecordRef": "R09-2F18-RICEBALL-09",
++    "action": "NEW",
++    "priorDisposition": "R04_PENDING_SOURCE_GROUP",
++    "priorPendingSourceRef": "R04-W2-15-L0688-S349",
++    "oldRecordKeys": [
++      "c01_t35|f2/黑椒牛排||"
++    ],
++    "candidateRefs": [
++      "R09-2F18-RICEBALL-09-V1"
++    ],
++    "optionRefs": [],
++    "name": "黑椒牛排饭团",
++    "reason": "原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任"
++  },
++  {
++    "sourceRecordRef": "R09-2F18-RICEBALL-10",
++    "action": "NEW",
++    "priorDisposition": "R04_PENDING_SOURCE_GROUP",
++    "priorPendingSourceRef": "R04-W2-15-L0689-S350",
++    "oldRecordKeys": [
++      "c01_t35|f2/金枪鱼||"
++    ],
++    "candidateRefs": [
++      "R09-2F18-RICEBALL-10-V1"
++    ],
++    "optionRefs": [],
++    "name": "金枪鱼饭团",
++    "reason": "原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任"
++  },
++  {
++    "sourceRecordRef": "R09-2F18-RICEBALL-11",
++    "action": "NEW",
++    "priorDisposition": "R04_PENDING_SOURCE_GROUP",
++    "priorPendingSourceRef": "R04-W2-15-L0690-S351",
++    "oldRecordKeys": [
++      "c01_t35|f2/日式鳗鱼||"
++    ],
++    "candidateRefs": [
++      "R09-2F18-RICEBALL-11-V1"
++    ],
++    "optionRefs": [],
++    "name": "日式鳗鱼饭团",
++    "reason": "原图逐项OCR与转录同价交叉；新增子项，不改写R04原责任"
++  },
++  {
++    "sourceRecordRef": "R09-2F18-UNRESOLVED-SUSHI",
++    "action": "PENDING",
++    "priorDisposition": "not individually admitted",
++    "priorPendingSourceRef": null,
++    "oldRecordKeys": [],
++    "candidateRefs": [],
++    "optionRefs": [],
++    "name": "寿司价格列组",
++    "reason": "原OCR将16菜名与价列分开，不按数组位置强配价"
++  },
++  {
++    "sourceRecordRef": "R09-2F18-UNRESOLVED-LOWER",
++    "action": "PENDING",
++    "priorDisposition": "not individually admitted",
++    "priorPendingSourceRef": null,
++    "oldRecordKeys": [],
++    "candidateRefs": [],
++    "optionRefs": [],
++    "name": "原味/红豆/玉米沙拉/泡菜饭团组",
++    "reason": "菜名与多个价位排列仍需局部位置确认"
++  },
++  {
++    "sourceRecordRef": "R09-2F18-UNRESOLVED-BACON",
++    "action": "PENDING",
++    "priorDisposition": "not individually admitted",
++    "priorPendingSourceRef": null,
++    "oldRecordKeys": [],
++    "candidateRefs": [],
++    "optionRefs": [],
++    "name": "培根饭团",
++    "reason": "OCR缺烟字与旧转录烟重/烟熏矛盾，名称不纠造"
++  },
++  {
++    "sourceRecordRef": "R09-2F18-UNRESOLVED-TWO",
++    "action": "PENDING",
++    "priorDisposition": "not individually admitted",
++    "priorPendingSourceRef": null,
++    "oldRecordKeys": [],
++    "candidateRefs": [],
++    "optionRefs": [],
++    "name": "辣条/铁板里脊饭团",
++    "reason": "同一行价签两项且OCR缺铁字，不推断纠字"
++  },
++  {
++    "sourceRecordRef": "R09-2F18-UNRESOLVED-EGGWAFFLE",
++    "action": "PENDING",
++    "priorDisposition": "not individually admitted",
++    "priorPendingSourceRef": null,
++    "oldRecordKeys": [],
++    "candidateRefs": [],
++    "optionRefs": [],
++    "name": "鸡蛋仔及口味",
++    "reason": "OCR为100份，原转录10元/份，不假装原图金额已确认"
++  }
++]
+--- /dev/null
++++ R09/unresolved.csv
+@@ -0,0 +1,6 @@
++sourceRecordRef,name,reason,photoFile,ocrLine,nextAction
++R09-2F18-UNRESOLVED-SUSHI,寿司价格列组,原OCR将16菜名与价列分开，不按数组位置强配价,source_assets/photo_2F18.jpg,1,原图局部定位或清晰材料；不要求延期元数据/区域裁决
++R09-2F18-UNRESOLVED-LOWER,原味/红豆/玉米沙拉/泡菜饭团组,菜名与多个价位排列仍需局部位置确认,source_assets/photo_2F18.jpg,35,原图局部定位或清晰材料；不要求延期元数据/区域裁决
++R09-2F18-UNRESOLVED-BACON,培根饭团,OCR缺烟字与旧转录烟重/烟熏矛盾，名称不纠造,source_assets/photo_2F18.jpg,47,原图局部定位或清晰材料；不要求延期元数据/区域裁决
++R09-2F18-UNRESOLVED-TWO,辣条/铁板里脊饭团,同一行价签两项且OCR缺铁字，不推断纠字,source_assets/photo_2F18.jpg,65,原图局部定位或清晰材料；不要求延期元数据/区域裁决
++R09-2F18-UNRESOLVED-EGGWAFFLE,鸡蛋仔及口味,OCR为100份，原转录10元/份，不假装原图金额已确认,source_assets/photo_2F18.jpg,17,原图局部定位或清晰材料；不要求延期元数据/区域裁决
+--- /dev/null
++++ R09/optional_surcharges.json
+@@ -0,0 +1 @@
++[]
+--- /dev/null
++++ R09/bundle_relations.json
+@@ -0,0 +1 @@
++[]
+--- /dev/null
++++ R09/statistics.json
+@@ -0,0 +1,15 @@
++{
++  "sourcePhotos": 1,
++  "extractedDishRows": 11,
++  "materialResponsibilityGroups": 16,
++  "independentDishCandidates": 11,
++  "mealComponents": 0,
++  "optionalSurcharges": 0,
++  "bundleRelations": 0,
++  "pendingMaterialGroups": 5,
++  "newChildResponsibilities": 11,
++  "oldRecordsRewritten": 0,
++  "oldRecordsVoided": 0,
++  "formalImports": 0,
++  "priorPendingParentGroups": 8
++}
+--- /dev/null
++++ R09/execution_report.md
+@@ -0,0 +1,33 @@
++# R09 饭团原图逐项恢复
++
++本地候选生成PASS，独立验收/正式准入PENDING。新增独立菜品候选11，组件0、加料0、套餐0，正式导入0。
++
++## 来源与新旧关系
++
++真实来源为PHOTO_MANIFEST中2F-18（sha256_44d50356…c528.jpg）及已有本地Windows OCR。R04的W2-15历史转录将多个菜名合写为一行，并留在待核验池；本轮对未生成的饭团子项增加原图逐项证据，不重建、不修改R04或其PENDING状态。
++
++11条饭团：金针菇7、鲜香卤蛋8、和风蟹柳8、咸蛋黄肉松8、拉丝芝士10、纯肉烤肠10、香酥鸡排11、香煎猪排12、黑椒牛排13、金枪鱼14、日式鳗鱼15（元，单位未知）。每条保留OCR菜名行、价行、两条原文与转录同项同价行。只使用同行或直接相邻价格行，不将分离菜名列表和价列表按数组顺序强配。
++
++原图档口正式身份未签发，本地stallRef=R09-PHOTO-2F18，历史名称仅声明W2-15关联，不继承c01_t35或正式ID。楼层、日期、采集人未知仍null。tastes=[]，不把菜名微辣直接写成正式口味。照片不上传。当前价未知，禁止交易报价。
++
++## 分母和统计
++
++1张源照片；11条已抽取独立菜品源项；8个旧待核验父源组派生11个新子项。源组/台账共16个责任组=11候选+5待核验材料组。5组是寿司分离价列、早段饭团、培根疑字、辣条/里脊同排疑字、鸡蛋仔100/10价义，不能称5道菜，也不冒称整张菜单只有16原始行。
++
++source_ledger中NEW11、PENDING5；旧父记录保留且只追溯，不重新签发RETAIN/REPLACE/VOID动作，旧记录修改/作废0。旧聚合源组与新子项关系保存于priorPendingSourceRef/oldRecordKeys。same_name_crosscheck记录跨批次同名检查；同名并非同店身份，检查同照片同名无已生成候选后才新增。
++
++## 验证
++
++python -X utf8 build_r09.py exit0；python -X utf8 test_r09.py：20 PASS / 0 FAIL / 0 SKIP，exit0，见test_output.txt。9项负向覆盖改价、改名、错配价行、伪造日期、旧ID、猜口味、报价、重复、猜组成。检查原图SHA、旧OCR逐项一致、源行与父子追溯、16责任覆盖。
++
++git diff --check exit0，既有project.config.json CRLF提示不修改。正式项目与R03-R08文件哈希未变，Git状态/暂存/HEAD一致。没有生产代码修改，不重跑无关历史全套。未宣称正式导入器或人工视觉验真通过；证据等级是既有OCR与文本交叉，visual signoff未完成。
++
++## 交付与边界
++
++before原始来源副本在项目外新目录，backup_manifest逐个记录大小与SHA，逐字节验证。diff.patch仅列新文本工作文件，不含证据二进制，不声称可git apply。file_manifest/manifest非循环哈希。
++
++R08三P3只登记：同名米饭无专门分组字段；OCR误字无逐行异常标记；photo_coverage键格式兼容问题，原文见source_assets/R08_review.md §五。未返工R08。
++
++更新全项目进度另存本目录batch_progress.md：454旧独立候选+R09 11=465（R09待独立验收）；R08组件2/加料5不纳入独立菜品。正式准入仍PENDING，正式导入0。区域划分继续延期。
++
++完成后已继续筛选下一张特色小炒原图，拟将新逐项证据在另一独立批次实际落盘，不覆盖本目录。尚未能确认的图片局部继续待核验，不声称全部像素穷尽。R03-R08、正式data/契约/ID/审批均未改，无云端、部署、索引或Git写操作。
+--- /dev/null
++++ R09/batch_progress.md
+@@ -0,0 +1,13 @@
++# 项目批次进度（R09交付快照，不覆盖历史）
++
++| 批次 | 独立候选 | 组件 | 加料 | 状态 |
++|---|---:|---:|---:|---|
++| R03 |133|0|0|已验收冻结|
++| R04 |113|0|5组|已验收冻结|
++| R05 |30|0|8|已验收冻结|
++| R06 |140|0|0|已验收冻结，采用负责人独立候选口径|
++| R07 |38|0|24+1补充|已验收冻结|
++| R08 |0|2|5|已验收冻结|
++| R09 |11|0|0|本地通过、待DSH|
++
++独立候选累计465（454已验收+11待验收），不是465正式准入记录；旧批采用已确认业务统计口径，不反向重分类。本轮R09独立饭团，无组件/套餐。所有批次正式导入0。R09待核验5是材料组，不加到独立菜品总数。已延期区域及采集元数据不重复询问。

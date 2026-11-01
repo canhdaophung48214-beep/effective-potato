@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<title>community-concept</title>
+<link rel="stylesheet" href="concept.css" />
+</head>
+<body>
+<div class="phone">
+
+  <div class="statusbar">
+    <div>9:41</div>
+    <div class="right">
+      <div class="bar"><i></i><i></i><i></i><i></i></div>
+      <svg width="15" height="11" viewBox="0 0 15 11" fill="none" stroke="#241E1A" stroke-width="1.4" stroke-linecap="round">
+        <path d="M1 4.2a9 9 0 0 1 13 0"/><path d="M3.4 6.6a5.6 5.6 0 0 1 8.2 0"/><circle cx="7.5" cy="9.2" r=".9" fill="#241E1A" stroke="none"/>
+      </svg>
+      <div class="battery"><i></i></div>
+    </div>
+  </div>
+
+  <div class="appbar">
+    <div class="brand">
+      <h1>校园食话</h1>
+      <p>同学的美食情报与探店记录</p>
+    </div>
+    <div class="publish">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+      发布
+    </div>
+  </div>
+
+  <div class="screen" style="gap:10px">
+
+    <div class="chips">
+      <div class="chip on">全部</div>
+      <div class="chip">探店</div>
+      <div class="chip">新菜</div>
+      <div class="chip">价格情报</div>
+      <div class="chip">求助</div>
+    </div>
+
+    <!-- 动态 1 -->
+    <div class="card post">
+      <div class="head">
+        <div class="avatar">林</div>
+        <div class="who">
+          <b>西校区 · 计算机学院</b>
+          <small>12 分钟前 · 一号食堂</small>
+        </div>
+        <span class="badge pass">已通过</span>
+      </div>
+      <p class="body">
+        一号食堂 2 楼新开了一个热菜窗口，红烧肉盖饭 ¥12，肉给得比 1 楼实在，米饭可以免费加一次。
+      </p>
+      <div class="media">
+        <div class="ph"><span class="g"></span><span class="tag">示意图</span></div>
+        <div class="ph amber"><span class="g"></span><span class="tag">示意图</span></div>
+      </div>
+      <div class="foot">
+        <span class="pill">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 20s-7-4.6-7-9.4A4 4 0 0 1 12 7.6 4 4 0 0 1 19 10.6C19 15.4 12 20 12 20z"/></svg>
+          收藏
+        </span>
+        <span class="pill">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M20 13.5a2 2 0 0 1-2 2H8l-4 3V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/></svg>
+          评论
+        </span>
+        <span class="pill ghost">举报</span>
+      </div>
+    </div>
+
+    <!-- 动态 2：价格情报 -->
+    <div class="card post">
+      <div class="head">
+        <div class="avatar jade">周</div>
+        <div class="who">
+          <b>东校区 · 材料学院</b>
+          <small>1 小时前 · 东区食堂</small>
+        </div>
+        <span class="badge wait">待审核</span>
+      </div>
+      <p class="body">砂锅米线从 ¥11 涨到 ¥12 了，量没变。</p>
+      <div class="delta">
+        <div class="k">价格更新</div>
+        <div class="v"><s>¥11</s><b>¥12</b><small>砂锅米线 · 2 号窗口</small></div>
+      </div>
+    </div>
+
+    <!-- 动态 3：求助 -->
+    <div class="card post">
+      <div class="head">
+        <div class="avatar">陈</div>
+        <div class="who">
+          <b>西校区 · 外国语学院</b>
+          <small>3 小时前 · 北门小吃街</small>
+        </div>
+        <span class="badge demo">待审核</span>
+      </div>
+      <p class="body">求问：北门还有哪家做 10 元以内的早饭？</p>
+      <div class="tags"><span>求助</span><span>早饭</span><span>10 元以内</span></div>
+    </div>
+
+    <div class="note">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#9C9289" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+      动态需先审核；点赞、评论为概念功能
+    </div>
+
+  </div>
+
+  <div class="concept-mark">概念设计稿 · 内容为示意</div>
+
+  <div class="tabbar">
+    <div class="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M3.5 10.4 12 3.6l8.5 6.8V20a1 1 0 0 1-1 1h-5v-6h-5v6h-5a1 1 0 0 1-1-1z"/></svg>
+      <span>首页</span>
+    </div>
+    <div class="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="m12 3.8 2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 10l5.9-.9z"/></svg>
+      <span>评分</span>
+    </div>
+    <div class="tab on">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"><path d="M20 14.5a2 2 0 0 1-2 2H8l-4 3.2V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2z"/></svg>
+      <span>社区</span>
+    </div>
+    <div class="tab">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="8.6" r="3.7"/><path d="M4.8 20.2a7.4 7.4 0 0 1 14.4 0"/></svg>
+      <span>我的</span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

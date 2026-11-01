@@ -1,0 +1,24 @@
+{
+  "tests": [
+    {
+      "script": "test_r03.py",
+      "exitCode": 0
+    },
+    {
+      "script": "test_r03_f1.py",
+      "exitCode": 0
+    }
+  ],
+  "originalSuitePass": 14,
+  "F1SuitePass": 7,
+  "candidateRecords": 133,
+  "ledgerRows": 375,
+  "newRows": 232,
+  "oldRows": 143,
+  "sourceGroups": 292,
+  "photoHashesVerified": 266,
+  "migratedFiles": 19,
+  "otherProjectFilesUnchanged": 377,
+  "GitExpectedRemovalOnly": true,
+  "exitCode": 0
+}

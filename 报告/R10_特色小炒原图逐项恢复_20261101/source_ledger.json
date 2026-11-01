@@ -1,0 +1,328 @@
+[
+  {
+    "sourceRecordRef": "R10-2F16-D01",
+    "action": "NEW",
+    "priorPendingSourceRef": "R04-W2-13-L0615-S314",
+    "candidateRefs": [
+      "R10-2F16-D01-V1"
+    ],
+    "name": "肉末茄子",
+    "reason": "new child OCR evidence; frozen parent unchanged"
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D02",
+    "action": "NEW",
+    "priorPendingSourceRef": "R04-W2-13-L0615-S314",
+    "candidateRefs": [
+      "R10-2F16-D02-V1"
+    ],
+    "name": "香辣火腿",
+    "reason": "new child OCR evidence; frozen parent unchanged"
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D03",
+    "action": "NEW",
+    "priorPendingSourceRef": "R04-W2-13-L0616-S315",
+    "candidateRefs": [
+      "R10-2F16-D03-V1"
+    ],
+    "name": "火腿鸡蛋",
+    "reason": "new child OCR evidence; frozen parent unchanged"
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D04",
+    "action": "NEW",
+    "priorPendingSourceRef": "R04-W2-13-L0615-S314",
+    "candidateRefs": [
+      "R10-2F16-D04-V1"
+    ],
+    "name": "鱼香茄子",
+    "reason": "new child OCR evidence; frozen parent unchanged"
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D05",
+    "action": "NEW",
+    "priorPendingSourceRef": "R04-W2-13-L0615-S314",
+    "candidateRefs": [
+      "R10-2F16-D05-V1"
+    ],
+    "name": "西红柿炒鸡蛋",
+    "reason": "new child OCR evidence; frozen parent unchanged"
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D06",
+    "action": "NEW",
+    "priorPendingSourceRef": "R04-W2-13-L0616-S315",
+    "candidateRefs": [
+      "R10-2F16-D06-V1"
+    ],
+    "name": "酸菜肉丝",
+    "reason": "new child OCR evidence; frozen parent unchanged"
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D07",
+    "action": "NEW",
+    "priorPendingSourceRef": "R04-W2-13-L0616-S315",
+    "candidateRefs": [
+      "R10-2F16-D07-V1"
+    ],
+    "name": "肉末豆角",
+    "reason": "new child OCR evidence; frozen parent unchanged"
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D08",
+    "action": "NEW",
+    "priorPendingSourceRef": "R04-W2-13-L0617-S316",
+    "candidateRefs": [
+      "R10-2F16-D08-V1"
+    ],
+    "name": "土豆鸡丁",
+    "reason": "new child OCR evidence; frozen parent unchanged"
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D09",
+    "action": "NEW",
+    "priorPendingSourceRef": "R04-W2-13-L0617-S316",
+    "candidateRefs": [
+      "R10-2F16-D09-V1"
+    ],
+    "name": "辣子鸡丁",
+    "reason": "new child OCR evidence; frozen parent unchanged"
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D10",
+    "action": "NEW",
+    "priorPendingSourceRef": "R04-W2-13-L0618-S317",
+    "candidateRefs": [
+      "R10-2F16-D10-V1"
+    ],
+    "name": "辣椒炒肉",
+    "reason": "new child OCR evidence; frozen parent unchanged"
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D11",
+    "action": "NEW",
+    "priorPendingSourceRef": "R04-W2-13-L0617-S316",
+    "candidateRefs": [
+      "R10-2F16-D11-V1"
+    ],
+    "name": "泡椒猪肝",
+    "reason": "new child OCR evidence; frozen parent unchanged"
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D12",
+    "action": "NEW",
+    "priorPendingSourceRef": "R04-W2-13-L0619-S318",
+    "candidateRefs": [
+      "R10-2F16-D12-V1"
+    ],
+    "name": "红烧牛肉",
+    "reason": "new child OCR evidence; frozen parent unchanged"
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D13",
+    "action": "NEW",
+    "priorPendingSourceRef": "R04-W2-13-L0620-S319",
+    "candidateRefs": [
+      "R10-2F16-D13-V1"
+    ],
+    "name": "鱼香肉丝",
+    "reason": "new child OCR evidence; frozen parent unchanged"
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D14",
+    "action": "NEW",
+    "priorPendingSourceRef": "R04-W2-13-L0620-S319",
+    "candidateRefs": [
+      "R10-2F16-D14-V1"
+    ],
+    "name": "甘兰回锅肉",
+    "reason": "new child OCR evidence; frozen parent unchanged"
+  },
+  {
+    "sourceRecordRef": "R10-2F16-D15",
+    "action": "NEW",
+    "priorPendingSourceRef": "R04-W2-13-L0625-S324",
+    "candidateRefs": [
+      "R10-2F16-D15-V1"
+    ],
+    "name": "孜然土豆",
+    "reason": "new child OCR evidence; frozen parent unchanged"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L613-01",
+    "action": "PENDING",
+    "priorPendingSourceRef": null,
+    "candidateRefs": [],
+    "name": "红烧土豆",
+    "reason": "source text retained; OCR inline evidence insufficient"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L613-02",
+    "action": "PENDING",
+    "priorPendingSourceRef": null,
+    "candidateRefs": [],
+    "name": "清炒甘兰",
+    "reason": "source text retained; OCR inline evidence insufficient"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L614-03",
+    "action": "PENDING",
+    "priorPendingSourceRef": null,
+    "candidateRefs": [],
+    "name": "地三鲜",
+    "reason": "source text retained; OCR inline evidence insufficient"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L615-04",
+    "action": "PENDING",
+    "priorPendingSourceRef": null,
+    "candidateRefs": [],
+    "name": "糖醋里脊",
+    "reason": "source text retained; OCR inline evidence insufficient"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L615-05",
+    "action": "PENDING",
+    "priorPendingSourceRef": null,
+    "candidateRefs": [],
+    "name": "红烧里脊",
+    "reason": "source text retained; OCR inline evidence insufficient"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L617-06",
+    "action": "PENDING",
+    "priorPendingSourceRef": null,
+    "candidateRefs": [],
+    "name": "宫保鸡丁",
+    "reason": "source text retained; OCR inline evidence insufficient"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L620-07",
+    "action": "PENDING",
+    "priorPendingSourceRef": null,
+    "candidateRefs": [],
+    "name": "香辣肉丝",
+    "reason": "source text retained; OCR inline evidence insufficient"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L620-08",
+    "action": "PENDING",
+    "priorPendingSourceRef": null,
+    "candidateRefs": [],
+    "name": "葱爆肉片",
+    "reason": "source text retained; OCR inline evidence insufficient"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L620-09",
+    "action": "PENDING",
+    "priorPendingSourceRef": null,
+    "candidateRefs": [],
+    "name": "木须肉",
+    "reason": "source text retained; OCR inline evidence insufficient"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L620-10",
+    "action": "PENDING",
+    "priorPendingSourceRef": null,
+    "candidateRefs": [],
+    "name": "孜然鱿鱼",
+    "reason": "source text retained; OCR inline evidence insufficient"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L620-11",
+    "action": "PENDING",
+    "priorPendingSourceRef": null,
+    "candidateRefs": [],
+    "name": "孜然肉片",
+    "reason": "source text retained; OCR inline evidence insufficient"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L621-12",
+    "action": "PENDING",
+    "priorPendingSourceRef": null,
+    "candidateRefs": [],
+    "name": "红烧肉",
+    "reason": "source text retained; OCR inline evidence insufficient"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L621-13",
+    "action": "PENDING",
+    "priorPendingSourceRef": null,
+    "candidateRefs": [],
+    "name": "四川腊肉",
+    "reason": "source text retained; OCR inline evidence insufficient"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L621-14",
+    "action": "PENDING",
+    "priorPendingSourceRef": null,
+    "candidateRefs": [],
+    "name": "孜然五花肉",
+    "reason": "source text retained; OCR inline evidence insufficient"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L622-15",
+    "action": "PENDING",
+    "priorPendingSourceRef": null,
+    "candidateRefs": [],
+    "name": "葱爆牛肉",
+    "reason": "source text retained; OCR inline evidence insufficient"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L622-16",
+    "action": "PENDING",
+    "priorPendingSourceRef": null,
+    "candidateRefs": [],
+    "name": "土豆肥肠",
+    "reason": "source text retained; OCR inline evidence insufficient"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L622-17",
+    "action": "PENDING",
+    "priorPendingSourceRef": null,
+    "candidateRefs": [],
+    "name": "香辣肥肠",
+    "reason": "source text retained; OCR inline evidence insufficient"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L622-18",
+    "action": "PENDING",
+    "priorPendingSourceRef": null,
+    "candidateRefs": [],
+    "name": "孜然牛肉",
+    "reason": "source text retained; OCR inline evidence insufficient"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L622-19",
+    "action": "PENDING",
+    "priorPendingSourceRef": null,
+    "candidateRefs": [],
+    "name": "孜然羊肉",
+    "reason": "source text retained; OCR inline evidence insufficient"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L623-20",
+    "action": "PENDING",
+    "priorPendingSourceRef": null,
+    "candidateRefs": [],
+    "name": "蛋炒饭",
+    "reason": "source text retained; OCR inline evidence insufficient"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L624-21",
+    "action": "PENDING",
+    "priorPendingSourceRef": null,
+    "candidateRefs": [],
+    "name": "肉丝炒饭",
+    "reason": "source text retained; OCR inline evidence insufficient"
+  },
+  {
+    "sourceRecordRef": "R10-PENDING-L624-22",
+    "action": "PENDING",
+    "priorPendingSourceRef": null,
+    "candidateRefs": [],
+    "name": "孜然猪肝",
+    "reason": "source text retained; OCR inline evidence insufficient"
+  }
+]

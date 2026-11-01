@@ -1,0 +1,24 @@
+{
+  "sourceGroups": 67,
+  "physicalSourceLines": 43,
+  "dishTableRows": 39,
+  "candidateRecords": 38,
+  "candidateSourceGroups": 38,
+  "optionSourceGroups": 24,
+  "unpricedSourceGroups": 4,
+  "blockingUnresolved": 5,
+  "nonblockingCandidateEvidenceIssues": 38,
+  "unresolvedRows": 43,
+  "oldRecords": 39,
+  "oldRetained": 38,
+  "oldPending": 1,
+  "newResponsibilities": 28,
+  "explicitSpecifications": 0,
+  "formalImports": 0,
+  "formalIdsAssigned": 0,
+  "candidateStallDistribution": {
+    "R07-EARLY-S01": 8,
+    "R07-EARLY-S02": 7,
+    "R07-EARLY-S03": 23
+  }
+}

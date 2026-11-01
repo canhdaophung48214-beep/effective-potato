@@ -1,0 +1,30 @@
+PASS 30候选逐项原名原价/源行/照片映射校验
+PASS 35旧记录责任唯一完整
+PASS 47源组唯一
+PASS 39物理源行与47展开源组分别复算
+PASS 台账须合并newSourceRefs和optionRefs才能完整覆盖
+PASS 候选30+加料8+待核验9互斥守恒
+PASS 不把候选数冒充规格数：显式规格0
+PASS 旧5项疑问+新1疑问+3套餐留待核验
+PASS 双拼菜名不推导具体组成
+PASS 加料8项独立关系、不变独立菜品
+PASS 三套餐保留源成分文字但不强推组件ID
+PASS 三档口独立无合并
+PASS 负向:改价
+PASS 负向:旧正式ID继承
+PASS 负向:伪造采集日期
+PASS 负向:伪造计价单位
+PASS 负向:启用当前报价
+PASS 负向:候选重复
+PASS 负向:照片映射错误
+PASS 负向:加料误作独立菜
+PASS 负向:编造口味
+PASS 负向:编造双拼组成
+PASS 所有快照及外部备份逐字节一致
+PASS 正式项目所有既有文件字节未变
+PASS R03/R04已关闭成果全部字节未变
+PASS Git HEAD/分支/暂存/工作区状态不变
+COMMAND git diff --check EXIT 0
+warning: in the working copy of 'project.config.json', CRLF will be replaced by LF the next time Git touches it
+
+RESULT 26 PASS / 0 FAIL / 0 SKIP; exit=0

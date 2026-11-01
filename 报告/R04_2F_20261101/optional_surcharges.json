@@ -1,0 +1,113 @@
+[
+  {
+    "optionRef": "R04-NG01-L0341",
+    "baseCandidateRef": "R04-NG01-L0340-V1",
+    "name": "油条 / 薄脆 / 鸡蛋 / 培根 / 辣条 / 双汇火腿肠 / 双汇鸡肉肠",
+    "members": [
+      "油条",
+      "薄脆",
+      "鸡蛋",
+      "培根",
+      "辣条",
+      "双汇火腿肠",
+      "双汇鸡肉肠"
+    ],
+    "additionalPriceYuan": 1,
+    "priceAppliesTo": "each_named_member_not_whole_slash_group",
+    "selectionConstraints": null,
+    "repeatQuantityAllowed": null,
+    "independentDish": false,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 341,
+    "sourceQuote": "| 油条 / 薄脆 / 鸡蛋 / 培根 / 辣条 / 双汇火腿肠 / 双汇鸡肉肠 | 各 1 元 |",
+    "decisionRef": "source_assets/NG01_owner_material.md D2",
+    "oldRecordKeys": [
+      "c01_t20|f2/油条 / 薄脆 / 鸡蛋 / 培根 / 辣条 / 双汇火腿肠 / 双汇鸡肉肠||"
+    ]
+  },
+  {
+    "optionRef": "R04-NG01-L0342",
+    "baseCandidateRef": "R04-NG01-L0340-V1",
+    "name": "大鸡蛋（双黄）",
+    "members": [
+      "大鸡蛋（双黄）"
+    ],
+    "additionalPriceYuan": 1.5,
+    "priceAppliesTo": "each_named_member_not_whole_slash_group",
+    "selectionConstraints": null,
+    "repeatQuantityAllowed": null,
+    "independentDish": false,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 342,
+    "sourceQuote": "| 大鸡蛋（双黄） | 1.5 元 |",
+    "decisionRef": "source_assets/NG01_owner_material.md D2",
+    "oldRecordKeys": [
+      "c01_t20|f2/大鸡蛋（双黄）||"
+    ]
+  },
+  {
+    "optionRef": "R04-NG01-L0343",
+    "baseCandidateRef": "R04-NG01-L0340-V1",
+    "name": "鸡柳 / 里脊 / 肉松 / 脆骨肠 / 台式烤肠",
+    "members": [
+      "鸡柳",
+      "里脊",
+      "肉松",
+      "脆骨肠",
+      "台式烤肠"
+    ],
+    "additionalPriceYuan": 2,
+    "priceAppliesTo": "each_named_member_not_whole_slash_group",
+    "selectionConstraints": null,
+    "repeatQuantityAllowed": null,
+    "independentDish": false,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 343,
+    "sourceQuote": "| 鸡柳 / 里脊 / 肉松 / 脆骨肠 / 台式烤肠 | 各 2 元 |",
+    "decisionRef": "source_assets/NG01_owner_material.md D2",
+    "oldRecordKeys": [
+      "c01_t20|f2/鸡柳 / 里脊 / 肉松 / 脆骨肠 / 台式烤肠||"
+    ]
+  },
+  {
+    "optionRef": "R04-NG01-L0344",
+    "baseCandidateRef": "R04-NG01-L0340-V1",
+    "name": "黑椒纯肉肠 / 原味纯肉肠",
+    "members": [
+      "黑椒纯肉肠",
+      "原味纯肉肠"
+    ],
+    "additionalPriceYuan": 3,
+    "priceAppliesTo": "each_named_member_not_whole_slash_group",
+    "selectionConstraints": null,
+    "repeatQuantityAllowed": null,
+    "independentDish": false,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 344,
+    "sourceQuote": "| 黑椒纯肉肠 / 原味纯肉肠 | 各 3 元 |",
+    "decisionRef": "source_assets/NG01_owner_material.md D2",
+    "oldRecordKeys": [
+      "c01_t20|f2/黑椒纯肉肠 / 原味纯肉肠||"
+    ]
+  },
+  {
+    "optionRef": "R04-NG01-L0345",
+    "baseCandidateRef": "R04-NG01-L0340-V1",
+    "name": "土豆丝",
+    "members": [
+      "土豆丝"
+    ],
+    "additionalPriceYuan": 1,
+    "priceAppliesTo": "each_named_member_not_whole_slash_group",
+    "selectionConstraints": null,
+    "repeatQuantityAllowed": null,
+    "independentDish": false,
+    "sourceFile": "source_assets/TRANSCRIPTION_2F.md",
+    "sourceLine": 345,
+    "sourceQuote": "| 土豆丝 | 1 元/份（新品） |",
+    "decisionRef": "source_assets/NG01_owner_material.md D2",
+    "oldRecordKeys": [
+      "c01_t20|f2/土豆丝||"
+    ]
+  }
+]

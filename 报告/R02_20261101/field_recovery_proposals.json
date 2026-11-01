@@ -1,0 +1,20 @@
+[
+  {
+    "dishId": "c01_d256",
+    "field": "tastes",
+    "value": [
+      "mild_spicy"
+    ],
+    "evidence": "项目/tools/pilot/TRANSCRIPTION_2F.md:370",
+    "formalWrite": false
+  },
+  {
+    "dishId": "c01_d257",
+    "field": "tastes",
+    "value": [
+      "mild_spicy"
+    ],
+    "evidence": "项目/tools/pilot/TRANSCRIPTION_2F.md:370",
+    "formalWrite": false
+  }
+]

@@ -1,0 +1,242 @@
+[
+  {
+    "path": "改动清单.md",
+    "bytes": 1141,
+    "sha256": "AF1380A7DEFF37BB7C69CDB15FB37378E5C2D881EB0A4AA1742A8FFB437B4E33"
+  },
+  {
+    "path": "执行报告.md",
+    "bytes": 3212,
+    "sha256": "F88C52B297B57F1794FCECD3D5C727B0E52539289833E431784F4236FB759A9D"
+  },
+  {
+    "path": "capture_devtools.ps1",
+    "bytes": 1088,
+    "sha256": "CE789A17C03C3FCFE9E30105F1F38E7B25FD9205D3F629A502D67BEBCAECF36B"
+  },
+  {
+    "path": "devtools_check.txt",
+    "bytes": 628,
+    "sha256": "8F3484E384530A7EF0364C3AFC8D9C15B4BD8F9619786E1FD79A7C4843D0A679"
+  },
+  {
+    "path": "evidence/wechat_devtools_console.png",
+    "bytes": 70176,
+    "sha256": "E5F6CC4D34E02771F1668AACA43728949DDAA2B153A7756975E84C73A0A0DDE9"
+  },
+  {
+    "path": "evidence/wechat_devtools_console2.png",
+    "bytes": 70184,
+    "sha256": "EA35CCE2CD5E2393323A92382BED093C8B721C546D7A2A998CF02FC2ED10CE51"
+  },
+  {
+    "path": "evidence/wechat_devtools_detail.png",
+    "bytes": 151016,
+    "sha256": "498E8332C884F231216C3C994A37494783FD326C75CCFCBB90A94A0F9EBCBE05"
+  },
+  {
+    "path": "evidence/wechat_devtools_home_after_fix.png",
+    "bytes": 169959,
+    "sha256": "07E6BC0278FD06DFBF7AD49E7E822802CE4AF89806A6AD3B620A4B064C9CFC46"
+  },
+  {
+    "path": "evidence/wechat_devtools_home_final.png",
+    "bytes": 195021,
+    "sha256": "8C23FA957B7CB1A1B72D4B7F301A2D84A5DF7E380177C4168C25487D64D01EDD"
+  },
+  {
+    "path": "evidence/wechat_devtools_home.png",
+    "bytes": 70194,
+    "sha256": "8EC03C97F14FAA7462A1A8BBFFD6287E7B49C0486748D0A307562A0DA052BC68"
+  },
+  {
+    "path": "evidence/wechat_devtools_menu.png",
+    "bytes": 187765,
+    "sha256": "EF6E2B970FB7504303BB5A2C4889A69130D4CA42DA89D3D7C8403BFAE2FD26D3"
+  },
+  {
+    "path": "IMPLEMENTATION_PLAN.md",
+    "bytes": 2014,
+    "sha256": "0E85D00B2716F8B72F70241788AAE5FC76AB76F5F3D9ABEA3265837BF9E2CE23"
+  },
+  {
+    "path": "mini/app.js",
+    "bytes": 9,
+    "sha256": "1AB645C73BCEA61604F9CC4805A752AB9BA8FB66813D8C57CAD34328C0CE4109"
+  },
+  {
+    "path": "mini/app.json",
+    "bytes": 214,
+    "sha256": "A6D2281A12E73B001C3C209C2F10AE6B96D60AD59DFE4F9D5F431D5DA74E44AB"
+  },
+  {
+    "path": "mini/app.wxss",
+    "bytes": 1795,
+    "sha256": "6F6BB26FD69A714060BF967683D79479498DEE85D39FD6CAFEF53C15F068931B"
+  },
+  {
+    "path": "mini/components/dish-card/index.js",
+    "bytes": 159,
+    "sha256": "BF52CF58BE288D1221933640C0900FE9A880483A2FCE18E8026046E89AAAEEDF"
+  },
+  {
+    "path": "mini/components/dish-card/index.json",
+    "bytes": 19,
+    "sha256": "6BCC2E9E536384851FCFBDD823AEE8AE4331243636ADC4A656A64A44D9CF9318"
+  },
+  {
+    "path": "mini/components/dish-card/index.wxml",
+    "bytes": 428,
+    "sha256": "24F454084046FED2F1A443F74E4C6D68250878BA5BA930C8076FEC8F0B24447C"
+  },
+  {
+    "path": "mini/components/dish-card/index.wxss",
+    "bytes": 778,
+    "sha256": "E3F6AB6FD470B8F3FEA683DD06AC9F13839EC00D4A44DEDDA6395AD0726A7F4E"
+  },
+  {
+    "path": "mini/components/history-notice/index.js",
+    "bytes": 62,
+    "sha256": "62FC923461F720B427DB338A5C541C8CE48620D96952EA153D2948B27FA4A7C7"
+  },
+  {
+    "path": "mini/components/history-notice/index.json",
+    "bytes": 19,
+    "sha256": "6BCC2E9E536384851FCFBDD823AEE8AE4331243636ADC4A656A64A44D9CF9318"
+  },
+  {
+    "path": "mini/components/history-notice/index.wxml",
+    "bytes": 234,
+    "sha256": "F65BCF1AC80E85C0292DEA802044B4A59068D29F3EC447746B427914DE687A6E"
+  },
+  {
+    "path": "mini/components/history-notice/index.wxss",
+    "bytes": 358,
+    "sha256": "F989B2BBBE591CC8337EF78C8FB80439BA67307F723CC96E4A630E43EFDD881A"
+  },
+  {
+    "path": "mini/components/search-bar/index.js",
+    "bytes": 230,
+    "sha256": "105574782CA65B3F0DA3ACB6F5C4A98D77A339D43F91C3D6E3C9DB035B31F2FB"
+  },
+  {
+    "path": "mini/components/search-bar/index.json",
+    "bytes": 19,
+    "sha256": "6BCC2E9E536384851FCFBDD823AEE8AE4331243636ADC4A656A64A44D9CF9318"
+  },
+  {
+    "path": "mini/components/search-bar/index.wxml",
+    "bytes": 181,
+    "sha256": "3E3DD0C06FC57BCEDA57DBFC4B9DCDC2BBCA9E64C0D961655FF36ECAD5B7D587"
+  },
+  {
+    "path": "mini/components/search-bar/index.wxss",
+    "bytes": 285,
+    "sha256": "3BA5FF516F764E7E915E68634491DD1E06BB9598A71BA1E52FF948BE04F45222"
+  },
+  {
+    "path": "mini/data/history-records.js",
+    "bytes": 84389,
+    "sha256": "452AF6D02BD28A74C20C65C5587637B22D700EDA39E8DD57B62B461AAA519E62"
+  },
+  {
+    "path": "mini/data/history-records.json",
+    "bytes": 81950,
+    "sha256": "486EE33BC403A64921143962BC72A75C31149E37F8BF03B711A48D3C95908908"
+  },
+  {
+    "path": "mini/lib/menu-model.js",
+    "bytes": 1426,
+    "sha256": "661136BAB0127D3D35DFFEFB89A1EE497C296B7260FDA009A644E77D45175214"
+  },
+  {
+    "path": "mini/pages/detail/index.js",
+    "bytes": 435,
+    "sha256": "F09B85887A49ECB534C69A9490D3C83E9BE199C46523808371C0BA68FF38D973"
+  },
+  {
+    "path": "mini/pages/detail/index.json",
+    "bytes": 114,
+    "sha256": "9841E82735163529D97051A9EF9411E8AA3E5B112F660D9D276C20F3D3BEF803"
+  },
+  {
+    "path": "mini/pages/detail/index.wxml",
+    "bytes": 1208,
+    "sha256": "459B591B6A4B31173E364EA5457BB01EA7E14AC73ED903622F86390068FADB14"
+  },
+  {
+    "path": "mini/pages/detail/index.wxss",
+    "bytes": 998,
+    "sha256": "95E7FFE62B8438C713DDEFC6D77601340D6E8159739FE375698B6399E56BDC1A"
+  },
+  {
+    "path": "mini/pages/home/index.js",
+    "bytes": 705,
+    "sha256": "BCEB1FBA8C8A8720DBA21932B11E967F4F313F90768173320F7E640ABC4B2256"
+  },
+  {
+    "path": "mini/pages/home/index.json",
+    "bytes": 160,
+    "sha256": "E98197530512DA9FD15284336183B445B01B68B6CE9ECA0561850E9C3820BBA4"
+  },
+  {
+    "path": "mini/pages/home/index.wxml",
+    "bytes": 1172,
+    "sha256": "5CDD546AD64FEDBA418774E25C030FB718B11EBA58FB6D92D445DE47E570AA17"
+  },
+  {
+    "path": "mini/pages/home/index.wxss",
+    "bytes": 1147,
+    "sha256": "26D62B28181BB6E6D2F4494B386604C4C64380D7294139BFFCF02BDC9F0B6FCD"
+  },
+  {
+    "path": "mini/pages/menu/index.js",
+    "bytes": 803,
+    "sha256": "C1092A614DD831B1772A6A9C3CD73F09755AD1DDDBECFECBD62233FA195AA645"
+  },
+  {
+    "path": "mini/pages/menu/index.json",
+    "bytes": 200,
+    "sha256": "CA35D69A8DD26E1FC0E457FB6BB2A89624DE64896CD10451A3E737A7DDE67550"
+  },
+  {
+    "path": "mini/pages/menu/index.wxml",
+    "bytes": 997,
+    "sha256": "D5C79C918D0D4B63C16416A40236C4A6A6F261D996959862E5B5CCB578EB8B1F"
+  },
+  {
+    "path": "mini/pages/menu/index.wxss",
+    "bytes": 453,
+    "sha256": "C957B2B467398D796FE273C655D59AF0BFE6049C31582C6E7109802E3061C71D"
+  },
+  {
+    "path": "mini/project.config.json",
+    "bytes": 297,
+    "sha256": "5BBD86C694F23EB24DCADDCEDAAAA9342778A8A8D1F46D416C49748BB915AAF0"
+  },
+  {
+    "path": "mini/sitemap.json",
+    "bytes": 13,
+    "sha256": "5A5B52A3C1C7D9103184FB694520CE53371457515C948E10AF19635D03C86F9E"
+  },
+  {
+    "path": "README_验收入口.md",
+    "bytes": 874,
+    "sha256": "7EF84FB8F478A7715799BAC955369C00E87545D621B50DC519BE2DEFF828CCF0"
+  },
+  {
+    "path": "test_output.txt",
+    "bytes": 589,
+    "sha256": "C703AE5F9E052B8D0A8CD69FB1ADD34A0E699B6F777B24E053FB05F632BF9860"
+  },
+  {
+    "path": "test_wechat_ui.js",
+    "bytes": 3605,
+    "sha256": "D3A0A9414BD595E7D9B8E8933A4667ED77A1E9F36595BF166392F227F67B9B13"
+  },
+  {
+    "path": "tests/test_ui.js",
+    "bytes": 3875,
+    "sha256": "F0D1F21C306A8952C792C7B5C0004B8403E44095B43DA2C406B732F8EF063469"
+  }
+]

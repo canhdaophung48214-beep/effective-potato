@@ -1,0 +1,18 @@
+微信开发者工具 Stable 2.02.2608080
+工程：R02_UI_AB_20261101/mini
+AppID：wxcc28587e4d0254ad
+
+CLI auto 最终输出：
+- initialize
+√ IDE server has started, listening on http://127.0.0.1:55616
+- preparing
+- Fetching AppID () permissions
+√ Using AppID: wxcc28587e4d0254ad
+√ auto
+
+实际渲染：
+- pages/home/index：PASS，截图 evidence/wechat_devtools_home_after_fix.png
+- pages/menu/index：PASS，截图 evidence/wechat_devtools_menu.png
+- pages/detail/index：PASS，截图 evidence/wechat_devtools_detail.png
+
+限制：自动化 WebSocket 未建立；320/375 机型未取得微信截图；真机未测。

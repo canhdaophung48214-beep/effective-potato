@@ -1,0 +1,69 @@
+{
+  "_meta": {
+    "purpose": "UGC MVP 阶段 B 本地建议审计日志 schema，未应用到任何云端环境",
+    "status": "pending_admin_console_verification",
+    "collection": "upload_logs",
+    "readBy": "无（普通客户端不可读；仅服务端写与内部排查）",
+    "writtenBy": "submit / review / retention 云函数仅追加（add）；任何一方都不得 update/delete",
+    "retention": "已裁决审计明细 90 天、逐条八字段摘要自生成起 180 天；轮转与云端部署尚未完成"
+  },
+  "fields": {
+    "_id": { "type": "string", "note": "系统生成" },
+    "schemaVersion": { "type": "integer", "value": 1 },
+    "event": { "type": "string", "enum": ["submit", "denied", "throttle", "security_call", "review_approve", "review_reject", "alarm", "delete_request", "retention_mark"] },
+    "action": { "type": "string", "note": "云函数实际动作；系统标记使用 retention_mark，人工审核使用各自已定义动作" },
+    "submissionId": { "type": "string|null", "note": "逐条事件关联投稿 ID；批次 prepare/complete 为 null" },
+    "actor": {
+      "type": "object",
+      "properties": {
+        "openidHash": { "type": "string", "pattern": "^[0-9a-f]{32}$", "note": "投稿人和管理员用 HMAC-SHA256(salt).slice(0,32)；系统操作者省略此字段，不写 null" },
+        "role": { "type": "string", "enum": ["submitter", "admin", "system"] }
+      }
+    },
+    "target": {
+      "type": "object",
+      "properties": {
+        "collection": { "type": "string", "enum": ["submissions"] },
+        "id": { "type": "string|null" }
+      }
+    },
+    "result": {
+      "type": "object",
+      "properties": {
+        "code": { "type": "string", "note": "OK 或错误码；alert 行记 LOG_FAILED" },
+        "stats": { "type": "object|null", "note": "如 { updated: 1 }" },
+        "attempts": { "type": "integer", "note": "内容安全尝试次数" }
+      }
+    },
+    "errorCode": { "type": "string|null", "note": "拒绝/驳回原因码" },
+    "note": { "type": "string|null", "note": "仅内部短说明，禁止写用户私密信息与凭据" },
+    "clientTokenHash": { "type": "string|null", "note": "客户端令牌摘要，仅 submit 使用" },
+    "day": { "type": "string", "note": "YYYY-MM-DD，便于按天归档" },
+    "at": { "type": "date" },
+    "rev": { "type": "integer", "value": 1 }
+  },
+  "indexes": [
+    {
+      "name": "ix_at",
+      "keys": [{ "field": "at", "order": "desc" }],
+      "unique": false,
+      "purpose": "按时间排查"
+    },
+    {
+      "name": "ix_event_day",
+      "keys": [{ "field": "event", "order": "asc" }, { "field": "day", "order": "asc" }],
+      "unique": false,
+      "purpose": "按事件与日期聚合"
+    },
+    {
+      "name": "ix_actor_at",
+      "keys": [{ "field": "actor.openidHash", "order": "asc" }, { "field": "at", "order": "desc" }],
+      "unique": false,
+      "purpose": "按主体追溯"
+    }
+  ],
+  "appendOnly": {
+    "forbidden": ["collection.update", "collection.remove", "doc.update", "doc.remove"],
+    "note": "审计日志只允许 add；如需纠错，追加一条新记录并在 note 说明，不得改写历史"
+  }
+}

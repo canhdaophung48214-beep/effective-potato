@@ -6,19 +6,158 @@
  *   2. 这份代码可以在 Node 里直接跑测试，验证结果和你手机上看到的一致
  *
  * 条件对象 cond 的字段（全部可选，缺省 = 不限）：
- *   area     'all' | 'campus' | 'offsite'
- *   shopId   'all' | 具体餐厅 / 商家 id
- *   floorId  'all' | 具体楼层 id
- *   stallId  'all' | 具体窗口 / 档口 id
- *   foodType 'all' | 'rice' | 'noodle' | 'rice_noodle' | 'rice_vermicelli'
- *                  | 'dumpling' | 'malatang' | 'snack' | 'other'
- *   budget   0 = 不限预算；10 / 15 / 20 = 该金额以内（含）
- *   taste    'all' | 'light' | 'mild_spicy' | 'spicy'
+ *   area       'all' | 'campus' | 'offsite'
+ *   shops      Array，餐厅多选 + 每店独立位置条件（阶段 3）：
+ *                [{ shopId, floorIds: [], stallIds: [], sides: [] }]
+ *              · 不同餐厅之间是「或」：命中任意一家就算通过
+ *              · 同一餐厅内部：楼层组 / 店铺组 / 方位组之间是「与」，
+ *                每一组内部是「或」
+ *              · 某家店的某个数组为空 = 这家店这一组不限
+ *              · 空数组 / 缺省 = 餐厅这一级不限，此时回落到下面的旧单值字段
+ *   budget     0 = 不限预算；10 / 15 / 20 = 该金额以内（含）
+ *   foodTypes  Array，主食类型多选，组内「或」；空数组 = 不限
+ *   tastes     Array，口味多选，组内「或」；空数组 = 不限
  *
- * 说明：七个条件是「与」的关系，全部满足才会被选出来。
+ * 旧版单值入口（单选时代留下的，保留是为了不破坏既有调用与回归基线）：
+ *   shopId     'all' | 具体餐厅 / 商家 id
+ *   floorId    'all' | 具体楼层 id
+ *   stallId    'all' | 具体窗口 / 档口 id
+ *   foodType   'all' | 'rice' | 'noodle' | 'rice_noodle' | 'rice_vermicelli'
+ *                     | 'dumpling' | 'malatang' | 'snack' | 'other'
+ *   taste      'all' | 'light' | 'mild_spicy' | 'spicy'
+ *              （菜品侧多一个 'choice' = 辣度可自选，用户选任何一档都算命中）
+ *
+ * 说明：不同筛选组之间是「与」的关系，全部满足才会被选出来。
  *      这一点是「主食类型必须与其他筛选同时生效」的实现依据——
  *      不是在别处再补一段判断，而是同一处 and 条件。
+ *
+ * 「不限」只有一种写法：空数组。'all' 允许出现在选项列表里，
+ *      但一旦出现在条件数组里就会被过滤掉，绝不会被当成一个可选值——
+ *      否则「选了不限」会被算成「只能是不限这个值」，结果恒为空集。
  */
+
+/* ================================================================
+   多选条件的归一化
+   ================================================================ */
+
+/* 菜品侧的特殊口味值：辣度可自选。语义见 hasAnyTaste。 */
+const TASTE_CHOICE = 'choice';
+
+/**
+ * 把「多选数组」或「旧的单值」统一成一个干净的数组。
+ *
+ * 三条规则：
+ *   1. 空数组就是「不限」，没有第二种表达方式
+ *   2. 'all'、空串、null 一律丢弃，不进条件
+ *   3. 传了数组就以数组为准；只有完全没传 multi 时才回落到旧单值字段
+ *
+ * 第 3 条是「不能自己配出空集」的关键：页面清空某一组时传的是 []，
+ * 如果这时还能回落到旧的单值字段，清空就会失效。
+ *
+ * @param {Array|String|undefined} multi  多值入参
+ * @param {String|undefined} single       旧版单值入参
+ * @return {Array} 去重后的有效值
+ */
+function toValueSet(multi, single) {
+  const isArray = Array.isArray(multi);
+  const raw = isArray ? multi
+    : (multi === undefined || multi === null || multi === '' || multi === 'all' ? [] : [multi]);
+
+  const out = [];
+  for (let i = 0; i < raw.length; i++) {
+    const v = raw[i];
+    if (v === undefined || v === null || v === '' || v === 'all') continue;
+    if (out.indexOf(v) === -1) out.push(v);
+  }
+
+  if (!isArray && !out.length) {
+    if (single !== undefined && single !== null && single !== '' && single !== 'all') {
+      out.push(single);
+    }
+  }
+
+  return out;
+}
+
+/**
+ * 归一化「餐厅多选 + 每店独立条件」。
+ *
+ * 只做两件事：丢掉非法条目、把每一组都变成数组。
+ * 没有 shopId 或 shopId 为 'all' 的条目直接丢弃 —— 它们表达的是「不限」，
+ * 而「不限」的正确表达是「整个 shops 为空」，留着一个空条件条目会在
+ * 匹配时被当成「必须命中某家店」从而把结果筛成空集。
+ *
+ * @param {Array} shops
+ * @return {Array} [{ shopId, floorIds, stallIds, sides }]
+ */
+function normalizeScopes(shops) {
+  const out = [];
+  if (!Array.isArray(shops)) return out;
+
+  for (let i = 0; i < shops.length; i++) {
+    const s = shops[i];
+    if (!s || typeof s !== 'object') continue;
+
+    const shopId = s.shopId || s.id;
+    if (!shopId || shopId === 'all') continue;
+
+    out.push({
+      shopId: shopId,
+      floorIds: toValueSet(s.floorIds, s.floorId),
+      stallIds: toValueSet(s.stallIds, s.stallId),
+      sides: toValueSet(s.sides, s.side)
+    });
+  }
+
+  return out;
+}
+
+/**
+ * 判断一道菜是否满足「餐厅这一级」的条件。
+ *
+ * 结构：不同餐厅之间「或」，每家餐厅必须满足自己那套条件。
+ * 跨店串用在这里是被物理阻断的：只有 dish.shopId 与条件里的 shopId
+ * 相同，才会拿这家店的楼层 / 店铺 / 方位去比对，第一餐厅的楼层
+ * 永远不会被用在第三餐厅的菜上。
+ *
+ * @param {Object} dish
+ * @param {Array} scopes normalizeScopes() 的输出
+ * @return {Boolean}
+ */
+function matchShopScopes(dish, scopes) {
+  for (let i = 0; i < scopes.length; i++) {
+    const s = scopes[i];
+    if (dish.shopId !== s.shopId) continue;
+
+    /* 组间「与」：这家店的每一组条件都要满足 */
+    if (s.floorIds.length && s.floorIds.indexOf(dish.floorId) === -1) continue;
+    if (s.stallIds.length && s.stallIds.indexOf(dish.stallId) === -1) continue;
+    if (s.sides.length && s.sides.indexOf(dish.side) === -1) continue;
+
+    return true;
+  }
+  return false;
+}
+
+/**
+ * 口味命中判断：一道菜可能有多个标签，命中任意一个即可。
+ *
+ * 'choice'（可选辣度）是通配：这类菜点单时能做成清淡 / 微辣 / 麻辣任意一种，
+ * 所以用户选任何一档都应该被选出来。它只出现在**菜品侧**，不会出现在筛选条件里
+ * （筛选条件只有页面上的三档 + 不限），因此这里对 dishTastes 做判断即可。
+ *
+ * @param {Array} dishTastes
+ * @param {Array} wanted
+ * @return {Boolean}
+ */
+function hasAnyTaste(dishTastes, wanted) {
+  const list = dishTastes || [];
+  if (list.indexOf(TASTE_CHOICE) !== -1) return true;
+  for (let i = 0; i < list.length; i++) {
+    if (wanted.indexOf(list[i]) !== -1) return true;
+  }
+  return false;
+}
 
 /**
  * 按条件筛选菜品
@@ -29,42 +168,57 @@
 function filterDishes(dishes, cond) {
   const c = cond || {};
   const area = c.area || 'all';
+  const budget = (c.budget === undefined || c.budget === null) ? 0 : c.budget;
+
+  /* 旧的单值条件：只在多选入口没给值时生效 */
   const shopId = c.shopId || 'all';
   const floorId = c.floorId || 'all';
   const stallId = c.stallId || 'all';
-  const foodType = c.foodType || 'all';
-  const budget = (c.budget === undefined || c.budget === null) ? 0 : c.budget;
-  const taste = c.taste || 'all';
+
+  const scopes = normalizeScopes(c.shops);
+  const foodTypes = toValueSet(c.foodTypes, c.foodType);
+  const tastes = toValueSet(c.tastes, c.taste);
 
   return dishes.filter(function (dish) {
     /* 1. 区域：不限 or 精确匹配 */
     if (area !== 'all' && dish.area !== area) {
       return false;
     }
-    /* 2. 餐厅 / 商家 */
-    if (shopId !== 'all' && dish.shopId !== shopId) {
+
+    /* 2. 餐厅 / 商家 + 楼层 + 窗口：
+         有多选条件时走「不同餐厅或 + 每店内部与」；
+         没有时保持旧版的三个独立单值判断（顺序与原实现一致） */
+    if (scopes.length) {
+      if (!matchShopScopes(dish, scopes)) {
+        return false;
+      }
+    } else {
+      if (shopId !== 'all' && dish.shopId !== shopId) {
+        return false;
+      }
+      if (floorId !== 'all' && dish.floorId !== floorId) {
+        return false;
+      }
+      if (stallId !== 'all' && dish.stallId !== stallId) {
+        return false;
+      }
+    }
+
+    /* 3. 主食类型：组内「或」 */
+    if (foodTypes.length && foodTypes.indexOf(dish.foodType) === -1) {
       return false;
     }
-    /* 3. 楼层 */
-    if (floorId !== 'all' && dish.floorId !== floorId) {
-      return false;
-    }
-    /* 4. 窗口 / 档口 */
-    if (stallId !== 'all' && dish.stallId !== stallId) {
-      return false;
-    }
-    /* 5. 主食类型：不限类型时不限制，选具体类型时精确匹配 */
-    if (foodType !== 'all' && dish.foodType !== foodType) {
-      return false;
-    }
-    /* 6. 预算：0 表示不限，否则价格必须小于等于上限 */
+
+    /* 4. 预算：0 表示不限，否则价格必须小于等于上限 */
     if (budget !== 0 && dish.price > budget) {
       return false;
     }
-    /* 7. 口味：一道菜可能有多个标签，命中任意一个即可 */
-    if (taste !== 'all' && dish.tastes.indexOf(taste) === -1) {
+
+    /* 5. 口味：组内「或」，命中任意一个标签即可 */
+    if (tastes.length && !hasAnyTaste(dish.tastes, tastes)) {
       return false;
     }
+
     return true;
   });
 }

@@ -1,0 +1,10 @@
+{
+  "command": [
+    "D:/微信开发/微信web开发者工具/cli.bat",
+    "auto",
+    "--help"
+  ],
+  "exitCode": 0,
+  "stdout": "cli auto\n\nEnable automation\n\nOptions:\n  --trust-project  Trust Project                                       [boolean]\n  --test-ticket    Test ticket                                          [string]\n  --ticket         Login ticket                                         [string]\n\nProject options:\n  --project    project path\n  --appid      miniprogram appid or 3rd platform appid. Ignored when --project\n               is provided\n  --ext-appid  miniprogram appid to be developed by 3rd platform. Ignored when\n               --project is provided\n\nOther global options:\n  --port         Optional. IDE HTTP server port. If IDE hasn't been launched, it\n                 will be launched and start HTTP server at <port>. If IDE has\n                 launched with a HTTP server of different port, you must quit\n                 IDE before re-run the command.                         [number]\n  --token        Optional. CLI access token configured in IDE Security Settings.\n                 It can also be set with the WECHAT_DEVTOOLS_CLI_TOKEN\n                 environment variable.                                  [string]\n  --lang         Optional. 'en' or 'zh'. Defaults to 'en'.\n  --debug        Optional. Turn on debug mode\n  --disable-gpu  Disable GPU Acceleration when launching IDE           [boolean]\n  -h, --help     Show help                                             [boolean]\n",
+  "stderr": ""
+}

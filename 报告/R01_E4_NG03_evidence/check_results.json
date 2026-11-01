@@ -1,0 +1,14 @@
+{
+  "exitCode": 0,
+  "NG03Rows": 10,
+  "uniqueKeys": 10,
+  "prices": {
+    "14": 1,
+    "12": 8,
+    "16": 1
+  },
+  "existingReportHashesUnchanged": 16,
+  "projectHashesUnchanged": 376,
+  "NG01D1D2Retained": true,
+  "photoSHA256": "f57786adfa9c14525683250af226fb430962a85643cdc10b4007d497e337fe1d"
+}

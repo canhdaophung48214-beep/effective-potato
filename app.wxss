@@ -3,8 +3,9 @@
    =================================================================== */
 
 page {
-  background: #F5F6F8;
-  color: #1F2329;
+  /* 灶火纸感：暖纸底 + 墨色文字（与 tabBar / 概念设计一致） */
+  background: #FAF6F0;
+  color: #241E1A;
   font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
   font-size: 28rpx;
   line-height: 1.5;

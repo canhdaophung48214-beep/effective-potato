@@ -1,0 +1,38 @@
+{
+  "checkedAt": "2026-11-01T05:49:28.457Z",
+  "gitIdentical": true,
+  "checkedProjectFiles": 376,
+  "changed": [],
+  "added": [],
+  "projectTaskDiff": "EMPTY",
+  "protectedData": [
+    {
+      "path": "data\\shops.js",
+      "bytes": 6479,
+      "sha256": "28a621e6630dbf6df2509658fa3581f2b276990deefc3978044fdc8d3d221ae0",
+      "afterBytes": 6479,
+      "afterSHA256": "28a621e6630dbf6df2509658fa3581f2b276990deefc3978044fdc8d3d221ae0"
+    },
+    {
+      "path": "data\\provenance.js",
+      "bytes": 16270,
+      "sha256": "818aed419421ee8d97adabef1355b87be2f2611075cc36bafc59ed6e05bfdd0e",
+      "afterBytes": 16270,
+      "afterSHA256": "818aed419421ee8d97adabef1355b87be2f2611075cc36bafc59ed6e05bfdd0e"
+    },
+    {
+      "path": "data\\index.js",
+      "bytes": 16830,
+      "sha256": "f2d40f645a5809e6448cb4125fc1abb4d061d5c708ebd37750cf9500b7e011bb",
+      "afterBytes": 16830,
+      "afterSHA256": "f2d40f645a5809e6448cb4125fc1abb4d061d5c708ebd37750cf9500b7e011bb"
+    },
+    {
+      "path": "data\\dishes.js",
+      "bytes": 11774,
+      "sha256": "3d370ad554ea7369d748f447a90dd47babb97812495518fe7e1676991103df24",
+      "afterBytes": 11774,
+      "afterSHA256": "3d370ad554ea7369d748f447a90dd47babb97812495518fe7e1676991103df24"
+    }
+  ]
+}

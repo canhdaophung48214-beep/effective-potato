@@ -1,0 +1,24 @@
+{
+  "approvalId": "ap-20261025-01",
+  "status": "approved",
+  "notice": "正式审批记录（ap-20261025-01）。代写声明（如实记录，不构成隐瞒）：本文件由执行 agent（ZCode）受产品负责人本人于 2026-10-25T23:23:52+08:00（Asia/Shanghai）当场明确授权「我授权你帮我写」后代写；批准人本人在场并亲自作出批准决定，approvedAt 即该授权时刻。批准的内容与范围以本文件字段为准。",
+  "approvedRole": "项目负责人",
+  "approvedAt": "2026-10-25T23:23:52+08:00",
+  "planRef": "ip-20261025-01",
+  "planDigest": "4ed23cb4532aa564bc57490a83f4dfb2da6073bbe3487ccd2bad02841f9981ce",
+  "scope": "仅初始化 tools/pilot/id-map.json（首版 104 条：t49=c01_d437–c01_d463×27、t48=c01_d464–c01_d540×77）；不生成记录产物、不导入 CSV、不写云端、不改变任何 verifyStatus",
+  "result": "approved",
+  "mapVersion": "1#1",
+  "frozenMapSha256": "40642870a2c5cb512e8b5dbc5725ac2754c13b39057a83978dce01c57e54e491",
+  "frozenMapBytes": 37741,
+  "frozenMapRef": "docs/decisions/ID_MAP_T48_T49_20261025.json",
+  "executionEnvironment": "A′：WSL2 Ubuntu ext4 项目副本（~/shishen-a-prime-copy）+ Node v22.22.1；/mnt/c（9p）与 Windows 正式路径不得执行（INIT_FSYNC_UNAVAILABLE fail-closed）",
+  "technicalDecisionRecord": "docs/decisions/TECH_DECISION_INIT_IMPLEMENTATION_20261025.md",
+  "signature": {
+    "signed": true,
+    "signer": "项目负责人（本人；本记录由其当场授权执行 agent 代写，见 notice 代写声明）",
+    "signedAt": "2026-10-25T23:23:52+08:00",
+    "authorizationVerb": "「我授权你帮我写」（2026-10-25T23:23:52+08:00 会话原话，针对本审批的签发）",
+    "note": "批准人=项目负责人本人（契约 §5.6.5.8.2 A1 唯一批准人）；批准时刻=授权时刻；无代理审批、无推定批准。"
+  }
+}

@@ -1,0 +1,10 @@
+'use strict';
+const fs = require('fs'); const path = require('path');
+const PROJ = "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目";
+const rd = f => fs.readFileSync(path.join(PROJ, f), 'utf8').split(/\r?\n/);
+const show = (f, a, b) => { const L = rd(f); console.log('=== ' + f + ' ' + a + '-' + b); for (let i = a - 1; i < b && i < L.length; i++) console.log((i + 1) + '| ' + L[i].slice(0, 170)); };
+show('tools/verify_data.js', 641, 662);
+show('tools/check_id_admission.js', 560, 599);
+const c = rd('tools/check_id_admission.js');
+console.log('--- usage/doc lines ---');
+c.map((l,i)=>[i+1,l]).filter(([i,l])=>/记录产物|records\.json|用法|Usage|process\.argv/.test(l)).slice(0,25).forEach(([i,l])=>console.log(i+'| '+l.trim().slice(0,160)));

@@ -1,0 +1,20 @@
+=== isolated mutation: remove audit gate call ===
+PASS G-A 完整 OK 对账允许清正文
+FAIL G-B PARTIAL 即使 closed=1 也拦截且正文逐字节不变
+FAIL G-C FAILED 即使 closed=1 也拦截且不写虚假 complete
+FAIL G-D RECONCILE_ANOMALIES / 疑似孤儿 prepare 拦截
+FAIL G-D2 未超阈值的运行中 prepare 即使对账 ok=true 也拦截
+FAIL G-E completeScan=false 即使 ok=true 也拦截
+FAIL G-F 截断结果即使 ok=true 也拦截
+FAIL G-F2 实际 501 条只读扫描截断阻断正文清理
+FAIL G-G 对账超时拦截
+FAIL G-H 对账结果缺失拦截
+FAIL G-H2 对账计数结构不完整拦截
+FAIL G-I 返回码伪装 OK 仍检查 outcomes 中 PARTIAL
+FAIL G-J 短暂对账故障后重试成功才清正文
+FAIL G-K 数据库对账响应缺失不按空日志放行
+FAIL G-L 维护入口同样不能绕过闸门
+PASS G-M 无令牌拒绝且不查询或更新正文
+PASS 2 / FAIL 14
+EXIT_CODE=1
+SOURCE_SHA256=3DBB96443008F824F801C48C01EF72EEA0EA954BA2DE06B8BA867C608B293C8F (unchanged)

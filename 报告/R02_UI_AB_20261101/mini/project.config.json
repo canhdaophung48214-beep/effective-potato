@@ -1,0 +1,8 @@
+{
+  "description": "Isolated A+B three-screen historical menu UI prototype",
+  "compileType": "miniprogram",
+  "appid": "wxcc28587e4d0254ad",
+  "projectname": "shishen-ab-history-ui",
+  "miniprogramRoot": "./",
+  "setting": { "urlCheck": false, "es6": true, "postcss": true, "minified": false }
+}

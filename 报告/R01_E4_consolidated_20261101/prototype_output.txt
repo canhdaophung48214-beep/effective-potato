@@ -1,0 +1,2 @@
+PASS 5 targeted checks; EXIT=0
+EXIT=0

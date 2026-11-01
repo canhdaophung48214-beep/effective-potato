@@ -1,0 +1,22 @@
+{
+  "exitCode": 0,
+  "summary": {
+    "status": "L8_IN_MEMORY_ONLY",
+    "mode": "dry-run",
+    "outDir": null,
+    "mapPath": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\pilot\\id-map.json",
+    "mapPathInjected": false,
+    "mapLoaded": true,
+    "records": 490,
+    "blockers": 525,
+    "counts": {
+      "records": 490,
+      "blockers": 525,
+      "A": 490,
+      "B": 0,
+      "C": 35
+    },
+    "note": "L8 只在内存中构建并序列化三份产物；未写盘、未发布（P1 未授权）"
+  },
+  "violations": []
+}

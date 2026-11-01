@@ -1,0 +1,37 @@
+[
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\Codex_R01_E3_执行报告.md",
+    "bytes": 3196,
+    "sha256": "69eb3c14f45be1803ec2566493e56cec222b49e2cc1a09ef3f70aa32e8587c27"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E3_accelerated\\artifacts_manifest.json",
+    "bytes": 3501,
+    "sha256": "2495b52333158b7a2b963ce058c0a087f5665152b89bd249900a07adc0b32b19"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E4_NG01_手抓饼业务裁决材料.md",
+    "bytes": 5761,
+    "sha256": "95ebb689f19a3d95fbbb8cb5fdf7db71f751dda5a7b0addec7085c52b7ca2dcf"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\Codex_R01_E3收尾_E4_NG01_执行报告.md",
+    "bytes": 1322,
+    "sha256": "a85e72663c23e14a1b72a94ad283dff09ee1fbad39a1f47b097b2b90185b6e59"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E3_close_E4_NG01\\checks.json",
+    "bytes": 2202,
+    "sha256": "e2b35ddcb53b6d80cfb033e8f1b6dfb27a34d17c8acd175e6e47100538b9cb3a"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E3_close_E4_NG01\\E3_description_only.patch",
+    "bytes": 1316,
+    "sha256": "751396465992092087239b4c959ea2ed715dd7b9fe746b2ae1e63f1d4188d98e"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E3_close_E4_NG01\\git_status.txt",
+    "bytes": 17312,
+    "sha256": "83d8c88e4c749b796e3cfcd2cf1e814127c91487f8c89bb98fe0911817740ad0"
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "oldRecords": 143,
+  "oldDisposition": {
+    "VOID": 32,
+    "REPLACE": 47,
+    "PENDING": 52,
+    "RETAIN": 12
+  },
+  "newSourceGroups": 292,
+  "declared293": 293,
+  "enumeratedCoreGroups": 287,
+  "supplementaryGroups": 5,
+  "physicalMenuTableRows": 230,
+  "distinctCoreSourceLines": 241,
+  "candidateRecords": 122,
+  "candidateStalls": 10,
+  "candidateSpecRecords": 30,
+  "rawSpecOptions": 66,
+  "packagesAndCombinationsCore": 39,
+  "drinkCoreGroups": 41,
+  "unresolvedItems": 187,
+  "formalIdsAssigned": 0,
+  "formallyImportable": 0
+}

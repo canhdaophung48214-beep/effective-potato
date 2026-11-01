@@ -1,0 +1,3 @@
+shop_id,shop_name,area,building,location,source_kind,source_detail,source_ref,collector,collect_date,evidence_file
+ex_s01,示例餐厅（仅格式示例，请删除本行）,campus,示例建筑,示例位置,field,示例：本人到场看到门头招牌,ex_menu.jpg,示例采集人,2026-01-01,ex_menu.jpg
+ex_s02,示例校外商家（仅格式示例，请删除本行）,offsite,示例沿街,示例位置,official,示例：官方公示截图,https://example.com/notice,示例采集人,2026-01-01,ex_notice.png

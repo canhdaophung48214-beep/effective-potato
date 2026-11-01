@@ -1,0 +1,14 @@
+test_19_copies_byte_verified_and_exact_scope (__main__.F1Tests.test_19_copies_byte_verified_and_exact_scope) ... ok
+test_266_photo_hashes_and_source_lines (__main__.F1Tests.test_266_photo_hashes_and_source_lines) ... ok
+test_counts_and_unique_replace_owner (__main__.F1Tests.test_counts_and_unique_replace_owner) ... ok
+test_csv_json_ledger_agree (__main__.F1Tests.test_csv_json_ledger_agree) ... ok
+test_no_other_new_old_double_registration (__main__.F1Tests.test_no_other_new_old_double_registration) ... ok
+test_no_other_project_changes (__main__.F1Tests.test_no_other_project_changes) ... ok
+test_reproducible_isolated_build (__main__.F1Tests.test_reproducible_isolated_build) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 1.197s
+
+OK
+
+EXIT=0

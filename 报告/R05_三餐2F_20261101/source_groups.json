@@ -1,0 +1,590 @@
+[
+  {
+    "sourceRecordRef": "R05-SC2F-L0095",
+    "name": "特色羊杂面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 95,
+    "sourceQuote": "| 特色羊杂面 | 11 | noodle | 汤面 |",
+    "stallRef": "R05-SC2F-S01",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d040"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0096",
+    "name": "辣肉汤面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 96,
+    "sourceQuote": "| 辣肉汤面 | 11 | noodle | 汤面 |",
+    "stallRef": "R05-SC2F-S01",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d041"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0097",
+    "name": "小苏肉汤面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 97,
+    "sourceQuote": "| 小苏肉汤面 | 11 | noodle | 汤面 |",
+    "stallRef": "R05-SC2F-S01",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d042"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0098",
+    "name": "卤肉汤面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 98,
+    "sourceQuote": "| 卤肉汤面 | 11 | noodle | 汤面 |",
+    "stallRef": "R05-SC2F-S01",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d043"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0099",
+    "name": "肉臊汤面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 99,
+    "sourceQuote": "| 肉臊汤面 | 10 | noodle | 汤面 |",
+    "stallRef": "R05-SC2F-S01",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d044"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0100",
+    "name": "老坛酸菜汤面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 100,
+    "sourceQuote": "| 老坛酸菜汤面 | 9 | noodle | 汤面 |",
+    "stallRef": "R05-SC2F-S01",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d045"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0101",
+    "name": "豇豆肉碎面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 101,
+    "sourceQuote": "| ⚠ 豇豆肉碎面 | 9 | noodle | 汤面（第 7 项，字迹待确认） |",
+    "stallRef": "R05-SC2F-S01",
+    "kind": "dish",
+    "oldRecordKeys": []
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0102",
+    "name": "清汤面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 102,
+    "sourceQuote": "| 清汤面 | 7 | noodle | 汤面 |",
+    "stallRef": "R05-SC2F-S01",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d046"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0103",
+    "name": "辣肉拌面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 103,
+    "sourceQuote": "| 辣肉拌面 | 11 | noodle | 拌面 |",
+    "stallRef": "R05-SC2F-S01",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d047"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0104",
+    "name": "小苏肉拌面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 104,
+    "sourceQuote": "| 小苏肉拌面 | 11 | noodle | 拌面 |",
+    "stallRef": "R05-SC2F-S01",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d048"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0105",
+    "name": "麻辣鸡丝拌面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 105,
+    "sourceQuote": "| 麻辣鸡丝拌面 | 11 | noodle | 拌面 |",
+    "stallRef": "R05-SC2F-S01",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d049"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0106",
+    "name": "肉臊拌面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 106,
+    "sourceQuote": "| 肉臊拌面 | 10 | noodle | 拌面 |",
+    "stallRef": "R05-SC2F-S01",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d050"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0107",
+    "name": "豇豆拌面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 107,
+    "sourceQuote": "| 豇豆拌面 | 9 | noodle | 拌面 |",
+    "stallRef": "R05-SC2F-S01",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d051"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0108",
+    "name": "老坛酸菜拌面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 108,
+    "sourceQuote": "| 老坛酸菜拌面 | 9 | noodle | 拌面 |",
+    "stallRef": "R05-SC2F-S01",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d052"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0109",
+    "name": "火腿拌面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 109,
+    "sourceQuote": "| 火腿拌面 | 9 | noodle | 拌面 |",
+    "stallRef": "R05-SC2F-S01",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d053"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0110",
+    "name": "麻辣拌面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 110,
+    "sourceQuote": "| 麻辣拌面 | 7 | noodle | 拌面 |",
+    "stallRef": "R05-SC2F-S01",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d054"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0111",
+    "name": "麻汁拌面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 111,
+    "sourceQuote": "| 麻汁拌面 | 7 | noodle | 拌面 |",
+    "stallRef": "R05-SC2F-S01",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d055"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0112",
+    "name": "招牌炸酱面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 112,
+    "sourceQuote": "| 招牌炸酱面 | 10 | noodle | 炸酱 |",
+    "stallRef": "R05-SC2F-S01",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d056"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0113",
+    "name": "肉酱炸酱面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 113,
+    "sourceQuote": "| 肉酱炸酱面 | 10 | noodle | 炸酱 |",
+    "stallRef": "R05-SC2F-S01",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d057"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0114",
+    "name": "鸡蛋炸酱面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 114,
+    "sourceQuote": "| 鸡蛋炸酱面 | 9 | noodle | 炸酱 |",
+    "stallRef": "R05-SC2F-S01",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d058"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0115",
+    "name": "双拼炸酱面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 115,
+    "sourceQuote": "| 双拼炸酱面 | 10 | noodle | 炸酱 |",
+    "stallRef": "R05-SC2F-S01",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d059"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0123",
+    "name": "重庆小面（素）",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 123,
+    "sourceQuote": "| 重庆小面（素） | 7 | noodle | 汤面 |",
+    "stallRef": "R05-SC2F-S02",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d060"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0124",
+    "name": "杂酱面（素）",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 124,
+    "sourceQuote": "| 杂酱面（素） | 9 | noodle | 汤面 |",
+    "stallRef": "R05-SC2F-S02",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d061"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0125",
+    "name": "招牌豌杂面（素）",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 125,
+    "sourceQuote": "| 招牌豌杂面（素） | 11 | noodle | 汤面 |",
+    "stallRef": "R05-SC2F-S02",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d062"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0126",
+    "name": "酸菜面（素）",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 126,
+    "sourceQuote": "| 酸菜面（素） | 8 | noodle | 汤面 |",
+    "stallRef": "R05-SC2F-S02",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d063"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0127",
+    "name": "牛肉面（荤）",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 127,
+    "sourceQuote": "| 牛肉面（荤） | 15 | noodle | 汤面 |",
+    "stallRef": "R05-SC2F-S02",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d064"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0128",
+    "name": "干拌小面（素）",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 128,
+    "sourceQuote": "| 干拌小面（素） | 7 | noodle | 拌面 |",
+    "stallRef": "R05-SC2F-S02",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d065"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0129",
+    "name": "干拌杂酱面（素）",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 129,
+    "sourceQuote": "| 干拌杂酱面（素） | 9 | noodle | 拌面 |",
+    "stallRef": "R05-SC2F-S02",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d066"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0130",
+    "name": "干拌豌杂面（素）",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 130,
+    "sourceQuote": "| 干拌豌杂面（素） | 11 | noodle | 拌面 |",
+    "stallRef": "R05-SC2F-S02",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d067"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0131",
+    "name": "清汤小面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 131,
+    "sourceQuote": "| ⚠ 清汤小面 | 7 | noodle | 清汤（括号内疑为「可拌」） |",
+    "stallRef": "R05-SC2F-S02",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d068"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0132",
+    "name": "清汤杂酱面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 132,
+    "sourceQuote": "| ⚠ 清汤杂酱面 | 9 | noodle | 清汤（同上） |",
+    "stallRef": "R05-SC2F-S02",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d069"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0133",
+    "name": "清汤豌杂面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 133,
+    "sourceQuote": "| ⚠ 清汤豌杂面 | 11 | noodle | 清汤（同上） |",
+    "stallRef": "R05-SC2F-S02",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d070"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0134",
+    "name": "麻酱凉面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 134,
+    "sourceQuote": "| 麻酱凉面 | 8 | noodle | 小吃 |",
+    "stallRef": "R05-SC2F-S02",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d071"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0143",
+    "name": "德式烤肠意大利面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 143,
+    "sourceQuote": "| 德式烤肠意大利面 | 9.9 | noodle |",
+    "stallRef": "R05-SC2F-S03",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d072"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0144",
+    "name": "培根意大利面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 144,
+    "sourceQuote": "| 培根意大利面 | 9.9 | noodle |",
+    "stallRef": "R05-SC2F-S03",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d073"
+    ]
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0145",
+    "name": "虾仁意大利面",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 145,
+    "sourceQuote": "| 虾仁意大利面 | 9.9 | noodle |",
+    "stallRef": "R05-SC2F-S03",
+    "kind": "dish",
+    "oldRecordKeys": [
+      "c02_d074"
+    ]
+  },
+  {
+    "optionRef": "R05-SC2F-L0117-O1",
+    "sourceRecordRef": "R05-SC2F-L0117-O1",
+    "name": "卤蛋",
+    "additionalPriceYuan": 1.0,
+    "stallRef": "R05-SC2F-S01",
+    "baseCandidateRef": null,
+    "associationScope": "stall_only_specific_base_unknown",
+    "independentDish": false,
+    "selectionConstraints": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 117,
+    "sourceQuote": "卤味（不录）：卤蛋 1 / 卤肉 6 / 狮子头 2。店铺备注：加面免费，点餐前提前说。",
+    "kind": "optional_surcharge",
+    "oldRecordKeys": []
+  },
+  {
+    "optionRef": "R05-SC2F-L0117-O2",
+    "sourceRecordRef": "R05-SC2F-L0117-O2",
+    "name": "卤肉",
+    "additionalPriceYuan": 6.0,
+    "stallRef": "R05-SC2F-S01",
+    "baseCandidateRef": null,
+    "associationScope": "stall_only_specific_base_unknown",
+    "independentDish": false,
+    "selectionConstraints": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 117,
+    "sourceQuote": "卤味（不录）：卤蛋 1 / 卤肉 6 / 狮子头 2。店铺备注：加面免费，点餐前提前说。",
+    "kind": "optional_surcharge",
+    "oldRecordKeys": []
+  },
+  {
+    "optionRef": "R05-SC2F-L0117-O3",
+    "sourceRecordRef": "R05-SC2F-L0117-O3",
+    "name": "狮子头",
+    "additionalPriceYuan": 2.0,
+    "stallRef": "R05-SC2F-S01",
+    "baseCandidateRef": null,
+    "associationScope": "stall_only_specific_base_unknown",
+    "independentDish": false,
+    "selectionConstraints": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 117,
+    "sourceQuote": "卤味（不录）：卤蛋 1 / 卤肉 6 / 狮子头 2。店铺备注：加面免费，点餐前提前说。",
+    "kind": "optional_surcharge",
+    "oldRecordKeys": []
+  },
+  {
+    "optionRef": "R05-SC2F-L0136-O1",
+    "sourceRecordRef": "R05-SC2F-L0136-O1",
+    "name": "卤蛋",
+    "additionalPriceYuan": 1.0,
+    "stallRef": "R05-SC2F-S02",
+    "baseCandidateRef": null,
+    "associationScope": "stall_only_specific_base_unknown",
+    "independentDish": false,
+    "selectionConstraints": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 136,
+    "sourceQuote": "加料（不录）：卤蛋 1 / 卤肠 1.5 / 煎蛋 2 / 辣椒 2 / 豆干 1.5。店铺备注：加面免费，点餐前提前说。",
+    "kind": "optional_surcharge",
+    "oldRecordKeys": []
+  },
+  {
+    "optionRef": "R05-SC2F-L0136-O2",
+    "sourceRecordRef": "R05-SC2F-L0136-O2",
+    "name": "卤肠",
+    "additionalPriceYuan": 1.5,
+    "stallRef": "R05-SC2F-S02",
+    "baseCandidateRef": null,
+    "associationScope": "stall_only_specific_base_unknown",
+    "independentDish": false,
+    "selectionConstraints": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 136,
+    "sourceQuote": "加料（不录）：卤蛋 1 / 卤肠 1.5 / 煎蛋 2 / 辣椒 2 / 豆干 1.5。店铺备注：加面免费，点餐前提前说。",
+    "kind": "optional_surcharge",
+    "oldRecordKeys": []
+  },
+  {
+    "optionRef": "R05-SC2F-L0136-O3",
+    "sourceRecordRef": "R05-SC2F-L0136-O3",
+    "name": "煎蛋",
+    "additionalPriceYuan": 2.0,
+    "stallRef": "R05-SC2F-S02",
+    "baseCandidateRef": null,
+    "associationScope": "stall_only_specific_base_unknown",
+    "independentDish": false,
+    "selectionConstraints": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 136,
+    "sourceQuote": "加料（不录）：卤蛋 1 / 卤肠 1.5 / 煎蛋 2 / 辣椒 2 / 豆干 1.5。店铺备注：加面免费，点餐前提前说。",
+    "kind": "optional_surcharge",
+    "oldRecordKeys": []
+  },
+  {
+    "optionRef": "R05-SC2F-L0136-O4",
+    "sourceRecordRef": "R05-SC2F-L0136-O4",
+    "name": "辣椒",
+    "additionalPriceYuan": 2.0,
+    "stallRef": "R05-SC2F-S02",
+    "baseCandidateRef": null,
+    "associationScope": "stall_only_specific_base_unknown",
+    "independentDish": false,
+    "selectionConstraints": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 136,
+    "sourceQuote": "加料（不录）：卤蛋 1 / 卤肠 1.5 / 煎蛋 2 / 辣椒 2 / 豆干 1.5。店铺备注：加面免费，点餐前提前说。",
+    "kind": "optional_surcharge",
+    "oldRecordKeys": []
+  },
+  {
+    "optionRef": "R05-SC2F-L0136-O5",
+    "sourceRecordRef": "R05-SC2F-L0136-O5",
+    "name": "豆干",
+    "additionalPriceYuan": 1.5,
+    "stallRef": "R05-SC2F-S02",
+    "baseCandidateRef": null,
+    "associationScope": "stall_only_specific_base_unknown",
+    "independentDish": false,
+    "selectionConstraints": null,
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 136,
+    "sourceQuote": "加料（不录）：卤蛋 1 / 卤肠 1.5 / 煎蛋 2 / 辣椒 2 / 豆干 1.5。店铺备注：加面免费，点餐前提前说。",
+    "kind": "optional_surcharge",
+    "oldRecordKeys": []
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0147-B1",
+    "name": "西冷牛排套餐",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 147,
+    "sourceQuote": "套餐（不录）：西冷牛排套餐 17.8 / 黑椒牛排套餐 14.8 / 鸡排套餐 12.8（含意面、煎蛋、西蓝花）。",
+    "stallRef": "R05-SC2F-S03",
+    "kind": "bundle",
+    "oldRecordKeys": []
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0147-B2",
+    "name": "黑椒牛排套餐",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 147,
+    "sourceQuote": "套餐（不录）：西冷牛排套餐 17.8 / 黑椒牛排套餐 14.8 / 鸡排套餐 12.8（含意面、煎蛋、西蓝花）。",
+    "stallRef": "R05-SC2F-S03",
+    "kind": "bundle",
+    "oldRecordKeys": []
+  },
+  {
+    "sourceRecordRef": "R05-SC2F-L0147-B3",
+    "name": "鸡排套餐",
+    "sourceFile": "source_assets/TRANSCRIPTION_DRAFT.md",
+    "sourceLine": 147,
+    "sourceQuote": "套餐（不录）：西冷牛排套餐 17.8 / 黑椒牛排套餐 14.8 / 鸡排套餐 12.8（含意面、煎蛋、西蓝花）。",
+    "stallRef": "R05-SC2F-S03",
+    "kind": "bundle",
+    "oldRecordKeys": []
+  }
+]

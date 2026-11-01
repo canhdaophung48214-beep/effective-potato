@@ -1,0 +1,1 @@
+.notice{display:flex;align-items:flex-start;gap:18rpx;padding:22rpx;border-radius:22rpx;background:#fff5df;color:#6d491c}.badge{flex:none;padding:7rpx 12rpx;border-radius:10rpx;background:#ffe1a9;font-size:21rpx}.title{font-size:27rpx;font-weight:700}.copy{margin-top:6rpx;font-size:22rpx;line-height:1.55}.compact{padding:16rpx}.compact .copy{display:none}

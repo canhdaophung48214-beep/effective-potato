@@ -1,0 +1,960 @@
+[
+  {
+    "sourceRecordRef": "R07-EARLY-L0027",
+    "oldRecordKeys": [
+      "early_batch1:c01_d001"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0027"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0027-V1"
+    ],
+    "name": "招牌猪脚饭",
+    "sourceLine": 27
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0028",
+    "oldRecordKeys": [
+      "early_batch1:c01_d002"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0028"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0028-V1"
+    ],
+    "name": "红烧肉盖饭",
+    "sourceLine": 28
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0029",
+    "oldRecordKeys": [
+      "early_batch1:c01_d003"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0029"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0029-V1"
+    ],
+    "name": "台式卤肉饭",
+    "sourceLine": 29
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0030",
+    "oldRecordKeys": [
+      "early_batch1:c01_d004"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0030"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0030-V1"
+    ],
+    "name": "辣子鸡盖饭",
+    "sourceLine": 30
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0031",
+    "oldRecordKeys": [
+      "early_batch1:c01_d005"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0031"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0031-V1"
+    ],
+    "name": "蜜汁叉烧饭",
+    "sourceLine": 31
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0032",
+    "oldRecordKeys": [
+      "early_batch1:c01_d006"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0032"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0032-V1"
+    ],
+    "name": "香辣鸡杂饭",
+    "sourceLine": 32
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0033",
+    "oldRecordKeys": [
+      "early_batch1:c01_d007"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0033"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0033-V1"
+    ],
+    "name": "卤肉面",
+    "sourceLine": 33
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0034",
+    "oldRecordKeys": [
+      "early_batch1:c01_d008"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0034"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0034-V1"
+    ],
+    "name": "肉酱拌面",
+    "sourceLine": 34
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0044",
+    "oldRecordKeys": [
+      "early_batch1:c01_d009"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0044"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0044-V1"
+    ],
+    "name": "月亮馍（+烤肠）",
+    "sourceLine": 44
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0045",
+    "oldRecordKeys": [
+      "early_batch1:c01_d010"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0045"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0045-V1"
+    ],
+    "name": "月亮馍（+煎蛋）",
+    "sourceLine": 45
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0046",
+    "oldRecordKeys": [
+      "early_batch1:c01_d011"
+    ],
+    "action": "PENDING",
+    "newSourceRefs": [
+      "R07-EARLY-L0046"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [],
+    "name": "月亮馍（+辣条）",
+    "sourceLine": 46
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0047",
+    "oldRecordKeys": [
+      "early_batch1:c01_d012"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0047"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0047-V1"
+    ],
+    "name": "月亮馍（+鸡柳）",
+    "sourceLine": 47
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0048",
+    "oldRecordKeys": [
+      "early_batch1:c01_d013"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0048"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0048-V1"
+    ],
+    "name": "月亮馍（+里脊）",
+    "sourceLine": 48
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0049",
+    "oldRecordKeys": [
+      "early_batch1:c01_d014"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0049"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0049-V1"
+    ],
+    "name": "月亮馍（+肉松）",
+    "sourceLine": 49
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0050",
+    "oldRecordKeys": [
+      "early_batch1:c01_d015"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0050"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0050-V1"
+    ],
+    "name": "杂粮煎饼（+鸡蛋+脆饼）",
+    "sourceLine": 50
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0051",
+    "oldRecordKeys": [
+      "early_batch1:c01_d016"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0051"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0051-V1"
+    ],
+    "name": "杂粮煎饼（+鸡蛋+油条）",
+    "sourceLine": 51
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0059",
+    "oldRecordKeys": [
+      "early_batch1:c01_d017"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0059"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0059-V1"
+    ],
+    "name": "特色羊杂面",
+    "sourceLine": 59
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0060",
+    "oldRecordKeys": [
+      "early_batch1:c01_d018"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0060"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0060-V1"
+    ],
+    "name": "辣肉面",
+    "sourceLine": 60
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0061",
+    "oldRecordKeys": [
+      "early_batch1:c01_d019"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0061"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0061-V1"
+    ],
+    "name": "鸡柳面",
+    "sourceLine": 61
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0062",
+    "oldRecordKeys": [
+      "early_batch1:c01_d020"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0062"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0062-V1"
+    ],
+    "name": "猪排面",
+    "sourceLine": 62
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0063",
+    "oldRecordKeys": [
+      "early_batch1:c01_d021"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0063"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0063-V1"
+    ],
+    "name": "卤肉面",
+    "sourceLine": 63
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0064",
+    "oldRecordKeys": [
+      "early_batch1:c01_d022"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0064"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0064-V1"
+    ],
+    "name": "筋头巴脑牛肉面",
+    "sourceLine": 64
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0065",
+    "oldRecordKeys": [
+      "early_batch1:c01_d023"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0065"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0065-V1"
+    ],
+    "name": "肉燥汤面",
+    "sourceLine": 65
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0066",
+    "oldRecordKeys": [
+      "early_batch1:c01_d024"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0066"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0066-V1"
+    ],
+    "name": "酸豆角汤面",
+    "sourceLine": 66
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0067",
+    "oldRecordKeys": [
+      "early_batch1:c01_d025"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0067"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0067-V1"
+    ],
+    "name": "酸菜汤面",
+    "sourceLine": 67
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0068",
+    "oldRecordKeys": [
+      "early_batch1:c01_d026"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0068"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0068-V1"
+    ],
+    "name": "清汤面",
+    "sourceLine": 68
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0069",
+    "oldRecordKeys": [
+      "early_batch1:c01_d027"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0069"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0069-V1"
+    ],
+    "name": "辣肉拌面",
+    "sourceLine": 69
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0070",
+    "oldRecordKeys": [
+      "early_batch1:c01_d028"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0070"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0070-V1"
+    ],
+    "name": "鸡柳麻辣拌面",
+    "sourceLine": 70
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0071",
+    "oldRecordKeys": [
+      "early_batch1:c01_d029"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0071"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0071-V1"
+    ],
+    "name": "猪排麻酱面",
+    "sourceLine": 71
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0072",
+    "oldRecordKeys": [
+      "early_batch1:c01_d030"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0072"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0072-V1"
+    ],
+    "name": "麻酱鸡丝面",
+    "sourceLine": 72
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0073",
+    "oldRecordKeys": [
+      "early_batch1:c01_d031"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0073"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0073-V1"
+    ],
+    "name": "麻酱肉燥面",
+    "sourceLine": 73
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0074",
+    "oldRecordKeys": [
+      "early_batch1:c01_d032"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0074"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0074-V1"
+    ],
+    "name": "麻酱酸豆角面",
+    "sourceLine": 74
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0075",
+    "oldRecordKeys": [
+      "early_batch1:c01_d033"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0075"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0075-V1"
+    ],
+    "name": "麻酱酸菜面",
+    "sourceLine": 75
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0076",
+    "oldRecordKeys": [
+      "early_batch1:c01_d034"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0076"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0076-V1"
+    ],
+    "name": "猪排麻辣面",
+    "sourceLine": 76
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0077",
+    "oldRecordKeys": [
+      "early_batch1:c01_d035"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0077"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0077-V1"
+    ],
+    "name": "麻辣拌面",
+    "sourceLine": 77
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0078",
+    "oldRecordKeys": [
+      "early_batch1:c01_d036"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0078"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0078-V1"
+    ],
+    "name": "混合炸酱面",
+    "sourceLine": 78
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0079",
+    "oldRecordKeys": [
+      "early_batch1:c01_d037"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0079"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0079-V1"
+    ],
+    "name": "鸡蛋炸酱面",
+    "sourceLine": 79
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0080",
+    "oldRecordKeys": [
+      "early_batch1:c01_d038"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0080"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0080-V1"
+    ],
+    "name": "招牌炸酱面",
+    "sourceLine": 80
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0081",
+    "oldRecordKeys": [
+      "early_batch1:c01_d039"
+    ],
+    "action": "RETAIN",
+    "newSourceRefs": [
+      "R07-EARLY-L0081"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [
+      "R07-EARLY-L0081-V1"
+    ],
+    "name": "辣番茄鸡蛋拌面",
+    "sourceLine": 81
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0036-O1",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0036-O1"
+    ],
+    "candidateRefs": [],
+    "name": "卤蛋",
+    "sourceLine": 36
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0036-O2",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0036-O2"
+    ],
+    "candidateRefs": [],
+    "name": "热狗肠",
+    "sourceLine": 36
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0036-O3",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0036-O3"
+    ],
+    "candidateRefs": [],
+    "name": "把子肉",
+    "sourceLine": 36
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0036-O4",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0036-O4"
+    ],
+    "candidateRefs": [],
+    "name": "叉烧",
+    "sourceLine": 36
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0036-O5",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0036-O5"
+    ],
+    "candidateRefs": [],
+    "name": "猪肘",
+    "sourceLine": 36
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0053-O1",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0053-O1"
+    ],
+    "candidateRefs": [],
+    "name": "烤肠",
+    "sourceLine": 53
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0053-O2",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0053-O2"
+    ],
+    "candidateRefs": [],
+    "name": "辣条",
+    "sourceLine": 53
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0053-O3",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0053-O3"
+    ],
+    "candidateRefs": [],
+    "name": "小火腿",
+    "sourceLine": 53
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0053-O4",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0053-O4"
+    ],
+    "candidateRefs": [],
+    "name": "豆皮",
+    "sourceLine": 53
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0053-O5",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0053-O5"
+    ],
+    "candidateRefs": [],
+    "name": "土豆丝",
+    "sourceLine": 53
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0053-O6",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0053-O6"
+    ],
+    "candidateRefs": [],
+    "name": "王中王火腿肠",
+    "sourceLine": 53
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0053-O7",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0053-O7"
+    ],
+    "candidateRefs": [],
+    "name": "鸡柳",
+    "sourceLine": 53
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0053-O8",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0053-O8"
+    ],
+    "candidateRefs": [],
+    "name": "鸡排",
+    "sourceLine": 53
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0053-O9",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0053-O9"
+    ],
+    "candidateRefs": [],
+    "name": "里脊",
+    "sourceLine": 53
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0053-O10",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0053-O10"
+    ],
+    "candidateRefs": [],
+    "name": "肉松",
+    "sourceLine": 53
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0053-O11",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0053-O11"
+    ],
+    "candidateRefs": [],
+    "name": "培根",
+    "sourceLine": 53
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0053-O12",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0053-O12"
+    ],
+    "candidateRefs": [],
+    "name": "煎蛋",
+    "sourceLine": 53
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0083-O1",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0083-O1"
+    ],
+    "candidateRefs": [],
+    "name": "加羊杂",
+    "sourceLine": 83
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0083-O2",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0083-O2"
+    ],
+    "candidateRefs": [],
+    "name": "加辣肉",
+    "sourceLine": 83
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0083-O3",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0083-O3"
+    ],
+    "candidateRefs": [],
+    "name": "加鸡丝",
+    "sourceLine": 83
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0083-O4",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0083-O4"
+    ],
+    "candidateRefs": [],
+    "name": "原味肠",
+    "sourceLine": 83
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0083-O5",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0083-O5"
+    ],
+    "candidateRefs": [],
+    "name": "日式猪排",
+    "sourceLine": 83
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0083-O6",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0083-O6"
+    ],
+    "candidateRefs": [],
+    "name": "卤五花肉",
+    "sourceLine": 83
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0083-O7",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [],
+    "optionRefs": [
+      "R07-EARLY-L0083-O7"
+    ],
+    "candidateRefs": [],
+    "name": "卤蛋",
+    "sourceLine": 83
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0084-UNPRICED1",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [
+      "R07-EARLY-L0084-UNPRICED1"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [],
+    "name": "筋头巴脑",
+    "sourceLine": 84
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0084-UNPRICED2",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [
+      "R07-EARLY-L0084-UNPRICED2"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [],
+    "name": "卤鸡腿",
+    "sourceLine": 84
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0084-UNPRICED3",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [
+      "R07-EARLY-L0084-UNPRICED3"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [],
+    "name": "兰花干",
+    "sourceLine": 84
+  },
+  {
+    "sourceRecordRef": "R07-EARLY-L0084-UNPRICED4",
+    "oldRecordKeys": [],
+    "action": "NEW",
+    "newSourceRefs": [
+      "R07-EARLY-L0084-UNPRICED4"
+    ],
+    "optionRefs": [],
+    "candidateRefs": [],
+    "name": "卤干豆腐",
+    "sourceLine": 84
+  }
+]

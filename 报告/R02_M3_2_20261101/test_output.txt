@@ -1,0 +1,3 @@
+PASS preview39; parent pending does not erase dishes; historical disclaimer39; unverified quote rejected; verifyStatus unchanged; EXIT=0
+
+EXIT=0

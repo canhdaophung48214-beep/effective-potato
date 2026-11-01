@@ -1,0 +1,12 @@
+'use strict';
+const fs = require('fs'); const path = require('path');
+const PROJ = "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目";
+const c = fs.readFileSync(path.join(PROJ, 'docs/RECORD_GENERATOR_CONTRACT_20261023.md'), 'utf8').split(/\r?\n/);
+const g = (n, lim) => { const h = c.map((l, i) => [i + 1, l]).filter(([i, l]) => l.indexOf(n) >= 0).slice(0, lim || 5); console.log('== ' + n + ' (' + h.length + ')'); h.forEach(([i, l]) => console.log(i + '| ' + l.trim().slice(0, 175))); };
+g('服务楼', 6); g('c01_f2', 4); g('店铺名', 4); g('shopId', 5);
+const b = fs.readFileSync(path.join(PROJ, 'tools/pilot/batch1/dishes.csv'));
+console.log('batch1/dishes.csv first bytes =', JSON.stringify([...b.slice(0, 4)]), 'bytes=' + b.length);
+const b2 = fs.readFileSync(path.join(PROJ, 'tools/pilot/batch1_min/dishes.csv'));
+console.log('batch1_min first bytes =', JSON.stringify([...b2.slice(0, 4)]));
+const firstLine = fs.readFileSync(path.join(PROJ, 'tools/pilot/batch1/dishes.csv'), 'utf8').split(/\r?\n/)[0];
+console.log('header = ' + JSON.stringify(firstLine.slice(0, 200)));

@@ -1,0 +1,41 @@
+<!-- 我的栏：未接入登录与用户数据，保持空状态，不虚构头像与数量 -->
+<view class="page">
+
+  <view class="hero">
+    <view class="hero-title">我的</view>
+    <view class="hero-sub">投稿进度与贡献记录</view>
+  </view>
+
+  <!-- 登录空状态 -->
+  <view class="profile-card">
+    <view class="avatar-placeholder">
+      <text class="avatar-q">?</text>
+    </view>
+    <view class="profile-info">
+      <view class="profile-name">未接入微信登录</view>
+      <view class="profile-desc">当前版本不收集头像、昵称与任何个人信息；登录与投稿功能都还没有实现。</view>
+    </view>
+  </view>
+
+  <!-- 贡献统计：值全部为「—」，不是 0，也不是虚构数据 -->
+  <view class="stats">
+    <view class="stat" wx:for="{{stats}}" wx:key="key">
+      <view class="stat-value">{{item.value}}</view>
+      <view class="stat-label">{{item.label}}</view>
+    </view>
+  </view>
+  <view class="stats-note">没有登录与投稿系统，因此这里没有可显示的数字。</view>
+
+  <!-- 功能入口：全部为「开发中」，不可点击 -->
+  <view class="menu-card">
+    <view class="menu-item" wx:for="{{entries}}" wx:key="key">
+      <text class="menu-label">{{item.label}}</text>
+      <text class="menu-state">{{item.state}}</text>
+    </view>
+  </view>
+
+  <view class="note">
+    这些入口目前没有绑定任何点击事件，点按不会跳转；接入登录与审核流程之后再逐步开放。
+  </view>
+
+</view>

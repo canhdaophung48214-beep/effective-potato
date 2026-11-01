@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "registryKind": "pilot-namespace-approvals",
+  "notice": "本文件是命名空间条件的机器可读登记处，与 tools/pilot/approvals/ 下的正式审批（ap-20261025-01）分属两个层级：正式审批冻结号段，本文件只记录「有条件批准」。校验器（tools/check_id_admission.js）据此仅消除被点名前缀的未批准告警，不会把条件批准升级为正式批准。",
+  "updatedAt": "2026-10-26",
+  "entries": [
+    {
+      "prefix": "c02",
+      "status": "conditional",
+      "approvalRef": "ap-20261026-01-c02",
+      "approvedBy": "项目负责人",
+      "approvedAt": "2026-10-26T22:52:27+08:00",
+      "approvalText": "c02 作为独立的试点候选命名空间获得有条件批准。",
+      "batches": ["pilot", "batch1", "batch1_min"],
+      "scope": "仅限 c02 命名空间：店铺 c02、窗口 c02_tNN、菜品 c02_dNNN 作为「试点候选」存在；不进入冻结映射，不作为正式生产数据。",
+      "constraints": [
+        "不修改冻结的 tools/pilot/id-map.json",
+        "不自动生成正式 ID，不把候选记录标成正式生产数据",
+        "保留 batch1 与 batch1_min 的历史材料和 ID，不删除、不重编号",
+        "只消除与 c02 对应的未批准告警，不影响 c03 等其他前缀",
+        "任何正式登记必须另行审批，不得以本文件为依据"
+      ],
+      "forbidden": [
+        "修改 tools/pilot/id-map.json 或任何冻结文件",
+        "自动为 c02 记录分配 dishId 或调整号段",
+        "把 c02 记录 verifyStatus 标为 verified",
+        "把 c02 记录导入正式数据集或在 C 端展示",
+        "删除或重编号 batch1 / batch1_min 中的 c02 历史 ID"
+      ],
+      "formalRegistration": {
+        "required": true,
+        "conditions": [
+          "新增独立正式审批记录（新的 approvalId），scope 明确写出 c02 号段",
+          "冻结映射版本更新并由负责人签字",
+          "完成唯一性与引用完整性校验，且校验器对 c02 不再报条件告警",
+          "明确 c02 与 c03 的处置关系（保留、作废或重编）"
+        ]
+      }
+    }
+  ]
+}

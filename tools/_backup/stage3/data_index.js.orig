@@ -1,0 +1,249 @@
+/**
+ * 数据访问层：把「店铺表 + 菜品表」拼成页面直接能用的扁平结构。
+ *
+ * 为什么要这一层：
+ *   页面里只需要关心「一道菜长什么样」，不用每次都去 shopId / stallId / foodType 里查名字。
+ *   以后把演示数据换成接口时，只要保证这里导出的字段不变，页面代码一行都不用改。
+ */
+const { SHOPS } = require('./shops');
+const { DISHES } = require('./dishes');
+const {
+  VERIFY_STATUS,
+  VERIFY_LABEL,
+  VERIFY_CLASS,
+  VERIFY_TIP,
+  SOURCE_KIND_LABEL,
+  normalizeMeta,
+  decorate,
+  weakest,
+  countByStatus
+} = require('./provenance');
+
+/* 枚举 → 中文，页面上要显示的文案统一放这里 */
+const AREA_LABEL = {
+  campus: '校内食堂',
+  offsite: '校外周边'
+};
+
+const TASTE_LABEL = {
+  light: '清淡',
+  mild_spicy: '微辣',
+  spicy: '麻辣'
+};
+
+/**
+ * 主食类型枚举 → 中文
+ * 注意：这里没有 'all'。'all' 是筛选器专用的「不限」值，不是真实的菜品类型。
+ *       菜品数据里写了 'all' 属于数据错误，下面的 join 会把它的类型文字变成空字符串，
+ *       方便一眼看出数据填错了。
+ */
+const FOOD_TYPE_LABEL = {
+  rice: '饭类',
+  noodle: '面类',
+  rice_noodle: '米线类',
+  rice_vermicelli: '粉类',
+  dumpling: '饺子馄饨类',
+  malatang: '麻辣烫 / 冒菜类',
+  snack: '面点小吃类',
+  other: '其他'
+};
+
+/* 建索引：shopId → 店铺对象 */
+const shopMap = {};
+for (let i = 0; i < SHOPS.length; i++) {
+  shopMap[SHOPS[i].id] = SHOPS[i];
+}
+
+/* 小工具：在数组里按 id 找一个元素 */
+function findById(list, id) {
+  if (!list || !list.length) return null;
+  for (let i = 0; i < list.length; i++) {
+    if (list[i].id === id) return list[i];
+  }
+  return null;
+}
+
+/**
+ * 把一条记录规范化成「可信度层级」
+ * @param {object} record 店铺 / 楼层 / 窗口 / 菜品
+ * @param {string} level  shop | floor | stall | dish
+ */
+function layerOf(record, level) {
+  const meta = normalizeMeta(record);
+  const flat = decorate(meta, level);
+  flat.id = (record && record.id) || '';
+  /* weakest() 要读原始来源对象，这里带上一份 */
+  flat.source = meta.source;
+  return flat;
+}
+
+/**
+ * 把一条记录的层级状态合成成页面字段。
+ * 菜品卡片展示的是「菜品 + 窗口 + 楼层 + 店铺」里最弱的那一层，
+ * 同时保留最弱那一层的来源，便于追溯到底是哪一环没有核实依据。
+ */
+function buildVerify(layers) {
+  const w = weakest(layers);
+  return {
+    verifyStatus: w.status,
+    verifyText: VERIFY_LABEL[w.status] || '待核实',
+    verifyClass: VERIFY_CLASS[w.status] || VERIFY_CLASS.unverified,
+    verifyTip: VERIFY_TIP[w.status] || '',
+    verifiedAt: w.verifiedAt,
+    verifyLevel: w.level,
+    verifyNote: w.note,
+    sourceKind: w.source.kind,
+    sourceKindText: SOURCE_KIND_LABEL[w.source.kind] || SOURCE_KIND_LABEL.unknown,
+    sourceDetail: w.source.detail,
+    sourceRef: w.source.ref,
+    verifyLayers: layers.map(function (l) {
+      return {
+        level: l.metaLevel,
+        id: l.id,
+        status: l.verifyStatus,
+        text: VERIFY_LABEL[l.verifyStatus] || '待核实'
+      };
+    })
+  };
+}
+
+/* 扁平菜品列表：已含区域、店铺名、楼层、窗口、位置、口味中文、主食类型中文
+ *
+ * 关键点：菜品表里只存 stallId 和 foodType，楼层 / 窗口名 / 类型中文都在这里查出来补上，
+ *        所以换数据时不会出现「店铺表改了、菜品表里的窗口文字没改」这种不一致。
+ */
+const ALL_DISHES = DISHES.map(function (dish) {
+  const shop = shopMap[dish.shopId] || {};
+  const tastes = dish.tastes || [];
+
+  /* 窗口 / 档口 */
+  const stall = findById(shop.stalls, dish.stallId);
+  const stallName = stall ? stall.name : '';
+  /* 窗口所属楼层（没有楼层划分时为空字符串） */
+  const floorId = stall ? (stall.floorId || '') : '';
+  const floor = floorId ? findById(shop.floors, floorId) : null;
+  const floorText = floor ? floor.label : '';
+
+  /* 位置：店铺位置 + 楼层，例如「西校区 · 一号食堂 · 2 楼」 */
+  const baseLocation = shop.location || '';
+  const locationText = floorText ? baseLocation + ' · ' + floorText : baseLocation;
+
+  /* 可信度：菜品 → 窗口 → 楼层 → 店铺 四层合成，取最弱一环 */
+  const layers = [layerOf(dish, 'dish'), layerOf(shop, 'shop')];
+  if (stall) layers.push(layerOf(stall, 'stall'));
+  if (floor) layers.push(layerOf(floor, 'floor'));
+  const verify = buildVerify(layers);
+
+  return {
+    id: dish.id,
+    name: dish.name,
+    price: dish.price,
+    tastes: tastes,
+    tasteText: tastes.map(function (t) { return TASTE_LABEL[t] || t; }).join(' · '),
+
+    /* 主食类型 */
+    foodType: dish.foodType || 'other',
+    foodTypeText: FOOD_TYPE_LABEL[dish.foodType] || '',
+
+    /* 区域 */
+    area: shop.area || '',
+    areaText: AREA_LABEL[shop.area] || '',
+
+    /* 餐厅 / 商家 */
+    shopId: dish.shopId,
+    shopName: shop.name || '未知店铺',
+    building: shop.building || '',
+
+    /* 地点三级 */
+    floorId: floorId,
+    floorText: floorText,
+    stallId: dish.stallId || '',
+    stallName: stallName,
+
+    /* 兼容旧字段：卡片模板里用的 stall 就是窗口 / 档口名 */
+    stall: stallName,
+    location: locationText,
+
+    /* 可信度（扁平字段，页面直接用） */
+    verifyStatus: verify.verifyStatus,
+    verifyText: verify.verifyText,
+    verifyClass: verify.verifyClass,
+    verifyTip: verify.verifyTip,
+    verifiedAt: verify.verifiedAt,
+    verifyLevel: verify.verifyLevel,
+    verifyNote: verify.verifyNote,
+    sourceKind: verify.sourceKind,
+    sourceKindText: verify.sourceKindText,
+    sourceDetail: verify.sourceDetail,
+    sourceRef: verify.sourceRef,
+    verifyLayers: verify.verifyLayers
+  };
+});
+
+/* 店铺列表 + 楼层 / 窗口配置 + 每家的菜品数量 */
+const ALL_SHOPS = SHOPS.map(function (shop) {
+  let count = 0;
+  for (let i = 0; i < DISHES.length; i++) {
+    if (DISHES[i].shopId === shop.id) count++;
+  }
+  const floors = shop.floors || [];
+  const stalls = shop.stalls || [];
+
+  /* 店铺卡片展示的可信度：店铺 + 它的楼层 + 它的窗口，取最弱一环 */
+  const layers = [layerOf(shop, 'shop')];
+  for (let i = 0; i < floors.length; i++) layers.push(layerOf(floors[i], 'floor'));
+  for (let i = 0; i < stalls.length; i++) layers.push(layerOf(stalls[i], 'stall'));
+  const verify = buildVerify(layers);
+
+  return {
+    id: shop.id,
+    name: shop.name,
+    area: shop.area,
+    areaText: AREA_LABEL[shop.area] || '',
+    building: shop.building || '',
+    location: shop.location || '',
+    floors: floors,
+    stalls: stalls,
+    hasFloors: floors.length > 0,
+    dishCount: count,
+
+    /* 可信度 */
+    verifyStatus: verify.verifyStatus,
+    verifyText: verify.verifyText,
+    verifyClass: verify.verifyClass,
+    verifyTip: verify.verifyTip,
+    verifiedAt: verify.verifiedAt,
+    verifyLevel: verify.verifyLevel,
+    verifyNote: verify.verifyNote,
+    sourceKind: verify.sourceKind,
+    sourceKindText: verify.sourceKindText,
+    sourceDetail: verify.sourceDetail,
+    sourceRef: verify.sourceRef,
+    verifyLayers: verify.verifyLayers
+  };
+});
+
+/**
+ * 数据状态总览：页面顶部一行「当前数据有多少是演示 / 待核实 / 已核实」，
+ * 全部由数据实算，不写死数字。
+ */
+const DISH_STATUS_COUNT = countByStatus(ALL_DISHES);
+const SHOP_STATUS_COUNT = countByStatus(ALL_SHOPS);
+
+const DATA_STATUS_SUMMARY = {
+  dishTotal: ALL_DISHES.length,
+  shopTotal: ALL_SHOPS.length,
+  dish: DISH_STATUS_COUNT,
+  shop: SHOP_STATUS_COUNT
+};
+
+module.exports = {
+  AREA_LABEL,
+  TASTE_LABEL,
+  FOOD_TYPE_LABEL,
+  ALL_SHOPS,
+  ALL_DISHES,
+  DATA_STATUS_SUMMARY,
+  VERIFY_STATUS,
+  VERIFY_LABEL
+};

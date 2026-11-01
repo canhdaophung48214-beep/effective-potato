@@ -1,0 +1,26 @@
+[
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\执行报告.md",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_after_login_20261101_160951\\执行报告.md",
+    "bytes": 6222,
+    "sha256": "7ffd2e714f2a12712de7b32ae9df6e4fa609d0d0b71b1e0eb434a9366d4e0636"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\delivery_manifest.json",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_after_login_20261101_160951\\delivery_manifest.json",
+    "bytes": 22358,
+    "sha256": "1b4414ea17f72a29516743d774346f0ca2b533d10c6bb1d76a9c66d51f01c19d"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\README_验收入口.md",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_after_login_20261101_160951\\README_验收入口.md",
+    "bytes": 1500,
+    "sha256": "f9dc47aaf5366166eef13c7717dc56110b3bac889168f68737c9f7ea95225ebc"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_4_20261101\\checks.json",
+    "backup": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\备份\\R02_M342_after_login_20261101_160951\\checks.json",
+    "bytes": 259,
+    "sha256": "6f369149f10d61546b36a6375d6e3a90cde1896e9dad99dfeaf4edd381871cff"
+  }
+]

@@ -1,0 +1,21 @@
+PASS 15主菜源文精确成员与OCR同行价一致
+PASS 37展开源项=15候选+22待核验
+PASS 37台账责任唯一完整
+PASS 主表13物理行37成员全覆盖无尾行漏项
+PASS 0组件0加料0套餐
+PASS 负向:改价
+PASS 负向:改名
+PASS 负向:伪造日期
+PASS 负向:正式ID
+PASS 负向:猜辣
+PASS 负向:报价
+PASS 负向:重复
+PASS 负向:猜组合
+PASS 备份逐字节一致
+PASS 正式项目字节不变
+PASS R03-R09交付字节不变
+PASS Git状态不变
+git diff --check exit= 0
+warning: in the working copy of 'project.config.json', CRLF will be replaced by LF the next time Git touches it
+
+RESULT 17 PASS / 0 FAIL / 0 SKIP; exit=0

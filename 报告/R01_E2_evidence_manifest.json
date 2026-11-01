@@ -1,0 +1,1567 @@
+{
+  "task": "R01-E2",
+  "reportDate": "2026-11-01",
+  "generatedAt": "2026-11-01T05:52:00.727101+00:00",
+  "scope": {
+    "formalDemo": 45,
+    "generatedCandidates": 490,
+    "sourceItems": 525,
+    "notGenerated": 35
+  },
+  "method": "Current generator run({mode:dry-run}) only; 490 generated records + 35 not_generated blocker rows. No --write. Report snapshots are not publication products.",
+  "statistics": {
+    "scope": {
+      "formalDemo": 45,
+      "generatedCandidates": 490,
+      "sourceItems": 525,
+      "notGenerated": 35
+    },
+    "tastesEmpty": 490,
+    "foodTypeMissing": 368,
+    "intersection": 368,
+    "onlyTastes": 122,
+    "onlyFoodType": 0,
+    "union": 490,
+    "classifications": {
+      "tastes": {
+        "C": 448,
+        "B": 40,
+        "A": 2
+      },
+      "foodType": {
+        "C": 205,
+        "B": 163
+      }
+    },
+    "candidateFields": 2,
+    "candidateDishes": 2,
+    "remainUnknownTastes": 488,
+    "remainUnknownFoodType": 368,
+    "completeTwoFieldCandidates": 0,
+    "needsConfirmationUniqueDishes": 186,
+    "structuredCompoundRows": 73,
+    "sameNameGroups": 38,
+    "crossStallSameNameGroups": 10,
+    "csvFiles": 33,
+    "csvStrictMatches": 12,
+    "csvIdOnlyConflicts": 0,
+    "photoEntries": 35,
+    "photoUnique": 34
+  },
+  "evidenceLevels": {
+    "L1_RULE": "已记录的项目契约/负责人裁决，不是本轮新授权",
+    "L1_RECORDED_USER": "文件中保留的用户确认，不跨菜品身份复用",
+    "L2": "仓库转录稿直接文本证据，未重看原图",
+    "L3": "本轮当前字节/离线执行证明",
+    "L4": "历史辅助材料，不能替代源证据"
+  },
+  "classificationPolicy": {
+    "A": "明确字段证据与当前枚举精确对应；仅可提出候选，不等于正式写入/准入",
+    "B": "有原始括注/选项/分组线索，但语义、适用范围或映射未确认，proposedValue为空",
+    "C": "无可靠字段证据；不按菜名、常识或同名记录猜测"
+  },
+  "sources": [
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\pilot\\TRANSCRIPTION_2F.md",
+      "relativePath": "项目/tools/pilot/TRANSCRIPTION_2F.md",
+      "bytes": 49530,
+      "sha256": "37516c5f7bb46c7fc387621fbefddbc6be98b5c27f6cf119399b5a2befc9e34c",
+      "createdAt": "2026-10-25T18:52:24.333951+08:00",
+      "modifiedAt": "2026-10-25T18:52:24.333951+08:00",
+      "evidenceLevel": "L2",
+      "inspectionLocation": "逐条原文定位；153/158/368-372/426/683；类别栏目详见逐条CSV"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\pilot\\TRANSCRIPTION_3F.md",
+      "relativePath": "项目/tools/pilot/TRANSCRIPTION_3F.md",
+      "bytes": 25762,
+      "sha256": "ee26e026e5e08c38a42b1530833f0274479efd0d36f0d9e06358e3354b86d07f",
+      "createdAt": "2026-10-23T11:16:04.404830+08:00",
+      "modifiedAt": "2026-10-23T13:00:13.342464+08:00",
+      "evidenceLevel": "L2",
+      "inspectionLocation": "19-23证据边界；316风味选项；364锅底选项；逐条源行"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\pilot\\TRANSCRIPTION_DRAFT.md",
+      "relativePath": "项目/tools/pilot/TRANSCRIPTION_DRAFT.md",
+      "bytes": 8806,
+      "sha256": "0e07d306e9f7aedbda896a37cea7b11f00bd96a4cb1bab6606aab81e0bd43bf1",
+      "createdAt": "2026-10-22T23:16:37.240239+08:00",
+      "modifiedAt": "2026-10-22T23:16:41.698831+08:00",
+      "evidenceLevel": "L2",
+      "inspectionLocation": "1-5草案、用户概括性口述；不外推至525源条目"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\docs\\RECORD_GENERATOR_CONTRACT_20261023.md",
+      "relativePath": "项目/docs/RECORD_GENERATOR_CONTRACT_20261023.md",
+      "bytes": 256751,
+      "sha256": "ca18c91e2ebe3d00819bf7f96a9c904df2c1a96e521151a32151009e63850b6f",
+      "createdAt": "2026-10-26T10:03:29.502657+08:00",
+      "modifiedAt": "2026-10-28T14:11:16.531458+08:00",
+      "evidenceLevel": "L1_RULE",
+      "inspectionLocation": "332、387、408、431-506、1042、1081-1088"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\pilot\\gen_records.js",
+      "relativePath": "项目/tools/pilot/gen_records.js",
+      "bytes": 144262,
+      "sha256": "5b3494191a2b3edc09764b83a24be2df780bca0049b9bc4730e7df1317941b2d",
+      "createdAt": "2026-10-26T10:07:12.681100+08:00",
+      "modifiedAt": "2026-10-26T10:14:14.435562+08:00",
+      "evidenceLevel": "L3",
+      "inspectionLocation": "612-744内存只读构建；968-970套餐；1042-1045列映射；2300-2360字段适配"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\data\\index.js",
+      "relativePath": "项目/data/index.js",
+      "bytes": 16830,
+      "sha256": "f2d40f645a5809e6448cb4125fc1abb4d061d5c708ebd37750cf9500b7e011bb",
+      "createdAt": "2026-10-20T14:50:44.513029+08:00",
+      "modifiedAt": "2026-10-22T23:19:32.998267+08:00",
+      "evidenceLevel": "L3",
+      "inspectionLocation": "38-45口味标签；53-62类型标签；ALL_DISHES运行时45"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\data\\dishes.js",
+      "relativePath": "项目/data/dishes.js",
+      "bytes": 11774,
+      "sha256": "3d370ad554ea7369d748f447a90dd47babb97812495518fe7e1676991103df24",
+      "createdAt": "2026-10-20T14:50:38.988633+08:00",
+      "modifiedAt": "2026-10-22T23:19:43.268658+08:00",
+      "evidenceLevel": "L3",
+      "inspectionLocation": "正式45条演示数据，模块直接读取"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\data\\provenance.js",
+      "relativePath": "项目/data/provenance.js",
+      "bytes": 16270,
+      "sha256": "818aed419421ee8d97adabef1355b87be2f2611075cc36bafc59ed6e05bfdd0e",
+      "createdAt": "2026-10-20T23:18:05.519423+08:00",
+      "modifiedAt": "2026-10-20T23:43:46.740256+08:00",
+      "evidenceLevel": "L3",
+      "inspectionLocation": "normalizeMeta/decorate来源与核实状态，非菜品类型/口味原始证据"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\verify_data.js",
+      "relativePath": "项目/tools/verify_data.js",
+      "bytes": 29324,
+      "sha256": "74c1e52138228ae0de5ef4f67ac28314ee50e97dc21652bd06cbb2aa835c18ab",
+      "createdAt": "2026-10-21T14:19:19.657925+08:00",
+      "modifiedAt": "2026-11-01T00:26:39.455391+08:00",
+      "evidenceLevel": "L3",
+      "inspectionLocation": "343-358 D6/D7；validateDataset离线边界实测"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\import_data.js",
+      "relativePath": "项目/tools/import_data.js",
+      "bytes": 49293,
+      "sha256": "0070005bfc1fb607003d4bdab9c2b03c69458b61f972d4e2d262f1b56dcba615",
+      "createdAt": "2026-10-21T14:58:05.324008+08:00",
+      "modifiedAt": "2026-10-26T17:48:20.825799+08:00",
+      "evidenceLevel": "L3",
+      "inspectionLocation": "617-630 CSV字段映射，未执行正式导入"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\pilot\\build_pilot_dataset.js",
+      "relativePath": "项目/tools/pilot/build_pilot_dataset.js",
+      "bytes": 10815,
+      "sha256": "f802bdd88e0bb8b17380a0ff3bc7d3495be5f5121a15a4463baffd23ce91ac94",
+      "createdAt": "2026-10-23T00:24:18.682265+08:00",
+      "modifiedAt": "2026-11-01T00:26:39.482919+08:00",
+      "evidenceLevel": "L3",
+      "inspectionLocation": "144-158口味解析与0..1验证，未执行--write"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\tools\\verify_provenance.js",
+      "relativePath": "项目/tools/verify_provenance.js",
+      "bytes": 34188,
+      "sha256": "10bc9067f59e08d90e6081ad0a08bbf935f767302dba744f4f00a8b0d688f537",
+      "createdAt": "2026-10-20T23:19:54.077866+08:00",
+      "modifiedAt": "2026-10-20T23:44:05.884731+08:00",
+      "evidenceLevel": "L3",
+      "inspectionLocation": "本轮116项只读来源校验"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\docs\\B1_OWNER_CONFIRMATION_SUPPLEMENT_20261026.md",
+      "relativePath": "项目/docs/B1_OWNER_CONFIRMATION_SUPPLEMENT_20261026.md",
+      "bytes": 14159,
+      "sha256": "e250f6501e5aa061db22feebffd280b75c11a6f1bb123e9a0c06d90264ca3db0",
+      "createdAt": "2026-10-26T23:25:36.097502+08:00",
+      "modifiedAt": "2026-10-26T23:25:36.099671+08:00",
+      "evidenceLevel": "L1_RECORDED_USER",
+      "inspectionLocation": "65-96 c02韩小面确认；身份不属于本轮c01记录"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\docs\\B1_COMPLETE_REPORT_20261027.md",
+      "relativePath": "项目/docs/B1_COMPLETE_REPORT_20261027.md",
+      "bytes": 10762,
+      "sha256": "a4f15fb6f052de04fd6b275856c942728b21f944d545bb3bc9a6572fa7cb85c3",
+      "createdAt": "2026-10-27T00:06:45.617104+08:00",
+      "modifiedAt": "2026-10-27T00:06:45.619133+08:00",
+      "evidenceLevel": "L4",
+      "inspectionLocation": "81用户确认的记录汇总；不跨店搬用"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\docs\\decisions\\DECISION_RECORD_2F09_VERIFY_20261025.md",
+      "relativePath": "项目/docs/decisions/DECISION_RECORD_2F09_VERIFY_20261025.md",
+      "bytes": 4084,
+      "sha256": "877e3427e3dd480a985da1e6c4997dc8a44319dea47e89b750502ab594e6890a",
+      "createdAt": "2026-10-25T16:35:16.735925+08:00",
+      "modifiedAt": "2026-10-25T16:35:16.736935+08:00",
+      "evidenceLevel": "L1_RECORDED_USER",
+      "inspectionLocation": "蛋字/档口确认，不等于tastes辣度确认"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\PHOTO_MANIFEST_20261025.csv",
+      "relativePath": "项目/evidence/PHOTO_MANIFEST_20261025.csv",
+      "bytes": 23389,
+      "sha256": "e0acb399fab5585ae7db6b1bd33cae576de3d3b9a4b3806d7d288f3ade7ce56c",
+      "createdAt": "2026-10-25T15:25:32.299650+08:00",
+      "modifiedAt": "2026-10-25T15:26:06.671429+08:00",
+      "evidenceLevel": "L2_INDEX",
+      "inspectionLocation": "35项/34唯一照片，逐文件存在性与哈希复算"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目\\evidence\\EVIDENCE_INDEX_20261025.md",
+      "relativePath": "项目/evidence/EVIDENCE_INDEX_20261025.md",
+      "bytes": 7387,
+      "sha256": "b0ad05e8bbbce6ad289464e8023db8c51f5ad0e97f958262f6b4c98da4da49a5",
+      "createdAt": "2026-10-25T15:27:29.973589+08:00",
+      "modifiedAt": "2026-10-25T15:27:29.976108+08:00",
+      "evidenceLevel": "L4",
+      "inspectionLocation": "照片编号与3F偏移歧义；不是本轮视觉复核"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_20261031\\R02_裁定与注记_20261101.md",
+      "relativePath": "报告/R01_20261031/R02_裁定与注记_20261101.md",
+      "bytes": 8328,
+      "sha256": "c1f5b629e1d4b85d6cd46761ed1b1de6d2b98b16247eb715498b8f06114ab676",
+      "createdAt": "2026-11-01T00:05:20.262084+08:00",
+      "modifiedAt": "2026-11-01T00:05:20.262084+08:00",
+      "evidenceLevel": "L1_RULE",
+      "inspectionLocation": "12/27-32维持不授权正式写入；此次候选报告不改变裁决"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_20261031\\R03_D_tastes校验对齐_20261101.md",
+      "relativePath": "报告/R01_20261031/R03_D_tastes校验对齐_20261101.md",
+      "bytes": 25673,
+      "sha256": "d4b748ed25cb094b4ef39b3d739a50fe494c32aecb773424e81f9c4af1b2be02",
+      "createdAt": "2026-11-01T00:29:38.615659+08:00",
+      "modifiedAt": "2026-11-01T00:29:51.859356+08:00",
+      "evidenceLevel": "L4",
+      "inspectionLocation": "历史改动描述，以当前verify_data.js实测为准"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\DSH_R03-D_独立验收_20261101.md",
+      "relativePath": "报告/DSH_R03-D_独立验收_20261101.md",
+      "bytes": 7774,
+      "sha256": "260ab981945237e1bf3e6f816add0f24ff4f815e809390c615b587eb53cab9dc",
+      "createdAt": "2026-11-01T00:33:09.190753+08:00",
+      "modifiedAt": "2026-11-01T00:33:09.194763+08:00",
+      "evidenceLevel": "L4",
+      "inspectionLocation": "历史独立审查，以本轮结果为准"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\DSH_R01_E2R1_独立验收_20261031.md",
+      "relativePath": "报告/DSH_R01_E2R1_独立验收_20261031.md",
+      "bytes": 5686,
+      "sha256": "15d82d03de2d1b74f97bf1c175ca23b1deda700df352ae9d8cadf32695fa1a0f",
+      "createdAt": "2026-10-31T23:50:12.129223+08:00",
+      "modifiedAt": "2026-10-31T23:50:12.133662+08:00",
+      "evidenceLevel": "L4",
+      "inspectionLocation": "纠正楼层按ID号段推断；不沿用旧分类计数"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_20261031\\Codex_R01_E2_证据恢复分析_20261031.md",
+      "relativePath": "报告/R01_20261031/Codex_R01_E2_证据恢复分析_20261031.md",
+      "bytes": 29155,
+      "sha256": "026a836f76317bb5cdba5e357e752ea56ca6fbc8736ea4e6522560b5e1701aff",
+      "createdAt": "2026-10-31T20:43:12.404196+08:00",
+      "modifiedAt": "2026-10-31T23:45:38.484290+08:00",
+      "evidenceLevel": "L4",
+      "inspectionLocation": "历史A10/B120/D30口径对比，未作为字段赋值来源"
+    }
+  ],
+  "csvSources": [
+    {
+      "path": "项目/evidence/PHOTO_MANIFEST_20261025.csv",
+      "bytes": 23389,
+      "sha256": "e0acb399fab5585ae7db6b1bd33cae576de3d3b9a4b3806d7d288f3ade7ce56c",
+      "rows": 35,
+      "columns": [
+        "photo_id",
+        "batch_position",
+        "source_path",
+        "archive_path",
+        "sha256",
+        "bytes",
+        "media_type",
+        "send_date",
+        "capture_date",
+        "source_session",
+        "referenced_in_transcription",
+        "stall_or_window",
+        "mapping_status",
+        "evidence_note"
+      ],
+      "role": "repository_csv",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "项目/tools/templates/dishes.csv",
+      "bytes": 522,
+      "sha256": "07d49eb5d3801415906264557628d09b76ae122c3253d475f0697781d6c03192",
+      "rows": 2,
+      "columns": [
+        "dish_id",
+        "dish_name",
+        "record_type",
+        "shop_id",
+        "stall_id",
+        "price",
+        "food_type",
+        "tastes",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "repository_csv",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": true
+    },
+    {
+      "path": "项目/tools/templates/floors.csv",
+      "bytes": 236,
+      "sha256": "e1e4f80f72234acc48e617d6a0d309f79ea88b517e46f5ae4899204870f283cf",
+      "rows": 1,
+      "columns": [
+        "shop_id",
+        "floor_id",
+        "floor_label",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "repository_csv",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "项目/tools/templates/shops.csv",
+      "bytes": 508,
+      "sha256": "d6674d88b74479f8a0d1b463ed95fc0f48b9651eb44f415420a846229efd3e16",
+      "rows": 2,
+      "columns": [
+        "shop_id",
+        "shop_name",
+        "area",
+        "building",
+        "location",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "repository_csv",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "项目/tools/templates/stalls.csv",
+      "bytes": 448,
+      "sha256": "cb7c9d16b2b5c8565bef7330ccd4ce0e38eff4379c13de08d76f72cecb44ae33",
+      "rows": 2,
+      "columns": [
+        "shop_id",
+        "floor_id",
+        "stall_id",
+        "stall_name",
+        "side",
+        "no_status",
+        "no",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "repository_csv",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "项目/tools/pilot/batch1/dishes.csv",
+      "bytes": 12425,
+      "sha256": "cbc6c3cc72c32cf9274598879c02f0b5838ce28bc7706e3fb96832fe56978c51",
+      "rows": 82,
+      "columns": [
+        "dish_id",
+        "dish_name",
+        "record_type",
+        "shop_id",
+        "stall_id",
+        "price",
+        "food_type",
+        "tastes",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "repository_csv",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": true
+    },
+    {
+      "path": "项目/tools/pilot/batch1/floors.csv",
+      "bytes": 511,
+      "sha256": "45c4d1333c7f369a9d4fc9bd0689db8ca0b5fa6bf11c210ab42bfab07adb9b5c",
+      "rows": 3,
+      "columns": [
+        "shop_id",
+        "floor_id",
+        "floor_label",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "repository_csv",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "项目/tools/pilot/batch1/shops.csv",
+      "bytes": 634,
+      "sha256": "d3ff36013ff2776a6f56aff00da0b972f8070d68f8ae51274ce73f7931d40736",
+      "rows": 3,
+      "columns": [
+        "shop_id",
+        "shop_name",
+        "area",
+        "building",
+        "location",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "repository_csv",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "项目/tools/pilot/batch1/stalls.csv",
+      "bytes": 1412,
+      "sha256": "f48c72ef06bb401f00b25d99fa1883f02785b8f353a077fd00c490cbc1c1916f",
+      "rows": 7,
+      "columns": [
+        "shop_id",
+        "floor_id",
+        "stall_id",
+        "stall_name",
+        "side",
+        "no_status",
+        "no",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "repository_csv",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "项目/tools/pilot/batch1_min/dishes.csv",
+      "bytes": 3528,
+      "sha256": "df344d86c91dad042cdce30b0681e0aaab37ab1cf11a4125b9880b8f601fc0ce",
+      "rows": 12,
+      "columns": [
+        "dish_id",
+        "dish_name",
+        "record_type",
+        "shop_id",
+        "stall_id",
+        "price",
+        "food_type",
+        "tastes",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "repository_csv",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": true
+    },
+    {
+      "path": "项目/tools/pilot/batch1_min/floors.csv",
+      "bytes": 395,
+      "sha256": "ad5df081a305d38f99375a3c8611d3857c838f0d0318e70a898af57e0a820cf1",
+      "rows": 1,
+      "columns": [
+        "shop_id",
+        "floor_id",
+        "floor_label",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "repository_csv",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "项目/tools/pilot/batch1_min/shops.csv",
+      "bytes": 606,
+      "sha256": "e57240070ba25e665dcdde835280a8b98da2b993eb9a500305ecdc2b4ab59363",
+      "rows": 1,
+      "columns": [
+        "shop_id",
+        "shop_name",
+        "area",
+        "building",
+        "location",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "repository_csv",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "项目/tools/pilot/batch1_min/stalls.csv",
+      "bytes": 521,
+      "sha256": "7e5b92e8a2aa971f16f2a54fb85109689e4d88e6d56647a4e6dc642393548a56",
+      "rows": 1,
+      "columns": [
+        "shop_id",
+        "floor_id",
+        "stall_id",
+        "stall_name",
+        "side",
+        "no_status",
+        "no",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "repository_csv",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "项目/tools/pilot/c01_service_2f/dishes.csv",
+      "bytes": 144,
+      "sha256": "223bf887845a23f638e720f0c3d65ce5f127d579868f256bfe6bec99c613a355",
+      "rows": 0,
+      "columns": [
+        "dish_id",
+        "dish_name",
+        "record_type",
+        "shop_id",
+        "stall_id",
+        "price",
+        "food_type",
+        "tastes",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "repository_csv",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": true
+    },
+    {
+      "path": "项目/tools/pilot/c01_service_2f/floors.csv",
+      "bytes": 103,
+      "sha256": "ddc5386dc69d1097b0e7f51f19a37f000b467fd31078dfb36862dec774c92a10",
+      "rows": 0,
+      "columns": [
+        "shop_id",
+        "floor_id",
+        "floor_label",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "repository_csv",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "项目/tools/pilot/c01_service_2f/shops.csv",
+      "bytes": 115,
+      "sha256": "d60ce05a023aef3ab529097bdec8ad992b8f2bb88d8dcf3cf70e2ca3d522c986",
+      "rows": 0,
+      "columns": [
+        "shop_id",
+        "shop_name",
+        "area",
+        "building",
+        "location",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "repository_csv",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "项目/tools/pilot/c01_service_2f/stalls.csv",
+      "bytes": 129,
+      "sha256": "cc65122593ee97e4e33f06e3ff980f295dc7a084d928530c7ab595069386a8cf",
+      "rows": 0,
+      "columns": [
+        "shop_id",
+        "floor_id",
+        "stall_id",
+        "stall_name",
+        "side",
+        "no_status",
+        "no",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "repository_csv",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "项目/tools/pilot/c03_offsite_batch2/dishes.csv",
+      "bytes": 24197,
+      "sha256": "583da0e09bbb05ff51818fba2f407b1ea0c05d26e4d8feb808c93e0ca98ad802",
+      "rows": 132,
+      "columns": [
+        "dish_id",
+        "dish_name",
+        "record_type",
+        "shop_id",
+        "stall_id",
+        "price",
+        "food_type",
+        "tastes",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "repository_csv",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": true
+    },
+    {
+      "path": "项目/tools/pilot/c03_offsite_batch2/floors.csv",
+      "bytes": 103,
+      "sha256": "ddc5386dc69d1097b0e7f51f19a37f000b467fd31078dfb36862dec774c92a10",
+      "rows": 0,
+      "columns": [
+        "shop_id",
+        "floor_id",
+        "floor_label",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "repository_csv",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "项目/tools/pilot/c03_offsite_batch2/shops.csv",
+      "bytes": 3804,
+      "sha256": "d5b4b032dc2bc3e1293407c7f3429c4123bb93a6151e8b400e517e53a2b12e1b",
+      "rows": 9,
+      "columns": [
+        "shop_id",
+        "shop_name",
+        "area",
+        "building",
+        "location",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "repository_csv",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "项目/tools/pilot/c03_offsite_batch2/stalls.csv",
+      "bytes": 1977,
+      "sha256": "bb48783ba53aa3f89576542511f4b4c179b1739c1ef892f89fa600d584372fad",
+      "rows": 9,
+      "columns": [
+        "shop_id",
+        "floor_id",
+        "stall_id",
+        "stall_name",
+        "side",
+        "no_status",
+        "no",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "repository_csv",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "备份/b1_csv_backup_20261026_232927/dishes.csv",
+      "bytes": 2828,
+      "sha256": "92be5a30453eacdf2fa93e2fc00ab1b857d17e87883aed07bfd860cb8de5353b",
+      "rows": 12,
+      "columns": [
+        "dish_id",
+        "dish_name",
+        "record_type",
+        "shop_id",
+        "stall_id",
+        "price",
+        "food_type",
+        "tastes",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "historical_backup",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": true
+    },
+    {
+      "path": "备份/b1_csv_backup_20261026_232927/floors.csv",
+      "bytes": 323,
+      "sha256": "2251f865d7fb211b48df9b94a84524dc4c58ab33d0ac76b25fd7fcfa66a0b024",
+      "rows": 1,
+      "columns": [
+        "shop_id",
+        "floor_id",
+        "floor_label",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "historical_backup",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "备份/b1_csv_backup_20261026_232927/shops.csv",
+      "bytes": 526,
+      "sha256": "28a00b63ddf9b2da8a82753cca5a5387b7cb11200e33be3daf7b7b0aa8083763",
+      "rows": 1,
+      "columns": [
+        "shop_id",
+        "shop_name",
+        "area",
+        "building",
+        "location",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "historical_backup",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "备份/b1_csv_backup_20261026_232927/stalls.csv",
+      "bytes": 428,
+      "sha256": "5c11e7215d7fa43ad9d16fbb4741147d5a2f171093cedddbc7d76714f71fc8e8",
+      "rows": 1,
+      "columns": [
+        "shop_id",
+        "floor_id",
+        "stall_id",
+        "stall_name",
+        "side",
+        "no_status",
+        "no",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "historical_backup",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "备份/b1_csv_backup_20261026_233656/dishes.csv",
+      "bytes": 2832,
+      "sha256": "9b89acd174a7c710c45523ac1c046e73223eb31e459ec14ceff7b8f8208a7ce0",
+      "rows": 12,
+      "columns": [
+        "dish_id",
+        "dish_name",
+        "record_type",
+        "shop_id",
+        "stall_id",
+        "price",
+        "food_type",
+        "tastes",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "historical_backup",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": true
+    },
+    {
+      "path": "报告/R01_20261031/R01_525条数据阻塞清单.csv",
+      "bytes": 539114,
+      "sha256": "f056965e53919e60e3963ee586071ebe541302d45b5033737e18795155684a20",
+      "rows": 525,
+      "columns": [
+        "序号",
+        "记录键(生成器原格式)",
+        "稳定键(去档位前缀)",
+        "阻塞类型",
+        "阻塞原因编号",
+        "档位",
+        "店铺ID",
+        "店铺",
+        "楼层",
+        "楼层ID",
+        "档口ID",
+        "档口名",
+        "名册位次",
+        "采集批次编号",
+        "菜品名",
+        "规格",
+        "价格",
+        "菜品类型",
+        "口味",
+        "dishId",
+        "generation_status",
+        "evidence_status",
+        "import_eligibility",
+        "id_status",
+        "来源文件",
+        "源行号",
+        "原始行(rawRow)",
+        "转录稿原文(该行)",
+        "缺失的证据",
+        "现有可用来源",
+        "建议下一步",
+        "需负责人决定",
+        "契约依据"
+      ],
+      "role": "derived_report_not_independent",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "报告/R01_20261031/R01_E2_foodType_evidence.csv",
+      "bytes": 142613,
+      "sha256": "cdfd820c9f8d0ed237d1096e2e403b4b54d93511e2d2d99d05e4280c818fde14",
+      "rows": 368,
+      "columns": [
+        "record_key",
+        "dish_id",
+        "tier",
+        "shop",
+        "floor",
+        "stall",
+        "roster_shot",
+        "dish_name",
+        "spec",
+        "price",
+        "missing_field",
+        "current_value",
+        "candidate_value_审查用",
+        "category",
+        "category_label",
+        "reason",
+        "confidence",
+        "evidence_file_line",
+        "source_quote",
+        "related_legend_line",
+        "needs_owner_decision"
+      ],
+      "role": "derived_report_not_independent",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "报告/R01_20261031/R01_E2_tastes_evidence.csv",
+      "bytes": 185395,
+      "sha256": "9e5ec1a39e1aa26ecf6f44a2ba1d5fc3919be94b2128aa0431bc64c5925ba0f7",
+      "rows": 490,
+      "columns": [
+        "record_key",
+        "dish_id",
+        "tier",
+        "shop",
+        "floor",
+        "stall",
+        "roster_shot",
+        "dish_name",
+        "spec",
+        "price",
+        "missing_field",
+        "current_value",
+        "candidate_value_审查用",
+        "category",
+        "category_label",
+        "reason",
+        "confidence",
+        "evidence_file_line",
+        "source_quote",
+        "related_legend_line",
+        "needs_owner_decision"
+      ],
+      "role": "derived_report_not_independent",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "报告/R01_20261031/preview/dishes.csv",
+      "bytes": 1401,
+      "sha256": "6703f8697480d90ab89402cbfec85f925c699a021b385488e9925d73527cab64",
+      "rows": 12,
+      "columns": [
+        "dish_id",
+        "dish_name",
+        "record_type",
+        "shop_id",
+        "stall_id",
+        "price",
+        "food_type",
+        "tastes",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "derived_report_not_independent",
+      "strictMatches": 12,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": true
+    },
+    {
+      "path": "报告/R01_20261031/preview/floors.csv",
+      "bytes": 231,
+      "sha256": "bcf16ac4dc42509a8c36e28eee648472057081d804e66dfc3372d48b4076c1bb",
+      "rows": 2,
+      "columns": [
+        "shop_id",
+        "floor_id",
+        "floor_label",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "derived_report_not_independent",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "报告/R01_20261031/preview/shops.csv",
+      "bytes": 332,
+      "sha256": "0bb252b00f52c56ad706fb8e2b0a0e29f02aadceadb805584fc76c83ce18f82b",
+      "rows": 1,
+      "columns": [
+        "shop_id",
+        "shop_name",
+        "area",
+        "building",
+        "location",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "derived_report_not_independent",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    },
+    {
+      "path": "报告/R01_20261031/preview/stalls.csv",
+      "bytes": 2514,
+      "sha256": "b97b9ffa94fcab73fd09a59dd4f584e3d3a36226d400ff06f6c0064e7bccdf61",
+      "rows": 12,
+      "columns": [
+        "shop_id",
+        "floor_id",
+        "stall_id",
+        "stall_name",
+        "side",
+        "no_status",
+        "no",
+        "source_kind",
+        "source_detail",
+        "source_ref",
+        "collector",
+        "collect_date",
+        "evidence_file"
+      ],
+      "role": "derived_report_not_independent",
+      "strictMatches": 0,
+      "idOnlyConflicts": 0,
+      "identityFieldsAvailable": false
+    }
+  ],
+  "photoEvidence": [
+    {
+      "manifestLine": 2,
+      "photoId": "S-01",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_f6c6fe120f2325641802d329ea54be67ccaa863a0e396bca5cb093785f1bcf5e.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 3,
+      "photoId": "S-02",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_7e603d57d3d65432fabb38ee69cd30bee7a5987141d2e0962cf02f91e87a1ec0.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 4,
+      "photoId": "S-03",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_f11c6d6dba36d83e7823bf0ac2afe4a6d7aeb7ad5d99007a1f09ec7844953fba.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "candidate",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 5,
+      "photoId": "S-04",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_ef91e37fdb3c2a92d042ea6adadbd9faae37dfb4c27aeb5324806e0c424b6f15.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 6,
+      "photoId": "3F-01",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_d8cb3398064c61e7cd5010af6ee904c6ac641bea07898530320e94eb502b63cc.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 7,
+      "photoId": "3F-02",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_379d4622d17af3c5ea86690fb27b97dfae09f25f7eb3dbb848ce3066ca43982b.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 8,
+      "photoId": "3F-03",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_c60ccab08695b9331751846574c3c7fb4d3311537f2598a664b8ae6d1ac41485.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 9,
+      "photoId": "3F-04",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_f57786adfa9c14525683250af226fb430962a85643cdc10b4007d497e337fe1d.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 10,
+      "photoId": "3F-05",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_cd3ba755714245e75d17b5a4dadba70d7da57af80feb7f92c4eb9019accf37e9.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "confirmed",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 11,
+      "photoId": "3F-06",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_06bc2879985e7726d93c6f2e7f8ab14db01d47b2f3c16a3a32c476257a3fd6a6.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "candidate",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 12,
+      "photoId": "3F-07",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_06bc2879985e7726d93c6f2e7f8ab14db01d47b2f3c16a3a32c476257a3fd6a6.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "candidate",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 13,
+      "photoId": "3F-08",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_f95f711fdc6e0150161decccbb8c4e5aadf77445dd3b72cde1cc46b5757f89b1.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 14,
+      "photoId": "3F-09",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_47cd11c088490565ec5b43a6810a8e7b5276162c45943cedff0c4e1d4711c08d.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 15,
+      "photoId": "3F-10",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_b663bf9368955f640ddf3e6d32be7204ae0f9c6903a81268e584391c1ddf46d6.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 16,
+      "photoId": "3F-11",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_855a017bf84a55eae499ccbf13d9deadba21c12ffa636e145a473c70cf32379b.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 17,
+      "photoId": "2F-01",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_19c384713fad9b4a0df2acab26ebfb6dce2882f4305094e28935e674da036e8e.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 18,
+      "photoId": "2F-02",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_d676a6c36d3d28c9fa931c70e27b96bf393f7fb22385fe5d7a8eb5e0d6a7aec1.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 19,
+      "photoId": "2F-03",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_19357347ccf247c27d8b1faae442892673fa437671fb45c1993c9c2922d055f2.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 20,
+      "photoId": "2F-04",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_2095909874cccb7179604d9e899bee67a1b801d830e374084e442302c7e4b630.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "confirmed",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 21,
+      "photoId": "2F-05",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_37e401253533fc6fb5e91958a862ae18f44ea91459d7ec9939c3a417bb9c1043.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "confirmed",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 22,
+      "photoId": "2F-06",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_63f434b076772706033820a2b37996c3bf1019112853cab4db3f3a7da174bfe5.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "candidate",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 23,
+      "photoId": "2F-07",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_f2f2b9394f479b922bcc556a0f18c464543d4c7401ad4dda9486a4e1197f7782.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "confirmed",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 24,
+      "photoId": "2F-08",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_5a4feb479cd48e43c1ac30fab10800417d55dca87519f98119ae5624232d8fcf.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 25,
+      "photoId": "2F-09",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_914957d83784f5a63ce44f2ced871320d61cf0a58897fc4e4ecaa7f39ad75915.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "confirmed",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 26,
+      "photoId": "2F-10",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_9069d718726289d2c5626e33b7d376577c6bfcb6082755a6b02b59d7b78dc062.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 27,
+      "photoId": "2F-11",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_991f8ce4b56efd33f900cf77b721dcfe446ab82c6bf985867ba377ab504772b6.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 28,
+      "photoId": "2F-12",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_b0bd8b62f1f2bc0d7c6ba802ff66dcff3d0f6b8a3aa666be90d1e5ce0707a9ef.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 29,
+      "photoId": "2F-13",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_15791a0c77521576e6957c65dbed0cdd88b9893c9cb945c1f609ad98a8c1e06d.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 30,
+      "photoId": "2F-14",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_689c7ca4089d0a1c3a5412a14437c9e105d6acb2ccf9022b5303ae8c5292323e.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 31,
+      "photoId": "2F-15",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_9abd86d23c3ca07e2e0d7f5f1e29c9ea4f9657959703e6f7ac5f4c127e3c0396.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 32,
+      "photoId": "2F-16",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_6c425a9df62764c447df8841579c01b4eb86abd715b5527824c777061cd26c9f.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 33,
+      "photoId": "2F-17",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_cc91259f1e6b2d58c945e641a6e4e187aa322ff636ce1ae14634710d56d1567d.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 34,
+      "photoId": "2F-18",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_44d50356def22dafc1474cb8c853e5fd4d4e86ec44b87f3cd4afef205e10c528.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 35,
+      "photoId": "2F-19",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_ef85a1561ce194120766444869dfb2015ff28b857372960a595702df64f41454.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    },
+    {
+      "manifestLine": 36,
+      "photoId": "2F-20",
+      "path": "项目/evidence/ds-session-1e2717cc/sha256_3253464b2cf660731727a7d0d048c1a4a96abb5e13be6382c9cf9ea0b42fc039.jpg",
+      "exists": true,
+      "hashMatches": true,
+      "mappingStatus": "unresolved",
+      "imageReview": "PENDING_NO_REGISTERED_VISION_TOOL"
+    }
+  ],
+  "projectBaseline": {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E2_20261101_evidence\\project_before.json",
+    "sha256": "40e1f4f8e12b59d3a29e459c4b84ee5d734a7ed5cf26551357e3589388d11980",
+    "count": 376
+  },
+  "outputCsvFiles": [
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E2_tastes_inventory.csv",
+      "relativePath": "报告/R01_E2_tastes_inventory.csv",
+      "bytes": 290627,
+      "sha256": "12b803cdf8550555ef294c3f8f0c10c5b18926c6c74643a1f1769c737e391ab4",
+      "createdAt": "2026-11-01T13:45:27.189954+08:00",
+      "modifiedAt": "2026-11-01T13:45:27.193954+08:00"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E2_foodType_inventory.csv",
+      "relativePath": "报告/R01_E2_foodType_inventory.csv",
+      "bytes": 220013,
+      "sha256": "2a675fcb1b9485bc2675019440375519850433076414c3c9335409b388a4f05b",
+      "createdAt": "2026-11-01T13:45:27.194952+08:00",
+      "modifiedAt": "2026-11-01T13:45:27.197936+08:00"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E2_recovery_candidates.csv",
+      "relativePath": "报告/R01_E2_recovery_candidates.csv",
+      "bytes": 1628,
+      "sha256": "1e504a4c89057d4212e7c86e963db9ee9c41a203958bc4bd47b07326ee226b21",
+      "createdAt": "2026-11-01T13:45:27.197936+08:00",
+      "modifiedAt": "2026-11-01T13:45:27.197936+08:00"
+    },
+    {
+      "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E2_unresolved.csv",
+      "relativePath": "报告/R01_E2_unresolved.csv",
+      "bytes": 509012,
+      "sha256": "afaa67eb3997ff46f569d3e037a543073127e9fa02aa1593696317d9c270ee7b",
+      "createdAt": "2026-11-01T13:45:27.197936+08:00",
+      "modifiedAt": "2026-11-01T13:45:27.205430+08:00"
+    }
+  ],
+  "checks": {
+    "independentTest": "15 PASS / 0 FAIL",
+    "commands": [
+      {
+        "command": "node C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R01_E2_20261101_evidence\\test_inventory.js",
+        "cwd": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发",
+        "exitCode": 0,
+        "error": null,
+        "log": "test_1_final.log"
+      },
+      {
+        "command": "node tools/test_verify_data.js",
+        "cwd": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目",
+        "exitCode": 0,
+        "error": null,
+        "log": "test_2.log"
+      },
+      {
+        "command": "node tools/test_import_data.js",
+        "cwd": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目",
+        "exitCode": 0,
+        "error": null,
+        "log": "test_3.log"
+      },
+      {
+        "command": "node tools/verify_data.js",
+        "cwd": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目",
+        "exitCode": 0,
+        "error": null,
+        "log": "test_4.log"
+      },
+      {
+        "command": "node tools/verify_provenance.js",
+        "cwd": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目",
+        "exitCode": 0,
+        "error": null,
+        "log": "test_5.log"
+      },
+      {
+        "command": "git -c safe.directory=C:/Users/25975/Desktop/食神寻味小程序开发/项目 diff --check",
+        "cwd": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\项目",
+        "exitCode": 0,
+        "error": null,
+        "log": "test_6.log"
+      }
+    ],
+    "readonly": {
+      "checkedAt": "2026-11-01T05:49:28.457Z",
+      "gitIdentical": true,
+      "checkedProjectFiles": 376,
+      "changed": [],
+      "added": [],
+      "projectTaskDiff": "EMPTY",
+      "protectedData": [
+        {
+          "path": "data\\shops.js",
+          "bytes": 6479,
+          "sha256": "28a621e6630dbf6df2509658fa3581f2b276990deefc3978044fdc8d3d221ae0",
+          "afterBytes": 6479,
+          "afterSHA256": "28a621e6630dbf6df2509658fa3581f2b276990deefc3978044fdc8d3d221ae0"
+        },
+        {
+          "path": "data\\provenance.js",
+          "bytes": 16270,
+          "sha256": "818aed419421ee8d97adabef1355b87be2f2611075cc36bafc59ed6e05bfdd0e",
+          "afterBytes": 16270,
+          "afterSHA256": "818aed419421ee8d97adabef1355b87be2f2611075cc36bafc59ed6e05bfdd0e"
+        },
+        {
+          "path": "data\\index.js",
+          "bytes": 16830,
+          "sha256": "f2d40f645a5809e6448cb4125fc1abb4d061d5c708ebd37750cf9500b7e011bb",
+          "afterBytes": 16830,
+          "afterSHA256": "f2d40f645a5809e6448cb4125fc1abb4d061d5c708ebd37750cf9500b7e011bb"
+        },
+        {
+          "path": "data\\dishes.js",
+          "bytes": 11774,
+          "sha256": "3d370ad554ea7369d748f447a90dd47babb97812495518fe7e1676991103df24",
+          "afterBytes": 11774,
+          "afterSHA256": "3d370ad554ea7369d748f447a90dd47babb97812495518fe7e1676991103df24"
+        }
+      ]
+    },
+    "sameNameGroups": "R01_E2_20261101_evidence/same_name_groups.json",
+    "missingIntersection": "R01_E2_20261101_evidence/missing_intersection.csv",
+    "coverage": "R01_E2_20261101_evidence/record_coverage_525.csv"
+  },
+  "limitations": [
+    "照片OCR/视觉复核PENDING：无注册视觉工具，照片仅哈希核验。",
+    "35项not_generated没有正式dishId或生成字段，不能假装为35条有效数据。",
+    "当前foodType候选值0；菜单分组仍需明确映射依据，不把缺授权误写为用户拒绝此类数据。",
+    "所有490条正式tastes保持[]；2条仅候选。",
+    "来源与字段证据不构成准入、发布、核实状态提升。"
+  ],
+  "selfHashLocation": "R01_E2_20261101_evidence/final_artifacts_manifest.json"
+}

@@ -1,0 +1,16 @@
+{
+  "exitCode": 0,
+  "records": 39,
+  "classifications": {
+    "A": 0,
+    "B": 0,
+    "C": 39,
+    "D": 0,
+    "E": 0
+  },
+  "parentSecondaryFlags": 39,
+  "sourceRecordsUnchanged": true,
+  "projectFilesUnchanged": 377,
+  "businessPreviewsGenerated": 39,
+  "strictRulesChanged": false
+}

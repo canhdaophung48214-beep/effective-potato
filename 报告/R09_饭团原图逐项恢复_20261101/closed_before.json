@@ -1,0 +1,1062 @@
+[
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\auxiliary_source_statements.json",
+    "sha256": "a612423a3e7a363aff5d6287cac812822c9e820603f65020e2f25d9a2af6ba96"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\build_r03.py",
+    "sha256": "4e8449ee9275f9eb120cdab2d23a633b5a79980636f934540d81e16fc18d58f8"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\candidates.json",
+    "sha256": "f24b521908dfe8467d22a4aa8fa62d40632f3da1e28692a175e2b8edf109d961"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\count_reconciliation.csv",
+    "sha256": "de6a167a671f19eee61984a902f35c22d5a7d6f9d8ea25730e00c2319bbb7d33"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\file_manifest.json",
+    "sha256": "fe7be36a66f7b661bf20ed085425e4b4de63f50ea88c3265c915b826cda7c2b5"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\finalize_f1.py",
+    "sha256": "1626b713b0243aca22701ea629bf854e25806f48d81af1cd579c691daf047cdd"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\finalize_r03.py",
+    "sha256": "52bdbe56630921e6da3d9cd72d26aae28149ae61a7eef5ce063ffa641503e2cc"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\git_after.json",
+    "sha256": "7847352901a9b376d3543ae8dcdd23f943d0f8a4a30e638c4f07e858048a412e"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\git_before.json",
+    "sha256": "7847352901a9b376d3543ae8dcdd23f943d0f8a4a30e638c4f07e858048a412e"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\git_diff_check.txt",
+    "sha256": "2de5e4828563c1932ee40a6508e9e04ae7c78ac48cdb970b6e0c193e4e6cc2ce"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\legacy_reference_audit.json",
+    "sha256": "589908f6fda2a155cefabc4b2be429135deeef5cfef5b829e5149f0f1c3b27ab"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\manifest.sha256",
+    "sha256": "b939f749abafd79fb0bf011c6f684cae669d723e0e1c461c42916d119d0bcd6b"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\new_source_records.json",
+    "sha256": "90b25434188597221dc22d226b9de8b5ef405a46939418018c1ffc11fa6df44f"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\new_stalls_14.csv",
+    "sha256": "7d22cfc8bd95a1687e40e9969fea0681760690872c6df434265d5c4d4c19fa5a"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\ocr_t19.ps1",
+    "sha256": "a27e00eb4da372f585d01c24d823ddefffb2fe40a0492ec7e230ee17a4a9b478"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\pack_f1.py",
+    "sha256": "45d89e40ace1f1b95d9e139a01254c8ab4d06afa8411ce16f65611113c00be8a"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\photo_source_index.json",
+    "sha256": "5ff6e30c3abcc4e809f2a80bc6184e6f6acf78d78089fcae4bdf99ecc73ae181"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\project_before.json",
+    "sha256": "ee763b9deca849417fa7dd16cf91b099dca8f1f77aafeb2ca09bc671c16ffb6b"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\R03_F1_test_output.txt",
+    "sha256": "9472795eef3374e1a6b524d76c92fae63faba4fc943cad3f03745e1c0327fb3d"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\R03_F1_修复报告.md",
+    "sha256": "8da3140eebee0df16665f652ade0a1e62d51c7ae2d101962abcadf580463c87a"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\R03_执行报告.md",
+    "sha256": "cd09edb284078772084299a0e126e903270145c04fc240e27c89701609e09221"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\README_F1_复现.md",
+    "sha256": "e7f77f30aec4bb3c0b1b410b5474ed2271bb9ca90aa2479822450a4a7ca88ffe"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\repair_f1.py",
+    "sha256": "5c5fc073f06da1b5c437b0c34e316e68fc0c999835a09530835b6d37d3f3fb1a"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\replacement_ledger.csv",
+    "sha256": "81d7a9916b5dc70ed54f4a42ccf9377ba08ee3d9cfba7973646afe44f3876e31"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\replacement_ledger.json",
+    "sha256": "4e68eb58aea331de249c96600a7de2f70561cfc0755469697e26c069e1dd91af"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\stall_crosswalk.csv",
+    "sha256": "79a3f012763fd2b7676e44dbf14a93f27b79a7522ef1b9823e29310658d117a2"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\statistics.json",
+    "sha256": "0d2c0a067bbb154eb48dd72e2f5ca9806213ad0ab2d74ad96e4e4252773a244c"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\t19_ocr_actual.json",
+    "sha256": "b57fb0431189cbfaa39863a78a106f5fc0d37542ed1dabe631451ee9ed5d28fb"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\t19_ocr_inputs.json",
+    "sha256": "07e68fd2fd3cb76d2e63713f6c831bb274475298b3919ef95489708c57577a2c"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\test_output.txt",
+    "sha256": "17ceba85145a18f221e76ee61ec4e3402fcbd3cd5e2d20fdff986bfc94e01f83"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\test_r03.py",
+    "sha256": "a4cec9abf80f2be7fda6e78c92153bc34f9ef33244c2217ca8f50f2d35d2df6c"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\test_r03_f1.py",
+    "sha256": "47070fb9f8a7d0481a63ef341e028d90269c8e5193ff2be9cc32d553ea847519"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\unresolved.csv",
+    "sha256": "f704c1d39f1d6ef099bcb393142c860984e6458171e9c0afc6428a1d74fea201"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\F1_evidence\\backup_manifest.json",
+    "sha256": "49d0d98e65b7382441d8df84f4f1681b204a2df1bb859e86ab947e63f9276139"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\F1_evidence\\F1_changes.patch",
+    "sha256": "012c9b3c5ead1044b0f76dceda57d1c7ce9e6e3f39e7c749493e2376b4cf1fa7"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\F1_evidence\\final_changes.json",
+    "sha256": "26e2252d4f7e9fa987b3d69044dd6677b60d0208dd1c46e6d1115e47cd6d0332"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\F1_evidence\\git_after.json",
+    "sha256": "45d14109de711b0b729ff139ac9813ea21ad2e9adb1609dd93aec646dd7af0a2"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\F1_evidence\\git_before.json",
+    "sha256": "56d98fcda97d000d6066b2c9fb171831484a668fda0916f35a1dd0027df2a285"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\F1_evidence\\git_diff_check.txt",
+    "sha256": "2de5e4828563c1932ee40a6508e9e04ae7c78ac48cdb970b6e0c193e4e6cc2ce"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\F1_evidence\\git_status_short.txt",
+    "sha256": "e52b105c0ba2e51dfe977f0627ad503457d41e9b22cf7ba68d1bef2d96db1493"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\F1_evidence\\git_status_uall.txt",
+    "sha256": "83d8c88e4c749b796e3cfcd2cf1e814127c91487f8c89bb98fe0911817740ad0"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\F1_evidence\\migration_files.csv",
+    "sha256": "39bb301485af72ad7bb88b3ed324f2841b25a6b3aae39c3320e287a975bee5eb"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\F1_evidence\\migration_manifest.json",
+    "sha256": "3e44433684bb7b14b49d9c3be0dad24a25068ca891efcbedb78a36744ed71cd4"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\F1_evidence\\post_move_checks.json",
+    "sha256": "48070ac1fd02e7cbabd2f69bae0066001cf098bfee503b05caf70f76c1c04510"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\F1_evidence\\pre_move_repro_path_failure.txt",
+    "sha256": "b5764a9c8a8db021ebf36420e955d0192ce3dde40f8ad6f64c6c58379b628011"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\F1_evidence\\pre_move_tests.json",
+    "sha256": "1402baff99e0fe8eb6dde507e850c03ee706cd0057c19eaf469632d0059618f1"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\F1_evidence\\pre_move_test_r03.py.txt",
+    "sha256": "bc5321ee856690eb324d7204440fce3e9f9562fb47c4881ee2669cad40679f7e"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\F1_evidence\\pre_move_test_r03_f1.py.txt",
+    "sha256": "891e597fc134fb44e1e82057aefabf81acfb73dd5cde4402a3d66a20fed0a3c0"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\F1_evidence\\project_before.json",
+    "sha256": "ffcd71a5cca1b7bd5368c9c749a013cd379dc13b789acc4a9116a69e8029aa33"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\F1_evidence\\removed_duplicate_new.json",
+    "sha256": "b807fd5a58105de7256470d72fa784fc8b1f006d190773d6789553b9360d497e"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\source_assets\\TRANSCRIPTION_3F_R2.md",
+    "sha256": "3f173f76ae0316bdf0252c1e9e2e530564c25038f1b36e7094150b7f8fa30a1f"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\stage1_before_ng03_link\\auxiliary_source_statements.json",
+    "sha256": "a612423a3e7a363aff5d6287cac812822c9e820603f65020e2f25d9a2af6ba96"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\stage1_before_ng03_link\\candidates.json",
+    "sha256": "d2e3ee02e38dc5dce1daa29017bd7c41170bb4c15837c1d1958a4c675174dd81"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\stage1_before_ng03_link\\count_reconciliation.csv",
+    "sha256": "de6a167a671f19eee61984a902f35c22d5a7d6f9d8ea25730e00c2319bbb7d33"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\stage1_before_ng03_link\\git_after.json",
+    "sha256": "7847352901a9b376d3543ae8dcdd23f943d0f8a4a30e638c4f07e858048a412e"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\stage1_before_ng03_link\\git_before.json",
+    "sha256": "7847352901a9b376d3543ae8dcdd23f943d0f8a4a30e638c4f07e858048a412e"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\stage1_before_ng03_link\\new_source_records.json",
+    "sha256": "cdbb662de33af2e06019b284fe503d7077ad2c0e7544e4bbbd6f5aa159d032fe"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\stage1_before_ng03_link\\photo_source_index.json",
+    "sha256": "2fcd769991a1cc6b0f5a20024c395e11bebbdde082af610c5ff96e4836752afe"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\stage1_before_ng03_link\\project_before.json",
+    "sha256": "ee763b9deca849417fa7dd16cf91b099dca8f1f77aafeb2ca09bc671c16ffb6b"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\stage1_before_ng03_link\\replacement_ledger.csv",
+    "sha256": "2914c68dec88c2d115ecfdefdcdff21f9ebfecb27f891ac1e43d5b04777c0508"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\stage1_before_ng03_link\\replacement_ledger.json",
+    "sha256": "567b45ccc3b2c82e15ff7392ea897b2afde2b93c9891833e4c23a2902f1fa342"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\stage1_before_ng03_link\\stall_crosswalk.csv",
+    "sha256": "ef700820f0470a3c82d6a2f3eaba09e7298b776aefacd8ec57210d873602c257"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\stage1_before_ng03_link\\statistics.json",
+    "sha256": "0ffa0b4441a94ea9c60a31b93598669f4b0f569406992cdf89de64b945db44c8"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\stage1_before_ng03_link\\t19_ocr_actual.json",
+    "sha256": "ca48a3f2f6164dcf34a7fcafedb34d5a4402b6afae356c35a9a07bf3d5b12048"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\stage1_before_ng03_link\\t19_ocr_inputs.json",
+    "sha256": "6c4401aaaeed1624f80b3df23dca1fd8afd6f3fc15e0411153c83d07d11d7d2b"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\stage1_before_ng03_link\\unresolved.csv",
+    "sha256": "65c620a093e6d8d8939516feaf521273fc386df32a0351481d734e4a225e1e5d"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\source_assets\\crops\\baoye.png",
+    "sha256": "aa9b803a730cf5027eaa7253d8cc062143574e849f86c9bdbb14d66a57886d93"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\source_assets\\crops\\chapao.png",
+    "sha256": "e493a4bc49db9af5ae42f4aff70cd34006ca8eb0dc40e121505ef36d6f87f242"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\source_assets\\crops\\gigi.png",
+    "sha256": "aee3db3e724ce74649033b53c85bfbb8164919593df3b4144d725ecd8b892c80"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\source_assets\\crops\\haiyuan.png",
+    "sha256": "447b01eb2012f79a68ce36115b9d616d9b671b012ce0c26cd8e2427404c9542f"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\source_assets\\crops\\jiangdao.png",
+    "sha256": "e5ccab9439eba8cad9dedf038aa71ead616acf66b212532f2c6cb116c6fa1e74"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\source_assets\\crops\\lafanqie.png",
+    "sha256": "6d479f40eb8aeec0541678573cf45cfd9729f6104be453ac8e65304a9b6ead8f"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\source_assets\\crops\\laisuo.png",
+    "sha256": "ef6b81d95dba9e2999956a0d15d091d0f592bbc19ec6ce1aa37c73eef38161e4"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\source_assets\\crops\\lataifan.png",
+    "sha256": "f86c894018d0b87d9475bdf98219aeb12b2e76f9ce69a5d745a8b9f1c2e8e6f1"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\source_assets\\crops\\lirou.png",
+    "sha256": "88842b0ee13705663c6fe3a823066207d64e1579086faba3beefe8d8ffbcb2d4"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\source_assets\\crops\\liruo.png",
+    "sha256": "19e39ae77097cdb4faaf957aa27661c08bed9522d69e0980591692d905b5c8c0"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\source_assets\\crops\\liuwan.png",
+    "sha256": "e7276a3c0e08de33f6cfe882d142e407ece2311fc2a19b0cace19367a7df973e"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\source_assets\\crops\\shuijiao.png",
+    "sha256": "00d297c967899ac976e7ebe7d2d66e7abae64a6dc5a838f91edea87adeffbc77"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\source_assets\\crops\\wangji.png",
+    "sha256": "608fcf1f9957a3b91302dbac8c5298c23933ae0d7cdc24123f02daa2af66484e"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\source_assets\\crops\\wukexin.png",
+    "sha256": "4e1c0aa1a611bec7cc751b7182a20a539431786b77c985aa00adeb7eeeddb979"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\source_assets\\crops\\xiangshu.png",
+    "sha256": "aefb7a31ec4733db2b9b7069f9c2cb64aa11bc55d3f75a2f946d3ef3e358990c"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\source_assets\\crops\\xiaolongbao.png",
+    "sha256": "0aafed578d7dd7063eb4e26dc074661890977ef9f379d8fb08365c9c6c6b6c50"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\source_assets\\tools\\_crop3f.py",
+    "sha256": "afe3f4b94f95dbbde37ac5fb803027bc776540180ec5dad3ee229c78bca85131"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R03_3F_R2_20261101\\source_assets\\tools\\_crop3f2.py",
+    "sha256": "ecb7b3b5deb9e8977f7e8c85017ed736f4e95de6c9f34fff3cf08c3262d0e261"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\build_r04.py",
+    "sha256": "ec9ceaf4bc3241f4f6dfa8794d661264aa1f1497d68509fea1bce1fe59a6bac7"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\candidates.json",
+    "sha256": "2ae8257c9d80f05c7d9ebf08eff8a3a8f1ed2f1008c1a3ef531a52803b511263"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\capture_2f.js",
+    "sha256": "48a1d82d27324e9d6dc9e0f7871d894312a9d9bc4fcef9bf8ffa384d975533a9"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\current_2f_capture.json",
+    "sha256": "84462477ff87b5903b8cb921af0542171446f418eeeb9f37565a920eb8aba057"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\file_manifest.json",
+    "sha256": "0a5a148ee90497d58f7b115a8db032273ad63c105463239f10fb93ec62409319"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\finalize_r04.py",
+    "sha256": "e946271a932a5ab89e46cefc6934a5fc4d5907478e0f21d4ff73ceec80baebf5"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\git_after.json",
+    "sha256": "6e4999a1b2fc30c30c52e10977b8b66552a6c356bca84f0a8b005963d1d8bca2"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\git_before.json",
+    "sha256": "6e4999a1b2fc30c30c52e10977b8b66552a6c356bca84f0a8b005963d1d8bca2"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\manifest.sha256",
+    "sha256": "9e6261950f3819643fb25f6efbd6f87d7c520ed4753d0bd8cc7e9138f34b2120"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\new_source_records.json",
+    "sha256": "1d1a32f68c22a1b4976157efd5c50a75a124ba31cc67676f054d40772d0a6d2d"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\optional_surcharges.json",
+    "sha256": "0ab3aa066180ff6aaba489d2242d9d45832d0f0639989d3ef0e4a1ccabd579d9"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\project_before.json",
+    "sha256": "6f60103f927374e541baa88793329bac1735e606ef69715a795374e131a3a4db"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\R03_closed_fingerprint.json",
+    "sha256": "da9c79256397af619d5c198de4c1b729d5e0aa4a168311871df5a6766d3f2720"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\R04_执行报告.md",
+    "sha256": "c788bc7ab7144a777fb0e07d2fa9f5e69f0820f40af0603442c5da4fccd59ef9"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\replacement_ledger.csv",
+    "sha256": "87d6edf55a60a61013f0eac3f9dc621acb115ea00a097144da325eef9c486d55"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\replacement_ledger.json",
+    "sha256": "a38701c7258d3f4cc743410d4d90d383a8f723196952c7dcdffc2caa7b411563"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\source_inputs.json",
+    "sha256": "ed3dea898cc28a7e8a59a9f14d5f094d8f1bd282d48872d85382759c58e0b9cc"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\stall_crosswalk.csv",
+    "sha256": "0324a2dd3be3d341bbdb2eb756625c3e543d7a1163444acf01b016b683ef2cfc"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\statistics.json",
+    "sha256": "c66579c5b8f5c5fb3132e48f4def3bf9999edcfa76aba2670d4f8eb24a5adcff"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\test_output.txt",
+    "sha256": "420a49ae34465144da076d346efb53b44ff3e30af9f92d1f95ce0abbabecf943"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\test_r04.py",
+    "sha256": "90f3ba08823570bd74cd7c1923583fb66376e3ee79624de0a37495a53f847abf"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\unresolved.csv",
+    "sha256": "e81dc09ab510397c5b79ea2746767c84b5f7c6da26ac8738dd8a06854f3bb85c"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\source_assets\\DECISION_RECORD_SET_R2_20261024.md",
+    "sha256": "c739ca1d5d63f0cac1a4de02a00606263e81bf43c1ffa686362fb4a088824c20"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\source_assets\\EVIDENCE_INDEX_20261025.md",
+    "sha256": "b0ad05e8bbbce6ad289464e8023db8c51f5ad0e97f958262f6b4c98da4da49a5"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\source_assets\\NG01_approved_preview.json",
+    "sha256": "072d8e7b4066bbb302bb42e88fdc740c9d341a15b04d0d595c4f219635646b6e"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\source_assets\\NG01_owner_material.md",
+    "sha256": "cb24ec3af64aab408e3ac152f848609bcfc8325ed1317b05729830b18c68e9fd"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\source_assets\\PHOTO_MANIFEST_20261025.csv",
+    "sha256": "e0acb399fab5585ae7db6b1bd33cae576de3d3b9a4b3806d7d288f3ade7ce56c"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R04_2F_20261101\\source_assets\\TRANSCRIPTION_2F.md",
+    "sha256": "37516c5f7bb46c7fc387621fbefddbc6be98b5c27f6cf119399b5a2befc9e34c"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\backup_manifest.json",
+    "sha256": "562965f5ccc59ef49d0031165dd0600865009626e85f293e31e1c9a7110ad18d"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\build_r05.py",
+    "sha256": "da707cae6c7e5e7b22901cde24aac107fb3af8af043fd9b33f7deb22304bdce7"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\bundle_relations.json",
+    "sha256": "639eb218d31deda26fa156bcd4bba430d61f47c011173169d2f6a61f79269306"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\candidates.json",
+    "sha256": "050726042f6f7e1437fca11ea441f958ea73b59ea998969c7d79c71fc87657b1"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\capture.js",
+    "sha256": "9e13ae1af0f01922ee49cb46eb54270ff22a99a35bc67ace61aa2599a00527b7"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\closed_batches_before.json",
+    "sha256": "85bc055329873f6baaa1cbe9f2307eaaceb07107ddde6d602bf76136a6223c5a"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\diff.patch",
+    "sha256": "7e0509e7db07cca3cbe6864735733fd27de334a81802e619cef635b6d988cc2d"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\file_manifest.json",
+    "sha256": "19e6f8ba1ec8e1d6df2dee993543676f69b32178074aa8a4912a0e03bddc9cbe"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\finalize_r05.py",
+    "sha256": "cd94392f81c5bc3c352ded06ffed786474569348d627ce1c1dd2a6ca7f932a96"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\git_after.json",
+    "sha256": "5b45073e8d0471fc8b440c13247c0647faec6f630f6e77630a28394874feaf36"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\git_before.json",
+    "sha256": "6e4999a1b2fc30c30c52e10977b8b66552a6c356bca84f0a8b005963d1d8bca2"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\manifest.sha256",
+    "sha256": "55a425762c637b097a764d49c245a750353423e7ffa0c195d43dfe93d6d145d4"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\optional_surcharges.json",
+    "sha256": "bbae27ae9391c36145ac637ac37e0ed90f048391d4aeb14aab8e357acaacf6d8"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\parsed_source.json",
+    "sha256": "442133a867fa558c40391d4ceb7065323c0ec1f07a194e47e08abcc2c136cc02"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\project_before.json",
+    "sha256": "7cd0cbbfa5f8011da7efe1b342b9b4b18ab34a3982c76bc1651f1da3a64d0719"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\R05_执行报告.md",
+    "sha256": "cb51b972829532dfb9946ecee295077ee41990ae3f49a3b01517d452e797077f"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\R06_推荐目标.md",
+    "sha256": "007f84679d48b3f727e1fb0adfe6c6aed68eee4730cb6deab94f52ae86135c8a"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\replacement_ledger.csv",
+    "sha256": "897a2171c3e38d648062c366013c78f8a86865616f153dc98456208a30684bc8"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\replacement_ledger.json",
+    "sha256": "8ba98582750ae6eaa60c7f62a1d949a950ac5661c4a28c53b67d51d8462a7367"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\source_groups.json",
+    "sha256": "4512b61ef807d741d75e63a46f40c8dfe319188e534640c781eca812c4c006e7"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\stall_crosswalk.csv",
+    "sha256": "666c87ca06cd156cc0beff6d69469f20eb8c9797b11d7cca8190fe46dcb5e375"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\statistics.json",
+    "sha256": "83330eb121d13a6a92109ff596a836b70028c0527d475fb6a772d78ea109ed50"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\test_output.txt",
+    "sha256": "e1788a5136aee575a2a51bc5c5aab0a6d7cfef1bad03de3cf58e09e922457690"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\test_r05.py",
+    "sha256": "c1986878bc1d0b763ad9baf54da4a699634eb6e00f7c5052e17a216ef8727344"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\unresolved.csv",
+    "sha256": "3b19d51d813db43e60c7ea7068785b272404ed14effa5cb6bc7042f0da66f8cc"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\source_assets\\batch1_min_dishes.csv",
+    "sha256": "df344d86c91dad042cdce30b0681e0aaab37ab1cf11a4125b9880b8f601fc0ce"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\source_assets\\batch1_min_shops.csv",
+    "sha256": "e57240070ba25e665dcdde835280a8b98da2b993eb9a500305ecdc2b4ab59363"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\source_assets\\c02_conditional_approval.json",
+    "sha256": "eded8b1652955cb20b12041da48ff8af5a11a100b53dcdea779a0c253d4fb583"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\source_assets\\c02_t01_menu.jpg",
+    "sha256": "f6c6fe120f2325641802d329ea54be67ccaa863a0e396bca5cb093785f1bcf5e"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\source_assets\\c02_t02_menu.jpg",
+    "sha256": "7e603d57d3d65432fabb38ee69cd30bee7a5987141d2e0962cf02f91e87a1ec0"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\source_assets\\c02_t03_menu.jpg",
+    "sha256": "ef91e37fdb3c2a92d042ea6adadbd9faae37dfb4c27aeb5324806e0c424b6f15"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\source_assets\\old_dishes.csv",
+    "sha256": "cbc6c3cc72c32cf9274598879c02f0b5838ce28bc7706e3fb96832fe56978c51"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\source_assets\\old_photo_status.md",
+    "sha256": "ad8bc6ff4893ed78c3226bb1cb4bb9a59a0db50530e863a0a616ccdf8ccf1b04"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\source_assets\\old_shops.csv",
+    "sha256": "d3ff36013ff2776a6f56aff00da0b972f8070d68f8ae51274ce73f7931d40736"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\source_assets\\old_stalls.csv",
+    "sha256": "f48c72ef06bb401f00b25d99fa1883f02785b8f353a077fd00c490cbc1c1916f"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R05_三餐2F_20261101\\source_assets\\TRANSCRIPTION_DRAFT.md",
+    "sha256": "0e07d306e9f7aedbda896a37cea7b11f00bd96a4cb1bab6606aab81e0bd43bf1"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\backup_manifest.json",
+    "sha256": "236b71f237ccb073783223e307c9b6cda5c1eb3c8e48c926eb353f43430d9e9a"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\build_output.txt",
+    "sha256": "a8f46c7e6d342814ea87c3348be97293498c1a22135cf8c40991284828ac1934"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\build_r06.py",
+    "sha256": "2cda5e1d5ae764e15ba3553d72229485bfd77fd974083270676e006ec3b4ca16"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\candidates.json",
+    "sha256": "cd7ca3b91c34b1dcbc225096683d21473c4e314a035fef9cd51860a15fc229d1"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\capture.js",
+    "sha256": "5d0efb29ced00c7c065d417ffb10d68753ed23658745d3e5f392b39087a9b7ea"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\closed_before.json",
+    "sha256": "180853f695d5c5dea4e7d368b5bfad7101b18882d1ca9fedbd4999425874074b"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\diff.patch",
+    "sha256": "ba639eec20330ee617d9e14d43e833fa6c2d53fa3629529b01633d5ed5a1b521"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\execution_report.md",
+    "sha256": "10a2f22ead021af5abe8e7172589a9a7fd240178df063ec06f556791a61abbe2"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\file_manifest.json",
+    "sha256": "43fcb74777e6dd9a2bbce764689a0d59fafc955239a306b0360676a2e7cc3817"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\finalize_r06.py",
+    "sha256": "e4165b8a12f87f0f6e50ad5f75ac639bf453d38eba30658c376b86c6be69f786"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\git_after.json",
+    "sha256": "5b45073e8d0471fc8b440c13247c0647faec6f630f6e77630a28394874feaf36"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\git_before.json",
+    "sha256": "6e4999a1b2fc30c30c52e10977b8b66552a6c356bca84f0a8b005963d1d8bca2"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\manifest.sha256",
+    "sha256": "0c3201be4a5fb90e566ca7b3e945a29fa75f4ab14e7eb04648cbae577f650e53"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\parsed_source.json",
+    "sha256": "442133a867fa558c40391d4ceb7065323c0ec1f07a194e47e08abcc2c136cc02"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\project_before.json",
+    "sha256": "e0241c3d10bdb10164c5acc22e299d1e5339e870dcb21ec6d4319caaf1ff3ca1"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\relationship_data.json",
+    "sha256": "183bcecb9114928f2be20c0287beba3e35f19c927c6f21037a92449f7675e4ae"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\source_groups.json",
+    "sha256": "3798c1a9296468000edec8d14bfda88d4d4101fe0708f5fe17bc776d2c7bc5dc"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\source_ledger.csv",
+    "sha256": "8b6bfae9d8ae6e18aa916fa98a26d2d3e830eda0f4c7fa2105b85c9be2b1eefa"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\source_ledger.json",
+    "sha256": "64dc38ffb3ff6b232356dc8be42f9be051cc2f2e737caae144b79c095d9751c1"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\stall_crosswalk.csv",
+    "sha256": "948626405a16e8fbf3b3f84feda1af1058788555fa0493ecc71872f4d799fb6b"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\statistics.json",
+    "sha256": "07e29c501cd7159338e698f90712a202321e0af2bff4893e0fc75313e1617c2c"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\test_output.txt",
+    "sha256": "de704bb695bd66104bffdd1911e224e733278eec632cdec32c6c8437c32958f7"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\test_r06.py",
+    "sha256": "3e08ac84ac7e33796d1db69cd903c8c57a7519933229798a3d95c26dae7b6990"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\unresolved.csv",
+    "sha256": "1c81743d9eda28a953ff4b799da73e2ff578ac9041d6845df347710f048d3c26"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\source_assets\\batch1_dishes.csv",
+    "sha256": "cbc6c3cc72c32cf9274598879c02f0b5838ce28bc7706e3fb96832fe56978c51"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\source_assets\\batch1_stalls.csv",
+    "sha256": "f48c72ef06bb401f00b25d99fa1883f02785b8f353a077fd00c490cbc1c1916f"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\source_assets\\collection_notes.md",
+    "sha256": "cf20d6e5ef7500dd38939b2843f5729bd792750a700854cbc1b2cc784b6626b0"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\source_assets\\fourth_menu.jpg",
+    "sha256": "f11c6d6dba36d83e7823bf0ac2afe4a6d7aeb7ad5d99007a1f09ec7844953fba"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\source_assets\\TRANSCRIPTION_DRAFT.md",
+    "sha256": "0e07d306e9f7aedbda896a37cea7b11f00bd96a4cb1bab6606aab81e0bd43bf1"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\source_assets\\unlocated_dishes.csv",
+    "sha256": "583da0e09bbb05ff51818fba2f407b1ea0c05d26e4d8feb808c93e0ca98ad802"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\source_assets\\unlocated_floors.csv",
+    "sha256": "ddc5386dc69d1097b0e7f51f19a37f000b467fd31078dfb36862dec774c92a10"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\source_assets\\unlocated_shops.csv",
+    "sha256": "d5b4b032dc2bc3e1293407c7f3429c4123bb93a6151e8b400e517e53a2b12e1b"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\source_assets\\unlocated_stalls.csv",
+    "sha256": "bb48783ba53aa3f89576542511f4b4c179b1739c1ef892f89fa600d584372fad"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\source_assets\\unlocated_images\\c03_t01_menu.jpg",
+    "sha256": "9b18a285ca9beead686f57c0848e4001714a527fa867f5c2c4152cd6a842b150"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\source_assets\\unlocated_images\\c04_t01_menu.jpg",
+    "sha256": "acbe584c11a70485651d0d851eab7b519f3ef7df4a4e45f0e0d92ccf62771484"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\source_assets\\unlocated_images\\c05_t01_menu.jpg",
+    "sha256": "24de847459276407577c44d31f6779f33dcd51d3e7c9408a74bc1e910a33aa60"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\source_assets\\unlocated_images\\c06_t01_menu.jpg",
+    "sha256": "4ee5f6689dfe9495e1b3d97b6c2b066d56b842142a796928daa2d16b806d5ce1"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\source_assets\\unlocated_images\\c07_t01_menu.jpg",
+    "sha256": "72f7e0df0c6de28d629f0052fb734789a0ad3f899ccd4392bf2446dcfbb5ae26"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\source_assets\\unlocated_images\\c08_t01_menu.jpg",
+    "sha256": "47c3770e2a5e623dcd9fe776d6ce1158350adffd1017bee5f93368f236325880"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\source_assets\\unlocated_images\\c09_t01_menu.jpg",
+    "sha256": "97c29767a2ee17bcf4e37dd0e4ce2b0336de57ee9ba49de20e8d15d6c455663e"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\source_assets\\unlocated_images\\c10_t01_menu.jpg",
+    "sha256": "39a0b8922f5f00b25b01ee49917e9fa92543acc91245cdcdec5397289a8ab117"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\source_assets\\unlocated_images\\c11_t01_menu.jpg",
+    "sha256": "b67838596e7fd601485330151332c563d9df5706539c759dda806e791604a544"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R06_四餐与楼层未定批次_20261101\\source_assets\\unlocated_images\\c11_t01_menu2.jpg",
+    "sha256": "53a68e408d2393014126598a32ff2780a4dfac004e4109c548962c083e34bdad"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\backup_manifest.json",
+    "sha256": "682a3cdc7e92d9a1cd3ec608c51a1e661183d7e2a9dbcab49c6f11e1ad3fd922"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\build_output.txt",
+    "sha256": "077eb02a3b8c6cfbb36ce8199cde79c1510001cc546ee0e180fc1c657251c4ce"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\build_r07.py",
+    "sha256": "21699f18b3acd3fa16f9acc152b182caf24e51d2deb8a9714e61f8df5d7d272c"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\candidates.json",
+    "sha256": "37c9314875d8c20daa23e1b10fcc2d500714d2284b2b516324bcf7aa344de8c2"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\capture.js",
+    "sha256": "8c538674cee28e6a8ed21962bf59404c3fc0dff9b372e0b852c14464f78a13ae"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\closed_before.json",
+    "sha256": "eb86dded37e7163776f9b3575e6e5a47394c7458a77006cb06e57c1a817d9118"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\continuation_test_output.txt",
+    "sha256": "7898a595548ddbe56be04e4f9dc6977c0db5af44c1772be3d444af103248a438"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\diff.patch",
+    "sha256": "875224c106f6b54bc0465c716a506c67701cc6504e56abe8cdd5c22c4abd37ec"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\execution_report.md",
+    "sha256": "f2b51076aaf9658ec1fa37d06801ae976cf20816a51f3b891ceeb6c3ce5e1f29"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\file_manifest.json",
+    "sha256": "3666500fdf80b51d1b9cd8492e5918bb238244a6c239b0922b1d3d8c0076b743"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\finalize_r07.py",
+    "sha256": "1439f7030c6656333bf2d67cbf96b1d5c032933c900c2fc776ea7b707296f6ab"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\git_after.json",
+    "sha256": "5b45073e8d0471fc8b440c13247c0647faec6f630f6e77630a28394874feaf36"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\git_before.json",
+    "sha256": "6e4999a1b2fc30c30c52e10977b8b66552a6c356bca84f0a8b005963d1d8bca2"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\manifest.sha256",
+    "sha256": "3839497d79453de41c381178d7aec0ab0a59f4a8e72b3c1c2b40108072e43e24"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\optional_surcharges.json",
+    "sha256": "614381055388592aab5cec039cfa69a9bb9b9a20b9a474ee5d50a544ea4c27e1"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\parsed_source.json",
+    "sha256": "442133a867fa558c40391d4ceb7065323c0ec1f07a194e47e08abcc2c136cc02"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\project_before.json",
+    "sha256": "6f60103f927374e541baa88793329bac1735e606ef69715a795374e131a3a4db"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\remaining_materials.md",
+    "sha256": "55b4093312b0dbcd40525a9c33e4f208ae80f6c6503386201d6448bdeec48055"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\remaining_source_pool.json",
+    "sha256": "b0fdf56d8dbab4efd3d019f3d91b23e068e8c9a0005cbeb6f18bb177167ed360"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\same_name_crosscheck.csv",
+    "sha256": "3855f88346aafa45b159be862c8ecd20943a6cb6cc44fcf3156e7a7773c126e4"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\source_groups.json",
+    "sha256": "a99daabe9545df51b7a4e88fe74535abfacf84325e3ef15d22f548169e2a96e5"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\source_ledger.csv",
+    "sha256": "5e8fb8dcd3da5ead58550126fbf4339c48aecb13df3fad3c141f69f030b79011"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\source_ledger.json",
+    "sha256": "712af7320964770d3267d2fc9be8ec2fd56b962a1e83d0affe8d02c0d6dc9143"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\stall_crosswalk.csv",
+    "sha256": "f33a6a63002bd8c238c9a271496f1dd5767c99c09fab6ad07deec6911fe845ef"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\statistics.json",
+    "sha256": "ca67a6b4c5b75c1bba6edca7adab56aea7c02c6e2f79fa06682f31523bba95aa"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\supplemental_relationships.json",
+    "sha256": "284ac50894d4c53ac6479f87f01a2a88678f59a696ab273c06f0cc2ae7b2cec0"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\test_output.txt",
+    "sha256": "b888c959d655d517e3fc39610d1f24e0c16b6e65792451a27c88f638de8c62d2"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\test_r07.py",
+    "sha256": "c3a5abeac000632b584d72447c3f0dc8427d92adc68f498f9b2a209163dea366"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\unresolved.csv",
+    "sha256": "481e1373f138e1e283589f293e2bdc799dca536628aa69bcd2dde92232c04297"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\source_assets\\blank_collection_card.md",
+    "sha256": "ef02eafe92ceddb5c1416bf9d49ee27f850742dcef54c5b9cb8d77ac38c55add"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\source_assets\\old_dishes.csv",
+    "sha256": "cbc6c3cc72c32cf9274598879c02f0b5838ce28bc7706e3fb96832fe56978c51"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\source_assets\\old_photo_status.md",
+    "sha256": "ad8bc6ff4893ed78c3226bb1cb4bb9a59a0db50530e863a0a616ccdf8ccf1b04"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\source_assets\\old_shops.csv",
+    "sha256": "d3ff36013ff2776a6f56aff00da0b972f8070d68f8ae51274ce73f7931d40736"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\source_assets\\old_stalls.csv",
+    "sha256": "f48c72ef06bb401f00b25d99fa1883f02785b8f353a077fd00c490cbc1c1916f"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\source_assets\\remaining_collection_notes.md",
+    "sha256": "cf20d6e5ef7500dd38939b2843f5729bd792750a700854cbc1b2cc784b6626b0"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R07_服务楼早期口述批次_20261101\\source_assets\\TRANSCRIPTION_DRAFT.md",
+    "sha256": "0e07d306e9f7aedbda896a37cea7b11f00bd96a4cb1bab6606aab81e0bd43bf1"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\backup_manifest.json",
+    "sha256": "db8aa897f439bb9d10a8a8bd2ba2b4f242b2d70471fbfe6a25e202c8af12c76c"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\build_output.txt",
+    "sha256": "4fa83e64f54b02d039e199d2fe03dbd7798971e1c88f6058b3c21092e76176a0"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\build_r08.py",
+    "sha256": "d7b022e94784416c394aacf07299b97eb2d4dd015b89db28b718e1f7e8623427"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\candidates.json",
+    "sha256": "ede31d3f9dfe10dceaa36ef49c66c21e698611cfb6d60d2cc3c5f256fd8525bd"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\closed_before.json",
+    "sha256": "7816d18c3145ff9fbf8855a0fd1716666d09e70b088cf76ed4526d5d216f33c8"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\continuation_status.md",
+    "sha256": "01e0138af5882c91526c14aa997bdac7cc00cfd94238557ccd0f864294159152"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\diff.patch",
+    "sha256": "4211497940ed53ecfc39fed366e4bf05f6134add369bccf005bcde6d92e0184d"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\execution_report.md",
+    "sha256": "ce3eb62de290f0b5f6fd8eaebfceeeb6c088fdc8f600f97dc395ac0d6e7b0043"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\file_manifest.json",
+    "sha256": "01a3b436cc8d7bb4561136cebfff0dfeb5edea06190bc2549c523e3b39c8d3e8"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\finalize_r08.py",
+    "sha256": "3bc0dd97e8a9d6f9e5285d6f7102e90854a5c138ddad64f1a78289cbc135bcb1"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\git_after.json",
+    "sha256": "5b45073e8d0471fc8b440c13247c0647faec6f630f6e77630a28394874feaf36"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\git_before.json",
+    "sha256": "6e4999a1b2fc30c30c52e10977b8b66552a6c356bca84f0a8b005963d1d8bca2"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\manifest.sha256",
+    "sha256": "8c9d1cc6bae6aecb82d9d16f83f0607a0234ffae90cac6b110eb785be68f8069"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\ocr.ps1",
+    "sha256": "fe7c0d06fc0e394a3fe6cc7fc23ea4def4a1b60cd510d32367c0632d4422af97"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\ocr_raw.json",
+    "sha256": "9f7b83eee3386b37f5f0e324db314ff65d04beba4d8fc3f7607bb47442dbbef6"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\optional_surcharges.json",
+    "sha256": "1bd3ffeac675e65db71a3fe9fc68e591cfb9df23e35a711944e561048c7714c9"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\photo_coverage.json",
+    "sha256": "41460177f00b660d6c168303a97f77efc7ed2d52e965aec73d51ef4671b0ae14"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\project_before.json",
+    "sha256": "6f60103f927374e541baa88793329bac1735e606ef69715a795374e131a3a4db"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\source_groups.json",
+    "sha256": "169380fa4d36468ee0333988b6a217a756662783cdadf8dd38295fde3c19015a"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\source_ledger.csv",
+    "sha256": "8cc176985053c37e52042ded501adf7d3312f40bb88b1b5dd5785a69e8e182e0"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\source_ledger.json",
+    "sha256": "38e442abe7f437013e286e028ca3448b663e339a428adfa0ddad85e6cc84a55a"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\statistics.json",
+    "sha256": "24addfacedff8c1ce07511049840babd84df3b4635a24fe8460695061349be7c"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\technical_debt.md",
+    "sha256": "2cb5ba07f5d93fbf237b7e3728cedcd336a6336f34748f7ab58d98ba2bb28c74"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\test_output.txt",
+    "sha256": "4906d771f1004d3dbe089604ad21f8d3fc32d177d6780f2d5e62365566c7226e"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\test_r08.py",
+    "sha256": "e7299f7454ccac49900ac978448b186addac8e64273311fc7ea048711b67cf3c"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\unresolved.csv",
+    "sha256": "da879a892a7e829bd1922670882e3aa98d25b65a0556cb58135fca0a932240fd"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\source_assets\\c03_t01_menu.jpg",
+    "sha256": "9b18a285ca9beead686f57c0848e4001714a527fa867f5c2c4152cd6a842b150"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\source_assets\\c04_t01_menu.jpg",
+    "sha256": "acbe584c11a70485651d0d851eab7b519f3ef7df4a4e45f0e0d92ccf62771484"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\source_assets\\c05_t01_menu.jpg",
+    "sha256": "24de847459276407577c44d31f6779f33dcd51d3e7c9408a74bc1e910a33aa60"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\source_assets\\c06_t01_menu.jpg",
+    "sha256": "4ee5f6689dfe9495e1b3d97b6c2b066d56b842142a796928daa2d16b806d5ce1"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\source_assets\\c07_t01_menu.jpg",
+    "sha256": "72f7e0df0c6de28d629f0052fb734789a0ad3f899ccd4392bf2446dcfbb5ae26"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\source_assets\\c08_t01_menu.jpg",
+    "sha256": "47c3770e2a5e623dcd9fe776d6ce1158350adffd1017bee5f93368f236325880"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\source_assets\\c09_t01_menu.jpg",
+    "sha256": "97c29767a2ee17bcf4e37dd0e4ce2b0336de57ee9ba49de20e8d15d6c455663e"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\source_assets\\c10_t01_menu.jpg",
+    "sha256": "39a0b8922f5f00b25b01ee49917e9fa92543acc91245cdcdec5397289a8ab117"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\source_assets\\c11_t01_menu.jpg",
+    "sha256": "b67838596e7fd601485330151332c563d9df5706539c759dda806e791604a544"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\source_assets\\c11_t01_menu2.jpg",
+    "sha256": "53a68e408d2393014126598a32ff2780a4dfac004e4109c548962c083e34bdad"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\source_assets\\collection_notes.md",
+    "sha256": "cf20d6e5ef7500dd38939b2843f5729bd792750a700854cbc1b2cc784b6626b0"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R08_未转录菜单局部_20261101\\source_assets\\R07_review.md",
+    "sha256": "674164e2f00b020ae79c3be1d903bf0790f4d1d5b5684c9e392b9e73ab01610f"
+  }
+]

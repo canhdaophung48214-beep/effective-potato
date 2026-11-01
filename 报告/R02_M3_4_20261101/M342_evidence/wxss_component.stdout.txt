@@ -1,0 +1,15 @@
+.%%HERESUFFIX%%history-list{padding:%%?28rpx?%%;background:#f5f3ee;color:#292a26}
+.%%HERESUFFIX%%notice{padding:%%?20rpx?%%;border-left:%%?6rpx?%% solid #9a6a28;background:#fff3d9;margin-bottom:%%?24rpx?%%}
+.%%HERESUFFIX%%card{padding:%%?28rpx?%%;margin-bottom:%%?22rpx?%%;border-radius:%%?16rpx?%%;background:white}
+.%%HERESUFFIX%%name{font-size:%%?34rpx?%%;font-weight:600}
+.%%HERESUFFIX%%price-row{margin-top:%%?20rpx?%%}
+.%%HERESUFFIX%%label{font-size:%%?24rpx?%%;color:#706957;margin-right:%%?18rpx?%%}
+.%%HERESUFFIX%%history-price{font-size:%%?36rpx?%%;color:#7a5c30}
+.%%HERESUFFIX%%current{margin-top:%%?16rpx?%%;font-size:%%?28rpx?%%;color:#555}
+.%%HERESUFFIX%%hint{margin-top:%%?14rpx?%%;font-size:%%?24rpx?%%;color:#89521c}
+.%%HERESUFFIX%%source,.%%HERESUFFIX%%parent{margin-top:%%?14rpx?%%;font-size:%%?22rpx?%%;color:#777;word-break:break-all}
+.%%HERESUFFIX%%history-list,.%%HERESUFFIX%%card,.%%HERESUFFIX%%notice{box-sizing:border-box;max-width:100%;min-width:0}
+.%%HERESUFFIX%%name,.%%HERESUFFIX%%source,.%%HERESUFFIX%%parent,.%%HERESUFFIX%%hint,.%%HERESUFFIX%%current,.%%HERESUFFIX%%history-price{white-space:normal;word-break:break-all;overflow-wrap:anywhere}
+.%%HERESUFFIX%%price-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:%%?10rpx?%%}
+.%%HERESUFFIX%%history-price{flex:0 1 auto}
+.%%HERESUFFIX%%source{line-height:1.7}

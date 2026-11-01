@@ -1,0 +1,67 @@
+[
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_3_20261101\\checks.json",
+    "bytes": 357,
+    "sha256": "5c77a86fcbf590f3df5ceb53a5b011efb949883e1291998b2c7ef61f004e7262"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_3_20261101\\git_before.txt",
+    "bytes": 17312,
+    "sha256": "83d8c88e4c749b796e3cfcd2cf1e814127c91487f8c89bb98fe0911817740ad0"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_3_20261101\\historical_menu_preview.html",
+    "bytes": 3270,
+    "sha256": "63dee5ad791f036397384b1caa3d057815cc91654212331925e1551f93327772"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_3_20261101\\historical_menu_preview.json",
+    "bytes": 16122,
+    "sha256": "47810e3eecf8b6f19f7fdedb7dc6bb0a8fd34a759a880d6dd515c165db06b7b0"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_3_20261101\\layered_candidates_39.json",
+    "bytes": 124146,
+    "sha256": "5258552248e6aab81db656ba5379146aa6371c3a3221a647a43c49d25797902b"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_3_20261101\\price_adapter.py",
+    "bytes": 3909,
+    "sha256": "6cf75a0ae6d8b0d2d29331c632d91ab1124cdf88aca2d8bfb59dff9e2eff1522"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_3_20261101\\price_adapter.py.log",
+    "bytes": 80,
+    "sha256": "a1c50f7c9e2ac05890e4439d7be2c53f7e5f9f25eef46178a31924d8c6c33620"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_3_20261101\\project_before.json",
+    "bytes": 69576,
+    "sha256": "ed7872671ea8ad06fc530a9471a8811757cf4c194cd1e30ecce447d609bec7f2"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_3_20261101\\test_price_adapter.py",
+    "bytes": 2063,
+    "sha256": "8b63c679001ee0ef987d77786a0494d61145c6a9c14b581bc122e785525e200b"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_3_20261101\\test_price_adapter.py.log",
+    "bytes": 923,
+    "sha256": "4e07691af5b63b466de7765985eda4c92cb30ee5c0456d0a13028b8f8b4dda2c"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_3_20261101\\导入器兼容性与最小差异.md",
+    "bytes": 2312,
+    "sha256": "e231628c0718ebce635f7e163616ae5fa408dd7b25a28d0d21af8161f83822be"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_3_20261101\\执行报告.md",
+    "bytes": 2575,
+    "sha256": "a90aefa9b9bd3b5f8a79d2dce62c1420f592c1e6325df02dec71d2c82e591cac"
+  },
+  {
+    "path": "C:\\Users\\25975\\Desktop\\食神寻味小程序开发\\报告\\R02_M3_3_20261101\\__pycache__\\price_adapter.cpython-314.pyc",
+    "bytes": 7203,
+    "sha256": "0326f5eb3e9845f98fed1717fc0dc0bbf8ac91d007b181c2dd720141b90808ed"
+  }
+]

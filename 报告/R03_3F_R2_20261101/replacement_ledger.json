@@ -1,0 +1,4711 @@
+[
+  {
+    "oldRecordKey": "c01_t38|f3/超级酱大骨套餐||",
+    "oldDishId": "c01_d319",
+    "oldName": "超级酱大骨套餐",
+    "oldStallId": "c01_t38",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:66",
+    "newStallRef": "T18",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t38|f3/状元酱骨套餐||",
+    "oldDishId": "c01_d320",
+    "oldName": "状元酱骨套餐",
+    "oldStallId": "c01_t38",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:67",
+    "newStallRef": "T18",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t38|f3/黑金排骨套餐||",
+    "oldDishId": "c01_d321",
+    "oldName": "黑金排骨套餐",
+    "oldStallId": "c01_t38",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:68",
+    "newStallRef": "T18",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t38|f3/肉酱土豆泥套餐||",
+    "oldDishId": "c01_d322",
+    "oldName": "肉酱土豆泥套餐",
+    "oldStallId": "c01_t38",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:69",
+    "newStallRef": "T18",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t38|f3/鸡蛋焖肠套餐||",
+    "oldDishId": "c01_d323",
+    "oldName": "鸡蛋焖肠套餐",
+    "oldStallId": "c01_t38",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:70",
+    "newStallRef": "T18",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t38|f3/韩式奶香鸡套餐||",
+    "oldDishId": "c01_d324",
+    "oldName": "韩式奶香鸡套餐",
+    "oldStallId": "c01_t38",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:71",
+    "newStallRef": "T18",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t38|f3/酱大骨（大块）||",
+    "oldDishId": "c01_d325",
+    "oldName": "酱大骨（大块）",
+    "oldStallId": "c01_t38",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:77",
+    "newStallRef": "T18",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t38|f3/酱汁饭||",
+    "oldDishId": "c01_d326",
+    "oldName": "酱汁饭",
+    "oldStallId": "c01_t38",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:78",
+    "newStallRef": "T18",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t38|f3/酸菜||",
+    "oldDishId": "c01_d327",
+    "oldName": "酸菜",
+    "oldStallId": "c01_t38",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:79",
+    "newStallRef": "T18",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t38|f3/煎蛋||",
+    "oldDishId": "c01_d328",
+    "oldName": "煎蛋",
+    "oldStallId": "c01_t38",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:80",
+    "newStallRef": "T18",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t38|f3/烤肠||",
+    "oldDishId": "c01_d329",
+    "oldName": "烤肠",
+    "oldStallId": "c01_t38",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:81",
+    "newStallRef": "T18",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t38|f3/豆角（或豆干）||",
+    "oldDishId": "c01_d330",
+    "oldName": "豆角（或豆干）",
+    "oldStallId": "c01_t38",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:82",
+    "newStallRef": "T18",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t39|f3/鸡块咖喱蛋包饭||",
+    "oldDishId": "c01_d331",
+    "oldName": "鸡块咖喱蛋包饭",
+    "oldStallId": "c01_t39",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:101",
+    "newStallRef": "T19",
+    "newSourceRefs": [
+      "R03-T19-L0567-179"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t39|f3/香肠咖喱蛋包饭||",
+    "oldDishId": "c01_d332",
+    "oldName": "香肠咖喱蛋包饭",
+    "oldStallId": "c01_t39",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:102",
+    "newStallRef": "T19",
+    "newSourceRefs": [
+      "R03-T19-L0572-184"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t39|f3/鸡柳咖喱蛋包饭||",
+    "oldDishId": "c01_d333",
+    "oldName": "鸡柳咖喱蛋包饭",
+    "oldStallId": "c01_t39",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:103",
+    "newStallRef": "T19",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t39|f3/蟹柳咖喱蛋包饭||",
+    "oldDishId": "c01_d334",
+    "oldName": "蟹柳咖喱蛋包饭",
+    "oldStallId": "c01_t39",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:104",
+    "newStallRef": "T19",
+    "newSourceRefs": [
+      "R03-T19-L0573-185"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t39|f3/鱼蛋咖喱蛋包饭||",
+    "oldDishId": "c01_d335",
+    "oldName": "鱼蛋咖喱蛋包饭",
+    "oldStallId": "c01_t39",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:105",
+    "newStallRef": "T19",
+    "newSourceRefs": [
+      "R03-T19-L0569-181"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t39|f3/炸鸡咖喱蛋包饭||",
+    "oldDishId": "c01_d336",
+    "oldName": "炸鸡咖喱蛋包饭",
+    "oldStallId": "c01_t39",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:106",
+    "newStallRef": "T19",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t39|f3/猪排咖喱蛋包饭||",
+    "oldDishId": "c01_d337",
+    "oldName": "猪排咖喱蛋包饭",
+    "oldStallId": "c01_t39",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:107",
+    "newStallRef": "T19",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t39|f3/香酥鱼排咖喱蛋包饭||",
+    "oldDishId": "c01_d338",
+    "oldName": "香酥鱼排咖喱蛋包饭",
+    "oldStallId": "c01_t39",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:108",
+    "newStallRef": "T19",
+    "newSourceRefs": [
+      "R03-T19-L0575-187"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t39|f3/烤肉咖喱蛋包饭||",
+    "oldDishId": "c01_d339",
+    "oldName": "烤肉咖喱蛋包饭",
+    "oldStallId": "c01_t39",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:109",
+    "newStallRef": "T19",
+    "newSourceRefs": [
+      "R03-T19-L0571-183"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t39|f3/轻素食鸡咖喱蛋包饭||",
+    "oldDishId": "c01_d340",
+    "oldName": "轻素食鸡咖喱蛋包饭",
+    "oldStallId": "c01_t39",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:110",
+    "newStallRef": "T19",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t39|f3/泰式肉酱咖喱蛋包饭||",
+    "oldDishId": "c01_d341",
+    "oldName": "泰式肉酱咖喱蛋包饭",
+    "oldStallId": "c01_t39",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:116",
+    "newStallRef": "T19",
+    "newSourceRefs": [
+      "R03-T19-L0582-189"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t39|f3/泰式黑金酱骨咖喱蛋包饭||",
+    "oldDishId": "c01_d342",
+    "oldName": "泰式黑金酱骨咖喱蛋包饭",
+    "oldStallId": "c01_t39",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:117",
+    "newStallRef": "T19",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t39|f3/泰式奶香鸡丁咖喱蛋包饭||",
+    "oldDishId": "c01_d343",
+    "oldName": "泰式奶香鸡丁咖喱蛋包饭",
+    "oldStallId": "c01_t39",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:118",
+    "newStallRef": "T19",
+    "newSourceRefs": [
+      "R03-T19-L0584-191"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t40|f3/蜜汁茶泡饭||",
+    "oldDishId": "",
+    "oldName": "蜜汁茶泡饭",
+    "oldStallId": "c01_t40",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:147",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0202-041"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t40|f3/咖喱茶泡饭||",
+    "oldDishId": "",
+    "oldName": "咖喱茶泡饭",
+    "oldStallId": "c01_t40",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:148",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0209-048"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t40|f3/麻辣茶泡饭||",
+    "oldDishId": "",
+    "oldName": "麻辣茶泡饭",
+    "oldStallId": "c01_t40",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:149",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0210-049"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t40|f3/香辣肉干茶泡饭||",
+    "oldDishId": "",
+    "oldName": "香辣肉干茶泡饭",
+    "oldStallId": "c01_t40",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:150",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0212-051"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t40|f3/老坛酸菜茶泡饭||",
+    "oldDishId": "",
+    "oldName": "老坛酸菜茶泡饭",
+    "oldStallId": "c01_t40",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:151",
+    "newStallRef": "T07",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t40|f3/椒麻茶泡饭||",
+    "oldDishId": "",
+    "oldName": "椒麻茶泡饭",
+    "oldStallId": "c01_t40",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:152",
+    "newStallRef": "T07",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t40|f3/韩式烤肉茶泡饭||",
+    "oldDishId": "",
+    "oldName": "韩式烤肉茶泡饭",
+    "oldStallId": "c01_t40",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:153",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0211-050"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t40|f3/猪颈肉茶泡饭||",
+    "oldDishId": "",
+    "oldName": "猪颈肉茶泡饭",
+    "oldStallId": "c01_t40",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:154",
+    "newStallRef": "T07",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t40|f3/东安鸡茶泡饭||",
+    "oldDishId": "",
+    "oldName": "东安鸡茶泡饭",
+    "oldStallId": "c01_t40",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:155",
+    "newStallRef": "T07",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t40|f3/筋头巴脑茶泡饭||",
+    "oldDishId": "",
+    "oldName": "筋头巴脑茶泡饭",
+    "oldStallId": "c01_t40",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:156",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0215-054"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t40|f3/火鸡茶泡饭||",
+    "oldDishId": "",
+    "oldName": "火鸡茶泡饭",
+    "oldStallId": "c01_t40",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:157",
+    "newStallRef": "T07",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t40|f3/火腿滑蛋饭||",
+    "oldDishId": "",
+    "oldName": "火腿滑蛋饭",
+    "oldStallId": "c01_t40",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:163",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0221-055"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t40|f3/广东风味滑蛋饭||",
+    "oldDishId": "",
+    "oldName": "广东风味滑蛋饭",
+    "oldStallId": "c01_t40",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:164",
+    "newStallRef": "T07",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t40|f3/蜜汁鸡丁滑蛋饭||",
+    "oldDishId": "",
+    "oldName": "蜜汁鸡丁滑蛋饭",
+    "oldStallId": "c01_t40",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:165",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0223-057"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t40|f3/椒麻鸡丁滑蛋饭||",
+    "oldDishId": "",
+    "oldName": "椒麻鸡丁滑蛋饭",
+    "oldStallId": "c01_t40",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:166",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0224-058"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t40|f3/小炒五花肉滑蛋饭||",
+    "oldDishId": "",
+    "oldName": "小炒五花肉滑蛋饭",
+    "oldStallId": "c01_t40",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:167",
+    "newStallRef": "T07",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t40|f3/番茄虾仁滑蛋饭||",
+    "oldDishId": "",
+    "oldName": "番茄虾仁滑蛋饭",
+    "oldStallId": "c01_t40",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:168",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0226-060"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t40|f3/番茄肥牛滑蛋饭||",
+    "oldDishId": "",
+    "oldName": "番茄肥牛滑蛋饭",
+    "oldStallId": "c01_t40",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:169",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0227-061"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t40|f3/麻辣肥牛滑蛋饭||",
+    "oldDishId": "",
+    "oldName": "麻辣肥牛滑蛋饭",
+    "oldStallId": "c01_t40",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:170",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0228-062"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t41|f3/辣椒炒肉（招牌）||",
+    "oldDishId": "",
+    "oldName": "辣椒炒肉（招牌）",
+    "oldStallId": "c01_t41",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:185",
+    "newStallRef": "T13",
+    "newSourceRefs": [
+      "R03-T13-L0364-099"
+    ],
+    "action": "REPLACE",
+    "reason": "既有NG03裁决已落实；小炒腊肠（肉）与小炒腊肠文字不同不自动视作精确相同。"
+  },
+  {
+    "oldRecordKey": "c01_t41|f3/杏鲍菇炒肉||",
+    "oldDishId": "",
+    "oldName": "杏鲍菇炒肉",
+    "oldStallId": "c01_t41",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:186",
+    "newStallRef": "T13",
+    "newSourceRefs": [
+      "R03-T13-L0365-100"
+    ],
+    "action": "REPLACE",
+    "reason": "既有NG03裁决已落实；小炒腊肠（肉）与小炒腊肠文字不同不自动视作精确相同。"
+  },
+  {
+    "oldRecordKey": "c01_t41|f3/农家一碗香||",
+    "oldDishId": "",
+    "oldName": "农家一碗香",
+    "oldStallId": "c01_t41",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:187",
+    "newStallRef": "T13",
+    "newSourceRefs": [
+      "R03-T13-L0366-101"
+    ],
+    "action": "REPLACE",
+    "reason": "既有NG03裁决已落实；小炒腊肠（肉）与小炒腊肠文字不同不自动视作精确相同。"
+  },
+  {
+    "oldRecordKey": "c01_t41|f3/双椒回锅肉||",
+    "oldDishId": "",
+    "oldName": "双椒回锅肉",
+    "oldStallId": "c01_t41",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:188",
+    "newStallRef": "T13",
+    "newSourceRefs": [
+      "R03-T13-L0367-102"
+    ],
+    "action": "REPLACE",
+    "reason": "既有NG03裁决已落实；小炒腊肠（肉）与小炒腊肠文字不同不自动视作精确相同。"
+  },
+  {
+    "oldRecordKey": "c01_t41|f3/小炒腊肠（肉）||",
+    "oldDishId": "",
+    "oldName": "小炒腊肠（肉）",
+    "oldStallId": "c01_t41",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:189",
+    "newStallRef": "T13",
+    "newSourceRefs": [
+      "R03-T13-L0368-103"
+    ],
+    "action": "REPLACE",
+    "reason": "R2 T13逐行列表及“与首轮记录一致”明确对应：保留旧名括注作历史，新名为小炒腊肠；不是重开NG03经营规则裁决。"
+  },
+  {
+    "oldRecordKey": "c01_t41|f3/豆腐炒肉||",
+    "oldDishId": "",
+    "oldName": "豆腐炒肉",
+    "oldStallId": "c01_t41",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:190",
+    "newStallRef": "T13",
+    "newSourceRefs": [
+      "R03-T13-L0369-104"
+    ],
+    "action": "REPLACE",
+    "reason": "既有NG03裁决已落实；小炒腊肠（肉）与小炒腊肠文字不同不自动视作精确相同。"
+  },
+  {
+    "oldRecordKey": "c01_t41|f3/番茄拉丝炒蛋||",
+    "oldDishId": "",
+    "oldName": "番茄拉丝炒蛋",
+    "oldStallId": "c01_t41",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:191",
+    "newStallRef": "T13",
+    "newSourceRefs": [
+      "R03-T13-L0370-105"
+    ],
+    "action": "REPLACE",
+    "reason": "既有NG03裁决已落实；小炒腊肠（肉）与小炒腊肠文字不同不自动视作精确相同。"
+  },
+  {
+    "oldRecordKey": "c01_t41|f3/外婆菜炒鸡蛋||",
+    "oldDishId": "",
+    "oldName": "外婆菜炒鸡蛋",
+    "oldStallId": "c01_t41",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:192",
+    "newStallRef": "T13",
+    "newSourceRefs": [
+      "R03-T13-L0371-106"
+    ],
+    "action": "REPLACE",
+    "reason": "既有NG03裁决已落实；小炒腊肠（肉）与小炒腊肠文字不同不自动视作精确相同。"
+  },
+  {
+    "oldRecordKey": "c01_t41|f3/青椒小炒肉||",
+    "oldDishId": "",
+    "oldName": "青椒小炒肉",
+    "oldStallId": "c01_t41",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:193",
+    "newStallRef": "T13",
+    "newSourceRefs": [
+      "R03-T13-L0372-107"
+    ],
+    "action": "REPLACE",
+    "reason": "既有NG03裁决已落实；小炒腊肠（肉）与小炒腊肠文字不同不自动视作精确相同。"
+  },
+  {
+    "oldRecordKey": "c01_t41|f3/红烧排骨饭||",
+    "oldDishId": "",
+    "oldName": "红烧排骨饭",
+    "oldStallId": "c01_t41",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:194",
+    "newStallRef": "T13",
+    "newSourceRefs": [
+      "R03-T13-L0373-108"
+    ],
+    "action": "REPLACE",
+    "reason": "既有NG03裁决已落实；小炒腊肠（肉）与小炒腊肠文字不同不自动视作精确相同。"
+  },
+  {
+    "oldRecordKey": "c01_t42|f3/招牌肉夹馍|1 个|",
+    "oldDishId": "c01_d347",
+    "oldName": "招牌肉夹馍",
+    "oldStallId": "c01_t42",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:210",
+    "newStallRef": "",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "W05未拍/旧W06无完整新菜单，不能跨档口挪用。"
+  },
+  {
+    "oldRecordKey": "c01_t42|f3/招牌肉夹馍|2 个|",
+    "oldDishId": "c01_d348",
+    "oldName": "招牌肉夹馍",
+    "oldStallId": "c01_t42",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:210",
+    "newStallRef": "",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "W05未拍/旧W06无完整新菜单，不能跨档口挪用。"
+  },
+  {
+    "oldRecordKey": "c01_t42|f3/招牌肉夹馍|3 个|",
+    "oldDishId": "c01_d349",
+    "oldName": "招牌肉夹馍",
+    "oldStallId": "c01_t42",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:210",
+    "newStallRef": "",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "W05未拍/旧W06无完整新菜单，不能跨档口挪用。"
+  },
+  {
+    "oldRecordKey": "c01_t42|f3/纯瘦（肉夹馍）||",
+    "oldDishId": "c01_d350",
+    "oldName": "纯瘦（肉夹馍）",
+    "oldStallId": "c01_t42",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:211",
+    "newStallRef": "",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "W05未拍/旧W06无完整新菜单，不能跨档口挪用。"
+  },
+  {
+    "oldRecordKey": "c01_t42|f3/招牌肉酱酸辣粉||",
+    "oldDishId": "c01_d351",
+    "oldName": "招牌肉酱酸辣粉",
+    "oldStallId": "c01_t42",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:212",
+    "newStallRef": "",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "W05未拍/旧W06无完整新菜单，不能跨档口挪用。"
+  },
+  {
+    "oldRecordKey": "c01_t42|f3/酸菜豆干朝鲜面||",
+    "oldDishId": "c01_d352",
+    "oldName": "酸菜豆干朝鲜面",
+    "oldStallId": "c01_t42",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:213",
+    "newStallRef": "",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "W05未拍/旧W06无完整新菜单，不能跨档口挪用。"
+  },
+  {
+    "oldRecordKey": "c01_t42|f3/八胖秘制凉皮||",
+    "oldDishId": "c01_d353",
+    "oldName": "八胖秘制凉皮",
+    "oldStallId": "c01_t42",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:214",
+    "newStallRef": "",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "W05未拍/旧W06无完整新菜单，不能跨档口挪用。"
+  },
+  {
+    "oldRecordKey": "c01_t42|f3/特色酸辣手擀面||",
+    "oldDishId": "c01_d354",
+    "oldName": "特色酸辣手擀面",
+    "oldStallId": "c01_t42",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:215",
+    "newStallRef": "",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "W05未拍/旧W06无完整新菜单，不能跨档口挪用。"
+  },
+  {
+    "oldRecordKey": "c01_t42|f3/手工大馅馄饨||",
+    "oldDishId": "c01_d355",
+    "oldName": "手工大馅馄饨",
+    "oldStallId": "c01_t42",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:216",
+    "newStallRef": "",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "W05未拍/旧W06无完整新菜单，不能跨档口挪用。"
+  },
+  {
+    "oldRecordKey": "c01_t42|f3/鲜肉小笼包||",
+    "oldDishId": "c01_d356",
+    "oldName": "鲜肉小笼包",
+    "oldStallId": "c01_t42",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:222",
+    "newStallRef": "T17",
+    "newSourceRefs": [
+      "R03-T17-L0518-166"
+    ],
+    "action": "REPLACE",
+    "reason": "R2明确小笼包为T17独立档口，不能继续挂W05；仅关联证据，不继承旧ID。"
+  },
+  {
+    "oldRecordKey": "c01_t42|f3/香菇酱肉小笼包||",
+    "oldDishId": "c01_d357",
+    "oldName": "香菇酱肉小笼包",
+    "oldStallId": "c01_t42",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:223",
+    "newStallRef": "T17",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "R2明确小笼包为T17独立档口，不能继续挂W05；仅关联证据，不继承旧ID。"
+  },
+  {
+    "oldRecordKey": "c01_t42|f3/韭菜鸡蛋小笼包||",
+    "oldDishId": "c01_d358",
+    "oldName": "韭菜鸡蛋小笼包",
+    "oldStallId": "c01_t42",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:224",
+    "newStallRef": "T17",
+    "newSourceRefs": [
+      "R03-T17-L0520-168"
+    ],
+    "action": "REPLACE",
+    "reason": "R2明确小笼包为T17独立档口，不能继续挂W05；仅关联证据，不继承旧ID。"
+  },
+  {
+    "oldRecordKey": "c01_t42|f3/牛肉小笼包||",
+    "oldDishId": "c01_d359",
+    "oldName": "牛肉小笼包",
+    "oldStallId": "c01_t42",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:225",
+    "newStallRef": "T17",
+    "newSourceRefs": [
+      "R03-T17-L0523-171"
+    ],
+    "action": "REPLACE",
+    "reason": "R2明确小笼包为T17独立档口，不能继续挂W05；仅关联证据，不继承旧ID。"
+  },
+  {
+    "oldRecordKey": "c01_t42|f3/素馅小笼包||",
+    "oldDishId": "c01_d360",
+    "oldName": "素馅小笼包",
+    "oldStallId": "c01_t42",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:226",
+    "newStallRef": "T17",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "R2明确小笼包为T17独立档口，不能继续挂W05；仅关联证据，不继承旧ID。"
+  },
+  {
+    "oldRecordKey": "c01_t42|f3/蟹黄小笼包||",
+    "oldDishId": "c01_d361",
+    "oldName": "蟹黄小笼包",
+    "oldStallId": "c01_t42",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:227",
+    "newStallRef": "T17",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "R2明确小笼包为T17独立档口，不能继续挂W05；仅关联证据，不继承旧ID。"
+  },
+  {
+    "oldRecordKey": "c01_t43|f3/招牌红烧肉||",
+    "oldDishId": "c01_d362",
+    "oldName": "招牌红烧肉",
+    "oldStallId": "c01_t43",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:243",
+    "newStallRef": "",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "W05未拍/旧W06无完整新菜单，不能跨档口挪用。"
+  },
+  {
+    "oldRecordKey": "c01_t43|f3/贵妃荔枝鸡||",
+    "oldDishId": "c01_d363",
+    "oldName": "贵妃荔枝鸡",
+    "oldStallId": "c01_t43",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:244",
+    "newStallRef": "",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "W05未拍/旧W06无完整新菜单，不能跨档口挪用。"
+  },
+  {
+    "oldRecordKey": "c01_t43|f3/可乐鸡||",
+    "oldDishId": "c01_d364",
+    "oldName": "可乐鸡",
+    "oldStallId": "c01_t43",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:245",
+    "newStallRef": "",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "W05未拍/旧W06无完整新菜单，不能跨档口挪用。"
+  },
+  {
+    "oldRecordKey": "c01_t43|f3/黑椒烤肉||",
+    "oldDishId": "c01_d365",
+    "oldName": "黑椒烤肉",
+    "oldStallId": "c01_t43",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:246",
+    "newStallRef": "",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "W05未拍/旧W06无完整新菜单，不能跨档口挪用。"
+  },
+  {
+    "oldRecordKey": "c01_t43|f3/香辣鸭腿饭||",
+    "oldDishId": "c01_d366",
+    "oldName": "香辣鸭腿饭",
+    "oldStallId": "c01_t43",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:247",
+    "newStallRef": "",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "W05未拍/旧W06无完整新菜单，不能跨档口挪用。"
+  },
+  {
+    "oldRecordKey": "c01_t43|f3/招牌黑鸭煲||",
+    "oldDishId": "c01_d367",
+    "oldName": "招牌黑鸭煲",
+    "oldStallId": "c01_t43",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:248",
+    "newStallRef": "",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "W05未拍/旧W06无完整新菜单，不能跨档口挪用。"
+  },
+  {
+    "oldRecordKey": "c01_t43|f3/藤椒炒鸡||",
+    "oldDishId": "c01_d368",
+    "oldName": "藤椒炒鸡",
+    "oldStallId": "c01_t43",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:249",
+    "newStallRef": "",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "W05未拍/旧W06无完整新菜单，不能跨档口挪用。"
+  },
+  {
+    "oldRecordKey": "c01_t43|f3/香辣干锅鸡||",
+    "oldDishId": "c01_d369",
+    "oldName": "香辣干锅鸡",
+    "oldStallId": "c01_t43",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:250",
+    "newStallRef": "",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "W05未拍/旧W06无完整新菜单，不能跨档口挪用。"
+  },
+  {
+    "oldRecordKey": "c01_t43|f3/农家小炒肉||",
+    "oldDishId": "c01_d370",
+    "oldName": "农家小炒肉",
+    "oldStallId": "c01_t43",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:251",
+    "newStallRef": "",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "W05未拍/旧W06无完整新菜单，不能跨档口挪用。"
+  },
+  {
+    "oldRecordKey": "c01_t43|f3/百事可乐鸡||",
+    "oldDishId": "c01_d371",
+    "oldName": "百事可乐鸡",
+    "oldStallId": "c01_t43",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:252",
+    "newStallRef": "",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "W05未拍/旧W06无完整新菜单，不能跨档口挪用。"
+  },
+  {
+    "oldRecordKey": "c01_t44|f3/招牌牛肉面||",
+    "oldDishId": "c01_d373",
+    "oldName": "招牌牛肉面",
+    "oldStallId": "c01_t44",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:267",
+    "newStallRef": "T20",
+    "newSourceRefs": [
+      "R03-T20-L0607-195"
+    ],
+    "action": "RETAIN",
+    "reason": "仅12项主菜单范围允许原文保留；旧ID仅追溯，候选使用新局部ID。"
+  },
+  {
+    "oldRecordKey": "c01_t44|f3/风味酱香鸭腿面||",
+    "oldDishId": "c01_d374",
+    "oldName": "风味酱香鸭腿面",
+    "oldStallId": "c01_t44",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:268",
+    "newStallRef": "T20",
+    "newSourceRefs": [
+      "R03-T20-L0608-196"
+    ],
+    "action": "RETAIN",
+    "reason": "仅12项主菜单范围允许原文保留；旧ID仅追溯，候选使用新局部ID。"
+  },
+  {
+    "oldRecordKey": "c01_t44|f3/特色辣肉面||",
+    "oldDishId": "c01_d375",
+    "oldName": "特色辣肉面",
+    "oldStallId": "c01_t44",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:269",
+    "newStallRef": "T20",
+    "newSourceRefs": [
+      "R03-T20-L0609-197"
+    ],
+    "action": "RETAIN",
+    "reason": "仅12项主菜单范围允许原文保留；旧ID仅追溯，候选使用新局部ID。"
+  },
+  {
+    "oldRecordKey": "c01_t44|f3/特色羊杂面||",
+    "oldDishId": "c01_d376",
+    "oldName": "特色羊杂面",
+    "oldStallId": "c01_t44",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:270",
+    "newStallRef": "T20",
+    "newSourceRefs": [
+      "R03-T20-L0610-198"
+    ],
+    "action": "RETAIN",
+    "reason": "仅12项主菜单范围允许原文保留；旧ID仅追溯，候选使用新局部ID。"
+  },
+  {
+    "oldRecordKey": "c01_t44|f3/酸菜肉丝面||",
+    "oldDishId": "c01_d377",
+    "oldName": "酸菜肉丝面",
+    "oldStallId": "c01_t44",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:271",
+    "newStallRef": "T20",
+    "newSourceRefs": [
+      "R03-T20-L0611-199"
+    ],
+    "action": "RETAIN",
+    "reason": "仅12项主菜单范围允许原文保留；旧ID仅追溯，候选使用新局部ID。"
+  },
+  {
+    "oldRecordKey": "c01_t44|f3/小馆清汤面||",
+    "oldDishId": "c01_d378",
+    "oldName": "小馆清汤面",
+    "oldStallId": "c01_t44",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:272",
+    "newStallRef": "T20",
+    "newSourceRefs": [
+      "R03-T20-L0612-200"
+    ],
+    "action": "RETAIN",
+    "reason": "仅12项主菜单范围允许原文保留；旧ID仅追溯，候选使用新局部ID。"
+  },
+  {
+    "oldRecordKey": "c01_t44|f3/双拼酱面||",
+    "oldDishId": "c01_d379",
+    "oldName": "双拼酱面",
+    "oldStallId": "c01_t44",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:273",
+    "newStallRef": "T20",
+    "newSourceRefs": [
+      "R03-T20-L0613-201"
+    ],
+    "action": "RETAIN",
+    "reason": "仅12项主菜单范围允许原文保留；旧ID仅追溯，候选使用新局部ID。"
+  },
+  {
+    "oldRecordKey": "c01_t44|f3/鸡蛋酱拌面||",
+    "oldDishId": "c01_d380",
+    "oldName": "鸡蛋酱拌面",
+    "oldStallId": "c01_t44",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:274",
+    "newStallRef": "T20",
+    "newSourceRefs": [
+      "R03-T20-L0614-202"
+    ],
+    "action": "RETAIN",
+    "reason": "仅12项主菜单范围允许原文保留；旧ID仅追溯，候选使用新局部ID。"
+  },
+  {
+    "oldRecordKey": "c01_t44|f3/招牌炸酱面||",
+    "oldDishId": "c01_d381",
+    "oldName": "招牌炸酱面",
+    "oldStallId": "c01_t44",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:275",
+    "newStallRef": "T20",
+    "newSourceRefs": [
+      "R03-T20-L0615-203"
+    ],
+    "action": "RETAIN",
+    "reason": "仅12项主菜单范围允许原文保留；旧ID仅追溯，候选使用新局部ID。"
+  },
+  {
+    "oldRecordKey": "c01_t44|f3/酸菜肉丝拌面||",
+    "oldDishId": "c01_d382",
+    "oldName": "酸菜肉丝拌面",
+    "oldStallId": "c01_t44",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:276",
+    "newStallRef": "T20",
+    "newSourceRefs": [
+      "R03-T20-L0616-204"
+    ],
+    "action": "RETAIN",
+    "reason": "仅12项主菜单范围允许原文保留；旧ID仅追溯，候选使用新局部ID。"
+  },
+  {
+    "oldRecordKey": "c01_t44|f3/清口凉面||",
+    "oldDishId": "c01_d383",
+    "oldName": "清口凉面",
+    "oldStallId": "c01_t44",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:277",
+    "newStallRef": "T20",
+    "newSourceRefs": [
+      "R03-T20-L0617-205"
+    ],
+    "action": "RETAIN",
+    "reason": "仅12项主菜单范围允许原文保留；旧ID仅追溯，候选使用新局部ID。"
+  },
+  {
+    "oldRecordKey": "c01_t44|f3/麻辣鸡丝拌面||",
+    "oldDishId": "c01_d384",
+    "oldName": "麻辣鸡丝拌面",
+    "oldStallId": "c01_t44",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:278",
+    "newStallRef": "T20",
+    "newSourceRefs": [
+      "R03-T20-L0618-206"
+    ],
+    "action": "RETAIN",
+    "reason": "仅12项主菜单范围允许原文保留；旧ID仅追溯，候选使用新局部ID。"
+  },
+  {
+    "oldRecordKey": "c01_t44|f3/卤蛋||",
+    "oldDishId": "c01_d385",
+    "oldName": "卤蛋",
+    "oldStallId": "c01_t44",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:284",
+    "newStallRef": "T20",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "T20卤味明确不录，旧历史留存"
+  },
+  {
+    "oldRecordKey": "c01_t44|f3/煎蛋||",
+    "oldDishId": "c01_d386",
+    "oldName": "煎蛋",
+    "oldStallId": "c01_t44",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:285",
+    "newStallRef": "T20",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "T20卤味明确不录，旧历史留存"
+  },
+  {
+    "oldRecordKey": "c01_t44|f3/烤肠||",
+    "oldDishId": "c01_d387",
+    "oldName": "烤肠",
+    "oldStallId": "c01_t44",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:286",
+    "newStallRef": "T20",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "T20卤味明确不录，旧历史留存"
+  },
+  {
+    "oldRecordKey": "c01_t44|f3/豆干||",
+    "oldDishId": "c01_d388",
+    "oldName": "豆干",
+    "oldStallId": "c01_t44",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:287",
+    "newStallRef": "T20",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "T20卤味明确不录，旧历史留存"
+  },
+  {
+    "oldRecordKey": "c01_t44|f3/豆皮叶||",
+    "oldDishId": "c01_d389",
+    "oldName": "豆皮叶",
+    "oldStallId": "c01_t44",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:288",
+    "newStallRef": "T20",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "T20卤味明确不录，旧历史留存"
+  },
+  {
+    "oldRecordKey": "c01_t44|f3/猪脚面||",
+    "oldDishId": "c01_d390",
+    "oldName": "猪脚面",
+    "oldStallId": "c01_t44",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:294",
+    "newStallRef": "T20",
+    "newSourceRefs": [
+      "R03-T20-L0621-289"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t44|f3/风味鸭腿||",
+    "oldDishId": "c01_d391",
+    "oldName": "风味鸭腿",
+    "oldStallId": "c01_t44",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:295",
+    "newStallRef": "T20",
+    "newSourceRefs": [
+      "R03-T20-L0621-290"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t45|f3/鲜肉卷卷烧饼||",
+    "oldDishId": "c01_d392",
+    "oldName": "鲜肉卷卷烧饼",
+    "oldStallId": "c01_t45",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:311",
+    "newStallRef": "T15",
+    "newSourceRefs": [
+      "R03-T15-L0473-154"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t45|f3/鸡肉卷卷烧饼||",
+    "oldDishId": "c01_d393",
+    "oldName": "鸡肉卷卷烧饼",
+    "oldStallId": "c01_t45",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:312",
+    "newStallRef": "T15",
+    "newSourceRefs": [
+      "R03-T15-L0474-155"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t45|f3/鱿鱼卷卷烧饼||",
+    "oldDishId": "c01_d394",
+    "oldName": "鱿鱼卷卷烧饼",
+    "oldStallId": "c01_t45",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:313",
+    "newStallRef": "T15",
+    "newSourceRefs": [
+      "R03-T15-L0475-156"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t45|f3/芝士玉米烧饼||",
+    "oldDishId": "c01_d395",
+    "oldName": "芝士玉米烧饼",
+    "oldStallId": "c01_t45",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:314",
+    "newStallRef": "T15",
+    "newSourceRefs": [
+      "R03-T15-L0476-157"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t45|f3/辣番茄米线（原味）||",
+    "oldDishId": "c01_d396",
+    "oldName": "辣番茄米线（原味）",
+    "oldStallId": "c01_t45",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:322",
+    "newStallRef": "T15",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t45|f3/番茄锅米线||",
+    "oldDishId": "c01_d397",
+    "oldName": "番茄锅米线",
+    "oldStallId": "c01_t45",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:323",
+    "newStallRef": "T15",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t45|f3/麻辣锅米线||",
+    "oldDishId": "c01_d398",
+    "oldName": "麻辣锅米线",
+    "oldStallId": "c01_t45",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:324",
+    "newStallRef": "T15",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t45|f3/香辣锅米线||",
+    "oldDishId": "c01_d399",
+    "oldName": "香辣锅米线",
+    "oldStallId": "c01_t45",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:325",
+    "newStallRef": "T15",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t45|f3/另一款||",
+    "oldDishId": "c01_d400",
+    "oldName": "另一款",
+    "oldStallId": "c01_t45",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:326",
+    "newStallRef": "T15",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t45|f3/精选肥牛卷||",
+    "oldDishId": "c01_d401",
+    "oldName": "精选肥牛卷",
+    "oldStallId": "c01_t45",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:332",
+    "newStallRef": "T15",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t45|f3/鲜虾滑||",
+    "oldDishId": "c01_d402",
+    "oldName": "鲜虾滑",
+    "oldStallId": "c01_t45",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:333",
+    "newStallRef": "T15",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t45|f3/现炸小酥肉||",
+    "oldDishId": "c01_d403",
+    "oldName": "现炸小酥肉",
+    "oldStallId": "c01_t45",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:334",
+    "newStallRef": "T15",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t45|f3/鱼豆腐||",
+    "oldDishId": "c01_d404",
+    "oldName": "鱼豆腐",
+    "oldStallId": "c01_t45",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:335",
+    "newStallRef": "T15",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t45|f3/鸭血||",
+    "oldDishId": "c01_d405",
+    "oldName": "鸭血",
+    "oldStallId": "c01_t45",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:336",
+    "newStallRef": "T15",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t45|f3/午餐肉||",
+    "oldDishId": "c01_d406",
+    "oldName": "午餐肉",
+    "oldStallId": "c01_t45",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:337",
+    "newStallRef": "T15",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t45|f3/干豆皮||",
+    "oldDishId": "c01_d407",
+    "oldName": "干豆皮",
+    "oldStallId": "c01_t45",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:338",
+    "newStallRef": "T15",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t45|f3/甘蓝||",
+    "oldDishId": "c01_d408",
+    "oldName": "甘蓝",
+    "oldStallId": "c01_t45",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:339",
+    "newStallRef": "T15",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t45|f3/银耳||",
+    "oldDishId": "c01_d409",
+    "oldName": "银耳",
+    "oldStallId": "c01_t45",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:340",
+    "newStallRef": "T15",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t45|f3/海带丝||",
+    "oldDishId": "c01_d410",
+    "oldName": "海带丝",
+    "oldStallId": "c01_t45",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:341",
+    "newStallRef": "T15",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t45|f3/香酥卷||",
+    "oldDishId": "c01_d411",
+    "oldName": "香酥卷",
+    "oldStallId": "c01_t45",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:342",
+    "newStallRef": "T15",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t45|f3/波波肠||",
+    "oldDishId": "c01_d412",
+    "oldName": "波波肠",
+    "oldStallId": "c01_t45",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:343",
+    "newStallRef": "T15",
+    "newSourceRefs": [],
+    "action": "PENDING",
+    "reason": "新段未找到一对一同名来源，保留旧来源待核对；不得猜替换目标。"
+  },
+  {
+    "oldRecordKey": "c01_t46|f3/铁板炸鸡培根拌饭||",
+    "oldDishId": "c01_d413",
+    "oldName": "铁板炸鸡培根拌饭",
+    "oldStallId": "c01_t46",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:356",
+    "newStallRef": "T22",
+    "newSourceRefs": [
+      "R03-T22-L0680-222"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t46|f3/铁板烤五花肉拌饭||",
+    "oldDishId": "c01_d414",
+    "oldName": "铁板烤五花肉拌饭",
+    "oldStallId": "c01_t46",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:357",
+    "newStallRef": "T22",
+    "newSourceRefs": [
+      "R03-T22-L0681-223"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t46|f3/铁板烤梅花肉拌饭||",
+    "oldDishId": "c01_d415",
+    "oldName": "铁板烤梅花肉拌饭",
+    "oldStallId": "c01_t46",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:358",
+    "newStallRef": "T22",
+    "newSourceRefs": [
+      "R03-T22-L0682-224"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t46|f3/铁板黑椒牛肉拌饭||",
+    "oldDishId": "c01_d416",
+    "oldName": "铁板黑椒牛肉拌饭",
+    "oldStallId": "c01_t46",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:359",
+    "newStallRef": "T22",
+    "newSourceRefs": [
+      "R03-T22-L0683-225"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t46|f3/铁板安格斯肥牛拌饭||",
+    "oldDishId": "c01_d417",
+    "oldName": "铁板安格斯肥牛拌饭",
+    "oldStallId": "c01_t46",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:360",
+    "newStallRef": "T22",
+    "newSourceRefs": [
+      "R03-T22-L0684-226"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t46|f3/乌鸡卷锅||",
+    "oldDishId": "c01_d418",
+    "oldName": "乌鸡卷锅",
+    "oldStallId": "c01_t46",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:368",
+    "newStallRef": "T22",
+    "newSourceRefs": [
+      "R03-T22-L0690-227"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t46|f3/猪梅肉锅||",
+    "oldDishId": "c01_d419",
+    "oldName": "猪梅肉锅",
+    "oldStallId": "c01_t46",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:369",
+    "newStallRef": "T22",
+    "newSourceRefs": [
+      "R03-T22-L0691-228"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t46|f3/肥牛卷锅||",
+    "oldDishId": "c01_d420",
+    "oldName": "肥牛卷锅",
+    "oldStallId": "c01_t46",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:370",
+    "newStallRef": "T22",
+    "newSourceRefs": [
+      "R03-T22-L0692-229"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t46|f3/羊肉卷锅||",
+    "oldDishId": "c01_d421",
+    "oldName": "羊肉卷锅",
+    "oldStallId": "c01_t46",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:371",
+    "newStallRef": "T22",
+    "newSourceRefs": [
+      "R03-T22-L0693-230"
+    ],
+    "action": "REPLACE",
+    "reason": "同名源行可追溯，新价格及归属按R2；REPLACE不表示正式改库。"
+  },
+  {
+    "oldRecordKey": "c01_t47|f3/鸡丝凉面||",
+    "oldDishId": "c01_d422",
+    "oldName": "鸡丝凉面",
+    "oldStallId": "c01_t47",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:385",
+    "newStallRef": "T21",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t47|f3/肉丝拌面||",
+    "oldDishId": "c01_d423",
+    "oldName": "肉丝拌面",
+    "oldStallId": "c01_t47",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:386",
+    "newStallRef": "T21",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t47|f3/香菇鸡肉拌面||",
+    "oldDishId": "c01_d424",
+    "oldName": "香菇鸡肉拌面",
+    "oldStallId": "c01_t47",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:387",
+    "newStallRef": "T21",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t47|f3/牛肉拌面||",
+    "oldDishId": "c01_d425",
+    "oldName": "牛肉拌面",
+    "oldStallId": "c01_t47",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:388",
+    "newStallRef": "T21",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t47|f3/麻酱拌面||",
+    "oldDishId": "c01_d426",
+    "oldName": "麻酱拌面",
+    "oldStallId": "c01_t47",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:389",
+    "newStallRef": "T21",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t47|f3/鸡蛋麻酱面||",
+    "oldDishId": "c01_d427",
+    "oldName": "鸡蛋麻酱面",
+    "oldStallId": "c01_t47",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:390",
+    "newStallRef": "T21",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t47|f3/玉米麻酱面||",
+    "oldDishId": "c01_d428",
+    "oldName": "玉米麻酱面",
+    "oldStallId": "c01_t47",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:391",
+    "newStallRef": "T21",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t47|f3/素麻酱面||",
+    "oldDishId": "c01_d429",
+    "oldName": "素麻酱面",
+    "oldStallId": "c01_t47",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:392",
+    "newStallRef": "T21",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t47|f3/肉丝麻酱面||",
+    "oldDishId": "c01_d430",
+    "oldName": "肉丝麻酱面",
+    "oldStallId": "c01_t47",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:393",
+    "newStallRef": "T21",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t47|f3/牛肉麻酱面||",
+    "oldDishId": "c01_d431",
+    "oldName": "牛肉麻酱面",
+    "oldStallId": "c01_t47",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:394",
+    "newStallRef": "T21",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t47|f3/肉丝汤面||",
+    "oldDishId": "c01_d432",
+    "oldName": "肉丝汤面",
+    "oldStallId": "c01_t47",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:395",
+    "newStallRef": "T21",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t47|f3/番茄鸡蛋面||",
+    "oldDishId": "c01_d433",
+    "oldName": "番茄鸡蛋面",
+    "oldStallId": "c01_t47",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:396",
+    "newStallRef": "T21",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t47|f3/酸菜肉丝面||",
+    "oldDishId": "c01_d434",
+    "oldName": "酸菜肉丝面",
+    "oldStallId": "c01_t47",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:397",
+    "newStallRef": "T21",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t47|f3/牛肉汤面||",
+    "oldDishId": "c01_d435",
+    "oldName": "牛肉汤面",
+    "oldStallId": "c01_t47",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:398",
+    "newStallRef": "T21",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "c01_t47|f3/香辣牛肉面||",
+    "oldDishId": "c01_d436",
+    "oldName": "香辣牛肉面",
+    "oldStallId": "c01_t47",
+    "oldSource": "项目/tools/pilot/TRANSCRIPTION_3F.md:399",
+    "newStallRef": "T21",
+    "newSourceRefs": [],
+    "action": "VOID",
+    "reason": "R2明确旧W01/W10整段作废，不能以同名重合继承旧ID；新段独立重建。"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T02",
+    "newSourceRefs": [
+      "R03-T02-L0083-001"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T02",
+    "newSourceRefs": [
+      "R03-T02-L0084-002"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T02",
+    "newSourceRefs": [
+      "R03-T02-L0085-003"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T02",
+    "newSourceRefs": [
+      "R03-T02-L0086-004"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T02",
+    "newSourceRefs": [
+      "R03-T02-L0087-005"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T02",
+    "newSourceRefs": [
+      "R03-T02-L0088-006"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T02",
+    "newSourceRefs": [
+      "R03-T02-L0089-007"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T02",
+    "newSourceRefs": [
+      "R03-T02-L0090-008"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T02",
+    "newSourceRefs": [
+      "R03-T02-L0091-009"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T02",
+    "newSourceRefs": [
+      "R03-T02-L0092-010"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T02",
+    "newSourceRefs": [
+      "R03-T02-L0098-011"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T02",
+    "newSourceRefs": [
+      "R03-T02-L0099-012"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T02",
+    "newSourceRefs": [
+      "R03-T02-L0100-013"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T02",
+    "newSourceRefs": [
+      "R03-T02-L0101-014"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T02",
+    "newSourceRefs": [
+      "R03-T02-L0102-015"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T02",
+    "newSourceRefs": [
+      "R03-T02-L0103-016"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T03",
+    "newSourceRefs": [
+      "R03-T03-L0123-017"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T03",
+    "newSourceRefs": [
+      "R03-T03-L0124-018"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T03",
+    "newSourceRefs": [
+      "R03-T03-L0125-019"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T03",
+    "newSourceRefs": [
+      "R03-T03-L0126-020"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T03",
+    "newSourceRefs": [
+      "R03-T03-L0127-021"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T03",
+    "newSourceRefs": [
+      "R03-T03-L0128-022"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T03",
+    "newSourceRefs": [
+      "R03-T03-L0129-023"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T03",
+    "newSourceRefs": [
+      "R03-T03-L0130-024"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T04",
+    "newSourceRefs": [
+      "R03-T04-L0148-025"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T04",
+    "newSourceRefs": [
+      "R03-T04-L0149-026"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T04",
+    "newSourceRefs": [
+      "R03-T04-L0150-027"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T04",
+    "newSourceRefs": [
+      "R03-T04-L0151-028"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T05",
+    "newSourceRefs": [
+      "R03-T05-L0167-029"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T05",
+    "newSourceRefs": [
+      "R03-T05-L0168-030"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T05",
+    "newSourceRefs": [
+      "R03-T05-L0169-031"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T05",
+    "newSourceRefs": [
+      "R03-T05-L0170-032"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T05",
+    "newSourceRefs": [
+      "R03-T05-L0171-033"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T05",
+    "newSourceRefs": [
+      "R03-T05-L0172-034"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T05",
+    "newSourceRefs": [
+      "R03-T05-L0173-035"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T05",
+    "newSourceRefs": [
+      "R03-T05-L0174-036"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T05",
+    "newSourceRefs": [
+      "R03-T05-L0175-037"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T05",
+    "newSourceRefs": [
+      "R03-T05-L0176-038"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T05",
+    "newSourceRefs": [
+      "R03-T05-L0177-039"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T05",
+    "newSourceRefs": [
+      "R03-T05-L0178-040"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0203-042"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0204-043"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0205-044"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0206-045"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0207-046"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0208-047"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0213-052"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0214-053"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0222-056"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0225-059"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T07",
+    "newSourceRefs": [
+      "R03-T07-L0229-063"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T08",
+    "newSourceRefs": [
+      "R03-T08-L0244-064"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T08",
+    "newSourceRefs": [
+      "R03-T08-L0245-065"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T08",
+    "newSourceRefs": [
+      "R03-T08-L0246-066"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T08",
+    "newSourceRefs": [
+      "R03-T08-L0247-067"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T08",
+    "newSourceRefs": [
+      "R03-T08-L0248-068"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T08",
+    "newSourceRefs": [
+      "R03-T08-L0249-069"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T08",
+    "newSourceRefs": [
+      "R03-T08-L0250-070"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T08",
+    "newSourceRefs": [
+      "R03-T08-L0251-071"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T08",
+    "newSourceRefs": [
+      "R03-T08-L0252-072"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T09",
+    "newSourceRefs": [
+      "R03-T09-L0271-073"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T10",
+    "newSourceRefs": [
+      "R03-T10-L0287-074"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T10",
+    "newSourceRefs": [
+      "R03-T10-L0288-075"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T10",
+    "newSourceRefs": [
+      "R03-T10-L0289-076"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T10",
+    "newSourceRefs": [
+      "R03-T10-L0290-077"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T10",
+    "newSourceRefs": [
+      "R03-T10-L0291-078"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T10",
+    "newSourceRefs": [
+      "R03-T10-L0292-079"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T10",
+    "newSourceRefs": [
+      "R03-T10-L0293-080"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T10",
+    "newSourceRefs": [
+      "R03-T10-L0294-081"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T10",
+    "newSourceRefs": [
+      "R03-T10-L0295-082"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T10",
+    "newSourceRefs": [
+      "R03-T10-L0296-083"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0322-084"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0323-085"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0324-086"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0325-087"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0326-088"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0327-089"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T12",
+    "newSourceRefs": [
+      "R03-T12-L0342-090"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T12",
+    "newSourceRefs": [
+      "R03-T12-L0343-091"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T12",
+    "newSourceRefs": [
+      "R03-T12-L0344-092"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T12",
+    "newSourceRefs": [
+      "R03-T12-L0345-093"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T12",
+    "newSourceRefs": [
+      "R03-T12-L0346-094"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T12",
+    "newSourceRefs": [
+      "R03-T12-L0347-095"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T12",
+    "newSourceRefs": [
+      "R03-T12-L0348-096"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T12",
+    "newSourceRefs": [
+      "R03-T12-L0349-097"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T12",
+    "newSourceRefs": [
+      "R03-T12-L0350-098"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0387-109"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0388-110"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0389-111"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0390-112"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0391-113"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0392-114"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0393-115"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0394-116"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0395-117"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0396-118"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0397-119"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0405-120"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0406-121"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0407-122"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0408-123"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0409-124"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0410-125"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0411-126"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0412-127"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0413-128"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0414-129"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0415-130"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0416-131"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0417-132"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0418-133"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0419-134"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0425-135"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0426-136"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0427-137"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0428-138"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0429-139"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0430-140"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0431-141"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0432-142"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T15",
+    "newSourceRefs": [
+      "R03-T15-L0452-143"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T15",
+    "newSourceRefs": [
+      "R03-T15-L0453-144"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T15",
+    "newSourceRefs": [
+      "R03-T15-L0454-145"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T15",
+    "newSourceRefs": [
+      "R03-T15-L0455-146"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T15",
+    "newSourceRefs": [
+      "R03-T15-L0456-147"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T15",
+    "newSourceRefs": [
+      "R03-T15-L0457-148"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T15",
+    "newSourceRefs": [
+      "R03-T15-L0463-149"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T15",
+    "newSourceRefs": [
+      "R03-T15-L0464-150"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T15",
+    "newSourceRefs": [
+      "R03-T15-L0465-151"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T15",
+    "newSourceRefs": [
+      "R03-T15-L0466-152"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T15",
+    "newSourceRefs": [
+      "R03-T15-L0467-153"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T16",
+    "newSourceRefs": [
+      "R03-T16-L0494-158"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T16",
+    "newSourceRefs": [
+      "R03-T16-L0495-159"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T16",
+    "newSourceRefs": [
+      "R03-T16-L0496-160"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T16",
+    "newSourceRefs": [
+      "R03-T16-L0497-161"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T16",
+    "newSourceRefs": [
+      "R03-T16-L0498-162"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T16",
+    "newSourceRefs": [
+      "R03-T16-L0499-163"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T16",
+    "newSourceRefs": [
+      "R03-T16-L0500-164"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T16",
+    "newSourceRefs": [
+      "R03-T16-L0501-165"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T17",
+    "newSourceRefs": [
+      "R03-T17-L0519-167"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T17",
+    "newSourceRefs": [
+      "R03-T17-L0521-169"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T17",
+    "newSourceRefs": [
+      "R03-T17-L0522-170"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T18",
+    "newSourceRefs": [
+      "R03-T18-L0544-172"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T18",
+    "newSourceRefs": [
+      "R03-T18-L0545-173"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T18",
+    "newSourceRefs": [
+      "R03-T18-L0546-174"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T18",
+    "newSourceRefs": [
+      "R03-T18-L0547-175"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T18",
+    "newSourceRefs": [
+      "R03-T18-L0548-176"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T18",
+    "newSourceRefs": [
+      "R03-T18-L0549-177"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T18",
+    "newSourceRefs": [
+      "R03-T18-L0550-178"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T19",
+    "newSourceRefs": [
+      "R03-T19-L0568-180"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T19",
+    "newSourceRefs": [
+      "R03-T19-L0570-182"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T19",
+    "newSourceRefs": [
+      "R03-T19-L0574-186"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T19",
+    "newSourceRefs": [
+      "R03-T19-L0576-188"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T19",
+    "newSourceRefs": [
+      "R03-T19-L0583-190"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T19",
+    "newSourceRefs": [
+      "R03-T19-L0590-192"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T19",
+    "newSourceRefs": [
+      "R03-T19-L0591-193"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T19",
+    "newSourceRefs": [
+      "R03-T19-L0592-194"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T21",
+    "newSourceRefs": [
+      "R03-T21-L0637-207"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T21",
+    "newSourceRefs": [
+      "R03-T21-L0638-208"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T21",
+    "newSourceRefs": [
+      "R03-T21-L0639-209"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T21",
+    "newSourceRefs": [
+      "R03-T21-L0645-210"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T21",
+    "newSourceRefs": [
+      "R03-T21-L0646-211"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T21",
+    "newSourceRefs": [
+      "R03-T21-L0647-212"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T21",
+    "newSourceRefs": [
+      "R03-T21-L0648-213"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T21",
+    "newSourceRefs": [
+      "R03-T21-L0654-214"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T21",
+    "newSourceRefs": [
+      "R03-T21-L0655-215"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T21",
+    "newSourceRefs": [
+      "R03-T21-L0656-216"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T21",
+    "newSourceRefs": [
+      "R03-T21-L0657-217"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T21",
+    "newSourceRefs": [
+      "R03-T21-L0663-218"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T21",
+    "newSourceRefs": [
+      "R03-T21-L0664-219"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T21",
+    "newSourceRefs": [
+      "R03-T21-L0665-220"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T21",
+    "newSourceRefs": [
+      "R03-T21-L0666-221"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T02",
+    "newSourceRefs": [
+      "R03-T02-L0109-231"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T02",
+    "newSourceRefs": [
+      "R03-T02-L0109-232"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T02",
+    "newSourceRefs": [
+      "R03-T02-L0109-233"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T02",
+    "newSourceRefs": [
+      "R03-T02-L0109-234"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T02",
+    "newSourceRefs": [
+      "R03-T02-L0109-235"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T03",
+    "newSourceRefs": [
+      "R03-T03-L0134-236"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T03",
+    "newSourceRefs": [
+      "R03-T03-L0134-237"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T03",
+    "newSourceRefs": [
+      "R03-T03-L0134-238"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T03",
+    "newSourceRefs": [
+      "R03-T03-L0134-239"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T03",
+    "newSourceRefs": [
+      "R03-T03-L0134-240"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T03",
+    "newSourceRefs": [
+      "R03-T03-L0134-241"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T03",
+    "newSourceRefs": [
+      "R03-T03-L0134-242"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T08",
+    "newSourceRefs": [
+      "R03-T08-L0256-243"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T08",
+    "newSourceRefs": [
+      "R03-T08-L0256-244"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T08",
+    "newSourceRefs": [
+      "R03-T08-L0256-245"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T08",
+    "newSourceRefs": [
+      "R03-T08-L0256-246"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T08",
+    "newSourceRefs": [
+      "R03-T08-L0256-247"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T08",
+    "newSourceRefs": [
+      "R03-T08-L0256-248"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0308-249"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0308-250"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0308-251"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0308-252"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0308-253"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0308-254"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0308-255"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0308-256"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0312-257"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0312-258"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0312-259"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0312-260"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0312-261"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0316-262"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0316-263"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0316-264"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0316-265"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0316-266"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0316-267"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0316-268"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0316-269"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0316-270"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0399-271"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0399-272"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0399-273"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0434-274"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0434-275"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0434-276"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0434-277"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T14",
+    "newSourceRefs": [
+      "R03-T14-L0435-278"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T17",
+    "newSourceRefs": [
+      "R03-T17-L0525-279"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T17",
+    "newSourceRefs": [
+      "R03-T17-L0525-280"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T17",
+    "newSourceRefs": [
+      "R03-T17-L0525-281"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T17",
+    "newSourceRefs": [
+      "R03-T17-L0525-282"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T17",
+    "newSourceRefs": [
+      "R03-T17-L0525-283"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T17",
+    "newSourceRefs": [
+      "R03-T17-L0527-284"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T17",
+    "newSourceRefs": [
+      "R03-T17-L0527-285"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T17",
+    "newSourceRefs": [
+      "R03-T17-L0527-286"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T17",
+    "newSourceRefs": [
+      "R03-T17-L0527-287"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T22",
+    "newSourceRefs": [
+      "R03-T22-L0695-288"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T16",
+    "newSourceRefs": [
+      "R03-T16-L0503-291"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  },
+  {
+    "oldRecordKey": "",
+    "oldDishId": "",
+    "oldName": "",
+    "oldStallId": "",
+    "oldSource": "",
+    "newStallRef": "T11",
+    "newSourceRefs": [
+      "R03-T11-L0329-292"
+    ],
+    "action": "NEW",
+    "reason": "新源行独立建局部标识；无旧ID继承"
+  }
+]

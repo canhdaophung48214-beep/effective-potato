@@ -1,0 +1,641 @@
+/**
+ * seed —— 阶段 2 专用：把 s01（一号食堂）的演示数据写进云端并逐字段核对
+ *
+ * ⚠️ 数据性质：全部是课程演示数据（dataClass: 'demo'），
+ *    不对应山东理工大学或周边任何真实食堂、楼层、窗口、菜品。
+ *
+ * 设计边界（六条硬规则，任何一条被绕过都算实现错误）：
+ *   1. 只能写三种集合：restaurants / stalls / dishes。集合名是下面 COL 里的冻结常量，
+ *      客户端传什么集合名都会被忽略 —— 本函数根本不把入参当集合名用。
+ *   2. 只能写 8 个预先写死的 _id（1 店 + 3 窗口 + 4 菜）。白名单外的一律拒绝。
+ *   3. 不信任客户端身份：操作人取 cloud.getWXContext().OPENID，不读入参里的 openid。
+ *   4. 不覆盖、不删除未知记录：删除只走 doc(_id).remove()，代码里没有 where().remove()。
+ *      已存在且 contentHash 不同 → 报冲突，绝不覆盖。
+ *   5. 稳定业务 ID：_id 直接用本地业务码（s01 / s01_t1 / d01），天然幂等。
+ *   6. 部分失败如实报告：逐条给 created / skipped / conflict / failed，
+ *      有任一失败 ok 就是 false，并返回 done / failed / notAttempted 三段。
+ *
+ * 动作（action）：
+ *   ensure   建集合（已存在则跳过）
+ *   plan     只读：探测 8 条是否已存在、内容是否一致（不写任何东西）
+ *   write    写入不存在的记录（已存在且一致 → skipped；不一致 → conflict）
+ *   verify   只读：读回 8 条，与内置期望逐字段比对 + 关联校验
+ *   cleanup  删除本次批次写入的白名单记录（三重锁：白名单 + dataClass + batchId）
+ */
+
+'use strict';
+
+const crypto = require('crypto');
+const cloud = require('wx-server-sdk');
+
+cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV });
+
+const db = cloud.database();
+
+/* ================================================================
+   白名单：集合只认这三个
+   ================================================================ */
+const COL = Object.freeze({
+  RESTAURANTS: 'restaurants',
+  STALLS: 'stalls',
+  DISHES: 'dishes'
+});
+const COLLECTION_NAMES = Object.freeze([COL.RESTAURANTS, COL.STALLS, COL.DISHES]);
+
+/* 批次号格式：seed-s01-YYYYMMDD。格式不对直接拒绝，避免任意删除范围 */
+const BATCH_RE = /^seed-[a-z0-9]{2,12}-\d{8}$/;
+
+/* ================================================================
+   期望数据：逐字段取自
+     data/shops.js  → s01（一号食堂）、s01_f1/s01_f2、s01_t1/s01_t2/s01_t3
+     data/dishes.js → d01 / d02 / d03 / d39（这 4 道属于 s01）
+   注意 s01 在源文件里只有 4 道菜，不是 5 道。
+   ================================================================ */
+const DEMO_SOURCE = Object.freeze({
+  kind: 'demo',
+  detail: '非真实商家、楼层、窗口与菜品',
+  ref: ''
+});
+
+const EXPECTED_RESTAURANTS = [
+  {
+    _id: 's01',
+    name: '一号食堂',
+    area: 'campus',
+    building: '西区食堂群',
+    location: '西校区 · 一号食堂（演示位置）',
+    floors: [
+      { id: 's01_f1', label: '1 楼', verifyStatus: 'demo', verifiedAt: null, source: DEMO_SOURCE },
+      { id: 's01_f2', label: '2 楼', verifyStatus: 'demo', verifiedAt: null, source: DEMO_SOURCE }
+    ]
+  }
+];
+
+const EXPECTED_STALLS = [
+  { _id: 's01_t1', restaurantId: 's01', floorId: 's01_f1', name: '1 号窗口', side: '', noStatus: 'unverified', no: '' },
+  { _id: 's01_t2', restaurantId: 's01', floorId: 's01_f2', name: '2 号窗口', side: '', noStatus: 'unverified', no: '' },
+  { _id: 's01_t3', restaurantId: 's01', floorId: 's01_f2', name: '5 号窗口', side: '', noStatus: 'unverified', no: '' }
+];
+
+const EXPECTED_DISHES = [
+  { _id: 'd01', name: '红烧肉盖饭', price: 12, foodType: 'rice', restaurantId: 's01', stallId: 's01_t2', tastes: ['light'] },
+  { _id: 'd02', name: '番茄炒蛋盖饭', price: 8, foodType: 'rice', restaurantId: 's01', stallId: 's01_t1', tastes: ['light'] },
+  { _id: 'd03', name: '宫保鸡丁盖饭', price: 12, foodType: 'rice', restaurantId: 's01', stallId: 's01_t3', tastes: ['mild_spicy'] },
+  { _id: 'd39', name: '番茄鸡蛋米线', price: 11, foodType: 'rice_noodle', restaurantId: 's01', stallId: 's01_t1', tastes: ['light'] }
+];
+
+/* 白名单 id（删除与写入都只认这些） */
+const ID_WHITELIST = Object.freeze({
+  [COL.RESTAURANTS]: EXPECTED_RESTAURANTS.map(function (r) { return r._id; }),
+  [COL.STALLS]: EXPECTED_STALLS.map(function (s) { return s._id; }),
+  [COL.DISHES]: EXPECTED_DISHES.map(function (d) { return d._id; })
+});
+
+const FOOD_TYPES = ['rice', 'noodle', 'rice_noodle', 'rice_vermicelli', 'dumpling', 'malatang', 'snack', 'other'];
+const TASTE_VALUES = ['light', 'mild_spicy', 'spicy'];
+const SIDE_VALUES = ['east', 'south', 'west', 'north', ''];
+const NO_STATUS_VALUES = ['has', 'none', 'unverified'];
+const PRICE_MAX = 100;
+
+/* ================================================================
+   工具
+   ================================================================ */
+
+/* 稳定序列化：对象键排序，保证同一份业务数据永远得到同一个哈希 */
+function stableStringify(value) {
+  if (value === null || typeof value !== 'object') return JSON.stringify(value);
+  if (Array.isArray(value)) {
+    return '[' + value.map(stableStringify).join(',') + ']';
+  }
+  const keys = Object.keys(value).sort();
+  return '{' + keys.map(function (k) {
+    return JSON.stringify(k) + ':' + stableStringify(value[k]);
+  }).join(',') + '}';
+}
+
+/**
+ * 业务字段指纹：用来判断「这条记录变没变」。
+ * 排除 _id（身份）、时间戳、contentHash、rev、batchId ——
+ * batchId 每次导入可能不同，算进来会让重复执行变成冲突。
+ */
+const HASH_EXCLUDE = ['_id', 'createdAt', 'updatedAt', 'contentHash', 'rev', 'batchId'];
+
+function businessOf(doc) {
+  const out = {};
+  Object.keys(doc).forEach(function (k) {
+    if (HASH_EXCLUDE.indexOf(k) === -1) out[k] = doc[k];
+  });
+  return out;
+}
+
+function contentHashOf(doc) {
+  return crypto.createHash('sha256').update(stableStringify(businessOf(doc))).digest('hex');
+}
+
+/* 深比较：只比业务字段，返回差异列表（最多 20 条，避免刷屏） */
+function diffDocs(expected, actual, prefix, out) {
+  out = out || [];
+  const keys = {};
+  Object.keys(expected || {}).forEach(function (k) { keys[k] = true; });
+  Object.keys(actual || {}).forEach(function (k) { keys[k] = true; });
+
+  Object.keys(keys).forEach(function (k) {
+    if (HASH_EXCLUDE.indexOf(k) !== -1) return;
+    const e = expected ? expected[k] : undefined;
+    const a = actual ? actual[k] : undefined;
+    const path = prefix ? prefix + '.' + k : k;
+
+    if (e !== null && typeof e === 'object' && a !== null && typeof a === 'object') {
+      diffDocs(e, a, path, out);
+      return;
+    }
+    if (stableStringify(e) !== stableStringify(a)) {
+      if (out.length < 20) out.push({ field: path, expected: e, actual: a });
+    }
+  });
+  return out;
+}
+
+function isEmptyish(err) {
+  const msg = String((err && (err.errMsg || err.message)) || '');
+  const code = err && (err.errCode !== undefined ? err.errCode : err.code);
+  /* 云开发「文档不存在」在不同版本里表现为不同的码/文案，这里统一视为不存在 */
+  return code === -1 || code === 'DATABASE_DOCUMENT_NOT_FOUND' ||
+    code === -502005 || /does not exist|not exist|not found|cannot find document/i.test(msg);
+}
+
+/* 探测单条文档：存在返回 data，不存在返回 null */
+async function getDocOrNull(collectionName, id) {
+  try {
+    const res = await db.collection(collectionName).doc(id).get();
+    return (res && res.data) ? res.data : null;
+  } catch (err) {
+    if (isEmptyish(err)) return null;
+    throw err;
+  }
+}
+
+/* ================================================================
+   鉴权（A0-3）：只认 ADMIN_OPENIDS 里的 OPENID
+   ----------------------------------------------------------------
+   1. 身份只取服务端上下文 cloud.getWXContext().OPENID，绝不读入参。
+   2. 变量未配置 / 空串 / 纯空白 / 只有分隔符 → 一律拒绝（fail-closed），
+      不存在「空配置等于放行」的分支。
+   3. 调用时读取 process.env，不在模块加载时缓存：改配置后无需重新部署，
+      离线测试也能逐条改写。
+   4. 不做大小写归一：OPENID 区分大小写，归一化会造成误放行。
+   5. 拒绝原因分开返回，便于区分「配置错了」与「人被挡住了」；
+      任何响应都不包含白名单内容。
+   ================================================================ */
+function parseAdminOpenIds(raw) {
+  if (typeof raw !== 'string') return [];
+  const out = [];
+  const parts = raw.split(/[\s,;，；]+/);
+  for (let i = 0; i < parts.length; i++) {
+    const id = parts[i].trim();
+    if (id && out.indexOf(id) === -1) out.push(id);
+  }
+  return out;
+}
+
+function checkAdmin(openid) {
+  const admins = parseAdminOpenIds(process.env.ADMIN_OPENIDS);
+  const actor = (typeof openid === 'string') ? openid.trim() : '';
+  if (!admins.length) return { ok: false, reason: 'ADMIN_OPENIDS_NOT_CONFIGURED' };
+  if (!actor) return { ok: false, reason: 'NO_OPENID' };
+  if (admins.indexOf(actor) === -1) return { ok: false, reason: 'NOT_ADMIN' };
+  return { ok: true, reason: '' };
+}
+
+function withMeta(record, batchId) {
+  const doc = Object.assign({}, record, {
+    dataClass: 'demo',
+    verifyStatus: 'demo',
+    verifiedAt: null,
+    source: DEMO_SOURCE,
+    batchId: batchId,
+    rev: 1
+  });
+  doc.contentHash = contentHashOf(doc);
+  return doc;
+}
+
+function planOf(specs) {
+  return specs.map(function (spec) {
+    return {
+      collection: spec.collection,
+      id: spec.record._id,
+      record: spec.record
+    };
+  });
+}
+
+function buildSpecs(batchId) {
+  return planOf(
+    EXPECTED_RESTAURANTS.map(function (r) {
+      return { collection: COL.RESTAURANTS, record: withMeta(r, batchId) };
+    }).concat(
+      EXPECTED_STALLS.map(function (s) {
+        return { collection: COL.STALLS, record: withMeta(s, batchId) };
+      })
+    ).concat(
+      EXPECTED_DISHES.map(function (d) {
+        return { collection: COL.DISHES, record: withMeta(d, batchId) };
+      })
+    )
+  );
+}
+
+/* ================================================================
+   动作实现
+   ================================================================ */
+
+async function actionEnsure(report) {
+  for (let i = 0; i < COLLECTION_NAMES.length; i++) {
+    const name = COLLECTION_NAMES[i];
+    try {
+      await db.createCollection(name);
+      report.results.push({ collection: name, action: 'created' });
+    } catch (err) {
+      const msg = String((err && (err.errMsg || err.message)) || '');
+      /* 已存在（-501001 / ResourceUnavailable.CollectionExists 等）视为正常 */
+      if (/exist|已存在/i.test(msg)) {
+        report.results.push({ collection: name, action: 'already-exists' });
+      } else {
+        report.results.push({ collection: name, action: 'failed', error: msg });
+        report.ok = false;
+      }
+    }
+  }
+  return report;
+}
+
+async function actionPlan(batchId, report) {
+  const specs = buildSpecs(batchId);
+  for (let i = 0; i < specs.length; i++) {
+    const spec = specs[i];
+    const existing = await getDocOrNull(spec.collection, spec.record._id);
+    if (!existing) {
+      report.creates.push(spec.record._id);
+      report.results.push({ collection: spec.collection, id: spec.record._id, action: 'would-create' });
+      continue;
+    }
+    const same = contentHashOf(existing) === spec.record.contentHash;
+    if (same) {
+      report.identical.push(spec.record._id);
+      report.results.push({ collection: spec.collection, id: spec.record._id, action: 'identical' });
+    } else {
+      report.conflicts.push(spec.record._id);
+      report.results.push({ collection: spec.collection, id: spec.record._id, action: 'conflict' });
+    }
+  }
+  return report;
+}
+
+async function actionWrite(batchId, report) {
+  const specs = buildSpecs(batchId);
+  let blocked = false;
+
+  for (let i = 0; i < specs.length; i++) {
+    const spec = specs[i];
+    const id = spec.record._id;
+
+    if (blocked) {
+      report.notAttempted.push(id);
+      continue;
+    }
+
+    try {
+      const existing = await getDocOrNull(spec.collection, id);
+
+      if (existing) {
+        const same = contentHashOf(existing) === spec.record.contentHash;
+        if (same) {
+          report.done.push(id);
+          report.results.push({ collection: spec.collection, id: id, action: 'skipped' });
+        } else {
+          /* 不覆盖：记为冲突，继续处理其它记录，但不阻塞整体 */
+          report.failed.push({ id: id, error: 'conflict: 已存在且内容不同，未覆盖' });
+          report.results.push({ collection: spec.collection, id: id, action: 'conflict' });
+        }
+        continue;
+      }
+
+      const payload = Object.assign({}, spec.record, {
+        createdAt: db.serverDate(),
+        updatedAt: db.serverDate()
+      });
+      await db.collection(spec.collection).add({ data: payload });
+      report.done.push(id);
+      report.results.push({ collection: spec.collection, id: id, action: 'created' });
+    } catch (err) {
+      blocked = true;
+      report.failed.push({
+        id: id,
+        error: String((err && (err.errMsg || err.message)) || err)
+      });
+      report.results.push({ collection: spec.collection, id: id, action: 'failed' });
+    }
+  }
+
+  if (report.failed.length) report.ok = false;
+  return report;
+}
+
+async function actionVerify(report) {
+  /* 1. 逐条读回并比对业务字段 */
+  const groups = [
+    { collection: COL.RESTAURANTS, expected: EXPECTED_RESTAURANTS },
+    { collection: COL.STALLS, expected: EXPECTED_STALLS },
+    { collection: COL.DISHES, expected: EXPECTED_DISHES }
+  ];
+
+  const loaded = { restaurants: [], stalls: [], dishes: [] };
+
+  for (let g = 0; g < groups.length; g++) {
+    const group = groups[g];
+    for (let i = 0; i < group.expected.length; i++) {
+      const exp = group.expected[i];
+      const actual = await getDocOrNull(group.collection, exp._id);
+
+      if (!actual) {
+        report.diffs.push({ id: exp._id, field: '<document>', expected: '存在', actual: '不存在' });
+        report.ok = false;
+        continue;
+      }
+
+      loaded[group.collection].push(actual);
+      report.checked++;
+
+      /* 期望值要补上 withMeta 注入的元数据再比，
+         否则 dataClass/verifyStatus/verifiedAt/source/rev 会被误报成差异
+         （EXPECTED_* 里只有业务字段，元数据是写入时才加的） */
+      const expFull = withMeta(exp, report.batchId);
+      const d = diffDocs(expFull, actual, '', []);
+      if (d.length) {
+        report.ok = false;
+        d.forEach(function (item) {
+          report.diffs.push({ id: exp._id, field: item.field, expected: item.expected, actual: item.actual });
+        });
+      }
+
+      /* 元数据断言：演示数据不允许出现非 demo 状态，也不允许有核实时间 */
+      if (actual.dataClass !== 'demo' || actual.verifyStatus !== 'demo' || actual.verifiedAt !== null ||
+        !actual.source || actual.source.kind !== 'demo') {
+        report.ok = false;
+        report.diffs.push({
+          id: exp._id,
+          field: 'dataClass/verifyStatus/verifiedAt/source.kind',
+          expected: 'demo/demo/null/demo',
+          actual: [actual.dataClass, actual.verifyStatus, actual.verifiedAt,
+            actual.source && actual.source.kind].join('/')
+        });
+      }
+    }
+  }
+
+  /* 2. 关联校验（云端没有外键，只能自己查） */
+  const shops = loaded[COL.RESTAURANTS];
+  const stalls = loaded[COL.STALLS];
+  const dishes = loaded[COL.DISHES];
+
+  const shopIds = {};
+  shops.forEach(function (s) { shopIds[s._id] = s; });
+
+  const stallById = {};
+  stalls.forEach(function (st) { stallById[st._id] = st; });
+
+  stalls.forEach(function (st) {
+    const parent = shopIds[st.restaurantId];
+    if (!parent) {
+      report.ok = false;
+      report.diffs.push({ id: st._id, field: 'restaurantId', expected: '存在父店铺', actual: st.restaurantId });
+      return;
+    }
+    if (st.floorId) {
+      const ids = (parent.floors || []).map(function (f) { return f.id; });
+      if (ids.indexOf(st.floorId) === -1) {
+        report.ok = false;
+        report.diffs.push({ id: st._id, field: 'floorId', expected: '属于父店铺楼层', actual: st.floorId });
+      }
+    }
+    if (NO_STATUS_VALUES.indexOf(st.noStatus) === -1) {
+      report.ok = false;
+      report.diffs.push({ id: st._id, field: 'noStatus', expected: NO_STATUS_VALUES.join('/'), actual: st.noStatus });
+    }
+    if (SIDE_VALUES.indexOf(st.side) === -1) {
+      report.ok = false;
+      report.diffs.push({ id: st._id, field: 'side', expected: SIDE_VALUES.join('/'), actual: st.side });
+    }
+    if (st.noStatus === 'has' && !st.no) {
+      report.ok = false;
+      report.diffs.push({ id: st._id, field: 'no', expected: 'noStatus=has 必须有编号', actual: st.no });
+    }
+  });
+
+  dishes.forEach(function (dish) {
+    if (!shopIds[dish.restaurantId]) {
+      report.ok = false;
+      report.diffs.push({ id: dish._id, field: 'restaurantId', expected: '存在父店铺', actual: dish.restaurantId });
+    }
+    const stall = stallById[dish.stallId];
+    if (!stall) {
+      report.ok = false;
+      report.diffs.push({ id: dish._id, field: 'stallId', expected: '存在窗口', actual: dish.stallId });
+    } else if (stall.restaurantId !== dish.restaurantId) {
+      report.ok = false;
+      report.diffs.push({
+        id: dish._id,
+        field: 'stallId.restaurantId',
+        expected: dish.restaurantId,
+        actual: stall.restaurantId
+      });
+    }
+    if (!Array.isArray(dish.tastes) || dish.tastes.length !== 1) {
+      report.ok = false;
+      report.diffs.push({ id: dish._id, field: 'tastes', expected: '恰好 1 个', actual: dish.tastes });
+    } else if (TASTE_VALUES.indexOf(dish.tastes[0]) === -1) {
+      report.ok = false;
+      report.diffs.push({ id: dish._id, field: 'tastes[0]', expected: TASTE_VALUES.join('/'), actual: dish.tastes[0] });
+    }
+    if (FOOD_TYPES.indexOf(dish.foodType) === -1) {
+      report.ok = false;
+      report.diffs.push({ id: dish._id, field: 'foodType', expected: FOOD_TYPES.join('/'), actual: dish.foodType });
+    }
+    if (typeof dish.price !== 'number' || !isFinite(dish.price) || dish.price <= 0 || dish.price > PRICE_MAX) {
+      report.ok = false;
+      report.diffs.push({ id: dish._id, field: 'price', expected: '0 < price <= ' + PRICE_MAX, actual: dish.price });
+    }
+  });
+
+  const floorsOfS01 = (shopIds['s01'] && shopIds['s01'].floors) || [];
+  report.summary = {
+    restaurants: shops.length,
+    stalls: stalls.length,
+    dishes: dishes.length,
+    floorsOfS01: floorsOfS01.length,
+    nonDemoCount:
+      shops.concat(stalls, dishes).filter(function (d) {
+        return d.dataClass !== 'demo' || d.verifyStatus !== 'demo';
+      }).length,
+    nonNullVerifiedAt:
+      shops.concat(stalls, dishes).filter(function (d) { return d.verifiedAt !== null && d.verifiedAt !== undefined; }).length
+  };
+
+  if (report.summary.nonDemoCount !== 0 || report.summary.nonNullVerifiedAt !== 0) report.ok = false;
+  return report;
+}
+
+async function actionCleanup(batchId, report) {
+  const groups = [
+    { collection: COL.RESTAURANTS, ids: ID_WHITELIST[COL.RESTAURANTS] },
+    { collection: COL.STALLS, ids: ID_WHITELIST[COL.STALLS] },
+    { collection: COL.DISHES, ids: ID_WHITELIST[COL.DISHES] }
+  ];
+
+  for (let g = 0; g < groups.length; g++) {
+    const group = groups[g];
+    for (let i = 0; i < group.ids.length; i++) {
+      const id = group.ids[i];
+      const existing = await getDocOrNull(group.collection, id);
+
+      if (!existing) {
+        report.skipped.push(id);
+        continue;
+      }
+      /* 三重锁：白名单 id（已在循环里约束）+ dataClass + batchId */
+      if (existing.dataClass !== 'demo' || existing.batchId !== batchId) {
+        report.skipped.push(id);
+        report.results.push({
+          collection: group.collection,
+          id: id,
+          action: 'skip-guarded',
+          reason: 'dataClass/batchId 不匹配，拒绝删除'
+        });
+        continue;
+      }
+      try {
+        await db.collection(group.collection).doc(id).remove();
+        report.deleted.push(id);
+        report.results.push({ collection: group.collection, id: id, action: 'removed' });
+      } catch (err) {
+        report.ok = false;
+        report.failed.push({ id: id, error: String((err && (err.errMsg || err.message)) || err) });
+      }
+    }
+  }
+
+  /* 清理后清点：确认这批 id 全部消失 */
+  let remaining = 0;
+  const remainIds = [];
+  const groups2 = [
+    { collection: COL.RESTAURANTS, ids: ID_WHITELIST[COL.RESTAURANTS] },
+    { collection: COL.STALLS, ids: ID_WHITELIST[COL.STALLS] },
+    { collection: COL.DISHES, ids: ID_WHITELIST[COL.DISHES] }
+  ];
+  for (let g = 0; g < groups2.length; g++) {
+    for (let i = 0; i < groups2[g].ids.length; i++) {
+      const still = await getDocOrNull(groups2[g].collection, groups2[g].ids[i]);
+      if (still) { remaining++; remainIds.push(groups2[g].ids[i]); }
+    }
+  }
+  report.remainingCount = remaining;
+  report.remainingIds = remainIds;
+  if (remaining !== 0) report.ok = false;
+  return report;
+}
+
+/* ================================================================
+   入口
+   ================================================================ */
+exports.main = async function (event) {
+  const startedAt = Date.now();
+  const action = String((event && event.action) || 'plan');
+  const batchId = String((event && event.batchId) || '');
+  const wx = cloud.getWXContext() || {};
+
+  /* 鉴权闸门：必须先于任何数据库读写、集合创建与 action 分发。
+     放在 action 白名单校验之前，非管理员连「有哪些 action」都探不到。 */
+  const gate = checkAdmin(wx.OPENID);
+  if (!gate.ok) {
+    return {
+      ok: false,
+      code: 'FORBIDDEN',
+      reason: gate.reason,
+      action: action,
+      batchId: batchId,
+      env: wx.ENV || '',
+      checked: 0,
+      elapsedMs: Date.now() - startedAt
+    };
+  }
+
+  const report = {
+    ok: true,
+    action: action,
+    env: (wx.ENV || ''),
+    actorOpenId: (wx.OPENID || ''),
+    batchId: batchId,
+    checked: 0,
+    creates: [],
+    identical: [],
+    conflicts: [],
+    done: [],
+    failed: [],
+    notAttempted: [],
+    deleted: [],
+    skipped: [],
+    results: [],
+    diffs: [],
+    summary: null,
+    elapsedMs: 0
+  };
+
+  const actions = ['ensure', 'plan', 'write', 'verify', 'cleanup'];
+  if (actions.indexOf(action) === -1) {
+    return Object.assign(report, {
+      ok: false,
+      message: '不支持的 action，允许：' + actions.join(' / ')
+    });
+  }
+
+  /* 除 ensure / verify 外，写操作必须带合法批次号 */
+  if ((action === 'write' || action === 'cleanup' || action === 'plan') && !BATCH_RE.test(batchId)) {
+    return Object.assign(report, {
+      ok: false,
+      message: 'batchId 不合法，应形如 seed-s01-20261022'
+    });
+  }
+
+  try {
+    if (action === 'ensure') await actionEnsure(report);
+    else if (action === 'plan') await actionPlan(batchId, report);
+    else if (action === 'write') await actionWrite(batchId, report);
+    else if (action === 'verify') await actionVerify(report);
+    else if (action === 'cleanup') await actionCleanup(batchId, report);
+  } catch (err) {
+    report.ok = false;
+    report.message = String((err && (err.errMsg || err.message)) || err);
+  }
+
+  report.elapsedMs = Date.now() - startedAt;
+  return report;
+};
+
+/* 供离线自检脚本 require（不参与云函数运行） */
+exports.__test__ = {
+  COL: COL,
+  COLLECTION_NAMES: COLLECTION_NAMES,
+  EXPECTED_RESTAURANTS: EXPECTED_RESTAURANTS,
+  EXPECTED_STALLS: EXPECTED_STALLS,
+  EXPECTED_DISHES: EXPECTED_DISHES,
+  DEMO_SOURCE: DEMO_SOURCE,
+  contentHashOf: contentHashOf,
+  stableStringify: stableStringify,
+  buildSpecs: buildSpecs,
+  withMeta: withMeta,
+  diffDocs: diffDocs,
+  parseAdminOpenIds: parseAdminOpenIds,
+  checkAdmin: checkAdmin,
+  BATCH_RE: BATCH_RE
+};

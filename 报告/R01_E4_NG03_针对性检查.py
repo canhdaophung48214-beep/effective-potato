@@ -1,0 +1,94 @@
+import pathlib,json,csv,hashlib,subprocess,collections
+R=pathlib.Path.cwd();O=R/'报告';P=R/'项目';E=O/'R01_E4_NG03_evidence';E.mkdir()
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+protected={str(p):sha(p) for p in O.glob('R01_E[234]*') if p.is_file()}
+rs=list(csv.DictReader((O/'R01_E3_not_generated_triage.csv').open(encoding='utf-8-sig')));ng=[r for r in rs if r['stallId']=='c01_t41'];assert len(ng)==10
+src=P/'tools/pilot/TRANSCRIPTION_3F.md';lines=src.read_text(encoding='utf-8-sig').splitlines();prices=[];table=[]
+for r in ng:
+ n=int(r['sourceLine']);assert lines[n-1]==r['sourceQuote'];price=int(r['sourceQuote'].split('|')[-2].strip().split()[0]);prices.append(price);table.append('| '+str(n)+' | '+r['dishName']+' | '+str(price)+' | '+r['recordKey']+' |')
+assert collections.Counter(prices)=={12:8,14:1,16:1}
+ocr=json.loads((O/'R01_E3_evidence/ocr_raw.json').read_text(encoding='utf-8-sig'));v=next(x for x in ocr if 'f57786' in x['path']);assert '双 拼 饭' in v['lines'][0]
+text='''# NG03 双拼与套餐业务裁决材料
+
+日期2026-11-01。状态：调查材料PASS；商品构成及定价规则PENDING负责人裁决。未生成新商品，不分配ID，不修改正式数据或契约。NG01 D1/D2沿用负责人已确认结论。
+
+## 1. 记录清单与范围
+
+NG03来自3F W04席之邻·辣椒炒肉双拼饭，候选档口c01_t41。10条NOT_GENERATED均无正式dishId；这里用recordKey保留身份。转录TRANSCRIPTION_3F.md:179-200；下表逐行原文与E3 CSV一致。
+
+| 转录源行 | 菜名原文 | 标注元数 | 原始recordKey |
+|---|---|---:|---|
+'''+ '\n'.join(table)+'''
+
+价格构成12元×8、14元×1（辣椒炒肉）、16元×1（红烧排骨饭）。它们是不同名称的源行标价，不是已经确认的三档组合规则；不得把14/16理解为12加2/4的升级费。
+
+## 2. 照片与OCR证据对照
+
+照片：项目/evidence/ds-session-1e2717cc/sha256_f57786adfa9c14525683250af226fb430962a85643cdc10b4007d497e337fe1d.jpg。归档PHOTO_MANIFEST_20261025.csv的photo_id=3F-04，mapping_status=unresolved、stall_or_window=未知；OCR文字支持关联W04的检索线索，不提升为已确认照片映射。
+
+OCR位置：报告/R01_E3_evidence/ocr_raw.json，path精确匹配上述文件，以下序号是该对象lines数组的1起始位置；机器原文空格保留于JSON，此表展示可读摘录。
+
+| 事项 | 转录原文位置及文字 | OCR对应 | 能支持的解释 | 反对或限制 |
+|---|---|---|---|---|
+| 双拼与搭配 | :179“辣椒炒肉双拼饭”；:181“多种菜品任意搭配” | lines1“辣椒炒肉双拼饭”、2“多种菜品衽意搭配” | 存在双拼宣传和选择概念 | 没有明确两个菜、米饭是否计一拼、是否必须双拼，也没有组合价算法 |
+| 米饭关系 | :181“米饭、菜无限续” | lines12“米饭”、23“菜无限续” | 原牌可能有主食与续添信息 | OCR拆行，不能证明每条单价已经包含饭或无限续范围 |
+| 12元8条 | :186-193逐条12元 | lines35“坨/份”、44/46/47“12～” | 存在价格/份字样线索 | OCR未可靠将每个12与菜名配对；精确8条来自转录，不冒充本轮照片逐价核实 |
+| 招牌14元 | :185辣椒炒肉14元 | lines37“炒肉”、38“14、” | 有14字样 | 无可靠坐标/完整菜名配对，不能以OCR认定加价规则 |
+| 红烧排骨饭16元 | :194红烧排骨饭16元 | lines40“狂排亟”，未可靠识别16 | 转录保留单独16标价 | OCR未提供可靠16元确认，不推断份量或组件差异 |
+| 滑蛋饭文字 | W04十条表本身没有滑蛋饭条目；邻段W03含新式滑蛋饭 | 同照片lines4-11多次“滑蛋饭”，13-20为11.9/12.9/13.9/14.9等 | 一张图片包含滑蛋饭菜单线索 | 不能证明与W04同档口或同价格规则，不能混入本10条 |
+| 名称歧义 | :198豆腐炒肉或豆角炒肉待确认 | OCRlines29“m豆刂、肉”等不清晰 | 保留两种可能读法 | 不能自动改名或把“干豆角小炒肉”邻近文字视作该行的确定更正 |
+
+照片/OCR本轮未改。OCR没有边界框关系证明，也没有可靠识别所有价签；本报告引用转录和OCR时明确区分证据强度。
+
+## 3. 五项业务问题的正反解释
+
+### 12元/份的商品构成
+
+解释A：一道独立菜品单点。支持：十条表以菜名配价；反对：双拼/任意搭配/米饭菜续添宣传没有解释。解释B：饭+一道菜的一份完整饭。支持：牌面涉及米饭、档口名含饭；反对：没有明确“含饭”的逐项条款。解释C：两菜或自选组合的一份价。支持：双拼和任意搭配字样；反对：没有拼几个或计价说明。三者均未充分证实，保持PENDING。转录:197也明确列为待确认。
+
+### 双拼是否两个独立菜品组合
+
+“双方可组合”只是一种待证解释，不能从双拼二字判定两个独立可售商品。另一解释可能是组合饭中的两个配菜位，配菜本身不独立售卖；还有主食+一道菜的解释。当前没有组件身份、选择数量或独立购买证据，不能派生组件dishId。
+
+### 滑蛋饭属于独立菜品还是套餐
+
+当前NG03十条不是已确认的滑蛋饭十条。E3摘要“双拼·滑蛋饭组合”是纠正价格时的组名，不是商品结构证据。W03转录:174-175仍问双拼结构以及新式滑蛋饭是否同档口；照片同框不能证明归属。可以存在以滑蛋饭为完整售卖单品的结构，也可能是基础饭+配菜选择，但均需真实确认。禁止移植W03的19条或小数价格到NG03。
+
+### 14元和16元为何不同
+
+仅能确认转录中是不同名称的不同行，不能解释差价原因。可能对应不同商品规格/内容，也可能是选择中的不同收费档；没有证据证明哪个。不能按招牌、肉类成本、常见经营方式推理。
+
+### 是否不同组合而非统一规则
+
+有不同标价，足以反对“所有10条统一12元”的表述；不足以证明“不同组合”的解释。保留逐行价，不做统一价、取最大价、求和、差额升级费或平均价。
+
+## 4. 负责人需要作出的具体裁决
+
+1. 逐项确认12元8条的售卖单位与内容：仅菜/含饭单菜饭/自选双拼；是否可整组同口径裁定。
+2. “双拼”究竟几个选择位、米饭是否算一位、允许重复否；配菜是否独立可售；组合最终价如何确定。没有真实确认时维持未知。
+3. 14元辣椒炒肉、16元红烧排骨饭是否独立整份价；若是组合选项，请给出实际选项差额或价目规则，不能从差价推定。
+4. 滑蛋饭菜单与W04是否同档口/同售卖体系；如不是，明确分开，不能把相邻区域资料套给NG03。
+5. 豆腐炒肉/豆角炒肉的实际名称。补清晰局部照片或商家明确口述，保持来源引用。
+
+推荐：在上述事实未确认前继续逐行保留10条原价及C档，不选择A/B/C任一结构；优先一次向真实经营方确认商品构成、拼菜数与计价规则。契约:255 B11、:500 W04 C档、:1040/:1149不生成、:1874 D-6仍有效；本轮不改条款。
+
+## 5. 与NG01联合结构建议
+
+NG01已确认：含蛋基础菜品4元/份，五条源行是关联可选加价项，不是五道独立菜品。其多选/数量仍未知。NG03尚不能复用“基础4元+加价求和”模型，不能假定存在基础饭及升级价。
+
+最小建议：概念层可以统一保留“主售卖对象+关联条目+关系类型+来源证据”，但关系类型必须区分optional_surcharge（NG01）和bundle_component/choice_slot（仅NG03确认组合后才可用）。价格策略必须显式区分固定整份价、明确加价求和、经确认的组合规则；未知保持null且不可计算。组件是独立菜品还是配菜候选须单独标记，不能用相同字段默认二者一致。
+
+无需此刻建立一个通用组合引擎。先保留NG01预览为基础+可选加价；NG03继续源条目与待裁决结构。若确认独立单菜/整份饭，仅需现有菜品price加明确售卖说明，未必需要组件表；若确认双拼选择，再提出选项位和组件关系。契约现有addons仅c01_t11诊断且appliesTo=null；import_data.js:54/:575-583拒绝套餐/加料，不能视为已有组合导入能力。本轮不修改契约、导入器或任何正式字段。
+
+## 6. 针对性验收
+
+PASS：NG03恰10条，recordKey唯一、dishId仍未分配；转录源行185-194逐字匹配，价格8×12+1×14+1×16；照片文件存在、OCR对应path与引用序号核对。PASS：E2/E3/E4既有交付及项目基线376文件字节未改。PENDING：所有商品构成、双拼计价、滑蛋归属、差价原因及模糊菜名。FAIL检查0；业务结论未知不计为已解决。
+
+附evidence目录check_results.json、git_status.txt、delivery_manifest.json（大小/SHA-256）及独立检查脚本。实际项目diff相对开工为空，本轮仅新增报告和证据；未正式导入、分配ID、审批变更、Git写、云端操作。完成后停止等待负责人裁决。
+'''
+f=O/'R01_E4_NG03_双拼与套餐业务裁决材料_20261101.md';f.write_text(text,encoding='utf-8')
+assert all(sha(pathlib.Path(p))==h for p,h in protected.items())
+base=json.loads((O/'R01_E2_20261101_evidence/project_before.json').read_text());assert all(sha(P/x['path'])==x['sha256'] for x in base)
+git=subprocess.run(['git','-c','safe.directory='+str(P).replace('\\','/'),'status','--porcelain=v1','-uall'],cwd=P,capture_output=True,text=True,encoding='utf-8');assert git.returncode==0
+(E/'git_status.txt').write_text(git.stdout,encoding='utf-8');(E/'check_results.json').write_text(json.dumps({'exitCode':0,'NG03Rows':10,'uniqueKeys':len({r['recordKey'] for r in ng}),'prices':dict(collections.Counter(prices)),'existingReportHashesUnchanged':len(protected),'projectHashesUnchanged':len(base),'NG01D1D2Retained':True,'photoSHA256':sha(P/v['path'])},ensure_ascii=False,indent=2),encoding='utf-8')
+(E/'delivery_manifest.json').write_text(json.dumps([{'path':str(p),'bytes':p.stat().st_size,'sha256':sha(p)} for p in [f,*E.iterdir()] if p.is_file()],ensure_ascii=False,indent=2),encoding='utf-8');print('PASS targeted checks; 10 rows; 12x8/14x1/16x1; existing bytes unchanged; EXIT=0')

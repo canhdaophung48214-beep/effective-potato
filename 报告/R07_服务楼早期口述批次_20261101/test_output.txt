@@ -1,0 +1,28 @@
+PASS 38候选原名原价原行及口述证据不伪装照片
+PASS 39旧责任唯一完整
+PASS 43物理行/67源组独立统计
+PASS 候选38+加料24+阻断5互斥覆盖
+PASS 台账包含optionRefs不遗漏24加料
+PASS 加料分布5/12/7，按各字与价格组展开
+PASS 月亮馍辣条疑问留待核验
+PASS 四项无价不生成候选
+PASS 同名不同档口不自动合并
+PASS 38照片缺口不伪装成38条完全无证据
+PASS 负向:改价
+PASS 负向:旧ID继承
+PASS 负向:伪造日期
+PASS 负向:伪造照片
+PASS 负向:推断口味
+PASS 负向:交易报价
+PASS 负向:重复记录
+PASS 负向:加料独立菜
+PASS 负向:猜组合
+PASS 负向:跨档口映射
+PASS before备份与快照逐字节一致
+PASS 正式项目所有字节不变
+PASS R03-R06所有成果字节不变
+PASS Git状态及暂存HEAD保持一致
+git diff --check exit= 0
+warning: in the working copy of 'project.config.json', CRLF will be replaced by LF the next time Git touches it
+
+RESULT 24 PASS / 0 FAIL / 0 SKIP; exit=0

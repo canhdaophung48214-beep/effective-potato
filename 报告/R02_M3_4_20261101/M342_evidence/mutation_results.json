@@ -1,0 +1,26 @@
+[
+  {
+    "mutation": "historical_into_formal_price",
+    "status": "CAUGHT",
+    "error": "The expression evaluated to a falsy value:\n\n  assert(!Object.hasOwn(x,'price'))\n",
+    "isolatedPath": "C:\\Users\\25975\\AppData\\Local\\Temp\\m342-mutation-MrjBtT\\adapter.js"
+  },
+  {
+    "mutation": "no_history_label",
+    "status": "CAUGHT",
+    "error": "The expression evaluated to a falsy value:\n\n  assert(x.display.historyNotice.includes('历史'))\n",
+    "isolatedPath": "C:\\Users\\25975\\AppData\\Local\\Temp\\m342-mutation-yFuVis\\adapter.js"
+  },
+  {
+    "mutation": "current_zero",
+    "status": "CAUGHT",
+    "error": "Expected values to be strictly equal:\n\n0 !== null\n",
+    "isolatedPath": "C:\\Users\\25975\\AppData\\Local\\Temp\\m342-mutation-Wzjvjp\\adapter.js"
+  },
+  {
+    "mutation": "parent_falsely_verified",
+    "status": "CAUGHT",
+    "error": "'VERIFIED' == 'PENDING'",
+    "isolatedPath": "C:\\Users\\25975\\AppData\\Local\\Temp\\m342-mutation-4sTZy0\\adapter.js"
+  }
+]

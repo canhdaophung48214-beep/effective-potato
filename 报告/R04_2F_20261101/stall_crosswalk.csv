@@ -1,0 +1,17 @@
+﻿sourceStallRef,sourceName,oldStallIdForTrace,oldSourceRecords,identityStatus,formalStallIdAssigned,mergeDecision
+W2-01,见面就好,c01_t07,8,"source/owner-model association, not formal signoff",False,no new merge
+W2-02,元气补给粥,c01_t09,4,"source/owner-model association, not formal signoff",False,no new merge
+W2-03,来一碗肉肉饭,c01_t11,40,"source/owner-model association, not formal signoff",False,no new merge
+W2-12,今年任石锅拌饭,c01_t14,10,"source/owner-model association, not formal signoff",False,no new merge
+W2-13,重庆名小吃,c01_t15,13,"source/owner-model association, not formal signoff",False,no new merge
+W2-11,板面砂锅米线,c01_t16,63,"source/owner-model association, not formal signoff",False,no new merge
+W2-10,胖丞相湘菜小炒,c01_t17,20,"source/owner-model association, not formal signoff",False,no new merge
+W2-14,烽盛面馆,c01_t19,12,"source/owner-model association, not formal signoff",False,no new merge
+W2-06,这里有个摊儿,c01_t20,6,"source/owner-model association, not formal signoff",False,no new merge
+W2-16,欣达快餐,c01_t21,17,"source/owner-model association, not formal signoff",False,no new merge
+W2-07,四有青年面馆,c01_t28,30,"source/owner-model association, not formal signoff",False,no new merge
+W2-09,博山水饺,c01_t32,18,"source/owner-model association, not formal signoff",False,no new merge
+W2-15,半亩良田,c01_t35,15,"source/owner-model association, not formal signoff",False,no new merge
+W2-08,西雅苏新疆炒米粉,c01_t37,22,"source/owner-model association, not formal signoff",False,no new merge
+W2-04,小吕哥黄焖鸡（暂定）,c01_t48,77,"source/owner-model association, not formal signoff",False,W2-04/W2-05继续独立，不因相同做法合并
+W2-05,炒粉炒面炒饼（暂定）,c01_t49,27,"source/owner-model association, not formal signoff",False,W2-04/W2-05继续独立，不因相同做法合并

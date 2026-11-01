@@ -1,0 +1,58 @@
+<!-- 私有纠错投稿：只收集纠错信息，不提供发布能力 -->
+<view class="page">
+
+  <view class="hero">
+    <view class="hero-title">纠错投稿</view>
+    <view class="hero-sub">提交后由人工审核，不会直接公开，也不代表菜品已核实</view>
+  </view>
+
+  <view class="card" wx:if="{{!done}}">
+    <view class="row">
+      <view class="label">纠错类型</view>
+      <picker mode="selector" range="{{kinds}}" range-key="label" value="{{kindIndex}}" bindchange="onKindChange">
+        <view class="picker">{{kinds[kindIndex].label}} · {{kinds[kindIndex].hint}}</view>
+      </picker>
+    </view>
+
+    <view class="row">
+      <view class="label">店铺编号</view>
+      <input class="input" value="{{shopId}}" data-field="shopId" bindinput="onInput" placeholder="例如 c02" />
+    </view>
+    <view class="row">
+      <view class="label">档口编号</view>
+      <input class="input" value="{{stallId}}" data-field="stallId" bindinput="onInput" placeholder="例如 c02_t02" />
+    </view>
+    <view class="row">
+      <view class="label">菜品编号</view>
+      <input class="input" value="{{dishId}}" data-field="dishId" bindinput="onInput" placeholder="可留空，仅档口信息纠错" />
+    </view>
+    <view class="row">
+      <view class="label">正确价格</view>
+      <input class="input" type="digit" value="{{price}}" data-field="price" bindinput="onInput" placeholder="价格纠错时填写，最多一位小数" />
+    </view>
+    <view class="row">
+      <view class="label">菜名建议</view>
+      <input class="input" value="{{nameSuggestion}}" data-field="nameSuggestion" bindinput="onInput" placeholder="可选，1–20 字" />
+    </view>
+    <view class="row row-column">
+      <view class="label">纠错说明</view>
+      <textarea class="textarea" value="{{note}}" data-field="note" bindinput="onInput" maxlength="100" placeholder="1–100 字，例如：10 月 26 日价目表显示 12 元" />
+      <view class="counter">{{note.length}}/100</view>
+    </view>
+
+    <button class="submit" loading="{{submitting}}" disabled="{{submitting}}" bindtap="onSubmit">提交给管理员审核</button>
+
+    <view class="tip">
+      本页不收集昵称、头像、手机号与位置；不接收图片。提交内容仅管理员可见，用于人工核对。
+    </view>
+  </view>
+
+  <view class="card done" wx:if="{{done}}">
+    <view class="done-title">已提交</view>
+    <view class="done-desc">管理员审核后会作为纠错建议处理。通过也不等于菜品已核实，更不会自动公开。</view>
+    <button class="submit" bindtap="onSubmitAgain">再提交一条</button>
+  </view>
+
+  <view class="message {{messageType}}" wx:if="{{message}}">{{message}}</view>
+
+</view>

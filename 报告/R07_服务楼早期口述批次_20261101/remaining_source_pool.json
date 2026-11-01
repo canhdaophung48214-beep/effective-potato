@@ -1,0 +1,65 @@
+[
+  {
+    "material": "味爱特称重",
+    "sourceFile": "source_assets/remaining_collection_notes.md",
+    "sourceLine": 67,
+    "sourceQuote": "| c03 味爱特全部菜品 | 称重计价（荤素统一 1.77 元/50g），没有固定单价 | 第 2 节第 5 条、第 11 节 |",
+    "classification": "BUSINESS_RULE",
+    "disposition": "按1.77元/50g保留经营信息，不造固定价菜品",
+    "dishCandidateCreated": false
+  },
+  {
+    "material": "航语佳称重",
+    "sourceFile": "source_assets/remaining_collection_notes.md",
+    "sourceLine": 68,
+    "sourceQuote": "| c10 航语佳全部菜品 | 称重 + 人均 9–15 元计价，价目牌上无单品价 | 同上 |",
+    "classification": "BUSINESS_RULE",
+    "disposition": "称重/人均价格不是单菜价格，不造固定价菜品",
+    "dishCandidateCreated": false
+  },
+  {
+    "material": "土耳其烤鸡推荐区",
+    "sourceFile": "source_assets/remaining_collection_notes.md",
+    "sourceLine": 69,
+    "sourceQuote": "| c08 招牌推荐区 6 项（鸡肉咖喱土豆饭等） | 灯箱小图字号过小、价签被黑条遮挡，价格看不清 | 第 11 节「价格看不清 → 不录」 |",
+    "classification": "PHOTO_PRICE_OCCLUDED",
+    "disposition": "6项未完整命名/价格不可辨，不自动造候选",
+    "dishCandidateCreated": false
+  },
+  {
+    "material": "单县加料",
+    "sourceFile": "source_assets/remaining_collection_notes.md",
+    "sourceLine": 70,
+    "sourceQuote": "| c05 加料 6 项（加面/煎蛋/卤蛋/火腿片/酥油饼/葱花酥油饼） | 属加料，`record_type` 不支持 | 第 1 节、第 4.4 节 |",
+    "classification": "ADDONS_UNKNOWN_PRICE",
+    "disposition": "六项名称有文本，价目未逐项转录；列待补价而不是独立菜",
+    "dishCandidateCreated": false
+  },
+  {
+    "material": "忆米嘉加料",
+    "sourceFile": "source_assets/remaining_collection_notes.md",
+    "sourceLine": 71,
+    "sourceQuote": "| c06 加料 16 项（煎蛋/鱼丸/肥牛卷/馕/火腿片等） | 同上 | 同上 |",
+    "classification": "ADDONS_INCOMPLETE_LIST",
+    "disposition": "16项仅列部分示例，不能补造余项名称/价格",
+    "dishCandidateCreated": false
+  },
+  {
+    "material": "赣五爷炸货",
+    "sourceFile": "source_assets/remaining_collection_notes.md",
+    "sourceLine": 72,
+    "sourceQuote": "| c09 自选炸货 6 项（炸金针菇 1 元等） | 属「饭里加料」小食，录进去会让随机抽菜抽出 1 元的配菜 | 同上 |",
+    "classification": "ADDONS_PARTIAL_EVIDENCE",
+    "disposition": "只有炸金针菇1元这一示例具明确文本；其余不得补造",
+    "dishCandidateCreated": false
+  },
+  {
+    "material": "兰州重复牌行",
+    "sourceFile": "source_assets/remaining_collection_notes.md",
+    "sourceLine": 73,
+    "sourceQuote": "| c11 牌面重复行「牛肉炒拉面 13 元」 | 同一菜名同价出现两次，D8 自然键会判重复 | 第 4.4 节 D8 |",
+    "classification": "DUPLICATE_ALREADY_EXCLUDED",
+    "disposition": "牛肉炒拉面13元重复牌行，旧采集已去重，不重复生成",
+    "dishCandidateCreated": false
+  }
+]
